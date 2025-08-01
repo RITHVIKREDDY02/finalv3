@@ -16,14 +16,14 @@ export default function Home() {
   return (
     <div className="min-h-screen">
       {/* Navigation Bar */}
-      <nav className="navbar-dark px-4 py-5 shadow-lg">
+      <nav className="navbar-dark px-4 py-3 shadow-lg">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           {/* Logo Section */}
           <div className="flex items-center">
             <img 
               src={logoPath} 
               alt="TASHANWIN Logo" 
-              className="h-14 w-auto object-contain"
+              className="h-16 w-auto object-contain"
             />
           </div>
           
