@@ -48,11 +48,9 @@ export default function Home() {
         </div>
       </nav>
 
-      {/* Main Content Container */}
-      <div className="max-w-4xl mx-auto px-4 py-6">
-        
-        {/* Welcome Banner */}
-        <Card className="bg-banner-gradient rounded-lg py-2 px-3 mb-8 border-2 border-accent-gold shadow-lg w-full max-w-7xl mx-auto">
+      {/* Welcome Banner - Full Width */}
+      <div className="px-1.5 py-6">
+        <Card className="bg-banner-gradient rounded-lg py-2 px-3 mb-8 border-2 border-accent-gold shadow-lg w-full mx-auto">
           <div className="flex items-center space-x-3 overflow-hidden">
             {/* Speaker Icon */}
             <div className="flex-shrink-0">
@@ -69,9 +67,12 @@ export default function Home() {
             </div>
           </div>
         </Card>
+      </div>
 
+      {/* Main Content Container */}
+      <div className="max-w-4xl mx-auto px-4 py-6">
         {/* Game Categories */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           
           {/* Win Go Game Card */}
           <div 
