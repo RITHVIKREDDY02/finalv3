@@ -92,7 +92,7 @@ export default function Home() {
       </div>
 
       {/* Main Content Container */}
-      <div className="max-w-2xl mx-auto px-6 md:px-8 lg:px-4 py-6">
+      <div className="max-w-2xl mx-auto px-6 md:px-8 lg:mx-0 lg:ml-8 xl:ml-12 lg:px-4 py-6">
         {/* Section Header */}
         <div className="flex items-center mb-6">
           <div className="flex items-center">
