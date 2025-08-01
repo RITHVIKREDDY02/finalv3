@@ -19,12 +19,12 @@ export default function Home() {
       <nav className="navbar-dark px-4 shadow-lg" style={{ height: '60px' }}>
         <div className="max-w-7xl mx-auto flex items-center justify-between h-full">
           {/* Logo Section */}
-          <div className="flex items-center">
+          <div className="flex items-center" style={{ marginLeft: '-20px' }}>
             <img 
               src={logoPath} 
               alt="TASHANWIN Logo" 
               className="w-auto object-contain"
-              style={{ height: '60px', marginLeft: '-24px' }}
+              style={{ height: '60px' }}
             />
           </div>
           
