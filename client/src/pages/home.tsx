@@ -94,7 +94,7 @@ export default function Home() {
               alt="Lottery icon" 
               className="w-6 h-6 mr-2"
             />
-            <span className="font-bold text-lg" style={{ color: '#FDE4BC' }}>Lottery</span>
+            <span className="font-bold" style={{ color: '#FDE4BC', fontSize: '24px' }}>Lottery</span>
           </div>
         </div>
 
