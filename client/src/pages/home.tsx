@@ -92,14 +92,21 @@ export default function Home() {
       </div>
 
       {/* Hero Text Section */}
-      <div className="text-center py-8 px-4">
-        <div className="max-w-4xl mx-auto">
-          <h1 className="text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-bold mb-4" style={{ color: '#FFB472' }}>
-            VIP PREDICTION
-          </h1>
-          <h2 className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold" style={{ color: '#FED358' }}>
-            NEVER GET LOSS
-          </h2>
+      <div className="py-8 px-4">
+        <div className="max-w-7xl mx-auto">
+          {/* VIP PREDICTION - Centered */}
+          <div className="text-center mb-4">
+            <h1 className="text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-bold" style={{ color: '#FFB472' }}>
+              VIP PREDICTION
+            </h1>
+          </div>
+          
+          {/* NEVER GET LOSS - Left aligned on desktop, centered on mobile */}
+          <div className="text-center lg:text-left lg:ml-8 xl:ml-12">
+            <h2 className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold" style={{ color: '#FED358' }}>
+              NEVER GET LOSS
+            </h2>
+          </div>
         </div>
       </div>
 
