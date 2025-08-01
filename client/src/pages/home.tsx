@@ -52,18 +52,20 @@ export default function Home() {
       <div className="max-w-4xl mx-auto px-4 py-6">
         
         {/* Welcome Banner */}
-        <Card className="bg-banner-gradient rounded-lg p-6 mb-8 border-2 border-accent-gold shadow-lg">
-          <div className="flex items-center space-x-4">
+        <Card className="bg-banner-gradient rounded-lg p-3 mb-8 border-2 border-accent-gold shadow-lg w-full max-w-6xl mx-auto">
+          <div className="flex items-center space-x-3 overflow-hidden">
             {/* Speaker Icon */}
             <div className="flex-shrink-0">
-              <Volume2 className="w-8 h-8 warm-gold" />
+              <Volume2 className="w-6 h-6 warm-gold" />
             </div>
             
-            {/* Welcome Text */}
-            <div className="flex-1">
-              <p className="light-gold text-lg font-medium leading-relaxed">
-                Welcome to TASHANWIN VIP PREDICTION APP, we will serve you Special Predictions!
-              </p>
+            {/* Marquee Text Container */}
+            <div className="flex-1 overflow-hidden">
+              <div className="marquee-container">
+                <p className="light-gold text-base font-medium whitespace-nowrap animate-marquee">
+                  Welcome to TASHANWIN VIP PREDICTION APP, we will serve you Special Predictions!
+                </p>
+              </div>
             </div>
           </div>
         </Card>

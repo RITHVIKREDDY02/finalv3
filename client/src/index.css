@@ -108,4 +108,23 @@
     transform: translateY(-4px);
     box-shadow: 0 8px 25px hsla(45, 65%, 34%, 0.3);
   }
+  
+  .marquee-container {
+    overflow: hidden;
+    white-space: nowrap;
+  }
+  
+  .animate-marquee {
+    display: inline-block;
+    animation: marquee 15s linear infinite;
+  }
+  
+  @keyframes marquee {
+    0% {
+      transform: translateX(100%);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
 }
