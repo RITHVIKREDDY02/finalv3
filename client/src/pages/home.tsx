@@ -23,7 +23,8 @@ export default function Home() {
             <img 
               src={logoPath} 
               alt="TASHANWIN Logo" 
-              className="h-16 w-auto object-contain"
+              className="w-auto object-contain"
+              style={{ height: '60px' }}
             />
           </div>
           
