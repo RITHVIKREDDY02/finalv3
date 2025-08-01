@@ -92,7 +92,7 @@ export default function Home() {
             {/* Vertical accent line */}
             <div 
               className="w-1 h-8 mr-3 rounded-full neon-accent"
-              style={{ backgroundColor: '#FDE4BC' }}
+              style={{ backgroundColor: '#FED358' }}
             ></div>
             <img 
               src={lotteryIcon} 

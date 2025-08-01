@@ -144,7 +144,7 @@
   /* Neon effect for section accent line */
   .neon-accent {
     box-shadow: 
-      0 0 4px #FDE4BC,
-      0 0 8px #FDE4BC;
+      0 0 4px #FED358,
+      0 0 8px #FED358;
   }
 }
