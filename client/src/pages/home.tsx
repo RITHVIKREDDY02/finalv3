@@ -12,6 +12,7 @@ import minesProImage from "@assets/811_1754070860593.png";
 import minesImage from "@assets/229 (1)_1754070860598.png";
 import boomImage from "@assets/100_1754070860600.png";
 import aviatorImage from "@assets/800_1754070860600.png";
+import limboImage from "@assets/235_1754071157602.png";
 
 export default function Home() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -191,7 +192,7 @@ export default function Home() {
         </div>
 
         {/* Mini Game Categories */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-4 md:gap-6 lg:gap-6 xl:gap-6">
+        <div className="grid grid-cols-3 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-2 md:gap-4 lg:gap-4 xl:gap-4">
           
           {/* Mines Pro Game Card */}
           <div 
@@ -247,6 +248,21 @@ export default function Home() {
               <img 
                 src={aviatorImage} 
                 alt="Aviator - High-flying multiplier game" 
+                className="w-full h-auto object-cover object-top block"
+              />
+              <div className="absolute inset-0 rounded-2xl border-2 border-accent-gold/30"></div>
+            </div>
+          </div>
+
+          {/* Limbo Game Card */}
+          <div 
+            className="cursor-pointer shadow-lg relative"
+            onClick={() => handleGameClick('Limbo')}
+          >
+            <div className="relative overflow-hidden rounded-2xl">
+              <img 
+                src={limboImage} 
+                alt="Limbo - Rocket launch multiplier game" 
                 className="w-full h-auto object-cover object-top block"
               />
               <div className="absolute inset-0 rounded-2xl border-2 border-accent-gold/30"></div>
