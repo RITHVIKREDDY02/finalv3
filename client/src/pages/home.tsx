@@ -112,10 +112,10 @@ export default function Home() {
       {/* Hero Text Section */}
       <div className="pt-4 pb-8 px-6 md:px-8 lg:px-12 xl:px-16">
         <div className="max-w-7xl mx-auto">
-          {/* VIP PREDICTION - Right aligned on all devices */}
+          {/* VIP - Right aligned on all devices */}
           <div className="text-right mb-4 pr-2 md:pr-4 lg:pr-6 xl:pr-8">
             <h1 className="text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-bold" style={{ color: '#FED358' }}>
-              VIP PREDICTION
+              VIP
             </h1>
           </div>
           
