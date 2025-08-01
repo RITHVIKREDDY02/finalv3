@@ -15,7 +15,7 @@ import boomImage from "@assets/100_1754070860600.png";
 import aviatorImage from "@assets/800_1754070860600.png";
 import limboImage from "@assets/235_1754071157602.png";
 import mobileBannerImage from "@assets/Black and Yellow Modern Make Money YouTube Thumbnail (1200 x 400 px) (320 x 100 px)_1754077052209.png";
-import desktopBannerImage from "@assets/Hero Banner Desktop_1754077809625.jpg";
+import desktopBannerImage from "@assets/Hero Banner (1440 x 300 px)_1754078513162.jpg";
 
 export default function Home() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
