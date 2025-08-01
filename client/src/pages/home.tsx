@@ -121,8 +121,8 @@ export default function Home() {
       {/* Hero Text Section */}
       <div className="pt-4 pb-8 px-6 md:px-8 lg:px-12 xl:px-16">
         <div className="max-w-7xl mx-auto">
-          {/* NEVER GET LOSS - Centered */}
-          <div className="text-center mb-4">
+          {/* NEVER GET LOSS - Moved to right */}
+          <div className="text-left mb-4 ml-8 md:ml-12 lg:ml-16">
             <h1 className="text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-bold" style={{ color: '#FED358' }}>
               NEVER GET LOSS
             </h1>
