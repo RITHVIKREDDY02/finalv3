@@ -81,6 +81,7 @@
     background: #FED358 !important;
     border: 0.01333rem solid var(--bg_HomeModule_Stroke) !important;
     color: #312712 !important;
+    font-weight: 800 !important;
   }
   
   .navbar-dark {
