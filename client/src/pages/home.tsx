@@ -112,18 +112,11 @@ export default function Home() {
       {/* Hero Text Section */}
       <div className="pt-4 pb-8 px-6 md:px-8 lg:px-12 xl:px-16">
         <div className="max-w-7xl mx-auto">
-          {/* VIP - Right aligned on all devices */}
-          <div className="text-right mb-4 pr-2 md:pr-4 lg:pr-6 xl:pr-8">
+          {/* NEVER GET LOSS - Centered */}
+          <div className="text-center mb-4">
             <h1 className="text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-bold" style={{ color: '#FED358' }}>
-              VIP
-            </h1>
-          </div>
-          
-          {/* NEVER GET LOSS - Left aligned on all devices */}
-          <div className="text-left ml-4 md:ml-6 lg:ml-8 xl:ml-12 pl-2 md:pl-4 lg:pl-6 xl:pl-8">
-            <h2 className="text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-bold" style={{ color: '#FED358' }}>
               NEVER GET LOSS
-            </h2>
+            </h1>
           </div>
         </div>
       </div>
@@ -307,6 +300,13 @@ export default function Home() {
             </div>
           </div>
 
+        </div>
+
+        {/* VIP PREDICTION - After lottery section */}
+        <div className="mt-12 mb-8">
+          <h2 className="text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-left" style={{ color: '#FED358' }}>
+            VIP PREDICTION
+          </h2>
         </div>
 
         {/* Feature Section */}
