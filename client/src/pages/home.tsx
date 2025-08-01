@@ -73,7 +73,7 @@ export default function Home() {
       {/* Main Content Container */}
       <div className="max-w-4xl mx-auto px-4 py-6">
         {/* Game Categories */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
           
           {/* Win Go Game Card */}
           <div 
