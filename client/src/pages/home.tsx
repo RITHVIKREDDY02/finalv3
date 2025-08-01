@@ -89,6 +89,11 @@ export default function Home() {
         {/* Section Header */}
         <div className="flex items-center mb-6">
           <div className="flex items-center">
+            {/* Vertical accent line */}
+            <div 
+              className="w-1 h-8 mr-3 rounded-full"
+              style={{ backgroundColor: '#FDE4BC' }}
+            ></div>
             <img 
               src={lotteryIcon} 
               alt="Lottery icon" 
