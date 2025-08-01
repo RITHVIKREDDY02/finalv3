@@ -54,13 +54,13 @@ export default function Home() {
           <div className="flex items-center space-x-3 overflow-hidden">
             {/* Speaker Icon */}
             <div className="flex-shrink-0">
-              <Volume2 className="w-6 h-6 warm-gold" />
+              <Volume2 className="w-4 h-4 warm-gold" />
             </div>
             
             {/* Marquee Text Container */}
             <div className="flex-1 overflow-hidden">
               <div className="marquee-container">
-                <p className="light-gold text-base font-medium whitespace-nowrap animate-marquee">
+                <p className="light-gold text-sm font-medium whitespace-nowrap animate-marquee">
                   Welcome to TASHANWIN VIP PREDICTION APP, we will serve you Special Predictions!
                 </p>
               </div>
