@@ -49,7 +49,7 @@ export default function Home() {
       </nav>
 
       {/* Welcome Banner - Full Width */}
-      <div className="px-1.5 py-6">
+      <div style={{ padding: '24px 5px' }}>
         <Card className="bg-banner-gradient rounded-lg py-2 px-3 mb-8 border-2 border-accent-gold shadow-lg w-full mx-auto">
           <div className="flex items-center space-x-3 overflow-hidden">
             {/* Speaker Icon */}
