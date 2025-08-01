@@ -109,16 +109,7 @@ export default function Home() {
         </Card>
       </div>
 
-      {/* VIP PREDICTION NEVER LOSS - Single line */}
-      <div className="pt-4 pb-8 px-6 md:px-8 lg:px-12 xl:px-16">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-left mb-4 ml-16 md:ml-24 lg:ml-32">
-            <h1 className="text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-bold" style={{ color: '#FED358' }}>
-              VIP PREDICTION NEVER LOSS
-            </h1>
-          </div>
-        </div>
-      </div>
+
 
       {/* Main Content Container */}
       <div className="max-w-2xl mx-auto px-6 md:px-8 lg:max-w-7xl lg:mx-0 lg:ml-8 xl:ml-12 lg:px-4 py-6">
