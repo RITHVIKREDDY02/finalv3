@@ -91,7 +91,7 @@ export default function Home() {
           <div className="flex items-center">
             {/* Vertical accent line */}
             <div 
-              className="w-1 h-8 mr-3 rounded-full neon-accent"
+              className="w-1 h-8 mr-3 rounded-full accent-shadow"
               style={{ backgroundColor: '#FED358' }}
             ></div>
             <img 

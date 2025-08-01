@@ -141,10 +141,8 @@
     margin-left: 40px; /* 40px for desktop */
   }
 
-  /* Neon effect for section accent line */
-  .neon-accent {
-    box-shadow: 
-      0 0 4px #FED358,
-      0 0 8px #FED358;
+  /* Accent line with subtle shadow */
+  .accent-shadow {
+    box-shadow: 0 .05333rem .26667rem #fed358a6;
   }
 }
