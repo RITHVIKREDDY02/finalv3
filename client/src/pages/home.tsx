@@ -140,10 +140,10 @@ export default function Home() {
       {/* Action Buttons - Below Hero Banner */}
       <div className="px-6 md:px-8 lg:px-12 xl:px-16 pb-6">
         <div className="max-w-2xl mx-auto lg:max-w-7xl">
-          <div className="flex flex-row gap-2 sm:gap-4 justify-center items-center">
+          <div className="flex flex-row gap-2 sm:gap-4 md:gap-6 justify-center items-center">
             {/* DEMO Button */}
             <button 
-              className="flex-1 px-4 sm:px-8 py-2 custom-button font-bold rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 text-sm sm:text-base"
+              className="flex-1 md:flex-none md:w-32 lg:w-36 px-4 sm:px-6 md:px-8 py-2 custom-button font-bold rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 text-sm sm:text-base"
               onClick={() => console.log('Demo clicked')}
             >
               DEMO
@@ -151,7 +151,7 @@ export default function Home() {
             
             {/* PROOF Button */}
             <button 
-              className="flex-1 px-4 sm:px-8 py-2 custom-button font-bold rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 text-sm sm:text-base"
+              className="flex-1 md:flex-none md:w-32 lg:w-36 px-4 sm:px-6 md:px-8 py-2 custom-button font-bold rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 text-sm sm:text-base"
               onClick={() => console.log('Proof clicked')}
             >
               PROOF
@@ -159,7 +159,7 @@ export default function Home() {
             
             {/* VIP Button */}
             <button 
-              className="flex-1 px-4 sm:px-8 py-2 custom-button font-bold rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 text-sm sm:text-base"
+              className="flex-1 md:flex-none md:w-32 lg:w-36 px-4 sm:px-6 md:px-8 py-2 custom-button font-bold rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 text-sm sm:text-base"
               onClick={() => console.log('VIP clicked')}
             >
               VIP
