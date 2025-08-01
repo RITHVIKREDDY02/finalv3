@@ -359,8 +359,8 @@ export default function Home() {
         </div>
 
         {/* Secondary Action Buttons */}
-        <div className="mt-8">
-          <div className="flex flex-row gap-2 sm:gap-4 md:gap-6 justify-center items-center">
+        <div className="mt-8 flex justify-center">
+          <div className="flex flex-row gap-2 sm:gap-4 md:gap-6 justify-center items-center max-w-lg">
             {/* About Us Button */}
             <button 
               className="flex-1 md:flex-none md:w-36 lg:w-40 px-4 sm:px-6 md:px-8 py-2 custom-button font-bold rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 text-sm sm:text-base"
