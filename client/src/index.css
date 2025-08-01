@@ -72,6 +72,10 @@
 }
 
 @layer utilities {
+  .super-rounded {
+    border-radius: 50px !important;
+  }
+  
   .navbar-dark {
     background-color: var(--navbar-dark);
   }

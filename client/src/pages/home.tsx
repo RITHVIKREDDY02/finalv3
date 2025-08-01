@@ -143,7 +143,7 @@ export default function Home() {
           <div className="flex flex-row gap-2 sm:gap-4 justify-center items-center">
             {/* DEMO Button */}
             <button 
-              className="flex-1 px-4 sm:px-8 py-3 bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-bold rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 text-sm sm:text-base"
+              className="flex-1 px-4 sm:px-8 py-2 bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-bold rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 text-sm sm:text-base"
               onClick={() => console.log('Demo clicked')}
             >
               DEMO
@@ -151,7 +151,7 @@ export default function Home() {
             
             {/* PROOF Button */}
             <button 
-              className="flex-1 px-4 sm:px-8 py-3 bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-bold rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 text-sm sm:text-base"
+              className="flex-1 px-4 sm:px-8 py-2 bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-bold rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 text-sm sm:text-base"
               onClick={() => console.log('Proof clicked')}
             >
               PROOF
@@ -159,7 +159,7 @@ export default function Home() {
             
             {/* VIP Button */}
             <button 
-              className="flex-1 px-4 sm:px-8 py-3 bg-gradient-to-r from-yellow-500 to-yellow-600 hover:from-yellow-600 hover:to-yellow-700 text-white font-bold rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 text-sm sm:text-base"
+              className="flex-1 px-4 sm:px-8 py-2 bg-gradient-to-r from-yellow-500 to-yellow-600 hover:from-yellow-600 hover:to-yellow-700 text-white font-bold rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 text-sm sm:text-base"
               onClick={() => console.log('VIP clicked')}
             >
               VIP
