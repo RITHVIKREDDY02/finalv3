@@ -94,8 +94,8 @@ export default function Home() {
       {/* Hero Text Section */}
       <div className="py-8 px-4">
         <div className="max-w-7xl mx-auto">
-          {/* VIP PREDICTION - Centered */}
-          <div className="text-center mb-4">
+          {/* VIP PREDICTION - Right aligned on desktop, centered on mobile */}
+          <div className="text-center lg:text-right mb-4">
             <h1 className="text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-bold" style={{ color: '#FFB472' }}>
               VIP PREDICTION
             </h1>
