@@ -94,15 +94,15 @@ export default function Home() {
       {/* Hero Text Section */}
       <div className="py-8 px-4">
         <div className="max-w-7xl mx-auto">
-          {/* VIP PREDICTION - Right aligned on desktop, centered on mobile */}
-          <div className="text-center lg:text-right mb-4">
+          {/* VIP PREDICTION - Right aligned on all devices */}
+          <div className="text-right mb-4">
             <h1 className="text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-bold" style={{ color: '#FFB472' }}>
               VIP PREDICTION
             </h1>
           </div>
           
-          {/* NEVER GET LOSS - Left aligned on desktop, centered on mobile */}
-          <div className="text-center lg:text-left lg:ml-8 xl:ml-12">
+          {/* NEVER GET LOSS - Left aligned on all devices */}
+          <div className="text-left ml-4 md:ml-6 lg:ml-8 xl:ml-12">
             <h2 className="text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-bold" style={{ color: '#FED358' }}>
               NEVER GET LOSS
             </h2>
