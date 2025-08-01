@@ -26,7 +26,7 @@ export default function Home() {
   return (
     <div className="min-h-screen">
       {/* Navigation Bar */}
-      <nav className="navbar-dark px-4 shadow-lg" style={{ height: '60px' }}>
+      <nav className="fixed top-0 left-0 right-0 navbar-dark px-4 shadow-lg z-50" style={{ height: '60px' }}>
         <div className="max-w-7xl mx-auto flex items-center justify-between h-full">
           {/* Logo Section */}
           <div className="flex items-center logo-spacing-mobile md:logo-spacing-tablet lg:logo-spacing-desktop">
@@ -71,7 +71,7 @@ export default function Home() {
       </nav>
 
       {/* Welcome Banner - Full Width */}
-      <div style={{ padding: '24px 34px' }}>
+      <div style={{ padding: '24px 34px', marginTop: '60px' }}>
         <Card className="bg-banner-gradient rounded-lg py-1 px-3 mb-8 border-2 border-accent-gold shadow-lg w-full mx-auto">
           <div className="flex items-center space-x-3 overflow-hidden">
             {/* Speaker Icon */}
