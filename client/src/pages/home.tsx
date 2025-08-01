@@ -1,6 +1,7 @@
 import { Card } from "@/components/ui/card";
 import { Volume2 } from "lucide-react";
 import { useState } from "react";
+import { FaTelegram } from "react-icons/fa";
 import logoPath from "@assets/TASHAN WIN LOGO_1754052537792.png";
 import winGoImage from "@assets/lotterycategory_20250412120719dqfv_1754052547793.png";
 import trxWingoImage from "@assets/lotterycategory_20250412120818j8wq_1754052552269.png";
@@ -279,6 +280,16 @@ export default function Home() {
         </div>
 
       </div>
+
+      {/* Floating Telegram Button */}
+      <a 
+        href="https://t.me/tashanwinvi" 
+        target="_blank" 
+        rel="noopener noreferrer"
+        className="fixed bottom-6 right-6 w-14 h-14 bg-blue-500 hover:bg-blue-600 rounded-full flex items-center justify-center shadow-lg transition-all duration-300 z-50 hover:scale-110"
+      >
+        <FaTelegram className="text-white text-2xl" />
+      </a>
     </div>
   );
 }
