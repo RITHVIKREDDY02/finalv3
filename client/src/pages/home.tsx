@@ -35,7 +35,7 @@ export default function Home() {
               style={{ backgroundColor: '#FFB472' }}
               onClick={() => console.log('Join VIP clicked')}
             >
-              Join VIP
+              JOIN VIP
             </button>
             <button 
               className="light-gold hover:warm-gold transition-colors duration-200"
@@ -54,7 +54,7 @@ export default function Home() {
               style={{ backgroundColor: '#FFB472' }}
               onClick={() => console.log('Join VIP clicked')}
             >
-              Join VIP
+              JOIN VIP
             </button>
           </div>
         </div>
