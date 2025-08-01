@@ -91,6 +91,18 @@ export default function Home() {
         </Card>
       </div>
 
+      {/* Hero Text Section */}
+      <div className="text-center py-8 px-4">
+        <div className="max-w-4xl mx-auto">
+          <h1 className="text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-bold mb-4" style={{ color: '#FFB472' }}>
+            VIP PREDICTION
+          </h1>
+          <h2 className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold" style={{ color: '#FED358' }}>
+            NEVER GET LOSS
+          </h2>
+        </div>
+      </div>
+
       {/* Main Content Container */}
       <div className="max-w-2xl mx-auto px-6 md:px-8 lg:max-w-7xl lg:mx-0 lg:ml-8 xl:ml-12 lg:px-4 py-6">
         {/* Section Header */}
