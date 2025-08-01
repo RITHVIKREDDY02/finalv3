@@ -138,7 +138,7 @@
   }
   
   .logo-spacing-desktop {
-    margin-left: 16px; /* Reduced from 40px to 16px for desktop */
+    margin-left: 0px; /* No margin for desktop - logo closer to edge */
   }
 
   /* Accent line with subtle shadow */
