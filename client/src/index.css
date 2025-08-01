@@ -138,7 +138,14 @@
   }
   
   .logo-spacing-desktop {
-    margin-left: -3rem; /* Negative margin to pull logo left by 48px */
+    margin-left: 0px;
+  }
+  
+  /* Desktop-specific logo positioning */
+  @media (min-width: 1024px) {
+    .logo-spacing-desktop {
+      margin-left: -4rem; /* Pull logo significantly left on desktop only */
+    }
   }
 
   /* Accent line with subtle shadow */
