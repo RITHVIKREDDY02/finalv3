@@ -23,7 +23,7 @@ export default function Home() {
             <img 
               src={logoPath} 
               alt="TASHANWIN Logo" 
-              className="h-10 w-auto object-contain"
+              className="h-14 w-auto object-contain"
             />
           </div>
           
