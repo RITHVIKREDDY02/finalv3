@@ -4,6 +4,8 @@ import { useState } from "react";
 import logoPath from "@assets/TASHAN WIN LOGO_1754052537792.png";
 import winGoImage from "@assets/lotterycategory_20250412120719dqfv_1754052547793.png";
 import trxWingoImage from "@assets/lotterycategory_20250412120818j8wq_1754052552269.png";
+import k3Image from "@assets/lotterycategory_2025041212074073ug_1754069351570.png";
+import motoRacingImage from "@assets/c57f5149-2139-410f-8d48-94a06fcb36f2_1754069356497.png";
 
 export default function Home() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -84,7 +86,7 @@ export default function Home() {
       {/* Main Content Container */}
       <div className="max-w-4xl mx-auto px-6 md:px-8 lg:px-4 py-6">
         {/* Game Categories */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 lg:gap-16 xl:gap-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 gap-8 md:gap-12 lg:gap-8 xl:gap-6">
           
           {/* Win Go Game Card */}
           <div 
@@ -110,6 +112,36 @@ export default function Home() {
               <img 
                 src={trxWingoImage} 
                 alt="Trx Wingo - TRX-themed lottery prediction game" 
+                className="w-full h-auto object-cover object-top block"
+              />
+              <div className="absolute inset-0 rounded-2xl border-2 border-accent-gold/30"></div>
+            </div>
+          </div>
+
+          {/* K3 Game Card */}
+          <div 
+            className="cursor-pointer shadow-lg relative"
+            onClick={() => handleGameClick('K3')}
+          >
+            <div className="relative overflow-hidden rounded-2xl">
+              <img 
+                src={k3Image} 
+                alt="K3 - Dice prediction game with golden dice" 
+                className="w-full h-auto object-cover object-top block"
+              />
+              <div className="absolute inset-0 rounded-2xl border-2 border-accent-gold/30"></div>
+            </div>
+          </div>
+
+          {/* Moto Racing Game Card */}
+          <div 
+            className="cursor-pointer shadow-lg relative"
+            onClick={() => handleGameClick('Moto Racing')}
+          >
+            <div className="relative overflow-hidden rounded-2xl">
+              <img 
+                src={motoRacingImage} 
+                alt="Moto Racing - Motorcycle racing prediction game" 
                 className="w-full h-auto object-cover object-top block"
               />
               <div className="absolute inset-0 rounded-2xl border-2 border-accent-gold/30"></div>
