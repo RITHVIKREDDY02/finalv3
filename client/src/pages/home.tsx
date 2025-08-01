@@ -24,7 +24,7 @@ export default function Home() {
               src={logoPath} 
               alt="TASHANWIN Logo" 
               className="w-auto object-contain"
-              style={{ height: '60px', marginLeft: '-12px' }}
+              style={{ height: '60px', marginLeft: '-24px' }}
             />
           </div>
           
