@@ -134,11 +134,11 @@
   }
   
   .logo-spacing-tablet {
-    margin-left: 24px; /* 24px for tablet/iPad */
+    margin-left: 20px; /* 20px for tablet/iPad */
   }
   
   .logo-spacing-desktop {
-    margin-left: 40px; /* 40px for desktop */
+    margin-left: 16px; /* Reduced from 40px to 16px for desktop */
   }
 
   /* Accent line with subtle shadow */
