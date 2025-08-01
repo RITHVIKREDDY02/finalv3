@@ -15,6 +15,7 @@ import boomImage from "@assets/100_1754070860600.png";
 import aviatorImage from "@assets/800_1754070860600.png";
 import limboImage from "@assets/235_1754071157602.png";
 import mobileBannerImage from "@assets/Black and Yellow Modern Make Money YouTube Thumbnail (1200 x 400 px) (320 x 100 px)_1754077052209.png";
+import desktopBannerImage from "@assets/Hero Banner Desktop_1754077809625.jpg";
 
 export default function Home() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -116,6 +117,19 @@ export default function Home() {
           <div className="relative overflow-hidden rounded-2xl shadow-lg">
             <img 
               src={mobileBannerImage} 
+              alt="VIP Prediction - Unlock Pro Money, Never get loss" 
+              className="w-full h-auto object-cover"
+            />
+          </div>
+        </div>
+      </div>
+
+      {/* VIP Prediction Banner - Desktop only */}
+      <div className="hidden lg:block px-6 md:px-8 lg:px-12 xl:px-16 pb-6">
+        <div className="max-w-7xl mx-auto">
+          <div className="relative overflow-hidden rounded-2xl shadow-lg">
+            <img 
+              src={desktopBannerImage} 
               alt="VIP Prediction - Unlock Pro Money, Never get loss" 
               className="w-full h-auto object-cover"
             />
