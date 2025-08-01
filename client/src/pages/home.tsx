@@ -358,6 +358,98 @@ export default function Home() {
           </div>
         </div>
 
+        {/* Recent Winnings Section */}
+        <div className="mt-12">
+          {/* Section Header */}
+          <div className="text-center mb-8">
+            <h2 className="text-2xl font-bold" style={{ color: '#FDE4BC' }}>Recent Winnings</h2>
+          </div>
+          
+          {/* Winnings Cards Container */}
+          <div className="relative">
+            {/* Curved Background Design */}
+            <div className="absolute inset-0 rounded-3xl" style={{ 
+              background: 'linear-gradient(135deg, rgba(254, 211, 88, 0.1) 0%, rgba(254, 211, 88, 0.05) 100%)',
+              border: '1px solid rgba(254, 211, 88, 0.2)'
+            }}></div>
+            
+            {/* Cards Grid */}
+            <div className="relative p-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              {/* Winner Card 1 */}
+              <div className="bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl p-4 border border-accent-gold/20 shadow-lg">
+                <div className="text-center">
+                  <div className="font-bold text-white text-sm mb-1">Mohit Gupta</div>
+                  <div className="text-xs text-gray-400 mb-2">has won</div>
+                  <div className="text-lg font-bold mb-1" style={{ color: '#FED358' }}>₹56,018</div>
+                  <div className="text-xs text-gray-400 mb-2">on round</div>
+                  <div className="text-xs text-gray-500">202508011000311234</div>
+                  <div className="text-xs text-gray-400 mt-1">using Predict Wingo</div>
+                </div>
+              </div>
+
+              {/* Winner Card 2 */}
+              <div className="bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl p-4 border border-accent-gold/20 shadow-lg">
+                <div className="text-center">
+                  <div className="font-bold text-white text-sm mb-1">Rajat Patel</div>
+                  <div className="text-xs text-gray-400 mb-2">has won</div>
+                  <div className="text-lg font-bold mb-1" style={{ color: '#FED358' }}>₹35,758</div>
+                  <div className="text-xs text-gray-400 mb-2">on round</div>
+                  <div className="text-xs text-gray-500">202508011000311234</div>
+                  <div className="text-xs text-gray-400 mt-1">using Predict Wingo</div>
+                </div>
+              </div>
+
+              {/* Winner Card 3 */}
+              <div className="bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl p-4 border border-accent-gold/20 shadow-lg">
+                <div className="text-center">
+                  <div className="font-bold text-white text-sm mb-1">Aarti Reddy</div>
+                  <div className="text-xs text-gray-400 mb-2">has won</div>
+                  <div className="text-lg font-bold mb-1" style={{ color: '#FED358' }}>₹65,391</div>
+                  <div className="text-xs text-gray-400 mb-2">on round</div>
+                  <div className="text-xs text-gray-500">202508011000311234</div>
+                  <div className="text-xs text-gray-400 mt-1">using Predict Wingo</div>
+                </div>
+              </div>
+
+              {/* Winner Card 4 */}
+              <div className="bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl p-4 border border-accent-gold/20 shadow-lg">
+                <div className="text-center">
+                  <div className="font-bold text-white text-sm mb-1">Suresh Nair</div>
+                  <div className="text-xs text-gray-400 mb-2">has won</div>
+                  <div className="text-lg font-bold mb-1" style={{ color: '#FED358' }}>₹48,849</div>
+                  <div className="text-xs text-gray-400 mb-2">on round</div>
+                  <div className="text-xs text-gray-500">202508011000311234</div>
+                  <div className="text-xs text-gray-400 mt-1">using Predict Wingo</div>
+                </div>
+              </div>
+
+              {/* Winner Card 5 */}
+              <div className="bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl p-4 border border-accent-gold/20 shadow-lg">
+                <div className="text-center">
+                  <div className="font-bold text-white text-sm mb-1">Sanjay Verma</div>
+                  <div className="text-xs text-gray-400 mb-2">has won</div>
+                  <div className="text-lg font-bold mb-1" style={{ color: '#FED358' }}>₹88,359</div>
+                  <div className="text-xs text-gray-400 mb-2">on round</div>
+                  <div className="text-xs text-gray-500">202508011000311234</div>
+                  <div className="text-xs text-gray-400 mt-1">using Predict Wingo</div>
+                </div>
+              </div>
+
+              {/* Winner Card 6 */}
+              <div className="bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl p-4 border border-accent-gold/20 shadow-lg">
+                <div className="text-center">
+                  <div className="font-bold text-white text-sm mb-1">Rajesh Nair</div>
+                  <div className="text-xs text-gray-400 mb-2">has won</div>
+                  <div className="text-lg font-bold mb-1" style={{ color: '#FED358' }}>₹18,744</div>
+                  <div className="text-xs text-gray-400 mb-2">on round</div>
+                  <div className="text-xs text-gray-500">202508011000311234</div>
+                  <div className="text-xs text-gray-400 mt-1">using Predict Wingo</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
         {/* Secondary Action Buttons */}
         <div className="mt-8 flex justify-center">
           <div className="flex flex-row gap-2 sm:gap-4 md:gap-6 justify-center items-center max-w-lg">
