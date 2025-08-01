@@ -137,6 +137,37 @@ export default function Home() {
         </div>
       </div>
 
+      {/* Action Buttons - Below Hero Banner */}
+      <div className="px-6 md:px-8 lg:px-12 xl:px-16 pb-6">
+        <div className="max-w-2xl mx-auto lg:max-w-7xl">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            {/* DEMO Button */}
+            <button 
+              className="w-full sm:w-auto px-8 py-3 bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-bold rounded-lg shadow-lg transition-all duration-300 transform hover:scale-105"
+              onClick={() => console.log('Demo clicked')}
+            >
+              DEMO
+            </button>
+            
+            {/* PROOF Button */}
+            <button 
+              className="w-full sm:w-auto px-8 py-3 bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-bold rounded-lg shadow-lg transition-all duration-300 transform hover:scale-105"
+              onClick={() => console.log('Proof clicked')}
+            >
+              PROOF
+            </button>
+            
+            {/* VIP Button */}
+            <button 
+              className="w-full sm:w-auto px-8 py-3 bg-gradient-to-r from-yellow-500 to-yellow-600 hover:from-yellow-600 hover:to-yellow-700 text-white font-bold rounded-lg shadow-lg transition-all duration-300 transform hover:scale-105"
+              onClick={() => console.log('VIP clicked')}
+            >
+              VIP
+            </button>
+          </div>
+        </div>
+      </div>
+
       {/* Main Content Container */}
       <div className="max-w-2xl mx-auto px-6 md:px-8 lg:max-w-7xl lg:mx-0 lg:ml-8 xl:ml-12 lg:px-4 py-6">
         {/* Section Header */}
