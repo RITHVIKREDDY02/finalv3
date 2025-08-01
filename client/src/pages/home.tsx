@@ -52,7 +52,7 @@ export default function Home() {
       <div className="max-w-4xl mx-auto px-4 py-6">
         
         {/* Welcome Banner */}
-        <Card className="bg-banner-gradient rounded-lg p-3 mb-8 border-2 border-accent-gold shadow-lg w-full max-w-6xl mx-auto">
+        <Card className="bg-banner-gradient rounded-lg py-2 px-3 mb-8 border-2 border-accent-gold shadow-lg w-full max-w-7xl mx-auto">
           <div className="flex items-center space-x-3 overflow-hidden">
             {/* Speaker Icon */}
             <div className="flex-shrink-0">
