@@ -138,8 +138,7 @@
   }
   
   .logo-spacing-desktop {
-    position: absolute;
-    left: 16px; /* Position logo 16px from absolute left edge */
+    margin-left: -3rem; /* Negative margin to pull logo left by 48px */
   }
 
   /* Accent line with subtle shadow */
