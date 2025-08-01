@@ -16,7 +16,7 @@ export default function Home() {
   return (
     <div className="min-h-screen">
       {/* Navigation Bar */}
-      <nav className="navbar-dark px-4 shadow-lg" style={{ height: '50px' }}>
+      <nav className="navbar-dark px-4 shadow-lg" style={{ height: '60px' }}>
         <div className="max-w-7xl mx-auto flex items-center justify-between h-full">
           {/* Logo Section */}
           <div className="flex items-center">
