@@ -92,7 +92,7 @@ export default function Home() {
 
       {/* Welcome Banner - Full Width */}
       <div style={{ padding: '24px 34px', marginTop: '60px' }}>
-        <Card className="bg-banner-gradient rounded-lg py-1 px-3 mb-8 border-2 border-accent-gold shadow-lg w-full mx-auto">
+        <Card className="bg-banner-gradient rounded-lg py-1 px-3 mb-4 border-2 border-accent-gold shadow-lg w-full mx-auto">
           <div className="flex items-center space-x-3 overflow-hidden">
             {/* Speaker Icon */}
             <div className="flex-shrink-0">
@@ -112,7 +112,7 @@ export default function Home() {
       </div>
 
       {/* VIP Prediction Banner - Mobile and iPad only */}
-      <div className="px-6 md:px-8 lg:hidden pb-6">
+      <div className="px-6 md:px-8 lg:hidden pb-6 -mt-2">
         <div className="max-w-2xl mx-auto">
           <div className="relative overflow-hidden rounded-2xl shadow-lg">
             <img 
