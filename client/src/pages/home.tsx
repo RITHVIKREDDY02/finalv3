@@ -168,36 +168,7 @@ export default function Home() {
         </div>
       </div>
 
-      {/* Secondary Action Buttons */}
-      <div className="px-6 md:px-8 lg:px-12 xl:px-16 pb-6">
-        <div className="max-w-2xl mx-auto lg:max-w-7xl">
-          <div className="flex flex-row gap-2 sm:gap-4 md:gap-6 justify-center items-center">
-            {/* About Us Button */}
-            <button 
-              className="flex-1 md:flex-none md:w-36 lg:w-40 px-4 sm:px-6 md:px-8 py-2 custom-button font-bold rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 text-sm sm:text-base"
-              onClick={() => console.log('About Us clicked')}
-            >
-              ABOUT US
-            </button>
-            
-            {/* Disclaimer Button */}
-            <button 
-              className="flex-1 md:flex-none md:w-36 lg:w-40 px-4 sm:px-6 md:px-8 py-2 custom-button font-bold rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 text-sm sm:text-base"
-              onClick={() => console.log('Disclaimer clicked')}
-            >
-              DISCLAIMER
-            </button>
-            
-            {/* Warning Button */}
-            <button 
-              className="flex-1 md:flex-none md:w-36 lg:w-40 px-4 sm:px-6 md:px-8 py-2 custom-button font-bold rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 text-sm sm:text-base"
-              onClick={() => console.log('Warning clicked')}
-            >
-              WARNING
-            </button>
-          </div>
-        </div>
-      </div>
+
 
       {/* Main Content Container */}
       <div className="max-w-2xl mx-auto px-6 md:px-8 lg:max-w-7xl lg:mx-0 lg:ml-8 xl:ml-12 lg:px-4 py-6">
@@ -384,6 +355,35 @@ export default function Home() {
         <div className="mt-12 text-center">
           <div className="text-opacity-70 light-gold text-sm">
             <p>More exciting features coming soon...</p>
+          </div>
+        </div>
+
+        {/* Secondary Action Buttons */}
+        <div className="mt-8">
+          <div className="flex flex-row gap-2 sm:gap-4 md:gap-6 justify-center items-center">
+            {/* About Us Button */}
+            <button 
+              className="flex-1 md:flex-none md:w-36 lg:w-40 px-4 sm:px-6 md:px-8 py-2 custom-button font-bold rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 text-sm sm:text-base"
+              onClick={() => console.log('About Us clicked')}
+            >
+              ABOUT US
+            </button>
+            
+            {/* Disclaimer Button */}
+            <button 
+              className="flex-1 md:flex-none md:w-36 lg:w-40 px-4 sm:px-6 md:px-8 py-2 custom-button font-bold rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 text-sm sm:text-base"
+              onClick={() => console.log('Disclaimer clicked')}
+            >
+              DISCLAIMER
+            </button>
+            
+            {/* Warning Button */}
+            <button 
+              className="flex-1 md:flex-none md:w-36 lg:w-40 px-4 sm:px-6 md:px-8 py-2 custom-button font-bold rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 text-sm sm:text-base"
+              onClick={() => console.log('Warning clicked')}
+            >
+              WARNING
+            </button>
           </div>
         </div>
 
