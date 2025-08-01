@@ -6,6 +6,7 @@ import winGoImage from "@assets/lotterycategory_20250412120719dqfv_1754052547793
 import trxWingoImage from "@assets/lotterycategory_20250412120818j8wq_1754052552269.png";
 import k3Image from "@assets/lotterycategory_2025041212074073ug_1754069351570.png";
 import motoRacingImage from "@assets/c57f5149-2139-410f-8d48-94a06fcb36f2_1754069356497.png";
+import lotteryIcon from "@assets/Lottery-9123e8d2_1754069546644.webp";
 
 export default function Home() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -85,6 +86,21 @@ export default function Home() {
 
       {/* Main Content Container */}
       <div className="max-w-4xl mx-auto px-6 md:px-8 lg:px-4 py-6">
+        {/* Section Header */}
+        <div className="flex items-center mb-6">
+          <div 
+            className="flex items-center px-4 py-2 rounded-full"
+            style={{ backgroundColor: '#FDE4BC' }}
+          >
+            <img 
+              src={lotteryIcon} 
+              alt="Lottery icon" 
+              className="w-6 h-6 mr-2"
+            />
+            <span className="text-black font-bold text-sm">Lottery</span>
+          </div>
+        </div>
+
         {/* Game Categories */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 gap-8 md:gap-12 lg:gap-8 xl:gap-6">
           
