@@ -19,7 +19,7 @@ export default function Home() {
       <nav className="navbar-dark px-4 shadow-lg" style={{ height: '60px' }}>
         <div className="max-w-7xl mx-auto flex items-center justify-between h-full">
           {/* Logo Section */}
-          <div className="flex items-center" style={{ marginLeft: '-20px' }}>
+          <div className="flex items-center lg:-ml-8 xl:-ml-12 2xl:-ml-16">
             <img 
               src={logoPath} 
               alt="TASHANWIN Logo" 
