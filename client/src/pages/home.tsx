@@ -79,7 +79,7 @@ export default function Home() {
             <img 
               src={winGoImage} 
               alt="Win Go - Lottery prediction game with colorful balls" 
-              className="w-full h-48 object-cover"
+              className="w-full h-48 object-cover object-bottom"
             />
             
             {/* Card Overlay */}
@@ -96,7 +96,7 @@ export default function Home() {
             <img 
               src={trxWingoImage} 
               alt="Trx Wingo - TRX-themed lottery prediction game" 
-              className="w-full h-48 object-cover"
+              className="w-full h-48 object-cover object-bottom"
             />
             
             {/* Card Overlay */}
