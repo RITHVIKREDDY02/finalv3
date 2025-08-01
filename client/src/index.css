@@ -78,9 +78,9 @@
   }
   
   .custom-button {
-    background: linear-gradient(180deg, #312712 0%, #1E180A 100%) !important;
+    background: #FED358 !important;
     border: 0.01333rem solid var(--bg_HomeModule_Stroke) !important;
-    color: #FED358 !important;
+    color: #312712 !important;
   }
   
   .navbar-dark {
