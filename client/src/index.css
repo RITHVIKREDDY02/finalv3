@@ -33,6 +33,7 @@
   --banner-end: hsl(45, 75%, 8%);
   --body-gradient-start: hsl(318, 15%, 15%);
   --body-gradient-end: rgba(35, 28, 33, 0);
+  --bg_HomeModule_Stroke: rgba(255, 255, 255, 0.1);
 }
 
 .dark {
@@ -74,6 +75,12 @@
 @layer utilities {
   .super-rounded {
     border-radius: 50px !important;
+  }
+  
+  .custom-button {
+    background: linear-gradient(180deg, #312712 0%, #1E180A 100%) !important;
+    border: 0.01333rem solid var(--bg_HomeModule_Stroke) !important;
+    color: black !important;
   }
   
   .navbar-dark {
