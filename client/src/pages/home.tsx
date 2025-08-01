@@ -28,8 +28,15 @@ export default function Home() {
             />
           </div>
           
-          {/* Mobile Menu Button */}
-          <div className="md:hidden">
+          {/* Mobile Navigation */}
+          <div className="md:hidden flex items-center space-x-3">
+            <button 
+              className="px-3 py-1.5 rounded-full text-black font-medium text-xs transition-opacity duration-200 hover:opacity-90"
+              style={{ backgroundColor: '#FFB472' }}
+              onClick={() => console.log('Join VIP clicked')}
+            >
+              Join VIP
+            </button>
             <button 
               className="light-gold hover:warm-gold transition-colors duration-200"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -42,9 +49,13 @@ export default function Home() {
           
           {/* Desktop Navigation Items */}
           <div className="hidden md:flex items-center space-x-8">
-            <div className="light-gold text-sm">
-              {/* Future navigation items */}
-            </div>
+            <button 
+              className="px-4 py-2 rounded-full text-black font-medium text-sm transition-opacity duration-200 hover:opacity-90"
+              style={{ backgroundColor: '#FFB472' }}
+              onClick={() => console.log('Join VIP clicked')}
+            >
+              Join VIP
+            </button>
           </div>
         </div>
       </nav>
