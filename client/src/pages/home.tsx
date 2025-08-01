@@ -7,6 +7,7 @@ import trxWingoImage from "@assets/lotterycategory_20250412120818j8wq_1754052552
 import k3Image from "@assets/lotterycategory_2025041212074073ug_1754069351570.png";
 import motoRacingImage from "@assets/c57f5149-2139-410f-8d48-94a06fcb36f2_1754069356497.png";
 import lotteryIcon from "@assets/Lottery-9123e8d2_1754069546644.webp";
+import miniGameIcon from "@assets/MiniGame-a7def346_1754070684724.webp";
 
 export default function Home() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -166,6 +167,28 @@ export default function Home() {
             </div>
           </div>
 
+        </div>
+
+        {/* Mini Game Section Header */}
+        <div className="flex items-center mb-6 mt-12">
+          <div className="flex items-center">
+            {/* Vertical accent line */}
+            <div 
+              className="w-1 h-8 mr-3 rounded-full accent-shadow"
+              style={{ backgroundColor: '#FED358' }}
+            ></div>
+            <img 
+              src={miniGameIcon} 
+              alt="Mini Game icon" 
+              className="w-6 h-6 mr-2"
+            />
+            <span className="font-bold" style={{ color: '#FDE4BC', fontSize: '24px' }}>Mini Game</span>
+          </div>
+        </div>
+
+        {/* Mini Game Categories - Placeholder for future games */}
+        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 gap-4 md:gap-12 lg:gap-8 xl:gap-6">
+          {/* Placeholder cards will be added here in the future */}
         </div>
 
         {/* Feature Section */}
