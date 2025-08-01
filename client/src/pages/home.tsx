@@ -69,7 +69,7 @@ export default function Home() {
         </Card>
 
         {/* Game Categories */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-12">
           
           {/* Win Go Game Card */}
           <div 
