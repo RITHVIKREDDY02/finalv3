@@ -73,13 +73,14 @@ export default function Home() {
           
           {/* Win Go Game Card */}
           <div 
-            className="game-card cursor-pointer rounded-xl overflow-hidden shadow-lg border border-accent-gold/30 hover-accent-gold transition-all duration-300 relative group"
+            className="game-card cursor-pointer rounded-xl overflow-hidden shadow-lg relative group"
             onClick={() => handleGameClick('Win Go')}
           >
+            <div className="absolute inset-0 rounded-xl border-2 border-accent-gold/30 hover:border-accent-gold transition-colors duration-300 pointer-events-none z-10"></div>
             <img 
               src={winGoImage} 
               alt="Win Go - Lottery prediction game with colorful balls" 
-              className="w-full h-48 object-cover object-top"
+              className="w-full h-48 object-cover object-top rounded-xl"
             />
             
             {/* Card Overlay */}
@@ -90,13 +91,14 @@ export default function Home() {
 
           {/* Trx Wingo Game Card */}
           <div 
-            className="game-card cursor-pointer rounded-xl overflow-hidden shadow-lg border border-accent-gold/30 hover-accent-gold transition-all duration-300 relative group"
+            className="game-card cursor-pointer rounded-xl overflow-hidden shadow-lg relative group"
             onClick={() => handleGameClick('Trx Wingo')}
           >
+            <div className="absolute inset-0 rounded-xl border-2 border-accent-gold/30 hover:border-accent-gold transition-colors duration-300 pointer-events-none z-10"></div>
             <img 
               src={trxWingoImage} 
               alt="Trx Wingo - TRX-themed lottery prediction game" 
-              className="w-full h-48 object-cover object-top"
+              className="w-full h-48 object-cover object-top rounded-xl"
             />
             
             {/* Card Overlay */}
