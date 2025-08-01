@@ -1,6 +1,6 @@
 import { Card } from "@/components/ui/card";
 import { Volume2 } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { FaTelegram } from "react-icons/fa";
 import logoPath from "@assets/TASHAN WIN LOGO_1754052537792.png";
 import winGoImage from "@assets/lotterycategory_20250412120719dqfv_1754052547793.png";
@@ -17,6 +17,16 @@ import limboImage from "@assets/235_1754071157602.png";
 
 export default function Home() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 0);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const handleGameClick = (gameType: string) => {
     console.log(`${gameType} game selected`);
@@ -26,7 +36,15 @@ export default function Home() {
   return (
     <div className="min-h-screen">
       {/* Navigation Bar */}
-      <nav className="fixed top-0 left-0 right-0 navbar-dark px-4 shadow-lg z-50" style={{ height: '60px' }}>
+      <nav 
+        className={`fixed top-0 left-0 right-0 navbar-dark px-4 shadow-lg z-50 transition-all duration-300 ${
+          isScrolled ? 'border-b-2' : ''
+        }`} 
+        style={{ 
+          height: '60px',
+          borderBottomColor: isScrolled ? '#a28422' : 'transparent'
+        }}
+      >
         <div className="max-w-7xl mx-auto flex items-center justify-between h-full">
           {/* Logo Section */}
           <div className="flex items-center logo-spacing-mobile md:logo-spacing-tablet lg:logo-spacing-desktop">
