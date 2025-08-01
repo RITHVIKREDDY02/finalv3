@@ -65,7 +65,7 @@
 
   body {
     @apply font-sans antialiased;
-    background: linear-gradient(180deg, var(--body-gradient-start) 42.3%, var(--body-gradient-end) 100%);
+    background: -webkit-linear-gradient(top, #231C21 42.3%, rgba(35, 28, 33, 0) 100%);
     min-height: 100vh;
     color: var(--light-gold);
   }
