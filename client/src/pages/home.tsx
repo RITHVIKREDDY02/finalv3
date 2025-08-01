@@ -96,7 +96,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto">
           {/* VIP PREDICTION - Right aligned on all devices */}
           <div className="text-right mb-4 pr-2 md:pr-4 lg:pr-6 xl:pr-8">
-            <h1 className="text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-bold" style={{ color: '#FFB472' }}>
+            <h1 className="text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-bold" style={{ color: '#FED358' }}>
               VIP PREDICTION
             </h1>
           </div>
