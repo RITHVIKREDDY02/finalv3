@@ -73,16 +73,20 @@ export default function Home() {
           
           {/* Win Go Game Card */}
           <div 
-            className="game-card cursor-pointer rounded-xl shadow-lg relative group bg-gray-900"
+            className="game-card cursor-pointer shadow-lg relative group"
             onClick={() => handleGameClick('Win Go')}
-            style={{ clipPath: 'inset(0 round 0.75rem)' }}
+            style={{ 
+              borderRadius: '0.75rem',
+              overflow: 'hidden',
+              border: '2px solid rgba(162, 132, 34, 0.3)'
+            }}
           >
             <img 
               src={winGoImage} 
               alt="Win Go - Lottery prediction game with colorful balls" 
-              className="w-full h-48 object-cover object-top"
+              className="w-full h-48 object-cover object-top block"
+              style={{ borderRadius: '0.75rem', margin: '-2px' }}
             />
-            <div className="absolute inset-0 rounded-xl border-2 border-accent-gold/30 hover:border-accent-gold transition-colors duration-300 pointer-events-none"></div>
             
             {/* Card Overlay */}
             <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-4">
@@ -92,16 +96,20 @@ export default function Home() {
 
           {/* Trx Wingo Game Card */}
           <div 
-            className="game-card cursor-pointer rounded-xl shadow-lg relative group bg-gray-900"
+            className="game-card cursor-pointer shadow-lg relative group"
             onClick={() => handleGameClick('Trx Wingo')}
-            style={{ clipPath: 'inset(0 round 0.75rem)' }}
+            style={{ 
+              borderRadius: '0.75rem',
+              overflow: 'hidden',
+              border: '2px solid rgba(162, 132, 34, 0.3)'
+            }}
           >
             <img 
               src={trxWingoImage} 
               alt="Trx Wingo - TRX-themed lottery prediction game" 
-              className="w-full h-48 object-cover object-top"
+              className="w-full h-48 object-cover object-top block"
+              style={{ borderRadius: '0.75rem', margin: '-2px' }}
             />
-            <div className="absolute inset-0 rounded-xl border-2 border-accent-gold/30 hover:border-accent-gold transition-colors duration-300 pointer-events-none"></div>
             
             {/* Card Overlay */}
             <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-4">
