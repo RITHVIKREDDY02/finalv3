@@ -76,13 +76,13 @@ export default function Home() {
             className="game-card cursor-pointer shadow-lg relative group"
             onClick={() => handleGameClick('Win Go')}
           >
-            <div className="relative overflow-hidden rounded-xl">
+            <div className="relative overflow-hidden rounded-2xl">
               <img 
                 src={winGoImage} 
                 alt="Win Go - Lottery prediction game with colorful balls" 
                 className="w-full h-auto object-cover object-top block transition-transform duration-300 group-hover:scale-105"
               />
-              <div className="absolute inset-0 rounded-xl border-2 border-accent-gold/30 group-hover:border-accent-gold transition-colors duration-300"></div>
+              <div className="absolute inset-0 rounded-2xl border-2 border-accent-gold/30 group-hover:border-accent-gold transition-colors duration-300"></div>
             </div>
             
             {/* Card Overlay */}
@@ -96,13 +96,13 @@ export default function Home() {
             className="game-card cursor-pointer shadow-lg relative group"
             onClick={() => handleGameClick('Trx Wingo')}
           >
-            <div className="relative overflow-hidden rounded-xl">
+            <div className="relative overflow-hidden rounded-2xl">
               <img 
                 src={trxWingoImage} 
                 alt="Trx Wingo - TRX-themed lottery prediction game" 
                 className="w-full h-auto object-cover object-top block transition-transform duration-300 group-hover:scale-105"
               />
-              <div className="absolute inset-0 rounded-xl border-2 border-accent-gold/30 group-hover:border-accent-gold transition-colors duration-300"></div>
+              <div className="absolute inset-0 rounded-2xl border-2 border-accent-gold/30 group-hover:border-accent-gold transition-colors duration-300"></div>
             </div>
             
             {/* Card Overlay */}
