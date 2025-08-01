@@ -144,21 +144,7 @@
   /* Neon effect for section accent line */
   .neon-accent {
     box-shadow: 
-      0 0 3px #FDE4BC,
-      0 0 6px #FDE4BC;
-    animation: neon-pulse 2s ease-in-out infinite alternate;
-  }
-
-  @keyframes neon-pulse {
-    from {
-      box-shadow: 
-        0 0 3px #FDE4BC,
-        0 0 6px #FDE4BC;
-    }
-    to {
-      box-shadow: 
-        0 0 5px #FDE4BC,
-        0 0 10px #FDE4BC;
-    }
+      0 0 4px #FDE4BC,
+      0 0 8px #FDE4BC;
   }
 }
