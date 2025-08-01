@@ -75,18 +75,15 @@ export default function Home() {
           <div 
             className="game-card cursor-pointer shadow-lg relative group"
             onClick={() => handleGameClick('Win Go')}
-            style={{ 
-              borderRadius: '0.75rem',
-              overflow: 'hidden',
-              border: '2px solid rgba(162, 132, 34, 0.3)'
-            }}
           >
-            <img 
-              src={winGoImage} 
-              alt="Win Go - Lottery prediction game with colorful balls" 
-              className="w-full h-48 object-cover object-top block"
-              style={{ borderRadius: '0.75rem', margin: '-2px' }}
-            />
+            <div className="relative overflow-hidden rounded-xl">
+              <img 
+                src={winGoImage} 
+                alt="Win Go - Lottery prediction game with colorful balls" 
+                className="w-full h-auto object-cover object-top block transition-transform duration-300 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 rounded-xl border-2 border-accent-gold/30 group-hover:border-accent-gold transition-colors duration-300"></div>
+            </div>
             
             {/* Card Overlay */}
             <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-4">
@@ -98,18 +95,15 @@ export default function Home() {
           <div 
             className="game-card cursor-pointer shadow-lg relative group"
             onClick={() => handleGameClick('Trx Wingo')}
-            style={{ 
-              borderRadius: '0.75rem',
-              overflow: 'hidden',
-              border: '2px solid rgba(162, 132, 34, 0.3)'
-            }}
           >
-            <img 
-              src={trxWingoImage} 
-              alt="Trx Wingo - TRX-themed lottery prediction game" 
-              className="w-full h-48 object-cover object-top block"
-              style={{ borderRadius: '0.75rem', margin: '-2px' }}
-            />
+            <div className="relative overflow-hidden rounded-xl">
+              <img 
+                src={trxWingoImage} 
+                alt="Trx Wingo - TRX-themed lottery prediction game" 
+                className="w-full h-auto object-cover object-top block transition-transform duration-300 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 rounded-xl border-2 border-accent-gold/30 group-hover:border-accent-gold transition-colors duration-300"></div>
+            </div>
             
             {/* Card Overlay */}
             <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-4">
