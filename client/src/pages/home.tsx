@@ -92,7 +92,7 @@ export default function Home() {
       </div>
 
       {/* Hero Text Section */}
-      <div className="py-8 px-6 md:px-8 lg:px-12 xl:px-16">
+      <div className="pt-4 pb-8 px-6 md:px-8 lg:px-12 xl:px-16">
         <div className="max-w-7xl mx-auto">
           {/* VIP PREDICTION - Right aligned on all devices */}
           <div className="text-right mb-4 pr-2 md:pr-4 lg:pr-6 xl:pr-8">
