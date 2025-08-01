@@ -109,6 +109,15 @@ export default function Home() {
         </Card>
       </div>
 
+      {/* VIP PREDICTION - Below welcome banner */}
+      <div className="px-6 md:px-8 lg:px-12 xl:px-16 pb-4">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-left" style={{ color: '#FED358' }}>
+            VIP PREDICTION
+          </h2>
+        </div>
+      </div>
+
       {/* Hero Text Section */}
       <div className="pt-4 pb-8 px-6 md:px-8 lg:px-12 xl:px-16">
         <div className="max-w-7xl mx-auto">
@@ -300,13 +309,6 @@ export default function Home() {
             </div>
           </div>
 
-        </div>
-
-        {/* VIP PREDICTION - After lottery section */}
-        <div className="mt-12 mb-8">
-          <h2 className="text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-left" style={{ color: '#FED358' }}>
-            VIP PREDICTION
-          </h2>
         </div>
 
         {/* Feature Section */}
