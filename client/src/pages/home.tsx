@@ -103,7 +103,7 @@ export default function Home() {
           
           {/* NEVER GET LOSS - Left aligned on desktop, centered on mobile */}
           <div className="text-center lg:text-left lg:ml-8 xl:ml-12">
-            <h2 className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold" style={{ color: '#FED358' }}>
+            <h2 className="text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-bold" style={{ color: '#FED358' }}>
               NEVER GET LOSS
             </h2>
           </div>
