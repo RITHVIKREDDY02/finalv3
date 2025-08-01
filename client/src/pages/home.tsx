@@ -77,41 +77,31 @@ export default function Home() {
           
           {/* Win Go Game Card */}
           <div 
-            className="game-card cursor-pointer shadow-lg relative group"
+            className="cursor-pointer shadow-lg relative"
             onClick={() => handleGameClick('Win Go')}
           >
             <div className="relative overflow-hidden rounded-2xl">
               <img 
                 src={winGoImage} 
                 alt="Win Go - Lottery prediction game with colorful balls" 
-                className="w-full h-auto object-cover object-top block transition-transform duration-300 group-hover:scale-105"
+                className="w-full h-auto object-cover object-top block"
               />
-              <div className="absolute inset-0 rounded-2xl border-2 border-accent-gold/30 group-hover:border-accent-gold transition-colors duration-300"></div>
-            </div>
-            
-            {/* Card Overlay */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-4">
-              <span className="light-gold font-semibold">Play Win Go</span>
+              <div className="absolute inset-0 rounded-2xl border-2 border-accent-gold/30"></div>
             </div>
           </div>
 
           {/* Trx Wingo Game Card */}
           <div 
-            className="game-card cursor-pointer shadow-lg relative group"
+            className="cursor-pointer shadow-lg relative"
             onClick={() => handleGameClick('Trx Wingo')}
           >
             <div className="relative overflow-hidden rounded-2xl">
               <img 
                 src={trxWingoImage} 
                 alt="Trx Wingo - TRX-themed lottery prediction game" 
-                className="w-full h-auto object-cover object-top block transition-transform duration-300 group-hover:scale-105"
+                className="w-full h-auto object-cover object-top block"
               />
-              <div className="absolute inset-0 rounded-2xl border-2 border-accent-gold/30 group-hover:border-accent-gold transition-colors duration-300"></div>
-            </div>
-            
-            {/* Card Overlay */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-4">
-              <span className="light-gold font-semibold">Play Trx Wingo</span>
+              <div className="absolute inset-0 rounded-2xl border-2 border-accent-gold/30"></div>
             </div>
           </div>
 
