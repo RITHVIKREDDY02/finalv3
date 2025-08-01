@@ -37,7 +37,7 @@ export default function Home() {
     <div className="min-h-screen">
       {/* Navigation Bar */}
       <nav 
-        className={`fixed top-0 left-0 right-0 navbar-dark px-4 shadow-lg z-50 transition-all duration-300 ${
+        className={`fixed top-0 left-0 right-0 navbar-dark px-4 lg:px-0 shadow-lg z-50 transition-all duration-300 ${
           isScrolled ? 'border-b-2' : ''
         }`} 
         style={{ 
@@ -45,7 +45,7 @@ export default function Home() {
           borderBottomColor: isScrolled ? '#a28422' : 'transparent'
         }}
       >
-        <div className="max-w-7xl mx-auto flex items-center justify-between h-full">
+        <div className="max-w-7xl mx-auto flex items-center justify-between h-full lg:pl-4 lg:pr-4">
           {/* Logo Section */}
           <div className="flex items-center logo-spacing-mobile md:logo-spacing-tablet lg:logo-spacing-desktop">
             <img 
