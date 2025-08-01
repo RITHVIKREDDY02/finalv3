@@ -88,16 +88,13 @@ export default function Home() {
       <div className="max-w-4xl mx-auto px-6 md:px-8 lg:px-4 py-6">
         {/* Section Header */}
         <div className="flex items-center mb-6">
-          <div 
-            className="flex items-center px-4 py-2 rounded-full"
-            style={{ backgroundColor: '#FDE4BC' }}
-          >
+          <div className="flex items-center">
             <img 
               src={lotteryIcon} 
               alt="Lottery icon" 
               className="w-6 h-6 mr-2"
             />
-            <span className="text-black font-bold text-sm">Lottery</span>
+            <span className="font-bold text-sm" style={{ color: '#FDE4BC' }}>Lottery</span>
           </div>
         </div>
 
