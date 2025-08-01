@@ -111,7 +111,7 @@ export default function Home() {
         </div>
 
         {/* Game Categories */}
-        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 gap-x-4 gap-y-6 md:gap-x-12 md:gap-y-8 lg:gap-x-8 lg:gap-y-8 xl:gap-x-6 xl:gap-y-8">
+        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-x-4 gap-y-6 md:gap-x-12 md:gap-y-8 lg:gap-x-4 lg:gap-y-8 xl:gap-x-4 xl:gap-y-8">
           
           {/* Win Go Game Card */}
           <div 
@@ -193,7 +193,7 @@ export default function Home() {
         </div>
 
         {/* Mini Game Categories */}
-        <div className="grid grid-cols-3 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-x-2 gap-y-4 md:gap-x-4 md:gap-y-6 lg:gap-x-4 lg:gap-y-6 xl:gap-x-4 xl:gap-y-6">
+        <div className="grid grid-cols-3 md:grid-cols-3 lg:grid-cols-5 xl:grid-cols-5 gap-x-2 gap-y-4 md:gap-x-4 md:gap-y-6 lg:gap-x-3 lg:gap-y-6 xl:gap-x-3 xl:gap-y-6">
           
           {/* Mines Pro Game Card */}
           <div 
