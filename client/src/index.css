@@ -1,0 +1,111 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: hsl(0, 0%, 100%);
+  --foreground: hsl(20, 14.3%, 4.1%);
+  --muted: hsl(60, 4.8%, 95.9%);
+  --muted-foreground: hsl(25, 5.3%, 44.7%);
+  --popover: hsl(0, 0%, 100%);
+  --popover-foreground: hsl(20, 14.3%, 4.1%);
+  --card: hsl(0, 0%, 100%);
+  --card-foreground: hsl(20, 14.3%, 4.1%);
+  --border: hsl(20, 5.9%, 90%);
+  --input: hsl(20, 5.9%, 90%);
+  --primary: hsl(207, 90%, 54%);
+  --primary-foreground: hsl(211, 100%, 99%);
+  --secondary: hsl(60, 4.8%, 95.9%);
+  --secondary-foreground: hsl(24, 9.8%, 10%);
+  --accent: hsl(60, 4.8%, 95.9%);
+  --accent-foreground: hsl(24, 9.8%, 10%);
+  --destructive: hsl(0, 84.2%, 60.2%);
+  --destructive-foreground: hsl(60, 9.1%, 97.8%);
+  --ring: hsl(20, 14.3%, 4.1%);
+  --radius: 0.5rem;
+  
+  /* Custom gaming theme colors */
+  --navbar-dark: hsl(293, 14%, 8%);
+  --accent-gold: hsl(45, 65%, 34%);
+  --warm-gold: hsl(45, 97%, 67%);
+  --light-gold: hsl(45, 89%, 87%);
+  --banner-start: hsl(45, 54%, 13%);
+  --banner-end: hsl(45, 75%, 8%);
+  --body-gradient-start: hsl(318, 15%, 15%);
+  --body-gradient-end: rgba(35, 28, 33, 0);
+}
+
+.dark {
+  --background: hsl(240, 10%, 3.9%);
+  --foreground: hsl(0, 0%, 98%);
+  --muted: hsl(240, 3.7%, 15.9%);
+  --muted-foreground: hsl(240, 5%, 64.9%);
+  --popover: hsl(240, 10%, 3.9%);
+  --popover-foreground: hsl(0, 0%, 98%);
+  --card: hsl(240, 10%, 3.9%);
+  --card-foreground: hsl(0, 0%, 98%);
+  --border: hsl(240, 3.7%, 15.9%);
+  --input: hsl(240, 3.7%, 15.9%);
+  --primary: hsl(207, 90%, 54%);
+  --primary-foreground: hsl(211, 100%, 99%);
+  --secondary: hsl(240, 3.7%, 15.9%);
+  --secondary-foreground: hsl(0, 0%, 98%);
+  --accent: hsl(240, 3.7%, 15.9%);
+  --accent-foreground: hsl(0, 0%, 98%);
+  --destructive: hsl(0, 62.8%, 30.6%);
+  --destructive-foreground: hsl(0, 0%, 98%);
+  --ring: hsl(240, 4.9%, 83.9%);
+  --radius: 0.5rem;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased;
+    background: linear-gradient(180deg, var(--body-gradient-start) 42.3%, var(--body-gradient-end) 100%);
+    min-height: 100vh;
+    color: var(--light-gold);
+  }
+}
+
+@layer utilities {
+  .navbar-dark {
+    background-color: var(--navbar-dark);
+  }
+  
+  .accent-gold {
+    color: var(--accent-gold);
+  }
+  
+  .warm-gold {
+    color: var(--warm-gold);
+  }
+  
+  .light-gold {
+    color: var(--light-gold);
+  }
+  
+  .bg-banner-gradient {
+    background: linear-gradient(180deg, var(--banner-start) 0%, var(--banner-end) 100%);
+  }
+  
+  .border-accent-gold {
+    border-color: var(--accent-gold);
+  }
+  
+  .hover-accent-gold:hover {
+    border-color: var(--accent-gold);
+  }
+  
+  .game-card {
+    transition: all 0.3s ease;
+  }
+  
+  .game-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px hsla(45, 65%, 34%, 0.3);
+  }
+}
