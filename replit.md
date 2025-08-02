@@ -18,6 +18,7 @@ A dynamic prediction/lottery gaming platform with user registration and approval
 - **2025-02-02**: Added Win Go → Wingo page navigation for approved users
 - **2025-02-02**: Updated Wingo page to card-based layout matching user's design sample
 - **2025-02-02**: Created individual pages for each Wingo variant with dedicated APIs and timers
+- **2025-02-02**: Updated Wingo game names from "Parity/Sapre/Bcone/Emerd" to proper format "Wingo 30Sec/1Min/3Min/5Min"
 
 ## User Preferences
 - Store UID in browser localStorage to avoid repeated registration

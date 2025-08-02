@@ -63,7 +63,7 @@ export default function Wingo30Sec() {
           <ArrowLeft className="w-5 h-5" />
           <span>Back</span>
         </button>
-        <h1 className="text-xl font-bold text-white">WINGO 30SEC - PARITY</h1>
+        <h1 className="text-xl font-bold text-white">Wingo 30Sec</h1>
         <div className="w-16"></div>
       </div>
 

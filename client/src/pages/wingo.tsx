@@ -80,10 +80,10 @@ export default function Wingo() {
   };
 
   const variants = [
-    { key: "30sec" as WingoVariant, label: "Parity", sublabel: "30sec" },
-    { key: "1min" as WingoVariant, label: "Sapre", sublabel: "1 Min" },
-    { key: "3min" as WingoVariant, label: "Bcone", sublabel: "3 Min" },
-    { key: "5min" as WingoVariant, label: "Emerd", sublabel: "5 Min" }
+    { key: "30sec" as WingoVariant, label: "Wingo 30Sec", sublabel: "30sec" },
+    { key: "1min" as WingoVariant, label: "Wingo 1Min", sublabel: "1 Min" },
+    { key: "3min" as WingoVariant, label: "Wingo 3Min", sublabel: "3 Min" },
+    { key: "5min" as WingoVariant, label: "Wingo 5Min", sublabel: "5 Min" }
   ];
 
   return (

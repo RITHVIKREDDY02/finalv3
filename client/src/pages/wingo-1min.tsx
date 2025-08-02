@@ -63,7 +63,7 @@ export default function Wingo1Min() {
           <ArrowLeft className="w-5 h-5" />
           <span>Back</span>
         </button>
-        <h1 className="text-xl font-bold text-white">WINGO 1MIN - SAPRE</h1>
+        <h1 className="text-xl font-bold text-white">Wingo 1Min</h1>
         <div className="w-16"></div>
       </div>
 

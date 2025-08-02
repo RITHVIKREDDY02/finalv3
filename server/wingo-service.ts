@@ -20,10 +20,10 @@ export interface WingoVariantConfig {
 }
 
 export const WINGO_VARIANTS: Record<string, WingoVariantConfig> = {
-  "30sec": { typeId: 1, intervalSeconds: 30, name: "Parity" },
-  "1min": { typeId: 2, intervalSeconds: 60, name: "Sapre" },
-  "3min": { typeId: 3, intervalSeconds: 180, name: "Bcone" },
-  "5min": { typeId: 4, intervalSeconds: 300, name: "Emerd" }
+  "30sec": { typeId: 1, intervalSeconds: 30, name: "Wingo 30Sec" },
+  "1min": { typeId: 2, intervalSeconds: 60, name: "Wingo 1Min" },
+  "3min": { typeId: 3, intervalSeconds: 180, name: "Wingo 3Min" },
+  "5min": { typeId: 4, intervalSeconds: 300, name: "Wingo 5Min" }
 };
 
 class WingoService {
