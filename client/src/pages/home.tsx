@@ -526,13 +526,13 @@ export default function Home() {
       {/* Proof Dialog */}
       {showProofDialog && (
         <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
-          <div className="bg-gray-900 rounded-lg max-w-lg w-full max-h-[70vh] overflow-y-auto">
+          <div className="rounded-lg max-w-lg w-full max-h-[70vh] overflow-y-auto" style={{ backgroundColor: '#FED358' }}>
             <div className="p-6">
               <div className="flex justify-between items-center mb-6">
-                <h2 className="text-2xl font-bold text-white">System Proof - Live Results</h2>
+                <h2 className="text-2xl font-bold text-black">System Proof - Live Results</h2>
                 <button
                   onClick={() => setShowProofDialog(false)}
-                  className="text-gray-400 hover:text-white text-xl font-bold"
+                  className="text-gray-600 hover:text-black text-xl font-bold"
                 >
                   ×
                 </button>
@@ -540,8 +540,8 @@ export default function Home() {
               
               <div className="space-y-6">
                 <div>
-                  <h3 className="text-lg font-semibold text-yellow-400 mb-3">Live Prediction Interface</h3>
-                  <div className="bg-gray-800 rounded-lg p-4">
+                  <h3 className="text-lg font-semibold text-gray-800 mb-3">Live Prediction Interface</h3>
+                  <div className="bg-gray-100 rounded-lg p-4">
                     <img 
                       src={proofImage1} 
                       alt="Live Wingo Prediction System showing BIG 8 prediction with timer" 
@@ -552,8 +552,8 @@ export default function Home() {
                 </div>
                 
                 <div>
-                  <h3 className="text-lg font-semibold text-yellow-400 mb-3">Results & Rewards System</h3>
-                  <div className="bg-gray-800 rounded-lg p-4">
+                  <h3 className="text-lg font-semibold text-gray-800 mb-3">Results & Rewards System</h3>
+                  <div className="bg-gray-100 rounded-lg p-4">
                     <img 
                       src={proofImage2} 
                       alt="Congratulations screen showing Red 8 Big result with ₹1,960 bonus" 
@@ -563,9 +563,9 @@ export default function Home() {
                   </div>
                 </div>
 
-                <div className="bg-green-900 rounded-lg p-4">
-                  <h4 className="text-green-300 font-semibold mb-2">Verified Features</h4>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-2 text-sm text-green-200">
+                <div className="bg-green-100 rounded-lg p-4">
+                  <h4 className="text-green-800 font-semibold mb-2">Verified Features</h4>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-2 text-sm text-green-700">
                     <div>✓ Truly balanced predictions</div>
                     <div>✓ Live API integration</div>
                     <div>✓ Real-time countdown timers</div>
@@ -585,13 +585,13 @@ export default function Home() {
       {/* Demo Dialog */}
       {showDemoDialog && (
         <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
-          <div className="bg-gray-900 rounded-lg max-w-lg w-full max-h-[70vh] overflow-y-auto">
+          <div className="rounded-lg max-w-lg w-full max-h-[70vh] overflow-y-auto" style={{ backgroundColor: '#FED358' }}>
             <div className="p-6">
               <div className="flex justify-between items-center mb-6">
-                <h2 className="text-2xl font-bold text-white">Demo - How It Works</h2>
+                <h2 className="text-2xl font-bold text-black">Demo - How It Works</h2>
                 <button
                   onClick={() => setShowDemoDialog(false)}
-                  className="text-gray-400 hover:text-white text-xl font-bold"
+                  className="text-gray-600 hover:text-black text-xl font-bold"
                 >
                   ×
                 </button>
@@ -599,8 +599,8 @@ export default function Home() {
               
               <div className="space-y-6">
                 <div>
-                  <h3 className="text-lg font-semibold text-yellow-400 mb-3">Step 1: Choose Game Variant</h3>
-                  <div className="bg-gray-800 rounded-lg p-4">
+                  <h3 className="text-lg font-semibold text-gray-800 mb-3">Step 1: Choose Game Variant</h3>
+                  <div className="bg-gray-100 rounded-lg p-4">
                     <img 
                       src={demoImage1} 
                       alt="Wingo game variants selection" 
@@ -610,8 +610,8 @@ export default function Home() {
                 </div>
                 
                 <div>
-                  <h3 className="text-lg font-semibold text-yellow-400 mb-3">Step 2: View Period & Timer</h3>
-                  <div className="bg-gray-800 rounded-lg p-4">
+                  <h3 className="text-lg font-semibold text-gray-800 mb-3">Step 2: View Period & Timer</h3>
+                  <div className="bg-gray-100 rounded-lg p-4">
                     <img 
                       src={demoImage2} 
                       alt="Period number and countdown timer" 
@@ -621,8 +621,8 @@ export default function Home() {
                 </div>
 
                 <div>
-                  <h3 className="text-lg font-semibold text-yellow-400 mb-3">Step 3: Get VIP Prediction</h3>
-                  <div className="bg-gray-800 rounded-lg p-4">
+                  <h3 className="text-lg font-semibold text-gray-800 mb-3">Step 3: Get VIP Prediction</h3>
+                  <div className="bg-gray-100 rounded-lg p-4">
                     <img 
                       src={demoImage3} 
                       alt="VIP prediction showing color, size and number" 
@@ -631,9 +631,9 @@ export default function Home() {
                   </div>
                 </div>
 
-                <div className="bg-blue-900 rounded-lg p-4">
-                  <h4 className="text-blue-300 font-semibold mb-2">How to Get Started</h4>
-                  <div className="text-sm text-blue-200 space-y-1">
+                <div className="bg-blue-100 rounded-lg p-4">
+                  <h4 className="text-blue-800 font-semibold mb-2">How to Get Started</h4>
+                  <div className="text-sm text-blue-700 space-y-1">
                     <div>1. Click on any game card</div>
                     <div>2. Register with your UID</div>
                     <div>3. Wait for admin approval</div>
