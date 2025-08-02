@@ -140,8 +140,7 @@ export default function RegistrationDialog({ isOpen, onClose, onRegistrationSucc
               
               <Button
                 type="submit"
-                className="w-full font-bold py-2 px-4 rounded-full transition-all duration-300 transform hover:scale-105 text-black"
-                style={{ backgroundColor: '#FED358' }}
+                className="w-full font-bold py-2 px-4 rounded-full transition-all duration-300 transform hover:scale-105 btn-custom-gold"
                 disabled={registerMutation.isPending}
               >
                 {registerMutation.isPending ? (

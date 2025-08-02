@@ -140,10 +140,9 @@ export default function VipPredictionDialog({ isOpen, onClose, uid, onBackToRegi
               disabled={!userStatus?.approved}
               className={`w-full font-bold py-2 px-4 rounded-full transition-all duration-300 transform hover:scale-105 ${
                 userStatus?.approved 
-                  ? "text-black cursor-pointer" 
+                  ? "btn-custom-gold" 
                   : "bg-gray-300 dark:bg-gray-600 text-gray-500 dark:text-gray-400 cursor-not-allowed"
               }`}
-              style={userStatus?.approved ? { backgroundColor: '#FED358' } : {}}
             >
               {userStatus?.approved ? "CONTINUE" : "CONTINUE (Locked)"}
             </Button>

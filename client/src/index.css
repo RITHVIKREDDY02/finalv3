@@ -73,6 +73,24 @@
 }
 
 @layer utilities {
+  /* Custom button colors */
+  .btn-custom-gold {
+    background-color: #FED358 !important;
+    color: black !important;
+    border: none !important;
+  }
+  
+  .btn-custom-gold:hover {
+    background-color: #FED358 !important;
+    color: black !important;
+    opacity: 0.9;
+  }
+  
+  .btn-custom-gold:disabled {
+    background-color: #FED358 !important;
+    color: black !important;
+    opacity: 0.6;
+  }
   .super-rounded {
     border-radius: 50px !important;
   }
