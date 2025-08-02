@@ -751,6 +751,25 @@ class WingoService {
           console.log(`✅ ${variant} period ${result.issueNumber}: ${updated.predictedSize} → ${updated.status} (${result.number})`);
         }
       }
+      
+      // Also check if we need to generate a new prediction due to period change
+      const currentPeriod = await this.getCurrentPeriod(variant);
+      if (currentPeriod && currentPeriod.issueNumber) {
+        const cachedPrediction = this.predictionCache.get(variant);
+        
+        // If the period has changed or countdown is very low, update prediction immediately
+        if (!cachedPrediction || 
+            cachedPrediction.period !== currentPeriod.issueNumber || 
+            cachedPrediction.countdown < 3) {
+          
+          const newPrediction = await this.generatePrediction(variant);
+          if (newPrediction) {
+            await this.storePrediction(variant, newPrediction);
+            this.predictionCache.set(variant, newPrediction);
+            console.log(`🔄 ${variant} period changed - updated prediction: ${newPrediction.prediction} (${newPrediction.countdown}s)`);
+          }
+        }
+      }
     } catch (error) {
       console.error(`Failed to check results for ${variant}:`, error);
     }
@@ -807,19 +826,30 @@ class WingoService {
     // Run initial predictions for all variants
     this.runInitialPredictions();
     
-    // Set up individual timers for each variant based on their intervals
+    // Set up faster result checking interval (every 5 seconds) for all variants
+    const resultChecker = setInterval(() => {
+      Object.keys(WINGO_VARIANTS).forEach(variant => {
+        this.checkAndUpdateResults(variant);
+      });
+    }, 5000); // Check results every 5 seconds
+    
+    this.variantSchedulers.set('result-checker', resultChecker);
+    console.log('⚡ Fast result checker started - checking all variants every 5 seconds');
+    
+    // Set up individual prediction update timers for each variant based on their intervals
     Object.entries(WINGO_VARIANTS).forEach(([variant, config]) => {
-      const intervalMs = config.intervalSeconds * 1000; // Convert to milliseconds
+      // Use a smaller interval for more frequent updates but sync with period boundaries
+      const updateIntervalMs = Math.min(config.intervalSeconds * 1000, 10000); // Max 10 seconds
       
-      const scheduler = setInterval(() => {
-        this.runPredictionForVariant(variant);
-      }, intervalMs);
+      const scheduler = setInterval(async () => {
+        await this.runPredictionForVariant(variant);
+      }, updateIntervalMs);
       
       this.variantSchedulers.set(variant, scheduler);
-      console.log(`⏰ ${variant} scheduler started - will update every ${config.intervalSeconds} seconds (${intervalMs/1000/60} min)`);
+      console.log(`⏰ ${variant} scheduler started - updating every ${updateIntervalMs/1000} seconds (${updateIntervalMs/1000/60} min)`);
     });
     
-    console.log('✅ All variant-specific schedulers started with optimized intervals');
+    console.log('✅ All variant-specific schedulers started with fast result sync');
   }
 
   // Stop all background schedulers
