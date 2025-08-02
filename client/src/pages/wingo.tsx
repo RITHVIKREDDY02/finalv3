@@ -65,10 +65,10 @@ export default function Wingo() {
   }, []);
 
   const variants = [
-    { key: "30sec" as WingoVariant, label: "30Sec" },
-    { key: "1min" as WingoVariant, label: "1Min" },
-    { key: "3min" as WingoVariant, label: "3Min" },
-    { key: "5min" as WingoVariant, label: "5Min" },
+    { key: "30sec" as WingoVariant, label: "Wingo 30Sec" },
+    { key: "1min" as WingoVariant, label: "Wingo 1Min" },
+    { key: "3min" as WingoVariant, label: "Wingo 3Min" },
+    { key: "5min" as WingoVariant, label: "Wingo 5Min" },
   ];
 
   const handleVariantSwitch = (variant: WingoVariant) => {
