@@ -111,7 +111,7 @@ export default function Wingo30Sec() {
   return (
     <div className="min-h-screen" style={{ backgroundColor: '#231C21' }}>
       {/* Header */}
-      <div className="px-6 py-4 md:px-4 border-b border-gray-700 flex items-center justify-between">
+      <div className="px-8 py-4 md:px-4 border-b border-gray-700 flex items-center justify-between">
         <button
           onClick={() => navigate('/')}
           className="flex items-center gap-2 text-white hover:text-yellow-400 transition-colors"
@@ -133,7 +133,7 @@ export default function Wingo30Sec() {
       </div>
 
       {/* Main Content */}
-      <div className="p-6 md:p-4 space-y-6">
+      <div className="p-8 md:p-4 space-y-6">
         {/* Current Prediction Card */}
         <Card className="bg-gradient-to-br from-gray-800 to-gray-900 border-2" style={{ borderColor: '#FED358' }}>
           <div className="p-6 text-center space-y-6">
