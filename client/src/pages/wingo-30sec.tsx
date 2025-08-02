@@ -113,7 +113,7 @@ export default function Wingo30Sec() {
       {/* Header */}
       <div 
         className="py-4 border-b border-gray-700 flex items-center justify-between" 
-        style={{ paddingLeft: 'max(32px, 5vw)', paddingRight: 'max(32px, 5vw)' }}
+        style={{ paddingLeft: 'max(24px, 6vw)', paddingRight: 'max(24px, 6vw)' }}
       >
         <button
           onClick={() => navigate('/')}
@@ -138,7 +138,7 @@ export default function Wingo30Sec() {
       {/* Main Content */}
       <div 
         className="space-y-4" 
-        style={{ padding: 'max(32px, 5vw)' }}
+        style={{ padding: 'max(24px, 6vw)' }}
       >
         {/* Current Prediction Card */}
         <Card className="bg-gradient-to-br from-gray-800 to-gray-900 border-2" style={{ borderColor: '#FED358' }}>
