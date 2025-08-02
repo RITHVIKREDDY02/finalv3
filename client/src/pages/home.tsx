@@ -1,5 +1,5 @@
 import { Card } from "@/components/ui/card";
-import { Volume2 } from "lucide-react";
+import { Volume2, Play, Award, Crown } from "lucide-react";
 import { useState, useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { FaTelegram } from "react-icons/fa";
@@ -239,32 +239,59 @@ export default function Home() {
       {/* Action Buttons - Below Hero Banner */}
       <div className="px-6 md:px-8 lg:px-12 xl:px-16 pb-6">
         <div className="max-w-2xl mx-auto lg:max-w-7xl">
-          <div className="flex flex-row gap-2 sm:gap-4 md:gap-6 justify-center items-center">
+          <div className="flex flex-row gap-3 sm:gap-4 md:gap-6 justify-center items-center">
             {/* DEMO Button */}
             <button 
-              className="flex-1 md:flex-none md:w-32 lg:w-36 px-4 sm:px-6 md:px-8 py-2 custom-button font-bold rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 text-sm sm:text-base"
+              className="group relative flex-1 md:flex-none md:w-36 lg:w-40 px-4 sm:px-6 md:px-8 py-3 font-bold rounded-2xl shadow-xl transition-all duration-300 transform hover:scale-110 hover:shadow-2xl text-sm sm:text-base overflow-hidden"
+              style={{
+                background: 'linear-gradient(135deg, #FF6B6B 0%, #FF8E8E 50%, #FFB6B6 100%)',
+                border: '2px solid rgba(255, 255, 255, 0.3)',
+                color: '#FFFFFF'
+              }}
               onClick={() => setShowDemoDialog(true)}
             >
-              DEMO
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
+              <div className="flex items-center justify-center gap-2 relative z-10">
+                <Play className="w-4 h-4" />
+                <span>DEMO</span>
+              </div>
             </button>
             
             {/* PROOF Button */}
             <button 
-              className="flex-1 md:flex-none md:w-32 lg:w-36 px-4 sm:px-6 md:px-8 py-2 custom-button font-bold rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 text-sm sm:text-base"
+              className="group relative flex-1 md:flex-none md:w-36 lg:w-40 px-4 sm:px-6 md:px-8 py-3 font-bold rounded-2xl shadow-xl transition-all duration-300 transform hover:scale-110 hover:shadow-2xl text-sm sm:text-base overflow-hidden"
+              style={{
+                background: 'linear-gradient(135deg, #4ECDC4 0%, #44B3AC 50%, #3A9B95 100%)',
+                border: '2px solid rgba(255, 255, 255, 0.3)',
+                color: '#FFFFFF'
+              }}
               onClick={() => {
                 console.log('Proof clicked');
                 setShowProofDialog(true);
               }}
             >
-              PROOF
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
+              <div className="flex items-center justify-center gap-2 relative z-10">
+                <Award className="w-4 h-4" />
+                <span>PROOF</span>
+              </div>
             </button>
             
             {/* VIP Button */}
             <button 
-              className="flex-1 md:flex-none md:w-32 lg:w-36 px-4 sm:px-6 md:px-8 py-2 custom-button font-bold rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 text-sm sm:text-base"
+              className="group relative flex-1 md:flex-none md:w-36 lg:w-40 px-4 sm:px-6 md:px-8 py-3 font-bold rounded-2xl shadow-xl transition-all duration-300 transform hover:scale-110 hover:shadow-2xl text-sm sm:text-base overflow-hidden"
+              style={{
+                background: 'linear-gradient(135deg, #FFD700 0%, #FFC700 50%, #FFB700 100%)',
+                border: '2px solid rgba(255, 255, 255, 0.3)',
+                color: '#2C1810'
+              }}
               onClick={() => console.log('VIP clicked')}
             >
-              VIP
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
+              <div className="flex items-center justify-center gap-2 relative z-10">
+                <Crown className="w-4 h-4" />
+                <span>VIP</span>
+              </div>
             </button>
           </div>
         </div>
