@@ -110,7 +110,7 @@ export default function Wingo3Min() {
       {/* Header */}
       <div 
         className="py-4 border-b border-gray-700 flex items-center justify-between" 
-        style={{ paddingLeft: '32px', paddingRight: '32px' }}
+        style={{ paddingLeft: 'max(32px, 5vw)', paddingRight: 'max(32px, 5vw)' }}
       >
         <button
           onClick={() => navigate('/')}
@@ -136,7 +136,7 @@ export default function Wingo3Min() {
       {/* Main Content */}
       <div 
         className="space-y-6" 
-        style={{ padding: '32px' }}
+        style={{ padding: 'max(32px, 5vw)' }}
       >
         {/* Current Prediction Card */}
         <Card className="bg-gradient-to-br from-gray-800 to-gray-900 border-2" style={{ borderColor: '#FED358' }}>
