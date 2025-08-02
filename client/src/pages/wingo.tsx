@@ -115,23 +115,66 @@ export default function Wingo() {
         <div className="w-16"></div>
       </div>
 
-      <div className="p-4 space-y-4">
-        {/* Tab Navigation */}
-        <div className="bg-gray-100 rounded-2xl p-2">
-          <div className="flex gap-1">
-            {variants.map((variant) => (
-              <button
-                key={variant.key}
-                onClick={() => setSelectedVariant(variant.key)}
-                className={`flex-1 py-3 px-4 rounded-xl font-medium transition-all duration-200 ${
-                  selectedVariant === variant.key
-                    ? 'bg-blue-500 text-white shadow-md'
-                    : 'text-gray-600 hover:text-gray-800'
-                }`}
-              >
-                {variant.label}
-              </button>
-            ))}
+      <div className="flex justify-center items-start pt-6">
+        <div className="w-[448px] h-[402px] mx-0">
+          {/* Tab Navigation */}
+          <div className="bg-gray-100" style={{ borderRadius: '16px', padding: '8px' }}>
+            <div className="flex gap-1">
+              {variants.map((variant) => (
+                <button
+                  key={variant.key}
+                  onClick={() => setSelectedVariant(variant.key)}
+                  className={`flex-1 font-medium transition-all duration-200 ${
+                    selectedVariant === variant.key
+                      ? 'bg-blue-500 text-white shadow-md'
+                      : 'text-gray-600 hover:text-gray-800'
+                  }`}
+                  style={{ 
+                    padding: '12px 16px',
+                    borderRadius: '16px'
+                  }}
+                >
+                  {variant.label}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Content Area */}
+          <div className="mt-4 bg-white/5 backdrop-blur-sm text-center" style={{ 
+            borderRadius: '16px', 
+            padding: '24px',
+            height: 'calc(100% - 80px)'
+          }}>
+            <h2 className="text-xl font-bold text-white mb-2">
+              {variants.find(v => v.key === selectedVariant)?.label}
+            </h2>
+            <div className="text-white/70 text-sm mb-4">
+              Period: {prediction?.period || "Loading..."}
+            </div>
+            
+            {/* Timer */}
+            <div className="bg-white/10 rounded-xl p-3 mb-4">
+              <div className="text-white/80 text-xs mb-1">Next Round In</div>
+              <div className="text-2xl font-bold text-white font-mono">
+                {formatTime(countdown)}
+              </div>
+            </div>
+
+            {/* VIP Prediction */}
+            {prediction && (
+              <div className="bg-gradient-to-r from-yellow-400/20 to-orange-400/20 border border-yellow-400/30 rounded-xl p-3 mb-4">
+                <div className="text-yellow-300 text-xs font-medium mb-1">VIP PREDICTION</div>
+                <div className="text-2xl font-black text-yellow-300">
+                  {prediction.prediction}
+                </div>
+                {prediction.confidence && (
+                  <div className="text-white/80 text-xs mt-1">
+                    Confidence: <span className="text-yellow-300 font-bold">{prediction.confidence}%</span>
+                  </div>
+                )}
+              </div>
+            )}
           </div>
         </div>
       </div>
