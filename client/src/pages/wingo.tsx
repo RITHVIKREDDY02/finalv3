@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { useQuery } from "@tanstack/react-query";
-import { ArrowLeft, Play } from "lucide-react";
+import { ArrowLeft, Play, Trophy, Clock, TrendingUp, Eye } from "lucide-react";
 import { useLocation } from "wouter";
 
 type WingoVariant = "30sec" | "1min" | "3min" | "5min";
@@ -80,11 +80,25 @@ export default function Wingo() {
   };
 
   const variants = [
-    { key: "30sec" as WingoVariant, label: "Wingo 30Sec", sublabel: "" },
-    { key: "1min" as WingoVariant, label: "Wingo 1Min", sublabel: "" },
-    { key: "3min" as WingoVariant, label: "Wingo 3Min", sublabel: "" },
-    { key: "5min" as WingoVariant, label: "Wingo 5Min", sublabel: "" }
+    { key: "30sec" as WingoVariant, label: "Wingo 30Sec", time: "30s", icon: "⚡" },
+    { key: "1min" as WingoVariant, label: "Wingo 1Min", time: "1m", icon: "🚀" },
+    { key: "3min" as WingoVariant, label: "Wingo 3Min", time: "3m", icon: "💎" },
+    { key: "5min" as WingoVariant, label: "Wingo 5Min", time: "5m", icon: "👑" }
   ];
+
+  // Get number color based on value (0-9)
+  const getNumberColor = (num: number): string => {
+    if ([0, 1, 2, 3, 4].includes(num)) return "text-emerald-500";
+    if ([5, 6, 7, 8, 9].includes(num)) return "text-red-500";
+    return "text-gray-500";
+  };
+
+  // Get number background based on value
+  const getNumberBg = (num: number): string => {
+    if ([0, 1, 2, 3, 4].includes(num)) return "bg-emerald-500/20 border-emerald-500";
+    if ([5, 6, 7, 8, 9].includes(num)) return "bg-red-500/20 border-red-500";
+    return "bg-gray-500/20 border-gray-500";
+  };
 
   return (
     <div className="min-h-screen" style={{ backgroundColor: '#231C21' }}>
@@ -120,65 +134,6 @@ export default function Wingo() {
             ))}
           </div>
         </div>
-
-        {/* Game Display Card */}
-        <div className="bg-gradient-to-r from-blue-500 to-blue-600 rounded-2xl p-6 text-white">
-          <div className="flex justify-between items-center">
-            {/* Left Side - Game Info */}
-            <div className="flex-1">
-              <div className="flex items-center gap-3 mb-4">
-                <h2 className="text-xl font-bold">
-                  {variants.find(v => v.key === selectedVariant)?.label}
-                </h2>
-              </div>
-              
-              {/* Period ID */}
-              <div className="text-2xl font-bold font-mono">
-                {prediction?.period || "Loading..."}
-              </div>
-            </div>
-
-            {/* Divider */}
-            <div className="w-px h-20 bg-white/30 mx-8"></div>
-
-            {/* Right Side - Timer */}
-            <div className="text-right">
-              <div className="text-sm opacity-80 mb-2">Time remaining</div>
-              <div className="text-4xl font-bold font-mono">
-                {formatTime(countdown)}
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Prediction Display */}
-        {prediction && (
-          <Card className="bg-gradient-to-br from-gray-800 to-gray-900 border-2" style={{ borderColor: '#FED358' }}>
-            <div className="p-6 text-center space-y-4">
-              <h3 className="text-xl font-bold text-white">VIP PREDICTION</h3>
-              <div 
-                className="text-4xl font-black py-4 px-6 rounded-xl border-2 bg-black/20"
-                style={{ 
-                  color: '#FED358',
-                  borderColor: '#FED358',
-                  textShadow: '0 0 20px rgba(254, 211, 88, 0.5)'
-                }}
-              >
-                {prediction.prediction}
-              </div>
-              <div className="text-sm text-gray-400">
-                Confidence: <span style={{ color: '#FED358' }}>{prediction.confidence}%</span>
-              </div>
-              <Button 
-                className="w-full text-black font-bold py-3 hover:opacity-90 transition-all duration-200"
-                style={{ backgroundColor: '#FED358' }}
-                onClick={() => window.open('https://www.tashanwin.in/#/', '_blank')}
-              >
-                Play Now - TASHAN WIN
-              </Button>
-            </div>
-          </Card>
-        )}
       </div>
     </div>
   );
