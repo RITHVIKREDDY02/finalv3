@@ -188,17 +188,17 @@ export default function Wingo() {
             <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-4 mb-6">
               <div className="flex justify-between items-center">
                 <div className="text-center">
-                  <div className="text-sm mb-2" style={{ color: 'rgba(255,208,90,254)' }}>Color</div>
+                  <div className="text-sm font-bold mb-2" style={{ color: 'rgba(255,208,90,254)' }}>Color</div>
                   <div className={`w-12 h-12 rounded-lg mx-auto ${prediction?.prediction === 'BIG' ? 'bg-green-500' : 'bg-red-500'}`}></div>
                 </div>
                 <div className="text-center">
-                  <div className="text-sm mb-2" style={{ color: 'rgba(255,208,90,254)' }}>Size</div>
+                  <div className="text-sm font-bold mb-2" style={{ color: 'rgba(255,208,90,254)' }}>Size</div>
                   <div className="text-white font-bold text-xl">
                     {prediction?.prediction || "BIG"}
                   </div>
                 </div>
                 <div className="text-center">
-                  <div className="text-sm mb-2" style={{ color: 'rgba(255,208,90,254)' }}>Number</div>
+                  <div className="text-sm font-bold mb-2" style={{ color: 'rgba(255,208,90,254)' }}>Number</div>
                   <div className="text-white font-bold text-xl">7</div>
                 </div>
               </div>
