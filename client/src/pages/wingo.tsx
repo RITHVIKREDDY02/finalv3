@@ -144,27 +144,16 @@ export default function Wingo() {
             </div>
           </div>
 
-          {/* Issue/Period Information */}
-          <div className="mt-4 space-y-3">
-            {/* Issue Header */}
-            <div className="text-center">
-              <div className="text-white/80 text-sm">Issue</div>
-              <div className="text-white font-medium">202508020922001</div>
-            </div>
-
-            {/* Content Card */}
-            <div className="relative">
-              <img 
-                src={wingoIssueImage}
-                alt="Wingo Issue Background"
-                className="w-full h-auto"
-                style={{ 
-                  width: '372.26px', 
-                  height: '106.66px',
-                  maxWidth: '100%'
-                }}
-              />
-            </div>
+          {/* Content Card */}
+          <div className="mt-4">
+            <img 
+              src={wingoIssueImage}
+              alt="Wingo Issue Background"
+              className="w-full h-auto"
+              style={{ 
+                height: '106.66px'
+              }}
+            />
           </div>
         </div>
       </div>
