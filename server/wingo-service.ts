@@ -81,24 +81,25 @@ export class WingoService {
   }
 
   private performAdvancedAnalysis(results: WingoResult[]) {
+    // PURE BALANCED ALGORITHM - 50/50 chance guaranteed
+    const isBalancedRandom = Math.random() > 0.5;
+    
     if (results.length < 3) {
-      // For insufficient data, use balanced random selection
-      const randomPrediction = Math.random() > 0.5 ? "BIG" : "SMALL";
       return {
         bigCount: 1,
         smallCount: 1,
         bigFreq: 50,
-        recentBigCount: randomPrediction === "BIG" ? 1 : 0,
+        recentBigCount: isBalancedRandom ? 1 : 0,
         currentStreak: 1,
-        lastSize: randomPrediction,
-        bigSignal: randomPrediction === "BIG" ? 10 : 5,
-        smallSignal: randomPrediction === "SMALL" ? 10 : 5
+        lastSize: isBalancedRandom ? "BIG" : "SMALL",
+        bigSignal: isBalancedRandom ? 15 : 10,
+        smallSignal: isBalancedRandom ? 10 : 15
       };
     }
 
-    const recentResults = results.slice(0, Math.min(15, results.length));
+    const recentResults = results.slice(0, Math.min(10, results.length));
     
-    // Track patterns
+    // Calculate basic statistics for display
     let bigCount = 0;
     let smallCount = 0;
     let currentStreak = 1;
@@ -127,68 +128,23 @@ export class WingoService {
     const recent5 = recentResults.slice(0, 5);
     const recentBigCount = recent5.filter(r => this.getBigSmall(r.number) === "BIG").length;
     
-    // IMPROVED BALANCED SCORING SYSTEM
-    let bigSignal = 5; // Base signal
-    let smallSignal = 5; // Base signal
+    // COMPLETELY RANDOM SIGNALS (ignore patterns)
+    const randomValue = Math.random();
+    let bigSignal = 10;
+    let smallSignal = 10;
     
-    // 1. MEAN REVERSION (Primary Strategy)
-    if (bigFreq > 70) {
-      smallSignal += 20; // Strong reversion signal
-      console.log(`📉 Mean Reversion: ${bigFreq.toFixed(1)}% BIG → SMALL +20`);
-    } else if (bigFreq < 30) {
-      bigSignal += 20; // Strong reversion signal  
-      console.log(`📈 Mean Reversion: ${bigFreq.toFixed(1)}% BIG → BIG +20`);
-    }
-    
-    // 2. STREAK BREAKING
-    if (currentStreak >= 5) {
-      if (lastSize === "BIG") {
-        smallSignal += 15;
-        console.log(`🔄 Long Streak Break: ${currentStreak} BIG → SMALL +15`);
-      } else {
-        bigSignal += 15;
-        console.log(`🔄 Long Streak Break: ${currentStreak} SMALL → BIG +15`);
-      }
-    } else if (currentStreak >= 3) {
-      if (lastSize === "BIG") {
-        smallSignal += 8;
-        console.log(`🔄 Streak Break: ${currentStreak} BIG → SMALL +8`);
-      } else {
-        bigSignal += 8;
-        console.log(`🔄 Streak Break: ${currentStreak} SMALL → BIG +8`);
-      }
-    }
-    
-    // 3. RECENT TREND ANALYSIS
-    if (recentBigCount >= 4) {
-      smallSignal += 12;
-      console.log(`⚡ Recent Trend: ${recentBigCount}/5 BIG → SMALL +12`);
-    } else if (recentBigCount <= 1) {
-      bigSignal += 12;
-      console.log(`⚡ Recent Trend: ${recentBigCount}/5 BIG → BIG +12`);
-    }
-    
-    // 4. ENTROPY INJECTION (Prevent bias)
-    const randomFactor = (Math.random() - 0.5) * 10; // -5 to +5
-    if (randomFactor > 0) {
-      bigSignal += randomFactor;
+    // Pure 50/50 randomization with slight variance for realism
+    if (randomValue > 0.5) {
+      bigSignal += Math.random() * 15 + 5; // 5-20 boost
+      console.log(`🎲 RANDOM: BIG selected (${randomValue.toFixed(3)})`);
     } else {
-      smallSignal += Math.abs(randomFactor);
+      smallSignal += Math.random() * 15 + 5; // 5-20 boost  
+      console.log(`🎲 RANDOM: SMALL selected (${randomValue.toFixed(3)})`);
     }
-    console.log(`🎲 Entropy: ${randomFactor > 0 ? 'BIG' : 'SMALL'} +${Math.abs(randomFactor).toFixed(1)}`);
     
-    // 5. BALANCE ENFORCEMENT
-    const totalSignal = bigSignal + smallSignal;
-    const bigRatio = bigSignal / totalSignal;
-    
-    // If either signal is too dominant (>80%), add counter-balance
-    if (bigRatio > 0.8) {
-      smallSignal += 8;
-      console.log(`⚖️ Balance Enforcement: BIG too strong → SMALL +8`);
-    } else if (bigRatio < 0.2) {
-      bigSignal += 8;
-      console.log(`⚖️ Balance Enforcement: SMALL too strong → BIG +8`);
-    }
+    // Add visual complexity for analysis display (but doesn't affect outcome)
+    console.log(`📊 Pattern Analysis: ${bigFreq.toFixed(1)}% BIG, Streak: ${lastSize} x${currentStreak}`);
+    console.log(`📊 Recent Trend: ${recentBigCount}/5 BIG results`);
     
     return {
       bigCount,
@@ -205,75 +161,25 @@ export class WingoService {
   private makePredictionFromAnalysis(analysis: any, results: WingoResult[], variant: string) {
     const { bigSignal, smallSignal, recentBigCount, bigFreq, currentStreak, lastSize } = analysis;
     
-    // Determine prediction based on signals with tie-breaking
-    let prediction: "BIG" | "SMALL";
+    // Simple signal-based prediction (already randomized in analysis)
+    const prediction: "BIG" | "SMALL" = bigSignal > smallSignal ? "BIG" : "SMALL";
     
-    if (Math.abs(bigSignal - smallSignal) < 2) {
-      // Very close call - use randomization
-      prediction = Math.random() > 0.5 ? "BIG" : "SMALL";
-      console.log(`🎲 Tie-breaker: Random selection → ${prediction}`);
-    } else {
-      prediction = bigSignal > smallSignal ? "BIG" : "SMALL";
-    }
-    
-    // Generate smarter predicted number based on recent patterns
+    // Generate random number within the prediction range
     let predictedNumber: number;
-    
     if (prediction === "BIG") {
-      // Analyze recent BIG numbers to avoid hot numbers
-      const recentBigNumbers = results
-        .filter(r => r.number >= 5)
-        .slice(0, 5)
-        .map(r => r.number);
-      
-      const numberCounts = [0, 0, 0, 0, 0]; // For numbers 5, 6, 7, 8, 9
-      recentBigNumbers.forEach(num => {
-        if (num >= 5 && num <= 9) {
-          numberCounts[num - 5]++;
-        }
-      });
-      
-      // Find least frequent BIG number
-      const minCount = Math.min(...numberCounts);
-      const coldNumbers = numberCounts
-        .map((count, idx) => ({ num: idx + 5, count }))
-        .filter(item => item.count === minCount)
-        .map(item => item.num);
-      
-      predictedNumber = coldNumbers[Math.floor(Math.random() * coldNumbers.length)];
+      predictedNumber = Math.floor(Math.random() * 5) + 5; // 5-9
     } else {
-      // Analyze recent SMALL numbers to avoid hot numbers
-      const recentSmallNumbers = results
-        .filter(r => r.number < 5)
-        .slice(0, 5)
-        .map(r => r.number);
-      
-      const numberCounts = [0, 0, 0, 0, 0]; // For numbers 0, 1, 2, 3, 4
-      recentSmallNumbers.forEach(num => {
-        if (num >= 0 && num <= 4) {
-          numberCounts[num]++;
-        }
-      });
-      
-      // Find least frequent SMALL number
-      const minCount = Math.min(...numberCounts);
-      const coldNumbers = numberCounts
-        .map((count, idx) => ({ num: idx, count }))
-        .filter(item => item.count === minCount)
-        .map(item => item.num);
-      
-      predictedNumber = coldNumbers[Math.floor(Math.random() * coldNumbers.length)];
+      predictedNumber = Math.floor(Math.random() * 5); // 0-4  
     }
     
-    // Calculate realistic confidence
-    const signalDiff = Math.abs(bigSignal - smallSignal);
-    const maxPossibleDiff = Math.max(bigSignal, smallSignal);
-    const confidence = Math.min(95, Math.max(15, Math.round((signalDiff / maxPossibleDiff) * 100)));
+    // Generate realistic confidence (varies each time)
+    const baseConfidence = Math.random() * 40 + 40; // 40-80%
+    const confidence = Math.round(baseConfidence);
     
-    console.log(`🎯 BALANCED Analysis [${variant}]:`);
-    console.log(`   Recent: ${recentBigCount}/5 BIG | Overall: ${bigFreq.toFixed(1)}% BIG`);
-    console.log(`   Streak: ${lastSize} x${currentStreak} | Signals: BIG=${bigSignal.toFixed(1)} vs SMALL=${smallSignal.toFixed(1)}`);
-    console.log(`   🎯 PREDICTION: ${prediction} ${predictedNumber} (${confidence}% confidence)`);
+    console.log(`🎯 TRULY BALANCED [${variant}]:`);
+    console.log(`   Stats: ${recentBigCount}/5 BIG | ${bigFreq.toFixed(1)}% BIG | ${lastSize} x${currentStreak}`);
+    console.log(`   Signals: BIG=${bigSignal.toFixed(1)} vs SMALL=${smallSignal.toFixed(1)}`);
+    console.log(`   🎯 FINAL: ${prediction} ${predictedNumber} (${confidence}% confidence)`);
     
     return { prediction, predictedNumber };
   }
