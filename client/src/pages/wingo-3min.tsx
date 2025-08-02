@@ -34,15 +34,31 @@ export default function Wingo3Min() {
     refetchInterval: 60000, // Refetch every minute
   });
 
-  // Countdown timer
+  // Synchronized countdown timer - resets every 3 minutes from minute boundary
   useEffect(() => {
+    const calculateSynchronizedCountdown = () => {
+      const now = new Date();
+      const currentMinute = now.getMinutes();
+      const currentSecond = now.getSeconds();
+      
+      // Calculate total seconds since hour start
+      const totalSeconds = (currentMinute * 60) + currentSecond;
+      
+      // Calculate how many 3-minute intervals have passed since hour start
+      const intervalsPassedSinceHour = Math.floor(totalSeconds / 180);
+      
+      // Calculate next interval start time
+      const nextIntervalStart = (intervalsPassedSinceHour + 1) * 180;
+      
+      return nextIntervalStart - totalSeconds;
+    };
+
+    // Set initial countdown
+    setCountdown(calculateSynchronizedCountdown());
+
     const interval = setInterval(() => {
-      setCountdown(prev => {
-        if (prev <= 0) {
-          return 180;
-        }
-        return prev - 1;
-      });
+      const syncCountdown = calculateSynchronizedCountdown();
+      setCountdown(syncCountdown);
     }, 1000);
 
     return () => clearInterval(interval);

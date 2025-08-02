@@ -182,6 +182,31 @@ class WingoService {
     }
   }
 
+  private calculateSynchronizedCountdown(intervalSeconds: number): number {
+    // Get current IST time
+    const now = new Date();
+    const istTime = new Date(now.getTime() + (5.5 * 60 * 60 * 1000)); // UTC + 5:30
+    
+    const currentMinute = istTime.getMinutes();
+    const currentSecond = istTime.getSeconds();
+    
+    // Calculate seconds since last minute boundary
+    const secondsSinceMinuteBoundary = currentSecond;
+    
+    // Calculate how many intervals have passed since minute boundary
+    const intervalsPassedSinceMinute = Math.floor(secondsSinceMinuteBoundary / intervalSeconds);
+    
+    // Calculate next interval start time
+    const nextIntervalStart = (intervalsPassedSinceMinute + 1) * intervalSeconds;
+    
+    // If next interval would be beyond 60 seconds, wrap to next minute
+    if (nextIntervalStart >= 60) {
+      return 60 - secondsSinceMinuteBoundary;
+    }
+    
+    return nextIntervalStart - secondsSinceMinuteBoundary;
+  }
+
   async generatePrediction(variant: string): Promise<WingoPrediction | null> {
     try {
       const [currentPeriod, results] = await Promise.all([
@@ -189,22 +214,19 @@ class WingoService {
         this.getLatestResults(variant)
       ]);
 
-      if (!currentPeriod) return null;
-
       const prediction = this.analyzeTrend(results);
       const config = WINGO_VARIANTS[variant];
       
-      // Calculate real countdown based on period end time in IST
-      let countdown = config.intervalSeconds / 2; // default fallback
-      if (currentPeriod.endTime) {
-        // Convert to IST (UTC+5:30)
-        const now = Date.now();
-        const endTime = currentPeriod.endTime;
-        countdown = Math.max(0, Math.floor((endTime - now) / 1000));
-      }
+      // Use synchronized countdown based on minute boundaries
+      const countdown = this.calculateSynchronizedCountdown(config.intervalSeconds);
+      
+      // Generate period ID based on current time and interval
+      const now = new Date();
+      const istTime = new Date(now.getTime() + (5.5 * 60 * 60 * 1000));
+      const periodId = `${istTime.getFullYear()}${(istTime.getMonth() + 1).toString().padStart(2, '0')}${istTime.getDate().toString().padStart(2, '0')}${istTime.getHours().toString().padStart(2, '0')}${istTime.getMinutes().toString().padStart(2, '0')}${Math.floor(istTime.getSeconds() / config.intervalSeconds).toString().padStart(3, '0')}`;
 
       return {
-        period: currentPeriod.issueNumber || `${Date.now()}`,
+        period: currentPeriod?.issueNumber || periodId,
         prediction,
         confidence: 85 + Math.floor(Math.random() * 10), // 85-95%
         countdown
@@ -218,14 +240,17 @@ class WingoService {
   // Mock prediction for development when API is not available
   generateMockPrediction(variant: string): WingoPrediction {
     const config = WINGO_VARIANTS[variant];
+    const countdown = this.calculateSynchronizedCountdown(config.intervalSeconds);
+    
     const now = new Date();
-    const periodId = `${now.getFullYear()}${(now.getMonth() + 1).toString().padStart(2, '0')}${now.getDate().toString().padStart(2, '0')}${now.getHours().toString().padStart(2, '0')}${now.getMinutes().toString().padStart(2, '0')}001`;
+    const istTime = new Date(now.getTime() + (5.5 * 60 * 60 * 1000));
+    const periodId = `${istTime.getFullYear()}${(istTime.getMonth() + 1).toString().padStart(2, '0')}${istTime.getDate().toString().padStart(2, '0')}${istTime.getHours().toString().padStart(2, '0')}${istTime.getMinutes().toString().padStart(2, '0')}${Math.floor(istTime.getSeconds() / config.intervalSeconds).toString().padStart(3, '0')}`;
     
     return {
       period: periodId,
       prediction: Math.random() > 0.5 ? "BIG" : "SMALL",
       confidence: 85 + Math.floor(Math.random() * 10),
-      countdown: Math.floor(Math.random() * config.intervalSeconds)
+      countdown
     };
   }
 }

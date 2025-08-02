@@ -29,6 +29,10 @@ A dynamic prediction/lottery gaming platform with user registration and approval
 - **2025-02-02**: Added real countdown calculation based on actual period end times
 - **2025-02-02**: **TIMER UPDATE**: Implemented IST (Indian Standard Time) display across all Wingo variants
 - **2025-02-02**: Added real-time IST clock alongside countdown timers in all pages (30sec, 1min, 3min, 5min)
+- **2025-02-02**: **MAJOR TIMING SYNC**: Implemented synchronized countdown timers across all Wingo variants
+- **2025-02-02**: All timers now reset at minute boundaries: 30sec (twice per minute), 1min (once per minute), 3min/5min (hourly intervals)
+- **2025-02-02**: Updated backend prediction service to calculate synchronized countdowns based on minute/hour boundaries
+- **2025-02-02**: Frontend timers now synchronized with server-side timing calculations for consistent user experience
 
 ## User Preferences
 - Store UID in browser localStorage to avoid repeated registration

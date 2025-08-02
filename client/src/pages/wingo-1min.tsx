@@ -34,15 +34,22 @@ export default function Wingo1Min() {
     refetchInterval: 30000, // Refetch every 30 seconds
   });
 
-  // Countdown timer
+  // Synchronized countdown timer - resets every minute
   useEffect(() => {
+    const calculateSynchronizedCountdown = () => {
+      const now = new Date();
+      const currentSecond = now.getSeconds();
+      
+      // For 1-minute intervals, always count down from 60 to 0
+      return 60 - currentSecond;
+    };
+
+    // Set initial countdown
+    setCountdown(calculateSynchronizedCountdown());
+
     const interval = setInterval(() => {
-      setCountdown(prev => {
-        if (prev <= 0) {
-          return 60;
-        }
-        return prev - 1;
-      });
+      const syncCountdown = calculateSynchronizedCountdown();
+      setCountdown(syncCountdown);
     }, 1000);
 
     return () => clearInterval(interval);
