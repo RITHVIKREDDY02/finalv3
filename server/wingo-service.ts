@@ -157,7 +157,19 @@ class WingoService {
 
     try {
       const data = await this.fetchData(config.periodUrl);
-      return data?.current || null;
+      
+      // Check different possible response structures
+      if (data?.current) {
+        return data.current;
+      } else if (data?.data?.current) {
+        return data.data.current;
+      } else if (data?.issueNumber) {
+        return data; // Direct period object
+      } else if (data?.data?.issueNumber) {
+        return data.data; // Period object in data property
+      }
+      
+      return null;
     } catch (error) {
       console.error(`Failed to get current period for ${variant}:`, error);
       return null;
@@ -233,8 +245,11 @@ class WingoService {
       const istTime = new Date(now.getTime() + (5.5 * 60 * 60 * 1000));
       const periodId = `${istTime.getFullYear()}${(istTime.getMonth() + 1).toString().padStart(2, '0')}${istTime.getDate().toString().padStart(2, '0')}${istTime.getHours().toString().padStart(2, '0')}${istTime.getMinutes().toString().padStart(2, '0')}${Math.floor(istTime.getSeconds() / config.intervalSeconds).toString().padStart(3, '0')}`;
 
+      // Always prioritize API period over generated period
+      const finalPeriod = currentPeriod?.issueNumber || periodId;
+
       return {
-        period: currentPeriod?.issueNumber || periodId,
+        period: finalPeriod,
         prediction,
         confidence: 85 + Math.floor(Math.random() * 10), // 85-95%
         countdown
