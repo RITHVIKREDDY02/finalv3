@@ -19,22 +19,7 @@ export const gameConfig = pgTable("game_config", {
   updatedAt: timestamp("updated_at").defaultNow().notNull(),
 });
 
-// Prediction history table
-export const predictionHistory = pgTable("prediction_history", {
-  id: varchar("id").primaryKey().default(sql`gen_random_uuid()`),
-  variant: varchar("variant").notNull(), // 30sec, 1min, 3min, 5min
-  period: varchar("period").notNull(),
-  predictedNumber: integer("predicted_number").notNull(),
-  predictedSize: varchar("predicted_size").notNull(), // BIG or SMALL
-  actualNumber: integer("actual_number"),
-  actualSize: varchar("actual_size"),
-  status: varchar("status"), // WIN, LOSS, PENDING
-  createdAt: timestamp("created_at").defaultNow().notNull(),
-  updatedAt: timestamp("updated_at").defaultNow().notNull(),
-}, (table) => ({
-  // Unique constraint to prevent duplicate predictions for same period + variant
-  uniq: unique().on(table.period, table.variant),
-}));
+
 
 export const insertUserSchema = createInsertSchema(users).pick({
   uid: true,
@@ -45,19 +30,10 @@ export const insertGameConfigSchema = createInsertSchema(gameConfig).pick({
   isEnabled: true,
 });
 
-export const insertPredictionHistorySchema = createInsertSchema(predictionHistory).pick({
-  variant: true,
-  period: true,
-  predictedNumber: true,
-  predictedSize: true,
-  actualNumber: true,
-  actualSize: true,
-  status: true,
-});
+
 
 export type InsertUser = z.infer<typeof insertUserSchema>;
 export type User = typeof users.$inferSelect;
 export type GameConfig = typeof gameConfig.$inferSelect;
 export type InsertGameConfig = z.infer<typeof insertGameConfigSchema>;
-export type PredictionHistory = typeof predictionHistory.$inferSelect;
-export type InsertPredictionHistory = z.infer<typeof insertPredictionHistorySchema>;
+

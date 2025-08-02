@@ -1,11 +1,10 @@
 import { useState, useEffect } from "react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { useQuery, useMutation } from "@tanstack/react-query";
-import { ArrowLeft, RefreshCw, RotateCcw } from "lucide-react";
+import { useQuery } from "@tanstack/react-query";
+import { ArrowLeft, RefreshCw } from "lucide-react";
 import { useLocation } from "wouter";
-import { queryClient, apiRequest } from "@/lib/queryClient";
-import { useToast } from "@/hooks/use-toast";
+import { queryClient } from "@/lib/queryClient";
 
 interface WingoResult {
   issueNumber: string;
@@ -24,8 +23,6 @@ interface WingoPrediction {
 export default function Wingo3Min() {
   const [, navigate] = useLocation();
   const [countdown, setCountdown] = useState(180);
-  const { toast } = useToast();
-
   // Fetch prediction data
   const { data: prediction } = useQuery<WingoPrediction>({
     queryKey: [`/api/wingo/prediction/3min`],
@@ -36,12 +33,6 @@ export default function Wingo3Min() {
   const { data: results = [] } = useQuery<WingoResult[]>({
     queryKey: [`/api/wingo/results/3min`],
     refetchInterval: 60000, // Refetch every minute
-  });
-
-  // Fetch prediction history with win/loss tracking
-  const { data: history = [] } = useQuery<any[]>({
-    queryKey: [`/api/wingo/history/3min`],
-    refetchInterval: 15000, // Refetch every 15 seconds
   });
 
   // Synchronized countdown timer with server
@@ -85,33 +76,6 @@ export default function Wingo3Min() {
     });
   };
 
-  // Clear history mutation
-  const clearHistoryMutation = useMutation({
-    mutationFn: async () => {
-      return apiRequest('/api/wingo/history/3min', 'DELETE');
-    },
-    onSuccess: () => {
-      // Immediately invalidate and refetch the history query
-      queryClient.invalidateQueries({ queryKey: ['/api/wingo/history/3min'] });
-      queryClient.refetchQueries({ queryKey: ['/api/wingo/history/3min'] });
-      
-      // Also clear related prediction and result caches to ensure fresh data
-      queryClient.invalidateQueries({ queryKey: ['/api/wingo/prediction/3min'] });
-      queryClient.invalidateQueries({ queryKey: ['/api/wingo/results/3min'] });
-      
-      toast({
-        title: "History Cleared",
-        description: "Game history has been reset. Starting fresh!",
-      });
-    },
-    onError: () => {
-      toast({
-        title: "Error",
-        description: "Failed to clear history. Please try again.",
-        variant: "destructive",
-      });
-    }
-  });
 
   return (
     <div className="min-h-screen" style={{ backgroundColor: '#231C21' }}>
@@ -129,7 +93,7 @@ export default function Wingo3Min() {
           onClick={() => {
             queryClient.invalidateQueries({ queryKey: ['/api/wingo/prediction/3min'] });
             queryClient.invalidateQueries({ queryKey: ['/api/wingo/results/3min'] });
-            queryClient.invalidateQueries({ queryKey: ['/api/wingo/history/3min'] });
+            
           }}
           className="flex items-center justify-center w-10 h-10 text-white hover:text-yellow-400 transition-colors rounded-lg hover:bg-gray-700"
           title="Refresh"
@@ -206,117 +170,6 @@ export default function Wingo3Min() {
           </div>
         </Card>
 
-        {/* Game History - Predictions vs Results */}
-        <Card className="bg-gray-800 border-gray-700">
-          <div className="p-4 border-b border-gray-700">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-3">
-                <div className="w-2 h-6 rounded-full" style={{ backgroundColor: '#ffd05a' }}></div>
-                <h3 className="text-lg font-bold text-white flex items-center gap-2">
-                  📊 Game History (Predictions vs Results)
-                </h3>
-              </div>
-              <Button
-                onClick={() => clearHistoryMutation.mutate()}
-                disabled={clearHistoryMutation.isPending || history.length === 0}
-                variant="outline"
-                size="sm"
-                className="text-yellow-400 border-yellow-400 hover:bg-yellow-400 hover:text-black transition-colors"
-              >
-                <RotateCcw className="w-4 h-4 mr-2" />
-                {clearHistoryMutation.isPending ? 'Clearing...' : 'Start Fresh'}
-              </Button>
-            </div>
-          </div>
-          <div className="p-4 space-y-3 max-h-96 overflow-y-auto">
-            {history.length > 0 ? history.map((record, index) => (
-              <div key={record.id} className="rounded-xl p-4 border border-gray-600/30 hover:border-yellow-400/50 transition-all duration-200 shadow-lg backdrop-blur-sm" style={{ backgroundColor: 'rgb(56, 46, 53)' }}>
-                <div className="space-y-3">
-                  {/* Period */}
-                  <div className="flex justify-between items-center">
-                    <span className="text-gray-300 text-sm">Period:</span>
-                    <span className="text-white font-medium">#{record.period.slice(-6)}</span>
-                  </div>
-                  
-                  {/* Predicted Number */}
-                  <div className="flex justify-between items-center">
-                    <span className="text-gray-300 text-sm">Number (Predicted):</span>
-                    <div className={`text-white w-8 h-8 rounded-lg flex items-center justify-center font-bold text-sm shadow-lg border-2 ${record.predictedSize === 'BIG' ? 'bg-green-500 border-green-400' : 'bg-red-500 border-red-400'}`}>
-                      {record.predictedNumber}
-                    </div>
-                  </div>
-
-                  {/* Predicted Size */}
-                  <div className="flex justify-between items-center">
-                    <span className="text-gray-300 text-sm">Size (Predicted):</span>
-                    <div 
-                      className="px-3 py-1 rounded-lg text-xs font-bold min-w-[60px] text-center shadow-lg text-white border-2"
-                      style={{ 
-                        backgroundColor: record.predictedSize === 'BIG' ? '#ef4444' : '#22c55e',
-                        borderColor: record.predictedSize === 'BIG' ? '#dc2626' : '#16a34a'
-                      }}
-                    >
-                      {record.predictedSize}
-                    </div>
-                  </div>
-
-                  {/* Actual Result */}
-                  <div className="flex justify-between items-center">
-                    <span className="text-gray-300 text-sm">Result (Actual):</span>
-                    <div className="flex items-center gap-2">
-                      {record.actualNumber !== null ? (
-                        <>
-                          <div className={`text-white w-8 h-8 rounded-lg flex items-center justify-center font-bold text-sm shadow-lg border-2 ${record.actualSize === 'BIG' ? 'bg-green-500 border-green-400' : 'bg-red-500 border-red-400'}`}>
-                            {record.actualNumber}
-                          </div>
-                          <div 
-                            className="px-3 py-1 rounded-lg text-xs font-bold min-w-[60px] text-center shadow-lg text-white border-2"
-                            style={{ 
-                              backgroundColor: record.actualSize === 'BIG' ? '#ef4444' : '#22c55e',
-                              borderColor: record.actualSize === 'BIG' ? '#dc2626' : '#16a34a'
-                            }}
-                          >
-                            {record.actualSize}
-                          </div>
-                        </>
-                      ) : (
-                        <span className="text-gray-400 text-sm">Pending...</span>
-                      )}
-                    </div>
-                  </div>
-
-                  {/* Status */}
-                  <div className="flex justify-between items-center pt-2 border-t border-gray-600/30">
-                    <span className="text-gray-300 text-sm">Status:</span>
-                    <div className="flex items-center gap-2">
-                      {record.status === 'WIN' && (
-                        <div className="px-4 py-1 rounded-full text-xs font-bold text-white bg-green-500 border-2 border-green-400 shadow-lg">
-                          🎉 WIN
-                        </div>
-                      )}
-                      {record.status === 'LOSS' && (
-                        <div className="px-4 py-1 rounded-full text-xs font-bold text-white bg-red-500 border-2 border-red-400 shadow-lg">
-                          ❌ LOSS
-                        </div>
-                      )}
-                      {record.status === 'PENDING' && (
-                        <div className="px-4 py-1 rounded-full text-xs font-bold text-white bg-gray-500 border-2 border-gray-400 shadow-lg">
-                          ⏳ PENDING
-                        </div>
-                      )}
-                    </div>
-                  </div>
-                </div>
-              </div>
-            )) : (
-              <div className="text-center py-8 rounded-xl shadow-lg border border-gray-600/30" style={{ backgroundColor: 'rgb(56, 46, 53)' }}>
-                <div className="text-4xl mb-3">📊</div>
-                <div className="text-gray-300 font-medium">No game history yet</div>
-                <div className="text-gray-500 text-sm mt-1">Predictions will appear here once the system generates them</div>
-              </div>
-            )}
-          </div>
-        </Card>
 
         {/* Game Instructions */}
         <Card className="bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-700">

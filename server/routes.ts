@@ -178,68 +178,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
-  // Get prediction history with win/loss tracking
-  app.get('/api/wingo/history/:variant', async (req, res) => {
-    try {
-      const { variant } = req.params;
-      const { limit } = req.query;
-      
-      if (!WINGO_VARIANTS[variant]) {
-        return res.status(400).json({ error: "Invalid variant" });
-      }
 
-      const history = await storage.getPredictionHistory(variant, limit ? parseInt(limit as string) : 10);
-      res.json(history);
-    } catch (error) {
-      console.error("Error fetching prediction history:", error);
-      res.status(500).json({ error: "Failed to fetch prediction history" });
-    }
-  });
-
-  // Clear prediction history (start fresh)
-  app.delete('/api/wingo/history/:variant', async (req, res) => {
-    try {
-      const { variant } = req.params;
-      
-      if (!WINGO_VARIANTS[variant]) {
-        return res.status(400).json({ error: "Invalid variant" });
-      }
-
-      const success = await storage.clearPredictionHistory(variant);
-      
-      if (success) {
-        res.json({ 
-          message: `History cleared successfully for ${variant}`,
-          variant,
-          cleared: true
-        });
-      } else {
-        res.status(500).json({ error: "Failed to clear history" });
-      }
-    } catch (error) {
-      console.error("Error clearing prediction history:", error);
-      res.status(500).json({ error: "Failed to clear prediction history" });
-    }
-  });
-
-  // Clear all prediction history (admin endpoint)
-  app.delete('/api/wingo/history', async (req, res) => {
-    try {
-      const success = await storage.clearPredictionHistory();
-      
-      if (success) {
-        res.json({ 
-          message: 'All prediction history cleared successfully',
-          cleared: true
-        });
-      } else {
-        res.status(500).json({ error: "Failed to clear all history" });
-      }
-    } catch (error) {
-      console.error("Error clearing all prediction history:", error);
-      res.status(500).json({ error: "Failed to clear all prediction history" });
-    }
-  });
 
   const httpServer = createServer(app);
   return httpServer;

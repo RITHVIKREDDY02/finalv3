@@ -121,36 +121,9 @@ export default function Wingo() {
     // Immediately invalidate cache for new variant to get fresh data
     queryClient.invalidateQueries({ queryKey: [`/api/wingo/prediction/${variant}`] });
     queryClient.invalidateQueries({ queryKey: [`/api/wingo/results/${variant}`] });
-    queryClient.invalidateQueries({ queryKey: [`/api/wingo/history/${variant}`] });
+    
   };
 
-  // Clear history mutation
-  const clearHistoryMutation = useMutation({
-    mutationFn: async () => {
-      return apiRequest(`/api/wingo/history/${selectedVariant}`, 'DELETE');
-    },
-    onSuccess: () => {
-      // Immediately invalidate and refetch the history query
-      queryClient.invalidateQueries({ queryKey: [`/api/wingo/history/${selectedVariant}`] });
-      queryClient.refetchQueries({ queryKey: [`/api/wingo/history/${selectedVariant}`] });
-      
-      // Also clear related prediction and result caches to ensure fresh data
-      queryClient.invalidateQueries({ queryKey: [`/api/wingo/prediction/${selectedVariant}`] });
-      queryClient.invalidateQueries({ queryKey: [`/api/wingo/results/${selectedVariant}`] });
-      
-      toast({
-        title: "History Cleared",
-        description: "Game history has been reset. Starting fresh!",
-      });
-    },
-    onError: () => {
-      toast({
-        title: "Error",
-        description: "Failed to clear history. Please try again.",
-        variant: "destructive",
-      });
-    }
-  });
 
   // Get number color based on value (0-9)
   const getNumberColor = (num: number): string => {
@@ -193,7 +166,7 @@ export default function Wingo() {
             onClick={() => {
               queryClient.invalidateQueries({ queryKey: [`/api/wingo/prediction/${selectedVariant}`] });
               queryClient.invalidateQueries({ queryKey: [`/api/wingo/results/${selectedVariant}`] });
-              queryClient.invalidateQueries({ queryKey: [`/api/wingo/history/${selectedVariant}`] });
+              
             }}
             className="flex items-center justify-center w-10 h-10 text-white hover:text-yellow-400 transition-colors rounded-lg hover:bg-gray-700"
             title="Refresh"
