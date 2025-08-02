@@ -214,9 +214,9 @@ export default function Wingo() {
             </div>
             <div className="space-y-4">
               {results?.slice(0, 3).map((result, index) => (
-                <div key={result.issueNumber} className="rounded-2xl p-5 shadow-lg border border-gray-600/30 backdrop-blur-sm" style={{ backgroundColor: 'rgb(56, 46, 53)' }}>
+                <div key={result.issueNumber} className="rounded-2xl p-4 shadow-lg border border-gray-600/30 backdrop-blur-sm" style={{ backgroundColor: 'rgb(56, 46, 53)' }}>
                   {/* Header with Period and Status */}
-                  <div className="flex justify-between items-center mb-5">
+                  <div className="flex justify-between items-center mb-3">
                     <div className="flex items-center gap-3">
                       <div className="text-black px-4 py-2 rounded-full text-sm font-bold shadow-md" style={{ backgroundColor: '#ffd05a' }}>
                         #{result.issueNumber.slice(-6)}
@@ -232,19 +232,19 @@ export default function Wingo() {
                   </div>
 
                   {/* Results Display */}
-                  <div className="bg-black/20 rounded-xl p-4 mb-4">
-                    <div className="flex items-center justify-center gap-6">
+                  <div className="bg-black/20 rounded-xl p-3 mb-3">
+                    <div className="flex items-center justify-center gap-4">
                       {/* Predicted Section */}
                       <div className="text-center flex-1">
-                        <div className="text-gray-400 text-xs uppercase tracking-wider mb-3 font-medium">Predicted</div>
-                        <div className="flex items-center justify-center gap-3">
+                        <div className="text-gray-400 text-xs uppercase tracking-wider mb-2 font-medium">Predicted</div>
+                        <div className="flex items-center justify-center gap-2">
                           <div className="relative">
-                            <div className={`text-white px-4 py-2 rounded-xl font-bold text-sm shadow-lg ${index % 2 === 0 ? 'bg-emerald-500' : 'bg-red-500'}`}>
+                            <div className={`text-white px-3 py-1 rounded-lg font-bold text-xs shadow-lg ${index % 2 === 0 ? 'bg-emerald-500' : 'bg-red-500'}`}>
                               {index % 2 === 0 ? 'BIG' : 'SMALL'}
                             </div>
-                            <div className="absolute -top-1 -right-1 w-3 h-3 bg-white rounded-full border-2 border-gray-800"></div>
+                            <div className="absolute -top-1 -right-1 w-2 h-2 bg-white rounded-full border border-gray-800"></div>
                           </div>
-                          <div className={`text-white w-12 h-12 rounded-xl flex items-center justify-center font-bold text-lg shadow-lg border-2 ${result.number >= 5 ? 'bg-emerald-500 border-emerald-400' : 'bg-red-500 border-red-400'}`}>
+                          <div className={`text-white w-8 h-8 rounded-lg flex items-center justify-center font-bold text-sm shadow-lg border ${result.number >= 5 ? 'bg-emerald-500 border-emerald-400' : 'bg-red-500 border-red-400'}`}>
                             {result.number}
                           </div>
                         </div>
@@ -252,22 +252,22 @@ export default function Wingo() {
 
                       {/* VS Divider */}
                       <div className="flex flex-col items-center">
-                        <div className="w-px h-12 bg-gradient-to-b from-transparent via-gray-500 to-transparent"></div>
-                        <div className="text-gray-400 font-bold text-sm my-2 px-2 py-1 rounded-lg bg-white/5">VS</div>
-                        <div className="w-px h-12 bg-gradient-to-b from-transparent via-gray-500 to-transparent"></div>
+                        <div className="w-px h-8 bg-gradient-to-b from-transparent via-gray-500 to-transparent"></div>
+                        <div className="text-gray-400 font-bold text-xs my-1 px-2 py-1 rounded bg-white/5">VS</div>
+                        <div className="w-px h-8 bg-gradient-to-b from-transparent via-gray-500 to-transparent"></div>
                       </div>
 
                       {/* Actual Section */}
                       <div className="text-center flex-1">
-                        <div className="text-gray-400 text-xs uppercase tracking-wider mb-3 font-medium">Actual</div>
-                        <div className="flex items-center justify-center gap-3">
+                        <div className="text-gray-400 text-xs uppercase tracking-wider mb-2 font-medium">Actual</div>
+                        <div className="flex items-center justify-center gap-2">
                           <div className="relative">
-                            <div className={`text-white px-4 py-2 rounded-xl font-bold text-sm shadow-lg ${result.number >= 5 ? 'bg-emerald-500' : 'bg-red-500'}`}>
+                            <div className={`text-white px-3 py-1 rounded-lg font-bold text-xs shadow-lg ${result.number >= 5 ? 'bg-emerald-500' : 'bg-red-500'}`}>
                               {result.number >= 5 ? 'BIG' : 'SMALL'}
                             </div>
-                            <div className="absolute -top-1 -right-1 w-3 h-3 bg-emerald-400 rounded-full animate-pulse"></div>
+                            <div className="absolute -top-1 -right-1 w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></div>
                           </div>
-                          <div className={`text-white w-12 h-12 rounded-xl flex items-center justify-center font-bold text-lg shadow-lg border-2 ${result.number >= 5 ? 'bg-emerald-500 border-emerald-400' : 'bg-red-500 border-red-400'}`}>
+                          <div className={`text-white w-8 h-8 rounded-lg flex items-center justify-center font-bold text-sm shadow-lg border ${result.number >= 5 ? 'bg-emerald-500 border-emerald-400' : 'bg-red-500 border-red-400'}`}>
                             {result.number}
                           </div>
                         </div>
@@ -278,16 +278,16 @@ export default function Wingo() {
                   {/* Result Badge */}
                   <div className="flex justify-center">
                     {(index % 2 === 0 && result.number >= 5) || (index % 2 === 1 && result.number < 5) ? (
-                      <div className="bg-emerald-500 text-white px-6 py-2 rounded-full text-sm font-bold shadow-lg flex items-center gap-2">
-                        <div className="w-4 h-4 bg-white rounded-full flex items-center justify-center">
-                          <div className="w-2 h-2 bg-emerald-500 rounded-full"></div>
+                      <div className="bg-emerald-500 text-white px-4 py-1 rounded-full text-xs font-bold shadow-lg flex items-center gap-1">
+                        <div className="w-3 h-3 bg-white rounded-full flex items-center justify-center">
+                          <div className="w-1 h-1 bg-emerald-500 rounded-full"></div>
                         </div>
                         WIN
                       </div>
                     ) : (
-                      <div className="bg-red-500 text-white px-6 py-2 rounded-full text-sm font-bold shadow-lg flex items-center gap-2">
-                        <div className="w-4 h-4 bg-white rounded-full flex items-center justify-center">
-                          <div className="w-2 h-2 bg-red-500 rounded-full"></div>
+                      <div className="bg-red-500 text-white px-4 py-1 rounded-full text-xs font-bold shadow-lg flex items-center gap-1">
+                        <div className="w-3 h-3 bg-white rounded-full flex items-center justify-center">
+                          <div className="w-1 h-1 bg-red-500 rounded-full"></div>
                         </div>
                         LOSS
                       </div>
