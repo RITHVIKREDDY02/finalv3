@@ -52,6 +52,17 @@ export default function Wingo1Min() {
     return number >= 5 ? "BIG" : "SMALL";
   };
 
+  const getCurrentISTTime = (): string => {
+    const now = new Date();
+    return now.toLocaleTimeString('en-IN', { 
+      timeZone: 'Asia/Kolkata',
+      hour12: false,
+      hour: '2-digit', 
+      minute: '2-digit',
+      second: '2-digit'
+    });
+  };
+
   return (
     <div className="min-h-screen" style={{ backgroundColor: '#231C21' }}>
       {/* Header */}

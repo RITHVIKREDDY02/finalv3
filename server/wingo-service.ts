@@ -194,9 +194,10 @@ class WingoService {
       const prediction = this.analyzeTrend(results);
       const config = WINGO_VARIANTS[variant];
       
-      // Calculate real countdown based on period end time
+      // Calculate real countdown based on period end time in IST
       let countdown = config.intervalSeconds / 2; // default fallback
       if (currentPeriod.endTime) {
+        // Convert to IST (UTC+5:30)
         const now = Date.now();
         const endTime = currentPeriod.endTime;
         countdown = Math.max(0, Math.floor((endTime - now) / 1000));

@@ -80,6 +80,18 @@ export default function Wingo() {
     return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
   };
 
+  const getCurrentISTTime = (): string => {
+    const now = new Date();
+    const istTime = new Date(now.getTime() + (5.5 * 60 * 60 * 1000)); // Add 5:30 hours for IST
+    return istTime.toLocaleTimeString('en-IN', { 
+      timeZone: 'Asia/Kolkata',
+      hour12: false,
+      hour: '2-digit', 
+      minute: '2-digit',
+      second: '2-digit'
+    });
+  };
+
   const variants = [
     { key: "30sec" as WingoVariant, label: "Wingo 30Sec", time: "30s", icon: "⚡" },
     { key: "1min" as WingoVariant, label: "Wingo 1Min", time: "1m", icon: "🚀" },

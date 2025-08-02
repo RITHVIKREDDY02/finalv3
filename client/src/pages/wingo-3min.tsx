@@ -58,6 +58,17 @@ export default function Wingo3Min() {
     return `${mins}:${secs.toString().padStart(2, '0')}`;
   };
 
+  const getCurrentISTTime = (): string => {
+    const now = new Date();
+    return now.toLocaleTimeString('en-IN', { 
+      timeZone: 'Asia/Kolkata',
+      hour12: false,
+      hour: '2-digit', 
+      minute: '2-digit',
+      second: '2-digit'
+    });
+  };
+
   return (
     <div className="min-h-screen" style={{ backgroundColor: '#231C21' }}>
       {/* Header */}

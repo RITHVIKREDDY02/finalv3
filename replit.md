@@ -27,6 +27,8 @@ A dynamic prediction/lottery gaming platform with user registration and approval
 - **2025-02-02**: **MAJOR**: Implemented live prediction algorithm from provided Python code
 - **2025-02-02**: **MAJOR**: Connected to live data sources with real period numbers and results
 - **2025-02-02**: Added real countdown calculation based on actual period end times
+- **2025-02-02**: **TIMER UPDATE**: Implemented IST (Indian Standard Time) display across all Wingo variants
+- **2025-02-02**: Added real-time IST clock alongside countdown timers in all pages (30sec, 1min, 3min, 5min)
 
 ## User Preferences
 - Store UID in browser localStorage to avoid repeated registration
