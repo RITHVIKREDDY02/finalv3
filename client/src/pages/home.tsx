@@ -1,5 +1,5 @@
 import { Card } from "@/components/ui/card";
-import { Volume2, Play, Award, Crown } from "lucide-react";
+import { Volume2 } from "lucide-react";
 import { useState, useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { FaTelegram } from "react-icons/fa";
@@ -239,59 +239,32 @@ export default function Home() {
       {/* Action Buttons - Below Hero Banner */}
       <div className="px-6 md:px-8 lg:px-12 xl:px-16 pb-6">
         <div className="max-w-2xl mx-auto lg:max-w-7xl">
-          <div className="flex flex-row gap-3 sm:gap-4 md:gap-6 justify-center items-center">
+          <div className="flex flex-row gap-2 sm:gap-4 md:gap-6 justify-center items-center">
             {/* DEMO Button */}
             <button 
-              className="group relative flex-1 md:flex-none md:w-36 lg:w-40 px-4 sm:px-6 md:px-8 py-3 font-bold rounded-2xl shadow-xl transition-all duration-300 transform hover:scale-110 hover:shadow-2xl text-sm sm:text-base overflow-hidden"
-              style={{
-                background: 'linear-gradient(135deg, #FF6B6B 0%, #FF8E8E 50%, #FFB6B6 100%)',
-                border: '2px solid rgba(255, 255, 255, 0.3)',
-                color: '#FFFFFF'
-              }}
+              className="flex-1 md:flex-none md:w-32 lg:w-36 px-4 sm:px-6 md:px-8 py-2 custom-button font-bold rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 text-sm sm:text-base"
               onClick={() => setShowDemoDialog(true)}
             >
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
-              <div className="flex items-center justify-center gap-2 relative z-10">
-                <Play className="w-4 h-4" />
-                <span>DEMO</span>
-              </div>
+              DEMO
             </button>
             
             {/* PROOF Button */}
             <button 
-              className="group relative flex-1 md:flex-none md:w-36 lg:w-40 px-4 sm:px-6 md:px-8 py-3 font-bold rounded-2xl shadow-xl transition-all duration-300 transform hover:scale-110 hover:shadow-2xl text-sm sm:text-base overflow-hidden"
-              style={{
-                background: 'linear-gradient(135deg, #4ECDC4 0%, #44B3AC 50%, #3A9B95 100%)',
-                border: '2px solid rgba(255, 255, 255, 0.3)',
-                color: '#FFFFFF'
-              }}
+              className="flex-1 md:flex-none md:w-32 lg:w-36 px-4 sm:px-6 md:px-8 py-2 custom-button font-bold rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 text-sm sm:text-base"
               onClick={() => {
                 console.log('Proof clicked');
                 setShowProofDialog(true);
               }}
             >
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
-              <div className="flex items-center justify-center gap-2 relative z-10">
-                <Award className="w-4 h-4" />
-                <span>PROOF</span>
-              </div>
+              PROOF
             </button>
             
             {/* VIP Button */}
             <button 
-              className="group relative flex-1 md:flex-none md:w-36 lg:w-40 px-4 sm:px-6 md:px-8 py-3 font-bold rounded-2xl shadow-xl transition-all duration-300 transform hover:scale-110 hover:shadow-2xl text-sm sm:text-base overflow-hidden"
-              style={{
-                background: 'linear-gradient(135deg, #FFD700 0%, #FFC700 50%, #FFB700 100%)',
-                border: '2px solid rgba(255, 255, 255, 0.3)',
-                color: '#2C1810'
-              }}
+              className="flex-1 md:flex-none md:w-32 lg:w-36 px-4 sm:px-6 md:px-8 py-2 custom-button font-bold rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 text-sm sm:text-base"
               onClick={() => console.log('VIP clicked')}
             >
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
-              <div className="flex items-center justify-center gap-2 relative z-10">
-                <Crown className="w-4 h-4" />
-                <span>VIP</span>
-              </div>
+              VIP
             </button>
           </div>
         </div>
@@ -552,55 +525,62 @@ export default function Home() {
 
       {/* Proof Dialog */}
       {showProofDialog && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
-          <div className="rounded-lg max-w-lg w-full max-h-[70vh] overflow-y-auto" style={{ backgroundColor: '#FED358' }}>
-            <div className="p-6">
-              <div className="flex justify-between items-center mb-6">
-                <h2 className="text-2xl font-bold text-black">System Proof - Live Results</h2>
+        <div className="fixed inset-0 bg-black bg-opacity-60 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+          <div className="rounded-3xl max-w-lg w-full max-h-[70vh] overflow-y-auto shadow-2xl border-2 border-white/20" style={{ background: 'linear-gradient(135deg, #FED358 0%, #FFE082 50%, #FFF3A0 100%)' }}>
+            <div className="p-8">
+              <div className="flex justify-between items-center mb-8">
+                <h2 className="text-3xl font-bold text-black bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent">System Proof - Live Results</h2>
                 <button
                   onClick={() => setShowProofDialog(false)}
-                  className="text-gray-600 hover:text-black text-xl font-bold"
+                  className="text-gray-600 hover:text-black text-2xl font-bold bg-white/20 rounded-full w-8 h-8 flex items-center justify-center hover:bg-white/40 transition-all duration-200"
                 >
                   ×
                 </button>
               </div>
               
-              <div className="space-y-6">
+              <div className="space-y-8">
                 <div>
-                  <h3 className="text-lg font-semibold text-gray-800 mb-3">Live Prediction Interface</h3>
-                  <div className="rounded-lg p-4" style={{ backgroundColor: 'transparent' }}>
+                  <h3 className="text-xl font-bold text-gray-800 mb-4 flex items-center">
+                    <span className="w-2 h-6 bg-gradient-to-b from-blue-500 to-blue-700 rounded-full mr-3"></span>
+                    Live Prediction Interface
+                  </h3>
+                  <div className="rounded-2xl p-6 bg-gradient-to-br from-white/30 to-white/10 backdrop-blur-sm border border-white/30">
                     <img 
                       src={proofImage1} 
                       alt="Live Wingo Prediction System showing BIG 8 prediction with timer" 
-                      className="w-1/2 mx-auto rounded-lg shadow-lg"
+                      className="w-3/4 mx-auto rounded-xl shadow-2xl border-2 border-white/50"
                     />
-
                   </div>
                 </div>
                 
                 <div>
-                  <h3 className="text-lg font-semibold text-gray-800 mb-3">Results & Rewards System</h3>
-                  <div className="rounded-lg p-4" style={{ backgroundColor: 'transparent' }}>
+                  <h3 className="text-xl font-bold text-gray-800 mb-4 flex items-center">
+                    <span className="w-2 h-6 bg-gradient-to-b from-green-500 to-green-700 rounded-full mr-3"></span>
+                    Results & Rewards System
+                  </h3>
+                  <div className="rounded-2xl p-6 bg-gradient-to-br from-white/30 to-white/10 backdrop-blur-sm border border-white/30">
                     <img 
                       src={proofImage2} 
                       alt="Congratulations screen showing Red 8 Big result with ₹1,960 bonus" 
-                      className="w-1/2 mx-auto rounded-lg shadow-lg"
+                      className="w-3/4 mx-auto rounded-xl shadow-2xl border-2 border-white/50"
                     />
-
                   </div>
                 </div>
 
-                <div className="bg-green-100 rounded-lg p-4">
-                  <h4 className="text-green-800 font-semibold mb-2">Verified Features</h4>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-2 text-sm text-green-700">
-                    <div>✓ Truly balanced predictions</div>
-                    <div>✓ Live API integration</div>
-                    <div>✓ Real-time countdown timers</div>
-                    <div>✓ Authentic period numbers</div>
-                    <div>✓ User registration system</div>
-                    <div>✓ Admin panel controls</div>
-                    <div>✓ Results & rewards tracking</div>
-                    <div>✓ Multi-variant support</div>
+                <div className="bg-gradient-to-br from-green-400/20 to-green-600/20 rounded-2xl p-6 border border-green-400/30 backdrop-blur-sm">
+                  <h4 className="text-green-800 font-bold text-lg mb-4 flex items-center">
+                    <span className="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center text-white text-sm mr-3">✓</span>
+                    Verified Features
+                  </h4>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm text-green-800">
+                    <div className="flex items-center"><span className="w-2 h-2 bg-green-500 rounded-full mr-2"></span>Truly balanced predictions</div>
+                    <div className="flex items-center"><span className="w-2 h-2 bg-green-500 rounded-full mr-2"></span>Live API integration</div>
+                    <div className="flex items-center"><span className="w-2 h-2 bg-green-500 rounded-full mr-2"></span>Real-time countdown timers</div>
+                    <div className="flex items-center"><span className="w-2 h-2 bg-green-500 rounded-full mr-2"></span>Authentic period numbers</div>
+                    <div className="flex items-center"><span className="w-2 h-2 bg-green-500 rounded-full mr-2"></span>User registration system</div>
+                    <div className="flex items-center"><span className="w-2 h-2 bg-green-500 rounded-full mr-2"></span>Admin panel controls</div>
+                    <div className="flex items-center"><span className="w-2 h-2 bg-green-500 rounded-full mr-2"></span>Results & rewards tracking</div>
+                    <div className="flex items-center"><span className="w-2 h-2 bg-green-500 rounded-full mr-2"></span>Multi-variant support</div>
                   </div>
                 </div>
               </div>
@@ -611,60 +591,72 @@ export default function Home() {
 
       {/* Demo Dialog */}
       {showDemoDialog && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
-          <div className="rounded-lg max-w-lg w-full max-h-[70vh] overflow-y-auto" style={{ backgroundColor: '#FED358' }}>
-            <div className="p-6">
-              <div className="flex justify-between items-center mb-6">
-                <h2 className="text-2xl font-bold text-black">Demo - How It Works</h2>
+        <div className="fixed inset-0 bg-black bg-opacity-60 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+          <div className="rounded-3xl max-w-lg w-full max-h-[70vh] overflow-y-auto shadow-2xl border-2 border-white/20" style={{ background: 'linear-gradient(135deg, #FED358 0%, #FFE082 50%, #FFF3A0 100%)' }}>
+            <div className="p-8">
+              <div className="flex justify-between items-center mb-8">
+                <h2 className="text-3xl font-bold text-black bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent">Demo - How It Works</h2>
                 <button
                   onClick={() => setShowDemoDialog(false)}
-                  className="text-gray-600 hover:text-black text-xl font-bold"
+                  className="text-gray-600 hover:text-black text-2xl font-bold bg-white/20 rounded-full w-8 h-8 flex items-center justify-center hover:bg-white/40 transition-all duration-200"
                 >
                   ×
                 </button>
               </div>
               
-              <div className="space-y-6">
+              <div className="space-y-8">
                 <div>
-                  <h3 className="text-lg font-semibold text-gray-800 mb-3">Step 1: Choose Game Variant</h3>
-                  <div className="rounded-lg p-4" style={{ backgroundColor: 'transparent' }}>
+                  <h3 className="text-xl font-bold text-gray-800 mb-4 flex items-center">
+                    <span className="w-8 h-8 bg-gradient-to-br from-purple-500 to-purple-700 rounded-full flex items-center justify-center text-white font-bold text-sm mr-3">1</span>
+                    Choose Game Variant
+                  </h3>
+                  <div className="rounded-2xl p-6 bg-gradient-to-br from-white/30 to-white/10 backdrop-blur-sm border border-white/30">
                     <img 
                       src={demoImage1} 
                       alt="Wingo game variants selection" 
-                      className="w-full mx-auto rounded-lg shadow-lg"
+                      className="w-full mx-auto rounded-xl shadow-2xl border-2 border-white/50"
                     />
                   </div>
                 </div>
                 
                 <div>
-                  <h3 className="text-lg font-semibold text-gray-800 mb-3">Step 2: View Period & Timer</h3>
-                  <div className="rounded-lg p-4" style={{ backgroundColor: 'transparent' }}>
+                  <h3 className="text-xl font-bold text-gray-800 mb-4 flex items-center">
+                    <span className="w-8 h-8 bg-gradient-to-br from-orange-500 to-orange-700 rounded-full flex items-center justify-center text-white font-bold text-sm mr-3">2</span>
+                    View Period & Timer
+                  </h3>
+                  <div className="rounded-2xl p-6 bg-gradient-to-br from-white/30 to-white/10 backdrop-blur-sm border border-white/30">
                     <img 
                       src={demoImage2} 
                       alt="Period number and countdown timer" 
-                      className="w-full mx-auto rounded-lg shadow-lg"
+                      className="w-full mx-auto rounded-xl shadow-2xl border-2 border-white/50"
                     />
                   </div>
                 </div>
 
                 <div>
-                  <h3 className="text-lg font-semibold text-gray-800 mb-3">Step 3: Get VIP Prediction</h3>
-                  <div className="rounded-lg p-4" style={{ backgroundColor: 'transparent' }}>
+                  <h3 className="text-xl font-bold text-gray-800 mb-4 flex items-center">
+                    <span className="w-8 h-8 bg-gradient-to-br from-red-500 to-red-700 rounded-full flex items-center justify-center text-white font-bold text-sm mr-3">3</span>
+                    Get VIP Prediction
+                  </h3>
+                  <div className="rounded-2xl p-6 bg-gradient-to-br from-white/30 to-white/10 backdrop-blur-sm border border-white/30">
                     <img 
                       src={demoImage3} 
                       alt="VIP prediction showing color, size and number" 
-                      className="w-full mx-auto rounded-lg shadow-lg"
+                      className="w-full mx-auto rounded-xl shadow-2xl border-2 border-white/50"
                     />
                   </div>
                 </div>
 
-                <div className="bg-blue-100 rounded-lg p-4">
-                  <h4 className="text-blue-800 font-semibold mb-2">How to Get Started</h4>
-                  <div className="text-sm text-blue-700 space-y-1">
-                    <div>1. Click on any game card</div>
-                    <div>2. Register with your UID</div>
-                    <div>3. Wait for admin approval</div>
-                    <div>4. Access VIP predictions</div>
+                <div className="bg-gradient-to-br from-blue-400/20 to-blue-600/20 rounded-2xl p-6 border border-blue-400/30 backdrop-blur-sm">
+                  <h4 className="text-blue-800 font-bold text-lg mb-4 flex items-center">
+                    <span className="w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center text-white text-sm mr-3">🚀</span>
+                    How to Get Started
+                  </h4>
+                  <div className="text-sm text-blue-800 space-y-3">
+                    <div className="flex items-center"><span className="w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center text-white text-xs mr-3">1</span>Click on any game card</div>
+                    <div className="flex items-center"><span className="w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center text-white text-xs mr-3">2</span>Register with your UID</div>
+                    <div className="flex items-center"><span className="w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center text-white text-xs mr-3">3</span>Wait for admin approval</div>
+                    <div className="flex items-center"><span className="w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center text-white text-xs mr-3">4</span>Access VIP predictions</div>
                   </div>
                 </div>
               </div>
