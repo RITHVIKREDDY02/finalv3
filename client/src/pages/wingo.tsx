@@ -133,11 +133,8 @@ export default function Wingo() {
                     padding: '12px 16px',
                     borderRadius: '16px',
                     background: selectedVariant === variant.key 
-                      ? 'rgb(37, 150, 190)'
-                      : 'transparent',
-                    color: selectedVariant === variant.key 
                       ? 'rgba(255,208,90,254)'
-                      : undefined
+                      : 'transparent'
                   }}
                 >
                   {variant.label}
