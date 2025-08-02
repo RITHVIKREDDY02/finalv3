@@ -547,7 +547,7 @@ export default function Home() {
                     <img 
                       src={proofImage1} 
                       alt="Live Wingo Prediction System showing BIG 8 prediction with timer" 
-                      className="w-3/4 mx-auto rounded-lg shadow-lg"
+                      className="w-1/2 mx-auto rounded-lg shadow-lg"
                     />
                     <p className="text-gray-300 mt-3 text-sm">
                       ✅ Live timer countdown (00:42 remaining)<br/>
@@ -564,7 +564,7 @@ export default function Home() {
                     <img 
                       src={proofImage2} 
                       alt="Congratulations screen showing Red 8 Big result with ₹1,960 bonus" 
-                      className="w-3/4 mx-auto rounded-lg shadow-lg"
+                      className="w-1/2 mx-auto rounded-lg shadow-lg"
                     />
                     <p className="text-gray-300 mt-3 text-sm">
                       ✅ Results: Red 8 Big (matching prediction)<br/>
