@@ -468,11 +468,11 @@ export default function Home() {
         </div>
 
         {/* Secondary Action Buttons */}
-        <div className="mt-8 flex justify-center">
-          <div className="flex flex-row gap-2 sm:gap-4 md:gap-6 justify-center items-center max-w-lg">
+        <div className="mt-6 flex justify-center">
+          <div className="flex flex-row gap-1 sm:gap-2 md:gap-4 lg:gap-6 justify-center items-center w-full max-w-sm sm:max-w-md md:max-w-lg">
             {/* About Us Button */}
             <button 
-              className="flex-1 md:flex-none md:w-36 lg:w-40 px-4 sm:px-6 md:px-8 py-2 custom-button font-bold rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 text-sm sm:text-base"
+              className="flex-1 md:flex-none md:w-32 lg:w-36 px-2 sm:px-3 md:px-6 lg:px-8 py-1.5 sm:py-2 custom-button font-bold rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 text-xs sm:text-sm md:text-base"
               onClick={() => console.log('About Us clicked')}
             >
               ABOUT US
@@ -480,7 +480,7 @@ export default function Home() {
             
             {/* Disclaimer Button */}
             <button 
-              className="flex-1 md:flex-none md:w-36 lg:w-40 px-4 sm:px-6 md:px-8 py-2 custom-button font-bold rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 text-sm sm:text-base"
+              className="flex-1 md:flex-none md:w-32 lg:w-36 px-2 sm:px-3 md:px-6 lg:px-8 py-1.5 sm:py-2 custom-button font-bold rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 text-xs sm:text-sm md:text-base"
               onClick={() => console.log('Disclaimer clicked')}
             >
               DISCLAIMER
@@ -488,7 +488,7 @@ export default function Home() {
             
             {/* Warning Button */}
             <button 
-              className="flex-1 md:flex-none md:w-36 lg:w-40 px-4 sm:px-6 md:px-8 py-2 custom-button font-bold rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 text-sm sm:text-base"
+              className="flex-1 md:flex-none md:w-32 lg:w-36 px-2 sm:px-3 md:px-6 lg:px-8 py-1.5 sm:py-2 custom-button font-bold rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 text-xs sm:text-sm md:text-base"
               onClick={() => console.log('Warning clicked')}
             >
               WARNING
