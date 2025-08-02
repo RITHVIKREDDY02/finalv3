@@ -134,7 +134,33 @@ export default function VipPredictionDialog({ isOpen, onClose, uid, onBackToRegi
             </div>
           )}
 
-          <div className="space-y-3">
+          <div className="space-y-4">
+            <div className="flex gap-2 justify-center">
+              <Button
+                className="btn-body-bg px-4 py-2 rounded-full font-semibold"
+                onClick={() => window.open("https://tashanwin6.com/#/register?invitationCode=56822100324", "_blank")}
+              >
+                🚀 Start
+              </Button>
+              <Button
+                className={`px-4 py-2 rounded-full font-semibold ${
+                  userStatus?.approved 
+                    ? "btn-custom-gold" 
+                    : "btn-body-bg opacity-50 cursor-not-allowed"
+                }`}
+                onClick={handleContinue}
+                disabled={!userStatus?.approved}
+              >
+                🔒 Continue
+              </Button>
+              <Button
+                className="btn-body-bg px-4 py-2 rounded-full font-semibold"
+                onClick={handleHelp}
+              >
+                ❓ Help
+              </Button>
+            </div>
+
             <Button
               onClick={handleContinue}
               disabled={!userStatus?.approved}

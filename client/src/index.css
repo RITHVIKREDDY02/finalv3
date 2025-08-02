@@ -91,6 +91,25 @@
     color: black !important;
     opacity: 0.6;
   }
+  
+  /* Body background color buttons with golden text */
+  .btn-body-bg {
+    background-color: #231C21 !important;
+    color: #FED358 !important;
+    border: 1px solid #FED358 !important;
+  }
+  
+  .btn-body-bg:hover {
+    background-color: #2a1f26 !important;
+    color: #FED358 !important;
+    opacity: 0.9;
+  }
+  
+  .btn-body-bg:disabled {
+    background-color: #231C21 !important;
+    color: #FED358 !important;
+    opacity: 0.5;
+  }
   .super-rounded {
     border-radius: 50px !important;
   }

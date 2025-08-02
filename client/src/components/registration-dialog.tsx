@@ -152,8 +152,28 @@ export default function RegistrationDialog({ isOpen, onClose, onRegistrationSucc
             </form>
           </Form>
 
-          <div className="text-center">
-            <p className="text-sm text-black mb-2">Need help?</p>
+          <div className="text-center space-y-3">
+            <div className="flex gap-2 justify-center">
+              <Button
+                className="btn-body-bg px-4 py-2 rounded-full font-semibold"
+                onClick={handleStartButtonClick}
+              >
+                🚀 Start
+              </Button>
+              <Button
+                className="btn-body-bg px-4 py-2 rounded-full font-semibold"
+                disabled
+              >
+                🔒 Continue
+              </Button>
+              <Button
+                className="btn-body-bg px-4 py-2 rounded-full font-semibold"
+                onClick={handleHelp}
+              >
+                ❓ Help
+              </Button>
+            </div>
+            <p className="text-sm text-black">Need help?</p>
             <Button
               variant="outline"
               className="border-black text-black hover:bg-gray-100 bg-white"
