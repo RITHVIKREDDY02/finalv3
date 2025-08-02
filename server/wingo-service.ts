@@ -787,27 +787,40 @@ class WingoService {
     await Promise.all(promises);
   }
 
-  // Get cached prediction or generate new one
+  // Get prediction on-demand with fresh data and result checking
   async getCachedPrediction(variant: string): Promise<WingoPrediction | null> {
-    // Return cached prediction if available
-    if (this.predictionCache.has(variant)) {
-      const cached = this.predictionCache.get(variant)!;
+    // Always check for new results first
+    await this.checkAndUpdateResults(variant);
+    
+    // Check if we have a cached prediction and if it's still valid
+    const currentPeriod = await this.getCurrentPeriod(variant);
+    const cached = this.predictionCache.get(variant);
+    
+    // Generate new prediction if:
+    // 1. No cached prediction exists
+    // 2. Period has changed
+    // 3. Countdown is very low (less than 5 seconds)
+    const shouldGenerateNew = !cached || 
+                             !currentPeriod || 
+                             cached.period !== currentPeriod.issueNumber ||
+                             (cached.countdown && cached.countdown < 5);
+    
+    if (shouldGenerateNew) {
+      const newPrediction = await this.generatePrediction(variant);
+      if (newPrediction) {
+        await this.storePrediction(variant, newPrediction);
+        this.predictionCache.set(variant, newPrediction);
+        return newPrediction;
+      }
+    }
+    
+    // Update countdown for existing cached prediction
+    if (cached && currentPeriod) {
+      cached.period = currentPeriod.issueNumber;
       
-      // Get fresh period data to update both countdown AND period number in real-time
-      const currentPeriod = await this.getCurrentPeriod(variant);
-      if (currentPeriod) {
-        // Update period number to current period
-        cached.period = currentPeriod.issueNumber;
-        
-        // Update countdown
-        if (currentPeriod.endTime) {
-          cached.countdown = this.calculateAPICountdown(currentPeriod.endTime);
-        } else {
-          const config = WINGO_VARIANTS[variant];
-          cached.countdown = this.calculateFallbackCountdown(config.intervalSeconds);
-        }
+      if (currentPeriod.endTime) {
+        cached.countdown = this.calculateAPICountdown(currentPeriod.endTime);
       } else {
-        // Fallback countdown calculation if API fails
         const config = WINGO_VARIANTS[variant];
         cached.countdown = this.calculateFallbackCountdown(config.intervalSeconds);
       }
@@ -815,41 +828,18 @@ class WingoService {
       return cached;
     }
     
-    // Generate new prediction if not cached
+    // Fallback: generate new prediction
     return await this.generatePrediction(variant);
   }
 
-  // Start individual background schedulers for each variant
+  // Initialize predictions on server start (no continuous schedulers)
   startBackgroundScheduler(): void {
-    console.log('🚀 Starting background prediction schedulers...');
+    console.log('🚀 Initializing Wingo prediction service...');
     
-    // Run initial predictions for all variants
+    // Run initial predictions for all variants once
     this.runInitialPredictions();
     
-    // Set up faster result checking interval (every 5 seconds) for all variants
-    const resultChecker = setInterval(() => {
-      Object.keys(WINGO_VARIANTS).forEach(variant => {
-        this.checkAndUpdateResults(variant);
-      });
-    }, 5000); // Check results every 5 seconds
-    
-    this.variantSchedulers.set('result-checker', resultChecker);
-    console.log('⚡ Fast result checker started - checking all variants every 5 seconds');
-    
-    // Set up individual prediction update timers for each variant based on their intervals
-    Object.entries(WINGO_VARIANTS).forEach(([variant, config]) => {
-      // Use a smaller interval for more frequent updates but sync with period boundaries
-      const updateIntervalMs = Math.min(config.intervalSeconds * 1000, 10000); // Max 10 seconds
-      
-      const scheduler = setInterval(async () => {
-        await this.runPredictionForVariant(variant);
-      }, updateIntervalMs);
-      
-      this.variantSchedulers.set(variant, scheduler);
-      console.log(`⏰ ${variant} scheduler started - updating every ${updateIntervalMs/1000} seconds (${updateIntervalMs/1000/60} min)`);
-    });
-    
-    console.log('✅ All variant-specific schedulers started with fast result sync');
+    console.log('✅ Initial predictions generated - service ready for on-demand requests');
   }
 
   // Stop all background schedulers

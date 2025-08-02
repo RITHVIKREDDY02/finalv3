@@ -37,6 +37,8 @@ A dynamic prediction/lottery gaming platform with user registration and approval
 - **2025-02-02**: **DATABASE INTEGRITY**: Added unique constraints to prevent duplicate predictions on page refresh
 - **2025-02-02**: **PENDING PREDICTIONS**: Implemented complete pending prediction display in game history
 - **2025-02-02**: **DATA VERIFICATION**: Confirmed all prediction data is authentic and synchronized with live ar-lottery01.com API
+- **2025-02-02**: **PERFORMANCE OPTIMIZATION**: Changed from continuous background schedulers to on-demand prediction generation
+- **2025-02-02**: **SERVER EFFICIENCY**: Server now only generates initial predictions on startup, then processes requests as needed
 
 ## User Preferences
 - Store UID in browser localStorage to avoid repeated registration
