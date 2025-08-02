@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { useQuery } from "@tanstack/react-query";
-import { ArrowLeft, Play, Trophy, Clock, TrendingUp, Eye, RefreshCw } from "lucide-react";
+import { useQuery, useMutation } from "@tanstack/react-query";
+import { ArrowLeft, Play, Trophy, Clock, TrendingUp, Eye, RefreshCw, RotateCcw } from "lucide-react";
 import { useLocation } from "wouter";
-import { queryClient } from "@/lib/queryClient";
+import { queryClient, apiRequest } from "@/lib/queryClient";
+import { useToast } from "@/hooks/use-toast";
 import wingoIssueImage from "@assets/wingoissue-2e0f92ab_1754126687302.webp";
 
 type WingoVariant = "30sec" | "1min" | "3min" | "5min";
@@ -27,6 +28,7 @@ export default function Wingo() {
   const [, navigate] = useLocation();
   const [selectedVariant, setSelectedVariant] = useState<WingoVariant>("30sec");
   const [countdown, setCountdown] = useState(30);
+  const { toast } = useToast();
 
   // Fetch prediction data for selected variant
   const { data: prediction } = useQuery<WingoPrediction>({
@@ -40,6 +42,13 @@ export default function Wingo() {
   const { data: results = [] } = useQuery<WingoResult[]>({
     queryKey: [`/api/wingo/results/${selectedVariant}`],
     refetchInterval: 15000,
+    enabled: !!selectedVariant,
+  });
+
+  // Fetch prediction history with win/loss tracking for selected variant
+  const { data: history = [] } = useQuery<any[]>({
+    queryKey: [`/api/wingo/history/${selectedVariant}`],
+    refetchInterval: 15000, // Refetch every 15 seconds
     enabled: !!selectedVariant,
   });
 
@@ -112,7 +121,29 @@ export default function Wingo() {
     // Immediately invalidate cache for new variant to get fresh data
     queryClient.invalidateQueries({ queryKey: [`/api/wingo/prediction/${variant}`] });
     queryClient.invalidateQueries({ queryKey: [`/api/wingo/results/${variant}`] });
+    queryClient.invalidateQueries({ queryKey: [`/api/wingo/history/${variant}`] });
   };
+
+  // Clear history mutation
+  const clearHistoryMutation = useMutation({
+    mutationFn: async () => {
+      return apiRequest(`/api/wingo/history/${selectedVariant}`, 'DELETE');
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: [`/api/wingo/history/${selectedVariant}`] });
+      toast({
+        title: "History Cleared",
+        description: "Game history has been reset. Starting fresh!",
+      });
+    },
+    onError: () => {
+      toast({
+        title: "Error",
+        description: "Failed to clear history. Please try again.",
+        variant: "destructive",
+      });
+    }
+  });
 
   // Get number color based on value (0-9)
   const getNumberColor = (num: number): string => {
@@ -140,16 +171,29 @@ export default function Wingo() {
           <span>Back</span>
         </button>
         <h1 className="text-xl font-bold text-white">WINGO GAMES</h1>
-        <button
-          onClick={() => {
-            queryClient.invalidateQueries({ queryKey: [`/api/wingo/prediction/${selectedVariant}`] });
-            queryClient.invalidateQueries({ queryKey: [`/api/wingo/results/${selectedVariant}`] });
-          }}
-          className="flex items-center justify-center w-10 h-10 text-white hover:text-yellow-400 transition-colors rounded-lg hover:bg-gray-700"
-          title="Refresh"
-        >
-          <RefreshCw className="w-5 h-5" />
-        </button>
+        <div className="flex items-center gap-2">
+          <Button
+            onClick={() => clearHistoryMutation.mutate()}
+            disabled={clearHistoryMutation.isPending || history.length === 0}
+            variant="outline"
+            size="sm"
+            className="text-yellow-400 border-yellow-400 hover:bg-yellow-400 hover:text-black transition-colors"
+          >
+            <RotateCcw className="w-4 h-4 mr-2" />
+            {clearHistoryMutation.isPending ? 'Clearing...' : 'Start Fresh'}
+          </Button>
+          <button
+            onClick={() => {
+              queryClient.invalidateQueries({ queryKey: [`/api/wingo/prediction/${selectedVariant}`] });
+              queryClient.invalidateQueries({ queryKey: [`/api/wingo/results/${selectedVariant}`] });
+              queryClient.invalidateQueries({ queryKey: [`/api/wingo/history/${selectedVariant}`] });
+            }}
+            className="flex items-center justify-center w-10 h-10 text-white hover:text-yellow-400 transition-colors rounded-lg hover:bg-gray-700"
+            title="Refresh"
+          >
+            <RefreshCw className="w-5 h-5" />
+          </button>
+        </div>
       </div>
 
       <div className="flex justify-center items-start pt-6">
@@ -264,65 +308,80 @@ export default function Wingo() {
               
               {/* History Rows */}
               <div className="divide-y divide-gray-600/30">
-                {results?.slice(0, 5).map((result, index) => {
-                  const predicted = index % 2 === 0 ? 'BIG' : 'SMALL';
-                  const actual = result.number >= 5 ? 'BIG' : 'SMALL';
-                  const isWin = predicted === actual;
-                  
+                {history?.length > 0 ? history.slice(0, 5).map((record, index) => {
                   return (
-                    <div key={result.issueNumber} className="p-4 hover:bg-black/20 transition-colors duration-200">
+                    <div key={record.id} className="p-4 hover:bg-black/20 transition-colors duration-200">
                       <div className="flex items-center justify-between">
                         {/* Period Info */}
                         <div className="flex-1 flex items-center gap-3">
                           <div className="text-black px-3 py-1 rounded-full text-xs font-bold" style={{ backgroundColor: '#ffd05a' }}>
-                            #{result.issueNumber.slice(-6)}
+                            #{record.period.slice(-6)}
                           </div>
                         </div>
                         
-                        {/* Number */}
+                        {/* Actual Number */}
                         <div className="w-20 flex justify-center">
-                          <div className={`w-8 h-8 rounded-lg flex items-center justify-center font-bold text-sm text-white ${result.number >= 5 ? 'bg-emerald-500' : 'bg-red-500'}`}>
-                            {result.number}
-                          </div>
+                          {record.actualNumber !== null ? (
+                            <div className={`w-8 h-8 rounded-lg flex items-center justify-center font-bold text-sm text-white ${record.actualSize === 'BIG' ? 'bg-emerald-500' : 'bg-red-500'}`}>
+                              {record.actualNumber}
+                            </div>
+                          ) : (
+                            <div className="w-8 h-8 rounded-lg flex items-center justify-center font-bold text-sm text-gray-400 bg-gray-600">
+                              ?
+                            </div>
+                          )}
                         </div>
                         
-                        {/* Size */}
+                        {/* Actual Size */}
                         <div className="w-20 flex justify-center">
-                          <div className={`px-3 py-1 rounded-lg text-xs font-bold text-white ${result.number >= 5 ? 'bg-emerald-500' : 'bg-red-500'}`}>
-                            {actual}
-                          </div>
+                          {record.actualSize ? (
+                            <div className={`px-3 py-1 rounded-lg text-xs font-bold text-white ${record.actualSize === 'BIG' ? 'bg-emerald-500' : 'bg-red-500'}`}>
+                              {record.actualSize}
+                            </div>
+                          ) : (
+                            <div className="px-3 py-1 rounded-lg text-xs font-bold text-gray-400 bg-gray-600">
+                              PENDING
+                            </div>
+                          )}
                         </div>
                         
                         {/* Prediction Result */}
                         <div className="w-20 flex justify-center">
                           <div className="text-center">
-                            <div className="text-gray-400 text-xs mb-1">P: {predicted}</div>
-                            <div className={`text-xs font-bold ${isWin ? 'text-emerald-400' : 'text-red-400'}`}>
-                              {isWin ? 'MATCH' : 'MISS'}
+                            <div className="text-gray-400 text-xs mb-1">P: {record.predictedSize}</div>
+                            <div className={`text-xs font-bold ${
+                              record.status === 'WIN' ? 'text-emerald-400' : 
+                              record.status === 'LOSS' ? 'text-red-400' : 'text-gray-400'
+                            }`}>
+                              {record.status === 'WIN' ? 'MATCH' : record.status === 'LOSS' ? 'MISS' : 'PENDING'}
                             </div>
                           </div>
                         </div>
                         
                         {/* Status */}
                         <div className="w-16 flex justify-center">
-                          {isWin ? (
+                          {record.status === 'WIN' ? (
                             <div className="w-6 h-6 bg-emerald-500 rounded-full flex items-center justify-center">
                               <div className="w-2 h-2 bg-white rounded-full"></div>
                             </div>
-                          ) : (
+                          ) : record.status === 'LOSS' ? (
                             <div className="w-6 h-6 bg-red-500 rounded-full flex items-center justify-center">
                               <div className="w-3 h-px bg-white"></div>
+                            </div>
+                          ) : (
+                            <div className="w-6 h-6 bg-gray-500 rounded-full flex items-center justify-center">
+                              <div className="w-2 h-2 bg-white rounded-full opacity-50"></div>
                             </div>
                           )}
                         </div>
                       </div>
                     </div>
                   );
-                }) || (
+                }) : (
                   <div className="p-8 text-center">
-                    <div className="text-4xl mb-3">⏳</div>
-                    <div className="text-gray-300 font-medium">Loading history...</div>
-                    <div className="text-gray-500 text-sm mt-1">Please wait while we fetch the latest results</div>
+                    <div className="text-4xl mb-3">📊</div>
+                    <div className="text-gray-300 font-medium">No game history yet</div>
+                    <div className="text-gray-500 text-sm mt-1">Predictions will appear here once the system generates them</div>
                   </div>
                 )}
               </div>
@@ -331,16 +390,26 @@ export default function Wingo() {
               <div className="p-4 border-t border-gray-600/50 bg-black/20">
                 <div className="flex items-center justify-between text-sm">
                   <div className="text-gray-400">
-                    Showing latest {results?.length || 0} results
+                    Showing latest {history?.length || 0} predictions
                   </div>
                   <div className="flex items-center gap-4">
                     <div className="flex items-center gap-2">
                       <div className="w-3 h-3 bg-emerald-500 rounded-full"></div>
-                      <span className="text-gray-300 text-xs">Win Rate: 60%</span>
+                      <span className="text-gray-300 text-xs">
+                        Wins: {history?.filter(h => h.status === 'WIN').length || 0}
+                      </span>
                     </div>
                     <div className="flex items-center gap-2">
                       <div className="w-3 h-3 bg-red-500 rounded-full"></div>
-                      <span className="text-gray-300 text-xs">Miss Rate: 40%</span>
+                      <span className="text-gray-300 text-xs">
+                        Losses: {history?.filter(h => h.status === 'LOSS').length || 0}
+                      </span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <div className="w-3 h-3 bg-gray-500 rounded-full"></div>
+                      <span className="text-gray-300 text-xs">
+                        Pending: {history?.filter(h => h.status === 'PENDING').length || 0}
+                      </span>
                     </div>
                   </div>
                 </div>
