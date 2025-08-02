@@ -38,6 +38,18 @@ export default function AdminPanel() {
     }
   }, []);
 
+  // Fetch all users (only when authenticated) - MOVED TO TOP
+  const { data: users = [], isLoading: usersLoading } = useQuery<User[]>({
+    queryKey: ["/api/admin/users"],
+    enabled: isAuthenticated,
+  });
+
+  // Fetch game configurations (only when authenticated) - MOVED TO TOP
+  const { data: gameConfigs = [], isLoading: gamesLoading } = useQuery<GameConfig[]>({
+    queryKey: ["/api/admin/games"],
+    enabled: isAuthenticated,
+  });
+
   // Login function
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -114,18 +126,6 @@ export default function AdminPanel() {
       </div>
     );
   }
-
-  // Fetch all users (only when authenticated)
-  const { data: users = [], isLoading: usersLoading } = useQuery<User[]>({
-    queryKey: ["/api/admin/users"],
-    enabled: isAuthenticated,
-  });
-
-  // Fetch game configurations (only when authenticated)
-  const { data: gameConfigs = [], isLoading: gamesLoading } = useQuery<GameConfig[]>({
-    queryKey: ["/api/admin/games"],
-    enabled: isAuthenticated,
-  });
 
   // Approve user mutation
   const approveUserMutation = useMutation({
