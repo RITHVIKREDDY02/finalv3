@@ -152,12 +152,16 @@ export default function Wingo() {
             </div>
 
             {/* Content Card */}
-            <div className="bg-gradient-to-b from-yellow-400 to-orange-400 rounded-2xl p-4 relative overflow-hidden">
-              {/* Background Image */}
+            <div className="relative">
               <img 
-                src="/attached_assets/wingoissue-2e0f92ab_1754126581128.webp" 
+                src="/attached_assets/wingoissue-2e0f92ab_1754126687302.webp" 
                 alt="Wingo Issue Background"
-                className="absolute inset-0 w-full h-full object-cover rounded-2xl"
+                className="w-full h-auto"
+                style={{ 
+                  width: '372.26px', 
+                  height: '106.66px',
+                  maxWidth: '100%'
+                }}
               />
             </div>
           </div>
