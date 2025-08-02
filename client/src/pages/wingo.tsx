@@ -223,23 +223,56 @@ export default function Wingo() {
           {/* Game History Section */}
           <div className="mt-4">
             <h3 className="text-white font-bold text-lg mb-3">Game History</h3>
-            <div className="bg-white/10 backdrop-blur-sm rounded-2xl overflow-hidden">
-              {/* Header */}
-              <div className="bg-white/20 px-4 py-2 flex justify-between text-white/90 text-sm font-medium">
-                <span>Period</span>
-                <span>Prediction</span>
-                <span>Result</span>
-              </div>
-              
-              {/* History Items */}
-              {results?.slice(0, 5).map((result, index) => (
-                <div key={result.issueNumber} className="px-4 py-3 border-b border-white/10 last:border-b-0 flex justify-between items-center text-white">
-                  <span className="text-sm">{result.issueNumber}</span>
-                  <span className="text-sm">{index % 2 === 0 ? 'BIG' : 'SMALL'}</span>
-                  <span className="font-bold">{result.number}</span>
+            <div className="space-y-3">
+              {results?.slice(0, 3).map((result, index) => (
+                <div key={result.issueNumber} className="bg-white rounded-2xl p-4">
+                  {/* Period and Status */}
+                  <div className="flex justify-between items-center mb-4">
+                    <div className="bg-blue-500 text-white px-4 py-2 rounded-full text-sm font-medium">
+                      Period: {result.issueNumber}
+                    </div>
+                    <div className="bg-green-500 text-white px-4 py-2 rounded-full text-sm font-bold">
+                      ✓ COMPLETED
+                    </div>
+                  </div>
+
+                  {/* Predicted vs Actual */}
+                  <div className="flex items-center justify-between">
+                    {/* Predicted Section */}
+                    <div className="text-center">
+                      <div className="text-gray-600 text-sm mb-2">Predicted</div>
+                      <div className="flex items-center gap-2">
+                        <div className="bg-green-500 text-white px-3 py-1 rounded-lg font-bold">
+                          {index % 2 === 0 ? 'Green' : 'Red'}
+                        </div>
+                        <div className={`text-white w-8 h-8 rounded-lg flex items-center justify-center font-bold ${result.number >= 5 ? 'bg-green-500' : 'bg-red-500'}`}>
+                          {result.number}
+                        </div>
+                        <div className={`text-white w-8 h-8 rounded-lg flex items-center justify-center font-bold ${result.number >= 5 ? 'bg-green-500' : 'bg-red-500'}`}>
+                          {result.number}
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* VS */}
+                    <div className="text-gray-400 font-bold text-lg mx-4">VS</div>
+
+                    {/* Actual Section */}
+                    <div className="text-center">
+                      <div className="text-gray-600 text-sm mb-2">Actual</div>
+                      <div className="flex items-center gap-2">
+                        <div className={`text-white px-3 py-1 rounded-lg font-bold ${result.number >= 5 ? 'bg-green-500' : 'bg-red-500'}`}>
+                          {result.number >= 5 ? 'Green' : 'Red'}
+                        </div>
+                        <div className={`text-white w-8 h-8 rounded-lg flex items-center justify-center font-bold ${result.number >= 5 ? 'bg-green-500' : 'bg-red-500'}`}>
+                          {result.number}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               )) || (
-                <div className="px-4 py-8 text-center text-white/50">
+                <div className="bg-white rounded-2xl p-4 text-center text-gray-500">
                   Loading history...
                 </div>
               )}
