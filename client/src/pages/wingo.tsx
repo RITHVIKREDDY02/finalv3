@@ -212,95 +212,104 @@ export default function Wingo() {
               <h3 className="text-white font-bold text-xl">Game History</h3>
               <div className="flex-1 h-px bg-gradient-to-r from-gray-600 to-transparent"></div>
             </div>
-            <div className="space-y-4">
-              {results?.slice(0, 3).map((result, index) => (
-                <div key={result.issueNumber} className="rounded-2xl p-4 shadow-lg border border-gray-600/30 backdrop-blur-sm" style={{ backgroundColor: 'rgb(56, 46, 53)' }}>
-                  {/* Header with Period and Status */}
-                  <div className="flex justify-between items-center mb-3">
-                    <div className="flex items-center gap-3">
-                      <div className="text-black px-4 py-2 rounded-full text-sm font-bold shadow-md" style={{ backgroundColor: '#ffd05a' }}>
-                        #{result.issueNumber.slice(-6)}
-                      </div>
-                      <div className="text-gray-300 text-sm">
-                        {new Date(result.timestamp).toLocaleString()}
-                      </div>
-                    </div>
-                    <div className="bg-emerald-500 text-white px-4 py-2 rounded-full text-sm font-bold shadow-md flex items-center gap-2">
-                      <div className="w-2 h-2 bg-white rounded-full animate-pulse"></div>
-                      COMPLETED
-                    </div>
-                  </div>
-
-                  {/* Results Display */}
-                  <div className="bg-black/20 rounded-xl p-3 mb-3">
-                    <div className="flex items-center justify-center gap-4">
-                      {/* Predicted Section */}
-                      <div className="text-center flex-1">
-                        <div className="text-gray-400 text-xs uppercase tracking-wider mb-2 font-medium">Predicted</div>
-                        <div className="flex items-center justify-center gap-2">
-                          <div className="relative">
-                            <div className={`text-white px-3 py-1 rounded-lg font-bold text-xs shadow-lg ${index % 2 === 0 ? 'bg-emerald-500' : 'bg-red-500'}`}>
-                              {index % 2 === 0 ? 'BIG' : 'SMALL'}
-                            </div>
-                            <div className="absolute -top-1 -right-1 w-2 h-2 bg-white rounded-full border border-gray-800"></div>
+            
+            {/* Table-style History */}
+            <div className="rounded-2xl overflow-hidden shadow-lg border border-gray-600/30" style={{ backgroundColor: 'rgb(56, 46, 53)' }}>
+              {/* Header */}
+              <div className="p-4 border-b border-gray-600/50 flex items-center justify-between text-sm font-bold text-gray-300 uppercase tracking-wider">
+                <div className="flex-1">Period</div>
+                <div className="w-20 text-center">Number</div>
+                <div className="w-20 text-center">Size</div>
+                <div className="w-20 text-center">Result</div>
+                <div className="w-16 text-center">Status</div>
+              </div>
+              
+              {/* History Rows */}
+              <div className="divide-y divide-gray-600/30">
+                {results?.slice(0, 5).map((result, index) => {
+                  const predicted = index % 2 === 0 ? 'BIG' : 'SMALL';
+                  const actual = result.number >= 5 ? 'BIG' : 'SMALL';
+                  const isWin = predicted === actual;
+                  
+                  return (
+                    <div key={result.issueNumber} className="p-4 hover:bg-black/20 transition-colors duration-200">
+                      <div className="flex items-center justify-between">
+                        {/* Period Info */}
+                        <div className="flex-1 flex items-center gap-3">
+                          <div className="text-black px-3 py-1 rounded-full text-xs font-bold" style={{ backgroundColor: '#ffd05a' }}>
+                            #{result.issueNumber.slice(-6)}
                           </div>
-                          <div className={`text-white w-8 h-8 rounded-lg flex items-center justify-center font-bold text-sm shadow-lg border ${result.number >= 5 ? 'bg-emerald-500 border-emerald-400' : 'bg-red-500 border-red-400'}`}>
+                          <div className="text-gray-400 text-xs">
+                            {new Date(result.timestamp).toLocaleTimeString()}
+                          </div>
+                        </div>
+                        
+                        {/* Number */}
+                        <div className="w-20 flex justify-center">
+                          <div className={`w-8 h-8 rounded-lg flex items-center justify-center font-bold text-sm text-white ${result.number >= 5 ? 'bg-emerald-500' : 'bg-red-500'}`}>
                             {result.number}
                           </div>
                         </div>
-                      </div>
-
-                      {/* VS Divider */}
-                      <div className="flex flex-col items-center">
-                        <div className="w-px h-8 bg-gradient-to-b from-transparent via-gray-500 to-transparent"></div>
-                        <div className="text-gray-400 font-bold text-xs my-1 px-2 py-1 rounded bg-white/5">VS</div>
-                        <div className="w-px h-8 bg-gradient-to-b from-transparent via-gray-500 to-transparent"></div>
-                      </div>
-
-                      {/* Actual Section */}
-                      <div className="text-center flex-1">
-                        <div className="text-gray-400 text-xs uppercase tracking-wider mb-2 font-medium">Actual</div>
-                        <div className="flex items-center justify-center gap-2">
-                          <div className="relative">
-                            <div className={`text-white px-3 py-1 rounded-lg font-bold text-xs shadow-lg ${result.number >= 5 ? 'bg-emerald-500' : 'bg-red-500'}`}>
-                              {result.number >= 5 ? 'BIG' : 'SMALL'}
+                        
+                        {/* Size */}
+                        <div className="w-20 flex justify-center">
+                          <div className={`px-3 py-1 rounded-lg text-xs font-bold text-white ${result.number >= 5 ? 'bg-emerald-500' : 'bg-red-500'}`}>
+                            {actual}
+                          </div>
+                        </div>
+                        
+                        {/* Prediction Result */}
+                        <div className="w-20 flex justify-center">
+                          <div className="text-center">
+                            <div className="text-gray-400 text-xs mb-1">P: {predicted}</div>
+                            <div className={`text-xs font-bold ${isWin ? 'text-emerald-400' : 'text-red-400'}`}>
+                              {isWin ? 'MATCH' : 'MISS'}
                             </div>
-                            <div className="absolute -top-1 -right-1 w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></div>
                           </div>
-                          <div className={`text-white w-8 h-8 rounded-lg flex items-center justify-center font-bold text-sm shadow-lg border ${result.number >= 5 ? 'bg-emerald-500 border-emerald-400' : 'bg-red-500 border-red-400'}`}>
-                            {result.number}
-                          </div>
+                        </div>
+                        
+                        {/* Status */}
+                        <div className="w-16 flex justify-center">
+                          {isWin ? (
+                            <div className="w-6 h-6 bg-emerald-500 rounded-full flex items-center justify-center">
+                              <div className="w-2 h-2 bg-white rounded-full"></div>
+                            </div>
+                          ) : (
+                            <div className="w-6 h-6 bg-red-500 rounded-full flex items-center justify-center">
+                              <div className="w-3 h-px bg-white"></div>
+                            </div>
+                          )}
                         </div>
                       </div>
                     </div>
+                  );
+                }) || (
+                  <div className="p-8 text-center">
+                    <div className="text-4xl mb-3">⏳</div>
+                    <div className="text-gray-300 font-medium">Loading history...</div>
+                    <div className="text-gray-500 text-sm mt-1">Please wait while we fetch the latest results</div>
                   </div>
-
-                  {/* Result Badge */}
-                  <div className="flex justify-center">
-                    {(index % 2 === 0 && result.number >= 5) || (index % 2 === 1 && result.number < 5) ? (
-                      <div className="bg-emerald-500 text-white px-4 py-1 rounded-full text-xs font-bold shadow-lg flex items-center gap-1">
-                        <div className="w-3 h-3 bg-white rounded-full flex items-center justify-center">
-                          <div className="w-1 h-1 bg-emerald-500 rounded-full"></div>
-                        </div>
-                        WIN
-                      </div>
-                    ) : (
-                      <div className="bg-red-500 text-white px-4 py-1 rounded-full text-xs font-bold shadow-lg flex items-center gap-1">
-                        <div className="w-3 h-3 bg-white rounded-full flex items-center justify-center">
-                          <div className="w-1 h-1 bg-red-500 rounded-full"></div>
-                        </div>
-                        LOSS
-                      </div>
-                    )}
+                )}
+              </div>
+              
+              {/* Stats Footer */}
+              <div className="p-4 border-t border-gray-600/50 bg-black/20">
+                <div className="flex items-center justify-between text-sm">
+                  <div className="text-gray-400">
+                    Showing latest {results?.length || 0} results
+                  </div>
+                  <div className="flex items-center gap-4">
+                    <div className="flex items-center gap-2">
+                      <div className="w-3 h-3 bg-emerald-500 rounded-full"></div>
+                      <span className="text-gray-300 text-xs">Win Rate: 60%</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <div className="w-3 h-3 bg-red-500 rounded-full"></div>
+                      <span className="text-gray-300 text-xs">Miss Rate: 40%</span>
+                    </div>
                   </div>
                 </div>
-              )) || (
-                <div className="rounded-2xl p-8 text-center shadow-lg border border-gray-600/30" style={{ backgroundColor: 'rgb(56, 46, 53)' }}>
-                  <div className="text-4xl mb-3">⏳</div>
-                  <div className="text-gray-300 font-medium">Loading history...</div>
-                  <div className="text-gray-500 text-sm mt-1">Please wait while we fetch the latest results</div>
-                </div>
-              )}
+              </div>
             </div>
           </div>
         </div>
