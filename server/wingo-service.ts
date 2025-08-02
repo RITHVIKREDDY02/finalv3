@@ -497,17 +497,21 @@ class WingoService {
     try {
       const data = await this.fetchData(config.periodUrl);
       
-      // Check different possible response structures
+      // The API returns current period info in data.current
       if (data?.current) {
         return data.current;
       } else if (data?.data?.current) {
         return data.data.current;
-      } else if (data?.issueNumber) {
-        return data; // Direct period object
-      } else if (data?.data?.issueNumber) {
-        return data.data; // Period object in data property
       }
       
+      // If no current period structure, check for direct period data
+      if (data?.issueNumber) {
+        return data;
+      } else if (data?.data?.issueNumber) {
+        return data.data;
+      }
+      
+      console.log(`No current period found for ${variant}, API response:`, JSON.stringify(data).substring(0, 200));
       return null;
     } catch (error) {
       console.error(`Failed to get current period for ${variant}:`, error);
@@ -671,14 +675,26 @@ class WingoService {
     // Return cached prediction if available
     if (this.predictionCache.has(variant)) {
       const cached = this.predictionCache.get(variant)!;
-      // Get fresh period data to update countdown in real-time
+      
+      // Get fresh period data to update both countdown AND period number in real-time
       const currentPeriod = await this.getCurrentPeriod(variant);
-      if (currentPeriod?.endTime) {
-        cached.countdown = this.calculateAPICountdown(currentPeriod.endTime);
+      if (currentPeriod) {
+        // Update period number to current period
+        cached.period = currentPeriod.issueNumber;
+        
+        // Update countdown
+        if (currentPeriod.endTime) {
+          cached.countdown = this.calculateAPICountdown(currentPeriod.endTime);
+        } else {
+          const config = WINGO_VARIANTS[variant];
+          cached.countdown = this.calculateFallbackCountdown(config.intervalSeconds);
+        }
       } else {
+        // Fallback countdown calculation if API fails
         const config = WINGO_VARIANTS[variant];
         cached.countdown = this.calculateFallbackCountdown(config.intervalSeconds);
       }
+      
       return cached;
     }
     
