@@ -529,13 +529,16 @@ export default function Home() {
       {/* Proof Dialog */}
       {showProofDialog && (
         <div className="fixed inset-0 bg-black bg-opacity-60 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <div className="rounded-3xl max-w-lg w-full max-h-[70vh] overflow-y-auto shadow-2xl border-2 border-white/20" style={{ background: 'linear-gradient(135deg, #FED358 0%, #FFE082 50%, #FFF3A0 100%)' }}>
+          <div className="rounded-3xl max-w-lg w-full max-h-[70vh] overflow-y-auto shadow-2xl border-2" style={{ backgroundColor: 'rgb(56, 46, 53)', border: '2px solid #FED358' }}>
             <div className="p-8">
               <div className="flex justify-between items-center mb-8">
-                <h2 className="text-3xl font-bold text-black bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent">System Proof - Live Results</h2>
+                <h2 className="text-3xl font-bold" style={{ color: '#FED358' }}>System Proof - Live Results</h2>
                 <button
                   onClick={() => setShowProofDialog(false)}
-                  className="text-gray-600 hover:text-black text-2xl font-bold bg-white/20 rounded-full w-8 h-8 flex items-center justify-center hover:bg-white/40 transition-all duration-200"
+                  className="text-2xl font-bold rounded-full w-8 h-8 flex items-center justify-center transition-all duration-200"
+                  style={{ color: '#FDE4BC', backgroundColor: 'rgba(254, 211, 88, 0.2)' }}
+                  onMouseEnter={(e) => (e.target as HTMLButtonElement).style.backgroundColor = 'rgba(254, 211, 88, 0.4)'}
+                  onMouseLeave={(e) => (e.target as HTMLButtonElement).style.backgroundColor = 'rgba(254, 211, 88, 0.2)'}
                 >
                   ×
                 </button>
@@ -543,47 +546,49 @@ export default function Home() {
               
               <div className="space-y-8">
                 <div>
-                  <h3 className="text-xl font-bold text-gray-800 mb-4 flex items-center">
-                    <span className="w-2 h-6 bg-gradient-to-b from-blue-500 to-blue-700 rounded-full mr-3"></span>
+                  <h3 className="text-xl font-bold mb-4 flex items-center" style={{ color: '#FED358' }}>
+                    <span className="w-2 h-6 rounded-full mr-3" style={{ backgroundColor: '#E67E22' }}></span>
                     Live Prediction Interface
                   </h3>
-                  <div className="rounded-2xl p-6 bg-gradient-to-br from-white/30 to-white/10 backdrop-blur-sm border border-white/30">
+                  <div className="rounded-2xl p-6" style={{ backgroundColor: 'rgba(254, 211, 88, 0.1)', border: '1px solid rgba(254, 211, 88, 0.3)' }}>
                     <img 
                       src={proofImage1} 
                       alt="Live Wingo Prediction System showing BIG 8 prediction with timer" 
-                      className="w-3/4 mx-auto rounded-xl shadow-2xl border-2 border-white/50"
+                      className="w-3/4 mx-auto rounded-xl shadow-2xl border-2"
+                      style={{ borderColor: '#FED358' }}
                     />
                   </div>
                 </div>
                 
                 <div>
-                  <h3 className="text-xl font-bold text-gray-800 mb-4 flex items-center">
-                    <span className="w-2 h-6 bg-gradient-to-b from-green-500 to-green-700 rounded-full mr-3"></span>
+                  <h3 className="text-xl font-bold mb-4 flex items-center" style={{ color: '#FED358' }}>
+                    <span className="w-2 h-6 rounded-full mr-3" style={{ backgroundColor: '#2ECC71' }}></span>
                     Results & Rewards System
                   </h3>
-                  <div className="rounded-2xl p-6 bg-gradient-to-br from-white/30 to-white/10 backdrop-blur-sm border border-white/30">
+                  <div className="rounded-2xl p-6" style={{ backgroundColor: 'rgba(254, 211, 88, 0.1)', border: '1px solid rgba(254, 211, 88, 0.3)' }}>
                     <img 
                       src={proofImage2} 
                       alt="Congratulations screen showing Red 8 Big result with ₹1,960 bonus" 
-                      className="w-3/4 mx-auto rounded-xl shadow-2xl border-2 border-white/50"
+                      className="w-3/4 mx-auto rounded-xl shadow-2xl border-2"
+                      style={{ borderColor: '#FED358' }}
                     />
                   </div>
                 </div>
 
-                <div className="bg-gradient-to-br from-green-400/20 to-green-600/20 rounded-2xl p-6 border border-green-400/30 backdrop-blur-sm">
-                  <h4 className="text-black font-bold text-lg mb-4 flex items-center">
-                    <span className="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center text-white text-sm mr-3">✓</span>
+                <div className="rounded-2xl p-6" style={{ backgroundColor: 'rgba(46, 204, 113, 0.2)', border: '1px solid rgba(46, 204, 113, 0.4)' }}>
+                  <h4 className="font-bold text-lg mb-4 flex items-center" style={{ color: '#2ECC71' }}>
+                    <span className="w-6 h-6 rounded-full flex items-center justify-center text-white text-sm mr-3" style={{ backgroundColor: '#2ECC71' }}>✓</span>
                     Verified Features
                   </h4>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm text-black">
-                    <div className="flex items-center"><span className="w-2 h-2 bg-green-500 rounded-full mr-2"></span>Truly balanced predictions</div>
-                    <div className="flex items-center"><span className="w-2 h-2 bg-green-500 rounded-full mr-2"></span>Live API integration</div>
-                    <div className="flex items-center"><span className="w-2 h-2 bg-green-500 rounded-full mr-2"></span>Real-time countdown timers</div>
-                    <div className="flex items-center"><span className="w-2 h-2 bg-green-500 rounded-full mr-2"></span>Authentic period numbers</div>
-                    <div className="flex items-center"><span className="w-2 h-2 bg-green-500 rounded-full mr-2"></span>User registration system</div>
-                    <div className="flex items-center"><span className="w-2 h-2 bg-green-500 rounded-full mr-2"></span>Admin panel controls</div>
-                    <div className="flex items-center"><span className="w-2 h-2 bg-green-500 rounded-full mr-2"></span>Results & rewards tracking</div>
-                    <div className="flex items-center"><span className="w-2 h-2 bg-green-500 rounded-full mr-2"></span>Multi-variant support</div>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm" style={{ color: '#FDE4BC' }}>
+                    <div className="flex items-center"><span className="w-2 h-2 rounded-full mr-2" style={{ backgroundColor: '#2ECC71' }}></span>Truly balanced predictions</div>
+                    <div className="flex items-center"><span className="w-2 h-2 rounded-full mr-2" style={{ backgroundColor: '#2ECC71' }}></span>Live API integration</div>
+                    <div className="flex items-center"><span className="w-2 h-2 rounded-full mr-2" style={{ backgroundColor: '#2ECC71' }}></span>Real-time countdown timers</div>
+                    <div className="flex items-center"><span className="w-2 h-2 rounded-full mr-2" style={{ backgroundColor: '#2ECC71' }}></span>Authentic period numbers</div>
+                    <div className="flex items-center"><span className="w-2 h-2 rounded-full mr-2" style={{ backgroundColor: '#2ECC71' }}></span>User registration system</div>
+                    <div className="flex items-center"><span className="w-2 h-2 rounded-full mr-2" style={{ backgroundColor: '#2ECC71' }}></span>Admin panel controls</div>
+                    <div className="flex items-center"><span className="w-2 h-2 rounded-full mr-2" style={{ backgroundColor: '#2ECC71' }}></span>Results & rewards tracking</div>
+                    <div className="flex items-center"><span className="w-2 h-2 rounded-full mr-2" style={{ backgroundColor: '#2ECC71' }}></span>Multi-variant support</div>
                   </div>
                 </div>
               </div>
@@ -595,13 +600,16 @@ export default function Home() {
       {/* Demo Dialog */}
       {showDemoDialog && (
         <div className="fixed inset-0 bg-black bg-opacity-60 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <div className="rounded-3xl max-w-lg w-full max-h-[70vh] overflow-y-auto shadow-2xl border-2 border-white/20" style={{ background: 'linear-gradient(135deg, #FED358 0%, #FFE082 50%, #FFF3A0 100%)' }}>
+          <div className="rounded-3xl max-w-lg w-full max-h-[70vh] overflow-y-auto shadow-2xl border-2" style={{ backgroundColor: 'rgb(56, 46, 53)', border: '2px solid #FED358' }}>
             <div className="p-8">
               <div className="flex justify-between items-center mb-8">
-                <h2 className="text-3xl font-bold text-black bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent">Demo - How It Works</h2>
+                <h2 className="text-3xl font-bold" style={{ color: '#FED358' }}>Demo - How It Works</h2>
                 <button
                   onClick={() => setShowDemoDialog(false)}
-                  className="text-gray-600 hover:text-black text-2xl font-bold bg-white/20 rounded-full w-8 h-8 flex items-center justify-center hover:bg-white/40 transition-all duration-200"
+                  className="text-2xl font-bold rounded-full w-8 h-8 flex items-center justify-center transition-all duration-200"
+                  style={{ color: '#FDE4BC', backgroundColor: 'rgba(254, 211, 88, 0.2)' }}
+                  onMouseEnter={(e) => (e.target as HTMLButtonElement).style.backgroundColor = 'rgba(254, 211, 88, 0.4)'}
+                  onMouseLeave={(e) => (e.target as HTMLButtonElement).style.backgroundColor = 'rgba(254, 211, 88, 0.2)'}
                 >
                   ×
                 </button>
@@ -609,57 +617,60 @@ export default function Home() {
               
               <div className="space-y-8">
                 <div>
-                  <h3 className="text-xl font-bold text-gray-800 mb-4 flex items-center">
-                    <span className="w-8 h-8 bg-gradient-to-br from-purple-500 to-purple-700 rounded-full flex items-center justify-center text-white font-bold text-sm mr-3">1</span>
+                  <h3 className="text-xl font-bold mb-4 flex items-center" style={{ color: '#FED358' }}>
+                    <span className="w-8 h-8 rounded-full flex items-center justify-center text-white font-bold text-sm mr-3" style={{ backgroundColor: '#9B59B6' }}>1</span>
                     Choose Game Variant
                   </h3>
-                  <div className="rounded-2xl p-6 bg-gradient-to-br from-white/30 to-white/10 backdrop-blur-sm border border-white/30">
+                  <div className="rounded-2xl p-6" style={{ backgroundColor: 'rgba(254, 211, 88, 0.1)', border: '1px solid rgba(254, 211, 88, 0.3)' }}>
                     <img 
                       src={demoImage1} 
                       alt="Wingo game variants selection" 
-                      className="w-full mx-auto rounded-xl shadow-2xl border-2 border-white/50"
+                      className="w-full mx-auto rounded-xl shadow-2xl border-2" 
+                      style={{ borderColor: '#FED358' }}
                     />
                   </div>
                 </div>
                 
                 <div>
-                  <h3 className="text-xl font-bold text-gray-800 mb-4 flex items-center">
-                    <span className="w-8 h-8 bg-gradient-to-br from-orange-500 to-orange-700 rounded-full flex items-center justify-center text-white font-bold text-sm mr-3">2</span>
+                  <h3 className="text-xl font-bold mb-4 flex items-center" style={{ color: '#FED358' }}>
+                    <span className="w-8 h-8 rounded-full flex items-center justify-center text-white font-bold text-sm mr-3" style={{ backgroundColor: '#E67E22' }}>2</span>
                     View Period & Timer
                   </h3>
-                  <div className="rounded-2xl p-6 bg-gradient-to-br from-white/30 to-white/10 backdrop-blur-sm border border-white/30">
+                  <div className="rounded-2xl p-6" style={{ backgroundColor: 'rgba(254, 211, 88, 0.1)', border: '1px solid rgba(254, 211, 88, 0.3)' }}>
                     <img 
                       src={demoImage2} 
                       alt="Period number and countdown timer" 
-                      className="w-full mx-auto rounded-xl shadow-2xl border-2 border-white/50"
+                      className="w-full mx-auto rounded-xl shadow-2xl border-2"
+                      style={{ borderColor: '#FED358' }}
                     />
                   </div>
                 </div>
 
                 <div>
-                  <h3 className="text-xl font-bold text-gray-800 mb-4 flex items-center">
-                    <span className="w-8 h-8 bg-gradient-to-br from-red-500 to-red-700 rounded-full flex items-center justify-center text-white font-bold text-sm mr-3">3</span>
+                  <h3 className="text-xl font-bold mb-4 flex items-center" style={{ color: '#FED358' }}>
+                    <span className="w-8 h-8 rounded-full flex items-center justify-center text-white font-bold text-sm mr-3" style={{ backgroundColor: '#E74C3C' }}>3</span>
                     Get VIP Prediction
                   </h3>
-                  <div className="rounded-2xl p-6 bg-gradient-to-br from-white/30 to-white/10 backdrop-blur-sm border border-white/30">
+                  <div className="rounded-2xl p-6" style={{ backgroundColor: 'rgba(254, 211, 88, 0.1)', border: '1px solid rgba(254, 211, 88, 0.3)' }}>
                     <img 
                       src={demoImage3} 
                       alt="VIP prediction showing color, size and number" 
-                      className="w-full mx-auto rounded-xl shadow-2xl border-2 border-white/50"
+                      className="w-full mx-auto rounded-xl shadow-2xl border-2"
+                      style={{ borderColor: '#FED358' }}
                     />
                   </div>
                 </div>
 
-                <div className="bg-gradient-to-br from-blue-400/20 to-blue-600/20 rounded-2xl p-6 border border-blue-400/30 backdrop-blur-sm">
-                  <h4 className="text-black font-bold text-lg mb-4 flex items-center">
-                    <span className="w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center text-white text-sm mr-3">🚀</span>
+                <div className="rounded-2xl p-6" style={{ backgroundColor: 'rgba(155, 89, 182, 0.2)', border: '1px solid rgba(155, 89, 182, 0.4)' }}>
+                  <h4 className="font-bold text-lg mb-4 flex items-center" style={{ color: '#9B59B6' }}>
+                    <span className="w-6 h-6 rounded-full flex items-center justify-center text-white text-sm mr-3" style={{ backgroundColor: '#9B59B6' }}>🚀</span>
                     How to Get Started
                   </h4>
-                  <div className="text-sm text-black space-y-3">
-                    <div className="flex items-center"><span className="w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center text-white text-xs mr-3">1</span>Click on any game card</div>
-                    <div className="flex items-center"><span className="w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center text-white text-xs mr-3">2</span>Register with your UID</div>
-                    <div className="flex items-center"><span className="w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center text-white text-xs mr-3">3</span>Wait for admin approval</div>
-                    <div className="flex items-center"><span className="w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center text-white text-xs mr-3">4</span>Access VIP predictions</div>
+                  <div className="text-sm space-y-3" style={{ color: '#FDE4BC' }}>
+                    <div className="flex items-center"><span className="w-6 h-6 rounded-full flex items-center justify-center text-white text-xs mr-3" style={{ backgroundColor: '#9B59B6' }}>1</span>Click on any game card</div>
+                    <div className="flex items-center"><span className="w-6 h-6 rounded-full flex items-center justify-center text-white text-xs mr-3" style={{ backgroundColor: '#9B59B6' }}>2</span>Register with your UID</div>
+                    <div className="flex items-center"><span className="w-6 h-6 rounded-full flex items-center justify-center text-white text-xs mr-3" style={{ backgroundColor: '#9B59B6' }}>3</span>Wait for admin approval</div>
+                    <div className="flex items-center"><span className="w-6 h-6 rounded-full flex items-center justify-center text-white text-xs mr-3" style={{ backgroundColor: '#9B59B6' }}>4</span>Access VIP predictions</div>
                   </div>
                 </div>
               </div>
@@ -832,7 +843,7 @@ export default function Home() {
               </div>
               
               <div className="space-y-6">
-                <div className="rounded-2xl p-6" style={{ backgroundColor: 'rgba(52, 152, 219, 0.2)', border: '1px solid rgba(52, 152, 219, 0.4)' }}>
+                <div className="rounded-2xl p-6" style={{ backgroundColor: 'rgba(230, 126, 34, 0.2)', border: '1px solid rgba(230, 126, 34, 0.4)' }}>
                   <p className="text-base leading-relaxed" style={{ color: '#FDE4BC' }}>
                     At Tashan Win Vip, we believe in empowering our users with knowledge. It's crucial to understand that to use advanced systems like SHA-256 for generating random results, there's always a potential for manipulation. This is where our expertise comes in handy.
                   </p>
