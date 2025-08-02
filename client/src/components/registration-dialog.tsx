@@ -142,13 +142,7 @@ export default function RegistrationDialog({ isOpen, onClose, onRegistrationSucc
                 )}
               />
               
-              <Button
-                type="button"
-                onClick={handleStartButtonClick}
-                className="w-full font-bold py-2 px-4 rounded-full transition-all duration-300 transform hover:scale-105 btn-custom-gold"
-              >
-                START
-              </Button>
+
             </form>
           </Form>
 
@@ -173,14 +167,7 @@ export default function RegistrationDialog({ isOpen, onClose, onRegistrationSucc
                 ❓ Help
               </Button>
             </div>
-            <p className="text-sm text-black">Need help?</p>
-            <Button
-              variant="outline"
-              className="border-black text-black hover:bg-gray-100 bg-white"
-              onClick={handleHelp}
-            >
-              Telegram: @tashanwinsamaraa
-            </Button>
+
           </div>
         </div>
       </DialogContent>
