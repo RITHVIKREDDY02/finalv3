@@ -671,36 +671,39 @@ export default function Home() {
       {/* About Us Dialog */}
       {showAboutUsDialog && (
         <div className="fixed inset-0 bg-black bg-opacity-60 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <div className="rounded-3xl max-w-lg w-full max-h-[80vh] overflow-y-auto shadow-2xl border-2 border-white/20" style={{ background: 'linear-gradient(135deg, #FED358 0%, #FFE082 50%, #FFF3A0 100%)' }}>
+          <div className="rounded-3xl max-w-lg w-full max-h-[80vh] overflow-y-auto shadow-2xl border-2" style={{ backgroundColor: 'rgb(56, 46, 53)', border: '2px solid #FED358' }}>
             <div className="p-8">
               <div className="flex justify-between items-center mb-8">
-                <h2 className="text-3xl font-bold text-black bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent">About Tashan Win VIP</h2>
+                <h2 className="text-3xl font-bold" style={{ color: '#FED358' }}>About Tashan Win VIP</h2>
                 <button
                   onClick={() => setShowAboutUsDialog(false)}
-                  className="text-gray-600 hover:text-black text-2xl font-bold bg-white/20 rounded-full w-8 h-8 flex items-center justify-center hover:bg-white/40 transition-all duration-200"
+                  className="text-2xl font-bold rounded-full w-8 h-8 flex items-center justify-center transition-all duration-200"
+                  style={{ color: '#FDE4BC', backgroundColor: 'rgba(254, 211, 88, 0.2)' }}
+                  onMouseEnter={(e) => (e.target as HTMLButtonElement).style.backgroundColor = 'rgba(254, 211, 88, 0.4)'}
+                  onMouseLeave={(e) => (e.target as HTMLButtonElement).style.backgroundColor = 'rgba(254, 211, 88, 0.2)'}
                 >
                   ×
                 </button>
               </div>
               
               <div className="space-y-6">
-                <div className="bg-gradient-to-br from-white/30 to-white/10 backdrop-blur-sm border border-white/30 rounded-2xl p-6">
-                  <p className="text-black text-lg font-semibold text-center mb-4">
+                <div className="rounded-2xl p-6" style={{ backgroundColor: 'rgba(254, 211, 88, 0.1)', border: '1px solid rgba(254, 211, 88, 0.3)' }}>
+                  <p className="text-lg font-semibold text-center mb-4" style={{ color: '#FDE4BC' }}>
                     "Life is a gamble and We live only once, so let's have fun at Tashan Win Vip!"
                   </p>
                 </div>
 
-                <div className="space-y-4 text-black">
+                <div className="space-y-4" style={{ color: '#FDE4BC' }}>
                   <p className="text-base leading-relaxed">
-                    Welcome to <span className="font-bold text-gray-800">Tashan Win Vip</span>, the leading online platform for predicting winning numbers in popular Wingo lottery games. Our expert data and AI analysts have developed an advanced algorithm that analyzes past lottery draws and player behavior to provide 100% accurate predictions.
+                    Welcome to <span className="font-bold" style={{ color: '#FED358' }}>Tashan Win Vip</span>, the leading online platform for predicting winning numbers in popular Wingo lottery games. Our expert data and AI analysts have developed an advanced algorithm that analyzes past lottery draws and player behavior to provide 100% accurate predictions.
                   </p>
 
                   <p className="text-base leading-relaxed">
                     At Tashan Win Vip, we believe everyone deserves a chance to win big. Just visit the prediction section, select your game platform, click 'predict', and get your predictions for the winning color, size, and number.
                   </p>
 
-                  <div className="bg-gradient-to-br from-green-400/20 to-green-600/20 rounded-2xl p-6 border border-green-400/30 backdrop-blur-sm">
-                    <p className="text-black font-bold text-center text-lg">
+                  <div className="rounded-2xl p-6" style={{ backgroundColor: 'rgba(46, 204, 113, 0.2)', border: '1px solid rgba(46, 204, 113, 0.4)' }}>
+                    <p className="font-bold text-center text-lg" style={{ color: '#2ECC71' }}>
                       🎯 We're proud of our 100% success rate! 🎯
                     </p>
                   </div>
@@ -710,18 +713,20 @@ export default function Home() {
                   </p>
                 </div>
 
-                <div className="bg-gradient-to-br from-blue-400/20 to-blue-600/20 rounded-2xl p-6 border border-blue-400/30 backdrop-blur-sm">
-                  <h4 className="text-black font-bold text-lg mb-3 text-center">
+                <div className="rounded-2xl p-6" style={{ backgroundColor: 'rgba(254, 211, 88, 0.2)', border: '1px solid rgba(254, 211, 88, 0.4)' }}>
+                  <h4 className="font-bold text-lg mb-3 text-center" style={{ color: '#FED358' }}>
                     🚀 Ready to Start Winning?
                   </h4>
                   <div className="text-center">
                     <button 
                       onClick={() => {
                         setShowAboutUsDialog(false);
-                        // Scroll to game cards or trigger registration
                         document.querySelector('.max-w-2xl')?.scrollIntoView({ behavior: 'smooth' });
                       }}
-                      className="px-6 py-3 bg-blue-500 hover:bg-blue-600 text-white font-bold rounded-full shadow-lg transition-all duration-300 transform hover:scale-105"
+                      className="px-6 py-3 font-bold rounded-full shadow-lg transition-all duration-300 transform hover:scale-105"
+                      style={{ backgroundColor: '#FED358', color: '#231C21' }}
+                      onMouseEnter={(e) => (e.target as HTMLButtonElement).style.backgroundColor = '#FFE082'}
+                      onMouseLeave={(e) => (e.target as HTMLButtonElement).style.backgroundColor = '#FED358'}
                     >
                       Start Predicting Now!
                     </button>
@@ -736,38 +741,41 @@ export default function Home() {
       {/* Disclaimer Dialog */}
       {showDisclaimerDialog && (
         <div className="fixed inset-0 bg-black bg-opacity-60 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <div className="rounded-3xl max-w-lg w-full max-h-[80vh] overflow-y-auto shadow-2xl border-2 border-white/20" style={{ background: 'linear-gradient(135deg, #FED358 0%, #FFE082 50%, #FFF3A0 100%)' }}>
+          <div className="rounded-3xl max-w-lg w-full max-h-[80vh] overflow-y-auto shadow-2xl border-2" style={{ backgroundColor: 'rgb(56, 46, 53)', border: '2px solid #FED358' }}>
             <div className="p-8">
               <div className="flex justify-between items-center mb-8">
-                <h2 className="text-3xl font-bold text-black bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent">Disclaimer</h2>
+                <h2 className="text-3xl font-bold" style={{ color: '#FED358' }}>Disclaimer</h2>
                 <button
                   onClick={() => setShowDisclaimerDialog(false)}
-                  className="text-gray-600 hover:text-black text-2xl font-bold bg-white/20 rounded-full w-8 h-8 flex items-center justify-center hover:bg-white/40 transition-all duration-200"
+                  className="text-2xl font-bold rounded-full w-8 h-8 flex items-center justify-center transition-all duration-200"
+                  style={{ color: '#FDE4BC', backgroundColor: 'rgba(254, 211, 88, 0.2)' }}
+                  onMouseEnter={(e) => (e.target as HTMLButtonElement).style.backgroundColor = 'rgba(254, 211, 88, 0.4)'}
+                  onMouseLeave={(e) => (e.target as HTMLButtonElement).style.backgroundColor = 'rgba(254, 211, 88, 0.2)'}
                 >
                   ×
                 </button>
               </div>
               
               <div className="space-y-6">
-                <div className="bg-gradient-to-br from-orange-400/20 to-orange-600/20 rounded-2xl p-6 border border-orange-400/30 backdrop-blur-sm">
-                  <p className="text-black font-bold text-center text-lg mb-4">
+                <div className="rounded-2xl p-6" style={{ backgroundColor: 'rgba(255, 165, 0, 0.2)', border: '1px solid rgba(255, 165, 0, 0.4)' }}>
+                  <p className="font-bold text-center text-lg mb-4" style={{ color: '#FFA500' }}>
                     ⚠️ Important Notice ⚠️
                   </p>
-                  <p className="text-black text-base leading-relaxed">
+                  <p className="text-base leading-relaxed" style={{ color: '#FDE4BC' }}>
                     Please note that Our Vip App provides predictions based on statistical analysis and past lottery results. Our predictions are meant to serve as a guide, and not to encourage addiction.
                   </p>
                 </div>
 
-                <div className="space-y-4 text-black">
+                <div className="space-y-4" style={{ color: '#FDE4BC' }}>
                   <p className="text-base leading-relaxed">
                     We make predictions for platforms, and if they shut down or if something happens to them, we are not responsible.
                   </p>
 
-                  <div className="bg-gradient-to-br from-red-400/20 to-red-600/20 rounded-2xl p-6 border border-red-400/30 backdrop-blur-sm">
-                    <p className="text-black font-bold text-center text-lg mb-3">
+                  <div className="rounded-2xl p-6" style={{ backgroundColor: 'rgba(231, 76, 60, 0.2)', border: '1px solid rgba(231, 76, 60, 0.4)' }}>
+                    <p className="font-bold text-center text-lg mb-3" style={{ color: '#E74C3C' }}>
                       🎲 Risk Notice 🎲
                     </p>
-                    <p className="text-black text-base leading-relaxed text-center">
+                    <p className="text-base leading-relaxed text-center" style={{ color: '#FDE4BC' }}>
                       Participation in lottery games involves risk. It is important to play responsibly and within your financial limits.
                     </p>
                   </div>
@@ -776,21 +784,24 @@ export default function Home() {
                     By using our services, you acknowledge that you understand the risks involved and agree to take responsibility for your decisions and actions.
                   </p>
 
-                  <div className="bg-gradient-to-br from-blue-400/20 to-blue-600/20 rounded-2xl p-6 border border-blue-400/30 backdrop-blur-sm">
-                    <p className="text-black font-bold text-center text-lg mb-3">
+                  <div className="rounded-2xl p-6" style={{ backgroundColor: 'rgba(52, 152, 219, 0.2)', border: '1px solid rgba(52, 152, 219, 0.4)' }}>
+                    <p className="font-bold text-center text-lg mb-3" style={{ color: '#3498DB' }}>
                       🎯 Remember 🎯
                     </p>
-                    <p className="text-black text-base leading-relaxed text-center">
+                    <p className="text-base leading-relaxed text-center" style={{ color: '#FDE4BC' }}>
                       Lottery games are a form of gambling, and it is essential to make informed choices.
                     </p>
                   </div>
                 </div>
 
-                <div className="bg-gradient-to-br from-gray-400/20 to-gray-600/20 rounded-2xl p-6 border border-gray-400/30 backdrop-blur-sm">
+                <div className="rounded-2xl p-6" style={{ backgroundColor: 'rgba(254, 211, 88, 0.2)', border: '1px solid rgba(254, 211, 88, 0.4)' }}>
                   <div className="text-center">
                     <button 
                       onClick={() => setShowDisclaimerDialog(false)}
-                      className="px-6 py-3 bg-gray-600 hover:bg-gray-700 text-white font-bold rounded-full shadow-lg transition-all duration-300 transform hover:scale-105"
+                      className="px-6 py-3 font-bold rounded-full shadow-lg transition-all duration-300 transform hover:scale-105"
+                      style={{ backgroundColor: '#FED358', color: '#231C21' }}
+                      onMouseEnter={(e) => (e.target as HTMLButtonElement).style.backgroundColor = '#FFE082'}
+                      onMouseLeave={(e) => (e.target as HTMLButtonElement).style.backgroundColor = '#FED358'}
                     >
                       I Understand
                     </button>
@@ -805,68 +816,71 @@ export default function Home() {
       {/* Warning Dialog */}
       {showWarningDialog && (
         <div className="fixed inset-0 bg-black bg-opacity-60 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <div className="rounded-3xl max-w-2xl w-full max-h-[80vh] overflow-y-auto shadow-2xl border-2 border-white/20" style={{ background: 'linear-gradient(135deg, #FED358 0%, #FFE082 50%, #FFF3A0 100%)' }}>
+          <div className="rounded-3xl max-w-2xl w-full max-h-[80vh] overflow-y-auto shadow-2xl border-2" style={{ backgroundColor: 'rgb(56, 46, 53)', border: '2px solid #FED358' }}>
             <div className="p-8">
               <div className="flex justify-between items-center mb-8">
-                <h2 className="text-3xl font-bold text-black bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent">Important Warning</h2>
+                <h2 className="text-3xl font-bold" style={{ color: '#FED358' }}>Important Warning</h2>
                 <button
                   onClick={() => setShowWarningDialog(false)}
-                  className="text-gray-600 hover:text-black text-2xl font-bold bg-white/20 rounded-full w-8 h-8 flex items-center justify-center hover:bg-white/40 transition-all duration-200"
+                  className="text-2xl font-bold rounded-full w-8 h-8 flex items-center justify-center transition-all duration-200"
+                  style={{ color: '#FDE4BC', backgroundColor: 'rgba(254, 211, 88, 0.2)' }}
+                  onMouseEnter={(e) => (e.target as HTMLButtonElement).style.backgroundColor = 'rgba(254, 211, 88, 0.4)'}
+                  onMouseLeave={(e) => (e.target as HTMLButtonElement).style.backgroundColor = 'rgba(254, 211, 88, 0.2)'}
                 >
                   ×
                 </button>
               </div>
               
               <div className="space-y-6">
-                <div className="bg-gradient-to-br from-blue-400/20 to-blue-600/20 rounded-2xl p-6 border border-blue-400/30 backdrop-blur-sm">
-                  <p className="text-black text-base leading-relaxed">
+                <div className="rounded-2xl p-6" style={{ backgroundColor: 'rgba(52, 152, 219, 0.2)', border: '1px solid rgba(52, 152, 219, 0.4)' }}>
+                  <p className="text-base leading-relaxed" style={{ color: '#FDE4BC' }}>
                     At Tashan Win Vip, we believe in empowering our users with knowledge. It's crucial to understand that to use advanced systems like SHA-256 for generating random results, there's always a potential for manipulation. This is where our expertise comes in handy.
                   </p>
                 </div>
 
-                <div className="bg-gradient-to-br from-green-400/20 to-green-600/20 rounded-2xl p-6 border border-green-400/30 backdrop-blur-sm">
-                  <h3 className="text-black font-bold text-xl mb-4 flex items-center">
-                    <span className="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center text-white text-sm mr-3">🛡️</span>
+                <div className="rounded-2xl p-6" style={{ backgroundColor: 'rgba(46, 204, 113, 0.2)', border: '1px solid rgba(46, 204, 113, 0.4)' }}>
+                  <h3 className="font-bold text-xl mb-4 flex items-center" style={{ color: '#2ECC71' }}>
+                    <span className="w-6 h-6 rounded-full flex items-center justify-center text-white text-sm mr-3" style={{ backgroundColor: '#2ECC71' }}>🛡️</span>
                     How We Protect You:
                   </h3>
-                  <div className="space-y-3 text-black">
+                  <div className="space-y-3" style={{ color: '#FDE4BC' }}>
                     <div className="flex items-start">
-                      <span className="w-2 h-2 bg-green-500 rounded-full mr-3 mt-2 flex-shrink-0"></span>
+                      <span className="w-2 h-2 rounded-full mr-3 mt-2 flex-shrink-0" style={{ backgroundColor: '#2ECC71' }}></span>
                       <span>Our sophisticated API system constantly monitors these platforms, tracking any data that might be manipulated.</span>
                     </div>
                     <div className="flex items-start">
-                      <span className="w-2 h-2 bg-green-500 rounded-full mr-3 mt-2 flex-shrink-0"></span>
+                      <span className="w-2 h-2 rounded-full mr-3 mt-2 flex-shrink-0" style={{ backgroundColor: '#2ECC71' }}></span>
                       <span>We use advanced algorithms to detect patterns and anomalies that could indicate unfair practices.</span>
                     </div>
                     <div className="flex items-start">
-                      <span className="w-2 h-2 bg-green-500 rounded-full mr-3 mt-2 flex-shrink-0"></span>
+                      <span className="w-2 h-2 rounded-full mr-3 mt-2 flex-shrink-0" style={{ backgroundColor: '#2ECC71' }}></span>
                       <span>Our predictions are based on a comprehensive analysis of multiple factors, not just the platform's provided data.</span>
                     </div>
                   </div>
                 </div>
 
-                <div className="bg-gradient-to-br from-red-400/20 to-red-600/20 rounded-2xl p-6 border border-red-400/30 backdrop-blur-sm">
-                  <h3 className="text-black font-bold text-xl mb-4 flex items-center">
-                    <span className="w-6 h-6 bg-red-500 rounded-full flex items-center justify-center text-white text-sm mr-3">⚠️</span>
+                <div className="rounded-2xl p-6" style={{ backgroundColor: 'rgba(231, 76, 60, 0.2)', border: '1px solid rgba(231, 76, 60, 0.4)' }}>
+                  <h3 className="font-bold text-xl mb-4 flex items-center" style={{ color: '#E74C3C' }}>
+                    <span className="w-6 h-6 rounded-full flex items-center justify-center text-white text-sm mr-3" style={{ backgroundColor: '#E74C3C' }}>⚠️</span>
                     Potential Manipulation Tactics:
                   </h3>
-                  <div className="space-y-3 text-black">
+                  <div className="space-y-3" style={{ color: '#FDE4BC' }}>
                     <div className="flex items-start">
-                      <span className="w-2 h-2 bg-red-500 rounded-full mr-3 mt-2 flex-shrink-0"></span>
+                      <span className="w-2 h-2 rounded-full mr-3 mt-2 flex-shrink-0" style={{ backgroundColor: '#E74C3C' }}></span>
                       <div>
                         <span className="font-semibold">Controlled "Randomness": </span>
                         <span>Platforms might influence when and how their "random" number generation is applied.</span>
                       </div>
                     </div>
                     <div className="flex items-start">
-                      <span className="w-2 h-2 bg-red-500 rounded-full mr-3 mt-2 flex-shrink-0"></span>
+                      <span className="w-2 h-2 rounded-full mr-3 mt-2 flex-shrink-0" style={{ backgroundColor: '#E74C3C' }}></span>
                       <div>
                         <span className="font-semibold">Hidden Algorithm Changes: </span>
                         <span>Sudden, undisclosed changes to algorithms could unfairly shift odds.</span>
                       </div>
                     </div>
                     <div className="flex items-start">
-                      <span className="w-2 h-2 bg-red-500 rounded-full mr-3 mt-2 flex-shrink-0"></span>
+                      <span className="w-2 h-2 rounded-full mr-3 mt-2 flex-shrink-0" style={{ backgroundColor: '#E74C3C' }}></span>
                       <div>
                         <span className="font-semibold">Selective Payout Practices: </span>
                         <span>Some platforms might delay or withhold certain payouts without clear explanation.</span>
@@ -875,27 +889,30 @@ export default function Home() {
                   </div>
                 </div>
 
-                <div className="bg-gradient-to-br from-purple-400/20 to-purple-600/20 rounded-2xl p-6 border border-purple-400/30 backdrop-blur-sm">
-                  <h3 className="text-black font-bold text-xl mb-4 flex items-center">
-                    <span className="w-6 h-6 bg-purple-500 rounded-full flex items-center justify-center text-white text-sm mr-3">🧠</span>
+                <div className="rounded-2xl p-6" style={{ backgroundColor: 'rgba(155, 89, 182, 0.2)', border: '1px solid rgba(155, 89, 182, 0.4)' }}>
+                  <h3 className="font-bold text-xl mb-4 flex items-center" style={{ color: '#9B59B6' }}>
+                    <span className="w-6 h-6 rounded-full flex items-center justify-center text-white text-sm mr-3" style={{ backgroundColor: '#9B59B6' }}>🧠</span>
                     Stay Informed, Play Smart:
                   </h3>
-                  <p className="text-black text-base leading-relaxed">
+                  <p className="text-base leading-relaxed" style={{ color: '#FDE4BC' }}>
                     We urge all our users to approach these platforms with a critical eye. Always verify a platform's credibility before engaging. With Tashan Win by your side, you're equipped with the insights needed to make informed decisions and maximize your chances of success.
                   </p>
                   
-                  <div className="mt-4 p-4 bg-gradient-to-r from-yellow-300/30 to-yellow-500/30 rounded-xl border border-yellow-400/40">
-                    <p className="text-black font-bold text-center text-lg">
+                  <div className="mt-4 p-4 rounded-xl" style={{ backgroundColor: 'rgba(254, 211, 88, 0.3)', border: '1px solid rgba(254, 211, 88, 0.5)' }}>
+                    <p className="font-bold text-center text-lg" style={{ color: '#FED358' }}>
                       💡 Remember: Knowledge is power – especially in the world of online lotteries! 💡
                     </p>
                   </div>
                 </div>
 
-                <div className="bg-gradient-to-br from-gray-400/20 to-gray-600/20 rounded-2xl p-6 border border-gray-400/30 backdrop-blur-sm">
+                <div className="rounded-2xl p-6" style={{ backgroundColor: 'rgba(254, 211, 88, 0.2)', border: '1px solid rgba(254, 211, 88, 0.4)' }}>
                   <div className="text-center">
                     <button 
                       onClick={() => setShowWarningDialog(false)}
-                      className="px-6 py-3 bg-gray-600 hover:bg-gray-700 text-white font-bold rounded-full shadow-lg transition-all duration-300 transform hover:scale-105"
+                      className="px-6 py-3 font-bold rounded-full shadow-lg transition-all duration-300 transform hover:scale-105"
+                      style={{ backgroundColor: '#FED358', color: '#231C21' }}
+                      onMouseEnter={(e) => (e.target as HTMLButtonElement).style.backgroundColor = '#FFE082'}
+                      onMouseLeave={(e) => (e.target as HTMLButtonElement).style.backgroundColor = '#FED358'}
                     >
                       Got It, Thanks!
                     </button>
