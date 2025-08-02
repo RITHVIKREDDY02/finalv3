@@ -1,11 +1,10 @@
 import { useState, useEffect } from "react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { useQuery, useMutation } from "@tanstack/react-query";
-import { ArrowLeft, Play, Trophy, Clock, TrendingUp, Eye, RefreshCw, RotateCcw } from "lucide-react";
+import { useQuery } from "@tanstack/react-query";
+import { ArrowLeft, Play, Trophy, Clock, TrendingUp, Eye, RefreshCw } from "lucide-react";
 import { useLocation } from "wouter";
-import { queryClient, apiRequest } from "@/lib/queryClient";
-import { useToast } from "@/hooks/use-toast";
+import { queryClient } from "@/lib/queryClient";
 import wingoIssueImage from "@assets/wingoissue-2e0f92ab_1754126687302.webp";
 
 type WingoVariant = "30sec" | "1min" | "3min" | "5min";
@@ -28,7 +27,6 @@ export default function Wingo() {
   const [, navigate] = useLocation();
   const [selectedVariant, setSelectedVariant] = useState<WingoVariant>("30sec");
   const [countdown, setCountdown] = useState(30);
-  const { toast } = useToast();
 
   // Fetch prediction data for selected variant
   const { data: prediction } = useQuery<WingoPrediction>({
@@ -42,13 +40,6 @@ export default function Wingo() {
   const { data: results = [] } = useQuery<WingoResult[]>({
     queryKey: [`/api/wingo/results/${selectedVariant}`],
     refetchInterval: 15000,
-    enabled: !!selectedVariant,
-  });
-
-  // Fetch prediction history with win/loss tracking for selected variant
-  const { data: history = [] } = useQuery<any[]>({
-    queryKey: [`/api/wingo/history/${selectedVariant}`],
-    refetchInterval: 15000, // Refetch every 15 seconds
     enabled: !!selectedVariant,
   });
 
@@ -73,77 +64,60 @@ export default function Wingo() {
     return () => clearInterval(interval);
   }, []);
 
-  const getIntervalSeconds = (variant: WingoVariant): number => {
-    switch (variant) {
-      case "30sec": return 30;
-      case "1min": return 60;
-      case "3min": return 180;
-      case "5min": return 300;
-      default: return 30;
-    }
+  const variants = [
+    { key: "30sec" as WingoVariant, label: "30Sec" },
+    { key: "1min" as WingoVariant, label: "1Min" },
+    { key: "3min" as WingoVariant, label: "3Min" },
+    { key: "5min" as WingoVariant, label: "5Min" },
+  ];
+
+  const handleVariantSwitch = (variant: WingoVariant) => {
+    setSelectedVariant(variant);
+    
+    // Set initial countdown based on variant
+    const countdowns = { "30sec": 30, "1min": 60, "3min": 180, "5min": 300 };
+    setCountdown(countdowns[variant]);
+    
+    // Invalidate queries for new variant to fetch fresh data
+    queryClient.invalidateQueries({ queryKey: [`/api/wingo/prediction/${variant}`] });
+    queryClient.invalidateQueries({ queryKey: [`/api/wingo/results/${variant}`] });
+  };
+
+  const formatTime = (seconds: number): string => {
+    const mins = Math.floor(seconds / 60);
+    const secs = seconds % 60;
+    return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
   };
 
   const getBigSmall = (number: number): "BIG" | "SMALL" => {
     return number >= 5 ? "BIG" : "SMALL";
   };
 
-  const formatTime = (seconds: number): string => {
-    if (seconds < 60) {
-      return `00:${seconds.toString().padStart(2, '0')}`;
-    }
-    const mins = Math.floor(seconds / 60);
-    const secs = seconds % 60;
-    return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
-  };
-
-  const getCurrentISTTime = (): string => {
-    const now = new Date();
-    const istTime = new Date(now.getTime() + (5.5 * 60 * 60 * 1000)); // Add 5:30 hours for IST
-    return istTime.toLocaleTimeString('en-IN', { 
+  const formatDateTime = (): string => {
+    return new Date().toLocaleString('en-IN', {
       timeZone: 'Asia/Kolkata',
-      hour12: false,
-      hour: '2-digit', 
+      hour12: true,
+      hour: '2-digit',
       minute: '2-digit',
       second: '2-digit'
     });
   };
 
-  const variants = [
-    { key: "30sec" as WingoVariant, label: "Wingo 30Sec", time: "30s", icon: "⚡" },
-    { key: "1min" as WingoVariant, label: "Wingo 1Min", time: "1m", icon: "🚀" },
-    { key: "3min" as WingoVariant, label: "Wingo 3Min", time: "3m", icon: "💎" },
-    { key: "5min" as WingoVariant, label: "Wingo 5Min", time: "5m", icon: "👑" }
-  ];
-
-  // Handle variant switching with cache invalidation
-  const handleVariantSwitch = (variant: WingoVariant) => {
-    setSelectedVariant(variant);
-    // Immediately invalidate cache for new variant to get fresh data
-    queryClient.invalidateQueries({ queryKey: [`/api/wingo/prediction/${variant}`] });
-    queryClient.invalidateQueries({ queryKey: [`/api/wingo/results/${variant}`] });
-    
-  };
-
-
-  // Get number color based on value (0-9)
-  const getNumberColor = (num: number): string => {
-    if ([0, 1, 2, 3, 4].includes(num)) return "text-emerald-500";
-    if ([5, 6, 7, 8, 9].includes(num)) return "text-red-500";
-    return "text-gray-500";
-  };
-
-  // Get number background based on value
-  const getNumberBg = (num: number): string => {
-    if ([0, 1, 2, 3, 4].includes(num)) return "bg-emerald-500/20 border-emerald-500";
-    if ([5, 6, 7, 8, 9].includes(num)) return "bg-red-500/20 border-red-500";
-    return "bg-gray-500/20 border-gray-500";
+  const handleVariantNavigation = (variant: WingoVariant) => {
+    const routes = {
+      "30sec": "/wingo/30sec",
+      "1min": "/wingo/1min", 
+      "3min": "/wingo/3min",
+      "5min": "/wingo/5min"
+    };
+    navigate(routes[variant]);
   };
 
   return (
     <div className="min-h-screen" style={{ backgroundColor: '#231C21' }}>
       {/* Header */}
-      <div className="p-4 border-b border-gray-700 flex items-center justify-between">
-        <button
+      <div className="bg-gray-800 p-4 flex items-center justify-between shadow-lg">
+        <button 
           onClick={() => navigate('/')}
           className="flex items-center gap-2 text-white hover:text-yellow-400 transition-colors"
         >
@@ -152,21 +126,10 @@ export default function Wingo() {
         </button>
         <h1 className="text-xl font-bold text-white">WINGO GAMES</h1>
         <div className="flex items-center gap-2">
-          <Button
-            onClick={() => clearHistoryMutation.mutate()}
-            disabled={clearHistoryMutation.isPending || history.length === 0}
-            variant="outline"
-            size="sm"
-            className="text-yellow-400 border-yellow-400 hover:bg-yellow-400 hover:text-black transition-colors"
-          >
-            <RotateCcw className="w-4 h-4 mr-2" />
-            {clearHistoryMutation.isPending ? 'Clearing...' : 'Start Fresh'}
-          </Button>
           <button
             onClick={() => {
               queryClient.invalidateQueries({ queryKey: [`/api/wingo/prediction/${selectedVariant}`] });
               queryClient.invalidateQueries({ queryKey: [`/api/wingo/results/${selectedVariant}`] });
-              
             }}
             className="flex items-center justify-center w-10 h-10 text-white hover:text-yellow-400 transition-colors rounded-lg hover:bg-gray-700"
             title="Refresh"
@@ -267,133 +230,47 @@ export default function Wingo() {
             </div>
           </div>
 
-          {/* Game History Section */}
-          <div className="mt-6">
-            <div className="flex items-center gap-3 mb-4">
-              <div className="w-2 h-8 rounded-full" style={{ backgroundColor: '#ffd05a' }}></div>
-              <h3 className="text-white font-bold text-xl">Game History</h3>
-              <div className="flex-1 h-px bg-gradient-to-r from-gray-600 to-transparent"></div>
+          {/* Recent Results Section */}
+          <div className="mt-4">
+            <div className="flex items-center gap-3 mb-3">
+              <div className="w-1 h-6 bg-blue-400 rounded-full"></div>
+              <h3 className="text-white font-bold text-lg">Recent Results</h3>
             </div>
             
-            {/* Table-style History */}
-            <div className="rounded-2xl overflow-hidden shadow-lg border border-gray-600/30" style={{ backgroundColor: 'rgb(56, 46, 53)' }}>
-              {/* Header */}
-              <div className="p-4 border-b border-gray-600/50 flex items-center justify-between text-sm font-bold text-gray-300 uppercase tracking-wider">
-                <div className="flex-1">Period</div>
-                <div className="w-20 text-center">Number</div>
-                <div className="w-20 text-center">Size</div>
-                <div className="w-20 text-center">Result</div>
-                <div className="w-16 text-center">Status</div>
-              </div>
-              
-              {/* History Rows */}
-              <div className="divide-y divide-gray-600/30">
-                {history?.length > 0 ? history.slice(0, 5).map((record, index) => {
+            <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-4">
+              <div className="flex justify-center gap-2 overflow-x-auto">
+                {results.slice(0, 5).map((result, index) => {
+                  const size = getBigSmall(result.number);
                   return (
-                    <div key={record.id} className="p-4 hover:bg-black/20 transition-colors duration-200">
-                      <div className="flex items-center justify-between">
-                        {/* Period Info */}
-                        <div className="flex-1 flex items-center gap-3">
-                          <div className="text-black px-3 py-1 rounded-full text-xs font-bold" style={{ backgroundColor: '#ffd05a' }}>
-                            #{record.period.slice(-6)}
-                          </div>
-                        </div>
-                        
-                        {/* Actual Number */}
-                        <div className="w-20 flex justify-center">
-                          {record.actualNumber !== null ? (
-                            <div className={`w-8 h-8 rounded-lg flex items-center justify-center font-bold text-sm text-white ${record.actualSize === 'BIG' ? 'bg-emerald-500' : 'bg-red-500'}`}>
-                              {record.actualNumber}
-                            </div>
-                          ) : (
-                            <div className="w-8 h-8 rounded-lg flex items-center justify-center font-bold text-sm text-gray-400 bg-gray-600">
-                              ?
-                            </div>
-                          )}
-                        </div>
-                        
-                        {/* Actual Size */}
-                        <div className="w-20 flex justify-center">
-                          {record.actualSize ? (
-                            <div className={`px-3 py-1 rounded-lg text-xs font-bold text-white ${record.actualSize === 'BIG' ? 'bg-emerald-500' : 'bg-red-500'}`}>
-                              {record.actualSize}
-                            </div>
-                          ) : (
-                            <div className="px-3 py-1 rounded-lg text-xs font-bold text-gray-400 bg-gray-600">
-                              PENDING
-                            </div>
-                          )}
-                        </div>
-                        
-                        {/* Prediction Result */}
-                        <div className="w-20 flex justify-center">
-                          <div className="text-center">
-                            <div className="text-gray-400 text-xs mb-1">P: {record.predictedSize}</div>
-                            <div className={`text-xs font-bold ${
-                              record.status === 'WIN' ? 'text-emerald-400' : 
-                              record.status === 'LOSS' ? 'text-red-400' : 'text-gray-400'
-                            }`}>
-                              {record.status === 'WIN' ? 'MATCH' : record.status === 'LOSS' ? 'MISS' : 'PENDING'}
-                            </div>
-                          </div>
-                        </div>
-                        
-                        {/* Status */}
-                        <div className="w-16 flex justify-center">
-                          {record.status === 'WIN' ? (
-                            <div className="w-6 h-6 bg-emerald-500 rounded-full flex items-center justify-center">
-                              <div className="w-2 h-2 bg-white rounded-full"></div>
-                            </div>
-                          ) : record.status === 'LOSS' ? (
-                            <div className="w-6 h-6 bg-red-500 rounded-full flex items-center justify-center">
-                              <div className="w-3 h-px bg-white"></div>
-                            </div>
-                          ) : (
-                            <div className="w-6 h-6 bg-gray-500 rounded-full flex items-center justify-center">
-                              <div className="w-2 h-2 bg-white rounded-full opacity-50"></div>
-                            </div>
-                          )}
-                        </div>
-                      </div>
+                    <div
+                      key={result.issueNumber}
+                      className={`w-10 h-10 rounded-lg flex items-center justify-center font-bold text-white shadow-lg ${
+                        size === 'BIG' ? 'bg-green-500' : 'bg-red-500'
+                      }`}
+                    >
+                      {result.number}
                     </div>
                   );
-                }) : (
-                  <div className="p-8 text-center">
-                    <div className="text-4xl mb-3">📊</div>
-                    <div className="text-gray-300 font-medium">No game history yet</div>
-                    <div className="text-gray-500 text-sm mt-1">Predictions will appear here once the system generates them</div>
-                  </div>
-                )}
+                })}
               </div>
-              
-              {/* Stats Footer */}
-              <div className="p-4 border-t border-gray-600/50 bg-black/20">
-                <div className="flex items-center justify-between text-sm">
-                  <div className="text-gray-400">
-                    Showing latest {history?.length || 0} predictions
-                  </div>
-                  <div className="flex items-center gap-4">
-                    <div className="flex items-center gap-2">
-                      <div className="w-3 h-3 bg-emerald-500 rounded-full"></div>
-                      <span className="text-gray-300 text-xs">
-                        Wins: {history?.filter(h => h.status === 'WIN').length || 0}
-                      </span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <div className="w-3 h-3 bg-red-500 rounded-full"></div>
-                      <span className="text-gray-300 text-xs">
-                        Losses: {history?.filter(h => h.status === 'LOSS').length || 0}
-                      </span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <div className="w-3 h-3 bg-gray-500 rounded-full"></div>
-                      <span className="text-gray-300 text-xs">
-                        Pending: {history?.filter(h => h.status === 'PENDING').length || 0}
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              </div>
+            </div>
+          </div>
+
+          {/* Action Buttons */}
+          <div className="mt-6 flex gap-3">
+            <Button
+              onClick={() => handleVariantNavigation(selectedVariant)}
+              className="flex-1 bg-yellow-400 hover:bg-yellow-500 text-black font-bold py-3 rounded-2xl transition-all duration-200 shadow-lg hover:shadow-xl"
+            >
+              <Play className="w-5 h-5 mr-2" />
+              Play {variants.find(v => v.key === selectedVariant)?.label}
+            </Button>
+          </div>
+
+          {/* Live Clock */}
+          <div className="mt-4 text-center">
+            <div className="text-gray-400 text-sm">
+              IST: {formatDateTime()}
             </div>
           </div>
         </div>
