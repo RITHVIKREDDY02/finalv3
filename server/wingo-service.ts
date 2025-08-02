@@ -63,7 +63,7 @@ class WingoService {
 
   private lastPredictions: Array<{prediction: string, result: string}> = [];
   private predictionCache: Map<string, WingoPrediction> = new Map();
-  private backgroundScheduler: NodeJS.Timeout | null = null;
+  private variantSchedulers: Map<string, NodeJS.Timeout> = new Map();
 
   private getBigSmall(number: number): "BIG" | "SMALL" {
     return number >= 5 ? "BIG" : "SMALL";
@@ -263,21 +263,25 @@ class WingoService {
   }
 
   // Background scheduler methods
-  private async runBackgroundPredictions(): Promise<void> {
-    console.log('🔄 Running background predictions for all variants...');
+  private async runPredictionForVariant(variant: string): Promise<void> {
+    try {
+      const prediction = await this.generatePrediction(variant);
+      if (prediction) {
+        this.predictionCache.set(variant, prediction);
+        console.log(`✅ Updated ${variant} prediction: ${prediction.prediction} (${prediction.countdown}s)`);
+      }
+    } catch (error) {
+      console.error(`❌ Failed to update ${variant} prediction:`, error);
+    }
+  }
+
+  private async runInitialPredictions(): Promise<void> {
+    console.log('🔄 Running initial predictions for all variants...');
     
-    // Generate predictions for all variants simultaneously
+    // Generate predictions for all variants simultaneously on startup
     const variants = Object.keys(WINGO_VARIANTS);
     const promises = variants.map(async (variant) => {
-      try {
-        const prediction = await this.generatePrediction(variant);
-        if (prediction) {
-          this.predictionCache.set(variant, prediction);
-          console.log(`✅ Updated ${variant} prediction: ${prediction.prediction} (${prediction.countdown}s)`);
-        }
-      } catch (error) {
-        console.error(`❌ Failed to update ${variant} prediction:`, error);
-      }
+      await this.runPredictionForVariant(variant);
     });
     
     await Promise.all(promises);
@@ -298,28 +302,36 @@ class WingoService {
     return await this.generatePrediction(variant);
   }
 
-  // Start background scheduler at 5:30 PM
+  // Start individual background schedulers for each variant
   startBackgroundScheduler(): void {
-    console.log('🚀 Starting background prediction scheduler...');
+    console.log('🚀 Starting background prediction schedulers...');
     
-    // Run predictions immediately
-    this.runBackgroundPredictions();
+    // Run initial predictions for all variants
+    this.runInitialPredictions();
     
-    // Set up interval to run every minute (60000ms)
-    this.backgroundScheduler = setInterval(() => {
-      this.runBackgroundPredictions();
-    }, 60000);
+    // Set up individual timers for each variant based on their intervals
+    Object.entries(WINGO_VARIANTS).forEach(([variant, config]) => {
+      const intervalMs = config.intervalSeconds * 1000; // Convert to milliseconds
+      
+      const scheduler = setInterval(() => {
+        this.runPredictionForVariant(variant);
+      }, intervalMs);
+      
+      this.variantSchedulers.set(variant, scheduler);
+      console.log(`⏰ ${variant} scheduler started - will update every ${config.intervalSeconds} seconds (${intervalMs/1000/60} min)`);
+    });
     
-    console.log('⏰ Background scheduler started - predictions will run every minute');
+    console.log('✅ All variant-specific schedulers started with optimized intervals');
   }
 
-  // Stop background scheduler
+  // Stop all background schedulers
   stopBackgroundScheduler(): void {
-    if (this.backgroundScheduler) {
-      clearInterval(this.backgroundScheduler);
-      this.backgroundScheduler = null;
-      console.log('⏹️ Background scheduler stopped');
-    }
+    this.variantSchedulers.forEach((scheduler, variant) => {
+      clearInterval(scheduler);
+      console.log(`⏹️ ${variant} scheduler stopped`);
+    });
+    this.variantSchedulers.clear();
+    console.log('⏹️ All background schedulers stopped');
   }
 }
 
