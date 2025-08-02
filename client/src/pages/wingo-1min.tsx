@@ -59,6 +59,12 @@ export default function Wingo1Min() {
     return number >= 5 ? "BIG" : "SMALL";
   };
 
+  const formatTime = (seconds: number): string => {
+    const mins = Math.floor(seconds / 60);
+    const secs = seconds % 60;
+    return `${mins}:${secs.toString().padStart(2, '0')}`;
+  };
+
   const getCurrentISTTime = (): string => {
     const now = new Date();
     return now.toLocaleTimeString('en-IN', { 
@@ -114,7 +120,7 @@ export default function Wingo1Min() {
               </div>
               
               <div className="text-gray-300 text-lg">
-                ⏰ Next prediction in: <span className="font-bold text-white text-xl">{countdown}s</span>
+                ⏰ Next prediction in: <span className="font-bold text-white text-xl">{formatTime(countdown)}</span>
               </div>
 
               {prediction?.confidence && (
