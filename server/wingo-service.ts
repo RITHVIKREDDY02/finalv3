@@ -665,9 +665,16 @@ class WingoService {
     }
   }
 
-  // Store prediction in database
+  // Store prediction in database (only if it doesn't already exist)
   private async storePrediction(variant: string, prediction: WingoPrediction): Promise<void> {
     try {
+      // Check if prediction already exists for this period
+      const existing = await storage.findExistingPrediction(prediction.period, variant);
+      if (existing) {
+        // Prediction already exists, skip creating duplicate
+        return;
+      }
+
       await storage.createPrediction({
         variant,
         period: prediction.period,

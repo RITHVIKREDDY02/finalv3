@@ -15,6 +15,7 @@ export interface IStorage {
   createPrediction(prediction: InsertPredictionHistory): Promise<PredictionHistory>;
   updatePredictionResult(period: string, variant: string, actualNumber: number, actualSize: string): Promise<PredictionHistory | undefined>;
   getPredictionHistory(variant: string, limit?: number): Promise<PredictionHistory[]>;
+  findExistingPrediction(period: string, variant: string): Promise<PredictionHistory | undefined>;
 }
 
 export class DatabaseStorage implements IStorage {
@@ -127,6 +128,17 @@ export class DatabaseStorage implements IStorage {
       .where(eq(predictionHistory.variant, variant))
       .orderBy(desc(predictionHistory.createdAt))
       .limit(limit);
+  }
+
+  async findExistingPrediction(period: string, variant: string): Promise<PredictionHistory | undefined> {
+    const [prediction] = await db
+      .select()
+      .from(predictionHistory)
+      .where(and(
+        eq(predictionHistory.period, period),
+        eq(predictionHistory.variant, variant)
+      ));
+    return prediction || undefined;
   }
 }
 

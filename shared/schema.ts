@@ -1,5 +1,5 @@
 import { sql } from "drizzle-orm";
-import { pgTable, text, varchar, timestamp, boolean, integer } from "drizzle-orm/pg-core";
+import { pgTable, text, varchar, timestamp, boolean, integer, unique } from "drizzle-orm/pg-core";
 import { createInsertSchema } from "drizzle-zod";
 import { z } from "zod";
 
@@ -31,7 +31,10 @@ export const predictionHistory = pgTable("prediction_history", {
   status: varchar("status"), // WIN, LOSS, PENDING
   createdAt: timestamp("created_at").defaultNow().notNull(),
   updatedAt: timestamp("updated_at").defaultNow().notNull(),
-});
+}, (table) => ({
+  // Unique constraint to prevent duplicate predictions for same period + variant
+  uniq: unique().on(table.period, table.variant),
+}));
 
 export const insertUserSchema = createInsertSchema(users).pick({
   uid: true,
