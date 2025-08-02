@@ -176,6 +176,53 @@ export default function Wingo() {
               </div>
             </div>
           </div>
+
+          {/* Prediction Model Section */}
+          <div className="mt-4 bg-white/10 backdrop-blur-sm rounded-2xl p-4">
+            <h3 className="text-white font-bold text-lg mb-3">VIP Prediction</h3>
+            <div className="flex justify-between items-center">
+              <div className="text-center">
+                <div className="text-white/70 text-sm mb-1">Color</div>
+                <div className="w-8 h-8 bg-red-500 rounded mx-auto"></div>
+              </div>
+              <div className="text-center">
+                <div className="text-white/70 text-sm mb-1">Size</div>
+                <div className="text-white font-bold text-xl">
+                  {prediction?.prediction || "BIG"}
+                </div>
+              </div>
+              <div className="text-center">
+                <div className="text-white/70 text-sm mb-1">Number</div>
+                <div className="text-white font-bold text-xl">7</div>
+              </div>
+            </div>
+          </div>
+
+          {/* Game History Section */}
+          <div className="mt-4">
+            <h3 className="text-white font-bold text-lg mb-3">Game History</h3>
+            <div className="bg-white/10 backdrop-blur-sm rounded-2xl overflow-hidden">
+              {/* Header */}
+              <div className="bg-white/20 px-4 py-2 flex justify-between text-white/90 text-sm font-medium">
+                <span>Period</span>
+                <span>Prediction</span>
+                <span>Result</span>
+              </div>
+              
+              {/* History Items */}
+              {results?.slice(0, 5).map((result, index) => (
+                <div key={result.issueNumber} className="px-4 py-3 border-b border-white/10 last:border-b-0 flex justify-between items-center text-white">
+                  <span className="text-sm">{result.issueNumber}</span>
+                  <span className="text-sm">{index % 2 === 0 ? 'BIG' : 'SMALL'}</span>
+                  <span className="font-bold">{result.number}</span>
+                </div>
+              )) || (
+                <div className="px-4 py-8 text-center text-white/50">
+                  Loading history...
+                </div>
+              )}
+            </div>
+          </div>
         </div>
       </div>
     </div>
