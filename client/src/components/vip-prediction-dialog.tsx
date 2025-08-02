@@ -87,13 +87,6 @@ export default function VipPredictionDialog({ isOpen, onClose, uid, onBackToRegi
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent className="sm:max-w-md mx-auto my-4 w-[calc(100%-2rem)] rounded-xl bg-[#231C21] border-[#FED358]/20">
         <DialogHeader className="text-center space-y-4">
-          <div className="flex justify-center">
-            <img 
-              src={logoPath} 
-              alt="TASHANWIN Logo" 
-              className="h-12 w-auto object-contain"
-            />
-          </div>
           <div>
             <DialogTitle className="text-xl font-bold text-[#FED358]">
               TASHAN WIN VIP PREDICTION
@@ -160,26 +153,6 @@ export default function VipPredictionDialog({ isOpen, onClose, uid, onBackToRegi
                 ❓ Help
               </Button>
             </div>
-
-            <Button
-              onClick={handleContinue}
-              disabled={!userStatus?.approved}
-              className={`w-full font-bold py-2 px-4 rounded-full transition-all duration-300 transform hover:scale-105 ${
-                userStatus?.approved 
-                  ? "btn-custom-gold" 
-                  : "bg-gray-600 text-gray-400 cursor-not-allowed opacity-50"
-              }`}
-            >
-              {userStatus?.approved ? "CONTINUE" : "CONTINUE (Unlock until UID gets approved)"}
-            </Button>
-
-            <Button
-              variant="outline"
-              onClick={handleHelp}
-              className="w-full border-[#FED358]/30 text-[#FED358] hover:bg-[#FED358]/10 bg-transparent"
-            >
-              HELP - Telegram: @tashanwinsamaraa
-            </Button>
 
             <Button
               variant="ghost"
