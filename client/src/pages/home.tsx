@@ -1,9 +1,12 @@
 import { Card } from "@/components/ui/card";
 import { Volume2 } from "lucide-react";
 import { useState, useEffect } from "react";
+import { useQuery } from "@tanstack/react-query";
 import { FaTelegram } from "react-icons/fa";
 import RegistrationDialog from "@/components/registration-dialog";
 import VipPredictionDialog from "@/components/vip-prediction-dialog";
+import { ComingSoonDialog } from "@/components/coming-soon-dialog";
+import type { GameConfig } from "@shared/schema";
 import logoPath from "@assets/TASHAN WIN LOGO_1754052537792.png";
 import winGoImage from "@assets/lotterycategory_20250412120719dqfv_1754052547793.png";
 import trxWingoImage from "@assets/lotterycategory_20250412120818j8wq_1754052552269.png";
@@ -24,7 +27,14 @@ export default function Home() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [showRegisterDialog, setShowRegisterDialog] = useState(false);
   const [showVipPredictionDialog, setShowVipPredictionDialog] = useState(false);
+  const [showComingSoonDialog, setShowComingSoonDialog] = useState(false);
+  const [selectedGameName, setSelectedGameName] = useState<string>("");
   const [userUid, setUserUid] = useState<string>("");
+
+  // Fetch game configurations
+  const { data: gameConfigs = [] } = useQuery<GameConfig[]>({
+    queryKey: ["/api/admin/games"],
+  });
 
   useEffect(() => {
     const handleScroll = () => {
@@ -43,8 +53,20 @@ export default function Home() {
     }
   }, []);
 
+  const isGameEnabled = (gameName: string) => {
+    const config = gameConfigs.find(config => config.gameName === gameName);
+    return config?.isEnabled ?? true; // Default to enabled if no config found
+  };
+
   const handleGameClick = (gameType: string) => {
     console.log(`${gameType} game selected`);
+    
+    // Check if game is enabled
+    if (!isGameEnabled(gameType)) {
+      setSelectedGameName(gameType);
+      setShowComingSoonDialog(true);
+      return;
+    }
     
     // Check if user has registered UID
     const storedUid = localStorage.getItem("tashan_user_uid");
@@ -72,6 +94,7 @@ export default function Home() {
   const handleCloseDialogs = () => {
     setShowRegisterDialog(false);
     setShowVipPredictionDialog(false);
+    setShowComingSoonDialog(false);
   };
 
   return (
@@ -451,6 +474,13 @@ export default function Home() {
         onClose={handleCloseDialogs}
         uid={userUid}
         onBackToRegister={handleBackToRegister}
+      />
+
+      {/* Coming Soon Dialog */}
+      <ComingSoonDialog
+        isOpen={showComingSoonDialog}
+        onClose={() => setShowComingSoonDialog(false)}
+        gameName={selectedGameName}
       />
     </div>
   );

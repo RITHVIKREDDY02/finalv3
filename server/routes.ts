@@ -77,6 +77,53 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
+  // Admin routes
+  app.get('/api/admin/users', async (req, res) => {
+    try {
+      const users = await storage.getAllUsers();
+      res.json(users);
+    } catch (error) {
+      console.error("Error fetching users:", error);
+      res.status(500).json({ error: "Failed to fetch users" });
+    }
+  });
+
+  app.get('/api/admin/games', async (req, res) => {
+    try {
+      const games = await storage.getAllGameConfigs();
+      res.json(games);
+    } catch (error) {
+      console.error("Error fetching game configs:", error);
+      res.status(500).json({ error: "Failed to fetch game configs" });
+    }
+  });
+
+  app.patch('/api/admin/games/:gameName', async (req, res) => {
+    try {
+      const { gameName } = req.params;
+      const { isEnabled } = req.body;
+      
+      if (typeof isEnabled !== 'boolean') {
+        return res.status(400).json({ error: "isEnabled must be a boolean" });
+      }
+
+      let gameConfig = await storage.getGameConfig(gameName);
+      
+      if (!gameConfig) {
+        // Create game config if it doesn't exist
+        gameConfig = await storage.createGameConfig({ gameName, isEnabled });
+      } else {
+        // Update existing game config
+        gameConfig = await storage.updateGameConfig(gameName, isEnabled);
+      }
+
+      res.json(gameConfig);
+    } catch (error) {
+      console.error("Error updating game config:", error);
+      res.status(500).json({ error: "Failed to update game config" });
+    }
+  });
+
   const httpServer = createServer(app);
   return httpServer;
 }
