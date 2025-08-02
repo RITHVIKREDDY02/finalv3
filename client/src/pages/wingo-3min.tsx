@@ -108,7 +108,10 @@ export default function Wingo3Min() {
   return (
     <div className="min-h-screen" style={{ backgroundColor: '#231C21' }}>
       {/* Header */}
-      <div className="px-8 py-4 md:px-4 border-b border-gray-700 flex items-center justify-between">
+      <div 
+        className="py-4 border-b border-gray-700 flex items-center justify-between" 
+        style={{ paddingLeft: '32px', paddingRight: '32px' }}
+      >
         <button
           onClick={() => navigate('/')}
           className="flex items-center gap-2 text-white hover:text-yellow-400 transition-colors"
@@ -131,7 +134,10 @@ export default function Wingo3Min() {
       </div>
 
       {/* Main Content */}
-      <div className="p-8 md:p-4 space-y-6">
+      <div 
+        className="space-y-6" 
+        style={{ padding: '32px' }}
+      >
         {/* Current Prediction Card */}
         <Card className="bg-gradient-to-br from-gray-800 to-gray-900 border-2" style={{ borderColor: '#FED358' }}>
           <div className="p-6 text-center space-y-6">
