@@ -38,8 +38,8 @@ export function ComingSoonDialog({ isOpen, onClose, gameName }: ComingSoonDialog
             </div>
           </div>
           
-          <div className="space-y-2">
-            <DialogTitle className="text-3xl font-bold text-black bg-gradient-to-r from-black to-gray-800 bg-clip-text">
+          <div className="space-y-2 text-center">
+            <DialogTitle className="text-3xl font-bold text-black bg-gradient-to-r from-black to-gray-800 bg-clip-text text-center">
               Coming Soon
             </DialogTitle>
             <div className="w-16 h-1 bg-black/20 rounded-full mx-auto"></div>
