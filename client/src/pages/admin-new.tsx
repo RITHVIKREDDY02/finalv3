@@ -201,18 +201,39 @@ export default function AdminPanel() {
     <div className="min-h-screen bg-[#231C21] p-4">
       <div className="max-w-7xl mx-auto space-y-6">
         {/* Header */}
-        <div className="flex justify-between items-center">
-          <div className="text-center space-y-2 flex-1">
-            <h1 className="text-3xl font-bold text-[#FED358]">TASHAN WIN Admin Panel</h1>
-            <p className="text-gray-400">Manage users and game configurations</p>
+        <div className="space-y-4">
+          {/* Mobile: Stacked layout */}
+          <div className="flex flex-col space-y-4 md:hidden">
+            <div className="text-center space-y-2">
+              <h1 className="text-2xl font-bold text-[#FED358]">TASHAN WIN Admin Panel</h1>
+              <p className="text-gray-400 text-sm">Manage users and game configurations</p>
+            </div>
+            <div className="flex justify-center">
+              <Button 
+                onClick={handleLogout}
+                variant="outline"
+                className="bg-red-600 hover:bg-red-700 text-white border-red-600 px-6"
+                size="sm"
+              >
+                Logout
+              </Button>
+            </div>
           </div>
-          <Button 
-            onClick={handleLogout}
-            variant="outline"
-            className="bg-red-600 hover:bg-red-700 text-white border-red-600"
-          >
-            Logout
-          </Button>
+          
+          {/* Desktop: Side by side layout */}
+          <div className="hidden md:flex justify-between items-center">
+            <div className="text-center space-y-2 flex-1">
+              <h1 className="text-3xl font-bold text-[#FED358]">TASHAN WIN Admin Panel</h1>
+              <p className="text-gray-400">Manage users and game configurations</p>
+            </div>
+            <Button 
+              onClick={handleLogout}
+              variant="outline"
+              className="bg-red-600 hover:bg-red-700 text-white border-red-600"
+            >
+              Logout
+            </Button>
+          </div>
         </div>
 
         {/* Stats Cards */}
