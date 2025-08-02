@@ -137,50 +137,50 @@ export default function Wingo30Sec() {
 
       {/* Main Content */}
       <div 
-        className="space-y-6" 
+        className="space-y-4" 
         style={{ padding: 'max(32px, 5vw)' }}
       >
         {/* Current Prediction Card */}
         <Card className="bg-gradient-to-br from-gray-800 to-gray-900 border-2" style={{ borderColor: '#FED358' }}>
-          <div className="p-6 text-center space-y-6">
-            <div className="space-y-2">
-              <h2 className="text-2xl font-bold text-white">
+          <div className="p-4 text-center space-y-4">
+            <div className="space-y-1">
+              <h2 className="text-lg sm:text-xl font-bold text-white">
                 🏆 TASHAN-WIN WINGO 30SEC 🏆
               </h2>
-              <div className="h-1 bg-gradient-to-r from-transparent via-yellow-400 to-transparent"></div>
+              <div className="h-0.5 bg-gradient-to-r from-transparent via-yellow-400 to-transparent"></div>
             </div>
             
-            <div className="space-y-4">
-              <div className="text-gray-300 text-lg">
+            <div className="space-y-3">
+              <div className="text-gray-300 text-sm sm:text-base">
                 🔓 <span className="font-bold">PERIOD ID</span> - {prediction?.period || "Loading..."}
               </div>
               
-              <div className="flex gap-4 justify-center items-center">
+              <div className="flex gap-2 sm:gap-4 justify-center items-center">
                 <div 
-                  className="text-4xl font-black tracking-wider py-4 px-6 rounded-xl border-2 bg-black/20 shadow-lg"
+                  className="text-2xl sm:text-3xl font-black tracking-wider py-2 px-3 sm:py-3 sm:px-4 rounded-lg border-2 bg-black/20 shadow-lg"
                   style={{ 
                     color: '#FED358',
                     borderColor: '#FED358',
-                    textShadow: '0 0 20px rgba(254, 211, 88, 0.5)'
+                    textShadow: '0 0 15px rgba(254, 211, 88, 0.5)'
                   }}
                 >
                   {prediction?.prediction || "LOADING"}
                 </div>
-                <div className="text-gray-400 text-2xl font-bold">+</div>
+                <div className="text-gray-400 text-xl font-bold">+</div>
                 <div 
-                  className="text-6xl font-black tracking-wider py-4 px-6 rounded-xl border-2 bg-black/20 shadow-lg w-24 h-24 flex items-center justify-center"
+                  className="text-3xl sm:text-4xl font-black tracking-wider py-2 px-3 sm:py-3 sm:px-4 rounded-lg border-2 bg-black/20 shadow-lg w-16 h-16 sm:w-20 sm:h-20 flex items-center justify-center"
                   style={{ 
                     color: '#FED358',
                     borderColor: '#FED358',
-                    textShadow: '0 0 20px rgba(254, 211, 88, 0.5)'
+                    textShadow: '0 0 15px rgba(254, 211, 88, 0.5)'
                   }}
                 >
                   {prediction?.predictedNumber ?? "?"}
                 </div>
               </div>
               
-              <div className="text-gray-300 text-lg">
-                ⏰ Next prediction in: <span className="font-bold text-white text-xl">{countdown}s</span>
+              <div className="text-gray-300 text-sm sm:text-base">
+                ⏰ Next prediction in: <span className="font-bold text-white text-lg">{countdown}s</span>
               </div>
 
               {prediction?.confidence && (
@@ -190,9 +190,9 @@ export default function Wingo30Sec() {
               )}
             </div>
 
-            <div className="pt-4 space-y-3">
+            <div className="pt-3 space-y-2">
               <Button 
-                className="w-full text-black font-bold text-lg py-4 hover:opacity-90 transition-all duration-200 shadow-lg"
+                className="w-full text-black font-bold text-base py-3 hover:opacity-90 transition-all duration-200 shadow-lg"
                 style={{ backgroundColor: '#FED358' }}
                 onClick={() => window.open('https://www.tashanwin.in/#/', '_blank')}
               >

@@ -137,17 +137,17 @@ export default function Wingo1Min() {
 
       {/* Main Content */}
       <div 
-        className="space-y-6" 
+        className="space-y-4" 
         style={{ padding: 'max(32px, 5vw)' }}
       >
         {/* Current Prediction Card */}
         <Card className="bg-gradient-to-br from-gray-800 to-gray-900 border-2" style={{ borderColor: '#FED358' }}>
-          <div className="p-6 text-center space-y-6">
-            <div className="space-y-2">
-              <h2 className="text-2xl font-bold text-white">
+          <div className="p-4 text-center space-y-4">
+            <div className="space-y-1">
+              <h2 className="text-lg sm:text-xl font-bold text-white">
                 🏆 TASHAN-WIN WINGO 1MIN 🏆
               </h2>
-              <div className="h-1 bg-gradient-to-r from-transparent via-yellow-400 to-transparent"></div>
+              <div className="h-0.5 bg-gradient-to-r from-transparent via-yellow-400 to-transparent"></div>
             </div>
             
             <div className="space-y-4">
