@@ -103,6 +103,35 @@ export default function Wingo() {
     });
   };
 
+  const userIds = [
+    "2643211", "3077777", "2525003", "2955005", "2977770", "2834000", "2521120", "2966006", 
+    "2756789", "2677722", "2701203", "2830901", "2530491", "3010000", "3060808", "3099999", 
+    "3088888", "3243210", "2890001", "3045678", "2999999", "3113123", "3130000", "3288888", 
+    "2741112", "3250000", "3211000", "2922222", "3111000", "3123123", "2849081", "2940101", 
+    "2733333", "2667722", "2601000", "2800123", "2720000", "2863456", "2689100", "2911001", 
+    "3276543", "3050005", "2903452", "2825678", "2741112", "3222222", "3234567", "2988881", 
+    "2760001", "2879000", "2583021", "3301234", "3156789", "2900001", "2712205", "3200000", 
+    "2825678", "3178888", "3045678", "2701203", "3288888", "3211000", "3010000", "3111000", 
+    "3344444", "3088888", "3265432", "2999999", "2521120"
+  ];
+
+  const maskUserId = (userId: string): string => {
+    if (userId.length >= 4) {
+      const first2 = userId.substring(0, 2);
+      const last2 = userId.substring(userId.length - 2);
+      const middle = 'x'.repeat(userId.length - 4);
+      return `${first2}${middle}${last2}`;
+    }
+    return userId;
+  };
+
+  const getUserParticipation = (): string[] => {
+    // Show 8-12 random users that have "joined" the current prediction
+    const shuffled = [...userIds].sort(() => Math.random() - 0.5);
+    const count = 8 + Math.floor(Math.random() * 5); // 8-12 users
+    return shuffled.slice(0, count);
+  };
+
   const handleVariantNavigation = (variant: WingoVariant) => {
     const routes = {
       "30sec": "/wingo/30sec",
@@ -230,49 +259,28 @@ export default function Wingo() {
             </div>
           </div>
 
-          {/* Recent Results Section */}
+          {/* User Participation Section */}
           <div className="mt-4">
             <div className="flex items-center gap-3 mb-3">
               <div className="w-1 h-6 bg-blue-400 rounded-full"></div>
-              <h3 className="text-white font-bold text-lg">Recent Results</h3>
+              <h3 className="text-white font-bold text-lg">Live Players</h3>
             </div>
             
             <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-4">
-              <div className="flex justify-center gap-2 overflow-x-auto">
-                {results.slice(0, 5).map((result, index) => {
-                  const size = getBigSmall(result.number);
-                  return (
-                    <div
-                      key={result.issueNumber}
-                      className={`w-10 h-10 rounded-lg flex items-center justify-center font-bold text-white shadow-lg ${
-                        size === 'BIG' ? 'bg-green-500' : 'bg-red-500'
-                      }`}
-                    >
-                      {result.number}
-                    </div>
-                  );
-                })}
+              <div className="space-y-2">
+                {getUserParticipation().map((userId, index) => (
+                  <div key={index} className="text-gray-300 text-sm">
+                    <span className="text-yellow-400">{maskUserId(userId)}</span> has joined{' '}
+                    <span className={`font-bold ${prediction?.prediction === 'BIG' ? 'text-green-400' : 'text-red-400'}`}>
+                      {prediction?.prediction || 'BIG'}
+                    </span>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
 
-          {/* Action Buttons */}
-          <div className="mt-6 flex gap-3">
-            <Button
-              onClick={() => handleVariantNavigation(selectedVariant)}
-              className="flex-1 bg-yellow-400 hover:bg-yellow-500 text-black font-bold py-3 rounded-2xl transition-all duration-200 shadow-lg hover:shadow-xl"
-            >
-              <Play className="w-5 h-5 mr-2" />
-              Play {variants.find(v => v.key === selectedVariant)?.label}
-            </Button>
-          </div>
 
-          {/* Live Clock */}
-          <div className="mt-4 text-center">
-            <div className="text-gray-400 text-sm">
-              IST: {formatDateTime()}
-            </div>
-          </div>
         </div>
       </div>
     </div>
