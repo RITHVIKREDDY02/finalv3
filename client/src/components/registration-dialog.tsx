@@ -128,13 +128,12 @@ export default function RegistrationDialog({ isOpen, onClose, onRegistrationSucc
                         <Input
                           placeholder="Enter your unique UID"
                           {...field}
-                          className="border-black focus:border-black bg-white text-black"
+                          className="border-none focus:border-none focus:ring-0 bg-white text-black outline-none"
                         />
                       </FormControl>
                       <Button
                         type="submit"
-                        className="px-6 py-2 rounded-full font-bold btn-custom-gold"
-                        style={{ backgroundColor: '#FED358', color: 'black' }}
+                        className="px-6 py-2 rounded-full font-bold btn-body-bg"
                         disabled={registerMutation.isPending}
                       >
                         {registerMutation.isPending ? (
