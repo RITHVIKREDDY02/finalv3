@@ -39,6 +39,7 @@ export default function Home() {
   const [showProofDialog, setShowProofDialog] = useState(false);
   const [showDemoDialog, setShowDemoDialog] = useState(false);
   const [showAboutUsDialog, setShowAboutUsDialog] = useState(false);
+  const [showDisclaimerDialog, setShowDisclaimerDialog] = useState(false);
   const [selectedGameName, setSelectedGameName] = useState<string>("");
   const [userUid, setUserUid] = useState<string>("");
 
@@ -475,7 +476,7 @@ export default function Home() {
             {/* Disclaimer Button */}
             <button 
               className="flex-1 md:flex-none md:w-40 lg:w-44 px-2 sm:px-3 md:px-6 lg:px-8 py-1.5 sm:py-2 custom-button font-bold rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 text-xs sm:text-sm md:text-base whitespace-nowrap"
-              onClick={() => console.log('Disclaimer clicked')}
+              onClick={() => setShowDisclaimerDialog(true)}
             >
               DISCLAIMER
             </button>
@@ -722,6 +723,75 @@ export default function Home() {
                       className="px-6 py-3 bg-blue-500 hover:bg-blue-600 text-white font-bold rounded-full shadow-lg transition-all duration-300 transform hover:scale-105"
                     >
                       Start Predicting Now!
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Disclaimer Dialog */}
+      {showDisclaimerDialog && (
+        <div className="fixed inset-0 bg-black bg-opacity-60 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+          <div className="rounded-3xl max-w-lg w-full max-h-[80vh] overflow-y-auto shadow-2xl border-2 border-white/20" style={{ background: 'linear-gradient(135deg, #FED358 0%, #FFE082 50%, #FFF3A0 100%)' }}>
+            <div className="p-8">
+              <div className="flex justify-between items-center mb-8">
+                <h2 className="text-3xl font-bold text-black bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent">Disclaimer</h2>
+                <button
+                  onClick={() => setShowDisclaimerDialog(false)}
+                  className="text-gray-600 hover:text-black text-2xl font-bold bg-white/20 rounded-full w-8 h-8 flex items-center justify-center hover:bg-white/40 transition-all duration-200"
+                >
+                  ×
+                </button>
+              </div>
+              
+              <div className="space-y-6">
+                <div className="bg-gradient-to-br from-orange-400/20 to-orange-600/20 rounded-2xl p-6 border border-orange-400/30 backdrop-blur-sm">
+                  <p className="text-black font-bold text-center text-lg mb-4">
+                    ⚠️ Important Notice ⚠️
+                  </p>
+                  <p className="text-black text-base leading-relaxed">
+                    Please note that Our Vip App provides predictions based on statistical analysis and past lottery results. Our predictions are meant to serve as a guide, and not to encourage addiction.
+                  </p>
+                </div>
+
+                <div className="space-y-4 text-black">
+                  <p className="text-base leading-relaxed">
+                    We make predictions for platforms, and if they shut down or if something happens to them, we are not responsible.
+                  </p>
+
+                  <div className="bg-gradient-to-br from-red-400/20 to-red-600/20 rounded-2xl p-6 border border-red-400/30 backdrop-blur-sm">
+                    <p className="text-black font-bold text-center text-lg mb-3">
+                      🎲 Risk Notice 🎲
+                    </p>
+                    <p className="text-black text-base leading-relaxed text-center">
+                      Participation in lottery games involves risk. It is important to play responsibly and within your financial limits.
+                    </p>
+                  </div>
+
+                  <p className="text-base leading-relaxed">
+                    By using our services, you acknowledge that you understand the risks involved and agree to take responsibility for your decisions and actions.
+                  </p>
+
+                  <div className="bg-gradient-to-br from-blue-400/20 to-blue-600/20 rounded-2xl p-6 border border-blue-400/30 backdrop-blur-sm">
+                    <p className="text-black font-bold text-center text-lg mb-3">
+                      🎯 Remember 🎯
+                    </p>
+                    <p className="text-black text-base leading-relaxed text-center">
+                      Lottery games are a form of gambling, and it is essential to make informed choices.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="bg-gradient-to-br from-gray-400/20 to-gray-600/20 rounded-2xl p-6 border border-gray-400/30 backdrop-blur-sm">
+                  <div className="text-center">
+                    <button 
+                      onClick={() => setShowDisclaimerDialog(false)}
+                      className="px-6 py-3 bg-gray-600 hover:bg-gray-700 text-white font-bold rounded-full shadow-lg transition-all duration-300 transform hover:scale-105"
+                    >
+                      I Understand
                     </button>
                   </div>
                 </div>
