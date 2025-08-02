@@ -24,6 +24,9 @@ import mobileBannerImage from "@assets/mobile hero banner_1754079113835.jpg";
 import desktopBannerImage from "@assets/Hero Banner (1440 x 300 px)_1754078513162.jpg";
 import proofImage1 from "@assets/image_1754150847570.png";
 import proofImage2 from "@assets/image_1754150852695.png";
+import demoImage1 from "@assets/Screenshot 2025-08-02 220225_1754152384208.png";
+import demoImage2 from "@assets/Screenshot 2025-08-02 220234_1754152390853.png";
+import demoImage3 from "@assets/Screenshot 2025-08-02 220243_1754152399399.png";
 
 export default function Home() {
   const [, navigate] = useLocation();
@@ -33,6 +36,7 @@ export default function Home() {
   const [showVipPredictionDialog, setShowVipPredictionDialog] = useState(false);
   const [showComingSoonDialog, setShowComingSoonDialog] = useState(false);
   const [showProofDialog, setShowProofDialog] = useState(false);
+  const [showDemoDialog, setShowDemoDialog] = useState(false);
   const [selectedGameName, setSelectedGameName] = useState<string>("");
   const [userUid, setUserUid] = useState<string>("");
 
@@ -116,6 +120,7 @@ export default function Home() {
     setShowRegisterDialog(false);
     setShowVipPredictionDialog(false);
     setShowComingSoonDialog(false);
+    setShowDemoDialog(false);
   };
 
   return (
@@ -245,7 +250,7 @@ export default function Home() {
             {/* DEMO Button */}
             <button 
               className="flex-1 md:flex-none md:w-32 lg:w-36 px-4 sm:px-6 md:px-8 py-2 custom-button font-bold rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 text-sm sm:text-base"
-              onClick={() => console.log('Demo clicked')}
+              onClick={() => setShowDemoDialog(true)}
             >
               DEMO
             </button>
@@ -576,6 +581,70 @@ export default function Home() {
                     <div>✓ Admin panel controls</div>
                     <div>✓ Results & rewards tracking</div>
                     <div>✓ Multi-variant support</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Demo Dialog */}
+      {showDemoDialog && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
+          <div className="bg-gray-900 rounded-lg max-w-lg w-full max-h-[70vh] overflow-y-auto">
+            <div className="p-6">
+              <div className="flex justify-between items-center mb-6">
+                <h2 className="text-2xl font-bold text-white">Demo - How It Works</h2>
+                <button
+                  onClick={() => setShowDemoDialog(false)}
+                  className="text-gray-400 hover:text-white text-xl font-bold"
+                >
+                  ×
+                </button>
+              </div>
+              
+              <div className="space-y-6">
+                <div>
+                  <h3 className="text-lg font-semibold text-yellow-400 mb-3">Step 1: Choose Game Variant</h3>
+                  <div className="bg-gray-800 rounded-lg p-4">
+                    <img 
+                      src={demoImage1} 
+                      alt="Wingo game variants selection" 
+                      className="w-full mx-auto rounded-lg shadow-lg"
+                    />
+                  </div>
+                </div>
+                
+                <div>
+                  <h3 className="text-lg font-semibold text-yellow-400 mb-3">Step 2: View Period & Timer</h3>
+                  <div className="bg-gray-800 rounded-lg p-4">
+                    <img 
+                      src={demoImage2} 
+                      alt="Period number and countdown timer" 
+                      className="w-full mx-auto rounded-lg shadow-lg"
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <h3 className="text-lg font-semibold text-yellow-400 mb-3">Step 3: Get VIP Prediction</h3>
+                  <div className="bg-gray-800 rounded-lg p-4">
+                    <img 
+                      src={demoImage3} 
+                      alt="VIP prediction showing color, size and number" 
+                      className="w-full mx-auto rounded-lg shadow-lg"
+                    />
+                  </div>
+                </div>
+
+                <div className="bg-blue-900 rounded-lg p-4">
+                  <h4 className="text-blue-300 font-semibold mb-2">How to Get Started</h4>
+                  <div className="text-sm text-blue-200 space-y-1">
+                    <div>1. Click on any game card</div>
+                    <div>2. Register with your UID</div>
+                    <div>3. Wait for admin approval</div>
+                    <div>4. Access VIP predictions</div>
                   </div>
                 </div>
               </div>
