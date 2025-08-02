@@ -549,12 +549,7 @@ export default function Home() {
                       alt="Live Wingo Prediction System showing BIG 8 prediction with timer" 
                       className="w-1/2 mx-auto rounded-lg shadow-lg"
                     />
-                    <p className="text-gray-300 mt-3 text-sm">
-                      ✅ Live timer countdown (00:42 remaining)<br/>
-                      ✅ Real period: 20250802100010967<br/>
-                      ✅ Balanced prediction: BIG 8<br/>
-                      ✅ Live players with masked IDs
-                    </p>
+
                   </div>
                 </div>
                 
@@ -566,12 +561,7 @@ export default function Home() {
                       alt="Congratulations screen showing Red 8 Big result with ₹1,960 bonus" 
                       className="w-1/2 mx-auto rounded-lg shadow-lg"
                     />
-                    <p className="text-gray-300 mt-3 text-sm">
-                      ✅ Results: Red 8 Big (matching prediction)<br/>
-                      ✅ Bonus reward: ₹1,960.00<br/>
-                      ✅ Period tracking: 20250802100010967<br/>
-                      ✅ Auto-close functionality working
-                    </p>
+
                   </div>
                 </div>
 
