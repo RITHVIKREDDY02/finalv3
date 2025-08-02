@@ -196,8 +196,15 @@ class WingoService {
     }
   }
 
-  // Fixed countdown timers that start at specified times
-  private calculateFixedCountdown(intervalSeconds: number): number {
+  // Calculate countdown based on API endTime
+  private calculateAPICountdown(endTime: number): number {
+    const now = Date.now();
+    const remaining = Math.max(0, Math.floor((endTime - now) / 1000));
+    return remaining > 0 ? remaining : 0;
+  }
+
+  // Fallback countdown calculation for when API doesn't provide endTime
+  private calculateFallbackCountdown(intervalSeconds: number): number {
     const now = new Date();
     const currentSecond = now.getSeconds();
     
@@ -237,10 +244,15 @@ class WingoService {
       const prediction = this.analyzeTrend(results);
       const config = WINGO_VARIANTS[variant];
       
-      // Use fixed countdown based on timer loops
-      const countdown = this.calculateFixedCountdown(config.intervalSeconds);
+      // Calculate countdown based on API endTime or fallback to fixed calculation
+      let countdown: number;
+      if (currentPeriod?.endTime) {
+        countdown = this.calculateAPICountdown(currentPeriod.endTime);
+      } else {
+        countdown = this.calculateFallbackCountdown(config.intervalSeconds);
+      }
       
-      // Generate period ID based on current time and interval
+      // Generate period ID based on current time and interval (fallback)
       const now = new Date();
       const istTime = new Date(now.getTime() + (5.5 * 60 * 60 * 1000));
       const periodId = `${istTime.getFullYear()}${(istTime.getMonth() + 1).toString().padStart(2, '0')}${istTime.getDate().toString().padStart(2, '0')}${istTime.getHours().toString().padStart(2, '0')}${istTime.getMinutes().toString().padStart(2, '0')}${Math.floor(istTime.getSeconds() / config.intervalSeconds).toString().padStart(3, '0')}`;
@@ -263,7 +275,7 @@ class WingoService {
   // Mock prediction for development when API is not available
   generateMockPrediction(variant: string): WingoPrediction {
     const config = WINGO_VARIANTS[variant];
-    const countdown = this.calculateFixedCountdown(config.intervalSeconds);
+    const countdown = this.calculateFallbackCountdown(config.intervalSeconds);
     
     const now = new Date();
     const istTime = new Date(now.getTime() + (5.5 * 60 * 60 * 1000));
@@ -307,9 +319,14 @@ class WingoService {
     // Return cached prediction if available
     if (this.predictionCache.has(variant)) {
       const cached = this.predictionCache.get(variant)!;
-      // Update countdown in real-time
-      const config = WINGO_VARIANTS[variant];
-      cached.countdown = this.calculateFixedCountdown(config.intervalSeconds);
+      // Get fresh period data to update countdown in real-time
+      const currentPeriod = await this.getCurrentPeriod(variant);
+      if (currentPeriod?.endTime) {
+        cached.countdown = this.calculateAPICountdown(currentPeriod.endTime);
+      } else {
+        const config = WINGO_VARIANTS[variant];
+        cached.countdown = this.calculateFallbackCountdown(config.intervalSeconds);
+      }
       return cached;
     }
     
