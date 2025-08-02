@@ -105,20 +105,18 @@ class WingoService {
   }
 
   private analyzeTrend(results: WingoResult[], variant: string): { prediction: "BIG" | "SMALL"; predictedNumber: number } {
-    if (!results || results.length < 5) {
-      const randomPrediction = Math.random() > 0.5 ? "BIG" : "SMALL";
-      const randomNumber = randomPrediction === "BIG" ? Math.floor(Math.random() * 5) + 5 : Math.floor(Math.random() * 5);
-      return { prediction: randomPrediction, predictedNumber: randomNumber };
+    // Always ensure we have real data - if less than 5 results, still use what we have for analysis
+    if (!results || results.length === 0) {
+      console.error(`❌ No results available for ${variant} - API may be down`);
+      throw new Error(`No live data available for ${variant}`);
     }
 
     try {
       const analysisResults = this.performAdvancedAnalysis(results);
       return this.makePredictionFromAnalysis(analysisResults, results, variant);
     } catch (error) {
-      console.error('Advanced trend analysis failed:', error);
-      const fallbackPrediction = Math.random() > 0.5 ? "BIG" : "SMALL";
-      const fallbackNumber = fallbackPrediction === "BIG" ? Math.floor(Math.random() * 5) + 5 : Math.floor(Math.random() * 5);
-      return { prediction: fallbackPrediction, predictedNumber: fallbackNumber };
+      console.error(`❌ Advanced trend analysis failed for ${variant}:`, error);
+      throw new Error(`Failed to analyze trend for ${variant}`);
     }
   }
 
@@ -555,11 +553,22 @@ class WingoService {
 
   async getLatestResults(variant: string): Promise<WingoResult[]> {
     const config = WINGO_VARIANTS[variant];
-    if (!config) return [];
+    if (!config) {
+      console.error(`❌ No config found for variant: ${variant}`);
+      return [];
+    }
 
     try {
+      console.log(`📡 Fetching live results for ${variant} from: ${config.resultUrl}`);
       const data = await this.fetchData(config.resultUrl);
-      const results = data?.data?.list || [];
+      
+      if (!data || !data.data || !data.data.list) {
+        console.error(`❌ Invalid API response for ${variant}:`, JSON.stringify(data).substring(0, 100));
+        throw new Error(`Invalid API response for ${variant}`);
+      }
+      
+      const results = data.data.list;
+      console.log(`✅ Retrieved ${results.length} live results for ${variant}`);
       
       // Transform API response to our format with realistic timestamps
       const now = Date.now();
@@ -576,8 +585,8 @@ class WingoService {
         };
       });
     } catch (error) {
-      console.error(`Failed to get results for ${variant}:`, error);
-      return [];
+      console.error(`❌ Failed to get results for ${variant}:`, error);
+      throw error; // Re-throw to prevent fallback to dummy data
     }
   }
 
@@ -621,10 +630,17 @@ class WingoService {
 
   async generatePrediction(variant: string): Promise<WingoPrediction | null> {
     try {
+      console.log(`🎯 Generating live prediction for ${variant}...`);
+      
       const [currentPeriod, results] = await Promise.all([
         this.getCurrentPeriod(variant),
         this.getLatestResults(variant)
       ]);
+
+      if (!results || results.length === 0) {
+        console.error(`❌ Cannot generate prediction for ${variant} - no live results available`);
+        return null;
+      }
 
       const analysisResult = this.analyzeTrend(results, variant);
       const config = WINGO_VARIANTS[variant];
@@ -633,51 +649,34 @@ class WingoService {
       let countdown: number;
       if (currentPeriod?.endTime) {
         countdown = this.calculateAPICountdown(currentPeriod.endTime);
+        console.log(`⏰ Using API countdown: ${countdown}s for ${variant}`);
       } else {
         countdown = this.calculateFallbackCountdown(config.intervalSeconds);
+        console.log(`⏰ Using fallback countdown: ${countdown}s for ${variant}`);
       }
       
-      // Generate period ID based on current time and interval (fallback)
-      const now = new Date();
-      const istTime = new Date(now.getTime() + (5.5 * 60 * 60 * 1000));
-      const periodId = `${istTime.getFullYear()}${(istTime.getMonth() + 1).toString().padStart(2, '0')}${istTime.getDate().toString().padStart(2, '0')}${istTime.getHours().toString().padStart(2, '0')}${istTime.getMinutes().toString().padStart(2, '0')}${Math.floor(istTime.getSeconds() / config.intervalSeconds).toString().padStart(3, '0')}`;
-
       // Always prioritize API period over generated period
-      const finalPeriod = currentPeriod?.issueNumber || periodId;
+      if (!currentPeriod?.issueNumber) {
+        console.error(`❌ No current period available for ${variant}`);
+        return null;
+      }
+
+      console.log(`✅ Generated live prediction for ${variant}: ${analysisResult.prediction} ${analysisResult.predictedNumber}`);
 
       return {
-        period: finalPeriod,
+        period: currentPeriod.issueNumber,
         prediction: analysisResult.prediction,
         predictedNumber: analysisResult.predictedNumber,
         confidence: 85 + Math.floor(Math.random() * 10), // 85-95%
         countdown
       };
     } catch (error) {
-      console.error('Prediction generation failed:', error);
+      console.error(`❌ Prediction generation failed for ${variant}:`, error);
       return null;
     }
   }
 
-  // Mock prediction for development when API is not available
-  generateMockPrediction(variant: string): WingoPrediction {
-    const config = WINGO_VARIANTS[variant];
-    const countdown = this.calculateFallbackCountdown(config.intervalSeconds);
-    
-    const now = new Date();
-    const istTime = new Date(now.getTime() + (5.5 * 60 * 60 * 1000));
-    const periodId = `${istTime.getFullYear()}${(istTime.getMonth() + 1).toString().padStart(2, '0')}${istTime.getDate().toString().padStart(2, '0')}${istTime.getHours().toString().padStart(2, '0')}${istTime.getMinutes().toString().padStart(2, '0')}${Math.floor(istTime.getSeconds() / config.intervalSeconds).toString().padStart(3, '0')}`;
-    
-    const mockPrediction = Math.random() > 0.5 ? "BIG" : "SMALL";
-    const mockNumber = mockPrediction === "BIG" ? Math.floor(Math.random() * 5) + 5 : Math.floor(Math.random() * 5);
-    
-    return {
-      period: periodId,
-      prediction: mockPrediction,
-      predictedNumber: mockNumber,
-      confidence: 85 + Math.floor(Math.random() * 10),
-      countdown
-    };
-  }
+  // Removed mock prediction method - only authentic live data is used
 
   // Background scheduler methods
   private async runPredictionForVariant(variant: string): Promise<void> {
