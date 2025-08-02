@@ -24,7 +24,7 @@ interface WingoPrediction {
 export default function Wingo() {
   const [, navigate] = useLocation();
   const [selectedVariant, setSelectedVariant] = useState<WingoVariant>("30sec");
-  const [countdown, setCountdown] = useState(45);
+  const [countdown, setCountdown] = useState(30);
 
   // Fetch prediction data for selected variant
   const { data: prediction } = useQuery<WingoPrediction>({
@@ -40,22 +40,26 @@ export default function Wingo() {
     enabled: !!selectedVariant,
   });
 
-  // Countdown timer
+  // Synchronized countdown timer with server
   useEffect(() => {
-    if (!prediction) return;
-    
+    // Always sync with server countdown when prediction updates
+    if (prediction?.countdown !== undefined) {
+      setCountdown(prediction.countdown);
+    }
+  }, [prediction?.countdown]);
+
+  // Local countdown timer
+  useEffect(() => {
     const interval = setInterval(() => {
       setCountdown(prev => {
-        if (prev <= 0) {
-          const seconds = getIntervalSeconds(selectedVariant);
-          return seconds;
-        }
-        return prev - 1;
+        const newCount = prev - 1;
+        // If countdown would go to 0 or below, keep it at 1 until server updates
+        return newCount <= 0 ? 1 : newCount;
       });
     }, 1000);
 
     return () => clearInterval(interval);
-  }, [selectedVariant, prediction]);
+  }, []);
 
   const getIntervalSeconds = (variant: WingoVariant): number => {
     switch (variant) {
