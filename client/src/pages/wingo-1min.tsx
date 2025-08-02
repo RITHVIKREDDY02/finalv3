@@ -36,22 +36,23 @@ export default function Wingo1Min() {
     staleTime: 10000, // Consider data stale after 10 seconds
   });
 
-  // Synchronized countdown timer - resets every minute
+  // Synchronized countdown timer with server
   useEffect(() => {
-    const calculateSynchronizedCountdown = () => {
-      const now = new Date();
-      const currentSecond = now.getSeconds();
-      
-      // For 1-minute intervals, always count down from 60 to 0
-      return 60 - currentSecond;
-    };
+    // Update countdown from server prediction
+    if (prediction?.countdown !== undefined) {
+      setCountdown(prediction.countdown);
+    }
+  }, [prediction]);
 
-    // Set initial countdown
-    setCountdown(calculateSynchronizedCountdown());
-
+  useEffect(() => {
     const interval = setInterval(() => {
-      const syncCountdown = calculateSynchronizedCountdown();
-      setCountdown(syncCountdown);
+      setCountdown(prev => {
+        if (prev <= 1) {
+          // When countdown reaches 0, it will be updated by the next API call
+          return prev;
+        }
+        return prev - 1;
+      });
     }, 1000);
 
     return () => clearInterval(interval);

@@ -34,12 +34,20 @@ export default function Wingo30Sec() {
     refetchInterval: 15000, // Refetch every 15 seconds
   });
 
-  // 30-second countdown timer
+  // Synchronized countdown timer with server
+  useEffect(() => {
+    // Update countdown from server prediction
+    if (prediction?.countdown !== undefined) {
+      setCountdown(prediction.countdown);
+    }
+  }, [prediction]);
+
   useEffect(() => {
     const interval = setInterval(() => {
       setCountdown(prev => {
         if (prev <= 1) {
-          return 30; // Reset to 30 when countdown reaches 0
+          // When countdown reaches 0, it will be updated by the next API call
+          return prev;
         }
         return prev - 1;
       });

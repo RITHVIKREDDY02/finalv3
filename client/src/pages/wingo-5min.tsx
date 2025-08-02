@@ -34,31 +34,23 @@ export default function Wingo5Min() {
     refetchInterval: 60000, // Refetch every minute
   });
 
-  // Synchronized countdown timer - resets every 5 minutes from minute boundary
+  // Synchronized countdown timer with server
   useEffect(() => {
-    const calculateSynchronizedCountdown = () => {
-      const now = new Date();
-      const currentMinute = now.getMinutes();
-      const currentSecond = now.getSeconds();
-      
-      // Calculate total seconds since hour start
-      const totalSeconds = (currentMinute * 60) + currentSecond;
-      
-      // Calculate how many 5-minute intervals have passed since hour start
-      const intervalsPassedSinceHour = Math.floor(totalSeconds / 300);
-      
-      // Calculate next interval start time
-      const nextIntervalStart = (intervalsPassedSinceHour + 1) * 300;
-      
-      return nextIntervalStart - totalSeconds;
-    };
+    // Update countdown from server prediction
+    if (prediction?.countdown !== undefined) {
+      setCountdown(prediction.countdown);
+    }
+  }, [prediction]);
 
-    // Set initial countdown
-    setCountdown(calculateSynchronizedCountdown());
-
+  useEffect(() => {
     const interval = setInterval(() => {
-      const syncCountdown = calculateSynchronizedCountdown();
-      setCountdown(syncCountdown);
+      setCountdown(prev => {
+        if (prev <= 1) {
+          // When countdown reaches 0, it will be updated by the next API call
+          return prev;
+        }
+        return prev - 1;
+      });
     }, 1000);
 
     return () => clearInterval(interval);
