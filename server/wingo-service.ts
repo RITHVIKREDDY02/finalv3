@@ -690,16 +690,25 @@ class WingoService {
   private async checkAndUpdateResults(variant: string): Promise<void> {
     try {
       const results = await this.getLatestResults(variant);
+      console.log(`🔍 Checking results for ${variant}: Found ${results.length} results`);
       
       // Update any pending predictions with actual results
       for (const result of results) {
         const actualSize = this.getBigSmall(result.number);
-        await storage.updatePredictionResult(
+        console.log(`📊 Checking period ${result.issueNumber} for ${variant}: number=${result.number}, size=${actualSize}`);
+        
+        const updated = await storage.updatePredictionResult(
           result.issueNumber,
           variant,
           result.number,
           actualSize
         );
+        
+        if (updated) {
+          console.log(`✅ Updated prediction for ${variant} period ${result.issueNumber}: ${updated.predictedSize} → ${updated.status}`);
+        } else {
+          console.log(`⏭️ No pending prediction found for ${variant} period ${result.issueNumber}`);
+        }
       }
     } catch (error) {
       console.error(`Failed to check results for ${variant}:`, error);
