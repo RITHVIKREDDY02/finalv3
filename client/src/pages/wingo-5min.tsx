@@ -196,7 +196,7 @@ export default function Wingo5Min() {
                     </div>
                   </div>
                   <div className="flex items-center gap-3">
-                    <div className={`text-white w-10 h-10 rounded-xl flex items-center justify-center font-bold text-lg shadow-lg border-2 ${result.number >= 5 ? 'bg-emerald-500 border-emerald-400' : 'bg-red-500 border-red-400'}`}>
+                    <div className={`text-white w-10 h-10 rounded-xl flex items-center justify-center font-bold text-lg shadow-lg border-2 ${getBigSmall(result.number) === 'BIG' ? 'bg-green-500 border-green-400' : 'bg-red-500 border-red-400'}`}>
                       {result.number}
                     </div>
                     <div 

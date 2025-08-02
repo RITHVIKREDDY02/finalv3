@@ -194,7 +194,7 @@ export default function Wingo30Sec() {
                   {/* Predicted Number */}
                   <div className="flex justify-between items-center">
                     <span className="text-gray-300 text-sm">Number (Predicted):</span>
-                    <div className={`text-white w-8 h-8 rounded-lg flex items-center justify-center font-bold text-sm shadow-lg border-2 ${record.predictedNumber >= 5 ? 'bg-emerald-500 border-emerald-400' : 'bg-red-500 border-red-400'}`}>
+                    <div className={`text-white w-8 h-8 rounded-lg flex items-center justify-center font-bold text-sm shadow-lg border-2 ${record.predictedSize === 'BIG' ? 'bg-green-500 border-green-400' : 'bg-red-500 border-red-400'}`}>
                       {record.predictedNumber}
                     </div>
                   </div>
@@ -219,7 +219,7 @@ export default function Wingo30Sec() {
                     <div className="flex items-center gap-2">
                       {record.actualNumber !== null ? (
                         <>
-                          <div className={`text-white w-8 h-8 rounded-lg flex items-center justify-center font-bold text-sm shadow-lg border-2 ${record.actualNumber >= 5 ? 'bg-emerald-500 border-emerald-400' : 'bg-red-500 border-red-400'}`}>
+                          <div className={`text-white w-8 h-8 rounded-lg flex items-center justify-center font-bold text-sm shadow-lg border-2 ${record.actualSize === 'BIG' ? 'bg-green-500 border-green-400' : 'bg-red-500 border-red-400'}`}>
                             {record.actualNumber}
                           </div>
                           <div 
