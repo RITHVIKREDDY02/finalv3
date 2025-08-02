@@ -339,7 +339,18 @@ export class WingoService {
   async getCachedPrediction(variant: string): Promise<WingoPrediction | null> {
     const cached = this.predictionCache.get(variant);
     
+    // Always regenerate prediction to ensure fresh period and countdown
+    console.log(`🔄 Regenerating fresh prediction for ${variant}...`);
+    const freshPrediction = await this.generatePrediction(variant);
+    
+    if (freshPrediction) {
+      this.predictionCache.set(variant, freshPrediction);
+      return freshPrediction;
+    }
+    
+    // Fallback to cached only if fresh generation fails
     if (cached) {
+      console.log(`⚠️ Using cached prediction for ${variant} as fallback`);
       return cached;
     }
     
