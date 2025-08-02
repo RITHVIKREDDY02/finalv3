@@ -239,9 +239,6 @@ export default function Wingo() {
                           <div className="text-black px-3 py-1 rounded-full text-xs font-bold" style={{ backgroundColor: '#ffd05a' }}>
                             #{result.issueNumber.slice(-6)}
                           </div>
-                          <div className="text-gray-400 text-xs">
-                            {new Date(result.timestamp).toLocaleTimeString()}
-                          </div>
                         </div>
                         
                         {/* Number */}
