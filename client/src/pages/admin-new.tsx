@@ -7,7 +7,7 @@ import { Switch } from "@/components/ui/switch";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Loader2, Users, Settings, CheckCircle, Clock, Lock, ArrowLeft } from "lucide-react";
+import { Loader2, Users, Settings, CheckCircle, Clock, Lock, ArrowLeft, Trash2 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import type { User, GameConfig } from "@shared/schema";
 
@@ -140,6 +140,26 @@ export default function AdminPanel() {
     },
   });
 
+  const deleteUserMutation = useMutation({
+    mutationFn: async (uid: string) => {
+      return await apiRequest(`/api/admin/users/${uid}`, "DELETE");
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["/api/admin/users"] });
+      toast({
+        title: "Success",
+        description: "User deleted successfully",
+      });
+    },
+    onError: (error: any) => {
+      toast({
+        title: "Error",
+        description: error.message || "Failed to delete user",
+        variant: "destructive",
+      });
+    },
+  });
+
   // HANDLERS
   const handleLogin = async (password: string) => {
     setIsLoggingIn(true);
@@ -173,6 +193,12 @@ export default function AdminPanel() {
 
   const handleToggleGame = (gameName: string, isEnabled: boolean) => {
     updateGameMutation.mutate({ gameName, isEnabled });
+  };
+
+  const handleDeleteUser = (uid: string) => {
+    if (window.confirm(`Are you sure you want to delete user ${uid}? This action cannot be undone.`)) {
+      deleteUserMutation.mutate(uid);
+    }
   };
 
   const getGameConfig = (gameName: string) => {
@@ -306,20 +332,35 @@ export default function AdminPanel() {
                       <Badge variant={user.approved ? "default" : "secondary"}>
                         {user.approved ? "Approved" : "Pending"}
                       </Badge>
-                      {!user.approved && (
+                      <div className="flex gap-2">
+                        {!user.approved && (
+                          <Button
+                            onClick={() => handleApproveUser(user.uid)}
+                            disabled={approveUserMutation.isPending}
+                            size="sm"
+                            className="bg-green-600 hover:bg-green-700"
+                          >
+                            {approveUserMutation.isPending ? (
+                              <Loader2 className="h-4 w-4 animate-spin" />
+                            ) : (
+                              "Approve"
+                            )}
+                          </Button>
+                        )}
                         <Button
-                          onClick={() => handleApproveUser(user.uid)}
-                          disabled={approveUserMutation.isPending}
+                          onClick={() => handleDeleteUser(user.uid)}
+                          disabled={deleteUserMutation.isPending}
                           size="sm"
-                          className="bg-green-600 hover:bg-green-700"
+                          variant="outline"
+                          className="bg-red-600 hover:bg-red-700 text-white border-red-600"
                         >
-                          {approveUserMutation.isPending ? (
+                          {deleteUserMutation.isPending ? (
                             <Loader2 className="h-4 w-4 animate-spin" />
                           ) : (
-                            "Approve"
+                            <Trash2 className="h-4 w-4" />
                           )}
                         </Button>
-                      )}
+                      </div>
                     </div>
                   </div>
                 ))}

@@ -154,6 +154,24 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
+  // Admin: Delete user
+  app.delete('/api/admin/users/:uid', verifyAdmin, async (req, res) => {
+    try {
+      const { uid } = req.params;
+      const user = await storage.getUser(uid);
+      
+      if (!user) {
+        return res.status(404).json({ error: 'User not found' });
+      }
+
+      await storage.deleteUser(uid);
+      res.json({ message: 'User deleted successfully' });
+    } catch (error) {
+      console.error('Error deleting user:', error);
+      res.status(500).json({ error: 'Internal server error' });
+    }
+  });
+
   // Also protect the approve endpoint
   app.patch("/api/approve/:uid", verifyAdmin, async (req, res) => {
     try {

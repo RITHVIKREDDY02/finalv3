@@ -5,6 +5,7 @@ export interface IStorage {
   getUserByUid(uid: string): Promise<User | undefined>;
   createUser(user: InsertUser): Promise<User>;
   approveUser(uid: string): Promise<User | undefined>;
+  deleteUser(uid: string): Promise<boolean>;
   getAllUsers(): Promise<User[]>;
   getGameConfig(gameName: string): Promise<GameConfig | undefined>;
   getAllGameConfigs(): Promise<GameConfig[]>;
@@ -65,6 +66,10 @@ export class MemoryStorage implements IStorage {
       return user;
     }
     return undefined;
+  }
+
+  async deleteUser(uid: string): Promise<boolean> {
+    return this.users.delete(uid);
   }
 
   async getAllUsers(): Promise<User[]> {
