@@ -25,13 +25,15 @@ export default function Wingo1Min() {
   // Fetch prediction data
   const { data: prediction } = useQuery<WingoPrediction>({
     queryKey: [`/api/wingo/prediction/1min`],
-    refetchInterval: 60000, // Refetch every minute
+    refetchInterval: 10000, // Refetch every 10 seconds for faster updates
+    staleTime: 5000, // Consider data stale after 5 seconds
   });
 
   // Fetch results data  
   const { data: results = [] } = useQuery<WingoResult[]>({
     queryKey: [`/api/wingo/results/1min`],
-    refetchInterval: 30000, // Refetch every 30 seconds
+    refetchInterval: 15000, // Refetch every 15 seconds for faster updates
+    staleTime: 10000, // Consider data stale after 10 seconds
   });
 
   // Synchronized countdown timer - resets every minute
