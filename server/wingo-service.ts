@@ -182,17 +182,26 @@ class WingoService {
     }
   }
 
-  private calculateSynchronizedCountdown(intervalSeconds: number): number {
-    // Use a simple time-based approach for consistent looping
+  private calculateRealCountdown(currentPeriod: any): number {
+    if (!currentPeriod?.endTime) {
+      // Fallback if no API data
+      return 30;
+    }
+    
     const now = Date.now();
-    const timeInSeconds = Math.floor(now / 1000);
+    const endTime = currentPeriod.endTime;
+    const startTime = currentPeriod.startTime;
     
-    // Calculate remaining seconds in the current cycle
-    const cyclePosition = timeInSeconds % intervalSeconds;
-    const remaining = intervalSeconds - cyclePosition;
+    // Calculate remaining time in the current period
+    const remainingMs = endTime - now;
+    const remainingSeconds = Math.ceil(remainingMs / 1000);
     
-    // Return the countdown, ensuring it never shows 0 (loops back to max)
-    return remaining === 0 ? intervalSeconds : remaining;
+    // Ensure countdown is within valid range
+    const periodDurationMs = endTime - startTime;
+    const periodDurationSeconds = Math.ceil(periodDurationMs / 1000);
+    
+    // Return countdown, ensuring it's between 1 and period duration
+    return Math.max(1, Math.min(remainingSeconds, periodDurationSeconds));
   }
 
   async generatePrediction(variant: string): Promise<WingoPrediction | null> {
@@ -205,8 +214,8 @@ class WingoService {
       const prediction = this.analyzeTrend(results);
       const config = WINGO_VARIANTS[variant];
       
-      // Use synchronized countdown based on minute boundaries
-      const countdown = this.calculateSynchronizedCountdown(config.intervalSeconds);
+      // Use real countdown based on API endTime
+      const countdown = this.calculateRealCountdown(currentPeriod);
       
       // Generate period ID based on current time and interval
       const now = new Date();
@@ -228,7 +237,7 @@ class WingoService {
   // Mock prediction for development when API is not available
   generateMockPrediction(variant: string): WingoPrediction {
     const config = WINGO_VARIANTS[variant];
-    const countdown = this.calculateSynchronizedCountdown(config.intervalSeconds);
+    const countdown = this.calculateRealCountdown(null);
     
     const now = new Date();
     const istTime = new Date(now.getTime() + (5.5 * 60 * 60 * 1000));
