@@ -23,11 +23,62 @@ const GAME_NAMES = [
   "Limbo"
 ];
 
+function LoginForm({ onLogin, isLoading }: { onLogin: (password: string) => Promise<void>, isLoading: boolean }) {
+  const [password, setPassword] = useState("");
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    await onLogin(password);
+  };
+
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-purple-900 to-gray-900 flex items-center justify-center p-4">
+      <Card className="w-full max-w-md bg-gray-800/90 border-gray-700">
+        <CardHeader className="text-center">
+          <div className="mx-auto w-12 h-12 bg-purple-600 rounded-full flex items-center justify-center mb-4">
+            <Lock className="w-6 h-6 text-white" />
+          </div>
+          <CardTitle className="text-2xl text-white">Admin Login</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <form onSubmit={handleSubmit} className="space-y-4">
+            <div>
+              <Label htmlFor="password" className="text-gray-300">Password</Label>
+              <Input
+                id="password"
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                placeholder="Enter admin password"
+                className="bg-gray-700 border-gray-600 text-white"
+                required
+              />
+            </div>
+            <Button 
+              type="submit" 
+              className="w-full bg-purple-600 hover:bg-purple-700"
+              disabled={isLoading}
+            >
+              {isLoading ? (
+                <>
+                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                  Logging in...
+                </>
+              ) : (
+                "Login"
+              )}
+            </Button>
+          </form>
+        </CardContent>
+      </Card>
+    </div>
+  );
+}
+
 export default function AdminPanel() {
   const { toast } = useToast();
   const queryClient = useQueryClient();
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [password, setPassword] = useState("");
   const [isLoggingIn, setIsLoggingIn] = useState(false);
 
   // Check if already authenticated on mount
@@ -38,7 +89,7 @@ export default function AdminPanel() {
     }
   }, []);
 
-  // ALL HOOKS MUST BE AT TOP LEVEL - MOVED HERE
+  // ALL HOOKS AT TOP LEVEL
   const { data: users = [], isLoading: usersLoading } = useQuery<User[]>({
     queryKey: ["/api/admin/users"],
     enabled: isAuthenticated,
@@ -89,11 +140,9 @@ export default function AdminPanel() {
     },
   });
 
-  // Login function
-  const handleLogin = async (e: React.FormEvent) => {
-    e.preventDefault();
+  // HANDLERS
+  const handleLogin = async (password: string) => {
     setIsLoggingIn(true);
-    
     try {
       const response = await apiRequest('/api/admin/login', 'POST', { password }) as { token: string };
       localStorage.setItem('adminToken', response.token);
@@ -113,60 +162,10 @@ export default function AdminPanel() {
     }
   };
 
-  // Logout function
   const handleLogout = () => {
     localStorage.removeItem('adminToken');
     setIsAuthenticated(false);
-    setPassword("");
   };
-
-  // If not authenticated, show login form
-  if (!isAuthenticated) {
-    return (
-      <div className="min-h-screen bg-gradient-to-br from-gray-900 via-purple-900 to-gray-900 flex items-center justify-center p-4">
-        <Card className="w-full max-w-md bg-gray-800/90 border-gray-700">
-          <CardHeader className="text-center">
-            <div className="mx-auto w-12 h-12 bg-purple-600 rounded-full flex items-center justify-center mb-4">
-              <Lock className="w-6 h-6 text-white" />
-            </div>
-            <CardTitle className="text-2xl text-white">Admin Login</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <form onSubmit={handleLogin} className="space-y-4">
-              <div>
-                <Label htmlFor="password" className="text-gray-300">Password</Label>
-                <Input
-                  id="password"
-                  type="password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  placeholder="Enter admin password"
-                  className="bg-gray-700 border-gray-600 text-white"
-                  required
-                />
-              </div>
-              <Button 
-                type="submit" 
-                className="w-full bg-purple-600 hover:bg-purple-700"
-                disabled={isLoggingIn}
-              >
-                {isLoggingIn ? (
-                  <>
-                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                    Logging in...
-                  </>
-                ) : (
-                  "Login"
-                )}
-              </Button>
-            </form>
-          </CardContent>
-        </Card>
-      </div>
-    );
-  }
-
-
 
   const handleApproveUser = (uid: string) => {
     approveUserMutation.mutate(uid);
@@ -182,8 +181,13 @@ export default function AdminPanel() {
 
   const isGameEnabled = (gameName: string) => {
     const config = getGameConfig(gameName);
-    return config?.isEnabled ?? true; // Default to enabled if no config found
+    return config?.isEnabled ?? true;
   };
+
+  // CONDITIONAL RENDERING
+  if (!isAuthenticated) {
+    return <LoginForm onLogin={handleLogin} isLoading={isLoggingIn} />;
+  }
 
   if (usersLoading || gamesLoading) {
     return (
@@ -248,42 +252,37 @@ export default function AdminPanel() {
           </Card>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          {/* Users Management */}
-          <Card className="bg-gray-800 border-gray-700">
-            <CardHeader>
-              <CardTitle className="text-[#FED358] flex items-center gap-2">
-                <Users className="h-5 w-5" />
-                User Management
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              <div className="max-h-96 overflow-y-auto space-y-3">
-                {users.length === 0 ? (
-                  <p className="text-gray-400 text-center py-4">No users registered yet</p>
-                ) : (
-                  users.map((user) => (
-                    <div
-                      key={user.id}
-                      className="flex items-center justify-between p-3 bg-gray-700 rounded-lg"
-                    >
-                      <div className="flex-1">
-                        <div className="flex items-center gap-2">
-                          <span className="font-medium text-white">UID: {user.uid}</span>
-                          <Badge variant={user.approved ? "default" : "secondary"}>
-                            {user.approved ? "Approved" : "Pending"}
-                          </Badge>
-                        </div>
-                        <p className="text-sm text-gray-400">
-                          Registered: {new Date(user.createdAt).toLocaleDateString()}
-                        </p>
-                      </div>
+        {/* User Management */}
+        <Card className="bg-gray-800 border-gray-700">
+          <CardHeader>
+            <CardTitle className="text-[#FED358] flex items-center gap-2">
+              <Users className="h-5 w-5" />
+              User Management
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            {users.length === 0 ? (
+              <p className="text-gray-400 text-center py-4">No users registered yet.</p>
+            ) : (
+              <div className="space-y-3">
+                {users.map((user) => (
+                  <div key={user.id} className="flex items-center justify-between p-4 bg-gray-700 rounded-lg">
+                    <div className="space-y-1">
+                      <p className="text-white font-medium">UID: {user.uid}</p>
+                      <p className="text-gray-400 text-sm">
+                        Registered: {new Date(user.createdAt).toLocaleDateString()}
+                      </p>
+                    </div>
+                    <div className="flex items-center gap-3">
+                      <Badge variant={user.approved ? "default" : "secondary"}>
+                        {user.approved ? "Approved" : "Pending"}
+                      </Badge>
                       {!user.approved && (
                         <Button
                           onClick={() => handleApproveUser(user.uid)}
                           disabled={approveUserMutation.isPending}
-                          className="bg-[#FED358] text-black hover:bg-[#FED358]/90"
                           size="sm"
+                          className="bg-green-600 hover:bg-green-700"
                         >
                           {approveUserMutation.isPending ? (
                             <Loader2 className="h-4 w-4 animate-spin" />
@@ -293,44 +292,36 @@ export default function AdminPanel() {
                         </Button>
                       )}
                     </div>
-                  ))
-                )}
-              </div>
-            </CardContent>
-          </Card>
-
-          {/* Game Configuration */}
-          <Card className="bg-gray-800 border-gray-700">
-            <CardHeader>
-              <CardTitle className="text-[#FED358] flex items-center gap-2">
-                <Settings className="h-5 w-5" />
-                Game Configuration
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              <div className="space-y-3">
-                {GAME_NAMES.map((gameName) => (
-                  <div
-                    key={gameName}
-                    className="flex items-center justify-between p-3 bg-gray-700 rounded-lg"
-                  >
-                    <div className="flex items-center gap-3">
-                      <span className="font-medium text-white">{gameName}</span>
-                      <Badge variant={isGameEnabled(gameName) ? "default" : "secondary"}>
-                        {isGameEnabled(gameName) ? "Enabled" : "Disabled"}
-                      </Badge>
-                    </div>
-                    <Switch
-                      checked={isGameEnabled(gameName)}
-                      onCheckedChange={(checked) => handleToggleGame(gameName, checked)}
-                      disabled={updateGameMutation.isPending}
-                    />
                   </div>
                 ))}
               </div>
-            </CardContent>
-          </Card>
-        </div>
+            )}
+          </CardContent>
+        </Card>
+
+        {/* Game Configuration */}
+        <Card className="bg-gray-800 border-gray-700">
+          <CardHeader>
+            <CardTitle className="text-[#FED358] flex items-center gap-2">
+              <Settings className="h-5 w-5" />
+              Game Configuration
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              {GAME_NAMES.map((gameName) => (
+                <div key={gameName} className="flex items-center justify-between p-4 bg-gray-700 rounded-lg">
+                  <span className="text-white font-medium">{gameName}</span>
+                  <Switch
+                    checked={isGameEnabled(gameName)}
+                    onCheckedChange={(checked) => handleToggleGame(gameName, checked)}
+                    disabled={updateGameMutation.isPending}
+                  />
+                </div>
+              ))}
+            </div>
+          </CardContent>
+        </Card>
       </div>
     </div>
   );
