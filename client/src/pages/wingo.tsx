@@ -145,7 +145,7 @@ export default function Wingo() {
           </div>
 
           {/* Content Card */}
-          <div className="mt-4">
+          <div className="mt-4 relative">
             <img 
               src={wingoIssueImage}
               alt="Wingo Issue Background"
@@ -154,6 +154,27 @@ export default function Wingo() {
                 height: '106.66px'
               }}
             />
+            
+            {/* Text Overlays */}
+            <div className="absolute inset-0 flex justify-between items-center px-6">
+              {/* Left Side */}
+              <div className="text-left">
+                <div className="text-black font-bold text-lg">
+                  {variants.find(v => v.key === selectedVariant)?.label || "Wingo 30Sec"}
+                </div>
+                <div className="text-black/80 text-sm">
+                  {prediction?.period || "20250802100010584"}
+                </div>
+              </div>
+              
+              {/* Right Side */}
+              <div className="text-right">
+                <div className="text-black font-bold text-lg">Time Remaining</div>
+                <div className="text-black/80 text-xl font-mono font-bold">
+                  {formatTime(countdown)}
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
