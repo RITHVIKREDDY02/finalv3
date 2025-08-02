@@ -123,19 +123,30 @@ export default function RegistrationDialog({ isOpen, onClose, onRegistrationSucc
                     <FormLabel className="text-black">
                       Enter Your UID
                     </FormLabel>
-                    <FormControl>
-                      <Input
-                        placeholder="Enter your unique UID"
-                        {...field}
-                        className="border-black focus:border-black bg-white text-black"
-                      />
-                    </FormControl>
+                    <div className="flex gap-2">
+                      <FormControl className="flex-1">
+                        <Input
+                          placeholder="Enter your unique UID"
+                          {...field}
+                          className="border-black focus:border-black bg-white text-black"
+                        />
+                      </FormControl>
+                      <Button
+                        type="submit"
+                        className="px-6 py-2 rounded-full font-bold btn-custom-gold"
+                        disabled={registerMutation.isPending}
+                      >
+                        {registerMutation.isPending ? (
+                          <Loader2 className="h-4 w-4 animate-spin" />
+                        ) : (
+                          "SUBMIT"
+                        )}
+                      </Button>
+                    </div>
                     <FormMessage />
                   </FormItem>
                 )}
               />
-              
-
             </form>
           </Form>
 
