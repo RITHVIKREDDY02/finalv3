@@ -80,10 +80,10 @@ export default function Wingo() {
   };
 
   const variants = [
-    { key: "30sec" as WingoVariant, label: "Wingo", sublabel: "30Sec" },
-    { key: "1min" as WingoVariant, label: "Wingo", sublabel: "1Min" },
-    { key: "3min" as WingoVariant, label: "Wingo", sublabel: "3Min" },
-    { key: "5min" as WingoVariant, label: "Wingo", sublabel: "5Min" }
+    { key: "30sec" as WingoVariant, label: "Parity", sublabel: "30sec" },
+    { key: "1min" as WingoVariant, label: "Sapre", sublabel: "1 Min" },
+    { key: "3min" as WingoVariant, label: "Bcone", sublabel: "3 Min" },
+    { key: "5min" as WingoVariant, label: "Emerd", sublabel: "5 Min" }
   ];
 
   return (
@@ -101,81 +101,52 @@ export default function Wingo() {
         <div className="w-16"></div>
       </div>
 
-      <div className="p-4 space-y-6">
-        {/* Game Selection Cards */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-          {variants.map((variant) => (
-            <button
-              key={variant.key}
-              onClick={() => setSelectedVariant(variant.key)}
-              className={`p-4 rounded-xl transition-all duration-200 ${
-                selectedVariant === variant.key
-                  ? 'bg-gradient-to-br from-yellow-400 to-yellow-500 text-black shadow-lg scale-105'
-                  : 'bg-gray-600 text-gray-300 hover:bg-gray-500'
-              }`}
-            >
-              <div className="flex flex-col items-center space-y-2">
-                <div className={`w-12 h-12 rounded-full flex items-center justify-center ${
-                  selectedVariant === variant.key ? 'bg-black/20' : 'bg-gray-500'
-                }`}>
-                  <Play className="w-6 h-6" />
-                </div>
-                <div className="text-center">
-                  <div className="font-bold text-sm">{variant.label}</div>
-                  <div className="text-xs opacity-75">{variant.sublabel}</div>
-                </div>
-              </div>
-            </button>
-          ))}
+      <div className="p-4 space-y-4">
+        {/* Tab Navigation */}
+        <div className="bg-gray-100 rounded-2xl p-2">
+          <div className="flex gap-1">
+            {variants.map((variant) => (
+              <button
+                key={variant.key}
+                onClick={() => setSelectedVariant(variant.key)}
+                className={`flex-1 py-3 px-4 rounded-xl font-medium transition-all duration-200 ${
+                  selectedVariant === variant.key
+                    ? 'bg-blue-500 text-white shadow-md'
+                    : 'text-gray-600 hover:text-gray-800'
+                }`}
+              >
+                {variant.label}
+              </button>
+            ))}
+          </div>
         </div>
 
-        {/* Selected Game Display */}
-        <div className="bg-gradient-to-br from-yellow-400 to-yellow-500 rounded-2xl p-6 text-black">
-          {/* How to Play Button */}
-          <div className="mb-4">
-            <button className="bg-black/20 text-black px-4 py-2 rounded-full text-sm font-medium flex items-center gap-2">
-              <Play className="w-4 h-4" />
-              How to play
-            </button>
-          </div>
-
-          <div className="flex justify-between items-start mb-6">
-            {/* Game Info */}
-            <div>
-              <h2 className="text-xl font-bold mb-2">
-                {selectedVariant === "30sec" ? "Wingo 30Sec" : 
-                 selectedVariant === "1min" ? "Wingo 1Min" : 
-                 selectedVariant === "3min" ? "Wingo 3Min" : "Wingo 5Min"}
-              </h2>
+        {/* Game Display Card */}
+        <div className="bg-gradient-to-r from-blue-500 to-blue-600 rounded-2xl p-6 text-white">
+          <div className="flex justify-between items-center">
+            {/* Left Side - Game Info */}
+            <div className="flex-1">
+              <div className="flex items-center gap-3 mb-4">
+                <h2 className="text-xl font-bold">
+                  {variants.find(v => v.key === selectedVariant)?.label} ( {variants.find(v => v.key === selectedVariant)?.sublabel} )
+                </h2>
+              </div>
               
-              {/* Recent Results */}
-              <div className="flex gap-2 mb-4">
-                {results.slice(0, 5).map((result, index) => (
-                  <div
-                    key={result.issueNumber}
-                    className={`w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm ${
-                      getBigSmall(result.number) === 'BIG' ? 'bg-red-500 text-white' : 'bg-green-500 text-white'
-                    }`}
-                  >
-                    {result.number}
-                  </div>
-                ))}
+              {/* Period ID */}
+              <div className="text-2xl font-bold font-mono">
+                {prediction?.period || "Loading..."}
               </div>
             </div>
 
-            {/* Timer */}
+            {/* Divider */}
+            <div className="w-px h-20 bg-white/30 mx-8"></div>
+
+            {/* Right Side - Timer */}
             <div className="text-right">
-              <div className="text-sm font-medium mb-1">Time remaining</div>
-              <div className="text-3xl font-bold font-mono">
+              <div className="text-sm opacity-80 mb-2">Time remaining</div>
+              <div className="text-4xl font-bold font-mono">
                 {formatTime(countdown)}
               </div>
-            </div>
-          </div>
-
-          {/* Period ID */}
-          <div className="text-center">
-            <div className="text-lg font-mono font-bold">
-              {prediction?.period || "Loading..."}
             </div>
           </div>
         </div>
