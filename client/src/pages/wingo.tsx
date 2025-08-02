@@ -179,7 +179,10 @@ export default function Wingo() {
 
           {/* Game History Section */}
           <div className="mt-4">
-            <h3 className="text-white font-bold text-lg mb-3">Game History</h3>
+            <div className="flex items-center gap-3 mb-3">
+              <div className="w-1 h-6 bg-yellow-400 rounded-full"></div>
+              <h3 className="text-white font-bold text-lg">Game History</h3>
+            </div>
             <div className="space-y-3">
               {results?.slice(0, 3).map((result, index) => (
                 <div key={result.issueNumber} className="bg-white rounded-2xl p-4">
