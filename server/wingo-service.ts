@@ -103,52 +103,314 @@ class WingoService {
   }
 
   private analyzeTrend(results: WingoResult[]): "BIG" | "SMALL" {
-    if (!results || results.length < 10) {
+    if (!results || results.length < 5) {
       return Math.random() > 0.5 ? "BIG" : "SMALL";
     }
 
     try {
-      const lastNumbers = results.slice(0, 10).map(r => r.number);
-      let weightedScore = 0;
-      
-      // Calculate weighted score
-      for (let i = 0; i < lastNumbers.length; i++) {
-        const weight = i === 0 ? 3 : i === 1 ? 2 : 1;
-        weightedScore += this.getBigSmall(lastNumbers[i]) === "BIG" ? weight : -weight;
-      }
-
-      // Check for streaks
-      let streak = 1;
-      for (let i = 1; i < lastNumbers.length; i++) {
-        if (this.getBigSmall(lastNumbers[i]) === this.getBigSmall(lastNumbers[i - 1])) {
-          streak++;
-        } else {
-          break;
-        }
-      }
-
-      // Determine prediction
-      let prediction: "BIG" | "SMALL";
-      if (streak >= 3) {
-        // Break the streak
-        prediction = this.getBigSmall(lastNumbers[0]) === "BIG" ? "SMALL" : "BIG";
-      } else {
-        prediction = weightedScore > 0 ? "BIG" : "SMALL";
-      }
-
-      // Anti-loss logic
-      if (this.lastPredictions.length >= 3) {
-        const last3 = this.lastPredictions.slice(-3);
-        if (last3.every(p => p.result === "LOSS" && p.prediction === prediction)) {
-          prediction = prediction === "BIG" ? "SMALL" : "BIG";
-        }
-      }
-
-      return prediction;
+      const analysisResults = this.performAdvancedAnalysis(results);
+      return this.makePredictionFromAnalysis(analysisResults, results);
     } catch (error) {
-      console.error('Trend analysis failed:', error);
+      console.error('Advanced trend analysis failed:', error);
       return Math.random() > 0.5 ? "BIG" : "SMALL";
     }
+  }
+
+  private performAdvancedAnalysis(results: WingoResult[]) {
+    const numbers = results.map(r => r.number);
+    const bigSmallSequence = numbers.map(n => this.getBigSmall(n));
+    
+    return {
+      // Pattern Recognition Analysis
+      patterns: this.analyzePatterns(bigSmallSequence),
+      
+      // Frequency Analysis (last 20 results)
+      frequency: this.analyzeFrequency(bigSmallSequence.slice(0, 20)),
+      
+      // Streak Analysis
+      streaks: this.analyzeStreaks(bigSmallSequence),
+      
+      // Number Distribution Analysis
+      numberDistribution: this.analyzeNumberDistribution(numbers.slice(0, 30)),
+      
+      // Moving Average Analysis
+      movingAverages: this.analyzeMovingAverages(numbers),
+      
+      // Hot/Cold Analysis
+      hotCold: this.analyzeHotColdNumbers(numbers.slice(0, 50)),
+      
+      // Recent Trend Momentum
+      momentum: this.analyzeMomentum(bigSmallSequence.slice(0, 15))
+    };
+  }
+
+  private analyzePatterns(sequence: ("BIG" | "SMALL")[]): any {
+    const patterns = {
+      alternating: 0,
+      doublePattern: 0,
+      triplePattern: 0,
+      repeatingSequence: null as string | null
+    };
+
+    // Check for alternating pattern (BIG-SMALL-BIG-SMALL)
+    let alternatingCount = 0;
+    for (let i = 0; i < Math.min(8, sequence.length - 1); i++) {
+      if (i % 2 === 0 ? sequence[i] !== sequence[i + 1] : sequence[i] === sequence[i + 1]) {
+        alternatingCount++;
+      }
+    }
+    patterns.alternating = alternatingCount / Math.min(8, sequence.length - 1);
+
+    // Check for double patterns (BB-SS-BB-SS)
+    let doubleCount = 0;
+    for (let i = 0; i < sequence.length - 3; i += 2) {
+      if (sequence[i] === sequence[i + 1] && sequence[i + 2] === sequence[i + 3] && sequence[i] !== sequence[i + 2]) {
+        doubleCount++;
+      }
+    }
+    patterns.doublePattern = doubleCount;
+
+    // Look for repeating 3-sequence patterns
+    const recent6 = sequence.slice(0, 6).join('');
+    const check6 = sequence.slice(6, 12).join('');
+    if (recent6.length === 6 && recent6 === check6) {
+      patterns.repeatingSequence = recent6;
+    }
+
+    return patterns;
+  }
+
+  private analyzeFrequency(sequence: ("BIG" | "SMALL")[]): any {
+    const bigCount = sequence.filter(s => s === 'BIG').length;
+    const smallCount = sequence.length - bigCount;
+    const total = sequence.length;
+    
+    return {
+      bigRatio: total > 0 ? bigCount / total : 0.5,
+      smallRatio: total > 0 ? smallCount / total : 0.5,
+      imbalance: Math.abs(bigCount - smallCount),
+      deviation: total > 0 ? Math.abs(0.5 - (bigCount / total)) : 0
+    };
+  }
+
+  private analyzeStreaks(sequence: ("BIG" | "SMALL")[]): any {
+    let currentStreak = 1;
+    let longestStreak = 1;
+    let streakType = sequence[0];
+    let longestStreakType = sequence[0];
+    
+    const streaks = [];
+    let currentStreakStart = 0;
+
+    for (let i = 1; i < sequence.length; i++) {
+      if (sequence[i] === sequence[i - 1]) {
+        currentStreak++;
+      } else {
+        streaks.push({ type: sequence[i - 1], length: currentStreak, position: currentStreakStart });
+        if (currentStreak > longestStreak) {
+          longestStreak = currentStreak;
+          longestStreakType = sequence[i - 1];
+        }
+        currentStreak = 1;
+        currentStreakStart = i;
+      }
+    }
+    
+    // Add final streak
+    streaks.push({ type: sequence[sequence.length - 1], length: currentStreak, position: currentStreakStart });
+    if (currentStreak > longestStreak) {
+      longestStreak = currentStreak;
+      longestStreakType = sequence[sequence.length - 1];
+    }
+
+    return {
+      current: streaks[0],
+      longest: { type: longestStreakType, length: longestStreak },
+      recent: streaks.slice(0, 5),
+      averageLength: streaks.length > 0 ? streaks.reduce((sum, s) => sum + s.length, 0) / streaks.length : 1
+    };
+  }
+
+  private analyzeNumberDistribution(numbers: number[]): any {
+    const distribution = new Array(10).fill(0);
+    numbers.forEach(num => {
+      if (num >= 0 && num <= 9) distribution[num]++;
+    });
+
+    const bigNumbers = [5, 6, 7, 8, 9];
+    const smallNumbers = [0, 1, 2, 3, 4];
+    
+    const bigFreq = bigNumbers.reduce((sum, n) => sum + distribution[n], 0);
+    const smallFreq = smallNumbers.reduce((sum, n) => sum + distribution[n], 0);
+    
+    // Find most and least frequent numbers
+    const maxFreq = Math.max(...distribution);
+    const minFreq = Math.min(...distribution.filter(f => f > 0));
+    const hotNumbers = distribution.map((freq, num) => ({ num, freq })).filter(d => d.freq === maxFreq);
+    const coldNumbers = distribution.map((freq, num) => ({ num, freq })).filter(d => d.freq === minFreq);
+
+    return {
+      distribution,
+      bigFrequency: bigFreq,
+      smallFrequency: smallFreq,
+      hotNumbers: hotNumbers.map(h => h.num),
+      coldNumbers: coldNumbers.map(c => c.num),
+      evenCount: numbers.filter((n: number) => n % 2 === 0).length,
+      oddCount: numbers.filter((n: number) => n % 2 === 1).length
+    };
+  }
+
+  private analyzeMovingAverages(numbers: number[]): any {
+    const calculateMA = (data: number[], period: number) => {
+      if (data.length < period) return data.reduce((sum, n) => sum + n, 0) / data.length;
+      return data.slice(0, period).reduce((sum, n) => sum + n, 0) / period;
+    };
+
+    const ma5 = calculateMA(numbers, 5);
+    const ma10 = calculateMA(numbers, 10);
+    const ma20 = calculateMA(numbers, 20);
+    
+    return {
+      ma5,
+      ma10,
+      ma20,
+      trend: ma5 > ma10 ? (ma10 > ma20 ? 'STRONG_UP' : 'UP') : (ma10 < ma20 ? 'STRONG_DOWN' : 'DOWN'),
+      crossover: ma5 > 4.5 ? 'BIG' : 'SMALL'
+    };
+  }
+
+  private analyzeHotColdNumbers(numbers: number[]): any {
+    const recentCount = Math.min(numbers.length, 20);
+    const recent = numbers.slice(0, recentCount);
+    const older = numbers.slice(recentCount, Math.min(numbers.length, 50));
+    
+    const recentFreq = new Array(10).fill(0);
+    const olderFreq = new Array(10).fill(0);
+    
+    recent.forEach(n => recentFreq[n]++);
+    older.forEach(n => olderFreq[n]++);
+    
+    // Calculate momentum for each number
+    const momentum = recentFreq.map((recentF, i) => {
+      const olderF = olderFreq[i];
+      const recentRate = recentCount > 0 ? recentF / recentCount : 0;
+      const olderRate = older.length > 0 ? olderF / older.length : 0;
+      return recentRate - olderRate;
+    });
+    
+    const hotNumbers = momentum.map((m, i) => ({ num: i, momentum: m })).filter(m => m.momentum > 0.1);
+    const coldNumbers = momentum.map((m, i) => ({ num: i, momentum: m })).filter(m => m.momentum < -0.1);
+    
+    return {
+      hotNumbers: hotNumbers.map(h => h.num),
+      coldNumbers: coldNumbers.map(c => c.num),
+      momentum,
+      recentDominant: recentFreq.indexOf(Math.max(...recentFreq))
+    };
+  }
+
+  private analyzeMomentum(sequence: ("BIG" | "SMALL")[]): any {
+    const weights = [5, 4, 3, 2.5, 2, 1.8, 1.6, 1.4, 1.2, 1.1, 1, 0.9, 0.8, 0.7, 0.6];
+    let momentum = 0;
+    
+    for (let i = 0; i < Math.min(sequence.length, weights.length); i++) {
+      const value = sequence[i] === 'BIG' ? 1 : -1;
+      momentum += value * weights[i];
+    }
+    
+    const normalizedMomentum = momentum / weights.slice(0, Math.min(sequence.length, weights.length)).reduce((sum, w) => sum + w, 0);
+    
+    return {
+      rawMomentum: momentum,
+      normalizedMomentum,
+      strength: Math.abs(normalizedMomentum),
+      direction: normalizedMomentum > 0 ? 'BIG' : 'SMALL'
+    };
+  }
+
+  private makePredictionFromAnalysis(analysis: any, results: WingoResult[]): "BIG" | "SMALL" {
+    const signals = [];
+    let confidence = 0;
+    
+    // Signal 1: Frequency imbalance correction
+    if (analysis.frequency.deviation > 0.2) {
+      const correction = analysis.frequency.bigRatio > 0.6 ? 'SMALL' : 'BIG';
+      signals.push({ signal: correction, weight: 3, reason: 'frequency_correction' });
+      confidence += 15;
+    }
+    
+    // Signal 2: Streak breaking logic
+    if (analysis.streaks.current && analysis.streaks.current.length >= 3) {
+      const breakStreak = analysis.streaks.current.type === 'BIG' ? 'SMALL' : 'BIG';
+      const weight = Math.min(analysis.streaks.current.length, 6);
+      signals.push({ signal: breakStreak, weight, reason: 'streak_break' });
+      confidence += weight * 5;
+    }
+    
+    // Signal 3: Pattern continuation/break
+    if (analysis.patterns.alternating > 0.6) {
+      const sequence = results.slice(0, 2).map(r => this.getBigSmall(r.number));
+      const nextInPattern = sequence[0] === sequence[1] ? (sequence[0] === 'BIG' ? 'SMALL' : 'BIG') : sequence[0];
+      signals.push({ signal: nextInPattern, weight: 2, reason: 'pattern_continuation' });
+      confidence += 10;
+    }
+    
+    // Signal 4: Moving average crossover
+    if (analysis.movingAverages.trend === 'STRONG_UP' || analysis.movingAverages.trend === 'STRONG_DOWN') {
+      signals.push({ signal: analysis.movingAverages.crossover, weight: 2, reason: 'ma_trend' });
+      confidence += 8;
+    }
+    
+    // Signal 5: Momentum analysis
+    if (analysis.momentum.strength > 0.3) {
+      const momentumSignal = analysis.momentum.direction === 'BIG' ? 'SMALL' : 'BIG'; // Contrarian approach
+      signals.push({ signal: momentumSignal, weight: 4, reason: 'momentum_reversal' });
+      confidence += 12;
+    }
+    
+    // Signal 6: Hot/Cold number analysis
+    if (analysis.hotCold.hotNumbers.length > 0) {
+      const hotBig = analysis.hotCold.hotNumbers.filter((n: number) => n >= 5).length;
+      const hotSmall = analysis.hotCold.hotNumbers.filter((n: number) => n < 5).length;
+      if (hotBig !== hotSmall) {
+        const hotSignal = hotBig > hotSmall ? 'BIG' : 'SMALL';
+        signals.push({ signal: hotSignal, weight: 1.5, reason: 'hot_numbers' });
+        confidence += 5;
+      }
+    }
+    
+    // Signal 7: Anti-loss logic with historical context
+    if (this.lastPredictions.length >= 2) {
+      const recentLosses = this.lastPredictions.slice(-2).filter(p => p.result === 'LOSS').length;
+      if (recentLosses >= 2) {
+        const lastPrediction = this.lastPredictions[this.lastPredictions.length - 1].prediction;
+        const antiLoss = lastPrediction === 'BIG' ? 'SMALL' : 'BIG';
+        signals.push({ signal: antiLoss, weight: 3, reason: 'anti_loss' });
+        confidence += 20;
+      }
+    }
+    
+    // Calculate weighted prediction
+    const bigWeight = signals.filter(s => s.signal === 'BIG').reduce((sum, s) => sum + s.weight, 0);
+    const smallWeight = signals.filter(s => s.signal === 'SMALL').reduce((sum, s) => sum + s.weight, 0);
+    
+    let finalPrediction: "BIG" | "SMALL";
+    
+    if (Math.abs(bigWeight - smallWeight) < 0.5) {
+      // If signals are very close, use recent momentum as tiebreaker
+      finalPrediction = analysis.momentum.normalizedMomentum > 0 ? 'SMALL' : 'BIG'; // Contrarian
+    } else {
+      finalPrediction = bigWeight > smallWeight ? 'BIG' : 'SMALL';
+    }
+    
+    // Debug logging for analysis
+    console.log(`🔍 Advanced Analysis Results:`);
+    console.log(`   Frequency: BIG ${(analysis.frequency.bigRatio * 100).toFixed(1)}% | Deviation: ${(analysis.frequency.deviation * 100).toFixed(1)}%`);
+    console.log(`   Current Streak: ${analysis.streaks.current?.type} x${analysis.streaks.current?.length}`);
+    console.log(`   Momentum: ${analysis.momentum.direction} (${analysis.momentum.strength.toFixed(2)})`);
+    console.log(`   Signals: BIG=${bigWeight.toFixed(1)} | SMALL=${smallWeight.toFixed(1)} → ${finalPrediction}`);
+    
+    return finalPrediction;
   }
 
   async getCurrentPeriod(variant: string): Promise<any> {
