@@ -2,8 +2,9 @@ import { useState, useEffect } from "react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { useQuery } from "@tanstack/react-query";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, RefreshCw } from "lucide-react";
 import { useLocation } from "wouter";
+import { queryClient } from "@/lib/queryClient";
 
 interface WingoResult {
   issueNumber: string;
@@ -87,7 +88,16 @@ export default function Wingo3Min() {
           <span>Back</span>
         </button>
         <h1 className="text-xl font-bold text-white">Wingo 3Min</h1>
-        <div className="w-16"></div>
+        <button
+          onClick={() => {
+            queryClient.invalidateQueries({ queryKey: ['/api/wingo/prediction/3min'] });
+            queryClient.invalidateQueries({ queryKey: ['/api/wingo/results/3min'] });
+          }}
+          className="flex items-center justify-center w-10 h-10 text-white hover:text-yellow-400 transition-colors rounded-lg hover:bg-gray-700"
+          title="Refresh"
+        >
+          <RefreshCw className="w-5 h-5" />
+        </button>
       </div>
 
       {/* Main Content */}
