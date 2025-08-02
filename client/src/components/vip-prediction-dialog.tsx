@@ -85,7 +85,7 @@ export default function VipPredictionDialog({ isOpen, onClose, uid, onBackToRegi
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="sm:max-w-md mx-auto my-4 w-[calc(100%-2rem)] rounded-xl">
+      <DialogContent className="sm:max-w-md mx-auto my-4 w-[calc(100%-2rem)] rounded-xl bg-[#231C21] border-[#FED358]/20">
         <DialogHeader className="text-center space-y-4">
           <div className="flex justify-center">
             <img 
@@ -95,37 +95,37 @@ export default function VipPredictionDialog({ isOpen, onClose, uid, onBackToRegi
             />
           </div>
           <div>
-            <DialogTitle className="text-xl font-bold text-yellow-800 dark:text-yellow-200">
+            <DialogTitle className="text-xl font-bold text-[#FED358]">
               TASHAN WIN VIP PREDICTION
             </DialogTitle>
-            <DialogDescription className="mt-2 text-gray-600 dark:text-gray-400">
+            <DialogDescription className="mt-2 text-gray-300">
               Registration Status for UID: {uid}
             </DialogDescription>
           </div>
         </DialogHeader>
         
         <div className="space-y-6">
-          <div className="bg-white dark:bg-gray-800 p-6 rounded-lg border shadow-sm">
+          <div className="bg-gradient-to-br from-gray-800/50 to-gray-900/50 p-6 rounded-lg border border-[#FED358]/20 shadow-lg">
             <div className="flex items-center space-x-3 mb-3">
               {getStatusIcon()}
-              <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-200">
+              <h3 className="text-lg font-semibold text-white">
                 {getStatusText()}
               </h3>
             </div>
-            <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+            <p className="text-sm text-gray-300 leading-relaxed">
               {getStatusDescription()}
             </p>
           </div>
 
           {!userStatus?.approved && (
-            <div className="bg-blue-50 dark:bg-blue-900/30 p-4 rounded-lg border border-blue-200 dark:border-blue-700">
+            <div className="bg-gradient-to-r from-[#FED358]/10 to-[#FED358]/5 p-4 rounded-lg border border-[#FED358]/30">
               <div className="flex items-start space-x-2">
-                <AlertCircle className="h-5 w-5 text-blue-600 dark:text-blue-400 mt-0.5 flex-shrink-0" />
+                <AlertCircle className="h-5 w-5 text-[#FED358] mt-0.5 flex-shrink-0" />
                 <div>
-                  <p className="text-sm text-blue-800 dark:text-blue-200 font-medium">
+                  <p className="text-sm text-[#FED358] font-medium">
                     What happens next?
                   </p>
-                  <p className="text-xs text-blue-700 dark:text-blue-300 mt-1">
+                  <p className="text-xs text-gray-300 mt-1">
                     Our admin team will review your registration and approve your account. 
                     Continue button will unlock until UID gets approved.
                   </p>
@@ -167,7 +167,7 @@ export default function VipPredictionDialog({ isOpen, onClose, uid, onBackToRegi
               className={`w-full font-bold py-2 px-4 rounded-full transition-all duration-300 transform hover:scale-105 ${
                 userStatus?.approved 
                   ? "btn-custom-gold" 
-                  : "bg-gray-300 dark:bg-gray-600 text-gray-500 dark:text-gray-400 cursor-not-allowed"
+                  : "bg-gray-600 text-gray-400 cursor-not-allowed opacity-50"
               }`}
             >
               {userStatus?.approved ? "CONTINUE" : "CONTINUE (Unlock until UID gets approved)"}
@@ -176,7 +176,7 @@ export default function VipPredictionDialog({ isOpen, onClose, uid, onBackToRegi
             <Button
               variant="outline"
               onClick={handleHelp}
-              className="w-full border-blue-300 text-blue-600 hover:bg-blue-50 dark:border-blue-600 dark:text-blue-400 dark:hover:bg-blue-900/20"
+              className="w-full border-[#FED358]/30 text-[#FED358] hover:bg-[#FED358]/10 bg-transparent"
             >
               HELP - Telegram: @tashanwinsamaraa
             </Button>
@@ -184,7 +184,7 @@ export default function VipPredictionDialog({ isOpen, onClose, uid, onBackToRegi
             <Button
               variant="ghost"
               onClick={handleBackToRegister}
-              className="w-full text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700"
+              className="w-full text-gray-300 hover:bg-[#FED358]/10 hover:text-[#FED358]"
             >
               Back to Registration
             </Button>
