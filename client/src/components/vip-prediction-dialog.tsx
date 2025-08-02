@@ -127,7 +127,7 @@ export default function VipPredictionDialog({ isOpen, onClose, uid, onBackToRegi
                   </p>
                   <p className="text-xs text-blue-700 dark:text-blue-300 mt-1">
                     Our admin team will review your registration and approve your account. 
-                    Once approved, the "Continue" button will be enabled automatically.
+                    Continue button will unlock until UID gets approved.
                   </p>
                 </div>
               </div>
@@ -144,7 +144,7 @@ export default function VipPredictionDialog({ isOpen, onClose, uid, onBackToRegi
                   : "bg-gray-300 dark:bg-gray-600 text-gray-500 dark:text-gray-400 cursor-not-allowed"
               }`}
             >
-              {userStatus?.approved ? "CONTINUE" : "CONTINUE (Locked)"}
+              {userStatus?.approved ? "CONTINUE" : "CONTINUE (Unlock until UID gets approved)"}
             </Button>
 
             <Button

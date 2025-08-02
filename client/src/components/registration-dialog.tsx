@@ -76,6 +76,10 @@ export default function RegistrationDialog({ isOpen, onClose, onRegistrationSucc
     registerMutation.mutate(data);
   };
 
+  const handleStartButtonClick = () => {
+    window.open("https://tashanwin6.com/#/register?invitationCode=56822100324", "_blank");
+  };
+
   const handleHelp = () => {
     window.open("https://t.me/tashanwinsamaraa", "_blank");
   };
@@ -95,7 +99,7 @@ export default function RegistrationDialog({ isOpen, onClose, onRegistrationSucc
             <DialogTitle className="text-xl font-bold text-black text-center">
               TASHAN WIN VIP PREDICTION
             </DialogTitle>
-            <DialogDescription className="mt-2 text-black text-center">
+            <DialogDescription className="mt-2 text-black text-center font-semibold">
               🚀 Important Instructions
             </DialogDescription>
           </div>
@@ -103,7 +107,7 @@ export default function RegistrationDialog({ isOpen, onClose, onRegistrationSucc
         
         <div className="space-y-6">
           <div className="bg-yellow-200 p-4 rounded-lg border border-yellow-300">
-            <p className="text-sm text-black leading-relaxed">
+            <p className="text-sm text-black leading-relaxed font-semibold">
               Create a new account via the "Start" button for server connection. Our app checks the server to ensure accurate predictions.
             </p>
             <div className="mt-3 p-2 bg-red-200 rounded border border-red-300">
@@ -111,7 +115,7 @@ export default function RegistrationDialog({ isOpen, onClose, onRegistrationSucc
                 Warning: Accounts not created through our link will be banned their IP
               </p>
             </div>
-            <p className="text-xs text-black mt-2">
+            <p className="text-xs text-black mt-2 font-semibold">
               For 100% accurate predictions, use the account created via our URL.
             </p>
           </div>
@@ -139,18 +143,11 @@ export default function RegistrationDialog({ isOpen, onClose, onRegistrationSucc
               />
               
               <Button
-                type="submit"
+                type="button"
+                onClick={handleStartButtonClick}
                 className="w-full font-bold py-2 px-4 rounded-full transition-all duration-300 transform hover:scale-105 btn-custom-gold"
-                disabled={registerMutation.isPending}
               >
-                {registerMutation.isPending ? (
-                  <>
-                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                    Registering...
-                  </>
-                ) : (
-                  "START"
-                )}
+                START
               </Button>
             </form>
           </Form>
