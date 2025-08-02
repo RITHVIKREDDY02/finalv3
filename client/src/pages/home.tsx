@@ -541,7 +541,7 @@ export default function Home() {
               <div className="space-y-6">
                 <div>
                   <h3 className="text-lg font-semibold text-gray-800 mb-3">Live Prediction Interface</h3>
-                  <div className="bg-gray-100 rounded-lg p-4">
+                  <div className="rounded-lg p-4" style={{ backgroundColor: 'transparent' }}>
                     <img 
                       src={proofImage1} 
                       alt="Live Wingo Prediction System showing BIG 8 prediction with timer" 
@@ -553,7 +553,7 @@ export default function Home() {
                 
                 <div>
                   <h3 className="text-lg font-semibold text-gray-800 mb-3">Results & Rewards System</h3>
-                  <div className="bg-gray-100 rounded-lg p-4">
+                  <div className="rounded-lg p-4" style={{ backgroundColor: 'transparent' }}>
                     <img 
                       src={proofImage2} 
                       alt="Congratulations screen showing Red 8 Big result with ₹1,960 bonus" 
@@ -600,7 +600,7 @@ export default function Home() {
               <div className="space-y-6">
                 <div>
                   <h3 className="text-lg font-semibold text-gray-800 mb-3">Step 1: Choose Game Variant</h3>
-                  <div className="bg-gray-100 rounded-lg p-4">
+                  <div className="rounded-lg p-4" style={{ backgroundColor: 'transparent' }}>
                     <img 
                       src={demoImage1} 
                       alt="Wingo game variants selection" 
@@ -611,7 +611,7 @@ export default function Home() {
                 
                 <div>
                   <h3 className="text-lg font-semibold text-gray-800 mb-3">Step 2: View Period & Timer</h3>
-                  <div className="bg-gray-100 rounded-lg p-4">
+                  <div className="rounded-lg p-4" style={{ backgroundColor: 'transparent' }}>
                     <img 
                       src={demoImage2} 
                       alt="Period number and countdown timer" 
@@ -622,7 +622,7 @@ export default function Home() {
 
                 <div>
                   <h3 className="text-lg font-semibold text-gray-800 mb-3">Step 3: Get VIP Prediction</h3>
-                  <div className="bg-gray-100 rounded-lg p-4">
+                  <div className="rounded-lg p-4" style={{ backgroundColor: 'transparent' }}>
                     <img 
                       src={demoImage3} 
                       alt="VIP prediction showing color, size and number" 
