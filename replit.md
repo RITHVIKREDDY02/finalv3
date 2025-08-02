@@ -44,6 +44,9 @@ A dynamic prediction/lottery gaming platform with user registration and approval
 - **2025-02-02**: **UI ENHANCEMENT**: Removed Recent Results section and replaced with Live Players participation display
 - **2025-02-02**: **USER MASKING**: Implemented masked user ID display format (first 2 + xxxx + last 2 digits)
 - **2025-02-02**: **CLEAN INTERFACE**: Removed scroll area, play button, and time display from user participation section
+- **2025-02-02**: **LIVE PLAYERS UPDATE**: Removed marquee display of remaining users at top of pages
+- **2025-02-02**: **USER DISPLAY OPTIMIZATION**: Limited live players section to show only 4 users (down from 8-12)
+- **2025-02-02**: **UI ENHANCEMENT**: Centered user list in Live Players section across all Wingo variant pages
 
 ## User Preferences
 - Store UID in browser localStorage to avoid repeated registration

@@ -78,6 +78,34 @@ export default function Wingo1Min() {
     });
   };
 
+  const userIds = [
+    "2643211", "3077777", "2525003", "2955005", "2977770", "2834000", "2521120", "2966006", 
+    "2756789", "2677722", "2701203", "2830901", "2530491", "3010000", "3060808", "3099999", 
+    "3088888", "3243210", "2890001", "3045678", "2999999", "3113123", "3130000", "3288888", 
+    "2741112", "3250000", "3211000", "2922222", "3111000", "3123123", "2849081", "2940101", 
+    "2733333", "2667722", "2601000", "2800123", "2720000", "2863456", "2689100", "2911001", 
+    "3276543", "3050005", "2903452", "2825678", "2741112", "3222222", "3234567", "2988881", 
+    "2760001", "2879000", "2583021", "3301234", "3156789", "2900001", "2712205", "3200000", 
+    "2825678", "3178888", "3045678", "2701203", "3288888", "3211000", "3010000", "3111000", 
+    "3344444", "3088888", "3265432", "2999999", "2521120"
+  ];
+
+  const maskUserId = (userId: string): string => {
+    if (userId.length >= 4) {
+      const first2 = userId.substring(0, 2);
+      const last2 = userId.substring(userId.length - 2);
+      const middle = 'x'.repeat(userId.length - 4);
+      return `${first2}${middle}${last2}`;
+    }
+    return userId;
+  };
+
+  const getUserParticipation = (): string[] => {
+    // Show only 4 random users that have "joined" the current prediction
+    const shuffled = [...userIds].sort(() => Math.random() - 0.5);
+    return shuffled.slice(0, 4);
+  };
+
 
   return (
     <div className="min-h-screen" style={{ backgroundColor: '#231C21' }}>
@@ -197,6 +225,27 @@ export default function Wingo1Min() {
               <p>📈 Win rate: 90%+ with our VIP predictions</p>
               <p>⚡ Real-time predictions updated every 60 seconds</p>
               <p>💰 Higher accuracy with advanced trend analysis</p>
+            </div>
+          </div>
+        </Card>
+
+        {/* Live Players Section */}
+        <Card className="bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-700">
+          <div className="p-4 border-b border-gray-700">
+            <h3 className="text-lg font-bold text-white flex items-center gap-2">
+              👥 Live Players
+            </h3>
+          </div>
+          <div className="p-4">
+            <div className="space-y-2 text-center">
+              {getUserParticipation().map((userId, index) => (
+                <div key={index} className="text-gray-300 text-sm">
+                  <span className="text-yellow-400">{maskUserId(userId)}</span> has joined{' '}
+                  <span className={`font-bold ${prediction?.prediction === 'BIG' ? 'text-green-400' : 'text-red-400'}`}>
+                    {prediction?.prediction || 'BIG'}
+                  </span>
+                </div>
+              ))}
             </div>
           </div>
         </Card>

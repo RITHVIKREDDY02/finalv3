@@ -126,11 +126,12 @@ export default function Wingo() {
   };
 
   const getUserParticipation = (): string[] => {
-    // Show 8-12 random users that have "joined" the current prediction
+    // Show only 4 random users that have "joined" the current prediction
     const shuffled = [...userIds].sort(() => Math.random() - 0.5);
-    const count = 8 + Math.floor(Math.random() * 5); // 8-12 users
-    return shuffled.slice(0, count);
+    return shuffled.slice(0, 4);
   };
+
+
 
   const handleVariantNavigation = (variant: WingoVariant) => {
     const routes = {
@@ -267,7 +268,7 @@ export default function Wingo() {
             </div>
             
             <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-4">
-              <div className="space-y-2">
+              <div className="space-y-2 text-center">
                 {getUserParticipation().map((userId, index) => (
                   <div key={index} className="text-gray-300 text-sm">
                     <span className="text-yellow-400">{maskUserId(userId)}</span> has joined{' '}
