@@ -115,87 +115,23 @@ export default function Wingo() {
         <div className="w-16"></div>
       </div>
 
-      <div className="p-4">
-        {/* Mobile Tab Navigation */}
-        <div className="bg-gray-200 rounded-2xl p-1 shadow-sm">
-          <div className="grid grid-cols-4 gap-0">
+      <div className="p-4 space-y-4">
+        {/* Tab Navigation */}
+        <div className="bg-gray-100 rounded-2xl p-2">
+          <div className="flex gap-1">
             {variants.map((variant) => (
               <button
                 key={variant.key}
                 onClick={() => setSelectedVariant(variant.key)}
-                className={`py-3 px-2 rounded-xl font-medium text-sm transition-all duration-300 ${
+                className={`flex-1 py-3 px-4 rounded-xl font-medium transition-all duration-200 ${
                   selectedVariant === variant.key
-                    ? 'bg-blue-500 text-white shadow-lg'
-                    : 'text-gray-700 hover:text-gray-900'
+                    ? 'bg-blue-500 text-white shadow-md'
+                    : 'text-gray-600 hover:text-gray-800'
                 }`}
               >
                 {variant.label}
               </button>
             ))}
-          </div>
-        </div>
-
-        {/* Main Content Area */}
-        <div className="mt-6 space-y-4">
-          {/* Current Game Display */}
-          <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-6 text-center">
-            <h2 className="text-2xl font-bold text-white mb-2">
-              {variants.find(v => v.key === selectedVariant)?.label}
-            </h2>
-            <div className="text-white/70 text-sm mb-4">
-              Period: {prediction?.period || "Loading..."}
-            </div>
-            
-            {/* Timer */}
-            <div className="bg-white/10 rounded-xl p-4 mb-4">
-              <div className="text-white/80 text-sm mb-1">Next Round In</div>
-              <div className="text-3xl font-bold text-white font-mono">
-                {formatTime(countdown)}
-              </div>
-            </div>
-
-            {/* VIP Prediction */}
-            {prediction && (
-              <div className="bg-gradient-to-r from-yellow-400/20 to-orange-400/20 border border-yellow-400/30 rounded-xl p-4 mb-4">
-                <div className="text-yellow-300 text-sm font-medium mb-2">VIP PREDICTION</div>
-                <div className="text-4xl font-black text-yellow-300 mb-2">
-                  {prediction.prediction}
-                </div>
-                {prediction.confidence && (
-                  <div className="text-white/80 text-sm">
-                    Confidence: <span className="text-yellow-300 font-bold">{prediction.confidence}%</span>
-                  </div>
-                )}
-              </div>
-            )}
-
-            {/* Recent Results */}
-            <div className="bg-white/5 rounded-xl p-4">
-              <div className="text-white font-medium mb-3 text-left">Recent Results</div>
-              <div className="grid grid-cols-5 gap-2">
-                {results.slice(0, 10).map((result, index) => (
-                  <div 
-                    key={index} 
-                    className={`aspect-square flex flex-col items-center justify-center rounded-lg border ${getNumberBg(result.number)}`}
-                  >
-                    <div className={`text-lg font-bold ${getNumberColor(result.number)}`}>
-                      {result.number}
-                    </div>
-                    <div className={`text-xs ${getNumberColor(result.number)}`}>
-                      {getBigSmall(result.number)}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Action Button */}
-            <Button
-              onClick={() => navigate(`/wingo-${selectedVariant}`)}
-              className="w-full mt-4 bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white py-4 text-lg font-bold rounded-xl shadow-lg"
-            >
-              Play {variants.find(v => v.key === selectedVariant)?.label}
-            </Button>
           </div>
         </div>
       </div>
