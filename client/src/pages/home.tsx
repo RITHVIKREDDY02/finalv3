@@ -38,6 +38,7 @@ export default function Home() {
   const [showComingSoonDialog, setShowComingSoonDialog] = useState(false);
   const [showProofDialog, setShowProofDialog] = useState(false);
   const [showDemoDialog, setShowDemoDialog] = useState(false);
+  const [showAboutUsDialog, setShowAboutUsDialog] = useState(false);
   const [selectedGameName, setSelectedGameName] = useState<string>("");
   const [userUid, setUserUid] = useState<string>("");
 
@@ -466,7 +467,7 @@ export default function Home() {
             {/* About Us Button */}
             <button 
               className="flex-1 md:flex-none md:w-40 lg:w-44 px-2 sm:px-3 md:px-6 lg:px-8 py-1.5 sm:py-2 custom-button font-bold rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 text-xs sm:text-sm md:text-base whitespace-nowrap"
-              onClick={() => console.log('About Us clicked')}
+              onClick={() => setShowAboutUsDialog(true)}
             >
               ABOUT US
             </button>
@@ -657,6 +658,71 @@ export default function Home() {
                     <div className="flex items-center"><span className="w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center text-white text-xs mr-3">2</span>Register with your UID</div>
                     <div className="flex items-center"><span className="w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center text-white text-xs mr-3">3</span>Wait for admin approval</div>
                     <div className="flex items-center"><span className="w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center text-white text-xs mr-3">4</span>Access VIP predictions</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* About Us Dialog */}
+      {showAboutUsDialog && (
+        <div className="fixed inset-0 bg-black bg-opacity-60 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+          <div className="rounded-3xl max-w-lg w-full max-h-[80vh] overflow-y-auto shadow-2xl border-2 border-white/20" style={{ background: 'linear-gradient(135deg, #FED358 0%, #FFE082 50%, #FFF3A0 100%)' }}>
+            <div className="p-8">
+              <div className="flex justify-between items-center mb-8">
+                <h2 className="text-3xl font-bold text-black bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent">About Tashan Win VIP</h2>
+                <button
+                  onClick={() => setShowAboutUsDialog(false)}
+                  className="text-gray-600 hover:text-black text-2xl font-bold bg-white/20 rounded-full w-8 h-8 flex items-center justify-center hover:bg-white/40 transition-all duration-200"
+                >
+                  ×
+                </button>
+              </div>
+              
+              <div className="space-y-6">
+                <div className="bg-gradient-to-br from-white/30 to-white/10 backdrop-blur-sm border border-white/30 rounded-2xl p-6">
+                  <p className="text-black text-lg font-semibold text-center mb-4">
+                    "Life is a gamble and We live only once, so let's have fun at Tashan Win Vip!"
+                  </p>
+                </div>
+
+                <div className="space-y-4 text-black">
+                  <p className="text-base leading-relaxed">
+                    Welcome to <span className="font-bold text-gray-800">Tashan Win Vip</span>, the leading online platform for predicting winning numbers in popular Wingo lottery games. Our expert data and AI analysts have developed an advanced algorithm that analyzes past lottery draws and player behavior to provide 100% accurate predictions.
+                  </p>
+
+                  <p className="text-base leading-relaxed">
+                    At Tashan Win Vip, we believe everyone deserves a chance to win big. Just visit the prediction section, select your game platform, click 'predict', and get your predictions for the winning color, size, and number.
+                  </p>
+
+                  <div className="bg-gradient-to-br from-green-400/20 to-green-600/20 rounded-2xl p-6 border border-green-400/30 backdrop-blur-sm">
+                    <p className="text-black font-bold text-center text-lg">
+                      🎯 We're proud of our 100% success rate! 🎯
+                    </p>
+                  </div>
+
+                  <p className="text-base leading-relaxed">
+                    If you have any questions, feel free to contact us through email or live chat support. Don't wait! Go to the predict section and start predicting like a pro with Our Vip App!
+                  </p>
+                </div>
+
+                <div className="bg-gradient-to-br from-blue-400/20 to-blue-600/20 rounded-2xl p-6 border border-blue-400/30 backdrop-blur-sm">
+                  <h4 className="text-black font-bold text-lg mb-3 text-center">
+                    🚀 Ready to Start Winning?
+                  </h4>
+                  <div className="text-center">
+                    <button 
+                      onClick={() => {
+                        setShowAboutUsDialog(false);
+                        // Scroll to game cards or trigger registration
+                        document.querySelector('.max-w-2xl')?.scrollIntoView({ behavior: 'smooth' });
+                      }}
+                      className="px-6 py-3 bg-blue-500 hover:bg-blue-600 text-white font-bold rounded-full shadow-lg transition-all duration-300 transform hover:scale-105"
+                    >
+                      Start Predicting Now!
+                    </button>
                   </div>
                 </div>
               </div>
