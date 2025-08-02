@@ -134,6 +134,7 @@ export default function RegistrationDialog({ isOpen, onClose, onRegistrationSucc
                       <Button
                         type="submit"
                         className="px-6 py-2 rounded-full font-bold btn-custom-gold"
+                        style={{ backgroundColor: '#FED358', color: 'black' }}
                         disabled={registerMutation.isPending}
                       >
                         {registerMutation.isPending ? (
