@@ -126,7 +126,7 @@ export default function Wingo() {
                   onClick={() => setSelectedVariant(variant.key)}
                   className={`flex-1 font-medium transition-all duration-200 ${
                     selectedVariant === variant.key
-                      ? 'text-white shadow-md'
+                      ? 'shadow-md'
                       : 'text-gray-300 hover:text-white'
                   }`}
                   style={{ 
@@ -134,7 +134,10 @@ export default function Wingo() {
                     borderRadius: '16px',
                     background: selectedVariant === variant.key 
                       ? 'rgb(37, 150, 190)'
-                      : 'transparent'
+                      : 'transparent',
+                    color: selectedVariant === variant.key 
+                      ? 'rgba(255,208,90,254)'
+                      : undefined
                   }}
                 >
                   {variant.label}
