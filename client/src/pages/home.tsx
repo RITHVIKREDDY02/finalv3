@@ -3,6 +3,7 @@ import { Volume2 } from "lucide-react";
 import { useState, useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { FaTelegram } from "react-icons/fa";
+import { useLocation } from "wouter";
 import RegistrationDialog from "@/components/registration-dialog";
 import VipPredictionDialog from "@/components/vip-prediction-dialog";
 import { ComingSoonDialog } from "@/components/coming-soon-dialog";
@@ -23,6 +24,7 @@ import mobileBannerImage from "@assets/mobile hero banner_1754079113835.jpg";
 import desktopBannerImage from "@assets/Hero Banner (1440 x 300 px)_1754078513162.jpg";
 
 export default function Home() {
+  const [, navigate] = useLocation();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [showRegisterDialog, setShowRegisterDialog] = useState(false);
@@ -73,6 +75,15 @@ export default function Home() {
       setSelectedGameName(gameType);
       setShowComingSoonDialog(true);
       return;
+    }
+    
+    // Special handling for Win Go - redirect to Wingo page if approved
+    if (gameType === "Win Go") {
+      const storedUid = localStorage.getItem("tashan_user_uid");
+      if (storedUid && userStatus?.approved) {
+        navigate('/wingo');
+        return;
+      }
     }
     
     // Check if user has registered UID

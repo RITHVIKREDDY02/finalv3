@@ -4,6 +4,7 @@ import express from "express";
 import { storage } from "./storage";
 import { insertUserSchema } from "@shared/schema";
 import { z } from "zod";
+import { wingoService, WINGO_VARIANTS } from "./wingo-service";
 
 export async function registerRoutes(app: Express): Promise<Server> {
   app.use(express.json());
@@ -121,6 +122,55 @@ export async function registerRoutes(app: Express): Promise<Server> {
     } catch (error) {
       console.error("Error updating game config:", error);
       res.status(500).json({ error: "Failed to update game config" });
+    }
+  });
+
+  // Wingo prediction routes
+  app.get('/api/wingo/variants', (req, res) => {
+    res.json(WINGO_VARIANTS);
+  });
+
+  app.get('/api/wingo/prediction/:variant', async (req, res) => {
+    try {
+      const { variant } = req.params;
+      
+      if (!WINGO_VARIANTS[variant]) {
+        return res.status(400).json({ error: "Invalid variant" });
+      }
+
+      // For development, use mock predictions since we don't have API credentials
+      const prediction = wingoService.generateMockPrediction(variant);
+      res.json(prediction);
+    } catch (error) {
+      console.error("Error generating prediction:", error);
+      res.status(500).json({ error: "Failed to generate prediction" });
+    }
+  });
+
+  app.get('/api/wingo/results/:variant', async (req, res) => {
+    try {
+      const { variant } = req.params;
+      
+      if (!WINGO_VARIANTS[variant]) {
+        return res.status(400).json({ error: "Invalid variant" });
+      }
+
+      // For development, generate mock results
+      const mockResults = [];
+      for (let i = 0; i < 10; i++) {
+        const now = new Date();
+        now.setMinutes(now.getMinutes() - i * WINGO_VARIANTS[variant].intervalSeconds / 60);
+        mockResults.push({
+          issueNumber: `${now.getFullYear()}${(now.getMonth() + 1).toString().padStart(2, '0')}${now.getDate().toString().padStart(2, '0')}${now.getHours().toString().padStart(2, '0')}${now.getMinutes().toString().padStart(2, '0')}${i.toString().padStart(3, '0')}`,
+          number: Math.floor(Math.random() * 10),
+          timestamp: now.getTime()
+        });
+      }
+
+      res.json(mockResults);
+    } catch (error) {
+      console.error("Error fetching results:", error);
+      res.status(500).json({ error: "Failed to fetch results" });
     }
   });
 
