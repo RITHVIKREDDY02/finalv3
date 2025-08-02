@@ -31,7 +31,8 @@ export default function Wingo() {
   // Fetch prediction data for selected variant
   const { data: prediction } = useQuery<WingoPrediction>({
     queryKey: [`/api/wingo/prediction/${selectedVariant}`],
-    refetchInterval: 30000,
+    refetchInterval: 10000, // Faster refresh
+    staleTime: 5000, // Consider data stale after 5 seconds
     enabled: !!selectedVariant,
   });
 
@@ -105,6 +106,14 @@ export default function Wingo() {
     { key: "5min" as WingoVariant, label: "Wingo 5Min", time: "5m", icon: "👑" }
   ];
 
+  // Handle variant switching with cache invalidation
+  const handleVariantSwitch = (variant: WingoVariant) => {
+    setSelectedVariant(variant);
+    // Immediately invalidate cache for new variant to get fresh data
+    queryClient.invalidateQueries({ queryKey: [`/api/wingo/prediction/${variant}`] });
+    queryClient.invalidateQueries({ queryKey: [`/api/wingo/results/${variant}`] });
+  };
+
   // Get number color based on value (0-9)
   const getNumberColor = (num: number): string => {
     if ([0, 1, 2, 3, 4].includes(num)) return "text-emerald-500";
@@ -151,7 +160,7 @@ export default function Wingo() {
               {variants.map((variant) => (
                 <button
                   key={variant.key}
-                  onClick={() => setSelectedVariant(variant.key)}
+                  onClick={() => handleVariantSwitch(variant.key)}
                   className={`flex-1 font-medium transition-all duration-200 ${
                     selectedVariant === variant.key
                       ? 'text-black shadow-md'
@@ -227,7 +236,7 @@ export default function Wingo() {
                 <div className="text-center">
                   <div className="text-sm font-bold mb-2" style={{ color: 'rgba(255,208,90,254)' }}>Number</div>
                   <div className="text-white font-bold text-xl">
-                    {prediction?.predictedNumber ?? "7"}
+                    {prediction?.predictedNumber !== undefined ? prediction.predictedNumber : "?"}
                   </div>
                 </div>
               </div>
