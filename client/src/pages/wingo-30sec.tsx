@@ -15,6 +15,7 @@ interface WingoResult {
 interface WingoPrediction {
   period: string;
   prediction: "BIG" | "SMALL";
+  predictedNumber: number;
   confidence: number;
   countdown: number;
 }
@@ -111,15 +112,28 @@ export default function Wingo30Sec() {
                 🔓 <span className="font-bold">PERIOD ID</span> - {prediction?.period || "Loading..."}
               </div>
               
-              <div 
-                className="text-5xl font-black tracking-wider py-4 px-6 rounded-xl border-2 bg-black/20 shadow-lg"
-                style={{ 
-                  color: '#FED358',
-                  borderColor: '#FED358',
-                  textShadow: '0 0 20px rgba(254, 211, 88, 0.5)'
-                }}
-              >
-                {prediction?.prediction || "LOADING"}
+              <div className="flex gap-4 justify-center items-center">
+                <div 
+                  className="text-4xl font-black tracking-wider py-4 px-6 rounded-xl border-2 bg-black/20 shadow-lg"
+                  style={{ 
+                    color: '#FED358',
+                    borderColor: '#FED358',
+                    textShadow: '0 0 20px rgba(254, 211, 88, 0.5)'
+                  }}
+                >
+                  {prediction?.prediction || "LOADING"}
+                </div>
+                <div className="text-gray-400 text-2xl font-bold">+</div>
+                <div 
+                  className="text-6xl font-black tracking-wider py-4 px-6 rounded-xl border-2 bg-black/20 shadow-lg w-24 h-24 flex items-center justify-center"
+                  style={{ 
+                    color: '#FED358',
+                    borderColor: '#FED358',
+                    textShadow: '0 0 20px rgba(254, 211, 88, 0.5)'
+                  }}
+                >
+                  {prediction?.predictedNumber ?? "?"}
+                </div>
               </div>
               
               <div className="text-gray-300 text-lg">

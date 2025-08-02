@@ -18,6 +18,7 @@ interface WingoResult {
 interface WingoPrediction {
   period: string;
   prediction: "BIG" | "SMALL";
+  predictedNumber: number;
   confidence: number;
   countdown: number;
 }
@@ -225,7 +226,9 @@ export default function Wingo() {
                 </div>
                 <div className="text-center">
                   <div className="text-sm font-bold mb-2" style={{ color: 'rgba(255,208,90,254)' }}>Number</div>
-                  <div className="text-white font-bold text-xl">7</div>
+                  <div className="text-white font-bold text-xl">
+                    {prediction?.predictedNumber ?? "7"}
+                  </div>
                 </div>
               </div>
             </div>

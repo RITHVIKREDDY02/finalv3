@@ -9,6 +9,7 @@ export interface WingoResult {
 export interface WingoPrediction {
   period: string;
   prediction: "BIG" | "SMALL";
+  predictedNumber: number;
   confidence: number;
   countdown: number;
 }
@@ -102,17 +103,21 @@ class WingoService {
     }
   }
 
-  private analyzeTrend(results: WingoResult[]): "BIG" | "SMALL" {
+  private analyzeTrend(results: WingoResult[], variant: string): { prediction: "BIG" | "SMALL"; predictedNumber: number } {
     if (!results || results.length < 5) {
-      return Math.random() > 0.5 ? "BIG" : "SMALL";
+      const randomPrediction = Math.random() > 0.5 ? "BIG" : "SMALL";
+      const randomNumber = randomPrediction === "BIG" ? Math.floor(Math.random() * 5) + 5 : Math.floor(Math.random() * 5);
+      return { prediction: randomPrediction, predictedNumber: randomNumber };
     }
 
     try {
       const analysisResults = this.performAdvancedAnalysis(results);
-      return this.makePredictionFromAnalysis(analysisResults, results);
+      return this.makePredictionFromAnalysis(analysisResults, results, variant);
     } catch (error) {
       console.error('Advanced trend analysis failed:', error);
-      return Math.random() > 0.5 ? "BIG" : "SMALL";
+      const fallbackPrediction = Math.random() > 0.5 ? "BIG" : "SMALL";
+      const fallbackNumber = fallbackPrediction === "BIG" ? Math.floor(Math.random() * 5) + 5 : Math.floor(Math.random() * 5);
+      return { prediction: fallbackPrediction, predictedNumber: fallbackNumber };
     }
   }
 
@@ -328,7 +333,7 @@ class WingoService {
     };
   }
 
-  private makePredictionFromAnalysis(analysis: any, results: WingoResult[]): "BIG" | "SMALL" {
+  private makePredictionFromAnalysis(analysis: any, results: WingoResult[], variant: string): { prediction: "BIG" | "SMALL"; predictedNumber: number } {
     const signals = [];
     let confidence = 0;
     
@@ -404,13 +409,85 @@ class WingoService {
     }
     
     // Debug logging for analysis
-    console.log(`🔍 Advanced Analysis Results:`);
+    // Predict specific number based on analysis and variant
+    const predictedNumber = this.predictSpecificNumber(analysis, results, variant, finalPrediction);
+    
+    console.log(`🔍 Advanced Analysis Results [${variant}]:`);
     console.log(`   Frequency: BIG ${(analysis.frequency.bigRatio * 100).toFixed(1)}% | Deviation: ${(analysis.frequency.deviation * 100).toFixed(1)}%`);
     console.log(`   Current Streak: ${analysis.streaks.current?.type} x${analysis.streaks.current?.length}`);
     console.log(`   Momentum: ${analysis.momentum.direction} (${analysis.momentum.strength.toFixed(2)})`);
     console.log(`   Signals: BIG=${bigWeight.toFixed(1)} | SMALL=${smallWeight.toFixed(1)} → ${finalPrediction}`);
+    console.log(`   🎯 Predicted Number: ${predictedNumber}`);
     
-    return finalPrediction;
+    return { prediction: finalPrediction, predictedNumber };
+  }
+
+  private predictSpecificNumber(analysis: any, results: WingoResult[], variant: string, prediction: "BIG" | "SMALL"): number {
+    // Get variant-specific seed for more diverse predictions across servers
+    const variantSeeds: { [key: string]: number } = { '30sec': 1, '1min': 2, '3min': 3, '5min': 4 };
+    const seed = variantSeeds[variant] || 1;
+    
+    // Use multiple factors to determine specific number
+    const recentNumbers = results.slice(0, 10).map(r => r.number);
+    const hotNumbers = analysis.hotCold.hotNumbers || [];
+    const distribution = analysis.numberDistribution.distribution || new Array(10).fill(0);
+    
+    // Calculate number preferences based on analysis
+    const numberScores = new Array(10).fill(0);
+    
+    // Factor 1: Frequency-based scoring (avoid overused numbers)
+    distribution.forEach((freq: number, num: number) => {
+      const avgFreq = distribution.reduce((sum: number, f: number) => sum + f, 0) / 10;
+      numberScores[num] -= (freq - avgFreq) * 0.3; // Penalty for overuse
+    });
+    
+    // Factor 2: Hot number momentum (slight preference)
+    hotNumbers.forEach((num: number) => {
+      if (num >= 0 && num <= 9) numberScores[num] += 0.2;
+    });
+    
+    // Factor 3: Avoid recent numbers (anti-repetition)
+    recentNumbers.slice(0, 3).forEach((num, index) => {
+      const penalty = 0.5 - (index * 0.1); // Higher penalty for more recent
+      numberScores[num] -= penalty;
+    });
+    
+    // Factor 4: Variant-specific bias for diversity
+    const variantBias = [seed * 0.1, (seed + 1) * 0.1, (seed + 2) * 0.1];
+    variantBias.forEach((bias, index) => {
+      const targetNum = (seed + index * 3) % 10;
+      numberScores[targetNum] += bias;
+    });
+    
+    // Factor 5: Pattern-based number selection
+    if (analysis.patterns.alternating > 0.6) {
+      // Prefer numbers that continue pattern
+      const lastTwo = recentNumbers.slice(0, 2);
+      if (lastTwo.length === 2) {
+        const diff = Math.abs(lastTwo[0] - lastTwo[1]);
+        const nextInPattern = (lastTwo[0] + diff) % 10;
+        numberScores[nextInPattern] += 0.3;
+      }
+    }
+    
+    // Determine final number based on BIG/SMALL prediction
+    const targetRange = prediction === "BIG" ? [5, 6, 7, 8, 9] : [0, 1, 2, 3, 4];
+    const rangeScores = targetRange.map(num => ({ num, score: numberScores[num] }));
+    
+    // Add some randomness but weighted by scores
+    const weights = rangeScores.map(r => Math.max(0.1, r.score + 1 + Math.random() * 0.5));
+    const totalWeight = weights.reduce((sum, w) => sum + w, 0);
+    
+    let random = Math.random() * totalWeight;
+    for (let i = 0; i < rangeScores.length; i++) {
+      random -= weights[i];
+      if (random <= 0) {
+        return rangeScores[i].num;
+      }
+    }
+    
+    // Fallback: random number from appropriate range
+    return targetRange[Math.floor(Math.random() * targetRange.length)];
   }
 
   async getCurrentPeriod(variant: string): Promise<any> {
@@ -503,7 +580,7 @@ class WingoService {
         this.getLatestResults(variant)
       ]);
 
-      const prediction = this.analyzeTrend(results);
+      const analysisResult = this.analyzeTrend(results, variant);
       const config = WINGO_VARIANTS[variant];
       
       // Calculate countdown based on API endTime or fallback to fixed calculation
@@ -524,7 +601,8 @@ class WingoService {
 
       return {
         period: finalPeriod,
-        prediction,
+        prediction: analysisResult.prediction,
+        predictedNumber: analysisResult.predictedNumber,
         confidence: 85 + Math.floor(Math.random() * 10), // 85-95%
         countdown
       };
@@ -543,9 +621,13 @@ class WingoService {
     const istTime = new Date(now.getTime() + (5.5 * 60 * 60 * 1000));
     const periodId = `${istTime.getFullYear()}${(istTime.getMonth() + 1).toString().padStart(2, '0')}${istTime.getDate().toString().padStart(2, '0')}${istTime.getHours().toString().padStart(2, '0')}${istTime.getMinutes().toString().padStart(2, '0')}${Math.floor(istTime.getSeconds() / config.intervalSeconds).toString().padStart(3, '0')}`;
     
+    const mockPrediction = Math.random() > 0.5 ? "BIG" : "SMALL";
+    const mockNumber = mockPrediction === "BIG" ? Math.floor(Math.random() * 5) + 5 : Math.floor(Math.random() * 5);
+    
     return {
       period: periodId,
-      prediction: Math.random() > 0.5 ? "BIG" : "SMALL",
+      prediction: mockPrediction,
+      predictedNumber: mockNumber,
       confidence: 85 + Math.floor(Math.random() * 10),
       countdown
     };
