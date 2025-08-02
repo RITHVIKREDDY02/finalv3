@@ -22,6 +22,8 @@ import aviatorImage from "@assets/800_1754070860600.png";
 import limboImage from "@assets/235_1754071157602.png";
 import mobileBannerImage from "@assets/mobile hero banner_1754079113835.jpg";
 import desktopBannerImage from "@assets/Hero Banner (1440 x 300 px)_1754078513162.jpg";
+import proofImage1 from "@assets/image_1754150847570.png";
+import proofImage2 from "@assets/image_1754150852695.png";
 
 export default function Home() {
   const [, navigate] = useLocation();
@@ -30,6 +32,7 @@ export default function Home() {
   const [showRegisterDialog, setShowRegisterDialog] = useState(false);
   const [showVipPredictionDialog, setShowVipPredictionDialog] = useState(false);
   const [showComingSoonDialog, setShowComingSoonDialog] = useState(false);
+  const [showProofDialog, setShowProofDialog] = useState(false);
   const [selectedGameName, setSelectedGameName] = useState<string>("");
   const [userUid, setUserUid] = useState<string>("");
 
@@ -250,7 +253,10 @@ export default function Home() {
             {/* PROOF Button */}
             <button 
               className="flex-1 md:flex-none md:w-32 lg:w-36 px-4 sm:px-6 md:px-8 py-2 custom-button font-bold rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 text-sm sm:text-base"
-              onClick={() => console.log('Proof clicked')}
+              onClick={() => {
+                console.log('Proof clicked');
+                setShowProofDialog(true);
+              }}
             >
               PROOF
             </button>
@@ -518,6 +524,75 @@ export default function Home() {
         onClose={() => setShowComingSoonDialog(false)}
         gameName={selectedGameName}
       />
+
+      {/* Proof Dialog */}
+      {showProofDialog && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
+          <div className="bg-gray-900 rounded-lg max-w-4xl w-full max-h-[90vh] overflow-y-auto">
+            <div className="p-6">
+              <div className="flex justify-between items-center mb-6">
+                <h2 className="text-2xl font-bold text-white">System Proof - Live Results</h2>
+                <button
+                  onClick={() => setShowProofDialog(false)}
+                  className="text-gray-400 hover:text-white text-xl font-bold"
+                >
+                  ×
+                </button>
+              </div>
+              
+              <div className="space-y-6">
+                <div>
+                  <h3 className="text-lg font-semibold text-yellow-400 mb-3">Live Prediction Interface</h3>
+                  <div className="bg-gray-800 rounded-lg p-4">
+                    <img 
+                      src={proofImage1} 
+                      alt="Live Wingo Prediction System showing BIG 8 prediction with timer" 
+                      className="w-full rounded-lg shadow-lg"
+                    />
+                    <p className="text-gray-300 mt-3 text-sm">
+                      ✅ Live timer countdown (00:42 remaining)<br/>
+                      ✅ Real period: 20250802100010967<br/>
+                      ✅ Balanced prediction: BIG 8<br/>
+                      ✅ Live players with masked IDs
+                    </p>
+                  </div>
+                </div>
+                
+                <div>
+                  <h3 className="text-lg font-semibold text-yellow-400 mb-3">Results & Rewards System</h3>
+                  <div className="bg-gray-800 rounded-lg p-4">
+                    <img 
+                      src={proofImage2} 
+                      alt="Congratulations screen showing Red 8 Big result with ₹1,960 bonus" 
+                      className="w-full rounded-lg shadow-lg"
+                    />
+                    <p className="text-gray-300 mt-3 text-sm">
+                      ✅ Results: Red 8 Big (matching prediction)<br/>
+                      ✅ Bonus reward: ₹1,960.00<br/>
+                      ✅ Period tracking: 20250802100010967<br/>
+                      ✅ Auto-close functionality working
+                    </p>
+                  </div>
+                </div>
+
+                <div className="bg-green-900 rounded-lg p-4">
+                  <h4 className="text-green-300 font-semibold mb-2">Verified Features</h4>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-2 text-sm text-green-200">
+                    <div>✓ Truly balanced predictions</div>
+                    <div>✓ Live API integration</div>
+                    <div>✓ Real-time countdown timers</div>
+                    <div>✓ Authentic period numbers</div>
+                    <div>✓ User registration system</div>
+                    <div>✓ Admin panel controls</div>
+                    <div>✓ Results & rewards tracking</div>
+                    <div>✓ Multi-variant support</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
