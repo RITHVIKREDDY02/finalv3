@@ -661,16 +661,18 @@ export default function Home() {
                   </div>
                 </div>
 
-                <div className="rounded-2xl p-6" style={{ backgroundColor: 'rgba(155, 89, 182, 0.2)', border: '1px solid rgba(155, 89, 182, 0.4)' }}>
-                  <h4 className="font-bold text-lg mb-4 flex items-center" style={{ color: '#9B59B6' }}>
-                    <span className="w-6 h-6 rounded-full flex items-center justify-center text-white text-sm mr-3" style={{ backgroundColor: '#9B59B6' }}>🚀</span>
+                <div>
+                  <h3 className="text-xl font-bold mb-4 flex items-center" style={{ color: '#FED358' }}>
+                    <span className="w-8 h-8 rounded-full flex items-center justify-center text-white font-bold text-sm mr-3" style={{ backgroundColor: '#2ECC71' }}>4</span>
                     How to Get Started
-                  </h4>
-                  <div className="text-sm space-y-3" style={{ color: '#FDE4BC' }}>
-                    <div className="flex items-center"><span className="w-6 h-6 rounded-full flex items-center justify-center text-white text-xs mr-3" style={{ backgroundColor: '#9B59B6' }}>1</span>Click on any game card</div>
-                    <div className="flex items-center"><span className="w-6 h-6 rounded-full flex items-center justify-center text-white text-xs mr-3" style={{ backgroundColor: '#9B59B6' }}>2</span>Register with your UID</div>
-                    <div className="flex items-center"><span className="w-6 h-6 rounded-full flex items-center justify-center text-white text-xs mr-3" style={{ backgroundColor: '#9B59B6' }}>3</span>Wait for admin approval</div>
-                    <div className="flex items-center"><span className="w-6 h-6 rounded-full flex items-center justify-center text-white text-xs mr-3" style={{ backgroundColor: '#9B59B6' }}>4</span>Access VIP predictions</div>
+                  </h3>
+                  <div className="rounded-2xl p-6" style={{ backgroundColor: 'rgba(155, 89, 182, 0.2)', border: '1px solid rgba(155, 89, 182, 0.4)' }}>
+                    <div className="text-sm space-y-3" style={{ color: '#FDE4BC' }}>
+                      <div className="flex items-center"><span className="w-6 h-6 rounded-full flex items-center justify-center text-white text-xs mr-3" style={{ backgroundColor: '#9B59B6' }}>1</span>Click on any game card</div>
+                      <div className="flex items-center"><span className="w-6 h-6 rounded-full flex items-center justify-center text-white text-xs mr-3" style={{ backgroundColor: '#9B59B6' }}>2</span>Register with your UID</div>
+                      <div className="flex items-center"><span className="w-6 h-6 rounded-full flex items-center justify-center text-white text-xs mr-3" style={{ backgroundColor: '#9B59B6' }}>3</span>Wait for admin approval</div>
+                      <div className="flex items-center"><span className="w-6 h-6 rounded-full flex items-center justify-center text-white text-xs mr-3" style={{ backgroundColor: '#9B59B6' }}>4</span>Access VIP predictions</div>
+                    </div>
                   </div>
                 </div>
               </div>
