@@ -142,6 +142,31 @@ export default function Wingo() {
               ))}
             </div>
           </div>
+
+          {/* Issue/Period Information */}
+          <div className="mt-4 space-y-3">
+            {/* Issue Header */}
+            <div className="text-center">
+              <div className="text-white/80 text-sm">Issue</div>
+              <div className="text-white font-medium">202508020922001</div>
+            </div>
+
+            {/* Content Card */}
+            <div className="bg-gradient-to-b from-yellow-400 to-orange-400 rounded-2xl p-4 relative overflow-hidden">
+              {/* Dotted line decoration */}
+              <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-px h-full border-l-2 border-dashed border-black/20"></div>
+              
+              {/* Top section */}
+              <div className="text-center mb-4">
+                <div className="w-8 h-8 bg-black rounded mx-auto mb-2"></div>
+              </div>
+
+              {/* Bottom section */}
+              <div className="text-center">
+                <div className="w-8 h-8 bg-black rounded mx-auto"></div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
