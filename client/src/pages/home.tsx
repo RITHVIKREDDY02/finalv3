@@ -147,7 +147,7 @@ export default function Home() {
           </div>
           
           {/* Mobile Navigation */}
-          <div className="md:hidden flex items-center space-x-3">
+          <div className="md:hidden flex items-center">
             {userStatus?.approved ? (
               <div 
                 className="px-3 py-1.5 rounded-full text-black font-bold text-xs"
@@ -164,14 +164,6 @@ export default function Home() {
                 JOIN VIP
               </button>
             )}
-            <button 
-              className="light-gold hover:warm-gold transition-colors duration-200"
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            >
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"></path>
-              </svg>
-            </button>
           </div>
           
           {/* Desktop Navigation Items */}
