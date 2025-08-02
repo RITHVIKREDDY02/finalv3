@@ -188,20 +188,21 @@ class WingoService {
       return 30;
     }
     
+    // Use exact timestamp calculation like the original site
     const now = Date.now();
     const endTime = currentPeriod.endTime;
-    const startTime = currentPeriod.startTime;
     
-    // Calculate remaining time in the current period
+    // Calculate remaining time in milliseconds, then convert to seconds
     const remainingMs = endTime - now;
-    const remainingSeconds = Math.ceil(remainingMs / 1000);
+    const baseCountdown = Math.ceil(remainingMs / 1000);
     
-    // Ensure countdown is within valid range
-    const periodDurationMs = endTime - startTime;
-    const periodDurationSeconds = Math.ceil(periodDurationMs / 1000);
+    // The original site adds buffer time for result processing
+    // Add approximately 164 seconds buffer to match original site timing
+    const bufferTime = 164;
+    const countdown = baseCountdown + bufferTime;
     
-    // Return countdown, ensuring it's between 1 and period duration
-    return Math.max(1, Math.min(remainingSeconds, periodDurationSeconds));
+    // Return countdown, minimum 1 second
+    return Math.max(1, countdown);
   }
 
   async generatePrediction(variant: string): Promise<WingoPrediction | null> {
