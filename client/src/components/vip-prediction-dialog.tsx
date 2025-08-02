@@ -85,7 +85,7 @@ export default function VipPredictionDialog({ isOpen, onClose, uid, onBackToRegi
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="sm:max-w-md">
+      <DialogContent className="sm:max-w-md mx-4 my-4 w-[calc(100%-2rem)]">
         <DialogHeader className="text-center space-y-4">
           <div className="flex justify-center">
             <img 
