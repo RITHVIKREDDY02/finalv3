@@ -523,12 +523,20 @@ class WingoService {
       const data = await this.fetchData(config.resultUrl);
       const results = data?.data?.list || [];
       
-      // Transform API response to our format
-      return results.map((item: any) => ({
-        issueNumber: item.issueNumber,
-        number: parseInt(item.number),
-        timestamp: Date.now() // Use current time since API doesn't provide timestamp
-      }));
+      // Transform API response to our format with realistic timestamps
+      const now = Date.now();
+      return results.map((item: any, index: number) => {
+        // Generate realistic timestamp - each previous result is one interval earlier
+        // Latest result (index 0) gets most recent time, older results get earlier times
+        const intervalMs = config.intervalSeconds * 1000;
+        const resultTimestamp = now - (index * intervalMs);
+        
+        return {
+          issueNumber: item.issueNumber,
+          number: parseInt(item.number),
+          timestamp: resultTimestamp
+        };
+      });
     } catch (error) {
       console.error(`Failed to get results for ${variant}:`, error);
       return [];
