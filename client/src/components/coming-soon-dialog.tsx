@@ -50,14 +50,14 @@ export function ComingSoonDialog({ isOpen, onClose, gameName }: ComingSoonDialog
               <Wrench className="w-5 h-5 text-black/70" />
               <span>{gameName}</span>
             </div>
-            <p className="text-black/90 text-base font-medium leading-relaxed">
+            <p className="text-black text-base font-medium leading-relaxed">
               is currently under maintenance
             </p>
             <div className="bg-black/10 backdrop-blur-sm rounded-xl p-4 border border-black/10">
-              <p className="text-black/80 text-sm leading-relaxed font-medium">
+              <p className="text-black text-sm leading-relaxed font-medium">
                 🔧 We're working hard to bring this exciting game back online with amazing new features!
               </p>
-              <p className="text-black/70 text-sm mt-2 font-medium">
+              <p className="text-black text-sm mt-2 font-medium">
                 ⚡ Please check back soon for updates
               </p>
             </div>
