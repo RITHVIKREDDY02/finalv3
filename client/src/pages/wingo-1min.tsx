@@ -133,7 +133,7 @@ export default function Wingo1Min() {
       </div>
 
       {/* Main Content */}
-      <div className="p-4 space-y-6">
+      <div className="p-6 md:p-4 space-y-6">
         {/* Current Prediction Card */}
         <Card className="bg-gradient-to-br from-gray-800 to-gray-900 border-2" style={{ borderColor: '#FED358' }}>
           <div className="p-6 text-center space-y-6">
