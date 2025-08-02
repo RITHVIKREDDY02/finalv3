@@ -189,7 +189,7 @@ export default function Wingo() {
               <div className="flex justify-between items-center">
                 <div className="text-center">
                   <div className="text-sm font-bold mb-2" style={{ color: 'rgba(255,208,90,254)' }}>Color</div>
-                  <div className={`w-12 h-12 rounded-lg mx-auto ${prediction?.prediction === 'BIG' ? 'bg-green-500' : 'bg-red-500'}`}></div>
+                  <div className={`w-8 h-8 rounded-lg mx-auto ${prediction?.prediction === 'BIG' ? 'bg-green-500' : 'bg-red-500'}`}></div>
                 </div>
                 <div className="text-center">
                   <div className="text-sm font-bold mb-2" style={{ color: 'rgba(255,208,90,254)' }}>Size</div>
