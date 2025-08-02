@@ -135,7 +135,7 @@ export default function Wingo5Min() {
 
       {/* Main Content */}
       <div 
-        className="space-y-4" 
+        className="space-y-4 max-w-sm mx-auto" 
         style={{ padding: 'max(24px, 6vw)' }}
       >
         {/* Current Prediction Card */}
