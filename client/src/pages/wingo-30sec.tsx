@@ -208,45 +208,51 @@ export default function Wingo30Sec() {
 
 
 
-        {/* Game Instructions */}
+        {/* VIP Prediction */}
         <Card className="bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-700">
-          <div className="p-4 border-b border-gray-700">
-            <h3 className="text-lg font-bold text-white flex items-center gap-2">
-              📋 How to Play
+          <div className="p-3 border-b border-gray-700">
+            <h3 className="text-base font-bold text-white flex items-center gap-2">
+              🎯 VIP Prediction
             </h3>
           </div>
-          <div className="p-4 space-y-4">
-            <div className="grid grid-cols-2 gap-4">
-              <div className="bg-red-500/20 border border-red-500/40 rounded-lg p-3 text-center">
-                <div className="text-red-400 font-bold text-lg mb-1">BIG</div>
-                <div className="text-gray-300 text-sm">Numbers: 5, 6, 7, 8, 9</div>
+          <div className="p-3">
+            <div className="grid grid-cols-3 gap-3 text-center">
+              <div>
+                <div className="text-xs text-gray-400 mb-1">Color</div>
+                <div 
+                  className="w-6 h-6 rounded mx-auto"
+                  style={{ 
+                    backgroundColor: prediction?.prediction === 'BIG' ? '#ff4444' : '#00ff88'
+                  }}
+                ></div>
               </div>
-              <div className="bg-green-500/20 border border-green-500/40 rounded-lg p-3 text-center">
-                <div className="text-green-400 font-bold text-lg mb-1">SMALL</div>
-                <div className="text-gray-300 text-sm">Numbers: 0, 1, 2, 3, 4</div>
+              <div>
+                <div className="text-xs text-gray-400 mb-1">Size</div>
+                <div className="text-white font-bold text-base">
+                  {prediction?.prediction || "Loading..."}
+                </div>
               </div>
-            </div>
-            
-            <div className="space-y-2 text-gray-300 text-sm bg-black/30 p-3 rounded-lg">
-              <p>🎯 Predict the next number range</p>
-              <p>📈 Win rate: 90%+ with our VIP predictions</p>
-              <p>⚡ Real-time predictions updated every 30 seconds</p>
-              <p>💰 Higher accuracy with advanced trend analysis</p>
+              <div>
+                <div className="text-xs text-gray-400 mb-1">Number</div>
+                <div className="text-white font-bold text-base">
+                  {prediction?.predictedNumber ?? "?"}
+                </div>
+              </div>
             </div>
           </div>
         </Card>
 
         {/* Live Players Section */}
         <Card className="bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-700">
-          <div className="p-4 border-b border-gray-700">
-            <h3 className="text-lg font-bold text-white flex items-center gap-2">
+          <div className="p-3 border-b border-gray-700">
+            <h3 className="text-base font-bold text-white flex items-center gap-2">
               👥 Live Players
             </h3>
           </div>
-          <div className="p-4">
-            <div className="space-y-2 text-center">
+          <div className="p-3">
+            <div className="space-y-1 text-center">
               {getUserParticipation().map((userId, index) => (
-                <div key={index} className="text-gray-300 text-sm">
+                <div key={index} className="text-gray-300 text-xs">
                   <span className="text-yellow-400">{maskUserId(userId)}</span> has joined{' '}
                   <span className={`font-bold ${prediction?.prediction === 'BIG' ? 'text-green-400' : 'text-red-400'}`}>
                     {prediction?.prediction || 'BIG'}
