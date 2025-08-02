@@ -162,7 +162,7 @@ export default function Wingo() {
                 <div className="text-black font-bold text-lg">
                   {variants.find(v => v.key === selectedVariant)?.label || "Wingo 30Sec"}
                 </div>
-                <div className="text-black/80 text-sm">
+                <div className="text-black font-bold text-lg">
                   {prediction?.period || "20250802100010584"}
                 </div>
               </div>
