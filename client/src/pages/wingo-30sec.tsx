@@ -34,32 +34,15 @@ export default function Wingo30Sec() {
     refetchInterval: 15000, // Refetch every 15 seconds
   });
 
-  // Synchronized countdown timer
+  // 30-second countdown timer
   useEffect(() => {
-    const calculateSynchronizedCountdown = () => {
-      const now = new Date();
-      const currentSecond = now.getSeconds();
-      
-      // Calculate how many 30-second intervals have passed since minute boundary
-      const intervalsPassedSinceMinute = Math.floor(currentSecond / 30);
-      
-      // Calculate next interval start time
-      const nextIntervalStart = (intervalsPassedSinceMinute + 1) * 30;
-      
-      // If next interval would be beyond 60 seconds, wrap to next minute
-      if (nextIntervalStart >= 60) {
-        return 60 - currentSecond;
-      }
-      
-      return nextIntervalStart - currentSecond;
-    };
-
-    // Set initial countdown
-    setCountdown(calculateSynchronizedCountdown());
-
     const interval = setInterval(() => {
-      const syncCountdown = calculateSynchronizedCountdown();
-      setCountdown(syncCountdown);
+      setCountdown(prev => {
+        if (prev <= 1) {
+          return 30; // Reset to 30 when countdown reaches 0
+        }
+        return prev - 1;
+      });
     }, 1000);
 
     return () => clearInterval(interval);
