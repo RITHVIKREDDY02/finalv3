@@ -128,7 +128,7 @@ export default function Wingo() {
             <div className="flex-1">
               <div className="flex items-center gap-3 mb-4">
                 <h2 className="text-xl font-bold">
-                  {variants.find(v => v.key === selectedVariant)?.label} ( {variants.find(v => v.key === selectedVariant)?.sublabel} )
+                  {variants.find(v => v.key === selectedVariant)?.label}
                 </h2>
               </div>
               
