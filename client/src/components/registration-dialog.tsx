@@ -82,7 +82,7 @@ export default function RegistrationDialog({ isOpen, onClose, onRegistrationSucc
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="sm:max-w-md">
+      <DialogContent className="sm:max-w-md" style={{ backgroundColor: '#FED358', color: 'black' }}>
         <DialogHeader className="text-center space-y-4">
           <div className="flex justify-center">
             <img 
@@ -92,26 +92,26 @@ export default function RegistrationDialog({ isOpen, onClose, onRegistrationSucc
             />
           </div>
           <div>
-            <DialogTitle className="text-xl font-bold text-yellow-800 dark:text-yellow-200">
+            <DialogTitle className="text-xl font-bold text-black">
               TASHAN WIN VIP PREDICTION
             </DialogTitle>
-            <DialogDescription className="mt-2 text-gray-600 dark:text-gray-400">
+            <DialogDescription className="mt-2 text-black">
               🚀 Important Instructions
             </DialogDescription>
           </div>
         </DialogHeader>
         
         <div className="space-y-6">
-          <div className="bg-yellow-50 dark:bg-yellow-900/30 p-4 rounded-lg border border-yellow-200 dark:border-yellow-700">
-            <p className="text-sm text-yellow-800 dark:text-yellow-200 leading-relaxed">
+          <div className="bg-yellow-200 p-4 rounded-lg border border-yellow-300">
+            <p className="text-sm text-black leading-relaxed">
               Create a new account via the "Start" button for server connection. Our app checks the server to ensure accurate predictions.
             </p>
-            <div className="mt-3 p-2 bg-red-50 dark:bg-red-900/30 rounded border border-red-200 dark:border-red-700">
-              <p className="text-xs text-red-700 dark:text-red-300 font-semibold">
+            <div className="mt-3 p-2 bg-red-200 rounded border border-red-300">
+              <p className="text-xs text-red-800 font-semibold">
                 Warning: Accounts not created through our link will be banned their IP
               </p>
             </div>
-            <p className="text-xs text-yellow-700 dark:text-yellow-300 mt-2">
+            <p className="text-xs text-black mt-2">
               For 100% accurate predictions, use the account created via our URL.
             </p>
           </div>
@@ -123,14 +123,14 @@ export default function RegistrationDialog({ isOpen, onClose, onRegistrationSucc
                 name="uid"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="text-gray-700 dark:text-gray-300">
+                    <FormLabel className="text-black">
                       Enter Your UID
                     </FormLabel>
                     <FormControl>
                       <Input
                         placeholder="Enter your unique UID"
                         {...field}
-                        className="border-yellow-300 focus:border-yellow-500 dark:border-yellow-600 dark:focus:border-yellow-400"
+                        className="border-black focus:border-black bg-white text-black"
                       />
                     </FormControl>
                     <FormMessage />
@@ -156,10 +156,10 @@ export default function RegistrationDialog({ isOpen, onClose, onRegistrationSucc
           </Form>
 
           <div className="text-center">
-            <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">Need help?</p>
+            <p className="text-sm text-black mb-2">Need help?</p>
             <Button
               variant="outline"
-              className="border-blue-300 text-blue-600 hover:bg-blue-50 dark:border-blue-600 dark:text-blue-400 dark:hover:bg-blue-900/20"
+              className="border-black text-black hover:bg-gray-100 bg-white"
               onClick={handleHelp}
             >
               Telegram: @tashanwinsamaraa
