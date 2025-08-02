@@ -178,22 +178,44 @@ export default function Wingo() {
           </div>
 
           {/* Prediction Model Section */}
-          <div className="mt-4 bg-white/10 backdrop-blur-sm rounded-2xl p-4">
-            <h3 className="text-white font-bold text-lg mb-3">VIP Prediction</h3>
-            <div className="flex justify-between items-center">
-              <div className="text-center">
-                <div className="text-white/70 text-sm mb-1">Color</div>
-                <div className="w-8 h-8 bg-red-500 rounded mx-auto"></div>
+          <div className="mt-4 bg-white rounded-2xl p-4">
+            {/* Period and Status */}
+            <div className="flex justify-between items-center mb-4">
+              <div className="bg-blue-500 text-white px-4 py-2 rounded-full text-sm font-medium">
+                Period: {prediction?.period || "202508010883"}
               </div>
+              <div className="bg-yellow-400 text-black px-4 py-2 rounded-full text-sm font-bold">
+                🔄 PENDING
+              </div>
+            </div>
+
+            {/* Predicted vs Actual */}
+            <div className="flex items-center justify-between">
+              {/* Predicted Section */}
               <div className="text-center">
-                <div className="text-white/70 text-sm mb-1">Size</div>
-                <div className="text-white font-bold text-xl">
-                  {prediction?.prediction || "BIG"}
+                <div className="text-gray-600 text-sm mb-2">Predicted</div>
+                <div className="flex items-center gap-2">
+                  <div className="bg-green-500 text-white px-3 py-1 rounded-lg font-bold">
+                    Green
+                  </div>
+                  <div className="bg-red-500 text-white w-8 h-8 rounded-lg flex items-center justify-center font-bold">
+                    4
+                  </div>
+                  <div className="bg-red-500 text-white w-8 h-8 rounded-lg flex items-center justify-center font-bold">
+                    4
+                  </div>
                 </div>
               </div>
+
+              {/* VS */}
+              <div className="text-gray-400 font-bold text-lg mx-4">VS</div>
+
+              {/* Actual Section */}
               <div className="text-center">
-                <div className="text-white/70 text-sm mb-1">Number</div>
-                <div className="text-white font-bold text-xl">7</div>
+                <div className="text-gray-600 text-sm mb-2">Actual</div>
+                <div className="text-gray-400 italic">
+                  Waiting...
+                </div>
               </div>
             </div>
           </div>
