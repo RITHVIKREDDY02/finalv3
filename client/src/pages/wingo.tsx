@@ -206,62 +206,99 @@ export default function Wingo() {
           </div>
 
           {/* Game History Section */}
-          <div className="mt-4">
-            <div className="flex items-center gap-3 mb-3">
-              <div className="w-1 h-6 bg-yellow-400 rounded-full"></div>
-              <h3 className="text-white font-bold text-lg">Game History</h3>
+          <div className="mt-6">
+            <div className="flex items-center gap-3 mb-4">
+              <div className="w-2 h-8 rounded-full" style={{ backgroundColor: '#ffd05a' }}></div>
+              <h3 className="text-white font-bold text-xl">Game History</h3>
+              <div className="flex-1 h-px bg-gradient-to-r from-gray-600 to-transparent"></div>
             </div>
-            <div className="space-y-3">
+            <div className="space-y-4">
               {results?.slice(0, 3).map((result, index) => (
-                <div key={result.issueNumber} className="rounded-2xl p-4" style={{ backgroundColor: 'rgb(56, 46, 53)' }}>
-                  {/* Period and Status */}
-                  <div className="flex justify-between items-center mb-4">
-                    <div className="text-white px-4 py-2 rounded-full text-sm font-medium" style={{ backgroundColor: '#ffd05a' }}>
-                      Period: {result.issueNumber}
+                <div key={result.issueNumber} className="rounded-2xl p-5 shadow-lg border border-gray-600/30 backdrop-blur-sm" style={{ backgroundColor: 'rgb(56, 46, 53)' }}>
+                  {/* Header with Period and Status */}
+                  <div className="flex justify-between items-center mb-5">
+                    <div className="flex items-center gap-3">
+                      <div className="text-black px-4 py-2 rounded-full text-sm font-bold shadow-md" style={{ backgroundColor: '#ffd05a' }}>
+                        #{result.issueNumber.slice(-6)}
+                      </div>
+                      <div className="text-gray-300 text-sm">
+                        {new Date(result.timestamp).toLocaleString()}
+                      </div>
                     </div>
-                    <div className="bg-green-500 text-white px-4 py-2 rounded-full text-sm font-bold">
-                      ✓ COMPLETED
+                    <div className="bg-emerald-500 text-white px-4 py-2 rounded-full text-sm font-bold shadow-md flex items-center gap-2">
+                      <div className="w-2 h-2 bg-white rounded-full animate-pulse"></div>
+                      COMPLETED
                     </div>
                   </div>
 
-                  {/* Predicted vs Actual */}
-                  <div className="flex items-center justify-between">
-                    {/* Predicted Section */}
-                    <div className="text-center">
-                      <div className="text-gray-300 text-sm mb-2">Predicted</div>
-                      <div className="flex items-center gap-2">
-                        <div className="bg-green-500 text-white px-3 py-1 rounded-lg font-bold">
-                          {index % 2 === 0 ? 'Green' : 'Red'}
+                  {/* Results Display */}
+                  <div className="bg-black/20 rounded-xl p-4 mb-4">
+                    <div className="flex items-center justify-center gap-6">
+                      {/* Predicted Section */}
+                      <div className="text-center flex-1">
+                        <div className="text-gray-400 text-xs uppercase tracking-wider mb-3 font-medium">Predicted</div>
+                        <div className="flex items-center justify-center gap-3">
+                          <div className="relative">
+                            <div className={`text-white px-4 py-2 rounded-xl font-bold text-sm shadow-lg ${index % 2 === 0 ? 'bg-emerald-500' : 'bg-red-500'}`}>
+                              {index % 2 === 0 ? 'BIG' : 'SMALL'}
+                            </div>
+                            <div className="absolute -top-1 -right-1 w-3 h-3 bg-white rounded-full border-2 border-gray-800"></div>
+                          </div>
+                          <div className={`text-white w-12 h-12 rounded-xl flex items-center justify-center font-bold text-lg shadow-lg border-2 ${result.number >= 5 ? 'bg-emerald-500 border-emerald-400' : 'bg-red-500 border-red-400'}`}>
+                            {result.number}
+                          </div>
                         </div>
-                        <div className={`text-white w-8 h-8 rounded-lg flex items-center justify-center font-bold ${result.number >= 5 ? 'bg-green-500' : 'bg-red-500'}`}>
-                          {result.number}
-                        </div>
-                        <div className={`text-white w-8 h-8 rounded-lg flex items-center justify-center font-bold ${result.number >= 5 ? 'bg-green-500' : 'bg-red-500'}`}>
-                          {result.number}
+                      </div>
+
+                      {/* VS Divider */}
+                      <div className="flex flex-col items-center">
+                        <div className="w-px h-12 bg-gradient-to-b from-transparent via-gray-500 to-transparent"></div>
+                        <div className="text-gray-400 font-bold text-sm my-2 px-2 py-1 rounded-lg bg-white/5">VS</div>
+                        <div className="w-px h-12 bg-gradient-to-b from-transparent via-gray-500 to-transparent"></div>
+                      </div>
+
+                      {/* Actual Section */}
+                      <div className="text-center flex-1">
+                        <div className="text-gray-400 text-xs uppercase tracking-wider mb-3 font-medium">Actual</div>
+                        <div className="flex items-center justify-center gap-3">
+                          <div className="relative">
+                            <div className={`text-white px-4 py-2 rounded-xl font-bold text-sm shadow-lg ${result.number >= 5 ? 'bg-emerald-500' : 'bg-red-500'}`}>
+                              {result.number >= 5 ? 'BIG' : 'SMALL'}
+                            </div>
+                            <div className="absolute -top-1 -right-1 w-3 h-3 bg-emerald-400 rounded-full animate-pulse"></div>
+                          </div>
+                          <div className={`text-white w-12 h-12 rounded-xl flex items-center justify-center font-bold text-lg shadow-lg border-2 ${result.number >= 5 ? 'bg-emerald-500 border-emerald-400' : 'bg-red-500 border-red-400'}`}>
+                            {result.number}
+                          </div>
                         </div>
                       </div>
                     </div>
+                  </div>
 
-                    {/* VS */}
-                    <div className="text-gray-300 font-bold text-lg mx-4">VS</div>
-
-                    {/* Actual Section */}
-                    <div className="text-center">
-                      <div className="text-gray-300 text-sm mb-2">Actual</div>
-                      <div className="flex items-center gap-2">
-                        <div className={`text-white px-3 py-1 rounded-lg font-bold ${result.number >= 5 ? 'bg-green-500' : 'bg-red-500'}`}>
-                          {result.number >= 5 ? 'Green' : 'Red'}
+                  {/* Result Badge */}
+                  <div className="flex justify-center">
+                    {(index % 2 === 0 && result.number >= 5) || (index % 2 === 1 && result.number < 5) ? (
+                      <div className="bg-emerald-500 text-white px-6 py-2 rounded-full text-sm font-bold shadow-lg flex items-center gap-2">
+                        <div className="w-4 h-4 bg-white rounded-full flex items-center justify-center">
+                          <div className="w-2 h-2 bg-emerald-500 rounded-full"></div>
                         </div>
-                        <div className={`text-white w-8 h-8 rounded-lg flex items-center justify-center font-bold ${result.number >= 5 ? 'bg-green-500' : 'bg-red-500'}`}>
-                          {result.number}
-                        </div>
+                        WIN
                       </div>
-                    </div>
+                    ) : (
+                      <div className="bg-red-500 text-white px-6 py-2 rounded-full text-sm font-bold shadow-lg flex items-center gap-2">
+                        <div className="w-4 h-4 bg-white rounded-full flex items-center justify-center">
+                          <div className="w-2 h-2 bg-red-500 rounded-full"></div>
+                        </div>
+                        LOSS
+                      </div>
+                    )}
                   </div>
                 </div>
               )) || (
-                <div className="rounded-2xl p-4 text-center text-gray-300" style={{ backgroundColor: 'rgb(56, 46, 53)' }}>
-                  Loading history...
+                <div className="rounded-2xl p-8 text-center shadow-lg border border-gray-600/30" style={{ backgroundColor: 'rgb(56, 46, 53)' }}>
+                  <div className="text-4xl mb-3">⏳</div>
+                  <div className="text-gray-300 font-medium">Loading history...</div>
+                  <div className="text-gray-500 text-sm mt-1">Please wait while we fetch the latest results</div>
                 </div>
               )}
             </div>

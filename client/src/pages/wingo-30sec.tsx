@@ -125,36 +125,50 @@ export default function Wingo30Sec() {
         {/* Recent Results */}
         <Card className="bg-gray-800 border-gray-700">
           <div className="p-4 border-b border-gray-700">
-            <h3 className="text-lg font-bold text-white flex items-center gap-2">
-              📊 Recent Results
-            </h3>
+            <div className="flex items-center gap-3">
+              <div className="w-2 h-6 rounded-full" style={{ backgroundColor: '#ffd05a' }}></div>
+              <h3 className="text-lg font-bold text-white flex items-center gap-2">
+                📊 Recent Results
+              </h3>
+              <div className="flex-1 h-px bg-gradient-to-r from-gray-600 to-transparent"></div>
+            </div>
           </div>
-          <div className="p-4 space-y-2 max-h-96 overflow-y-auto">
+          <div className="p-4 space-y-3 max-h-96 overflow-y-auto">
             {results.length > 0 ? results.map((result, index) => (
-              <div key={result.issueNumber} className="flex justify-between items-center py-3 px-4 rounded-lg border border-gray-600 hover:border-yellow-400/30 transition-colors" style={{ backgroundColor: 'rgb(56, 46, 53)' }}>
-                <div className="flex flex-col">
-                  <span className="text-gray-300 text-sm">Period: {result.issueNumber}</span>
-                  <span className="text-xs text-gray-400">
-                    {new Date(result.timestamp).toLocaleTimeString()}
-                  </span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <span className="text-white font-bold text-xl">{result.number}</span>
-                  <span 
-                    className="px-3 py-1 rounded-full text-xs font-bold min-w-[60px] text-center shadow-md"
-                    style={{ 
-                      backgroundColor: getBigSmall(result.number) === 'BIG' ? '#ef4444' : '#22c55e',
-                      color: 'white'
-                    }}
-                  >
-                    {getBigSmall(result.number)}
-                  </span>
+              <div key={result.issueNumber} className="rounded-xl p-4 border border-gray-600/30 hover:border-yellow-400/50 transition-all duration-200 shadow-lg backdrop-blur-sm" style={{ backgroundColor: 'rgb(56, 46, 53)' }}>
+                <div className="flex justify-between items-center">
+                  <div className="flex items-center gap-4">
+                    <div className="text-black px-3 py-1 rounded-full text-xs font-bold shadow-md" style={{ backgroundColor: '#ffd05a' }}>
+                      #{result.issueNumber.slice(-6)}
+                    </div>
+                    <div className="flex flex-col">
+                      <span className="text-gray-300 text-sm font-medium">Period: {result.issueNumber}</span>
+                      <span className="text-xs text-gray-400">
+                        {new Date(result.timestamp).toLocaleTimeString()}
+                      </span>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <div className={`text-white w-10 h-10 rounded-xl flex items-center justify-center font-bold text-lg shadow-lg border-2 ${result.number >= 5 ? 'bg-emerald-500 border-emerald-400' : 'bg-red-500 border-red-400'}`}>
+                      {result.number}
+                    </div>
+                    <div 
+                      className="px-4 py-2 rounded-xl text-xs font-bold min-w-[70px] text-center shadow-lg text-white border-2"
+                      style={{ 
+                        backgroundColor: getBigSmall(result.number) === 'BIG' ? '#ef4444' : '#22c55e',
+                        borderColor: getBigSmall(result.number) === 'BIG' ? '#dc2626' : '#16a34a'
+                      }}
+                    >
+                      {getBigSmall(result.number)}
+                    </div>
+                  </div>
                 </div>
               </div>
             )) : (
-              <div className="text-center py-8 text-gray-400">
-                <div className="text-4xl mb-2">⏳</div>
-                <div>Loading results...</div>
+              <div className="text-center py-8 rounded-xl shadow-lg border border-gray-600/30" style={{ backgroundColor: 'rgb(56, 46, 53)' }}>
+                <div className="text-4xl mb-3">⏳</div>
+                <div className="text-gray-300 font-medium">Loading results...</div>
+                <div className="text-gray-500 text-sm mt-1">Please wait while we fetch the latest results</div>
               </div>
             )}
           </div>
