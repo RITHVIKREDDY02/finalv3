@@ -465,7 +465,7 @@ export default function Home() {
           <div className="flex flex-row gap-1 sm:gap-2 md:gap-4 lg:gap-6 justify-center items-center w-full max-w-sm sm:max-w-md md:max-w-lg">
             {/* About Us Button */}
             <button 
-              className="flex-1 md:flex-none md:w-32 lg:w-36 px-2 sm:px-3 md:px-6 lg:px-8 py-1.5 sm:py-2 custom-button font-bold rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 text-xs sm:text-sm md:text-base"
+              className="flex-1 md:flex-none md:w-40 lg:w-44 px-2 sm:px-3 md:px-6 lg:px-8 py-1.5 sm:py-2 custom-button font-bold rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 text-xs sm:text-sm md:text-base whitespace-nowrap"
               onClick={() => console.log('About Us clicked')}
             >
               ABOUT US
@@ -473,7 +473,7 @@ export default function Home() {
             
             {/* Disclaimer Button */}
             <button 
-              className="flex-1 md:flex-none md:w-32 lg:w-36 px-2 sm:px-3 md:px-6 lg:px-8 py-1.5 sm:py-2 custom-button font-bold rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 text-xs sm:text-sm md:text-base"
+              className="flex-1 md:flex-none md:w-40 lg:w-44 px-2 sm:px-3 md:px-6 lg:px-8 py-1.5 sm:py-2 custom-button font-bold rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 text-xs sm:text-sm md:text-base whitespace-nowrap"
               onClick={() => console.log('Disclaimer clicked')}
             >
               DISCLAIMER
@@ -481,7 +481,7 @@ export default function Home() {
             
             {/* Warning Button */}
             <button 
-              className="flex-1 md:flex-none md:w-32 lg:w-36 px-2 sm:px-3 md:px-6 lg:px-8 py-1.5 sm:py-2 custom-button font-bold rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 text-xs sm:text-sm md:text-base"
+              className="flex-1 md:flex-none md:w-40 lg:w-44 px-2 sm:px-3 md:px-6 lg:px-8 py-1.5 sm:py-2 custom-button font-bold rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 text-xs sm:text-sm md:text-base whitespace-nowrap"
               onClick={() => console.log('Warning clicked')}
             >
               WARNING
