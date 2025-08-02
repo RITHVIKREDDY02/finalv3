@@ -1,6 +1,6 @@
-import { users, gameConfig, type User, type InsertUser, type GameConfig, type InsertGameConfig } from "@shared/schema";
+import { users, gameConfig, predictionHistory, type User, type InsertUser, type GameConfig, type InsertGameConfig, type PredictionHistory, type InsertPredictionHistory } from "@shared/schema";
 import { db } from "./db";
-import { eq } from "drizzle-orm";
+import { eq, desc, and } from "drizzle-orm";
 
 export interface IStorage {
   getUser(id: string): Promise<User | undefined>;
@@ -12,6 +12,9 @@ export interface IStorage {
   getAllGameConfigs(): Promise<GameConfig[]>;
   updateGameConfig(gameName: string, isEnabled: boolean): Promise<GameConfig | undefined>;
   createGameConfig(config: InsertGameConfig): Promise<GameConfig>;
+  createPrediction(prediction: InsertPredictionHistory): Promise<PredictionHistory>;
+  updatePredictionResult(period: string, variant: string, actualNumber: number, actualSize: string): Promise<PredictionHistory | undefined>;
+  getPredictionHistory(variant: string, limit?: number): Promise<PredictionHistory[]>;
 }
 
 export class DatabaseStorage implements IStorage {
@@ -70,6 +73,60 @@ export class DatabaseStorage implements IStorage {
       .values(config)
       .returning();
     return gameConfigResult;
+  }
+
+  async createPrediction(prediction: InsertPredictionHistory): Promise<PredictionHistory> {
+    const [result] = await db
+      .insert(predictionHistory)
+      .values({
+        ...prediction,
+        status: 'PENDING'
+      })
+      .returning();
+    return result;
+  }
+
+  async updatePredictionResult(period: string, variant: string, actualNumber: number, actualSize: string): Promise<PredictionHistory | undefined> {
+    // Calculate win/loss status
+    const [existingPrediction] = await db
+      .select()
+      .from(predictionHistory)
+      .where(and(
+        eq(predictionHistory.period, period),
+        eq(predictionHistory.variant, variant)
+      ));
+    
+    if (!existingPrediction) return undefined;
+
+    // Determine if prediction was correct
+    const numberMatch = existingPrediction.predictedNumber === actualNumber;
+    const sizeMatch = existingPrediction.predictedSize === actualSize;
+    const status = (numberMatch || sizeMatch) ? 'WIN' : 'LOSS';
+
+    const [updated] = await db
+      .update(predictionHistory)
+      .set({ 
+        actualNumber, 
+        actualSize, 
+        status,
+        updatedAt: new Date()
+      })
+      .where(and(
+        eq(predictionHistory.period, period),
+        eq(predictionHistory.variant, variant)
+      ))
+      .returning();
+    
+    return updated || undefined;
+  }
+
+  async getPredictionHistory(variant: string, limit: number = 10): Promise<PredictionHistory[]> {
+    return await db
+      .select()
+      .from(predictionHistory)
+      .where(eq(predictionHistory.variant, variant))
+      .orderBy(desc(predictionHistory.createdAt))
+      .limit(limit);
   }
 }
 

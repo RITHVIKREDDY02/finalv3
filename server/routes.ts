@@ -178,6 +178,24 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
+  // Get prediction history with win/loss tracking
+  app.get('/api/wingo/history/:variant', async (req, res) => {
+    try {
+      const { variant } = req.params;
+      const { limit } = req.query;
+      
+      if (!WINGO_VARIANTS[variant]) {
+        return res.status(400).json({ error: "Invalid variant" });
+      }
+
+      const history = await storage.getPredictionHistory(variant, limit ? parseInt(limit as string) : 10);
+      res.json(history);
+    } catch (error) {
+      console.error("Error fetching prediction history:", error);
+      res.status(500).json({ error: "Failed to fetch prediction history" });
+    }
+  });
+
   const httpServer = createServer(app);
   return httpServer;
 }

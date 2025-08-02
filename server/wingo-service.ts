@@ -1,4 +1,5 @@
 import crypto from 'crypto';
+import { storage } from './storage';
 
 export interface WingoResult {
   issueNumber: string;
@@ -650,11 +651,51 @@ class WingoService {
     try {
       const prediction = await this.generatePrediction(variant);
       if (prediction) {
+        // Store prediction in database
+        await this.storePrediction(variant, prediction);
+        
+        // Check for completed results and update statuses
+        await this.checkAndUpdateResults(variant);
+        
         this.predictionCache.set(variant, prediction);
         console.log(`✅ Updated ${variant} prediction: ${prediction.prediction} (${prediction.countdown}s)`);
       }
     } catch (error) {
       console.error(`❌ Failed to update ${variant} prediction:`, error);
+    }
+  }
+
+  // Store prediction in database
+  private async storePrediction(variant: string, prediction: WingoPrediction): Promise<void> {
+    try {
+      await storage.createPrediction({
+        variant,
+        period: prediction.period,
+        predictedNumber: prediction.predictedNumber,
+        predictedSize: prediction.prediction,
+      });
+    } catch (error) {
+      console.error(`Failed to store prediction for ${variant}:`, error);
+    }
+  }
+
+  // Check for results and update prediction statuses
+  private async checkAndUpdateResults(variant: string): Promise<void> {
+    try {
+      const results = await this.getLatestResults(variant);
+      
+      // Update any pending predictions with actual results
+      for (const result of results) {
+        const actualSize = this.getBigSmall(result.number);
+        await storage.updatePredictionResult(
+          result.issueNumber,
+          variant,
+          result.number,
+          actualSize
+        );
+      }
+    } catch (error) {
+      console.error(`Failed to check results for ${variant}:`, error);
     }
   }
 
