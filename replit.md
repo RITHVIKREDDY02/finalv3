@@ -53,6 +53,9 @@ A dynamic prediction/lottery gaming platform with user registration and approval
 - **2025-02-02**: **DEPLOYMENT READY**: System fully tested and verified with live user proof screenshots
 - **2025-02-02**: **PRODUCTION EVIDENCE**: Screenshots confirm working predictions, results, rewards (₹1,960.00), and live user participation
 - **2025-02-02**: **VPS DEPLOYMENT PACKAGE**: Complete deployment guide created with Ubuntu 24.04 LTS server specifications
+- **2025-02-02**: **ARCHITECTURE OPTIMIZATION**: Converted from PostgreSQL database to lightweight in-memory storage
+- **2025-02-02**: **PERFORMANCE BOOST**: Eliminated database dependency for faster startup and reduced resource usage
+- **2025-02-02**: **SIMPLIFIED DEPLOYMENT**: App now runs without database setup requirements
 
 ## User Preferences
 - Store UID in browser localStorage to avoid repeated registration
@@ -62,11 +65,12 @@ A dynamic prediction/lottery gaming platform with user registration and approval
 
 ## Project Architecture
 
-### Database Schema
-- **users table**: id (UUID), uid (unique text), approved (boolean), createdAt (timestamp)
-- **gameConfig table**: id (UUID), gameName (unique text), isEnabled (boolean), createdAt, updatedAt
-- Uses PostgreSQL with Drizzle ORM
-- Database storage class replaces memory storage
+### Storage Architecture
+- **In-Memory Storage**: Lightweight Map-based storage for users and game configurations
+- **users storage**: id (random), uid (unique), approved (boolean), createdAt (timestamp)
+- **gameConfig storage**: id (random), gameName (unique), isEnabled (boolean), createdAt, updatedAt
+- **No Database Required**: Zero setup, instant startup, perfect for lightweight prediction apps
+- **Data Persistence**: Session-based (data resets on server restart)
 
 ### Frontend Structure
 - **Home page**: Main landing page with game cards and navigation
@@ -109,7 +113,7 @@ A dynamic prediction/lottery gaming platform with user registration and approval
 ### Technical Stack
 - Frontend: React, TypeScript, Wouter routing, TanStack Query, shadcn/ui
 - Backend: Express.js, TypeScript
-- Database: PostgreSQL with Drizzle ORM
+- Storage: In-memory Maps (no database required)
 - Authentication: UID-based with admin approval workflow
 
 ## Current Status

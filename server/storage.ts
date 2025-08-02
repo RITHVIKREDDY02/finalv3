@@ -1,6 +1,4 @@
-import { users, gameConfig, type User, type InsertUser, type GameConfig, type InsertGameConfig } from "@shared/schema";
-import { db } from "./db";
-import { eq, desc, and } from "drizzle-orm";
+import { type User, type InsertUser, type GameConfig, type InsertGameConfig } from "@shared/schema";
 
 export interface IStorage {
   getUser(id: string): Promise<User | undefined>;
@@ -14,65 +12,95 @@ export interface IStorage {
   createGameConfig(config: InsertGameConfig): Promise<GameConfig>;
 }
 
-export class DatabaseStorage implements IStorage {
+export class MemoryStorage implements IStorage {
+  private users = new Map<string, User>();
+  private gameConfigs = new Map<string, GameConfig>();
+  
+  constructor() {
+    // Initialize default game configurations
+    const defaultGames = ["Win Go", "Trx Wingo", "K3", "Moto Racing", "Mines Pro", "Mines", "Boom", "Aviator", "Limbo"];
+    defaultGames.forEach(gameName => {
+      const config: GameConfig = {
+        id: this.generateId(),
+        gameName,
+        isEnabled: true,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      };
+      this.gameConfigs.set(gameName, config);
+    });
+  }
+
+  private generateId(): string {
+    return Math.random().toString(36).substring(2) + Date.now().toString(36);
+  }
+
   async getUser(id: string): Promise<User | undefined> {
-    const [user] = await db.select().from(users).where(eq(users.id, id));
-    return user || undefined;
+    for (const user of Array.from(this.users.values())) {
+      if (user.id === id) return user;
+    }
+    return undefined;
   }
 
   async getUserByUid(uid: string): Promise<User | undefined> {
-    const [user] = await db.select().from(users).where(eq(users.uid, uid));
-    return user || undefined;
+    return this.users.get(uid);
   }
 
   async createUser(insertUser: InsertUser): Promise<User> {
-    const [user] = await db
-      .insert(users)
-      .values(insertUser)
-      .returning();
+    const user: User = {
+      id: this.generateId(),
+      uid: insertUser.uid,
+      approved: false,
+      createdAt: new Date()
+    };
+    this.users.set(insertUser.uid, user);
     return user;
   }
 
   async approveUser(uid: string): Promise<User | undefined> {
-    const [user] = await db
-      .update(users)
-      .set({ approved: true })
-      .where(eq(users.uid, uid))
-      .returning();
-    return user || undefined;
+    const user = this.users.get(uid);
+    if (user) {
+      user.approved = true;
+      this.users.set(uid, user);
+      return user;
+    }
+    return undefined;
   }
 
   async getAllUsers(): Promise<User[]> {
-    return await db.select().from(users);
+    return Array.from(this.users.values());
   }
 
   async getGameConfig(gameName: string): Promise<GameConfig | undefined> {
-    const [config] = await db.select().from(gameConfig).where(eq(gameConfig.gameName, gameName));
-    return config || undefined;
+    return this.gameConfigs.get(gameName);
   }
 
   async getAllGameConfigs(): Promise<GameConfig[]> {
-    return await db.select().from(gameConfig);
+    return Array.from(this.gameConfigs.values());
   }
 
   async updateGameConfig(gameName: string, isEnabled: boolean): Promise<GameConfig | undefined> {
-    const [config] = await db
-      .update(gameConfig)
-      .set({ isEnabled, updatedAt: new Date() })
-      .where(eq(gameConfig.gameName, gameName))
-      .returning();
-    return config || undefined;
+    const config = this.gameConfigs.get(gameName);
+    if (config) {
+      config.isEnabled = isEnabled;
+      config.updatedAt = new Date();
+      this.gameConfigs.set(gameName, config);
+      return config;
+    }
+    return undefined;
   }
 
   async createGameConfig(config: InsertGameConfig): Promise<GameConfig> {
-    const [gameConfigResult] = await db
-      .insert(gameConfig)
-      .values(config)
-      .returning();
-    return gameConfigResult;
+    const gameConfig: GameConfig = {
+      id: this.generateId(),
+      gameName: config.gameName,
+      isEnabled: config.isEnabled ?? true,
+      createdAt: new Date(),
+      updatedAt: new Date()
+    };
+    this.gameConfigs.set(config.gameName, gameConfig);
+    return gameConfig;
   }
-
-
 }
 
-export const storage = new DatabaseStorage();
+export const storage = new MemoryStorage();

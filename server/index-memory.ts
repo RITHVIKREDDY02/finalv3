@@ -66,6 +66,6 @@ app.use((req, res, next) => {
     host: "0.0.0.0",
     reusePort: true,
   }, () => {
-    log(`🚀 serving on port ${port} with lightweight in-memory storage`);
+    log(`serving on port ${port} with in-memory storage`);
   });
 })();
