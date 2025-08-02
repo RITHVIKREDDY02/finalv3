@@ -10,6 +10,7 @@ import Wingo30Sec from "@/pages/wingo-30sec";
 import Wingo1Min from "@/pages/wingo-1min";
 import Wingo3Min from "@/pages/wingo-3min";
 import Wingo5Min from "@/pages/wingo-5min";
+import ImageTools from "@/pages/image-tools";
 import NotFound from "@/pages/not-found";
 
 function Router() {
@@ -22,6 +23,7 @@ function Router() {
       <Route path="/wingo-1min" component={Wingo1Min} />
       <Route path="/wingo-3min" component={Wingo3Min} />
       <Route path="/wingo-5min" component={Wingo5Min} />
+      <Route path="/image-tools" component={ImageTools} />
       <Route component={NotFound} />
     </Switch>
   );

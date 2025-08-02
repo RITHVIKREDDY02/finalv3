@@ -168,7 +168,13 @@ export default function Home() {
           </div>
           
           {/* Desktop Navigation Items */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden md:flex items-center space-x-4">
+            <button 
+              className="px-3 py-1.5 rounded-full text-white font-medium text-sm transition-opacity duration-200 hover:opacity-90 border border-white/30"
+              onClick={() => navigate('/image-tools')}
+            >
+              Image Tools
+            </button>
             {userStatus?.approved ? (
               <div 
                 className="px-4 py-2 rounded-full text-black font-bold text-sm"
