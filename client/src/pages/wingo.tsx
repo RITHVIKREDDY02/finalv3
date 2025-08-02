@@ -115,23 +115,29 @@ export default function Wingo() {
         <div className="w-16"></div>
       </div>
 
-      <div className="p-4 space-y-4">
-        {/* Tab Navigation */}
-        <div className="bg-gray-100 rounded-2xl p-2">
-          <div className="flex gap-1">
-            {variants.map((variant) => (
-              <button
-                key={variant.key}
-                onClick={() => setSelectedVariant(variant.key)}
-                className={`flex-1 py-3 px-4 rounded-xl font-medium transition-all duration-200 ${
-                  selectedVariant === variant.key
-                    ? 'bg-blue-500 text-white shadow-md'
-                    : 'text-gray-600 hover:text-gray-800'
-                }`}
-              >
-                {variant.label}
-              </button>
-            ))}
+      <div className="flex justify-center items-start pt-6">
+        <div className="w-[448px] h-[402px] mx-0">
+          {/* Tab Navigation */}
+          <div className="bg-gray-100" style={{ borderRadius: '16px', padding: '8px' }}>
+            <div className="flex gap-1">
+              {variants.map((variant) => (
+                <button
+                  key={variant.key}
+                  onClick={() => setSelectedVariant(variant.key)}
+                  className={`flex-1 font-medium transition-all duration-200 ${
+                    selectedVariant === variant.key
+                      ? 'bg-blue-500 text-white shadow-md'
+                      : 'text-gray-600 hover:text-gray-800'
+                  }`}
+                  style={{ 
+                    padding: '12px 16px',
+                    borderRadius: '16px'
+                  }}
+                >
+                  {variant.label}
+                </button>
+              ))}
+            </div>
           </div>
         </div>
       </div>
