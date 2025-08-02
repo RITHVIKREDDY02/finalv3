@@ -27,6 +27,7 @@ import proofImage2 from "@assets/image_1754150852695.png";
 import demoImage1 from "@assets/Screenshot 2025-08-02 220225_1754152384208.png";
 import demoImage2 from "@assets/Screenshot 2025-08-02 220234_1754152390853.png";
 import demoImage3 from "@assets/Screenshot 2025-08-02 220243_1754152399399.png";
+import faviconIcon from "@assets/h5setting_20250501162804ytau_1754156061703.png";
 
 export default function Home() {
   const [, navigate] = useLocation();
