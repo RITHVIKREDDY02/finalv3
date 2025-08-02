@@ -88,13 +88,6 @@ export default function RegistrationDialog({ isOpen, onClose, onRegistrationSucc
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent className="sm:max-w-md" style={{ backgroundColor: '#FED358', color: 'black' }}>
         <DialogHeader className="text-center space-y-4">
-          <div className="flex justify-center">
-            <img 
-              src={logoPath} 
-              alt="TASHANWIN Logo" 
-              className="h-12 w-auto object-contain"
-            />
-          </div>
           <div className="text-center">
             <DialogTitle className="text-xl font-bold text-black text-center">
               TASHAN WIN VIP PREDICTION
