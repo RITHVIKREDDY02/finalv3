@@ -2,9 +2,8 @@ import { Card } from "@/components/ui/card";
 import { Volume2 } from "lucide-react";
 import { useState, useEffect } from "react";
 import { FaTelegram } from "react-icons/fa";
-import { useLocation } from "wouter";
-import Register from "./register";
-import VipPrediction from "./vip-prediction";
+import RegistrationDialog from "@/components/registration-dialog";
+import VipPredictionDialog from "@/components/vip-prediction-dialog";
 import logoPath from "@assets/TASHAN WIN LOGO_1754052537792.png";
 import winGoImage from "@assets/lotterycategory_20250412120719dqfv_1754052547793.png";
 import trxWingoImage from "@assets/lotterycategory_20250412120818j8wq_1754052552269.png";
@@ -23,10 +22,9 @@ import desktopBannerImage from "@assets/Hero Banner (1440 x 300 px)_175407851316
 export default function Home() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const [showRegister, setShowRegister] = useState(false);
-  const [showVipPrediction, setShowVipPrediction] = useState(false);
+  const [showRegisterDialog, setShowRegisterDialog] = useState(false);
+  const [showVipPredictionDialog, setShowVipPredictionDialog] = useState(false);
   const [userUid, setUserUid] = useState<string>("");
-  const [, navigate] = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -52,39 +50,29 @@ export default function Home() {
     const storedUid = localStorage.getItem("tashan_user_uid");
     if (storedUid) {
       setUserUid(storedUid);
-      setShowVipPrediction(true);
+      setShowVipPredictionDialog(true);
     } else {
-      setShowRegister(true);
+      setShowRegisterDialog(true);
     }
   };
 
   const handleRegistrationSuccess = (uid: string) => {
     setUserUid(uid);
-    setShowRegister(false);
-    setShowVipPrediction(true);
+    setShowRegisterDialog(false);
+    setShowVipPredictionDialog(true);
   };
 
   const handleBackToRegister = () => {
     localStorage.removeItem("tashan_user_uid");
     setUserUid("");
-    setShowVipPrediction(false);
-    setShowRegister(true);
+    setShowVipPredictionDialog(false);
+    setShowRegisterDialog(true);
   };
 
-  const handleBackToHome = () => {
-    setShowRegister(false);
-    setShowVipPrediction(false);
+  const handleCloseDialogs = () => {
+    setShowRegisterDialog(false);
+    setShowVipPredictionDialog(false);
   };
-
-  // Show registration page
-  if (showRegister) {
-    return <Register onRegistrationSuccess={handleRegistrationSuccess} />;
-  }
-
-  // Show VIP prediction page
-  if (showVipPrediction && userUid) {
-    return <VipPrediction uid={userUid} onBackToRegister={handleBackToRegister} />;
-  }
 
   return (
     <div className="min-h-screen">
@@ -449,6 +437,21 @@ export default function Home() {
       >
         <FaTelegram className="text-white text-2xl" />
       </a>
+
+      {/* Registration Dialog */}
+      <RegistrationDialog
+        isOpen={showRegisterDialog}
+        onClose={handleCloseDialogs}
+        onRegistrationSuccess={handleRegistrationSuccess}
+      />
+
+      {/* VIP Prediction Dialog */}
+      <VipPredictionDialog
+        isOpen={showVipPredictionDialog}
+        onClose={handleCloseDialogs}
+        uid={userUid}
+        onBackToRegister={handleBackToRegister}
+      />
     </div>
   );
 }

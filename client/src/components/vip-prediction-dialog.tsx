@@ -1,15 +1,10 @@
 import { useState, useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { useToast } from "@/hooks/use-toast";
 import { Loader2, CheckCircle, Clock, AlertCircle } from "lucide-react";
 import logoPath from "@assets/TASHAN WIN LOGO_1754052537792.png";
-
-interface VipPredictionProps {
-  uid: string;
-  onBackToRegister: () => void;
-}
 
 interface UserStatus {
   registered: boolean;
@@ -21,13 +16,20 @@ interface UserStatus {
   };
 }
 
-export default function VipPrediction({ uid, onBackToRegister }: VipPredictionProps) {
+interface VipPredictionDialogProps {
+  isOpen: boolean;
+  onClose: () => void;
+  uid: string;
+  onBackToRegister: () => void;
+}
+
+export default function VipPredictionDialog({ isOpen, onClose, uid, onBackToRegister }: VipPredictionDialogProps) {
   const { toast } = useToast();
   
   const { data: userStatus, isLoading, refetch } = useQuery<UserStatus>({
     queryKey: [`/api/user/${uid}`],
-    enabled: !!uid,
-    refetchInterval: 5000, // Check every 5 seconds for approval status
+    enabled: !!uid && isOpen,
+    refetchInterval: isOpen ? 5000 : false, // Check every 5 seconds only when dialog is open
   });
 
   useEffect(() => {
@@ -58,6 +60,11 @@ export default function VipPrediction({ uid, onBackToRegister }: VipPredictionPr
     window.open("https://t.me/tashanwinsamaraa", "_blank");
   };
 
+  const handleBackToRegister = () => {
+    onClose();
+    onBackToRegister();
+  };
+
   const getStatusIcon = () => {
     if (isLoading) return <Loader2 className="h-6 w-6 animate-spin text-blue-500" />;
     if (userStatus?.approved) return <CheckCircle className="h-6 w-6 text-green-500" />;
@@ -77,27 +84,27 @@ export default function VipPrediction({ uid, onBackToRegister }: VipPredictionPr
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-amber-50 to-yellow-100 dark:from-gray-900 dark:to-gray-800 flex items-center justify-center p-4">
-      <Card className="w-full max-w-md">
-        <CardHeader className="text-center space-y-4">
+    <Dialog open={isOpen} onOpenChange={onClose}>
+      <DialogContent className="sm:max-w-md">
+        <DialogHeader className="text-center space-y-4">
           <div className="flex justify-center">
             <img 
               src={logoPath} 
               alt="TASHANWIN Logo" 
-              className="h-16 w-auto object-contain"
+              className="h-12 w-auto object-contain"
             />
           </div>
           <div>
-            <CardTitle className="text-2xl font-bold text-yellow-800 dark:text-yellow-200">
+            <DialogTitle className="text-xl font-bold text-yellow-800 dark:text-yellow-200">
               TASHAN WIN VIP PREDICTION
-            </CardTitle>
-            <CardDescription className="mt-2 text-gray-600 dark:text-gray-400">
+            </DialogTitle>
+            <DialogDescription className="mt-2 text-gray-600 dark:text-gray-400">
               Registration Status for UID: {uid}
-            </CardDescription>
+            </DialogDescription>
           </div>
-        </CardHeader>
+        </DialogHeader>
         
-        <CardContent className="space-y-6">
+        <div className="space-y-6">
           <div className="bg-white dark:bg-gray-800 p-6 rounded-lg border shadow-sm">
             <div className="flex items-center space-x-3 mb-3">
               {getStatusIcon()}
@@ -150,14 +157,14 @@ export default function VipPrediction({ uid, onBackToRegister }: VipPredictionPr
 
             <Button
               variant="ghost"
-              onClick={onBackToRegister}
+              onClick={handleBackToRegister}
               className="w-full text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700"
             >
               Back to Registration
             </Button>
           </div>
-        </CardContent>
-      </Card>
-    </div>
+        </div>
+      </DialogContent>
+    </Dialog>
   );
 }

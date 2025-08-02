@@ -5,11 +5,10 @@ import { useMutation } from "@tanstack/react-query";
 import { z } from "zod";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { useToast } from "@/hooks/use-toast";
 import { apiRequest } from "@/lib/queryClient";
-import { useLocation } from "wouter";
 import { Loader2 } from "lucide-react";
 import logoPath from "@assets/TASHAN WIN LOGO_1754052537792.png";
 
@@ -19,12 +18,13 @@ const registerSchema = z.object({
 
 type RegisterForm = z.infer<typeof registerSchema>;
 
-interface RegisterProps {
+interface RegistrationDialogProps {
+  isOpen: boolean;
+  onClose: () => void;
   onRegistrationSuccess: (uid: string) => void;
 }
 
-export default function Register({ onRegistrationSuccess }: RegisterProps) {
-  const [, navigate] = useLocation();
+export default function RegistrationDialog({ isOpen, onClose, onRegistrationSuccess }: RegistrationDialogProps) {
   const { toast } = useToast();
   
   const form = useForm<RegisterForm>({
@@ -50,6 +50,7 @@ export default function Register({ onRegistrationSuccess }: RegisterProps) {
       });
       
       onRegistrationSuccess(uid);
+      onClose();
     },
     onError: (error: any) => {
       if (error.message.includes("409")) {
@@ -60,6 +61,7 @@ export default function Register({ onRegistrationSuccess }: RegisterProps) {
           description: "This UID is already registered. Checking approval status...",
         });
         onRegistrationSuccess(uid);
+        onClose();
       } else {
         toast({
           title: "Registration Failed",
@@ -74,28 +76,32 @@ export default function Register({ onRegistrationSuccess }: RegisterProps) {
     registerMutation.mutate(data);
   };
 
+  const handleHelp = () => {
+    window.open("https://t.me/tashanwinsamaraa", "_blank");
+  };
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-amber-50 to-yellow-100 dark:from-gray-900 dark:to-gray-800 flex items-center justify-center p-4">
-      <Card className="w-full max-w-md">
-        <CardHeader className="text-center space-y-4">
+    <Dialog open={isOpen} onOpenChange={onClose}>
+      <DialogContent className="sm:max-w-md">
+        <DialogHeader className="text-center space-y-4">
           <div className="flex justify-center">
             <img 
               src={logoPath} 
               alt="TASHANWIN Logo" 
-              className="h-16 w-auto object-contain"
+              className="h-12 w-auto object-contain"
             />
           </div>
           <div>
-            <CardTitle className="text-2xl font-bold text-yellow-800 dark:text-yellow-200">
+            <DialogTitle className="text-xl font-bold text-yellow-800 dark:text-yellow-200">
               TASHAN WIN VIP PREDICTION
-            </CardTitle>
-            <CardDescription className="mt-2 text-gray-600 dark:text-gray-400">
+            </DialogTitle>
+            <DialogDescription className="mt-2 text-gray-600 dark:text-gray-400">
               🚀 Important Instructions
-            </CardDescription>
+            </DialogDescription>
           </div>
-        </CardHeader>
+        </DialogHeader>
         
-        <CardContent className="space-y-6">
+        <div className="space-y-6">
           <div className="bg-yellow-50 dark:bg-yellow-900/30 p-4 rounded-lg border border-yellow-200 dark:border-yellow-700">
             <p className="text-sm text-yellow-800 dark:text-yellow-200 leading-relaxed">
               Create a new account via the "Start" button for server connection. Our app checks the server to ensure accurate predictions.
@@ -154,13 +160,13 @@ export default function Register({ onRegistrationSuccess }: RegisterProps) {
             <Button
               variant="outline"
               className="border-blue-300 text-blue-600 hover:bg-blue-50 dark:border-blue-600 dark:text-blue-400 dark:hover:bg-blue-900/20"
-              onClick={() => window.open("https://t.me/tashanwinsamaraa", "_blank")}
+              onClick={handleHelp}
             >
               Telegram: @tashanwinsamaraa
             </Button>
           </div>
-        </CardContent>
-      </Card>
-    </div>
+        </div>
+      </DialogContent>
+    </Dialog>
   );
 }
