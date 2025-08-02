@@ -40,6 +40,7 @@ export default function Home() {
   const [showDemoDialog, setShowDemoDialog] = useState(false);
   const [showAboutUsDialog, setShowAboutUsDialog] = useState(false);
   const [showDisclaimerDialog, setShowDisclaimerDialog] = useState(false);
+  const [showWarningDialog, setShowWarningDialog] = useState(false);
   const [selectedGameName, setSelectedGameName] = useState<string>("");
   const [userUid, setUserUid] = useState<string>("");
 
@@ -484,7 +485,7 @@ export default function Home() {
             {/* Warning Button */}
             <button 
               className="flex-1 md:flex-none md:w-40 lg:w-44 px-2 sm:px-3 md:px-6 lg:px-8 py-1.5 sm:py-2 custom-button font-bold rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 text-xs sm:text-sm md:text-base whitespace-nowrap"
-              onClick={() => console.log('Warning clicked')}
+              onClick={() => setShowWarningDialog(true)}
             >
               WARNING
             </button>
@@ -792,6 +793,111 @@ export default function Home() {
                       className="px-6 py-3 bg-gray-600 hover:bg-gray-700 text-white font-bold rounded-full shadow-lg transition-all duration-300 transform hover:scale-105"
                     >
                       I Understand
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Warning Dialog */}
+      {showWarningDialog && (
+        <div className="fixed inset-0 bg-black bg-opacity-60 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+          <div className="rounded-3xl max-w-2xl w-full max-h-[80vh] overflow-y-auto shadow-2xl border-2 border-white/20" style={{ background: 'linear-gradient(135deg, #FED358 0%, #FFE082 50%, #FFF3A0 100%)' }}>
+            <div className="p-8">
+              <div className="flex justify-between items-center mb-8">
+                <h2 className="text-3xl font-bold text-black bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent">Important Warning</h2>
+                <button
+                  onClick={() => setShowWarningDialog(false)}
+                  className="text-gray-600 hover:text-black text-2xl font-bold bg-white/20 rounded-full w-8 h-8 flex items-center justify-center hover:bg-white/40 transition-all duration-200"
+                >
+                  ×
+                </button>
+              </div>
+              
+              <div className="space-y-6">
+                <div className="bg-gradient-to-br from-blue-400/20 to-blue-600/20 rounded-2xl p-6 border border-blue-400/30 backdrop-blur-sm">
+                  <p className="text-black text-base leading-relaxed">
+                    At Tashan Win Vip, we believe in empowering our users with knowledge. It's crucial to understand that to use advanced systems like SHA-256 for generating random results, there's always a potential for manipulation. This is where our expertise comes in handy.
+                  </p>
+                </div>
+
+                <div className="bg-gradient-to-br from-green-400/20 to-green-600/20 rounded-2xl p-6 border border-green-400/30 backdrop-blur-sm">
+                  <h3 className="text-black font-bold text-xl mb-4 flex items-center">
+                    <span className="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center text-white text-sm mr-3">🛡️</span>
+                    How We Protect You:
+                  </h3>
+                  <div className="space-y-3 text-black">
+                    <div className="flex items-start">
+                      <span className="w-2 h-2 bg-green-500 rounded-full mr-3 mt-2 flex-shrink-0"></span>
+                      <span>Our sophisticated API system constantly monitors these platforms, tracking any data that might be manipulated.</span>
+                    </div>
+                    <div className="flex items-start">
+                      <span className="w-2 h-2 bg-green-500 rounded-full mr-3 mt-2 flex-shrink-0"></span>
+                      <span>We use advanced algorithms to detect patterns and anomalies that could indicate unfair practices.</span>
+                    </div>
+                    <div className="flex items-start">
+                      <span className="w-2 h-2 bg-green-500 rounded-full mr-3 mt-2 flex-shrink-0"></span>
+                      <span>Our predictions are based on a comprehensive analysis of multiple factors, not just the platform's provided data.</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="bg-gradient-to-br from-red-400/20 to-red-600/20 rounded-2xl p-6 border border-red-400/30 backdrop-blur-sm">
+                  <h3 className="text-black font-bold text-xl mb-4 flex items-center">
+                    <span className="w-6 h-6 bg-red-500 rounded-full flex items-center justify-center text-white text-sm mr-3">⚠️</span>
+                    Potential Manipulation Tactics:
+                  </h3>
+                  <div className="space-y-3 text-black">
+                    <div className="flex items-start">
+                      <span className="w-2 h-2 bg-red-500 rounded-full mr-3 mt-2 flex-shrink-0"></span>
+                      <div>
+                        <span className="font-semibold">Controlled "Randomness": </span>
+                        <span>Platforms might influence when and how their "random" number generation is applied.</span>
+                      </div>
+                    </div>
+                    <div className="flex items-start">
+                      <span className="w-2 h-2 bg-red-500 rounded-full mr-3 mt-2 flex-shrink-0"></span>
+                      <div>
+                        <span className="font-semibold">Hidden Algorithm Changes: </span>
+                        <span>Sudden, undisclosed changes to algorithms could unfairly shift odds.</span>
+                      </div>
+                    </div>
+                    <div className="flex items-start">
+                      <span className="w-2 h-2 bg-red-500 rounded-full mr-3 mt-2 flex-shrink-0"></span>
+                      <div>
+                        <span className="font-semibold">Selective Payout Practices: </span>
+                        <span>Some platforms might delay or withhold certain payouts without clear explanation.</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="bg-gradient-to-br from-purple-400/20 to-purple-600/20 rounded-2xl p-6 border border-purple-400/30 backdrop-blur-sm">
+                  <h3 className="text-black font-bold text-xl mb-4 flex items-center">
+                    <span className="w-6 h-6 bg-purple-500 rounded-full flex items-center justify-center text-white text-sm mr-3">🧠</span>
+                    Stay Informed, Play Smart:
+                  </h3>
+                  <p className="text-black text-base leading-relaxed">
+                    We urge all our users to approach these platforms with a critical eye. Always verify a platform's credibility before engaging. With Tashan Win by your side, you're equipped with the insights needed to make informed decisions and maximize your chances of success.
+                  </p>
+                  
+                  <div className="mt-4 p-4 bg-gradient-to-r from-yellow-300/30 to-yellow-500/30 rounded-xl border border-yellow-400/40">
+                    <p className="text-black font-bold text-center text-lg">
+                      💡 Remember: Knowledge is power – especially in the world of online lotteries! 💡
+                    </p>
+                  </div>
+                </div>
+
+                <div className="bg-gradient-to-br from-gray-400/20 to-gray-600/20 rounded-2xl p-6 border border-gray-400/30 backdrop-blur-sm">
+                  <div className="text-center">
+                    <button 
+                      onClick={() => setShowWarningDialog(false)}
+                      className="px-6 py-3 bg-gray-600 hover:bg-gray-700 text-white font-bold rounded-full shadow-lg transition-all duration-300 transform hover:scale-105"
+                    >
+                      Got It, Thanks!
                     </button>
                   </div>
                 </div>
