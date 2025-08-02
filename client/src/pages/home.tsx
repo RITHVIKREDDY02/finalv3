@@ -36,6 +36,13 @@ export default function Home() {
     queryKey: ["/api/admin/games"],
   });
 
+  // Fetch user approval status
+  const { data: userStatus } = useQuery<{registered: boolean, approved: boolean, user: any}>({
+    queryKey: [`/api/user/${userUid}`],
+    enabled: !!userUid,
+    refetchInterval: 10000, // Check every 10 seconds
+  });
+
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 0);
@@ -122,13 +129,22 @@ export default function Home() {
           
           {/* Mobile Navigation */}
           <div className="md:hidden flex items-center space-x-3">
-            <button 
-              className="px-3 py-1.5 rounded-full text-black font-bold text-xs transition-opacity duration-200 hover:opacity-90"
-              style={{ backgroundColor: '#FFB472' }}
-              onClick={() => console.log('Join VIP clicked')}
-            >
-              JOIN VIP
-            </button>
+            {userStatus?.approved ? (
+              <div 
+                className="px-3 py-1.5 rounded-full text-black font-bold text-xs"
+                style={{ backgroundColor: '#FED358' }}
+              >
+                UID: {userUid}
+              </div>
+            ) : (
+              <button 
+                className="px-3 py-1.5 rounded-full text-black font-bold text-xs transition-opacity duration-200 hover:opacity-90"
+                style={{ backgroundColor: '#FFB472' }}
+                onClick={() => console.log('Join VIP clicked')}
+              >
+                JOIN VIP
+              </button>
+            )}
             <button 
               className="light-gold hover:warm-gold transition-colors duration-200"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -141,13 +157,22 @@ export default function Home() {
           
           {/* Desktop Navigation Items */}
           <div className="hidden md:flex items-center space-x-8">
-            <button 
-              className="px-4 py-2 rounded-full text-black font-bold text-sm transition-opacity duration-200 hover:opacity-90"
-              style={{ backgroundColor: '#FFB472' }}
-              onClick={() => console.log('Join VIP clicked')}
-            >
-              JOIN VIP
-            </button>
+            {userStatus?.approved ? (
+              <div 
+                className="px-4 py-2 rounded-full text-black font-bold text-sm"
+                style={{ backgroundColor: '#FED358' }}
+              >
+                UID: {userUid}
+              </div>
+            ) : (
+              <button 
+                className="px-4 py-2 rounded-full text-black font-bold text-sm transition-opacity duration-200 hover:opacity-90"
+                style={{ backgroundColor: '#FFB472' }}
+                onClick={() => console.log('Join VIP clicked')}
+              >
+                JOIN VIP
+              </button>
+            )}
           </div>
         </div>
       </nav>
