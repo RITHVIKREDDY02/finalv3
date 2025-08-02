@@ -36,7 +36,7 @@ export default function Wingo30Sec() {
 
   // Synchronized countdown timer with server
   useEffect(() => {
-    // Update countdown from server prediction
+    // Always sync with server countdown when prediction updates
     if (prediction?.countdown !== undefined) {
       setCountdown(prediction.countdown);
     }
@@ -45,11 +45,9 @@ export default function Wingo30Sec() {
   useEffect(() => {
     const interval = setInterval(() => {
       setCountdown(prev => {
-        if (prev <= 1) {
-          // When countdown reaches 0, it will be updated by the next API call
-          return prev;
-        }
-        return prev - 1;
+        const newValue = prev - 1;
+        // If countdown would go to 0 or below, keep it at 1 until server updates
+        return newValue <= 0 ? 1 : newValue;
       });
     }, 1000);
 
