@@ -7,7 +7,7 @@ import { Switch } from "@/components/ui/switch";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Loader2, Users, Settings, CheckCircle, Clock, Lock } from "lucide-react";
+import { Loader2, Users, Settings, CheckCircle, Clock, Lock, ArrowLeft } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import type { User, GameConfig } from "@shared/schema";
 
@@ -202,21 +202,29 @@ export default function AdminPanel() {
       <div className="max-w-7xl mx-auto space-y-6">
         {/* Header */}
         <div className="space-y-4">
-          {/* Mobile: Stacked layout */}
-          <div className="flex flex-col space-y-4 md:hidden">
-            <div className="text-center space-y-2">
-              <h1 className="text-2xl font-bold text-[#FED358]">TASHAN WIN Admin Panel</h1>
-              <p className="text-gray-400 text-sm">Manage users and game configurations</p>
-            </div>
-            <div className="flex justify-center">
+          {/* Mobile: Navbar layout with back and logout */}
+          <div className="md:hidden">
+            <div className="flex items-center justify-between mb-4">
+              <Button 
+                onClick={() => window.history.back()}
+                variant="ghost"
+                size="sm"
+                className="text-[#FED358] hover:bg-gray-800"
+              >
+                <ArrowLeft className="h-4 w-4" />
+              </Button>
               <Button 
                 onClick={handleLogout}
                 variant="outline"
-                className="bg-red-600 hover:bg-red-700 text-white border-red-600 px-6"
+                className="bg-red-600 hover:bg-red-700 text-white border-red-600"
                 size="sm"
               >
                 Logout
               </Button>
+            </div>
+            <div className="text-center space-y-2">
+              <h1 className="text-2xl font-bold text-[#FED358]">TASHAN WIN Admin Panel</h1>
+              <p className="text-gray-400 text-sm">Manage users and game configurations</p>
             </div>
           </div>
           
