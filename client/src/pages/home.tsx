@@ -568,11 +568,11 @@ export default function Home() {
                 </div>
 
                 <div className="bg-gradient-to-br from-green-400/20 to-green-600/20 rounded-2xl p-6 border border-green-400/30 backdrop-blur-sm">
-                  <h4 className="text-green-800 font-bold text-lg mb-4 flex items-center">
+                  <h4 className="text-black font-bold text-lg mb-4 flex items-center">
                     <span className="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center text-white text-sm mr-3">✓</span>
                     Verified Features
                   </h4>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm text-green-800">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm text-black">
                     <div className="flex items-center"><span className="w-2 h-2 bg-green-500 rounded-full mr-2"></span>Truly balanced predictions</div>
                     <div className="flex items-center"><span className="w-2 h-2 bg-green-500 rounded-full mr-2"></span>Live API integration</div>
                     <div className="flex items-center"><span className="w-2 h-2 bg-green-500 rounded-full mr-2"></span>Real-time countdown timers</div>
