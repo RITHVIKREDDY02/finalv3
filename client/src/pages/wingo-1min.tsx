@@ -207,12 +207,12 @@ export default function Wingo1Min() {
         {/* VIP Prediction */}
         <Card className="bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-700">
           <div className="p-3 border-b border-gray-700">
-            <h3 className="text-base font-bold text-white flex items-center gap-2">
+            <h3 className="text-base font-bold text-white flex items-center gap-2 ml-2">
               🎯 VIP Prediction
             </h3>
           </div>
           <div className="p-3">
-            <div className="grid grid-cols-3 gap-3 text-center">
+            <div className="grid grid-cols-3 gap-3 text-center ml-2">
               <div>
                 <div className="text-xs text-gray-400 mb-1">Color</div>
                 <div 
@@ -241,12 +241,12 @@ export default function Wingo1Min() {
         {/* Live Players Section */}
         <Card className="bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-700">
           <div className="p-3 border-b border-gray-700">
-            <h3 className="text-base font-bold text-white flex items-center gap-2">
+            <h3 className="text-base font-bold text-white flex items-center gap-2 ml-2">
               👥 Live Players
             </h3>
           </div>
           <div className="p-3">
-            <div className="space-y-1 text-center">
+            <div className="space-y-1 text-center ml-2">
               {getUserParticipation().map((userId, index) => (
                 <div key={index} className="text-gray-300 text-xs">
                   <span className="text-yellow-400">{maskUserId(userId)}</span> has joined{' '}
