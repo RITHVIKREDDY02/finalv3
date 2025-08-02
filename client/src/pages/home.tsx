@@ -648,11 +648,11 @@ export default function Home() {
                 </div>
 
                 <div className="bg-gradient-to-br from-blue-400/20 to-blue-600/20 rounded-2xl p-6 border border-blue-400/30 backdrop-blur-sm">
-                  <h4 className="text-blue-800 font-bold text-lg mb-4 flex items-center">
+                  <h4 className="text-black font-bold text-lg mb-4 flex items-center">
                     <span className="w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center text-white text-sm mr-3">🚀</span>
                     How to Get Started
                   </h4>
-                  <div className="text-sm text-blue-800 space-y-3">
+                  <div className="text-sm text-black space-y-3">
                     <div className="flex items-center"><span className="w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center text-white text-xs mr-3">1</span>Click on any game card</div>
                     <div className="flex items-center"><span className="w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center text-white text-xs mr-3">2</span>Register with your UID</div>
                     <div className="flex items-center"><span className="w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center text-white text-xs mr-3">3</span>Wait for admin approval</div>
