@@ -62,28 +62,53 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
-  // Approve user (admin endpoint)
-  app.patch("/api/approve/:uid", async (req, res) => {
-    try {
-      const { uid } = req.params;
-      const user = await storage.approveUser(uid);
-      
-      if (!user) {
-        return res.status(404).json({ message: "User not found" });
-      }
 
-      res.json({ 
-        message: "User approved successfully", 
-        user: { id: user.id, uid: user.uid, approved: user.approved }
-      });
+
+  // Admin authentication
+  const ADMIN_PASSWORD = "Samara@tashan";
+  
+  // Admin login endpoint
+  app.post('/api/admin/login', async (req, res) => {
+    try {
+      const { password } = req.body;
+      
+      if (password === ADMIN_PASSWORD) {
+        // Generate a simple session token
+        const token = Buffer.from(`admin:${Date.now()}`).toString('base64');
+        res.json({ success: true, token });
+      } else {
+        res.status(401).json({ error: "Invalid password" });
+      }
     } catch (error) {
-      console.error("Approval error:", error);
-      res.status(500).json({ message: "Failed to approve user" });
+      console.error("Admin login error:", error);
+      res.status(500).json({ error: "Login failed" });
     }
   });
 
-  // Admin routes
-  app.get('/api/admin/users', async (req, res) => {
+  // Admin middleware to verify authentication
+  const verifyAdmin = (req: any, res: any, next: any) => {
+    const authHeader = req.headers.authorization;
+    
+    if (!authHeader || !authHeader.startsWith('Bearer ')) {
+      return res.status(401).json({ error: "Authentication required" });
+    }
+    
+    const token = authHeader.substring(7);
+    
+    try {
+      const decoded = Buffer.from(token, 'base64').toString();
+      if (decoded.startsWith('admin:')) {
+        next();
+      } else {
+        res.status(401).json({ error: "Invalid token" });
+      }
+    } catch (error) {
+      res.status(401).json({ error: "Invalid token" });
+    }
+  };
+
+  // Admin routes with authentication
+  app.get('/api/admin/users', verifyAdmin, async (req, res) => {
     try {
       const users = await storage.getAllUsers();
       res.json(users);
@@ -93,7 +118,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
-  app.get('/api/admin/games', async (req, res) => {
+  app.get('/api/admin/games', verifyAdmin, async (req, res) => {
     try {
       const games = await storage.getAllGameConfigs();
       res.json(games);
@@ -103,7 +128,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
-  app.patch('/api/admin/games/:gameName', async (req, res) => {
+  app.patch('/api/admin/games/:gameName', verifyAdmin, async (req, res) => {
     try {
       const { gameName } = req.params;
       const { isEnabled } = req.body;
@@ -126,6 +151,26 @@ export async function registerRoutes(app: Express): Promise<Server> {
     } catch (error) {
       console.error("Error updating game config:", error);
       res.status(500).json({ error: "Failed to update game config" });
+    }
+  });
+
+  // Also protect the approve endpoint
+  app.patch("/api/approve/:uid", verifyAdmin, async (req, res) => {
+    try {
+      const { uid } = req.params;
+      const user = await storage.approveUser(uid);
+      
+      if (!user) {
+        return res.status(404).json({ message: "User not found" });
+      }
+
+      res.json({ 
+        message: "User approved successfully", 
+        user: { id: user.id, uid: user.uid, approved: user.approved }
+      });
+    } catch (error) {
+      console.error("Approval error:", error);
+      res.status(500).json({ message: "Failed to approve user" });
     }
   });
 

@@ -11,16 +11,28 @@ export async function apiRequest(
   url: string,
   method: string,
   data?: unknown | undefined,
-): Promise<Response> {
+): Promise<any> {
+  const headers: Record<string, string> = {};
+  
+  if (data) {
+    headers["Content-Type"] = "application/json";
+  }
+  
+  // Add admin token if available
+  const adminToken = localStorage.getItem('adminToken');
+  if (adminToken) {
+    headers["Authorization"] = `Bearer ${adminToken}`;
+  }
+
   const res = await fetch(url, {
     method,
-    headers: data ? { "Content-Type": "application/json" } : {},
+    headers,
     body: data ? JSON.stringify(data) : undefined,
     credentials: "include",
   });
 
   await throwIfResNotOk(res);
-  return res;
+  return await res.json();
 }
 
 type UnauthorizedBehavior = "returnNull" | "throw";
@@ -29,7 +41,16 @@ export const getQueryFn: <T>(options: {
 }) => QueryFunction<T> =
   ({ on401: unauthorizedBehavior }) =>
   async ({ queryKey }) => {
+    const headers: Record<string, string> = {};
+    
+    // Add admin token if available
+    const adminToken = localStorage.getItem('adminToken');
+    if (adminToken) {
+      headers["Authorization"] = `Bearer ${adminToken}`;
+    }
+
     const res = await fetch(queryKey.join("/") as string, {
+      headers,
       credentials: "include",
     });
 
