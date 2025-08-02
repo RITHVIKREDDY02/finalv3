@@ -63,7 +63,7 @@ class WingoService {
     "referer": "https://okwinslots5.com/"
   };
 
-  private lastPredictions: Array<{prediction: string, result: string}> = [];
+  private lastPredictions: Array<{prediction: string, result: string, variant?: string}> = [];
   private predictionCache: Map<string, WingoPrediction> = new Map();
   private variantSchedulers: Map<string, NodeJS.Timeout> = new Map();
 
@@ -338,87 +338,120 @@ class WingoService {
     const signals = [];
     let confidence = 0;
     
-    // Signal 1: Frequency imbalance correction
-    if (analysis.frequency.deviation > 0.2) {
-      const correction = analysis.frequency.bigRatio > 0.6 ? 'SMALL' : 'BIG';
-      signals.push({ signal: correction, weight: 3, reason: 'frequency_correction' });
-      confidence += 15;
+    // Get recent trend for better accuracy
+    const recentNumbers = results.slice(0, 5).map(r => r.number);
+    const recentBigSmall = recentNumbers.map(n => this.getBigSmall(n));
+    const recentBigCount = recentBigSmall.filter(s => s === 'BIG').length;
+    const recentTrend = recentBigCount > 2.5 ? 'BIG' : 'SMALL';
+    
+    // Signal 1: Strong trend following (high weight when clear trend)
+    if (analysis.frequency.deviation > 0.15) {
+      const trendSignal = analysis.frequency.bigRatio > 0.6 ? 'BIG' : 'SMALL'; // Follow trend instead of contrarian
+      const weight = Math.min(analysis.frequency.deviation * 10, 6); // Stronger weight for stronger trends
+      signals.push({ signal: trendSignal, weight, reason: 'trend_following' });
+      confidence += weight * 3;
     }
     
-    // Signal 2: Streak breaking logic
-    if (analysis.streaks.current && analysis.streaks.current.length >= 3) {
-      const breakStreak = analysis.streaks.current.type === 'BIG' ? 'SMALL' : 'BIG';
-      const weight = Math.min(analysis.streaks.current.length, 6);
-      signals.push({ signal: breakStreak, weight, reason: 'streak_break' });
-      confidence += weight * 5;
+    // Signal 2: Smart streak analysis - break long streaks, continue short ones
+    if (analysis.streaks.current && analysis.streaks.current.length >= 2) {
+      if (analysis.streaks.current.length >= 4) {
+        // Break very long streaks
+        const breakStreak = analysis.streaks.current.type === 'BIG' ? 'SMALL' : 'BIG';
+        signals.push({ signal: breakStreak, weight: 4, reason: 'long_streak_break' });
+        confidence += 15;
+      } else if (analysis.streaks.current.length === 2 || analysis.streaks.current.length === 3) {
+        // Continue moderate streaks
+        signals.push({ signal: analysis.streaks.current.type, weight: 3, reason: 'streak_continuation' });
+        confidence += 10;
+      }
     }
     
-    // Signal 3: Pattern continuation/break
-    if (analysis.patterns.alternating > 0.6) {
-      const sequence = results.slice(0, 2).map(r => this.getBigSmall(r.number));
-      const nextInPattern = sequence[0] === sequence[1] ? (sequence[0] === 'BIG' ? 'SMALL' : 'BIG') : sequence[0];
-      signals.push({ signal: nextInPattern, weight: 2, reason: 'pattern_continuation' });
-      confidence += 10;
+    // Signal 3: Recent momentum (follow recent 5 results)
+    const recentMomentumWeight = Math.abs(recentBigCount - 2.5) * 2;
+    if (recentMomentumWeight > 1) {
+      signals.push({ signal: recentTrend, weight: recentMomentumWeight, reason: 'recent_momentum' });
+      confidence += recentMomentumWeight * 4;
     }
     
-    // Signal 4: Moving average crossover
-    if (analysis.movingAverages.trend === 'STRONG_UP' || analysis.movingAverages.trend === 'STRONG_DOWN') {
-      signals.push({ signal: analysis.movingAverages.crossover, weight: 2, reason: 'ma_trend' });
-      confidence += 8;
+    // Signal 4: Number distribution balance
+    const bigNumbers = analysis.numberDistribution.bigFrequency || 0;
+    const smallNumbers = analysis.numberDistribution.smallFrequency || 0;
+    const total = bigNumbers + smallNumbers;
+    if (total > 0) {
+      const bigRatio = bigNumbers / total;
+      if (Math.abs(bigRatio - 0.5) > 0.2) {
+        const balanceSignal = bigRatio > 0.6 ? 'BIG' : 'SMALL';
+        signals.push({ signal: balanceSignal, weight: 2.5, reason: 'number_balance' });
+        confidence += 8;
+      }
     }
     
-    // Signal 5: Momentum analysis
-    if (analysis.momentum.strength > 0.3) {
-      const momentumSignal = analysis.momentum.direction === 'BIG' ? 'SMALL' : 'BIG'; // Contrarian approach
-      signals.push({ signal: momentumSignal, weight: 4, reason: 'momentum_reversal' });
-      confidence += 12;
-    }
-    
-    // Signal 6: Hot/Cold number analysis
+    // Signal 5: Hot number momentum (follow hot numbers)
     if (analysis.hotCold.hotNumbers.length > 0) {
       const hotBig = analysis.hotCold.hotNumbers.filter((n: number) => n >= 5).length;
       const hotSmall = analysis.hotCold.hotNumbers.filter((n: number) => n < 5).length;
       if (hotBig !== hotSmall) {
         const hotSignal = hotBig > hotSmall ? 'BIG' : 'SMALL';
-        signals.push({ signal: hotSignal, weight: 1.5, reason: 'hot_numbers' });
-        confidence += 5;
+        signals.push({ signal: hotSignal, weight: 2, reason: 'hot_momentum' });
+        confidence += 6;
       }
     }
     
-    // Signal 7: Anti-loss logic with historical context
-    if (this.lastPredictions.length >= 2) {
-      const recentLosses = this.lastPredictions.slice(-2).filter(p => p.result === 'LOSS').length;
-      if (recentLosses >= 2) {
-        const lastPrediction = this.lastPredictions[this.lastPredictions.length - 1].prediction;
-        const antiLoss = lastPrediction === 'BIG' ? 'SMALL' : 'BIG';
-        signals.push({ signal: antiLoss, weight: 3, reason: 'anti_loss' });
-        confidence += 20;
+    // Signal 6: Pattern recognition improvement
+    if (recentNumbers.length >= 3) {
+      const last3 = recentBigSmall.slice(0, 3);
+      // Look for AB-AB pattern or ABC pattern
+      if (last3[0] === last3[2] && last3[0] !== last3[1]) {
+        // AB-A pattern detected, expect B
+        const patternNext = last3[1];
+        signals.push({ signal: patternNext, weight: 3, reason: 'aba_pattern' });
+        confidence += 12;
       }
     }
     
-    // Calculate weighted prediction
+    // Signal 7: Anti-consecutive-loss logic (adaptive)
+    if (this.lastPredictions.length >= 3) {
+      const recent3Losses = this.lastPredictions.slice(-3).filter(p => p.result === 'LOSS').length;
+      if (recent3Losses >= 2) {
+        // If multiple losses, try opposite of recent failed predictions
+        const failedPredictions = this.lastPredictions.slice(-3).filter(p => p.result === 'LOSS');
+        const mostFailedType = failedPredictions.length > 0 ? failedPredictions[failedPredictions.length - 1].prediction : null;
+        if (mostFailedType) {
+          const recoverySignal = mostFailedType === 'BIG' ? 'SMALL' : 'BIG';
+          signals.push({ signal: recoverySignal, weight: 3.5, reason: 'loss_recovery' });
+          confidence += 18;
+        }
+      }
+    }
+    
+    // Calculate weighted prediction with improved logic
     const bigWeight = signals.filter(s => s.signal === 'BIG').reduce((sum, s) => sum + s.weight, 0);
     const smallWeight = signals.filter(s => s.signal === 'SMALL').reduce((sum, s) => sum + s.weight, 0);
     
     let finalPrediction: "BIG" | "SMALL";
     
-    if (Math.abs(bigWeight - smallWeight) < 0.5) {
-      // If signals are very close, use recent momentum as tiebreaker
-      finalPrediction = analysis.momentum.normalizedMomentum > 0 ? 'SMALL' : 'BIG'; // Contrarian
+    // Improved decision logic
+    if (Math.abs(bigWeight - smallWeight) < 1) {
+      // If very close, use the recent trend as tiebreaker
+      finalPrediction = recentTrend;
     } else {
       finalPrediction = bigWeight > smallWeight ? 'BIG' : 'SMALL';
     }
     
-    // Debug logging for analysis
-    // Predict specific number based on analysis and variant
+    // Final validation - avoid obviously bad predictions
+    if (analysis.frequency.bigRatio > 0.8 && finalPrediction === 'SMALL') {
+      finalPrediction = 'BIG'; // Strong BIG trend, don't predict SMALL
+    } else if (analysis.frequency.bigRatio < 0.2 && finalPrediction === 'BIG') {
+      finalPrediction = 'SMALL'; // Strong SMALL trend, don't predict BIG
+    }
+    
     const predictedNumber = this.predictSpecificNumber(analysis, results, variant, finalPrediction);
     
-    console.log(`🔍 Advanced Analysis Results [${variant}]:`);
-    console.log(`   Frequency: BIG ${(analysis.frequency.bigRatio * 100).toFixed(1)}% | Deviation: ${(analysis.frequency.deviation * 100).toFixed(1)}%`);
-    console.log(`   Current Streak: ${analysis.streaks.current?.type} x${analysis.streaks.current?.length}`);
-    console.log(`   Momentum: ${analysis.momentum.direction} (${analysis.momentum.strength.toFixed(2)})`);
+    console.log(`🎯 Enhanced Analysis [${variant}]:`);
+    console.log(`   Recent Trend: ${recentTrend} (${recentBigCount}/5 BIG)`);
+    console.log(`   Frequency: BIG ${(analysis.frequency.bigRatio * 100).toFixed(1)}% | Current Streak: ${analysis.streaks.current?.type} x${analysis.streaks.current?.length}`);
     console.log(`   Signals: BIG=${bigWeight.toFixed(1)} | SMALL=${smallWeight.toFixed(1)} → ${finalPrediction}`);
-    console.log(`   🎯 Predicted Number: ${predictedNumber}`);
+    console.log(`   🎯 Predicted: ${finalPrediction} ${predictedNumber} (Confidence: ${confidence.toFixed(0)}%)`);
     
     return { prediction: finalPrediction, predictedNumber };
   }
@@ -690,12 +723,10 @@ class WingoService {
   private async checkAndUpdateResults(variant: string): Promise<void> {
     try {
       const results = await this.getLatestResults(variant);
-      console.log(`🔍 Checking results for ${variant}: Found ${results.length} results`);
       
       // Update any pending predictions with actual results
       for (const result of results) {
         const actualSize = this.getBigSmall(result.number);
-        console.log(`📊 Checking period ${result.issueNumber} for ${variant}: number=${result.number}, size=${actualSize}`);
         
         const updated = await storage.updatePredictionResult(
           result.issueNumber,
@@ -704,10 +735,20 @@ class WingoService {
           actualSize
         );
         
-        if (updated) {
-          console.log(`✅ Updated prediction for ${variant} period ${result.issueNumber}: ${updated.predictedSize} → ${updated.status}`);
-        } else {
-          console.log(`⏭️ No pending prediction found for ${variant} period ${result.issueNumber}`);
+        if (updated && updated.status) {
+          // Track prediction results for learning
+          this.lastPredictions.push({
+            prediction: updated.predictedSize,
+            result: updated.status,
+            variant
+          });
+          
+          // Keep only recent predictions (last 10 per variant)
+          if (this.lastPredictions.length > 40) {
+            this.lastPredictions = this.lastPredictions.slice(-40);
+          }
+          
+          console.log(`✅ ${variant} period ${result.issueNumber}: ${updated.predictedSize} → ${updated.status} (${result.number})`);
         }
       }
     } catch (error) {
