@@ -17,19 +17,42 @@ export interface WingoVariantConfig {
   typeId: number;
   intervalSeconds: number;
   name: string;
+  periodUrl: string;
+  resultUrl: string;
 }
 
 export const WINGO_VARIANTS: Record<string, WingoVariantConfig> = {
-  "30sec": { typeId: 1, intervalSeconds: 30, name: "Wingo 30Sec" },
-  "1min": { typeId: 2, intervalSeconds: 60, name: "Wingo 1Min" },
-  "3min": { typeId: 3, intervalSeconds: 180, name: "Wingo 3Min" },
-  "5min": { typeId: 4, intervalSeconds: 300, name: "Wingo 5Min" }
+  "30sec": { 
+    typeId: 1, 
+    intervalSeconds: 30, 
+    name: "Wingo 30Sec",
+    periodUrl: "https://draw.ar-lottery01.com/WinGo/WinGo_30S/GetHistoryIssuePage.json",
+    resultUrl: "https://draw.ar-lottery01.com/WinGo/WinGo_30S.json"
+  },
+  "1min": { 
+    typeId: 2, 
+    intervalSeconds: 60, 
+    name: "Wingo 1Min",
+    periodUrl: "https://draw.ar-lottery01.com/WinGo/WinGo_1M.json",
+    resultUrl: "https://draw.ar-lottery01.com/WinGo/WinGo_1M/GetHistoryIssuePage.json"
+  },
+  "3min": { 
+    typeId: 3, 
+    intervalSeconds: 180, 
+    name: "Wingo 3Min",
+    periodUrl: "https://draw.ar-lottery01.com/WinGo/WinGo_3M.json",
+    resultUrl: "https://draw.ar-lottery01.com/WinGo/WinGo_3M/GetHistoryIssuePage.json"
+  },
+  "5min": { 
+    typeId: 4, 
+    intervalSeconds: 300, 
+    name: "Wingo 5Min",
+    periodUrl: "https://draw.ar-lottery01.com/WinGo/WinGo_5M.json",
+    resultUrl: "https://draw.ar-lottery01.com/WinGo/WinGo_5M/GetHistoryIssuePage.json"
+  }
 };
 
 class WingoService {
-  private readonly PERIOD_API_URL = "https://imgametransit.com/api/webapi/GetGameIssue";
-  private readonly RESULT_API_URL = "https://imgametransit.com/api/webapi/GetNoaverageEmerdList";
-  
   private readonly HEADERS = {
     "accept": "application/json, text/plain, */*",
     "authorization": "Bearer ...", // This would need to be configured
@@ -50,14 +73,26 @@ class WingoService {
     return { randomStr, timestamp };
   }
 
-  private async postData(url: string, body: any): Promise<any> {
+  private async fetchData(url: string, body?: any): Promise<any> {
     try {
-      const response = await fetch(url, {
-        method: 'POST',
-        headers: this.HEADERS,
-        body: JSON.stringify(body)
-      });
-      return await response.json();
+      const timestamp = Date.now();
+      const fullUrl = `${url}?ts=${timestamp}`;
+      
+      const options: RequestInit = {
+        method: 'GET',
+        headers: {
+          "accept": "application/json, text/plain, */*",
+          "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
+        }
+      };
+      
+      const response = await fetch(fullUrl, options);
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      
+      const data = await response.json();
+      return data;
     } catch (error) {
       console.error('API request failed:', error);
       return null;
@@ -117,36 +152,33 @@ class WingoService {
     const config = WINGO_VARIANTS[variant];
     if (!config) return null;
 
-    const { randomStr, timestamp } = this.generateSignaturePayload();
-    const body = {
-      language: 0,
-      random: randomStr,
-      signature: "A95282C91E942DDA8DAE51C81F20DADB", // This should be properly generated
-      timestamp: timestamp,
-      typeId: config.typeId
-    };
-
-    const data = await this.postData(this.PERIOD_API_URL, body);
-    return data?.data || null;
+    try {
+      const data = await this.fetchData(config.periodUrl);
+      return data?.current || null;
+    } catch (error) {
+      console.error(`Failed to get current period for ${variant}:`, error);
+      return null;
+    }
   }
 
   async getLatestResults(variant: string): Promise<WingoResult[]> {
     const config = WINGO_VARIANTS[variant];
     if (!config) return [];
 
-    const { randomStr, timestamp } = this.generateSignaturePayload();
-    const body = {
-      language: 0,
-      pageNo: 1,
-      pageSize: 10,
-      random: randomStr,
-      signature: "E46ACB58F4289D251D7C7E1800B71DBB", // This should be properly generated
-      timestamp: timestamp,
-      typeId: config.typeId
-    };
-
-    const data = await this.postData(this.RESULT_API_URL, body);
-    return data?.data?.list || [];
+    try {
+      const data = await this.fetchData(config.resultUrl);
+      const results = data?.data?.list || [];
+      
+      // Transform API response to our format
+      return results.map((item: any) => ({
+        issueNumber: item.issueNumber,
+        number: parseInt(item.number),
+        timestamp: Date.now() // Use current time since API doesn't provide timestamp
+      }));
+    } catch (error) {
+      console.error(`Failed to get results for ${variant}:`, error);
+      return [];
+    }
   }
 
   async generatePrediction(variant: string): Promise<WingoPrediction | null> {
@@ -161,8 +193,13 @@ class WingoService {
       const prediction = this.analyzeTrend(results);
       const config = WINGO_VARIANTS[variant];
       
-      // Calculate countdown (mock for now - should be based on actual period timing)
-      const countdown = Math.floor(Math.random() * config.intervalSeconds);
+      // Calculate real countdown based on period end time
+      let countdown = config.intervalSeconds / 2; // default fallback
+      if (currentPeriod.endTime) {
+        const now = Date.now();
+        const endTime = currentPeriod.endTime;
+        countdown = Math.max(0, Math.floor((endTime - now) / 1000));
+      }
 
       return {
         period: currentPeriod.issueNumber || `${Date.now()}`,

@@ -20,8 +20,13 @@ A dynamic prediction/lottery gaming platform with user registration and approval
 - **2025-02-02**: Created individual pages for each Wingo variant with dedicated APIs and timers
 - **2025-02-02**: Updated Wingo game names from "Parity/Sapre/Bcone/Emerd" to proper format "Wingo 30Sec/1Min/3Min/5Min"
 - **2025-02-02**: Enhanced game history design with new color scheme: rgb(56, 46, 53) backgrounds and #ffd05a accents
-- **2025-02-02**: Redesigned game history cards with improved layout, animations, and visual hierarchy
+- **2025-02-02**: Redesigned game history from card-based to compact table-style layout
 - **2025-02-02**: Added WIN/LOSS result badges and enhanced predicted vs actual comparison display
+- **2025-02-02**: Removed timestamp displays from game history for cleaner interface
+- **2025-02-02**: **MAJOR**: Integrated real ar-lottery01.com APIs for all 4 Wingo variants
+- **2025-02-02**: **MAJOR**: Implemented live prediction algorithm from provided Python code
+- **2025-02-02**: **MAJOR**: Connected to live data sources with real period numbers and results
+- **2025-02-02**: Added real countdown calculation based on actual period end times
 
 ## User Preferences
 - Store UID in browser localStorage to avoid repeated registration
@@ -52,8 +57,14 @@ A dynamic prediction/lottery gaming platform with user registration and approval
 - `GET /api/admin/games`: Get all game configurations
 - `PATCH /api/admin/games/:gameName`: Enable/disable specific games
 - `GET /api/wingo/variants`: Get available Wingo game variants
-- `GET /api/wingo/prediction/:variant`: Get real-time prediction for variant
-- `GET /api/wingo/results/:variant`: Get recent results for variant
+- `GET /api/wingo/prediction/:variant`: **LIVE** real-time prediction using ar-lottery01.com APIs
+- `GET /api/wingo/results/:variant`: **LIVE** recent results from ar-lottery01.com APIs
+
+### Live API Integration
+- **30sec**: `draw.ar-lottery01.com/WinGo/WinGo_30S.json` & `WinGo_30S/GetHistoryIssuePage.json`
+- **1min**: `draw.ar-lottery01.com/WinGo/WinGo_1M.json` & `WinGo_1M/GetHistoryIssuePage.json`
+- **3min**: `draw.ar-lottery01.com/WinGo/WinGo_3M.json` & `WinGo_3M/GetHistoryIssuePage.json`  
+- **5min**: `draw.ar-lottery01.com/WinGo/WinGo_5M.json` & `WinGo_5M/GetHistoryIssuePage.json`
 
 ### Key Features
 1. **Registration Flow**: Users register once with UID, stored in localStorage
