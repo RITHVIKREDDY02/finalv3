@@ -99,6 +99,11 @@ export class DatabaseStorage implements IStorage {
     
     if (!existingPrediction) return undefined;
 
+    // Don't update if result is already set (prevent double-updates that cause status flipping)
+    if (existingPrediction.status !== 'PENDING') {
+      return existingPrediction;
+    }
+
     // Determine if prediction was correct
     const numberMatch = existingPrediction.predictedNumber === actualNumber;
     const sizeMatch = existingPrediction.predictedSize === actualSize;
