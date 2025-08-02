@@ -9,9 +9,9 @@
   --muted-foreground: hsl(25, 5.3%, 44.7%);
   --popover: hsl(0, 0%, 100%);
   --popover-foreground: hsl(20, 14.3%, 4.1%);
-  --card: hsl(0, 0%, 100%);
-  --card-foreground: hsl(20, 14.3%, 4.1%);
-  --border: hsl(20, 5.9%, 90%);
+  --card: transparent;
+  --card-foreground: hsl(45, 89%, 87%);
+  --border: transparent;
   --input: hsl(20, 5.9%, 90%);
   --primary: hsl(207, 90%, 54%);
   --primary-foreground: hsl(211, 100%, 99%);
@@ -43,9 +43,9 @@
   --muted-foreground: hsl(240, 5%, 64.9%);
   --popover: hsl(240, 10%, 3.9%);
   --popover-foreground: hsl(0, 0%, 98%);
-  --card: hsl(240, 10%, 3.9%);
-  --card-foreground: hsl(0, 0%, 98%);
-  --border: hsl(240, 3.7%, 15.9%);
+  --card: transparent;
+  --card-foreground: hsl(45, 89%, 87%);
+  --border: transparent;
   --input: hsl(240, 3.7%, 15.9%);
   --primary: hsl(207, 90%, 54%);
   --primary-foreground: hsl(211, 100%, 99%);
@@ -119,6 +119,16 @@
     border: 0.01333rem solid var(--bg_HomeModule_Stroke) !important;
     color: #312712 !important;
     font-weight: 700 !important;
+  }
+
+  /* Remove white borders from gaming cards */
+  .no-border {
+    border: none !important;
+  }
+
+  .gaming-card {
+    border: none !important;
+    background: transparent !important;
   }
   
   .navbar-dark {
