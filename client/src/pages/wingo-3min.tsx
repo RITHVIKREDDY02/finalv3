@@ -137,7 +137,7 @@ export default function Wingo3Min() {
           </div>
           <div className="p-4 space-y-2 max-h-96 overflow-y-auto">
             {results.length > 0 ? results.map((result, index) => (
-              <div key={result.issueNumber} className="flex justify-between items-center py-3 px-4 bg-gradient-to-r from-gray-700 to-gray-600 rounded-lg border border-gray-600 hover:border-yellow-400/30 transition-colors">
+              <div key={result.issueNumber} className="flex justify-between items-center py-3 px-4 rounded-lg border border-gray-600 hover:border-yellow-400/30 transition-colors" style={{ backgroundColor: 'rgb(56, 46, 53)' }}>
                 <div className="flex flex-col">
                   <span className="text-gray-300 text-sm">Period: {result.issueNumber}</span>
                   <span className="text-xs text-gray-400">

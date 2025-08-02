@@ -213,10 +213,10 @@ export default function Wingo() {
             </div>
             <div className="space-y-3">
               {results?.slice(0, 3).map((result, index) => (
-                <div key={result.issueNumber} className="bg-white rounded-2xl p-4">
+                <div key={result.issueNumber} className="rounded-2xl p-4" style={{ backgroundColor: 'rgb(56, 46, 53)' }}>
                   {/* Period and Status */}
                   <div className="flex justify-between items-center mb-4">
-                    <div className="bg-blue-500 text-white px-4 py-2 rounded-full text-sm font-medium">
+                    <div className="text-white px-4 py-2 rounded-full text-sm font-medium" style={{ backgroundColor: '#ffd05a' }}>
                       Period: {result.issueNumber}
                     </div>
                     <div className="bg-green-500 text-white px-4 py-2 rounded-full text-sm font-bold">
@@ -228,7 +228,7 @@ export default function Wingo() {
                   <div className="flex items-center justify-between">
                     {/* Predicted Section */}
                     <div className="text-center">
-                      <div className="text-gray-600 text-sm mb-2">Predicted</div>
+                      <div className="text-gray-300 text-sm mb-2">Predicted</div>
                       <div className="flex items-center gap-2">
                         <div className="bg-green-500 text-white px-3 py-1 rounded-lg font-bold">
                           {index % 2 === 0 ? 'Green' : 'Red'}
@@ -243,11 +243,11 @@ export default function Wingo() {
                     </div>
 
                     {/* VS */}
-                    <div className="text-gray-400 font-bold text-lg mx-4">VS</div>
+                    <div className="text-gray-300 font-bold text-lg mx-4">VS</div>
 
                     {/* Actual Section */}
                     <div className="text-center">
-                      <div className="text-gray-600 text-sm mb-2">Actual</div>
+                      <div className="text-gray-300 text-sm mb-2">Actual</div>
                       <div className="flex items-center gap-2">
                         <div className={`text-white px-3 py-1 rounded-lg font-bold ${result.number >= 5 ? 'bg-green-500' : 'bg-red-500'}`}>
                           {result.number >= 5 ? 'Green' : 'Red'}
@@ -260,7 +260,7 @@ export default function Wingo() {
                   </div>
                 </div>
               )) || (
-                <div className="bg-white rounded-2xl p-4 text-center text-gray-500">
+                <div className="rounded-2xl p-4 text-center text-gray-300" style={{ backgroundColor: 'rgb(56, 46, 53)' }}>
                   Loading history...
                 </div>
               )}
