@@ -2,6 +2,9 @@ import { Card } from "@/components/ui/card";
 import { Volume2 } from "lucide-react";
 import { useState, useEffect } from "react";
 import { FaTelegram } from "react-icons/fa";
+import { useLocation } from "wouter";
+import Register from "./register";
+import VipPrediction from "./vip-prediction";
 import logoPath from "@assets/TASHAN WIN LOGO_1754052537792.png";
 import winGoImage from "@assets/lotterycategory_20250412120719dqfv_1754052547793.png";
 import trxWingoImage from "@assets/lotterycategory_20250412120818j8wq_1754052552269.png";
@@ -20,6 +23,10 @@ import desktopBannerImage from "@assets/Hero Banner (1440 x 300 px)_175407851316
 export default function Home() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [showRegister, setShowRegister] = useState(false);
+  const [showVipPrediction, setShowVipPrediction] = useState(false);
+  const [userUid, setUserUid] = useState<string>("");
+  const [, navigate] = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -30,10 +37,54 @@ export default function Home() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  useEffect(() => {
+    // Check if user has stored UID
+    const storedUid = localStorage.getItem("tashan_user_uid");
+    if (storedUid) {
+      setUserUid(storedUid);
+    }
+  }, []);
+
   const handleGameClick = (gameType: string) => {
     console.log(`${gameType} game selected`);
-    // TODO: Implement navigation to game sections
+    
+    // Check if user has registered UID
+    const storedUid = localStorage.getItem("tashan_user_uid");
+    if (storedUid) {
+      setUserUid(storedUid);
+      setShowVipPrediction(true);
+    } else {
+      setShowRegister(true);
+    }
   };
+
+  const handleRegistrationSuccess = (uid: string) => {
+    setUserUid(uid);
+    setShowRegister(false);
+    setShowVipPrediction(true);
+  };
+
+  const handleBackToRegister = () => {
+    localStorage.removeItem("tashan_user_uid");
+    setUserUid("");
+    setShowVipPrediction(false);
+    setShowRegister(true);
+  };
+
+  const handleBackToHome = () => {
+    setShowRegister(false);
+    setShowVipPrediction(false);
+  };
+
+  // Show registration page
+  if (showRegister) {
+    return <Register onRegistrationSuccess={handleRegistrationSuccess} />;
+  }
+
+  // Show VIP prediction page
+  if (showVipPrediction && userUid) {
+    return <VipPrediction uid={userUid} onBackToRegister={handleBackToRegister} />;
+  }
 
   return (
     <div className="min-h-screen">

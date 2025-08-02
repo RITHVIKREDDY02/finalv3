@@ -1,84 +1,60 @@
-# TASHANWIN VIP Prediction App
+# TASHAN WIN VIP PREDICTION
 
-## Overview
+## Project Overview
+A dynamic prediction/lottery gaming platform with user registration and approval system. Users must register with their UID and get admin approval before accessing VIP prediction features.
 
-TASHANWIN is a web-based VIP prediction application focused on lottery gaming entertainment. The app provides prediction games including Win Go and Trx Wingo games, built as a modern single-page application with a React frontend and Express backend. The application follows a full-stack architecture with PostgreSQL database integration and is designed for mobile-first gaming experiences.
+## Recent Changes
+- **2025-02-02**: Implemented UID-based registration system with PostgreSQL database
+- **2025-02-02**: Created registration flow that stores UID in browser localStorage
+- **2025-02-02**: Added approval workflow where admin can approve users via API
+- **2025-02-02**: Integrated registration check into game card click handlers
 
 ## User Preferences
+- Store UID in browser localStorage to avoid repeated registration
+- Show registration page on first card click
+- Once registered and approved, allow direct access to VIP prediction features
+- Provide clear status indicators for approval process
 
-Preferred communication style: Simple, everyday language.
+## Project Architecture
 
-## System Architecture
+### Database Schema
+- **users table**: id (UUID), uid (unique text), approved (boolean), createdAt (timestamp)
+- Uses PostgreSQL with Drizzle ORM
+- Database storage class replaces memory storage
 
-### Frontend Architecture
-- **Framework**: React 18 with TypeScript and Vite for development tooling
-- **UI Framework**: shadcn/ui component library built on Radix UI primitives
-- **Styling**: Tailwind CSS with custom gaming theme colors and CSS variables
-- **State Management**: TanStack React Query for server state management
-- **Routing**: Wouter for lightweight client-side routing
-- **Build Tool**: Vite with ESM module support and hot module replacement
+### Frontend Structure
+- **Home page**: Main landing page with game cards
+- **Register page**: UID registration form with instructions
+- **VIP Prediction page**: Status checking and access control
+- Navigation handled through state management, not URL routing
 
-### Backend Architecture
-- **Runtime**: Node.js with TypeScript and ESM modules
-- **Framework**: Express.js with RESTful API design
-- **Database ORM**: Drizzle ORM with PostgreSQL dialect
-- **Session Management**: Built-in storage interface with memory storage implementation
-- **API Structure**: RESTful endpoints with `/api` prefix and standardized error handling
+### Backend API Endpoints
+- `POST /api/register`: Register new user with UID
+- `GET /api/user/:uid`: Check user registration status
+- `PATCH /api/approve/:uid`: Admin endpoint to approve users
 
-### Data Storage Solutions
-- **Primary Database**: PostgreSQL with Neon serverless database connection
-- **ORM**: Drizzle ORM with type-safe schema definitions and migrations
-- **Schema Management**: Centralized schema definitions in `shared/schema.ts`
-- **Database Migrations**: Drizzle Kit for schema migrations and database synchronization
+### Key Features
+1. **Registration Flow**: Users register once with UID, stored in localStorage
+2. **Approval System**: Admin approval required before accessing predictions
+3. **Status Polling**: VIP prediction page polls for approval status every 5 seconds
+4. **Persistent Storage**: UID stored in browser prevents repeated registration
+5. **Game Integration**: All game cards trigger registration check
 
-### Authentication and Authorization
-- **User Schema**: Basic user model with username/password authentication
-- **Session Storage**: Cookie-based sessions with PostgreSQL session store
-- **Storage Interface**: Abstracted storage layer supporting both memory and database implementations
-- **User Management**: CRUD operations for user creation and retrieval
+### Technical Stack
+- Frontend: React, TypeScript, Wouter routing, TanStack Query, shadcn/ui
+- Backend: Express.js, TypeScript
+- Database: PostgreSQL with Drizzle ORM
+- Authentication: UID-based with admin approval workflow
 
-### Development and Build Process
-- **Development**: Concurrent frontend (Vite) and backend (tsx) development servers
-- **Build Process**: Vite for frontend bundling and esbuild for backend compilation
-- **Type Safety**: Shared TypeScript types between frontend and backend
-- **Hot Reload**: Vite HMR for frontend and tsx watch mode for backend
+## Current Status
+- Registration system fully implemented
+- Database schema deployed
+- Frontend components created with proper state management
+- API endpoints functional
+- Game card integration complete
 
-### UI/UX Design Patterns
-- **Design System**: Consistent component library with variant-based styling
-- **Responsive Design**: Mobile-first approach with Tailwind responsive utilities
-- **Gaming Theme**: Custom color scheme with gold accents and dark backgrounds
-- **Component Architecture**: Composable UI components with proper TypeScript typing
-
-## External Dependencies
-
-### Database Services
-- **@neondatabase/serverless**: Neon PostgreSQL serverless database connection
-- **drizzle-orm**: TypeScript ORM for database operations
-- **drizzle-kit**: Database migration and schema management tool
-- **connect-pg-simple**: PostgreSQL session store for Express sessions
-
-### UI and Styling Libraries
-- **@radix-ui/***: Comprehensive set of accessible UI primitives
-- **tailwindcss**: Utility-first CSS framework
-- **class-variance-authority**: Type-safe component variants
-- **clsx**: Utility for constructing className strings conditionally
-
-### Frontend Framework Dependencies
-- **react**: Core React library for UI development
-- **@tanstack/react-query**: Server state management and caching
-- **wouter**: Lightweight client-side routing
-- **react-hook-form**: Form state management and validation
-- **@hookform/resolvers**: Form validation resolvers
-
-### Development Tools
-- **vite**: Frontend build tool and development server
-- **typescript**: Static type checking
-- **tsx**: TypeScript execution environment for Node.js
-- **esbuild**: Fast JavaScript bundler for backend compilation
-- **@replit/vite-plugin-***: Replit-specific development plugins
-
-### Utility Libraries
-- **date-fns**: Date manipulation and formatting
-- **zod**: Runtime type validation and schema validation
-- **drizzle-zod**: Integration between Drizzle ORM and Zod validation
-- **lucide-react**: Icon library with React components
+## Next Steps
+- Fix LSP diagnostics in frontend components
+- Add admin panel for user approval management
+- Implement actual VIP prediction features
+- Add more detailed error handling and user feedback
