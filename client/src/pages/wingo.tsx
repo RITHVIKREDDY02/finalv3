@@ -130,7 +130,14 @@ export default function Wingo() {
       return apiRequest(`/api/wingo/history/${selectedVariant}`, 'DELETE');
     },
     onSuccess: () => {
+      // Immediately invalidate and refetch the history query
       queryClient.invalidateQueries({ queryKey: [`/api/wingo/history/${selectedVariant}`] });
+      queryClient.refetchQueries({ queryKey: [`/api/wingo/history/${selectedVariant}`] });
+      
+      // Also clear related prediction and result caches to ensure fresh data
+      queryClient.invalidateQueries({ queryKey: [`/api/wingo/prediction/${selectedVariant}`] });
+      queryClient.invalidateQueries({ queryKey: [`/api/wingo/results/${selectedVariant}`] });
+      
       toast({
         title: "History Cleared",
         description: "Game history has been reset. Starting fresh!",

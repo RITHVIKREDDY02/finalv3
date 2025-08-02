@@ -91,7 +91,14 @@ export default function Wingo3Min() {
       return apiRequest('/api/wingo/history/3min', 'DELETE');
     },
     onSuccess: () => {
+      // Immediately invalidate and refetch the history query
       queryClient.invalidateQueries({ queryKey: ['/api/wingo/history/3min'] });
+      queryClient.refetchQueries({ queryKey: ['/api/wingo/history/3min'] });
+      
+      // Also clear related prediction and result caches to ensure fresh data
+      queryClient.invalidateQueries({ queryKey: ['/api/wingo/prediction/3min'] });
+      queryClient.invalidateQueries({ queryKey: ['/api/wingo/results/3min'] });
+      
       toast({
         title: "History Cleared",
         description: "Game history has been reset. Starting fresh!",
