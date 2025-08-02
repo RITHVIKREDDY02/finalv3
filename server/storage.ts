@@ -16,6 +16,7 @@ export interface IStorage {
   updatePredictionResult(period: string, variant: string, actualNumber: number, actualSize: string): Promise<PredictionHistory | undefined>;
   getPredictionHistory(variant: string, limit?: number): Promise<PredictionHistory[]>;
   findExistingPrediction(period: string, variant: string): Promise<PredictionHistory | undefined>;
+  clearPredictionHistory(variant?: string): Promise<boolean>;
 }
 
 export class DatabaseStorage implements IStorage {
@@ -144,6 +145,26 @@ export class DatabaseStorage implements IStorage {
         eq(predictionHistory.variant, variant)
       ));
     return prediction || undefined;
+  }
+
+  async clearPredictionHistory(variant?: string): Promise<boolean> {
+    try {
+      if (variant) {
+        // Clear history for specific variant
+        await db
+          .delete(predictionHistory)
+          .where(eq(predictionHistory.variant, variant));
+        console.log(`🗑️ Cleared prediction history for variant: ${variant}`);
+      } else {
+        // Clear all prediction history
+        await db.delete(predictionHistory);
+        console.log('🗑️ Cleared all prediction history');
+      }
+      return true;
+    } catch (error) {
+      console.error('Error clearing prediction history:', error);
+      return false;
+    }
   }
 }
 

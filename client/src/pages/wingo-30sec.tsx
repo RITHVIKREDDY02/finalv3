@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { useQuery } from "@tanstack/react-query";
-import { ArrowLeft, RefreshCw } from "lucide-react";
+import { useQuery, useMutation } from "@tanstack/react-query";
+import { ArrowLeft, RefreshCw, RotateCcw } from "lucide-react";
 import { useLocation } from "wouter";
-import { queryClient } from "@/lib/queryClient";
+import { queryClient, apiRequest } from "@/lib/queryClient";
+import { useToast } from "@/hooks/use-toast";
 
 interface WingoResult {
   issueNumber: string;
@@ -23,6 +24,7 @@ interface WingoPrediction {
 export default function Wingo30Sec() {
   const [, navigate] = useLocation();
   const [countdown, setCountdown] = useState(30);
+  const { toast } = useToast();
 
   // Fetch prediction data
   const { data: prediction } = useQuery<WingoPrediction>({
@@ -76,6 +78,27 @@ export default function Wingo30Sec() {
       second: '2-digit'
     });
   };
+
+  // Clear history mutation
+  const clearHistoryMutation = useMutation({
+    mutationFn: async () => {
+      return apiRequest('/api/wingo/history/30sec', 'DELETE');
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['/api/wingo/history/30sec'] });
+      toast({
+        title: "History Cleared",
+        description: "Game history has been reset. Starting fresh!",
+      });
+    },
+    onError: () => {
+      toast({
+        title: "Error",
+        description: "Failed to clear history. Please try again.",
+        variant: "destructive",
+      });
+    }
+  });
 
   return (
     <div className="min-h-screen" style={{ backgroundColor: '#231C21' }}>
@@ -173,12 +196,23 @@ export default function Wingo30Sec() {
         {/* Game History - Predictions vs Results */}
         <Card className="bg-gray-800 border-gray-700">
           <div className="p-4 border-b border-gray-700">
-            <div className="flex items-center gap-3">
-              <div className="w-2 h-6 rounded-full" style={{ backgroundColor: '#ffd05a' }}></div>
-              <h3 className="text-lg font-bold text-white flex items-center gap-2">
-                📊 Game History (Predictions vs Results)
-              </h3>
-              <div className="flex-1 h-px bg-gradient-to-r from-gray-600 to-transparent"></div>
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-3">
+                <div className="w-2 h-6 rounded-full" style={{ backgroundColor: '#ffd05a' }}></div>
+                <h3 className="text-lg font-bold text-white flex items-center gap-2">
+                  📊 Game History (Predictions vs Results)
+                </h3>
+              </div>
+              <Button
+                onClick={() => clearHistoryMutation.mutate()}
+                disabled={clearHistoryMutation.isPending || history.length === 0}
+                variant="outline"
+                size="sm"
+                className="text-yellow-400 border-yellow-400 hover:bg-yellow-400 hover:text-black transition-colors"
+              >
+                <RotateCcw className="w-4 h-4 mr-2" />
+                {clearHistoryMutation.isPending ? 'Clearing...' : 'Start Fresh'}
+              </Button>
             </div>
           </div>
           <div className="p-4 space-y-3 max-h-96 overflow-y-auto">
