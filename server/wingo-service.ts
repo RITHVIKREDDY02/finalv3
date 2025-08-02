@@ -26,8 +26,8 @@ export const WINGO_VARIANTS: Record<string, WingoVariantConfig> = {
     typeId: 1, 
     intervalSeconds: 30, 
     name: "Wingo 30Sec",
-    periodUrl: "https://draw.ar-lottery01.com/WinGo/WinGo_30S/GetHistoryIssuePage.json",
-    resultUrl: "https://draw.ar-lottery01.com/WinGo/WinGo_30S.json"
+    periodUrl: "https://draw.ar-lottery01.com/WinGo/WinGo_30S.json",
+    resultUrl: "https://draw.ar-lottery01.com/WinGo/WinGo_30S/GetHistoryIssuePage.json"
   },
   "1min": { 
     typeId: 2, 
@@ -92,9 +92,10 @@ class WingoService {
       }
       
       const data = await response.json();
+      // console.log(`Raw API response from ${url}:`, JSON.stringify(data).substring(0, 200));
       return data;
     } catch (error) {
-      console.error('API request failed:', error);
+      console.error(`API request failed for ${url}:`, error);
       return null;
     }
   }
