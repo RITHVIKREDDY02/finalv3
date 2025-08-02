@@ -183,28 +183,34 @@ class WingoService {
   }
 
   private calculateSynchronizedCountdown(intervalSeconds: number): number {
-    // Get current IST time
     const now = new Date();
-    const istTime = new Date(now.getTime() + (5.5 * 60 * 60 * 1000)); // UTC + 5:30
+    const currentSecond = now.getSeconds();
+    const currentMillisecond = now.getMilliseconds();
     
-    const currentMinute = istTime.getMinutes();
-    const currentSecond = istTime.getSeconds();
+    // Calculate total time in seconds with millisecond precision
+    const totalTimeInSeconds = currentSecond + (currentMillisecond / 1000);
     
-    // Calculate seconds since last minute boundary
-    const secondsSinceMinuteBoundary = currentSecond;
-    
-    // Calculate how many intervals have passed since minute boundary
-    const intervalsPassedSinceMinute = Math.floor(secondsSinceMinuteBoundary / intervalSeconds);
-    
-    // Calculate next interval start time
-    const nextIntervalStart = (intervalsPassedSinceMinute + 1) * intervalSeconds;
-    
-    // If next interval would be beyond 60 seconds, wrap to next minute
-    if (nextIntervalStart >= 60) {
-      return 60 - secondsSinceMinuteBoundary;
+    // For each variant, calculate the countdown based on the interval
+    switch (intervalSeconds) {
+      case 30: // 30Sec: loops 30 → 29 → ... → 1 → 30
+        const countdown30 = Math.ceil(30 - (totalTimeInSeconds % 30));
+        return countdown30 === 0 ? 30 : countdown30;
+        
+      case 60: // 1Min: loops 00:60 → 00:59 → ... → 00:00 → 00:60
+        const countdown60 = Math.ceil(60 - (totalTimeInSeconds % 60));
+        return countdown60 === 0 ? 60 : countdown60;
+        
+      case 180: // 3Min: loops 02:60 → 02:59 → ... → 00:00 → 02:60
+        const countdown180 = Math.ceil(180 - (totalTimeInSeconds % 180));
+        return countdown180 === 0 ? 180 : countdown180;
+        
+      case 300: // 5Min: loops 04:60 → 04:59 → ... → 00:00 → 04:60
+        const countdown300 = Math.ceil(300 - (totalTimeInSeconds % 300));
+        return countdown300 === 0 ? 300 : countdown300;
+        
+      default:
+        return intervalSeconds;
     }
-    
-    return nextIntervalStart - secondsSinceMinuteBoundary;
   }
 
   async generatePrediction(variant: string): Promise<WingoPrediction | null> {
