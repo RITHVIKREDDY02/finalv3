@@ -9,6 +9,10 @@ import { wingoService, WINGO_VARIANTS } from "./wingo-service";
 export async function registerRoutes(app: Express): Promise<Server> {
   app.use(express.json());
 
+  // Start background prediction scheduler
+  console.log('🚀 Starting Wingo prediction scheduler at server startup...');
+  wingoService.startBackgroundScheduler();
+
   // Register user with UID
   app.post("/api/register", async (req, res) => {
     try {
@@ -138,8 +142,8 @@ export async function registerRoutes(app: Express): Promise<Server> {
         return res.status(400).json({ error: "Invalid variant" });
       }
 
-      // Use real API with prediction algorithm
-      const prediction = await wingoService.generatePrediction(variant);
+      // Use cached prediction from background scheduler
+      const prediction = await wingoService.getCachedPrediction(variant);
       
       if (prediction) {
         res.json(prediction);

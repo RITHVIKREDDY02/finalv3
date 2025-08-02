@@ -62,6 +62,8 @@ class WingoService {
   };
 
   private lastPredictions: Array<{prediction: string, result: string}> = [];
+  private predictionCache: Map<string, WingoPrediction> = new Map();
+  private backgroundScheduler: NodeJS.Timeout | null = null;
 
   private getBigSmall(number: number): "BIG" | "SMALL" {
     return number >= 5 ? "BIG" : "SMALL";
@@ -182,27 +184,35 @@ class WingoService {
     }
   }
 
-  private calculateRealCountdown(currentPeriod: any): number {
-    if (!currentPeriod?.endTime) {
-      // Fallback if no API data
-      return 30;
+  // Fixed countdown timers that start at specified times
+  private calculateFixedCountdown(intervalSeconds: number): number {
+    const now = new Date();
+    const currentSecond = now.getSeconds();
+    
+    switch (intervalSeconds) {
+      case 30: // Wingo 30Sec: loops 30 → 29 → ... → 1 → 30
+        const remaining30 = 30 - (currentSecond % 30);
+        return remaining30 === 0 ? 30 : remaining30;
+        
+      case 60: // Wingo 1Min: loops 60 → 59 → ... → 1 → 60
+        const remaining60 = 60 - currentSecond;
+        return remaining60 === 0 ? 60 : remaining60;
+        
+      case 180: // Wingo 3Min: loops 180 → 179 → ... → 1 → 180
+        const currentMinute = now.getMinutes();
+        const totalSeconds = (currentMinute * 60) + currentSecond;
+        const remaining180 = 180 - (totalSeconds % 180);
+        return remaining180 === 0 ? 180 : remaining180;
+        
+      case 300: // Wingo 5Min: loops 300 → 299 → ... → 1 → 300
+        const currentMinute5 = now.getMinutes();
+        const totalSeconds5 = (currentMinute5 * 60) + currentSecond;
+        const remaining300 = 300 - (totalSeconds5 % 300);
+        return remaining300 === 0 ? 300 : remaining300;
+        
+      default:
+        return intervalSeconds;
     }
-    
-    // Use exact timestamp calculation like the original site
-    const now = Date.now();
-    const endTime = currentPeriod.endTime;
-    
-    // Calculate remaining time in milliseconds, then convert to seconds
-    const remainingMs = endTime - now;
-    const baseCountdown = Math.ceil(remainingMs / 1000);
-    
-    // The original site adds buffer time for result processing
-    // Add approximately 164 seconds buffer to match original site timing
-    const bufferTime = 164;
-    const countdown = baseCountdown + bufferTime;
-    
-    // Return countdown, minimum 1 second
-    return Math.max(1, countdown);
   }
 
   async generatePrediction(variant: string): Promise<WingoPrediction | null> {
@@ -215,8 +225,8 @@ class WingoService {
       const prediction = this.analyzeTrend(results);
       const config = WINGO_VARIANTS[variant];
       
-      // Use real countdown based on API endTime
-      const countdown = this.calculateRealCountdown(currentPeriod);
+      // Use fixed countdown based on timer loops
+      const countdown = this.calculateFixedCountdown(config.intervalSeconds);
       
       // Generate period ID based on current time and interval
       const now = new Date();
@@ -238,7 +248,7 @@ class WingoService {
   // Mock prediction for development when API is not available
   generateMockPrediction(variant: string): WingoPrediction {
     const config = WINGO_VARIANTS[variant];
-    const countdown = this.calculateRealCountdown(null);
+    const countdown = this.calculateFixedCountdown(config.intervalSeconds);
     
     const now = new Date();
     const istTime = new Date(now.getTime() + (5.5 * 60 * 60 * 1000));
@@ -250,6 +260,66 @@ class WingoService {
       confidence: 85 + Math.floor(Math.random() * 10),
       countdown
     };
+  }
+
+  // Background scheduler methods
+  private async runBackgroundPredictions(): Promise<void> {
+    console.log('🔄 Running background predictions for all variants...');
+    
+    // Generate predictions for all variants simultaneously
+    const variants = Object.keys(WINGO_VARIANTS);
+    const promises = variants.map(async (variant) => {
+      try {
+        const prediction = await this.generatePrediction(variant);
+        if (prediction) {
+          this.predictionCache.set(variant, prediction);
+          console.log(`✅ Updated ${variant} prediction: ${prediction.prediction} (${prediction.countdown}s)`);
+        }
+      } catch (error) {
+        console.error(`❌ Failed to update ${variant} prediction:`, error);
+      }
+    });
+    
+    await Promise.all(promises);
+  }
+
+  // Get cached prediction or generate new one
+  async getCachedPrediction(variant: string): Promise<WingoPrediction | null> {
+    // Return cached prediction if available
+    if (this.predictionCache.has(variant)) {
+      const cached = this.predictionCache.get(variant)!;
+      // Update countdown in real-time
+      const config = WINGO_VARIANTS[variant];
+      cached.countdown = this.calculateFixedCountdown(config.intervalSeconds);
+      return cached;
+    }
+    
+    // Generate new prediction if not cached
+    return await this.generatePrediction(variant);
+  }
+
+  // Start background scheduler at 5:30 PM
+  startBackgroundScheduler(): void {
+    console.log('🚀 Starting background prediction scheduler...');
+    
+    // Run predictions immediately
+    this.runBackgroundPredictions();
+    
+    // Set up interval to run every minute (60000ms)
+    this.backgroundScheduler = setInterval(() => {
+      this.runBackgroundPredictions();
+    }, 60000);
+    
+    console.log('⏰ Background scheduler started - predictions will run every minute');
+  }
+
+  // Stop background scheduler
+  stopBackgroundScheduler(): void {
+    if (this.backgroundScheduler) {
+      clearInterval(this.backgroundScheduler);
+      this.backgroundScheduler = null;
+      console.log('⏹️ Background scheduler stopped');
+    }
   }
 }
 
