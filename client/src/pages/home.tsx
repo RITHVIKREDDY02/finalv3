@@ -503,7 +503,7 @@ export default function Home() {
         href="https://t.me/tashanwinvi" 
         target="_blank" 
         rel="noopener noreferrer"
-        className="fixed bottom-6 right-6 w-14 h-14 bg-blue-500 hover:bg-blue-600 rounded-full flex items-center justify-center shadow-lg transition-all duration-300 z-50 hover:scale-110"
+        className="fixed bottom-20 right-6 w-14 h-14 bg-blue-500 hover:bg-blue-600 rounded-full flex items-center justify-center shadow-lg transition-all duration-300 z-50 hover:scale-110"
       >
         <FaTelegram className="text-white text-2xl" />
       </a>
