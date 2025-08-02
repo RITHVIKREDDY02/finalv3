@@ -111,8 +111,7 @@ export default function Wingo1Min() {
     <div className="min-h-screen" style={{ backgroundColor: '#231C21' }}>
       {/* Header */}
       <div 
-        className="py-4 border-b border-gray-700 flex items-center justify-between" 
-        style={{ paddingLeft: 'max(24px, 6vw)', paddingRight: 'max(24px, 6vw)' }}
+        className="py-4 border-b border-gray-700 flex items-center justify-between px-4"
       >
         <button
           onClick={() => navigate('/')}
@@ -137,8 +136,8 @@ export default function Wingo1Min() {
 
       {/* Main Content */}
       <div 
-        className="space-y-4 max-w-sm mx-auto" 
-        style={{ padding: 'max(24px, 6vw)' }}
+        className="space-y-4 mx-4" 
+        style={{ maxWidth: '320px', margin: '0 auto' }}
       >
         {/* Current Prediction Card */}
         <Card className="bg-gradient-to-br from-gray-800 to-gray-900 border-2" style={{ borderColor: '#FED358' }}>
