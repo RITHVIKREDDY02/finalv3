@@ -177,6 +177,34 @@ export default function Wingo() {
             </div>
           </div>
 
+          {/* VIP Prediction Section */}
+          <div className="mt-4">
+            <div className="flex items-center gap-3 mb-3">
+              <div className="w-1 h-6 bg-yellow-400 rounded-full"></div>
+              <h3 className="text-white font-bold text-lg">VIP Prediction</h3>
+            </div>
+            
+            {/* Prediction Model */}
+            <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-4 mb-6">
+              <div className="flex justify-between items-center">
+                <div className="text-center">
+                  <div className="text-white/70 text-sm mb-2">Color</div>
+                  <div className={`w-12 h-12 rounded-lg mx-auto ${prediction?.prediction === 'BIG' ? 'bg-green-500' : 'bg-red-500'}`}></div>
+                </div>
+                <div className="text-center">
+                  <div className="text-white/70 text-sm mb-2">Size</div>
+                  <div className="text-white font-bold text-xl">
+                    {prediction?.prediction || "BIG"}
+                  </div>
+                </div>
+                <div className="text-center">
+                  <div className="text-white/70 text-sm mb-2">Number</div>
+                  <div className="text-white font-bold text-xl">7</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
           {/* Game History Section */}
           <div className="mt-4">
             <div className="flex items-center gap-3 mb-3">
