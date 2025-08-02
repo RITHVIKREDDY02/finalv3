@@ -109,36 +109,34 @@ export default function Wingo30Sec() {
 
 
   return (
-    <div className="min-h-screen" style={{ backgroundColor: '#231C21' }}>
-      {/* Header */}
-      <div 
-        className="py-4 border-b border-gray-700 flex items-center justify-between px-4"
-      >
-        <button
-          onClick={() => navigate('/')}
-          className="flex items-center gap-2 text-white hover:text-yellow-400 transition-colors"
+    <div className="min-h-screen p-4" style={{ backgroundColor: '#1a1318' }}>
+      <div style={{ maxWidth: '300px', margin: '0 auto', backgroundColor: '#231C21', borderRadius: '8px', overflow: 'hidden' }}>
+        {/* Header */}
+        <div 
+          className="py-4 border-b border-gray-700 flex items-center justify-between px-4"
         >
-          <ArrowLeft className="w-5 h-5" />
-          <span>Back</span>
-        </button>
-        <h1 className="text-xl font-bold text-white">Wingo 30Sec</h1>
-        <button
-          onClick={() => {
-            queryClient.invalidateQueries({ queryKey: ['/api/wingo/prediction/30sec'] });
-            queryClient.invalidateQueries({ queryKey: ['/api/wingo/results/30sec'] });
-          }}
-          className="flex items-center justify-center w-10 h-10 text-white hover:text-yellow-400 transition-colors rounded-lg hover:bg-gray-700"
-          title="Refresh"
-        >
-          <RefreshCw className="w-5 h-5" />
-        </button>
-      </div>
+          <button
+            onClick={() => navigate('/')}
+            className="flex items-center gap-2 text-white hover:text-yellow-400 transition-colors"
+          >
+            <ArrowLeft className="w-5 h-5" />
+            <span>Back</span>
+          </button>
+          <h1 className="text-xl font-bold text-white">Wingo 30Sec</h1>
+          <button
+            onClick={() => {
+              queryClient.invalidateQueries({ queryKey: ['/api/wingo/prediction/30sec'] });
+              queryClient.invalidateQueries({ queryKey: ['/api/wingo/results/30sec'] });
+            }}
+            className="flex items-center justify-center w-10 h-10 text-white hover:text-yellow-400 transition-colors rounded-lg hover:bg-gray-700"
+            title="Refresh"
+          >
+            <RefreshCw className="w-5 h-5" />
+          </button>
+        </div>
 
-      {/* Main Content */}
-      <div 
-        className="space-y-4 mx-4" 
-        style={{ maxWidth: '320px', margin: '0 auto' }}
-      >
+        {/* Main Content */}
+        <div className="space-y-4 p-4">
         {/* Current Prediction Card */}
         <Card className="bg-gradient-to-br from-gray-800 to-gray-900 border-2" style={{ borderColor: '#FED358' }}>
           <div className="p-4 text-center space-y-4">
@@ -261,6 +259,7 @@ export default function Wingo30Sec() {
             </div>
           </div>
         </Card>
+        </div>
       </div>
     </div>
   );
