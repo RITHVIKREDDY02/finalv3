@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { useQuery } from "@tanstack/react-query";
 import { ArrowLeft, Play, Trophy, Clock, TrendingUp, Eye } from "lucide-react";
 import { useLocation } from "wouter";
+import wingoIssueImage from "@assets/wingoissue-2e0f92ab_1754126687302.webp";
 
 type WingoVariant = "30sec" | "1min" | "3min" | "5min";
 
@@ -154,7 +155,7 @@ export default function Wingo() {
             {/* Content Card */}
             <div className="relative">
               <img 
-                src="/attached_assets/wingoissue-2e0f92ab_1754126687302.webp" 
+                src={wingoIssueImage}
                 alt="Wingo Issue Background"
                 className="w-full h-auto"
                 style={{ 
