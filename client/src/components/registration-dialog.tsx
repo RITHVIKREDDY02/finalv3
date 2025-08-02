@@ -91,11 +91,11 @@ export default function RegistrationDialog({ isOpen, onClose, onRegistrationSucc
               className="h-12 w-auto object-contain"
             />
           </div>
-          <div>
-            <DialogTitle className="text-xl font-bold text-black">
+          <div className="text-center">
+            <DialogTitle className="text-xl font-bold text-black text-center">
               TASHAN WIN VIP PREDICTION
             </DialogTitle>
-            <DialogDescription className="mt-2 text-black">
+            <DialogDescription className="mt-2 text-black text-center">
               🚀 Important Instructions
             </DialogDescription>
           </div>
