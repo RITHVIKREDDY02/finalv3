@@ -80,10 +80,10 @@ export default function Wingo() {
   };
 
   const variants = [
-    { key: "30sec" as WingoVariant, label: "WinGo", sublabel: "30sec", active: true },
-    { key: "1min" as WingoVariant, label: "WinGo 1", sublabel: "Min", active: false },
-    { key: "3min" as WingoVariant, label: "WinGo 3", sublabel: "Min", active: false },
-    { key: "5min" as WingoVariant, label: "WinGo 5", sublabel: "Min", active: false }
+    { key: "30sec" as WingoVariant, label: "Wingo", sublabel: "30Sec" },
+    { key: "1min" as WingoVariant, label: "Wingo", sublabel: "1Min" },
+    { key: "3min" as WingoVariant, label: "Wingo", sublabel: "3Min" },
+    { key: "5min" as WingoVariant, label: "Wingo", sublabel: "5Min" }
   ];
 
   return (
@@ -143,7 +143,9 @@ export default function Wingo() {
             {/* Game Info */}
             <div>
               <h2 className="text-xl font-bold mb-2">
-                WinGo {selectedVariant === "30sec" ? "30sec" : selectedVariant === "1min" ? "1 Min" : selectedVariant === "3min" ? "3 Min" : "5 Min"}
+                {selectedVariant === "30sec" ? "Wingo 30Sec" : 
+                 selectedVariant === "1min" ? "Wingo 1Min" : 
+                 selectedVariant === "3min" ? "Wingo 3Min" : "Wingo 5Min"}
               </h2>
               
               {/* Recent Results */}
