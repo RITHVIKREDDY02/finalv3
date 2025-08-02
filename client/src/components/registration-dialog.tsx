@@ -86,7 +86,7 @@ export default function RegistrationDialog({ isOpen, onClose, onRegistrationSucc
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="sm:max-w-md mx-4 my-4 w-[calc(100%-2rem)]" style={{ backgroundColor: '#FED358', color: 'black' }}>
+      <DialogContent className="sm:max-w-md mx-auto my-4 w-[calc(100%-2rem)] rounded-xl" style={{ backgroundColor: '#FED358', color: 'black' }}>
         <DialogHeader className="text-center space-y-4">
           <div className="text-center">
             <DialogTitle className="text-xl font-bold text-black text-center">
