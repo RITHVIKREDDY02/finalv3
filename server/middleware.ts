@@ -18,17 +18,18 @@ export const createRateLimitMiddleware = (maxRequests: number = 10, windowMs: nu
   };
 };
 
-// Compression middleware for API responses
+// Disabled compression middleware to fix admin panel content decoding errors
 export const compressionMiddleware = (req: express.Request, res: express.Response, next: express.NextFunction) => {
+  // Skip compression for admin endpoints to avoid ERR_CONTENT_DECODING_FAILED
+  if (req.path.startsWith('/api/admin')) {
+    return next();
+  }
+  
   const originalSend = res.send;
   
   res.send = function(data) {
-    // Add compression headers for JSON responses
-    if (typeof data === 'object' || (typeof data === 'string' && data.startsWith('{'))) {
-      res.setHeader('Content-Encoding', 'deflate');
-      res.setHeader('Vary', 'Accept-Encoding');
-    }
-    
+    // Remove compression headers - they were causing browser decode errors
+    // The server wasn't actually compressing, just setting headers
     return originalSend.call(this, data);
   };
   

@@ -4,6 +4,7 @@
 A dynamic prediction/lottery gaming platform with user registration and approval system. Users must register with their UID and get admin approval before accessing VIP prediction features.
 
 ## Recent Changes
+- **2025-08-03**: **CORS FIX**: Added CORS headers to resolve admin panel "Failed to fetch" errors and content decoding issues
 - **2025-08-03**: **CLEAN PRODUCTION BUILD**: Removed Replit development script from HTML files for clean production deployment
 - **2025-08-03**: **MAJOR VPS DEPLOYMENT SUCCESS**: Resolved blank screen issue and successfully deployed to production VPS
 - **2025-08-03**: **PRODUCTION DEPLOYMENT**: Fixed Express static file serving configuration for proper production mode operation
