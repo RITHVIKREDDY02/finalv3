@@ -120,6 +120,25 @@ export default function Home() {
     setShowRegisterDialog(true);
   };
 
+  const handleVipClick = () => {
+    console.log('VIP clicked');
+    // Check if user has registered UID and is approved
+    const storedUid = localStorage.getItem("tashan_user_uid");
+    if (storedUid && userStatus?.approved) {
+      // User is approved, show VIP prediction dialog
+      setShowVipPredictionDialog(true);
+    } else {
+      // User is not approved or not registered, show registration dialog
+      setShowRegisterDialog(true);
+    }
+  };
+
+  const handleJoinVipClick = () => {
+    console.log('Join VIP clicked');
+    // Show registration dialog for JOIN VIP buttons
+    setShowRegisterDialog(true);
+  };
+
   const handleCloseDialogs = () => {
     setShowRegisterDialog(false);
     setShowVipPredictionDialog(false);
@@ -163,7 +182,7 @@ export default function Home() {
               <button 
                 className="px-3 py-1.5 rounded-full text-black font-bold text-xs transition-opacity duration-200 hover:opacity-90"
                 style={{ backgroundColor: '#FFB472' }}
-                onClick={() => console.log('Join VIP clicked')}
+                onClick={handleJoinVipClick}
               >
                 JOIN VIP
               </button>
@@ -183,7 +202,7 @@ export default function Home() {
               <button 
                 className="px-4 py-2 rounded-full text-black font-bold text-sm transition-opacity duration-200 hover:opacity-90"
                 style={{ backgroundColor: '#FFB472' }}
-                onClick={() => console.log('Join VIP clicked')}
+                onClick={handleJoinVipClick}
               >
                 JOIN VIP
               </button>
@@ -265,7 +284,7 @@ export default function Home() {
             {/* VIP Button */}
             <button 
               className="flex-1 md:flex-none md:w-32 lg:w-36 px-4 sm:px-6 md:px-8 py-2 custom-button font-bold rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 text-sm sm:text-base"
-              onClick={() => console.log('VIP clicked')}
+              onClick={handleVipClick}
             >
               VIP
             </button>
