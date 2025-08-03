@@ -10,15 +10,26 @@ export function useFastUserStatus(uid: string, enabled: boolean = true) {
   return useQuery<FastUserStatus>({
     queryKey: [`/api/user/${uid}/status`],
     queryFn: async () => {
-      const response = await fetch(`/api/user/${uid}/status`);
-      return response.json();
+      try {
+        const response = await fetch(`/api/user/${uid}/status`);
+        if (!response.ok) {
+          // Return default values for failed requests instead of throwing
+          return { approved: false, registered: false };
+        }
+        const data = await response.json();
+        return data;
+      } catch (error) {
+        console.warn(`Fast user status check failed for ${uid}:`, error);
+        // Return safe defaults instead of throwing
+        return { approved: false, registered: false };
+      }
     },
-    enabled: !!uid && enabled,
-    staleTime: 500, // Data fresh for 0.5 seconds
-    gcTime: 5000, // Cache for 5 seconds
-    refetchInterval: enabled ? 1000 : false, // Check every second when enabled
-    retry: 1, // Only retry once on failure
-    refetchOnWindowFocus: true, // Refetch when window gains focus
+    enabled: !!uid && enabled && uid.trim().length > 0,
+    staleTime: 1000, // Data fresh for 1 second
+    gcTime: 10000, // Cache for 10 seconds
+    refetchInterval: enabled ? 2000 : false, // Check every 2 seconds when enabled
+    retry: false, // Don't retry failed requests to prevent error loops
+    refetchOnWindowFocus: false, // Disable to prevent excessive requests
   });
 }
 

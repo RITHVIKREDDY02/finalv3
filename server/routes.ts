@@ -92,7 +92,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
-  // Fast user approval check - optimized endpoint
+  // Fast user approval check - optimized with caching
   app.get("/api/user/:uid/status", async (req, res) => {
     try {
       const { uid } = req.params;
@@ -101,7 +101,11 @@ export async function registerRoutes(app: Express): Promise<Server> {
         return res.json({ approved: false, registered: false });
       }
       
-      const user = await storage.getUserByUid(uid);
+      // Use memoized lookup for better performance
+      const user = await memoizedUserLookup(uid, (uid: string) => storage.getUserByUid(uid));
+      
+      // Cache successful responses for 5 seconds
+      res.setHeader('Cache-Control', 'public, max-age=5');
       res.json({ 
         approved: user?.approved || false,
         registered: !!user
