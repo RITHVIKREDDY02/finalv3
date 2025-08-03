@@ -88,6 +88,6 @@ The system leverages an in-memory storage approach for lightweight operation and
 - User registration: `{"id":"sezkuuqvllkmdvep3ir","uid":"8998555","approved":false}` 
 - Admin login: `{"success":true,"token":"7on2i72o80jmdvep9ow","message":"Login successful"}`
 - Server status: Online and stable on port 5009
-- Admin password: **admin123**
+- Admin password: **Samara@tashan**
 
 **Current Status**: Platform fully functional with user registration, admin management, and all prediction features operational on production VPS.
