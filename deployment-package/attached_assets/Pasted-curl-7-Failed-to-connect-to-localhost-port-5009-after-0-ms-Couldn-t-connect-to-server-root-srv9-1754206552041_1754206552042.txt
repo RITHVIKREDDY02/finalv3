@@ -1,0 +1,55 @@
+curl: (7) Failed to connect to localhost port 5009 after 0 ms: Couldn't connect to server
+root@srv912867:/var/www/tashan-win-vip/Final# cd /var/www/tashan-win-vip/Final
+
+# Since the dist directory wasn't copied, let's build it directly on VPS
+npm install --production
+npm run build
+
+# Verify the dist directory was created
+ls -la dist/
+
+# Create the logs directory
+mkdir -p logs
+
+# Now start with the corrected ecosystem config
+export NODE_ENV=production
+export PORT=5009
+pm2 start ecosystem.config.cjs --env production
+
+# Check status and logs
+pm2 status
+pm2 logs tashan-win-vip --lines 10
+
+# Test the server
+curl http://localhost:5009/api/games
+curl http://localhost:5009/api/test
+npm warn config production Use `--omit=dev` instead.
+
+up to date, audited 391 packages in 2s
+
+55 packages are looking for funding
+  run `npm fund` for details
+
+3 low severity vulnerabilities
+
+To address all issues, run:
+  npm audit fix
+
+Run `npm audit` for details.
+
+> rest-express@1.0.0 build
+> vite build && esbuild server/index.ts --platform=node --packages=external --bundle --format=esm --outdir=dist
+
+sh: 1: vite: not found
+ls: cannot access 'dist/': No such file or directory
+[PM2][WARN] Applications tashan-win-vip not running, starting...
+[PM2][ERROR] Error: Script not found: /var/www/tashan-win-vip/Final/dist/index.js
+┌────┬────────────────────┬─────────────┬─────────┬─────────┬──────────┬────────┬──────┬───────────┬──────────┬──────────┬──────────┬──────────┐
+│ id │ name               │ namespace   │ version │ mode    │ pid      │ uptime │ ↺    │ status    │ cpu      │ mem      │ user     │ watching │
+├────┼────────────────────┼─────────────┼─────────┼─────────┼──────────┼────────┼──────┼───────────┼──────────┼──────────┼──────────┼──────────┤
+│ 3  │ mantrigame         │ default     │ 1.0.0   │ cluster │ 2537     │ 57m    │ 0    │ online    │ 0%       │ 103.5mb  │ root     │ disabled │
+│ 0  │ tc-lottery-app1    │ default     │ 1.0.0   │ fork    │ 2529     │ 57m    │ 0    │ online    │ 0%       │ 97.4mb   │ root     │ disabled │
+│ 1  │ tc-lottery-app2    │ default     │ 1.0.0   │ fork    │ 2530     │ 57m    │ 0    │ online    │ 0%       │ 85.5mb   │ root     │ disabled │
+│ 2  │ tc-lottery-app3    │ default     │ 1.0.0   │ fork    │ 2539     │ 57m    │ 0    │ online    │ 0%       │ 86.8mb   │ root     │ disabled │
+└────┴────────────────────┴─────────────┴─────────┴─────────┴──────────┴────────┴──────┴───────────┴──────────┴──────────┴──────────┴──────────┘
+[TAILING] Tailing last 10 lines for [tashan-win-vip] process (change the value with --lines option)
