@@ -1,0 +1,324 @@
+ Host localhost:5009 was resolved.
+* IPv6: ::1
+* IPv4: 127.0.0.1
+*   Trying [::1]:5009...
+* connect to ::1 port 5009 from ::1 port 45728 failed: Connection refused
+*   Trying 127.0.0.1:5009...
+* connect to 127.0.0.1 port 5009 from 127.0.0.1 port 34474 failed: Connection refused
+* Failed to connect to localhost port 5009 after 1 ms: Couldn't connect to server
+* Closing connection
+curl: (7) Failed to connect to localhost port 5009 after 1 ms: Couldn't connect to server
+curl: (7) Failed to connect to localhost port 5009 after 0 ms: Couldn't connect to server
+root@srv912867:/var/www/tashan-win-vip/Final# [200~cd /var/www
+localhost:5009/api/admin/login \
+  -H "Content-Type: application/json" \
+  -d '{"password": "Samara@tashan"}' \
+  -v^[[201~[200~cd: command not found
+root@srv912867:/var/www/tashan-win-vip/Final# unzip -o tashan-win-vip-production.zip
+Archive:  tashan-win-vip-production.zip
+  inflating: client/src/hooks/use-mobile.tsx
+  inflating: client/src/hooks/use-toast.ts
+  inflating: client/src/hooks/use-fast-user-status.ts
+  inflating: client/src/components/ui/dialog.tsx
+  inflating: client/src/components/ui/resizable.tsx
+  inflating: client/src/components/ui/breadcrumb.tsx
+  inflating: client/src/components/ui/separator.tsx
+  inflating: client/src/components/ui/popover.tsx
+  inflating: client/src/components/ui/toast.tsx
+  inflating: client/src/components/ui/textarea.tsx
+  inflating: client/src/components/ui/calendar.tsx
+  inflating: client/src/components/ui/button.tsx
+  inflating: client/src/components/ui/avatar.tsx
+  inflating: client/src/components/ui/drawer.tsx
+  inflating: client/src/components/ui/skeleton.tsx
+  inflating: client/src/components/ui/slider.tsx
+  inflating: client/src/components/ui/form.tsx
+  inflating: client/src/components/ui/radio-group.tsx
+  inflating: client/src/components/ui/toggle.tsx
+  inflating: client/src/components/ui/input.tsx
+  inflating: client/src/components/ui/sidebar.tsx
+  inflating: client/src/components/ui/checkbox.tsx
+  inflating: client/src/components/ui/carousel.tsx
+  inflating: client/src/components/ui/card.tsx
+  inflating: client/src/components/ui/badge.tsx
+  inflating: client/src/components/ui/chart.tsx
+  inflating: client/src/components/ui/menubar.tsx
+  inflating: client/src/components/ui/tabs.tsx
+  inflating: client/src/components/ui/switch.tsx
+  inflating: client/src/components/ui/dropdown-menu.tsx
+  inflating: client/src/components/ui/context-menu.tsx
+  inflating: client/src/components/ui/command.tsx
+  inflating: client/src/components/ui/input-otp.tsx
+  inflating: client/src/components/ui/accordion.tsx
+  inflating: client/src/components/ui/sheet.tsx
+  inflating: client/src/components/ui/hover-card.tsx
+  inflating: client/src/components/ui/collapsible.tsx
+  inflating: client/src/components/ui/table.tsx
+  inflating: client/src/components/ui/scroll-area.tsx
+  inflating: client/src/components/ui/toaster.tsx
+  inflating: client/src/components/ui/alert.tsx
+  inflating: client/src/components/ui/select.tsx
+  inflating: client/src/components/ui/toggle-group.tsx
+  inflating: client/src/components/ui/label.tsx
+  inflating: client/src/components/ui/alert-dialog.tsx
+  inflating: client/src/components/ui/progress.tsx
+  inflating: client/src/components/ui/tooltip.tsx
+  inflating: client/src/components/ui/pagination.tsx
+  inflating: client/src/components/ui/aspect-ratio.tsx
+  inflating: client/src/components/ui/navigation-menu.tsx
+  inflating: client/src/components/coming-soon-dialog.tsx
+  inflating: client/src/components/image-border-remover.tsx
+  inflating: client/src/components/attached-image-processor.tsx
+  inflating: client/src/components/registration-dialog.tsx
+  inflating: client/src/components/vip-prediction-dialog.tsx
+  inflating: client/src/lib/utils.ts
+  inflating: client/src/lib/queryClient.ts
+  inflating: client/src/main.tsx
+  inflating: client/src/pages/not-found.tsx
+  inflating: client/src/pages/wingo-old.tsx
+  inflating: client/src/pages/wingo.tsx
+  inflating: client/src/pages/wingo-30sec.tsx
+  inflating: client/src/pages/wingo-1min.tsx
+  inflating: client/src/pages/wingo-3min.tsx
+  inflating: client/src/pages/wingo-5min.tsx
+  inflating: client/src/pages/admin.tsx
+  inflating: client/src/pages/admin-new.tsx
+  inflating: client/src/pages/image-tools.tsx
+  inflating: client/src/pages/trx-wingo-1min.tsx
+  inflating: client/src/pages/trx-wingo-3min.tsx
+  inflating: client/src/pages/trx-wingo-5min.tsx
+  inflating: client/src/pages/trx-wingo-10min.tsx
+  inflating: client/src/pages/trx-wingo.tsx
+  inflating: client/src/pages/home.tsx
+  inflating: client/src/index.css
+  inflating: client/src/App.tsx
+  inflating: client/public/favicon.png
+  inflating: client/index.html
+  inflating: server/vite.ts
+  inflating: server/db.ts
+  inflating: server/wingo-service-old.ts
+  inflating: server/index-memory.ts
+  inflating: server/index.ts
+  inflating: server/db-optional.ts
+  inflating: server/storage.ts
+  inflating: server/wingo-service.ts
+  inflating: server/performance-optimizations.ts
+  inflating: server/trxwingo-service.ts
+  inflating: server/middleware.ts
+  inflating: server/routes.ts
+  inflating: shared/schema.ts
+  inflating: attached_assets/TASHAN WIN LOGO_1754052537792.png
+  inflating: attached_assets/lotterycategory_20250412120719dqfv_1754052547793.png
+  inflating: attached_assets/lotterycategory_20250412120818j8wq_1754052552269.png
+  inflating: attached_assets/image_1754061889102.png
+  inflating: attached_assets/image_1754061960607.png
+  inflating: attached_assets/image_1754062064302.png
+  inflating: attached_assets/image_1754062667898.png
+  inflating: attached_assets/image_1754063395142.png
+  inflating: attached_assets/image_1754063474236.png
+  inflating: attached_assets/image_1754063743836.png
+  inflating: attached_assets/image_1754068296555.png
+  inflating: attached_assets/image_1754068468459.png
+  inflating: attached_assets/image_1754068558636.png
+  inflating: attached_assets/lotterycategory_202504301620101442_1754069351568.png
+  inflating: attached_assets/lotterycategory_2025041212074073ug_1754069351570.png
+  inflating: attached_assets/c57f5149-2139-410f-8d48-94a06fcb36f2_1754069356497.png
+ extracting: attached_assets/image_1754069480865.png
+ extracting: attached_assets/Lottery-9123e8d2_1754069546644.webp
+ extracting: attached_assets/image_1754069883391.png
+  inflating: attached_assets/image_1754070213873.png
+ extracting: attached_assets/MiniGame-a7def346_1754070684724.webp
+ extracting: attached_assets/811_1754070860593.png
+  inflating: attached_assets/229 (1)_1754070860598.png
+ extracting: attached_assets/100_1754070860600.png
+ extracting: attached_assets/800_1754070860600.png
+  inflating: attached_assets/image_1754070993528.png
+  inflating: attached_assets/235_1754071157602.png
+  inflating: attached_assets/image_1754071235762.png
+  inflating: attached_assets/image_1754071540517.png
+  inflating: attached_assets/lotterycategory_2025041212080195lo_1754071877451.png
+  inflating: attached_assets/image_1754073005821.png
+  inflating: attached_assets/image_1754073355984.png
+  inflating: attached_assets/image_1754073496441.png
+  inflating: attached_assets/image_1754074261882.png
+  inflating: attached_assets/image_1754074379569.png
+  inflating: attached_assets/image_1754074480477.png
+  inflating: attached_assets/Black and Yellow Modern Make Money YouTube Thumbnail (1200 x 400 px)_1754076764967.png
+  inflating: attached_assets/Black and Yellow Modern Make Money YouTube Thumbnail (1200 x 400 px) (320 x 100 px)_1754077052209.png
+  inflating: attached_assets/Pasted-data-image-png-base64-iVBORw0KGgoAAAANSUhEUgAABAUAAAIzCAIAAAD3aDepAAAABmJLR0QA-wD-AP-gvaeTAAAgAElEQV-1754077792059_1754077792071.txt
+  inflating: attached_assets/Hero Banner Desktop_1754077809625.jpg
+  inflating: attached_assets/Hero Banner (1440 x 300 px)_1754078513162.jpg
+  inflating: attached_assets/Black and Yellow Modern Make Money YouTube Thumbnail (1200 x 400 px)_1754078675891.jpg
+  inflating: attached_assets/mobile hero banner_1754079113835.jpg
+  inflating: attached_assets/image_1754080528856.png
+  inflating: attached_assets/image_1754112749968.png
+  inflating: attached_assets/image_1754115917218.png
+  inflating: attached_assets/image_1754116018514.png
+  inflating: attached_assets/image_1754116218310.png
+  inflating: attached_assets/image_1754116326273.png
+  inflating: attached_assets/image_1754116598791.png
+  inflating: attached_assets/image_1754116738301.png
+  inflating: attached_assets/image_1754116838154.png
+  inflating: attached_assets/image_1754118035290.png
+  inflating: attached_assets/image_1754118638191.png
+  inflating: attached_assets/image_1754118949390.png
+  inflating: attached_assets/image_1754119068863.png
+  inflating: attached_assets/image_1754119386655.png
+  inflating: attached_assets/image_1754119642900.png
+ extracting: attached_assets/image_1754119753660.png
+  inflating: attached_assets/image_1754121867369.png
+  inflating: attached_assets/Pasted-import-json-import-time-import-asyncio-import-aiohttp-import-random-import-hashlib-from-teleth-1754122271510_1754122271512.txt
+  inflating: attached_assets/image_1754123137802.png
+  inflating: attached_assets/image_1754123492936.png
+  inflating: attached_assets/image_1754124064158.png
+  inflating: attached_assets/image_1754124280477.png
+  inflating: attached_assets/image_1754124355307.png
+  inflating: attached_assets/image_1754124384964.png
+ extracting: attached_assets/wingoissue-2e0f92ab_1754125096303.webp
+  inflating: attached_assets/image_1754125208963.png
+ extracting: attached_assets/time_a-9e03e53f_1754125227380.webp
+  inflating: attached_assets/image_1754125374568.png
+  inflating: attached_assets/image_1754125545623.png
+  inflating: attached_assets/image_1754125613848.png
+  inflating: attached_assets/image_1754125829971.png
+ extracting: attached_assets/wingoissue-2e0f92ab_1754126581128.webp
+ extracting: attached_assets/wingoissue-2e0f92ab_1754126687302.webp
+  inflating: attached_assets/image_1754126765132.png
+  inflating: attached_assets/image_1754126856506.png
+  inflating: attached_assets/image_1754127607460.png
+  inflating: attached_assets/image_1754128527892.png
+  inflating: attached_assets/image_1754128744201.png
+  inflating: attached_assets/image_1754131066337.png
+  inflating: attached_assets/Pasted--import-json-import-time-import-asyncio-import-aiohttp-import-random-import-hashlib-from-tele-1754131894983_1754131894985.txt
+  inflating: attached_assets/image_1754134207259.png
+  inflating: attached_assets/image_1754135335357.png
+  inflating: attached_assets/image_1754135512469.png
+  inflating: attached_assets/image_1754138107717.png
+  inflating: attached_assets/image_1754141377793.png
+  inflating: attached_assets/image_1754142715074.png
+  inflating: attached_assets/image_1754143127882.png
+  inflating: attached_assets/image_1754143482426.png
+  inflating: attached_assets/image_1754143486246.png
+  inflating: attached_assets/image_1754143762254.png
+  inflating: attached_assets/image_1754143770400.png
+  inflating: attached_assets/image_1754144537345.png
+  inflating: attached_assets/image_1754145081241.png
+  inflating: attached_assets/image_1754145532187.png
+  inflating: attached_assets/image_1754147583232.png
+  inflating: attached_assets/image_1754147646368.png
+  inflating: attached_assets/image_1754148636208.png
+  inflating: attached_assets/image_1754148757326.png
+  inflating: attached_assets/image_1754149482047.png
+  inflating: attached_assets/image_1754149551503.png
+  inflating: attached_assets/image_1754150470296.png
+  inflating: attached_assets/image_1754150847570.png
+  inflating: attached_assets/image_1754150852695.png
+  inflating: attached_assets/Screenshot 2025-08-02 220225_1754152384208.png
+  inflating: attached_assets/Screenshot 2025-08-02 220234_1754152390853.png
+  inflating: attached_assets/Screenshot 2025-08-02 220243_1754152399399.png
+  inflating: attached_assets/image_1754152419492.png
+  inflating: attached_assets/image_1754152617838.png
+  inflating: attached_assets/image_1754152999936.png
+  inflating: attached_assets/image_1754153194773.png
+  inflating: attached_assets/image_1754153302262.png
+  inflating: attached_assets/image_1754153526282.png
+  inflating: attached_assets/image_1754153666038.png
+  inflating: attached_assets/image_1754154971503.png
+  inflating: attached_assets/image_1754155262046.png
+  inflating: attached_assets/image_1754155315121.png
+ extracting: attached_assets/image_1754155794894.png
+ extracting: attached_assets/image_1754155973447.png
+  inflating: attached_assets/h5setting_20250501162804ytau_1754156061703.png
+  inflating: attached_assets/image_1754156715464.png
+  inflating: attached_assets/image_1754157995801.png
+  inflating: attached_assets/image_1754193498846.png
+  inflating: attached_assets/image_1754193525944.png
+  inflating: attached_assets/image_1754194284604.png
+  inflating: attached_assets/image_1754195420198.png
+  inflating: attached_assets/image_1754196262050.png
+  inflating: package.json
+  inflating: package-lock.json
+  inflating: tsconfig.json
+  inflating: vite.config.ts
+  inflating: tailwind.config.ts
+  inflating: postcss.config.js
+  inflating: components.json
+  inflating: drizzle.config.ts
+  inflating: ecosystem.config.js
+  inflating: deploy-vps.md
+  inflating: PERFORMANCE-SUMMARY.md
+  inflating: DEPLOYMENT-README.md
+  inflating: replit.md
+  inflating: .gitignore
+  inflating: package-production.json
+root@srv912867:/var/www/tashan-win-vip/Final#
+root@srv912867:/var/www/tashan-win-vip/Final# # Update the server with the compression fix
+root@srv912867:/var/www/tashan-win-vip/Final# cp -r deployment-package/server tashan-win-vip/Final/
+cp: cannot stat 'deployment-package/server': No such file or directory
+root@srv912867:/var/www/tashan-win-vip/Final# cp deployment-package/package.json tashan-win-vip/Final/
+cp: cannot stat 'deployment-package/package.json': No such file or directory
+root@srv912867:/var/www/tashan-win-vip/Final#
+root@srv912867:/var/www/tashan-win-vip/Final# # Rebuild and restart
+root@srv912867:/var/www/tashan-win-vip/Final# cd tashan-win-vip/Final
+-bash: cd: tashan-win-vip/Final: No such file or directory
+root@srv912867:/var/www/tashan-win-vip/Final# npm run build
+
+> rest-express@1.0.0 build
+> vite build && esbuild server/index.ts --platform=node --packages=external --bundle --format=esm --outdir=dist
+
+vite v5.4.19 building for production...
+transforming (3) src/main.tsxBrowserslist: browsers data (caniuse-lite) is 10 months old. Please run:
+  npx update-browserslist-db@latest
+  Why you should do it regularly: https://github.com/browserslist/update-db#readme
+✓ 1755 modules transformed.
+../dist/public/index.html                                                                1.53 kB │ gzip:   0.66 kB
+../dist/public/assets/Screenshot 2025-08-02 220243_1754152399399-BPpG-Y8M.png            8.37 kB
+../dist/public/assets/wingoissue-2e0f92ab_1754126687302-DnirYigV.webp                   11.03 kB
+../dist/public/assets/Screenshot 2025-08-02 220225_1754152384208-Dx2scZsH.png           11.13 kB
+../dist/public/assets/811_1754070860593-DsjoKqXR.png                                    17.15 kB
+../dist/public/assets/800_1754070860600-CQb0Dftz.png                                    20.17 kB
+../dist/public/assets/100_1754070860600-BkGjX7kB.png                                    21.08 kB
+../dist/public/assets/lotterycategory_20250412120719dqfv_1754052547793-DvyeHsbk.png     27.42 kB
+../dist/public/assets/lotterycategory_20250412120818j8wq_1754052552269-BXfbP9nl.png     29.65 kB
+../dist/public/assets/lotterycategory_2025041212074073ug_1754069351570-Aymw5y49.png     30.01 kB
+../dist/public/assets/TASHAN WIN LOGO_1754052537792-k2yHYqNz.png                        32.75 kB
+../dist/public/assets/229 (1)_1754070860598-DGS2VWFB.png                                45.32 kB
+../dist/public/assets/235_1754071157602-BgWz6t6B.png                                    46.82 kB
+../dist/public/assets/Screenshot 2025-08-02 220234_1754152390853-BasWLdsN.png           53.26 kB
+../dist/public/assets/c57f5149-2139-410f-8d48-94a06fcb36f2_1754069356497-UOBDz35V.png   71.32 kB
+../dist/public/assets/image_1754150847570-jEFWRT6L.png                                  83.84 kB
+../dist/public/assets/mobile hero banner_1754079113835-C2LlT5nQ.jpg                    138.23 kB
+../dist/public/assets/Hero Banner (1440 x 300 px)_1754078513162-BjZ5XuzD.jpg           283.87 kB
+../dist/public/assets/image_1754150852695-Pr8URuBu.png                                 492.82 kB
+../dist/public/assets/index-D7R5mfZw.css                                                77.49 kB │ gzip:  13.55 kB
+../dist/public/assets/index-CQPgFFEv.js                                                516.29 kB │ gzip: 147.60 kB
+
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+✓ built in 8.83s
+
+  dist/index.js  44.4kb
+
+⚡ Done in 10ms
+root@srv912867:/var/www/tashan-win-vip/Final# pm2 restart tashan-win-vip-new
+Use --update-env to update environment variables
+[PM2] Applying action restartProcessId on app [tashan-win-vip-new](ids: [ 5 ])
+[PM2] [tashan-win-vip-new](5) ✓
+┌────┬───────────────────────┬─────────────┬─────────┬─────────┬──────────┬────────┬──────┬───────────┬──────────┬──────────┬──────────┬──────────┐
+│ id │ name                  │ namespace   │ version │ mode    │ pid      │ uptime │ ↺    │ status    │ cpu      │ mem      │ user     │ watching │
+├────┼───────────────────────┼─────────────┼─────────┼─────────┼──────────┼────────┼──────┼───────────┼──────────┼──────────┼──────────┼──────────┤
+│ 3  │ mantrigame            │ default     │ 1.0.0   │ cluster │ 2537     │ 38m    │ 0    │ online    │ 0%       │ 96.9mb   │ root     │ disabled │
+│ 4  │ tashan-win-vip        │ default     │ 1.0.0   │ fork    │ 0        │ 0      │ 45   │ stopped   │ 0%       │ 0b       │ root     │ disabled │
+│ 5  │ tashan-win-vip-new    │ default     │ 1.0.0   │ fork    │ 4460     │ 0s     │ 2    │ online    │ 0%       │ 18.4mb   │ root     │ disabled │
+│ 0  │ tc-lottery-app1       │ default     │ 1.0.0   │ fork    │ 2529     │ 38m    │ 0    │ online    │ 0%       │ 96.8mb   │ root     │ disabled │
+│ 1  │ tc-lottery-app2       │ default     │ 1.0.0   │ fork    │ 2530     │ 38m    │ 0    │ online    │ 0%       │ 85.3mb   │ root     │ disabled │
+│ 2  │ tc-lottery-app3       │ default     │ 1.0.0   │ fork    │ 2539     │ 38m    │ 0    │ online    │ 0%       │ 87.1mb   │ root     │ disabled │
+└────┴───────────────────────┴─────────────┴─────────┴─────────┴──────────┴────────┴──────┴───────────┴──────────┴──────────┴──────────┴──────────┘
+root@srv912867:/var/www/tashan-win-vip/Final#
+root@srv912867:/var/www/tashan-win-vip/Final# # Test the admin login (should work now without content decoding errors)
+root@srv912867:/var/www/tashan-win-vip/Final# curl -X POST http://localhost:5009/api/admin/login \
+>   -H "Content-Type: application/json" \
+>   -d '{"password": "Samara@tashan"}' \
+>   -v~
