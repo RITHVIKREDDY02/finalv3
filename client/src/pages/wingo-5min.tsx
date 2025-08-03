@@ -109,28 +109,35 @@ export default function Wingo5Min() {
     <div className="min-h-screen p-4" style={{ backgroundColor: '#1a1318' }}>
       <div style={{ maxWidth: '300px', margin: '0 auto', backgroundColor: '#231C21', borderRadius: '8px', overflow: 'hidden' }}>
         {/* Header */}
-        <div 
-          className="py-4 border-b border-gray-700 flex items-center justify-between px-4"
-        >
-          <button
-            onClick={() => navigate('/')}
-            className="flex items-center gap-2 text-white hover:text-yellow-400 transition-colors"
-          >
-            <ArrowLeft className="w-5 h-5" />
-            <span>Back</span>
-          </button>
-          <h1 className="text-xl font-bold text-white">Wingo 5Min</h1>
-          <button
-            onClick={() => {
-              queryClient.invalidateQueries({ queryKey: ['/api/wingo/prediction/5min'] });
-              queryClient.invalidateQueries({ queryKey: ['/api/wingo/results/5min'] });
-              
-            }}
-            className="flex items-center justify-center w-10 h-10 text-white hover:text-yellow-400 transition-colors rounded-lg hover:bg-gray-700"
-            title="Refresh"
-          >
-            <RefreshCw className="w-5 h-5" />
-          </button>
+        <div className="bg-banner-gradient border-b-2 border-accent-gold/30 px-4 py-4">
+          <div className="flex items-center justify-between mb-3">
+            <button
+              onClick={() => navigate('/')}
+              className="flex items-center gap-2 text-white hover:text-yellow-400 transition-colors"
+            >
+              <ArrowLeft className="w-5 h-5" />
+              <span>Back</span>
+            </button>
+            <h1 className="text-xl font-bold light-gold">Wingo 5Min</h1>
+            <button
+              onClick={() => {
+                queryClient.invalidateQueries({ queryKey: ['/api/wingo/prediction/5min'] });
+                queryClient.invalidateQueries({ queryKey: ['/api/wingo/results/5min'] });
+              }}
+              className="flex items-center justify-center w-10 h-10 text-white hover:text-yellow-400 transition-colors rounded-lg hover:bg-white/10"
+              title="Refresh"
+            >
+              <RefreshCw className="w-5 h-5" />
+            </button>
+          </div>
+          
+          {/* Issue Number and Countdown */}
+          <div className="text-center space-y-2">
+            <div className="text-sm warm-gold">Issue Number</div>
+            <div className="text-lg font-bold light-gold">{prediction?.period || "Loading..."}</div>
+            <div className="text-sm warm-gold">Next Round In</div>
+            <div className="text-2xl font-bold text-red-400">{formatTime(countdown)}</div>
+          </div>
         </div>
 
         {/* Main Content */}

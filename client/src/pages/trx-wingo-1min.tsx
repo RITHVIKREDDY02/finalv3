@@ -108,8 +108,8 @@ export default function TrxWingo1Min() {
   return (
     <div className="min-h-screen pb-6" style={{ backgroundColor: '#231C21' }}>
       {/* Header */}
-      <div className="sticky top-0 z-40 bg-banner-gradient border-b-2 border-accent-gold/30 px-4 py-3">
-        <div className="flex items-center justify-between max-w-md mx-auto">
+      <div className="sticky top-0 z-40 bg-banner-gradient border-b-2 border-accent-gold/30 px-4 py-4">
+        <div className="flex items-center justify-between max-w-md mx-auto mb-3">
           <Button
             variant="ghost"
             size="sm"
@@ -129,21 +129,19 @@ export default function TrxWingo1Min() {
             <RefreshCw className="w-4 h-4" />
           </Button>
         </div>
+        
+        {/* Issue Number and Countdown */}
+        <div className="text-center space-y-2 max-w-md mx-auto">
+          <div className="text-xs warm-gold">Issue Number</div>
+          <div className="text-sm font-bold light-gold">{prediction?.period || "Loading..."}</div>
+          <div className="text-xs warm-gold">Next Round In</div>
+          <div className="text-lg font-bold text-red-400">{formatTime(countdown)}</div>
+        </div>
       </div>
 
       {/* Main Content */}
       <div className="px-4 py-4 max-w-md mx-auto space-y-4">
         
-        {/* Current Time & Countdown */}
-        <Card className="bg-banner-gradient border-accent-gold/30 p-3">
-          <div className="text-center space-y-2">
-            <div className="text-xs warm-gold">Current Time (IST)</div>
-            <div className="text-sm font-bold light-gold">{getCurrentISTTime()}</div>
-            <div className="text-xs warm-gold">Next Round in</div>
-            <div className="text-lg font-bold text-red-400">{formatTime(countdown)}</div>
-          </div>
-        </Card>
-
         {/* Current Prediction */}
         {prediction && (
           <Card className="bg-banner-gradient border-2 border-accent-gold p-4">
