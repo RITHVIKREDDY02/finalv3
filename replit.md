@@ -4,6 +4,11 @@
 A dynamic prediction/lottery gaming platform with user registration and approval system. Users must register with their UID and get admin approval before accessing VIP prediction features.
 
 ## Recent Changes
+- **2025-08-03**: **MAJOR VPS DEPLOYMENT SUCCESS**: Resolved blank screen issue and successfully deployed to production VPS
+- **2025-08-03**: **PRODUCTION DEPLOYMENT**: Fixed Express static file serving configuration for proper production mode operation
+- **2025-08-03**: **VPS OPTIMIZATION**: Application now running successfully on VPS server (89.116.121.62:5009) with PM2 process manager
+- **2025-08-03**: **STATIC FILE SERVING**: Resolved development vs production HTML serving issue - now properly serves built assets
+- **2025-08-03**: **ECOSYSTEM CONFIG**: Fixed PM2 ecosystem configuration file format and environment variable issues
 - **2025-08-03**: Fixed "Failed to fetch" authentication errors by creating public game configuration endpoint
 - **2025-08-03**: Resolved TypeScript errors in TrxWingo navigation routing
 - **2025-08-03**: Successfully configured application to run on port 5009 as requested
