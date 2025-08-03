@@ -1,0 +1,97 @@
+
+# Test frontend serving
+echo "=== Testing frontend access ==="
+curl -I http://localhost:5009/admin
+
+# Register another test user
+echo -e "\n=== Testing registration ==="
+curl -X POST http://localhost:5009/api/register -H "Content-Type: application/json" -d '{"uid":"admintest456"}'
+
+# Test admin login and get users
+echo -e "\n=== Testing admin functionality ==="
+ADMIN_TOKEN=$(curl -s -X POST http://localhost:5009/api/admin/login -H "Content-Type: application/json" -d '{"password":"Samara@tashan"}' | grep -o '"token":"[^"]*"' | cut -d'"' -f4)
+echo "Admin token: $ADMIN_TOKEN"
+
+curl -H "Authorization: Bearer $ADMIN_TOKEN" http://localhost:5009/api/admin/users
+
+echo -e "\n=== Current users in system ==="
+echo "Total users registered:"
+=== Testing frontend access ===
+HTTP/1.1 200 OK
+X-Powered-By: Express
+Accept-Ranges: bytes
+Cache-Control: public, max-age=0
+Last-Modified: Sun, 03 Aug 2025 07:39:19 GMT
+ETag: W/"4f7-1986edee858"
+Content-Type: text/html; charset=UTF-8
+Content-Length: 1271
+Date: Sun, 03 Aug 2025 08:29:58 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+
+
+=== Testing registration ===
+{"id":"do07kwvv7zkmdvf7ze4","uid":"admintest456","approved":false,"createdAt":"2025-08-03T08:29:58.636Z"}
+=== Testing admin functionality ===
+Admin token: qkycuspf77mdvf7zej
+[{"id":"sezkuuqvllkmdvep3ir","uid":"8998555","approved":false,"createdAt":"2025-08-03T08:15:17.523Z"},{"id":"syk2ei1691smdvf1gq6","uid":"788455","approved":false,"createdAt":"2025-08-03T08:24:54.510Z"},{"id":"do07kwvv7zkmdvf7ze4","uid":"admintest456","approved":false,"createdAt":"2025-08-03T08:29:58.636Z"}]
+=== Current users in system ===
+Total users registered:
+root@srv912867:/var/www# cd /var/www
+pm2 stop tashan-win-vip
+
+# Create complete server with ALL required admin endpoints
+cat > final-server.js << 'EOF'
+import express from 'express';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+const app = express();
+app.use(express.json());
+app.use(express.static(path.join(__dirname, 'dist/public')));
+
+// In-memory storage with existing users
+const users = new Map();
+const gameConfigs = new Map();
+const adminTokens = new Set();
+
+// Pre-populate existing users
+users.set('8998555', {
+  id: 'sezkuuqvllkmdvep3ir',
+  uid: '8998555',
+  approved: false,
+  createdAt: '2025-08-03T08:15:17.523Z'
+});
+
+users.set('788455', {
+  id: 'syk2ei1691smdvf1gq6',
+  uid: '788455',
+  approved: false,
+  createdAt: '2025-08-03T08:24:54.510Z'
+});
+
+// Initialize games (matching frontend)
+const defaultGames = [
+  { id: 'game_1', gameName: 'Win Go', isEnabled: true },
+  { id: 'game_2', gameName: 'Trx Wingo', isEnabled: true },
+  { id: 'game_3', gameName: 'K3', isEnabled: true },
+curl -H "Authorization: Bearer $TOKEN" http://localhost:5009/api/admin/userspe: application/json" -d '{"password":"Samara@tashan"}' | grep -o '"token":"[^"]
+[PM2] Applying action stopProcessId on app [tashan-win-vip](ids: [ 0 ])
+[PM2] [tashan-win-vip](0) ✓
+┌────┬───────────────────┬─────────────┬─────────┬─────────┬──────────┬────────┬──────┬───────────┬──────────┬──────────┬──────────┬──────────┐
+│ id │ name              │ namespace   │ version │ mode    │ pid      │ uptime │ ↺    │ status    │ cpu      │ mem      │ user     │ watching │
+├────┼───────────────────┼─────────────┼─────────┼─────────┼──────────┼────────┼──────┼───────────┼──────────┼──────────┼──────────┼──────────┤
+│ 0  │ tashan-win-vip    │ default     │ 1.0.0   │ fork    │ 0        │ 0      │ 0    │ stopped   │ 0%       │ 0b       │ root     │ disabled │
+└────┴───────────────────┴─────────────┴─────────┴─────────┴──────────┴────────┴──────┴───────────┴──────────┴──────────┴──────────┴──────────┘
+[PM2] Applying action restartProcessId on app [tashan-win-vip](ids: [ 0 ])
+[PM2] [tashan-win-vip](0) ✓
+[PM2] Process successfully started
+┌────┬───────────────────┬─────────────┬─────────┬─────────┬──────────┬────────┬──────┬───────────┬──────────┬──────────┬──────────┬──────────┐
+│ id │ name              │ namespace   │ version │ mode    │ pid      │ uptime │ ↺    │ status    │ cpu      │ mem      │ user     │ watching │
+├────┼───────────────────┼─────────────┼─────────┼─────────┼──────────┼────────┼──────┼───────────┼──────────┼──────────┼──────────┼──────────┤
+│ 0  │ tashan-win-vip    │ default     │ 1.0.0   │ fork    │ 6504     │ 0s     │ 0    │ online    │ 0%       │ 19.5mb   │ root     │ disabled │
+└────┴───────────────────┴─────────────┴─────────┴─────────┴──────────┴────────┴──────┴───────────┴──────────┴──────────┴──────────┴──────────┘
+[{"id":"sezkuuqvllkmdvep3ir","uid":"8998555","approved":false,"createdAt":"2025-08-03T08:15:17.523Z"},{"id":"syk2ei1691smdvf1gq6","uid":"788455","approved":false,"createdAt":"2025-08-03T08:24:54.510Z"}]root@srv912867:/var/www#

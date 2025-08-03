@@ -1,0 +1,221 @@
+# VPS Debug Server - Add Request Logging
+
+cd /var/www
+pm2 stop tashan-win-vip
+
+cat > debug-server.js << 'EOF'
+import express from 'express';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+const app = express();
+app.use(express.json());
+
+// Debug middleware - LOG ALL REQUESTS
+app.use((req, res, next) => {
+  console.log(`\n📥 ${req.method} ${req.path}`);
+  console.log(`Headers: ${JSON.stringify(req.headers, null, 2)}`);
+  if (req.body && Object.keys(req.body).length > 0) {
+    console.log(`Body: ${JSON.stringify(req.body, null, 2)}`);
+  }
+  next();
+});
+
+app.use(express.static(path.join(__dirname, 'dist/public')));
+
+// Storage with existing users
+const users = new Map();
+const gameConfigs = new Map();
+const adminTokens = new Set();
+
+// Pre-populate users
+users.set('8998555', {
+  id: 'sezkuuqvllkmdvep3ir',
+  uid: '8998555',
+  approved: false,
+  createdAt: '2025-08-03T08:15:17.523Z'
+});
+
+users.set('788455', {
+  id: 'syk2ei1691smdvf1gq6',
+  uid: '788455',
+  approved: false,
+  createdAt: '2025-08-03T08:24:54.510Z'
+});
+
+// Games
+const defaultGames = [
+  { id: 'game_1', gameName: 'Win Go', isEnabled: true },
+  { id: 'game_2', gameName: 'Trx Wingo', isEnabled: true },
+  { id: 'game_3', gameName: 'K3', isEnabled: true },
+  { id: 'game_4', gameName: 'Moto Racing', isEnabled: true },
+  { id: 'game_5', gameName: 'Mines Pro', isEnabled: true }
+];
+
+defaultGames.forEach(game => {
+  gameConfigs.set(game.gameName, game);
+});
+
+function generateId() {
+  return Math.random().toString(36).substring(2) + Date.now().toString(36);
+}
+
+// User registration
+app.post('/api/register', (req, res) => {
+  console.log('🔹 USER REGISTRATION');
+  try {
+    const { uid } = req.body;
+    if (!uid) return res.status(400).json({ error: 'UID is required' });
+    
+    if (users.has(uid)) {
+      console.log(`✅ Existing user: ${uid}`);
+      return res.json(users.get(uid));
+    }
+
+    const user = { 
+      id: generateId(), 
+      uid, 
+      approved: false, 
+      createdAt: new Date().toISOString()
+    };
+    users.set(uid, user);
+    console.log(`✅ NEW USER REGISTERED: ${uid} (Total: ${users.size})`);
+    res.json(user);
+  } catch (error) {
+    console.log(`❌ Registration error: ${error.message}`);
+    res.status(500).json({ error: 'Registration failed' });
+  }
+});
+
+// Admin login
+app.post('/api/admin/login', (req, res) => {
+  console.log('🔐 ADMIN LOGIN ATTEMPT');
+  try {
+    const { password } = req.body;
+    console.log(`Password received: ${password}`);
+    
+    if (password === 'Samara@tashan') {
+      const token = generateId();
+      adminTokens.add(token);
+      console.log(`✅ ADMIN LOGIN SUCCESS - Token: ${token}`);
+      console.log(`Active tokens: ${adminTokens.size}`);
+      return res.json({ success: true, token, message: 'Login successful' });
+    }
+    
+    console.log('❌ ADMIN LOGIN FAILED - Wrong password');
+    res.status(401).json({ error: 'Invalid password' });
+  } catch (error) {
+    console.log(`❌ Login error: ${error.message}`);
+    res.status(500).json({ error: 'Login failed' });
+  }
+});
+
+// Admin middleware with detailed logging
+function requireAdmin(req, res, next) {
+  console.log('🔒 ADMIN AUTH CHECK');
+  const authHeader = req.headers.authorization;
+  console.log(`Auth header: ${authHeader}`);
+  
+  if (!authHeader) {
+    console.log('❌ NO AUTH HEADER');
+    return res.status(401).json({ error: 'No authorization header' });
+  }
+  
+  const token = authHeader.replace('Bearer ', '');
+  console.log(`Extracted token: ${token}`);
+  console.log(`Valid tokens: ${Array.from(adminTokens)}`);
+  
+  if (!adminTokens.has(token)) {
+    console.log('❌ INVALID TOKEN');
+    return res.status(401).json({ error: 'Invalid token' });
+  }
+  
+  console.log('✅ ADMIN AUTH SUCCESS');
+  next();
+}
+
+// Admin endpoints with detailed logging
+app.get('/api/admin/users', requireAdmin, (req, res) => {
+  console.log('👥 ADMIN USERS REQUEST');
+  try {
+    const allUsers = Array.from(users.values());
+    console.log(`✅ Returning ${allUsers.length} users:`, allUsers.map(u => u.uid));
+    res.json(allUsers);
+  } catch (error) {
+    console.log(`❌ Users fetch error: ${error.message}`);
+    res.status(500).json({ error: 'Failed to fetch users' });
+  }
+});
+
+app.get('/api/admin/games', requireAdmin, (req, res) => {
+  console.log('🎮 ADMIN GAMES REQUEST');
+  try {
+    const allGames = Array.from(gameConfigs.values());
+    console.log(`✅ Returning ${allGames.length} games`);
+    res.json(allGames);
+  } catch (error) {
+    console.log(`❌ Games fetch error: ${error.message}`);
+    res.status(500).json({ error: 'Failed to fetch games' });
+  }
+});
+
+app.patch('/api/approve/:uid', requireAdmin, (req, res) => {
+  console.log(`✅ USER APPROVAL REQUEST: ${req.params.uid}`);
+  try {
+    const { uid } = req.params;
+    const user = users.get(uid);
+    if (!user) return res.status(404).json({ error: 'User not found' });
+    
+    user.approved = true;
+    users.set(uid, user);
+    console.log(`✅ USER APPROVED: ${uid}`);
+    res.json(user);
+  } catch (error) {
+    console.log(`❌ Approval error: ${error.message}`);
+    res.status(500).json({ error: 'Approval failed' });
+  }
+});
+
+// Other endpoints
+app.get('/api/games', (req, res) => {
+  console.log('🎮 PUBLIC GAMES REQUEST');
+  res.json(Array.from(gameConfigs.values()));
+});
+
+app.get('/api/user/:uid', (req, res) => {
+  console.log(`👤 USER LOOKUP: ${req.params.uid}`);
+  const user = users.get(req.params.uid);
+  if (!user) return res.status(404).json({ error: 'User not found' });
+  res.json(user);
+});
+
+// Serve frontend
+app.get('*', (req, res) => {
+  console.log(`📄 SERVING FRONTEND: ${req.path}`);
+  res.sendFile(path.join(__dirname, 'dist/public/index.html'));
+});
+
+const port = process.env.PORT || 5009;
+app.listen(port, '0.0.0.0', () => {
+  console.log(`\n🚀 DEBUG SERVER RUNNING ON PORT ${port}`);
+  console.log(`👥 Users loaded: ${users.size}`);
+  console.log(`🎮 Games loaded: ${gameConfigs.size}`);
+  console.log(`🔐 Admin password: Samara@tashan`);
+  console.log(`📊 All requests will be logged`);
+  console.log(`=====================================\n`);
+});
+EOF
+
+# Start debug server
+pm2 start debug-server.js --name tashan-win-vip
+sleep 3
+
+echo "=== DEBUG SERVER STARTED ==="
+echo "Now go to your browser at 89.116.121.62:5009/admin"
+echo "Login with password: Samara@tashan"
+echo "Watch the server logs to see what requests are being made:"
+echo ""
+pm2 logs tashan-win-vip --lines 10
