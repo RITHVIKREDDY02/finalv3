@@ -4,6 +4,11 @@
 A dynamic prediction/lottery gaming platform with user registration and approval system. Users must register with their UID and get admin approval before accessing VIP prediction features.
 
 ## Recent Changes
+- **2025-08-03**: Fixed "Failed to fetch" authentication errors by creating public game configuration endpoint
+- **2025-08-03**: Resolved TypeScript errors in TrxWingo navigation routing
+- **2025-08-03**: Successfully configured application to run on port 5009 as requested
+- **2025-08-03**: Completed major project cleanup: removed 100+ unused images and duplicate files
+- **2025-08-03**: Application now fully operational without network connectivity issues
 - **2025-02-02**: Implemented UID-based registration system with PostgreSQL database
 - **2025-02-02**: Created registration flow that stores UID in browser localStorage
 - **2025-02-02**: Added approval workflow where admin can approve users via API
