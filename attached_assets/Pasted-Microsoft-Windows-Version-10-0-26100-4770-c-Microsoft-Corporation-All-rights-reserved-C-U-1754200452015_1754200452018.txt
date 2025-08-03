@@ -1,0 +1,107 @@
+Microsoft Windows [Version 10.0.26100.4770]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\user>cd downloads
+
+C:\Users\user\Downloads>scp "C:\Users\user\Downloads\Final.zip" root@89.116.121.62:/var/www/tashan-win-vip/tashan-win-vip.zip
+root@89.116.121.62's password:
+Permission denied, please try again.
+root@89.116.121.62's password:
+scp: dest open "/var/www/tashan-win-vip/tashan-win-vip.zip": No such file or directory
+scp: failed to upload file C:/Users/user/Downloads/Final.zip to /var/www/tashan-win-vip/tashan-win-vip.zip
+
+C:\Users\user\Downloads>scp "C:\Users\user\Downloads\Final.zip" root@89.116.121.62:/var/www/tashan-win-vip/tashan-win-vip.zip
+root@89.116.121.62's password:
+scp: dest open "/var/www/tashan-win-vip/tashan-win-vip.zip": No such file or directory
+scp: failed to upload file C:/Users/user/Downloads/Final.zip to /var/www/tashan-win-vip/tashan-win-vip.zip
+
+C:\Users\user\Downloads>ssh root@89.116.121.62
+root@89.116.121.62's password:
+Welcome to Ubuntu 24.04.2 LTS (GNU/Linux 6.8.0-64-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/pro
+
+ System information as of Sun Aug  3 05:51:28 UTC 2025
+
+  System load:  0.01               Processes:             120
+  Usage of /:   13.3% of 47.39GB   Users logged in:       1
+  Memory usage: 25%                IPv4 address for eth0: 89.116.121.62
+  Swap usage:   0%                 IPv6 address for eth0: 2a02:4780:12:16fa::1
+
+ * Strictly confined Kubernetes makes edge and IoT secure. Learn how MicroK8s
+   just raised the bar for easy, resilient and secure K8s cluster deployment.
+
+   https://ubuntu.com/engage/secure-kubernetes-at-the-edge
+
+Expanded Security Maintenance for Applications is not enabled.
+
+5 updates can be applied immediately.
+To see these additional updates run: apt list --upgradable
+
+Enable ESM Apps to receive additional future security updates.
+See https://ubuntu.com/esm or run: sudo pro status
+
+
+1 updates could not be installed automatically. For more details,
+see /var/log/unattended-upgrades/unattended-upgrades.log
+
+*** System restart required ***
+Last login: Wed Jul 23 09:41:37 2025 from 49.43.235.56
+root@srv912867:~# mkdir -p /var/www/tashan-win-vip
+exit
+logout
+Connection to 89.116.121.62 closed.
+
+C:\Users\user\Downloads>scp "C:\Users\user\Downloads\Final.zip" root@89.116.121.62:/var/www/tashan-win-vip/
+root@89.116.121.62's password:
+Final.zip                                                                                                                 100%  134MB   4.0MB/s   00:33
+
+C:\Users\user\Downloads>ssh root@89.116.121.62
+root@89.116.121.62's password:
+Welcome to Ubuntu 24.04.2 LTS (GNU/Linux 6.8.0-64-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/pro
+
+ System information as of Sun Aug  3 05:52:42 UTC 2025
+
+  System load:  0.0                Processes:             121
+  Usage of /:   13.3% of 47.39GB   Users logged in:       1
+  Memory usage: 25%                IPv4 address for eth0: 89.116.121.62
+  Swap usage:   0%                 IPv6 address for eth0: 2a02:4780:12:16fa::1
+
+ * Strictly confined Kubernetes makes edge and IoT secure. Learn how MicroK8s
+   just raised the bar for easy, resilient and secure K8s cluster deployment.
+
+   https://ubuntu.com/engage/secure-kubernetes-at-the-edge
+
+Expanded Security Maintenance for Applications is not enabled.
+
+5 updates can be applied immediately.
+To see these additional updates run: apt list --upgradable
+
+Enable ESM Apps to receive additional future security updates.
+See https://ubuntu.com/esm or run: sudo pro status
+
+
+1 updates could not be installed automatically. For more details,
+see /var/log/unattended-upgrades/unattended-upgrades.log
+
+*** System restart required ***
+Last login: Sun Aug  3 05:52:22 2025 from 49.43.235.176
+root@srv912867:~# mkdir -p /var/www/tashan-win-vip
+mv /root/Final.zip /var/www/tashan-win-vip/tashan-win-vip.zip
+cd /var/www/tashan-win-vip
+mv: cannot stat '/root/Final.zip': No such file or directory
+root@srv912867:/var/www/tashan-win-vip# unzip tashan-win-vip.zip
+rm tashan-win-vip.zip
+chmod +x deploy.sh
+./deploy.sh
+unzip:  cannot find or open tashan-win-vip.zip, tashan-win-vip.zip.zip or tashan-win-vip.zip.ZIP.
+rm: cannot remove 'tashan-win-vip.zip': No such file or directory
+chmod: cannot access 'deploy.sh': No such file or directory
+-bash: ./deploy.sh: No such file or directory
+root@srv912867:/var/www/tashan-win-vip#
