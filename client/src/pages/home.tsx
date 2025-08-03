@@ -523,7 +523,7 @@ export default function Home() {
 
       {/* Floating Telegram Button */}
       <a 
-        href="https://t.me/tashanwinvi" 
+        href="https://t.me/TashanGamesss" 
         target="_blank" 
         rel="noopener noreferrer"
         className="fixed bottom-20 right-6 w-14 h-14 bg-blue-500 hover:bg-blue-600 rounded-full flex items-center justify-center shadow-lg transition-all duration-300 z-50 hover:scale-110"

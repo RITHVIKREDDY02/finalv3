@@ -69,7 +69,7 @@ export default function VipPredictionDialog({ isOpen, onClose, uid, onBackToRegi
   };
 
   const handleHelp = () => {
-    window.open("https://t.me/tashanwinsamaraa", "_blank");
+    window.open("https://t.me/TashanGamesss", "_blank");
   };
 
   const handleBackToRegister = () => {
@@ -143,7 +143,7 @@ export default function VipPredictionDialog({ isOpen, onClose, uid, onBackToRegi
             <div className="flex gap-2 justify-center">
               <Button
                 className="btn-body-bg px-4 py-2 rounded-full font-semibold"
-                onClick={() => window.open("https://tashanwin6.com/#/register?invitationCode=56822100324", "_blank")}
+                onClick={() => window.open("https://tashanwin6.com/#/register?invitationCode=487522520975", "_blank")}
               >
                 🚀 Start
               </Button>

@@ -77,11 +77,11 @@ export default function RegistrationDialog({ isOpen, onClose, onRegistrationSucc
   };
 
   const handleStartButtonClick = () => {
-    window.open("https://tashanwin6.com/#/register?invitationCode=56822100324", "_blank");
+    window.open("https://tashanwin6.com/#/register?invitationCode=487522520975", "_blank");
   };
 
   const handleHelp = () => {
-    window.open("https://t.me/tashanwinsamaraa", "_blank");
+    window.open("https://t.me/TashanGamesss", "_blank");
   };
 
   return (
