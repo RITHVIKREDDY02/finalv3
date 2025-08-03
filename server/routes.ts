@@ -5,13 +5,17 @@ import { storage } from "./storage";
 import { insertUserSchema } from "@shared/schema";
 import { z } from "zod";
 import { wingoService, WINGO_VARIANTS } from "./wingo-service";
+import { trxWingoService, TRXWINGO_VARIANTS } from "./trxwingo-service";
 
 export async function registerRoutes(app: Express): Promise<Server> {
   app.use(express.json());
 
-  // Start background prediction scheduler
+  // Start background prediction schedulers
   console.log('🚀 Starting Wingo prediction scheduler at server startup...');
   wingoService.startBackgroundScheduler();
+  
+  console.log('🚀 Starting TrxWingo prediction scheduler at server startup...');
+  trxWingoService.startBackgroundScheduler();
 
   // Register user with UID
   app.post("/api/register", async (req, res) => {
@@ -241,7 +245,54 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
+  // TrxWingo prediction routes
+  app.get('/api/trxwingo/variants', (req, res) => {
+    res.json(TRXWINGO_VARIANTS);
+  });
 
+  app.get('/api/trxwingo/prediction/:variant', async (req, res) => {
+    try {
+      const { variant } = req.params;
+      
+      if (!TRXWINGO_VARIANTS[variant]) {
+        return res.status(400).json({ error: "Invalid TrxWingo variant" });
+      }
+
+      // Use cached prediction from background scheduler
+      const prediction = await trxWingoService.getCachedPrediction(variant);
+      
+      if (prediction) {
+        res.json(prediction);
+      } else {
+        res.status(503).json({ error: "TrxWingo prediction service temporarily unavailable" });
+      }
+    } catch (error) {
+      console.error("Error generating TrxWingo prediction:", error);
+      res.status(500).json({ error: "Failed to generate TrxWingo prediction" });
+    }
+  });
+
+  app.get('/api/trxwingo/results/:variant', async (req, res) => {
+    try {
+      const { variant } = req.params;
+      
+      if (!TRXWINGO_VARIANTS[variant]) {
+        return res.status(400).json({ error: "Invalid TrxWingo variant" });
+      }
+
+      // Use real API for results
+      const results = await trxWingoService.getLatestResults(variant);
+      
+      if (results && results.length > 0) {
+        res.json(results);
+      } else {
+        res.status(503).json({ error: "TrxWingo results service temporarily unavailable" });
+      }
+    } catch (error) {
+      console.error("Error fetching TrxWingo results:", error);
+      res.status(500).json({ error: "Failed to fetch TrxWingo results" });
+    }
+  });
 
   const httpServer = createServer(app);
   return httpServer;
