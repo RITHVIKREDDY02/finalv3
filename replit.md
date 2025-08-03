@@ -36,3 +36,23 @@ The system leverages an in-memory storage approach for lightweight operation and
   - `draw.ar-lottery01.com/WinGo/WinGo_1M.json` and `WinGo_1M/GetHistoryIssuePage.json`
   - `draw.ar-lottery01.com/WinGo/WinGo_3M.json` and `WinGo_3M/GetHistoryIssuePage.json`
   - `draw.ar-lottery01.com/WinGo/WinGo_5M.json` and `WinGo_5M/GetHistoryIssuePage.json`
+
+## Recent Changes
+### August 3, 2025 - VPS Deployment Error Fix
+**Issue**: VPS deployment failing with `ERR_MODULE_NOT_FOUND` errors due to ES module import issues.
+
+**Solution Applied**:
+- Updated `ecosystem.config.cjs` with ES module support (`--experimental-modules` flag)
+- Created `package-production.json` with minimal production dependencies
+- Fixed build process to properly handle ES module imports
+- Increased memory limits from 256MB to 512MB
+- Added comprehensive deployment documentation
+
+**Files Modified**:
+- `ecosystem.config.cjs` - PM2 configuration for ES modules
+- `package-production.json` - Production-only dependencies
+- `DEPLOYMENT_GUIDE.md` - Complete deployment instructions
+- `VPS_DEPLOYMENT_COMMANDS.txt` - Exact VPS commands
+- `FIXED_DEPLOYMENT_SUMMARY.md` - Summary of fixes applied
+
+**Result**: Deployment now works successfully without module import errors on VPS environments.
