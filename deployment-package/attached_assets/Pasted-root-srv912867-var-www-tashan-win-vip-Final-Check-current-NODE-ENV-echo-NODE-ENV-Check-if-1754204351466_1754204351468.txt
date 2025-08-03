@@ -1,0 +1,81 @@
+root@srv912867:/var/www/tashan-win-vip/Final# # Check current NODE_ENV
+echo $NODE_ENV
+
+# Check if we're serving static files correctly
+ls -la dist/public/
+
+# Test the static file serving
+curl -I http://localhost:5009/
+
+# Check the ecosystem config to ensure production mode
+cat ecosystem.config.js
+
+total 20
+drwxr-xr-x 3 root root 4096 Aug  3 06:57 .
+drwxr-xr-x 3 root root 4096 Aug  3 06:38 ..
+drwxr-xr-x 2 root root 4096 Aug  3 06:57 assets
+-rw------- 1 root root 3241 Aug  3 06:57 favicon.png
+-rw-r--r-- 1 root root 1531 Aug  3 06:57 index.html
+HTTP/1.1 200 OK
+X-Powered-By: Express
+Vary: Origin
+Content-Type: text/html; charset=utf-8
+Date: Sun, 03 Aug 2025 06:59:02 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+
+// PM2 ecosystem configuration for VPS deployment
+module.exports = {
+  apps: [
+    {
+      name: 'tashan-win-vip',
+      script: 'dist/index.js',
+      instances: 1, // Single instance for in-memory storage
+      exec_mode: 'fork', // Fork mode for single instance
+      env: {
+        NODE_ENV: 'production',
+        PORT: 5009
+      },
+      env_production: {
+        NODE_ENV: 'production',
+        PORT: 5009
+      },
+      // Performance optimizations
+      max_memory_restart: '256M', // Restart if memory exceeds 256MB
+      node_args: '--max-old-space-size=256', // Limit Node.js heap to 256MB
+
+      // Logging
+      log_file: './logs/combined.log',
+      out_file: './logs/out.log',
+      error_file: './logs/error.log',
+      log_date_format: 'YYYY-MM-DD HH:mm:ss Z',
+
+      // Auto restart settings
+      watch: false, // Don't watch files in production
+      ignore_watch: ['node_modules', 'logs'],
+      max_restarts: 5,
+      min_uptime: '10s',
+
+      // Health monitoring
+      kill_timeout: 5000,
+      listen_timeout: 8000,
+
+      // Environment-specific settings
+      merge_logs: true,
+      autorestart: true
+    }
+  ],
+
+  deploy: {
+    production: {
+      user: 'root',
+      host: ['your-vps-ip'], // Replace with your VPS IP
+      ref: 'origin/main',
+      repo: 'your-repo-url', // Replace with your repository URL
+      path: '/var/www/tashan-win-vip',
+      'pre-deploy-local': '',
+      'post-deploy': 'npm install && npm run build && pm2 reload ecosystem.config.js --env production',
+      'pre-setup': ''
+    }
+  }
+};root@srv912867:/var/www/tashan-win-vip/Final#

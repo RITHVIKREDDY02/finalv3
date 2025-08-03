@@ -1,0 +1,240 @@
+vite v5.4.19 building for production...
+transforming (3) src/main.tsxBrowserslist: browsers data (caniuse-lite) is 10 months old. Please run:
+  npx update-browserslist-db@latest
+  Why you should do it regularly: https://github.com/browserslist/update-db#readme
+✓ 1754 modules transformed.
+../dist/public/index.html                                                                1.53 kB │ gzip:   0.66 kB
+../dist/public/assets/Screenshot 2025-08-02 220243_1754152399399-BPpG-Y8M.png            8.37 kB
+../dist/public/assets/Screenshot 2025-08-02 220225_1754152384208-Dx2scZsH.png           11.13 kB
+../dist/public/assets/811_1754070860593-DsjoKqXR.png                                    17.15 kB
+../dist/public/assets/800_1754070860600-CQb0Dftz.png                                    20.17 kB
+../dist/public/assets/100_1754070860600-BkGjX7kB.png                                    21.08 kB
+../dist/public/assets/lotterycategory_20250412120719dqfv_1754052547793-DvyeHsbk.png     27.42 kB
+../dist/public/assets/lotterycategory_20250412120818j8wq_1754052552269-BXfbP9nl.png     29.65 kB
+../dist/public/assets/lotterycategory_2025041212074073ug_1754069351570-Aymw5y49.png     30.01 kB
+../dist/public/assets/TASHAN WIN LOGO_1754052537792-k2yHYqNz.png                        32.75 kB
+../dist/public/assets/229 (1)_1754070860598-DGS2VWFB.png                                45.32 kB
+../dist/public/assets/235_1754071157602-BgWz6t6B.png                                    46.82 kB
+../dist/public/assets/Screenshot 2025-08-02 220234_1754152390853-BasWLdsN.png           53.26 kB
+../dist/public/assets/c57f5149-2139-410f-8d48-94a06fcb36f2_1754069356497-UOBDz35V.png   71.32 kB
+../dist/public/assets/image_1754150847570-jEFWRT6L.png                                  83.84 kB
+../dist/public/assets/mobile hero banner_1754079113835-C2LlT5nQ.jpg                    138.23 kB
+../dist/public/assets/Hero Banner (1440 x 300 px)_1754078513162-BjZ5XuzD.jpg           283.87 kB
+../dist/public/assets/image_1754150852695-Pr8URuBu.png                                 492.82 kB
+../dist/public/assets/index-BiVbN346.css                                                75.55 kB │ gzip:  13.28 kB
+../dist/public/assets/index-DEST2k-O.js                                                516.28 kB │ gzip: 147.54 kB
+
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+✓ built in 8.84s
+
+  dist/index.js  44.7kb
+
+⚡ Done in 11ms
+Use --update-env to update environment variables
+[PM2] Applying action restartProcessId on app [tashan-win-vip](ids: [ 4 ])
+[PM2] [tashan-win-vip](4) ✓
+┌────┬────────────────────┬──────────┬──────┬───────────┬──────────┬──────────┐
+│ id │ name               │ mode     │ ↺    │ status    │ cpu      │ memory   │
+├────┼────────────────────┼──────────┼──────┼───────────┼──────────┼──────────┤
+│ 3  │ mantrigame         │ cluster  │ 0    │ online    │ 0%       │ 101.4mb  │
+│ 4  │ tashan-win-vip     │ fork     │ 17   │ online    │ 0%       │ 18.5mb   │
+│ 0  │ tc-lottery-app1    │ fork     │ 0    │ online    │ 0%       │ 95.8mb   │
+│ 1  │ tc-lottery-app2    │ fork     │ 0    │ online    │ 0%       │ 85.2mb   │
+│ 2  │ tc-lottery-app3    │ fork     │ 0    │ online    │ 0%       │ 85.9mb   │
+└────┴────────────────────┴──────────┴──────┴───────────┴──────────┴──────────┘
+┌────┬────────────────────┬──────────┬──────┬───────────┬──────────┬──────────┐
+│ id │ name               │ mode     │ ↺    │ status    │ cpu      │ memory   │
+├────┼────────────────────┼──────────┼──────┼───────────┼──────────┼──────────┤
+│ 3  │ mantrigame         │ cluster  │ 0    │ online    │ 0%       │ 101.5mb  │
+│ 4  │ tashan-win-vip     │ fork     │ 17   │ online    │ 0%       │ 57.6mb   │
+│ 0  │ tc-lottery-app1    │ fork     │ 0    │ online    │ 0%       │ 95.8mb   │
+│ 1  │ tc-lottery-app2    │ fork     │ 0    │ online    │ 0%       │ 84.7mb   │
+│ 2  │ tc-lottery-app3    │ fork     │ 0    │ online    │ 0%       │ 85.9mb   │
+└────┴────────────────────┴──────────┴──────┴───────────┴──────────┴──────────┘
+[TAILING] Tailing last 10 lines for [tashan-win-vip] process (change the value with --lines option)
+/root/.pm2/logs/tashan-win-vip-error.log last 10 lines:
+4|tashan-w | 6:41:06 AM [vite] Pre-transform error: Failed to load url /src/main.tsx?v=ZnH1Az612mPoHAtfkHZ11 (resolved id: /src/main.tsx?v=ZnH1Az612mPoHAtfkHZ11). Does the file exist?
+4|tashan-w | 6:42:09 AM [vite] Pre-transform error: Failed to load url /src/main.tsx?v=tDSsktEH5Z4CCW6DYCoLG (resolved id: /src/main.tsx?v=tDSsktEH5Z4CCW6DYCoLG). Does the file exist?
+4|tashan-w | 6:47:16 AM [vite] Pre-transform error: Failed to load url /src/main.tsx?v=MvcoZbhzShOMqpIBFgxFB (resolved id: /src/main.tsx?v=MvcoZbhzShOMqpIBFgxFB). Does the file exist?
+4|tashan-w | 6:47:18 AM [vite] Pre-transform error: Failed to load url /src/main.tsx?v=zJVa0QTcWwOnxHXR4Vb8G (resolved id: /src/main.tsx?v=zJVa0QTcWwOnxHXR4Vb8G). Does the file exist?
+4|tashan-w | 6:47:19 AM [vite] Pre-transform error: Failed to load url /src/main.tsx?v=sPdvLojY-5e4oW_oyUS1w (resolved id: /src/main.tsx?v=sPdvLojY-5e4oW_oyUS1w). Does the file exist?
+4|tashan-w | 6:47:21 AM [vite] Pre-transform error: Failed to load url /src/main.tsx?v=i2odEAbjC3_1W-W0IstDx (resolved id: /src/main.tsx?v=i2odEAbjC3_1W-W0IstDx). Does the file exist?
+4|tashan-w | 6:52:38 AM [vite] Pre-transform error: Failed to load url /src/main.tsx?v=CNPDHAV2mx20bp35CMdjH (resolved id: /src/main.tsx?v=CNPDHAV2mx20bp35CMdjH). Does the file exist?
+4|tashan-w | 6:52:40 AM [vite] Pre-transform error: Failed to load url /src/main.tsx?v=up_D3nbMMqVZZg4BwMGOu (resolved id: /src/main.tsx?v=up_D3nbMMqVZZg4BwMGOu). Does the file exist?
+4|tashan-w | 6:52:41 AM [vite] Pre-transform error: Failed to load url /src/main.tsx?v=BcIbItfmBSokR9k8IHw9l (resolved id: /src/main.tsx?v=BcIbItfmBSokR9k8IHw9l). Does the file exist?
+4|tashan-w | 6:52:42 AM [vite] Pre-transform error: Failed to load url /src/main.tsx?v=ZsVH4vQb6-HJt4Wk6tmNF (resolved id: /src/main.tsx?v=ZsVH4vQb6-HJt4Wk6tmNF). Does the file exist?
+
+/root/.pm2/logs/tashan-win-vip-out.log last 10 lines:
+4|tashan-w | 🎲 RANDOM: BIG selected (0.598)
+4|tashan-w | 📊 Pattern Analysis: 40.0% BIG, Streak: BIG x1
+4|tashan-w | 📊 Recent Trend: 3/5 BIG results
+4|tashan-w | 🎯 TRULY BALANCED [3min]:
+4|tashan-w |    Stats: 3/5 BIG | 40.0% BIG | BIG x1
+4|tashan-w |    Signals: BIG=29.2 vs SMALL=10.0
+4|tashan-w |    🎯 FINAL: BIG 6 (53% confidence)
+4|tashan-w | ⏰ Using API countdown: 76s for 3min
+4|tashan-w | ✅ Generated live prediction for 3min: BIG 6
+4|tashan-w | ✅ Updated 3min prediction: BIG (76s)
+
+4|tashan-win-vip  | 🚀 Starting Wingo prediction scheduler at server startup...
+4|tashan-win-vip  | 🚀 Initializing Wingo prediction service...
+4|tashan-win-vip  | 🔄 Running initial predictions for all variants...
+4|tashan-win-vip  | 🎯 Generating live prediction for 30sec...
+4|tashan-win-vip  | 📡 Fetching live results for 30sec from: https://draw.ar-lottery01.com/WinGo/WinGo_30S/GetHistoryIssuePage.json
+4|tashan-win-vip  | 🎯 Generating live prediction for 1min...
+4|tashan-win-vip  | 📡 Fetching live results for 1min from: https://draw.ar-lottery01.com/WinGo/WinGo_1M/GetHistoryIssuePage.json
+4|tashan-win-vip  | 🎯 Generating live prediction for 3min...
+4|tashan-win-vip  | 📡 Fetching live results for 3min from: https://draw.ar-lottery01.com/WinGo/WinGo_3M/GetHistoryIssuePage.json
+4|tashan-win-vip  | 🎯 Generating live prediction for 5min...
+4|tashan-win-vip  | 📡 Fetching live results for 5min from: https://draw.ar-lottery01.com/WinGo/WinGo_5M/GetHistoryIssuePage.json
+4|tashan-win-vip  | ✅ Initial predictions generated - service ready for on-demand requests
+4|tashan-win-vip  | 🚀 Starting TrxWingo prediction scheduler at server startup...
+4|tashan-win-vip  | 🚀 Initializing TrxWingo prediction service...
+4|tashan-win-vip  | 🔄 Running initial TrxWingo predictions for all variants...
+4|tashan-win-vip  | 🎯 Generating live TrxWingo prediction for 1min...
+4|tashan-win-vip  | 📡 Fetching live TrxWingo results for 1min from: https://draw.ar-lottery01.com/TrxWinGo/TrxWinGo_1M/GetHistoryIssuePage.json
+4|tashan-win-vip  | 🎯 Generating live TrxWingo prediction for 3min...
+4|tashan-win-vip  | 📡 Fetching live TrxWingo results for 3min from: https://draw.ar-lottery01.com/TrxWinGo/TrxWinGo_3M/GetHistoryIssuePage.json
+4|tashan-win-vip  | 🎯 Generating live TrxWingo prediction for 5min...
+4|tashan-win-vip  | 📡 Fetching live TrxWingo results for 5min from: https://draw.ar-lottery01.com/TrxWinGo/TrxWinGo_5M/GetHistoryIssuePage.json
+4|tashan-win-vip  | 🎯 Generating live TrxWingo prediction for 10min...
+4|tashan-win-vip  | 📡 Fetching live TrxWingo results for 10min from: https://draw.ar-lottery01.com/TrxWinGo/TrxWinGo_10M/GetHistoryIssuePage.json
+4|tashan-win-vip  | ✅ Initial TrxWingo predictions generated - service ready for on-demand requests
+4|tashan-win-vip  | 6:57:39 AM [express] 🚀 serving on port 5009 with lightweight in-memory storage
+4|tashan-win-vip  | ✅ Retrieved 10 live results for 30sec
+4|tashan-win-vip  | 🎲 RANDOM: BIG selected (0.638)
+4|tashan-win-vip  | 📊 Pattern Analysis: 20.0% BIG, Streak: BIG x1
+4|tashan-win-vip  | 📊 Recent Trend: 2/5 BIG results
+4|tashan-win-vip  | 🎯 TRULY BALANCED [30sec]:
+4|tashan-win-vip  |    Stats: 2/5 BIG | 20.0% BIG | BIG x1
+4|tashan-win-vip  |    Signals: BIG=22.4 vs SMALL=10.0
+4|tashan-win-vip  |    🎯 FINAL: BIG 9 (61% confidence)
+4|tashan-win-vip  | ⏰ Using API countdown: 20s for 30sec
+4|tashan-win-vip  | ✅ Generated live prediction for 30sec: BIG 9
+4|tashan-win-vip  | ✅ Updated 30sec prediction: BIG (20s)
+4|tashan-win-vip  | ✅ Retrieved 10 live results for 5min
+4|tashan-win-vip  | ✅ Retrieved 10 live TrxWingo results for 3min
+4|tashan-win-vip  | ✅ Retrieved 10 live TrxWingo results for 5min
+4|tashan-win-vip  | ✅ Retrieved 10 live TrxWingo results for 10min
+4|tashan-win-vip  | ✅ Retrieved 10 live TrxWingo results for 1min
+4|tashan-win-vip  | 🎲 TRX RANDOM: BIG selected (0.831)
+4|tashan-win-vip  | 📊 TrxWingo Pattern Analysis: 40.0% BIG, Streak: SMALL x4
+4|tashan-win-vip  | 📊 TrxWingo Recent Trend: 1/5 BIG results
+4|tashan-win-vip  | 🎯 TRX TRULY BALANCED [3min]:
+4|tashan-win-vip  |    Stats: 1/5 BIG | 40.0% BIG | SMALL x4
+4|tashan-win-vip  |    Signals: BIG=13.9 vs SMALL=13.9
+4|tashan-win-vip  |    🎯 FINAL: BIG 7 (63% confidence)
+4|tashan-win-vip  | ⏰ Using API countdown: 140s for TrxWingo 3min
+4|tashan-win-vip  | ✅ Generated live TrxWingo prediction for 3min: BIG 7
+4|tashan-win-vip  | ✅ Updated TrxWingo 3min prediction: BIG (140s)
+4|tashan-win-vip  | 🎲 TRX RANDOM: SMALL selected (0.232)
+4|tashan-win-vip  | 📊 TrxWingo Pattern Analysis: 40.0% BIG, Streak: SMALL x1
+4|tashan-win-vip  | 📊 TrxWingo Recent Trend: 2/5 BIG results
+4|tashan-win-vip  | 🎯 TRX TRULY BALANCED [1min]:
+4|tashan-win-vip  |    Stats: 2/5 BIG | 40.0% BIG | SMALL x1
+4|tashan-win-vip  |    Signals: BIG=11.8 vs SMALL=11.8
+4|tashan-win-vip  |    🎯 FINAL: SMALL 0 (57% confidence)
+4|tashan-win-vip  | ⏰ Using API countdown: 20s for TrxWingo 1min
+4|tashan-win-vip  | ✅ Generated live TrxWingo prediction for 1min: SMALL 0
+4|tashan-win-vip  | ✅ Updated TrxWingo 1min prediction: SMALL (20s)
+4|tashan-win-vip  | 🎲 RANDOM: BIG selected (0.757)
+4|tashan-win-vip  | 📊 Pattern Analysis: 40.0% BIG, Streak: SMALL x1
+4|tashan-win-vip  | 📊 Recent Trend: 3/5 BIG results
+4|tashan-win-vip  | 🎯 TRULY BALANCED [5min]:
+4|tashan-win-vip  |    Stats: 3/5 BIG | 40.0% BIG | SMALL x1
+4|tashan-win-vip  |    Signals: BIG=27.4 vs SMALL=10.0
+4|tashan-win-vip  |    🎯 FINAL: BIG 7 (55% confidence)
+4|tashan-win-vip  | ⏰ Using API countdown: 140s for 5min
+4|tashan-win-vip  | ✅ Generated live prediction for 5min: BIG 7
+4|tashan-win-vip  | ✅ Updated 5min prediction: BIG (140s)
+4|tashan-win-vip  | ✅ Retrieved 10 live results for 3min
+4|tashan-win-vip  | 🎲 RANDOM: BIG selected (0.588)
+4|tashan-win-vip  | 📊 Pattern Analysis: 60.0% BIG, Streak: BIG x3
+4|tashan-win-vip  | 📊 Recent Trend: 3/5 BIG results
+4|tashan-win-vip  | 🎯 TRULY BALANCED [3min]:
+4|tashan-win-vip  |    Stats: 3/5 BIG | 60.0% BIG | BIG x3
+4|tashan-win-vip  |    Signals: BIG=20.7 vs SMALL=10.0
+4|tashan-win-vip  |    🎯 FINAL: BIG 8 (50% confidence)
+4|tashan-win-vip  | ⏰ Using API countdown: 140s for 3min
+4|tashan-win-vip  | ✅ Generated live prediction for 3min: BIG 8
+4|tashan-win-vip  | ✅ Updated 3min prediction: BIG (140s)
+4|tashan-win-vip  | 🎲 TRX RANDOM: SMALL selected (0.173)
+4|tashan-win-vip  | 📊 TrxWingo Pattern Analysis: 50.0% BIG, Streak: BIG x3
+4|tashan-win-vip  | 📊 TrxWingo Recent Trend: 3/5 BIG results
+4|tashan-win-vip  | 🎯 TRX TRULY BALANCED [10min]:
+4|tashan-win-vip  |    Stats: 3/5 BIG | 50.0% BIG | BIG x3
+4|tashan-win-vip  |    Signals: BIG=11.7 vs SMALL=11.7
+4|tashan-win-vip  |    🎯 FINAL: SMALL 0 (64% confidence)
+4|tashan-win-vip  | ⏰ Using API countdown: 140s for TrxWingo 10min
+4|tashan-win-vip  | ✅ Generated live TrxWingo prediction for 10min: SMALL 0
+4|tashan-win-vip  | ✅ Updated TrxWingo 10min prediction: SMALL (140s)
+4|tashan-win-vip  | ✅ Retrieved 10 live results for 1min
+4|tashan-win-vip  | 🎲 RANDOM: BIG selected (0.839)
+4|tashan-win-vip  | 📊 Pattern Analysis: 60.0% BIG, Streak: BIG x2
+4|tashan-win-vip  | 📊 Recent Trend: 4/5 BIG results
+4|tashan-win-vip  | 🎯 TRULY BALANCED [1min]:
+4|tashan-win-vip  |    Stats: 4/5 BIG | 60.0% BIG | BIG x2
+4|tashan-win-vip  |    Signals: BIG=24.9 vs SMALL=10.0
+4|tashan-win-vip  |    🎯 FINAL: BIG 8 (67% confidence)
+4|tashan-win-vip  | ⏰ Using API countdown: 20s for 1min
+4|tashan-win-vip  | ✅ Generated live prediction for 1min: BIG 8
+4|tashan-win-vip  | ✅ Updated 1min prediction: BIG (20s)
+4|tashan-win-vip  | 🎲 TRX RANDOM: BIG selected (0.857)
+4|tashan-win-vip  | 📊 TrxWingo Pattern Analysis: 70.0% BIG, Streak: BIG x4
+4|tashan-win-vip  | 📊 TrxWingo Recent Trend: 4/5 BIG results
+4|tashan-win-vip  | 🎯 TRX TRULY BALANCED [5min]:
+4|tashan-win-vip  |    Stats: 4/5 BIG | 70.0% BIG | BIG x4
+4|tashan-win-vip  |    Signals: BIG=19.2 vs SMALL=19.2
+4|tashan-win-vip  |    🎯 FINAL: BIG 8 (76% confidence)
+4|tashan-win-vip  | ⏰ Using API countdown: 139s for TrxWingo 5min
+4|tashan-win-vip  | ✅ Generated live TrxWingo prediction for 5min: BIG 8
+4|tashan-win-vip  | ✅ Updated TrxWingo 5min prediction: BIG (139s)
+4|tashan-win-vip  | 6:57:51 AM [vite] Pre-transform error: Failed to load url /src/main.tsx?v=ILAyqAyu4BIuTddtR_dPr (resolved id: /src/main.tsx?v=ILAyqAyu4BIuTddtR_dPr). Does the file exist?
+4|tashan-win-vip  | 🚀 Starting Wingo prediction scheduler at server startup...
+4|tashan-win-vip  | 🚀 Initializing Wingo prediction service...
+4|tashan-win-vip  | 🔄 Running initial predictions for all variants...
+4|tashan-win-vip  | 🎯 Generating live prediction for 30sec...
+4|tashan-win-vip  | 📡 Fetching live results for 30sec from: https://draw.ar-lottery01.com/WinGo/WinGo_30S/GetHistoryIssuePage.json
+4|tashan-win-vip  | 🎯 Generating live prediction for 1min...
+4|tashan-win-vip  | 📡 Fetching live results for 1min from: https://draw.ar-lottery01.com/WinGo/WinGo_1M/GetHistoryIssuePage.json
+4|tashan-win-vip  | 🎯 Generating live prediction for 3min...
+4|tashan-win-vip  | 📡 Fetching live results for 3min from: https://draw.ar-lottery01.com/WinGo/WinGo_3M/GetHistoryIssuePage.json
+4|tashan-win-vip  | 🎯 Generating live prediction for 5min...
+4|tashan-win-vip  | 📡 Fetching live results for 5min from: https://draw.ar-lottery01.com/WinGo/WinGo_5M/GetHistoryIssuePage.json
+4|tashan-win-vip  | ✅ Initial predictions generated - service ready for on-demand requests
+4|tashan-win-vip  | 🚀 Starting TrxWingo prediction scheduler at server startup...
+4|tashan-win-vip  | 🚀 Initializing TrxWingo prediction service...
+4|tashan-win-vip  | 🔄 Running initial TrxWingo predictions for all variants...
+4|tashan-win-vip  | 🎯 Generating live TrxWingo prediction for 1min...
+4|tashan-win-vip  | 📡 Fetching live TrxWingo results for 1min from: https://draw.ar-lottery01.com/TrxWinGo/TrxWinGo_1M/GetHistoryIssuePage.json
+4|tashan-win-vip  | 🎯 Generating live TrxWingo prediction for 3min...
+4|tashan-win-vip  | 📡 Fetching live TrxWingo results for 3min from: https://draw.ar-lottery01.com/TrxWinGo/TrxWinGo_3M/GetHistoryIssuePage.json
+4|tashan-win-vip  | 🎯 Generating live TrxWingo prediction for 5min...
+4|tashan-win-vip  | 📡 Fetching live TrxWingo results for 5min from: https://draw.ar-lottery01.com/TrxWinGo/TrxWinGo_5M/GetHistoryIssuePage.json
+4|tashan-win-vip  | 🎯 Generating live TrxWingo prediction for 10min...
+4|tashan-win-vip  | 📡 Fetching live TrxWingo results for 10min from: https://draw.ar-lottery01.com/TrxWinGo/TrxWinGo_10M/GetHistoryIssuePage.json
+4|tashan-win-vip  | ✅ Initial TrxWingo predictions generated - service ready for on-demand requests
+4|tashan-win-vip  | 6:57:52 AM [express] 🚀 serving on port 5009 with lightweight in-memory storage
+4|tashan-win-vip  | ✅ Retrieved 10 live results for 30sec
+4|tashan-win-vip  | ✅ Retrieved 10 live results for 1min
+4|tashan-win-vip  | 🎲 RANDOM: SMALL selected (0.018)
+4|tashan-win-vip  | 📊 Pattern Analysis: 60.0% BIG, Streak: BIG x2
+4|tashan-win-vip  | 📊 Recent Trend: 4/5 BIG results
+4|tashan-win-vip  | 🎯 TRULY BALANCED [1min]:
+4|tashan-win-vip  |    Stats: 4/5 BIG | 60.0% BIG | BIG x2
+4|tashan-win-vip  |    Signals: BIG=10.0 vs SMALL=21.6
+4|tashan-win-vip  |    🎯 FINAL: SMALL 3 (58% confidence)
+4|tashan-win-vip  | ⏰ Using API countdown: 7s for 1min
+4|tashan-win-vip  | ✅ Generated live prediction for 1min: SMALL 3
+4|tashan-win-vip  | ✅ Updated 1min prediction: SMALL (7s)
+4|tashan-win-vip  | ✅ Retrieved 10 live TrxWingo results for 5min
+4|tashan-win-vip  | 🎲 RANDOM: BIG selected (0.590)
+4|tashan-win-vip  | 📊 Pattern Analysis: 20.0% BIG, Streak: BIG x1
+4|tashan-win-vip  | 📊 Recent Trend: 2/5 BIG results
+4|tashan-win-vip  | 🎯 TRULY BALANCED [30sec]:
+4|tashan-win-vip  |    Stats: 2/5 BIG | 20.0% BIG | BIG x1
+4|tashan-win-vip  |    Signals: BIG=28.2 vs SMALL=10.0
+4|tashan-win-vip  |    🎯 FINAL: BIG 6 (45% confidence)
