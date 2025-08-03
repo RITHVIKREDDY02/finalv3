@@ -45,16 +45,23 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
-  // Check user registration status
+  // Check user registration status - optimized for speed
   app.get("/api/user/:uid", async (req, res) => {
     try {
       const { uid } = req.params;
+      
+      // Quick validation
+      if (!uid || uid.trim().length === 0) {
+        return res.status(400).json({ message: "Invalid UID", registered: false });
+      }
+      
       const user = await storage.getUserByUid(uid);
       
       if (!user) {
         return res.status(404).json({ message: "User not found", registered: false });
       }
 
+      // Return minimal data for faster response
       res.json({ 
         registered: true, 
         approved: user.approved,
@@ -66,15 +73,38 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
-
+  // Fast user approval check - optimized endpoint
+  app.get("/api/user/:uid/status", async (req, res) => {
+    try {
+      const { uid } = req.params;
+      
+      if (!uid || uid.trim().length === 0) {
+        return res.json({ approved: false, registered: false });
+      }
+      
+      const user = await storage.getUserByUid(uid);
+      res.json({ 
+        approved: user?.approved || false,
+        registered: !!user
+      });
+    } catch (error) {
+      console.error("Fast status check error:", error);
+      res.json({ approved: false, registered: false });
+    }
+  });
 
   // Admin authentication
   const ADMIN_PASSWORD = "Samara@tashan";
   
-  // Admin login endpoint
+  // Admin login endpoint - optimized for speed
   app.post('/api/admin/login', async (req, res) => {
     try {
       const { password } = req.body;
+      
+      // Quick password validation
+      if (!password || typeof password !== 'string') {
+        return res.status(400).json({ error: "Password required" });
+      }
       
       if (password === ADMIN_PASSWORD) {
         // Generate a simple session token

@@ -7,6 +7,7 @@ import { useLocation } from "wouter";
 import RegistrationDialog from "@/components/registration-dialog";
 import VipPredictionDialog from "@/components/vip-prediction-dialog";
 import { ComingSoonDialog } from "@/components/coming-soon-dialog";
+import { useUserVerification } from "@/hooks/use-fast-user-status";
 import type { GameConfig } from "@shared/schema";
 import logoPath from "@assets/TASHAN WIN LOGO_1754052537792.png";
 import winGoImage from "@assets/lotterycategory_20250412120719dqfv_1754052547793.png";
@@ -49,12 +50,8 @@ export default function Home() {
     queryKey: ["/api/admin/games"],
   });
 
-  // Fetch user approval status
-  const { data: userStatus } = useQuery<{registered: boolean, approved: boolean, user: any}>({
-    queryKey: [`/api/user/${userUid}`],
-    enabled: !!userUid,
-    refetchInterval: 10000, // Check every 10 seconds
-  });
+  // Use fast user verification hook for optimal performance
+  const { isApproved, isRegistered, refreshStatus } = useUserVerification(userUid);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -91,7 +88,7 @@ export default function Home() {
     // Special handling for Win Go - redirect to Wingo page if approved
     if (gameType === "Win Go") {
       const storedUid = localStorage.getItem("tashan_user_uid");
-      if (storedUid && userStatus?.approved) {
+      if (storedUid && isApproved) {
         navigate('/wingo');
         return;
       }
@@ -100,7 +97,7 @@ export default function Home() {
     // Special handling for Trx Wingo - redirect to TRX Wingo page if approved
     if (gameType === "Trx Wingo") {
       const storedUid = localStorage.getItem("tashan_user_uid");
-      if (storedUid && userStatus?.approved) {
+      if (storedUid && isApproved) {
         navigate('/trx-wingo');
         return;
       }
@@ -120,6 +117,8 @@ export default function Home() {
     setUserUid(uid);
     setShowRegisterDialog(false);
     setShowVipPredictionDialog(true);
+    // Immediately refresh user status after registration
+    setTimeout(() => refreshStatus(), 100);
   };
 
   const handleBackToRegister = () => {
@@ -133,7 +132,7 @@ export default function Home() {
     console.log('VIP clicked');
     // Check if user has registered UID and is approved
     const storedUid = localStorage.getItem("tashan_user_uid");
-    if (storedUid && userStatus?.approved) {
+    if (storedUid && isApproved) {
       // User is approved, show VIP prediction dialog
       setShowVipPredictionDialog(true);
     } else {
@@ -180,7 +179,7 @@ export default function Home() {
           
           {/* Mobile Navigation */}
           <div className="md:hidden flex items-center">
-            {userStatus?.approved ? (
+            {isApproved ? (
               <div 
                 className="px-3 py-1.5 rounded-full text-black font-bold text-xs"
                 style={{ backgroundColor: '#FED358' }}
@@ -200,7 +199,7 @@ export default function Home() {
           
           {/* Desktop Navigation Items */}
           <div className="hidden md:flex items-center space-x-8">
-            {userStatus?.approved ? (
+            {isApproved ? (
               <div 
                 className="px-4 py-2 rounded-full text-black font-bold text-sm"
                 style={{ backgroundColor: '#FED358' }}
