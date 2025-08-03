@@ -200,7 +200,7 @@ export default function RegistrationDialog({ isOpen, onClose, onRegistrationSucc
                 className="flex-1 h-9 font-semibold text-sm rounded-lg btn-body-bg"
                 onClick={handleStartButtonClick}
               >
-                🚀 START
+                Register link
               </Button>
               <Button
                 className="flex-1 h-9 font-semibold text-sm rounded-lg btn-body-bg"
