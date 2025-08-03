@@ -1,5 +1,5 @@
 // PM2 ecosystem configuration for VPS deployment
-module.exports = {
+export default {
   apps: [
     {
       name: 'tashan-win-vip',
