@@ -1,0 +1,67 @@
+curl: (7) Failed to connect to localhost port 5009 after 0 ms: Couldn't connect to server
+root@srv912867:/var/www# # Check the logs first
+pm2 logs tashan-win-vip --lines 10
+
+# Delete and recreate with the complete server
+pm2 delete tashan-win-vip
+
+# Create the complete working server
+cat > enhanced-server.js << 'EOF'
+import express from 'express';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+const app = express();
+app.use(express.json());
+app.use(express.static(path.join(__dirname, 'dist/public')));
+
+// In-memory storage
+const users = new Map();
+const gameConfigs = new Map();
+
+// Initialize games
+const defaultGames = ["Win Go", "Trx Wingo", "K3", "Moto Racing", "Mines Pro", "Mines", "Boom", "Aviator", "Limbo"];
+defaultGames.forEach((gameName, index) => {
+  gameConfigs.set(gameName, {
+    id: `game_${index + 1}`,
+    gameName,
+    isEnabled: true
+  });
+});
+
+function generateId() {
+  return Math.random().toString(36).substring(2) + Date.now().toString(36);
+}
+
+// API Routes
+app.get('/api/games', (req, res) => {
+  res.json(Array.from(gameConfigs.values()));
+curl -X POST http://localhost:5009/api/register -H "Content-Type: application/json" -d '{"uid":"8998555"}'
+[TAILING] Tailing last 10 lines for [tashan-win-vip] process (change the value with --lines option)
+/root/.pm2/logs/tashan-win-vip-error.log last 10 lines:
+10|tashan- | 7:01:49 AM [vite] Pre-transform error: Failed to load url /src/main.tsx?v=7vdayrJx4OfptEM7JnAzT (resolved id: /src/main.tsx?v=7vdayrJx4OfptEM7JnAzT). Does the file exist?
+10|tashan- | 7:01:50 AM [vite] Pre-transform error: Failed to load url /src/main.tsx?v=D7Yw15tlbEK7WDQOpzniJ (resolved id: /src/main.tsx?v=D7Yw15tlbEK7WDQOpzniJ). Does the file exist?
+10|tashan- | 7:01:52 AM [vite] Pre-transform error: Failed to load url /src/main.tsx?v=OdVWiDsXm2-qxcLPGLuXF (resolved id: /src/main.tsx?v=OdVWiDsXm2-qxcLPGLuXF). Does the file exist?
+10|tashan- | 7:01:53 AM [vite] Pre-transform error: Failed to load url /src/main.tsx?v=F7WTaDSeB1UN69V3WBAL1 (resolved id: /src/main.tsx?v=F7WTaDSeB1UN69V3WBAL1). Does the file exist?
+10|tashan- | 7:02:02 AM [vite] Pre-transform error: Failed to load url /src/main.tsx?v=BSvKNo6RUN_6Gd2dlXA0M (resolved id: /src/main.tsx?v=BSvKNo6RUN_6Gd2dlXA0M). Does the file exist?
+10|tashan- | 7:02:03 AM [vite] Pre-transform error: Failed to load url /src/main.tsx?v=dTsHvibQmatS1t27ayrVe (resolved id: /src/main.tsx?v=dTsHvibQmatS1t27ayrVe). Does the file exist?
+10|tashan- | 7:02:30 AM [vite] Pre-transform error: Failed to load url /src/main.tsx?v=i9dtVyuwymAuUgsJfqz9S (resolved id: /src/main.tsx?v=i9dtVyuwymAuUgsJfqz9S). Does the file exist?
+10|tashan- | 7:02:31 AM [vite] Pre-transform error: Failed to load url /src/main.tsx?v=IlRyT0YqYtXQP_Fw6eoBo (resolved id: /src/main.tsx?v=IlRyT0YqYtXQP_Fw6eoBo). Does the file exist?
+10|tashan- | 7:02:33 AM [vite] Pre-transform error: Failed to load url /src/main.tsx?v=IHFcIpHGYz8ggvwtiOITK (resolved id: /src/main.tsx?v=IHFcIpHGYz8ggvwtiOITK). Does the file exist?
+10|tashan- | 7:02:34 AM [vite] Pre-transform error: Failed to load url /src/main.tsx?v=Tj9npK52g2J9uA1eCMK7d (resolved id: /src/main.tsx?v=Tj9npK52g2J9uA1eCMK7d). Does the file exist?
+
+/root/.pm2/logs/tashan-win-vip-out.log last 10 lines:
+10|tashan- | 📊 TrxWingo Pattern Analysis: 20.0% BIG, Streak: SMALL x6
+10|tashan- | 📊 TrxWingo Recent Trend: 0/5 BIG results
+10|tashan- | 🎯 TRX TRULY BALANCED [1min]:
+10|tashan- |    Stats: 0/5 BIG | 20.0% BIG | SMALL x6
+10|tashan- |    Signals: BIG=23.6 vs SMALL=23.6
+10|tashan- |    🎯 FINAL: SMALL 4 (78% confidence)
+10|tashan- | ⏰ Using API countdown: 24s for TrxWingo 1min
+10|tashan- | ✅ Generated live TrxWingo prediction for 1min: SMALL 4
+10|tashan- | ✅ Updated TrxWingo 1min prediction: SMALL (24s)
+10|tashan- | 🚀 Enhanced server running on port 5009
+

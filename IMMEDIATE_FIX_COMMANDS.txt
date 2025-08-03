@@ -1,35 +1,28 @@
-# IMMEDIATE FIX - Run these commands on your VPS now
+# IMMEDIATE FIX - Run these exact commands on your VPS
 
-# First, find where your app is located
-cd /var/www
-ls -la
+# Stop ALL processes to clear PM2 completely
+pm2 stop all
+pm2 delete all
 
-# If you see tashan-win-vip directory, go into it
-cd tashan-win-vip
+# Kill any remaining processes on port 5009
+pkill -f "port 5009"
+pkill -f "enhanced-server"
+lsof -ti:5009 | xargs kill -9 2>/dev/null || true
 
-# Stop the current broken app
-pm2 delete tashan-win-vip
+# Wait a moment
+sleep 2
 
-# Check if you have the fixed files (you should see package-production.json)
-ls -la | grep package
+# Now start ONLY the enhanced server
+pm2 start enhanced-server.js --name tashan-win-vip
 
-# If package-production.json exists, run the fix:
-cd dist
-cp ../package-production.json package.json
-npm install --production
-cd ..
-
-# If package-production.json doesn't exist, you need to upload the new fixed zip file first
-# Then extract it and run:
-# unzip -o tashan-win-vip-final.zip
-# cd tashan-win-vip
-# cd dist && cp ../package-production.json package.json && npm install --production && cd ..
-
-# Start with the fixed configuration
-export NODE_ENV=production
-export PORT=5009
-pm2 start ecosystem.config.cjs --env production
+# Wait for startup
+sleep 3
 
 # Check status
 pm2 status
-pm2 logs tashan-win-vip --lines 5
+
+# Test the registration endpoint
+curl -X POST http://localhost:5009/api/register -H "Content-Type: application/json" -d '{"uid":"8998555"}'
+
+# If it returns JSON with user data, your registration is fixed!
+echo "Registration test complete!"
