@@ -1,0 +1,169 @@
+# Enhanced VPS Server with Full Functionality
+# Run this on your VPS to add user registration support
+
+cd /var/www
+
+# Stop current app
+pm2 delete tashan-win-vip
+
+# Create enhanced server with full user management
+cat > enhanced-server.js << 'EOF'
+import express from 'express';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+const app = express();
+app.use(express.json());
+app.use(express.static(path.join(__dirname, 'dist/public')));
+
+// In-memory storage
+const users = new Map();
+const gameConfigs = new Map();
+
+// Initialize default games
+const defaultGames = ["Win Go", "Trx Wingo", "K3", "Moto Racing", "Mines Pro", "Mines", "Boom", "Aviator", "Limbo"];
+defaultGames.forEach((gameName, index) => {
+  gameConfigs.set(gameName, {
+    id: `game_${index + 1}`,
+    gameName,
+    isEnabled: true,
+    createdAt: new Date(),
+    updatedAt: new Date()
+  });
+});
+
+// Helper function
+function generateId() {
+  return Math.random().toString(36).substring(2) + Date.now().toString(36);
+}
+
+// API Routes
+app.get('/api/games', (req, res) => {
+  const games = Array.from(gameConfigs.values());
+  res.json(games);
+});
+
+// User registration
+app.post('/api/register', (req, res) => {
+  try {
+    const { uid } = req.body;
+    
+    if (!uid) {
+      return res.status(400).json({ error: 'UID is required' });
+    }
+
+    // Check if user already exists
+    if (users.has(uid)) {
+      const existingUser = users.get(uid);
+      return res.json(existingUser);
+    }
+
+    // Create new user
+    const user = {
+      id: generateId(),
+      uid: uid,
+      approved: false, // Set to true for auto-approval during testing
+      createdAt: new Date()
+    };
+
+    users.set(uid, user);
+    console.log(`New user registered: ${uid}`);
+    
+    res.json(user);
+  } catch (error) {
+    console.error('Registration error:', error);
+    res.status(500).json({ error: 'Registration failed' });
+  }
+});
+
+// Get user status
+app.get('/api/user/:uid', (req, res) => {
+  try {
+    const { uid } = req.params;
+    const user = users.get(uid);
+    
+    if (!user) {
+      return res.status(404).json({ error: 'User not found' });
+    }
+    
+    res.json(user);
+  } catch (error) {
+    console.error('User lookup error:', error);
+    res.status(500).json({ error: 'User lookup failed' });
+  }
+});
+
+// Admin routes
+app.get('/api/admin/users', (req, res) => {
+  const allUsers = Array.from(users.values());
+  res.json(allUsers);
+});
+
+app.patch('/api/admin/users/:uid/approve', (req, res) => {
+  try {
+    const { uid } = req.params;
+    const user = users.get(uid);
+    
+    if (!user) {
+      return res.status(404).json({ error: 'User not found' });
+    }
+    
+    user.approved = true;
+    users.set(uid, user);
+    console.log(`User approved: ${uid}`);
+    
+    res.json(user);
+  } catch (error) {
+    console.error('Approval error:', error);
+    res.status(500).json({ error: 'Approval failed' });
+  }
+});
+
+// Prediction endpoints (simplified)
+app.get('/api/wingo/:variant/prediction', (req, res) => {
+  const predictions = {
+    '30sec': { prediction: 'BIG', number: 8, confidence: 75, countdown: 25 },
+    '1min': { prediction: 'SMALL', number: 2, confidence: 68, countdown: 45 },
+    '3min': { prediction: 'BIG', number: 9, confidence: 82, countdown: 125 },
+    '5min': { prediction: 'SMALL', number: 1, confidence: 71, countdown: 245 }
+  };
+  
+  const variant = req.params.variant;
+  res.json(predictions[variant] || predictions['1min']);
+});
+
+app.get('/api/trxwingo/:variant/prediction', (req, res) => {
+  const predictions = {
+    '1min': { prediction: 'BIG', number: 7, confidence: 73, countdown: 35 },
+    '3min': { prediction: 'SMALL', number: 3, confidence: 66, countdown: 135 },
+    '5min': { prediction: 'BIG', number: 6, confidence: 79, countdown: 285 },
+    '10min': { prediction: 'SMALL', number: 4, confidence: 84, countdown: 485 }
+  };
+  
+  const variant = req.params.variant;
+  res.json(predictions[variant] || predictions['1min']);
+});
+
+// Serve frontend
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'dist/public/index.html'));
+});
+
+const port = process.env.PORT || 5009;
+app.listen(port, '0.0.0.0', () => {
+  console.log(`🚀 Enhanced server running on port ${port}`);
+  console.log(`📊 Games loaded: ${gameConfigs.size}`);
+  console.log(`👥 User storage ready`);
+});
+EOF
+
+# Start enhanced server
+pm2 start enhanced-server.js --name tashan-win-vip
+
+# Check status
+pm2 status
+pm2 logs tashan-win-vip --lines 5
+curl http://localhost:5009/api/games
