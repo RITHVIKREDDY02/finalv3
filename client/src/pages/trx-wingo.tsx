@@ -7,7 +7,7 @@ import { useLocation } from "wouter";
 import { queryClient } from "@/lib/queryClient";
 import wingoIssueImage from "@assets/wingoissue-2e0f92ab_1754126687302.webp";
 
-type WingoVariant = "30sec" | "1min" | "3min" | "5min";
+type WingoVariant = "30sec" | "1min" | "3min" | "5min" | "10min";
 
 interface WingoResult {
   issueNumber: string;
@@ -28,9 +28,14 @@ export default function TrxWingo() {
   const [selectedVariant, setSelectedVariant] = useState<WingoVariant>("1min");
   const [countdown, setCountdown] = useState(30);
 
+  // Get API variant (10min uses 5min API data)
+  const getApiVariant = (variant: WingoVariant): string => {
+    return variant === "10min" ? "5min" : variant;
+  };
+
   // Fetch prediction data for selected variant
   const { data: prediction } = useQuery<WingoPrediction>({
-    queryKey: [`/api/wingo/prediction/${selectedVariant}`],
+    queryKey: [`/api/wingo/prediction/${getApiVariant(selectedVariant)}`],
     refetchInterval: 10000, // Faster refresh
     staleTime: 5000, // Consider data stale after 5 seconds
     enabled: !!selectedVariant,
@@ -38,7 +43,7 @@ export default function TrxWingo() {
 
   // Fetch results data for selected variant
   const { data: results = [] } = useQuery<WingoResult[]>({
-    queryKey: [`/api/wingo/results/${selectedVariant}`],
+    queryKey: [`/api/wingo/results/${getApiVariant(selectedVariant)}`],
     refetchInterval: 15000,
     enabled: !!selectedVariant,
   });
@@ -68,19 +73,20 @@ export default function TrxWingo() {
     { key: "1min" as WingoVariant, label: "TrxWingo 1Min" },
     { key: "3min" as WingoVariant, label: "TrxWingo 3Min" },
     { key: "5min" as WingoVariant, label: "TrxWingo 5Min" },
-    { key: "5min" as WingoVariant, label: "TrxWingo 10Min" },
+    { key: "10min" as WingoVariant, label: "TrxWingo 10Min" },
   ];
 
   const handleVariantSwitch = (variant: WingoVariant) => {
     setSelectedVariant(variant);
     
     // Set initial countdown based on variant
-    const countdowns = { "30sec": 30, "1min": 60, "3min": 180, "5min": 300 };
+    const countdowns = { "30sec": 30, "1min": 60, "3min": 180, "5min": 300, "10min": 600 };
     setCountdown(countdowns[variant]);
     
     // Invalidate queries for new variant to fetch fresh data
-    queryClient.invalidateQueries({ queryKey: [`/api/wingo/prediction/${variant}`] });
-    queryClient.invalidateQueries({ queryKey: [`/api/wingo/results/${variant}`] });
+    const apiVariant = variant === "10min" ? "5min" : variant;
+    queryClient.invalidateQueries({ queryKey: [`/api/wingo/prediction/${apiVariant}`] });
+    queryClient.invalidateQueries({ queryKey: [`/api/wingo/results/${apiVariant}`] });
   };
 
   const formatTime = (seconds: number): string => {
@@ -137,7 +143,8 @@ export default function TrxWingo() {
     const routes = {
       "1min": "/trx-wingo-1min", 
       "3min": "/trx-wingo-3min",
-      "5min": "/trx-wingo-5min"
+      "5min": "/trx-wingo-5min",
+      "10min": "/trx-wingo-10min"
     };
     navigate(routes[variant]);
   };
@@ -157,8 +164,9 @@ export default function TrxWingo() {
         <div className="flex items-center gap-2">
           <button
             onClick={() => {
-              queryClient.invalidateQueries({ queryKey: [`/api/wingo/prediction/${selectedVariant}`] });
-              queryClient.invalidateQueries({ queryKey: [`/api/wingo/results/${selectedVariant}`] });
+              const apiVariant = selectedVariant === "10min" ? "5min" : selectedVariant;
+              queryClient.invalidateQueries({ queryKey: [`/api/wingo/prediction/${apiVariant}`] });
+              queryClient.invalidateQueries({ queryKey: [`/api/wingo/results/${apiVariant}`] });
             }}
             className="flex items-center justify-center w-10 h-10 text-white hover:text-yellow-400 transition-colors rounded-lg hover:bg-gray-700"
             title="Refresh"
