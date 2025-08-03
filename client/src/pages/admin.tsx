@@ -98,6 +98,11 @@ export default function AdminPanel() {
       const response = await apiRequest('/api/admin/login', 'POST', { password }) as { token: string };
       localStorage.setItem('adminToken', response.token);
       setIsAuthenticated(true);
+      
+      // Invalidate and refetch all queries after login
+      queryClient.invalidateQueries();
+      queryClient.refetchQueries();
+      
       toast({
         title: "Success",
         description: "Logged in successfully",
