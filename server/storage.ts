@@ -108,4 +108,27 @@ export class MemoryStorage implements IStorage {
   }
 }
 
-export const storage = new MemoryStorage();
+// Choose storage based on environment
+function createStorage(): IStorage {
+  // Use database storage if DATABASE_URL is available
+  if (process.env.DATABASE_URL) {
+    try {
+      // Dynamically import DatabaseStorage only when needed
+      const { DatabaseStorage } = require('./db-storage');
+      console.log('🗄️ Using PostgreSQL database storage');
+      const dbStorage = new DatabaseStorage();
+      // Initialize default games in background
+      dbStorage.initializeDefaultGames().catch(console.error);
+      return dbStorage;
+    } catch (error) {
+      console.error('Failed to initialize database storage, falling back to memory:', error);
+      console.log('🧠 Using in-memory storage (fallback)');
+      return new MemoryStorage();
+    }
+  } else {
+    console.log('🧠 Using in-memory storage (development mode)');
+    return new MemoryStorage();
+  }
+}
+
+export const storage = createStorage();
