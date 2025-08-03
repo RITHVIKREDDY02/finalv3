@@ -86,93 +86,102 @@ export default function RegistrationDialog({ isOpen, onClose, onRegistrationSucc
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="sm:max-w-lg mx-auto my-4 w-[calc(100%-2rem)] max-h-[90vh] overflow-y-auto border-0 p-0 bg-gradient-to-br from-amber-400 via-yellow-300 to-orange-400 rounded-2xl shadow-2xl">
-        {/* Header with Logo and Close */}
-        <div className="relative bg-gradient-to-r from-amber-500 to-yellow-400 p-6 rounded-t-2xl">
-          <div className="text-center space-y-3">
-            <div className="mx-auto w-16 h-16 bg-white/20 rounded-full flex items-center justify-center backdrop-blur-sm">
-              <Star className="w-8 h-8 text-white" />
+      <DialogContent className="sm:max-w-lg mx-auto my-4 w-[calc(100%-2rem)] max-h-[90vh] overflow-y-auto border-2 p-0 rounded-2xl shadow-2xl animate-glow" 
+        style={{ 
+          backgroundColor: '#231C21',
+          borderColor: '#FED358'
+        }}>
+        
+        {/* Header */}
+        <div className="relative p-6 rounded-t-2xl bg-banner-gradient border-b border-accent-gold/30">
+          <div className="text-center space-y-4">
+            <div className="mx-auto w-20 h-20 rounded-full flex items-center justify-center shimmer-effect"
+              style={{ backgroundColor: '#FED358' }}>
+              <Star className="w-10 h-10 text-black animate-float" />
             </div>
-            <DialogTitle className="text-2xl font-bold text-white drop-shadow-md">
-              VIP PREDICTION ACCESS
+            <DialogTitle className="text-2xl font-bold light-gold drop-shadow-lg">
+              TASHAN WIN VIP ACCESS
             </DialogTitle>
-            <DialogDescription className="text-white/90 font-medium">
-              Join our exclusive prediction community
+            <DialogDescription className="warm-gold font-semibold text-center">
+              🚀 Exclusive Prediction Portal
             </DialogDescription>
           </div>
         </div>
 
         {/* Content */}
         <div className="p-6 space-y-6">
-          {/* Features Grid */}
-          <div className="grid grid-cols-2 gap-3">
-            <div className="bg-white/80 backdrop-blur-sm p-3 rounded-xl text-center">
-              <Shield className="w-6 h-6 text-green-600 mx-auto mb-1" />
-              <p className="text-xs font-semibold text-gray-800">Secure</p>
+          {/* Premium Features */}
+          <div className="grid grid-cols-2 gap-4">
+            <div className="bg-banner-gradient p-4 rounded-xl border border-accent-gold/30 text-center game-card">
+              <Shield className="w-8 h-8 warm-gold mx-auto mb-2" />
+              <p className="text-sm font-bold light-gold">Verified</p>
+              <p className="text-xs accent-gold">Security</p>
             </div>
-            <div className="bg-white/80 backdrop-blur-sm p-3 rounded-xl text-center">
-              <Zap className="w-6 h-6 text-blue-600 mx-auto mb-1" />
-              <p className="text-xs font-semibold text-gray-800">Fast</p>
+            <div className="bg-banner-gradient p-4 rounded-xl border border-accent-gold/30 text-center game-card">
+              <Zap className="w-8 h-8 warm-gold mx-auto mb-2" />
+              <p className="text-sm font-bold light-gold">Lightning</p>
+              <p className="text-xs accent-gold">Predictions</p>
             </div>
           </div>
 
-          {/* Instructions Card */}
-          <div className="bg-white/90 backdrop-blur-sm p-5 rounded-xl border border-white/50 shadow-lg">
-            <div className="flex items-start gap-3 mb-3">
-              <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center flex-shrink-0">
-                <Users className="w-4 h-4 text-white" />
+          {/* Instructions */}
+          <div className="bg-banner-gradient p-5 rounded-xl border border-accent-gold/50 shadow-lg">
+            <div className="flex items-start gap-4 mb-4">
+              <div className="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0"
+                style={{ backgroundColor: '#FED358' }}>
+                <Users className="w-5 h-5 text-black" />
               </div>
               <div>
-                <h3 className="font-bold text-gray-800 mb-2">Getting Started</h3>
-                <p className="text-sm text-gray-700 leading-relaxed">
-                  Create a new account using our secure link to connect with our prediction servers.
+                <h3 className="font-bold light-gold mb-2 text-lg">Getting Started</h3>
+                <p className="text-sm warm-gold leading-relaxed">
+                  Create your account via our secure registration link for server connection and accurate predictions.
                 </p>
               </div>
             </div>
             
-            <div className="bg-gradient-to-r from-red-100 to-pink-100 p-3 rounded-lg border border-red-200 mt-3">
-              <p className="text-xs text-red-800 font-semibold flex items-center gap-2">
-                <Shield className="w-4 h-4" />
-                Important: Only accounts created through our link are verified for accurate predictions
+            <div className="bg-red-900/30 p-4 rounded-lg border border-red-500/30">
+              <p className="text-sm text-red-300 font-semibold flex items-center gap-3">
+                <Shield className="w-5 h-5 flex-shrink-0" />
+                <span>Important: Only verified accounts through our link receive 100% accurate predictions</span>
               </p>
             </div>
           </div>
 
           {/* Form */}
           <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5">
               <FormField
                 control={form.control}
                 name="uid"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="text-gray-800 font-semibold text-sm">
-                      Your Unique ID
+                    <FormLabel className="light-gold font-bold text-base">
+                      Enter Your UID
                     </FormLabel>
-                    <div className="space-y-3">
+                    <div className="space-y-4">
                       <FormControl>
                         <div className="relative">
                           <Input
-                            placeholder="Enter your UID here..."
+                            placeholder="Your unique UID..."
                             {...field}
-                            className="h-12 px-4 bg-white/90 backdrop-blur-sm border-2 border-white/50 focus:border-amber-400 focus:ring-2 focus:ring-amber-200 text-gray-800 placeholder:text-gray-500 rounded-xl shadow-inner"
+                            className="h-14 px-5 text-lg font-semibold bg-banner-gradient border-2 border-accent-gold/50 focus:border-accent-gold focus:ring-2 focus:ring-accent-gold/20 light-gold placeholder:accent-gold rounded-xl shadow-inner"
                           />
                         </div>
                       </FormControl>
                       <Button
                         type="submit"
-                        className="w-full h-12 bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white font-bold rounded-xl shadow-lg transition-all duration-200 transform hover:scale-[1.02] disabled:opacity-50 disabled:transform-none"
+                        className="w-full h-14 font-bold text-lg rounded-xl shadow-xl transition-all duration-300 transform hover:scale-[1.02] disabled:opacity-50 disabled:transform-none custom-button"
                         disabled={registerMutation.isPending}
                       >
                         {registerMutation.isPending ? (
-                          <div className="flex items-center gap-2">
-                            <Loader2 className="h-5 w-5 animate-spin" />
-                            <span>Processing...</span>
+                          <div className="flex items-center gap-3">
+                            <Loader2 className="h-6 w-6 animate-spin" />
+                            <span>PROCESSING...</span>
                           </div>
                         ) : (
-                          <div className="flex items-center gap-2">
-                            <Star className="h-5 w-5" />
-                            <span>JOIN VIP</span>
+                          <div className="flex items-center gap-3">
+                            <Star className="h-6 w-6" />
+                            <span>JOIN VIP NOW</span>
                           </div>
                         )}
                       </Button>
@@ -185,31 +194,31 @@ export default function RegistrationDialog({ isOpen, onClose, onRegistrationSucc
           </Form>
 
           {/* Action Buttons */}
-          <div className="space-y-3">
+          <div className="space-y-4">
             <div className="flex gap-3">
               <Button
-                className="flex-1 h-11 bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 text-white font-semibold rounded-xl shadow-md transition-all duration-200"
+                className="flex-1 h-12 font-bold rounded-xl shadow-lg transition-all duration-300 transform hover:scale-[1.02] btn-body-bg"
                 onClick={handleStartButtonClick}
               >
                 <div className="flex items-center gap-2">
-                  <Zap className="h-4 w-4" />
-                  <span>Start Now</span>
+                  <Zap className="h-5 w-5" />
+                  <span>🚀 START</span>
                 </div>
               </Button>
               <Button
-                className="flex-1 h-11 bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white font-semibold rounded-xl shadow-md transition-all duration-200"
+                className="flex-1 h-12 font-bold rounded-xl shadow-lg transition-all duration-300 transform hover:scale-[1.02] btn-body-bg"
                 onClick={handleHelp}
               >
                 <div className="flex items-center gap-2">
-                  <Users className="h-4 w-4" />
-                  <span>Get Help</span>
+                  <Users className="h-5 w-5" />
+                  <span>❓ HELP</span>
                 </div>
               </Button>
             </div>
             
-            <div className="text-center">
-              <p className="text-xs text-gray-600">
-                Need assistance? Our support team is ready to help you get started.
+            <div className="text-center pt-2">
+              <p className="text-sm accent-gold">
+                🎯 Join thousands of successful VIP members
               </p>
             </div>
           </div>
