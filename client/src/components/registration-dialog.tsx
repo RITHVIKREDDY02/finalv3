@@ -94,98 +94,94 @@ export default function RegistrationDialog({ isOpen, onClose, onRegistrationSucc
         }}>
         
         {/* Header */}
-        <div className="relative p-6 rounded-t-2xl bg-banner-gradient border-b border-accent-gold/30">
-          <div className="text-center space-y-4">
-            <div className="mx-auto w-20 h-20 rounded-full flex items-center justify-center"
+        <div className="relative p-4 rounded-t-2xl bg-banner-gradient border-b border-accent-gold/30">
+          <div className="text-center space-y-2">
+            <div className="mx-auto w-12 h-12 rounded-full flex items-center justify-center"
               style={{ 
                 backgroundColor: '#FED358',
-                boxShadow: '0 0 20px rgba(254, 211, 88, 0.4)'
+                boxShadow: '0 0 15px rgba(254, 211, 88, 0.4)'
               }}>
-              <Star className="w-10 h-10 text-black" />
+              <Star className="w-6 h-6 text-black" />
             </div>
-            <DialogTitle className="text-2xl font-bold light-gold drop-shadow-lg">
-              TASHAN WIN VIP ACCESS
+            <DialogTitle className="text-lg font-bold light-gold drop-shadow-lg">
+              VIP ACCESS
             </DialogTitle>
-            <DialogDescription className="warm-gold font-semibold text-center">
-              🚀 Exclusive Prediction Portal
+            <DialogDescription className="warm-gold font-medium text-center text-sm">
+              🚀 Exclusive Predictions
             </DialogDescription>
           </div>
         </div>
 
         {/* Content */}
-        <div className="p-6 space-y-6">
+        <div className="p-4 space-y-4">
           {/* Premium Features */}
-          <div className="grid grid-cols-2 gap-4">
-            <div className="bg-banner-gradient p-4 rounded-xl border border-accent-gold/30 text-center game-card">
-              <Shield className="w-8 h-8 warm-gold mx-auto mb-2" />
-              <p className="text-sm font-bold light-gold">Verified</p>
-              <p className="text-xs accent-gold">Security</p>
+          <div className="grid grid-cols-2 gap-2">
+            <div className="bg-banner-gradient p-2 rounded-lg border border-accent-gold/30 text-center">
+              <Shield className="w-5 h-5 warm-gold mx-auto mb-1" />
+              <p className="text-xs font-bold light-gold">Secure</p>
             </div>
-            <div className="bg-banner-gradient p-4 rounded-xl border border-accent-gold/30 text-center game-card">
-              <Zap className="w-8 h-8 warm-gold mx-auto mb-2" />
-              <p className="text-sm font-bold light-gold">Lightning</p>
-              <p className="text-xs accent-gold">Predictions</p>
+            <div className="bg-banner-gradient p-2 rounded-lg border border-accent-gold/30 text-center">
+              <Zap className="w-5 h-5 warm-gold mx-auto mb-1" />
+              <p className="text-xs font-bold light-gold">Fast</p>
             </div>
           </div>
 
           {/* Instructions */}
-          <div className="bg-banner-gradient p-5 rounded-xl border border-accent-gold/50 shadow-lg">
-            <div className="flex items-start gap-4 mb-4">
-              <div className="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0"
+          <div className="bg-banner-gradient p-3 rounded-lg border border-accent-gold/50">
+            <div className="flex items-start gap-2 mb-2">
+              <div className="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0"
                 style={{ backgroundColor: '#FED358' }}>
-                <Users className="w-5 h-5 text-black" />
+                <Users className="w-3 h-3 text-black" />
               </div>
               <div>
-                <h3 className="font-bold light-gold mb-2 text-lg">Getting Started</h3>
-                <p className="text-sm warm-gold leading-relaxed">
-                  Create your account via our secure registration link for server connection and accurate predictions.
+                <h3 className="font-bold light-gold mb-1 text-sm">Getting Started</h3>
+                <p className="text-xs warm-gold leading-relaxed">
+                  Create account via our secure link for accurate predictions.
                 </p>
               </div>
             </div>
             
-            <div className="bg-red-900/30 p-4 rounded-lg border border-red-500/30">
-              <p className="text-sm text-red-300 font-semibold flex items-center gap-3">
-                <Shield className="w-5 h-5 flex-shrink-0" />
-                <span>Important: Only verified accounts through our link receive 100% accurate predictions</span>
+            <div className="bg-red-900/30 p-2 rounded border border-red-500/30">
+              <p className="text-xs text-red-300 font-medium flex items-center gap-2">
+                <Shield className="w-3 h-3 flex-shrink-0" />
+                <span>Important: Only verified accounts receive accurate predictions</span>
               </p>
             </div>
           </div>
 
           {/* Form */}
           <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5">
+            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-3">
               <FormField
                 control={form.control}
                 name="uid"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="light-gold font-bold text-base">
+                    <FormLabel className="light-gold font-semibold text-sm">
                       Enter Your UID
                     </FormLabel>
-                    <div className="space-y-4">
+                    <div className="space-y-2">
                       <FormControl>
-                        <div className="relative">
-                          <Input
-                            placeholder="Your unique UID..."
-                            {...field}
-                            className="h-14 px-5 text-lg font-semibold bg-banner-gradient border-2 border-accent-gold/50 focus:border-accent-gold focus:ring-2 focus:ring-accent-gold/20 light-gold placeholder:accent-gold rounded-xl shadow-inner"
-                          />
-                        </div>
+                        <Input
+                          placeholder="Your unique UID..."
+                          {...field}
+                          className="h-10 px-3 text-sm bg-banner-gradient border-2 border-accent-gold/50 focus:border-accent-gold focus:ring-1 focus:ring-accent-gold/20 light-gold placeholder:accent-gold rounded-lg"
+                        />
                       </FormControl>
                       <Button
                         type="submit"
-                        className="w-full h-14 font-bold text-lg rounded-xl shadow-xl transition-all duration-300 transform hover:scale-[1.02] disabled:opacity-50 disabled:transform-none custom-button"
+                        className="w-full h-10 font-bold text-sm rounded-lg transition-all duration-200 custom-button"
                         disabled={registerMutation.isPending}
                       >
                         {registerMutation.isPending ? (
-                          <div className="flex items-center gap-3">
-                            <Loader2 className="h-6 w-6 animate-spin" />
+                          <div className="flex items-center gap-2">
+                            <Loader2 className="h-4 w-4 animate-spin" />
                             <span>PROCESSING...</span>
                           </div>
                         ) : (
-                          <div className="flex items-center gap-3">
-                            <Star className="h-6 w-6" />
-                            <span>JOIN VIP NOW</span>
+                          <div className="flex items-center gap-2">
+                            <Star className="h-4 w-4" />
+                            <span>JOIN VIP</span>
                           </div>
                         )}
                       </Button>
@@ -198,31 +194,25 @@ export default function RegistrationDialog({ isOpen, onClose, onRegistrationSucc
           </Form>
 
           {/* Action Buttons */}
-          <div className="space-y-4">
-            <div className="flex gap-3">
+          <div className="space-y-2">
+            <div className="flex gap-2">
               <Button
-                className="flex-1 h-12 font-bold rounded-xl shadow-lg transition-all duration-300 transform hover:scale-[1.02] btn-body-bg"
+                className="flex-1 h-9 font-semibold text-sm rounded-lg btn-body-bg"
                 onClick={handleStartButtonClick}
               >
-                <div className="flex items-center gap-2">
-                  <Zap className="h-5 w-5" />
-                  <span>🚀 START</span>
-                </div>
+                🚀 START
               </Button>
               <Button
-                className="flex-1 h-12 font-bold rounded-xl shadow-lg transition-all duration-300 transform hover:scale-[1.02] btn-body-bg"
+                className="flex-1 h-9 font-semibold text-sm rounded-lg btn-body-bg"
                 onClick={handleHelp}
               >
-                <div className="flex items-center gap-2">
-                  <Users className="h-5 w-5" />
-                  <span>❓ HELP</span>
-                </div>
+                ❓ HELP
               </Button>
             </div>
             
-            <div className="text-center pt-2">
-              <p className="text-sm accent-gold">
-                🎯 Join thousands of successful VIP members
+            <div className="text-center">
+              <p className="text-xs accent-gold">
+                🎯 Join VIP members
               </p>
             </div>
           </div>
