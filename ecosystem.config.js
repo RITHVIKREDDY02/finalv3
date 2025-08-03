@@ -8,11 +8,11 @@ module.exports = {
       exec_mode: 'fork', // Fork mode for single instance
       env: {
         NODE_ENV: 'production',
-        PORT: 3000
+        PORT: 5009
       },
       env_production: {
         NODE_ENV: 'production',
-        PORT: 3000
+        PORT: 5009
       },
       // Performance optimizations
       max_memory_restart: '256M', // Restart if memory exceeds 256MB
