@@ -45,9 +45,9 @@ export default function Home() {
   const [selectedGameName, setSelectedGameName] = useState<string>("");
   const [userUid, setUserUid] = useState<string>("");
 
-  // Fetch game configurations
+  // Fetch game configurations (public endpoint)
   const { data: gameConfigs = [] } = useQuery<GameConfig[]>({
-    queryKey: ["/api/admin/games"],
+    queryKey: ["/api/games"],
   });
 
   // Use fast user verification hook for optimal performance

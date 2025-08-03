@@ -142,6 +142,17 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
+  // Public endpoint for game configurations (read-only)
+  app.get('/api/games', async (req, res) => {
+    try {
+      const games = await storage.getAllGameConfigs();
+      res.json(games);
+    } catch (error) {
+      console.error("Error fetching game configs:", error);
+      res.status(500).json({ error: "Failed to fetch game configs" });
+    }
+  });
+
   // Admin middleware to verify authentication
   const verifyAdmin = (req: any, res: any, next: any) => {
     const authHeader = req.headers.authorization;
