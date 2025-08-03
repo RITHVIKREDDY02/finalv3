@@ -1,0 +1,121 @@
+13 packages are looking for funding
+  run `npm fund` for details
+npm notice
+npm notice New major version of npm available! 10.8.2 -> 11.5.2
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v11.5.2
+npm notice To update run: npm install -g npm@11.5.2
+npm notice
+npm warn deprecated @esbuild-kit/esm-loader@2.6.5: Merged into tsx: https://tsx.is
+npm warn deprecated @esbuild-kit/core-utils@3.3.2: Merged into tsx: https://tsx.is
+
+added 499 packages, and audited 500 packages in 31s
+
+67 packages are looking for funding
+  run `npm fund` for details
+
+11 vulnerabilities (3 low, 8 moderate)
+
+To address issues that do not require attention, run:
+  npm audit fix
+
+To address all issues (including breaking changes), run:
+  npm audit fix --force
+
+Run `npm audit` for details.
+
+> rest-express@1.0.0 build
+> vite build && esbuild server/index.ts --platform=node --packages=external --bundle --format=esm --outdir=dist
+
+vite v5.4.19 building for production...
+transforming (3) src/main.tsxBrowserslist: browsers data (caniuse-lite) is 10 months old. Please run:
+  npx update-browserslist-db@latest
+  Why you should do it regularly: https://github.com/browserslist/update-db#readme
+✓ 1754 modules transformed.
+../dist/public/index.html                                                                1.53 kB │ gzip:   0.66 kB
+../dist/public/assets/Screenshot 2025-08-02 220243_1754152399399-BPpG-Y8M.png            8.37 kB
+../dist/public/assets/Screenshot 2025-08-02 220225_1754152384208-Dx2scZsH.png           11.13 kB
+../dist/public/assets/811_1754070860593-DsjoKqXR.png                                    17.15 kB
+../dist/public/assets/800_1754070860600-CQb0Dftz.png                                    20.17 kB
+../dist/public/assets/100_1754070860600-BkGjX7kB.png                                    21.08 kB
+../dist/public/assets/lotterycategory_20250412120719dqfv_1754052547793-DvyeHsbk.png     27.42 kB
+../dist/public/assets/lotterycategory_20250412120818j8wq_1754052552269-BXfbP9nl.png     29.65 kB
+../dist/public/assets/lotterycategory_2025041212074073ug_1754069351570-Aymw5y49.png     30.01 kB
+../dist/public/assets/TASHAN WIN LOGO_1754052537792-k2yHYqNz.png                        32.75 kB
+../dist/public/assets/229 (1)_1754070860598-DGS2VWFB.png                                45.32 kB
+../dist/public/assets/235_1754071157602-BgWz6t6B.png                                    46.82 kB
+../dist/public/assets/Screenshot 2025-08-02 220234_1754152390853-BasWLdsN.png           53.26 kB
+../dist/public/assets/c57f5149-2139-410f-8d48-94a06fcb36f2_1754069356497-UOBDz35V.png   71.32 kB
+../dist/public/assets/image_1754150847570-jEFWRT6L.png                                  83.84 kB
+../dist/public/assets/mobile hero banner_1754079113835-C2LlT5nQ.jpg                    138.23 kB
+../dist/public/assets/Hero Banner (1440 x 300 px)_1754078513162-BjZ5XuzD.jpg           283.87 kB
+../dist/public/assets/image_1754150852695-Pr8URuBu.png                                 492.82 kB
+../dist/public/assets/index-BiVbN346.css                                                75.55 kB │ gzip:  13.28 kB
+../dist/public/assets/index-DEST2k-O.js                                                516.28 kB │ gzip: 147.54 kB
+
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+✓ built in 8.84s
+
+  dist/index.js  44.7kb
+
+⚡ Done in 14ms
+Rule added
+Rule added (v6)
+Firewall is active and enabled on system startup
+[PM2][ERROR] File ecosystem.config.js malformated
+ReferenceError: module is not defined
+    at file:///var/www/tashan-win-vip/Final/ecosystem.config.js:2:1
+    at ModuleJobSync.runSync (node:internal/modules/esm/module_job:387:35)
+    at ModuleLoader.importSyncForRequire (node:internal/modules/esm/loader:323:47)
+    at loadESMFromCJS (node:internal/modules/cjs/loader:1371:24)
+    at Module._compile (node:internal/modules/cjs/loader:1511:5)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1572:16)
+    at Module.load (node:internal/modules/cjs/loader:1275:32)
+    at Module._load (node:internal/modules/cjs/loader:1096:12)
+    at Module.require (node:internal/modules/cjs/loader:1298:19)
+    at require (node:internal/modules/helpers:182:18)
+[PM2] Saving current process list...
+[PM2] Successfully saved in /root/.pm2/dump.pm2
+[PM2] Init System found: systemd
+Platform systemd
+Template
+[Unit]
+Description=PM2 process manager
+Documentation=https://pm2.keymetrics.io/
+After=network.target
+
+[Service]
+Type=forking
+User=root
+LimitNOFILE=infinity
+LimitNPROC=infinity
+LimitCORE=infinity
+Environment=PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin
+Environment=PM2_HOME=/root/.pm2
+PIDFile=/root/.pm2/pm2.pid
+Restart=on-failure
+
+ExecStart=/usr/lib/node_modules/pm2/bin/pm2 resurrect
+ExecReload=/usr/lib/node_modules/pm2/bin/pm2 reload all
+ExecStop=/usr/lib/node_modules/pm2/bin/pm2 kill
+
+[Install]
+WantedBy=multi-user.target
+
+Target path
+/etc/systemd/system/pm2-root.service
+Command list
+[ 'systemctl enable pm2-root' ]
+[PM2] Writing init configuration in /etc/systemd/system/pm2-root.service
+[PM2] Making script booting at startup...
+[PM2] [-] Executing: systemctl enable pm2-root...
+[PM2] [v] Command successfully executed.
++---------------------------------------+
+[PM2] Freeze a process list on reboot via:
+$ pm2 save
+
+[PM2] Remove init script via:
+$ pm2 unstartup systemd
+root@srv912867:/var/www/tashan-win-vip/Final#
