@@ -97,6 +97,15 @@ export default function Home() {
       }
     }
     
+    // Special handling for Trx Wingo - redirect to TRX Wingo page if approved
+    if (gameType === "Trx Wingo") {
+      const storedUid = localStorage.getItem("tashan_user_uid");
+      if (storedUid && userStatus?.approved) {
+        navigate('/trx-wingo');
+        return;
+      }
+    }
+    
     // Check if user has registered UID
     const storedUid = localStorage.getItem("tashan_user_uid");
     if (storedUid) {

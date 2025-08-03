@@ -241,7 +241,56 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
+  // TRX Wingo prediction routes - reusing Wingo service with TRX naming
+  const TRX_WINGO_VARIANTS = ['1min', '3min', '5min', '10min'];
 
+  app.get('/api/trx-wingo/variants', (req, res) => {
+    res.json(TRX_WINGO_VARIANTS);
+  });
+
+  app.get('/api/trx-wingo/prediction/:variant', async (req, res) => {
+    try {
+      const { variant } = req.params;
+      
+      if (!TRX_WINGO_VARIANTS.includes(variant)) {
+        return res.status(400).json({ error: "Invalid variant" });
+      }
+
+      // Use Wingo service for TRX Wingo predictions with same logic
+      const prediction = await wingoService.getCachedPrediction(variant);
+      
+      if (prediction) {
+        res.json(prediction);
+      } else {
+        res.status(503).json({ error: "Prediction service temporarily unavailable" });
+      }
+    } catch (error) {
+      console.error("Error generating TRX prediction:", error);
+      res.status(500).json({ error: "Failed to generate prediction" });
+    }
+  });
+
+  app.get('/api/trx-wingo/results/:variant', async (req, res) => {
+    try {
+      const { variant } = req.params;
+      
+      if (!TRX_WINGO_VARIANTS.includes(variant)) {
+        return res.status(400).json({ error: "Invalid variant" });
+      }
+
+      // Use Wingo service for TRX Wingo results with same logic
+      const results = await wingoService.getLatestResults(variant);
+      
+      if (results && results.length > 0) {
+        res.json(results);
+      } else {
+        res.status(503).json({ error: "Results service temporarily unavailable" });
+      }
+    } catch (error) {
+      console.error("Error fetching TRX results:", error);
+      res.status(500).json({ error: "Failed to fetch results" });
+    }
+  });
 
   const httpServer = createServer(app);
   return httpServer;
