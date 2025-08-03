@@ -5,7 +5,7 @@ import { useQuery } from "@tanstack/react-query";
 import { ArrowLeft, Play, Trophy, Clock, TrendingUp, Eye, RefreshCw } from "lucide-react";
 import { useLocation } from "wouter";
 import { queryClient } from "@/lib/queryClient";
-import wingoIssueImage from "@assets/wingoissue-2e0f92ab_1754126687302.webp";
+
 
 type WingoVariant = "30sec" | "1min" | "3min" | "5min" | "10min";
 
@@ -206,12 +206,11 @@ export default function TrxWingo() {
 
           {/* Content Card */}
           <div className="mt-4 relative">
-            <img 
-              src={wingoIssueImage}
-              alt="Wingo Issue Background"
-              className="w-full h-auto"
+            <div 
+              className="w-full h-auto bg-gradient-to-r from-yellow-400 to-orange-500"
               style={{ 
-                height: '106.66px'
+                height: '106.66px',
+                borderRadius: '8px'
               }}
             />
             
