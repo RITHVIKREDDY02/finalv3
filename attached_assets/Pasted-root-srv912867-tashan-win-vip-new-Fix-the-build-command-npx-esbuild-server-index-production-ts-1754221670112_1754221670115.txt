@@ -1,0 +1,58 @@
+root@srv912867:~/tashan-win-vip-new# # Fix the build command
+npx esbuild server/index-production.ts --platform=node --packages=external --bundle --format=esm --outfile=dist/index-production.js
+
+# Check if the file was created
+ls -la dist/
+
+# Set environment variables with port 5009
+export NODE_ENV=production
+export PORT=5009
+
+# Start with PM2 on port 5009
+pm2 start dist/index-production.js --name "tashan-win-vip" --env production
+
+# Save PM2 configuration
+pm2 save
+
+  dist/index-production.js  53.1kb
+
+⚡ Done in 14ms
+total 124
+drwxr-xr-x 3 root root  4096 Aug  3 11:47 .
+drwxr-xr-x 8 root root  4096 Aug  3 11:45 ..
+-rw-r--r-- 1 root root 54363 Aug  3 11:47 index-production.js
+-rw-r--r-- 1 root root 53911 Aug  3 11:45 index.js
+drwxr-xr-x 3 root root  4096 Aug  3 11:45 public
+[PM2] Starting /root/tashan-win-vip-new/dist/index-production.js in fork_mode (1 instance)
+[PM2] Done.
+┌────┬────────────────────┬─────────────┬─────────┬─────────┬──────────┬────────┬──────┬───────────┬──────────┬──────────┬──────────┬──────────┐
+│ id │ name               │ namespace   │ version │ mode    │ pid      │ uptime │ ↺    │ status    │ cpu      │ mem      │ user     │ watching │
+├────┼────────────────────┼─────────────┼─────────┼─────────┼──────────┼────────┼──────┼───────────┼──────────┼──────────┼──────────┼──────────┤
+│ 3  │ mantrigame         │ default     │ 1.0.0   │ cluster │ 993      │ 7m     │ 0    │ online    │ 0%       │ 95.7mb   │ root     │ disabled │
+│ 4  │ tashan-win-vip     │ default     │ 1.0.0   │ fork    │ 1498     │ 0s     │ 0    │ online    │ 0%       │ 19.0mb   │ root     │ disabled │
+│ 0  │ tc-lottery-app1    │ default     │ 1.0.0   │ fork    │ 981      │ 7m     │ 0    │ online    │ 0%       │ 86.7mb   │ root     │ disabled │
+│ 1  │ tc-lottery-app2    │ default     │ 1.0.0   │ fork    │ 982      │ 7m     │ 0    │ online    │ 0%       │ 86.0mb   │ root     │ disabled │
+│ 2  │ tc-lottery-app3    │ default     │ 1.0.0   │ fork    │ 994      │ 7m     │ 0    │ online    │ 0%       │ 87.6mb   │ root     │ disabled │
+└────┴────────────────────┴─────────────┴─────────┴─────────┴──────────┴────────┴──────┴───────────┴──────────┴──────────┴──────────┴──────────┘
+[PM2] Saving current process list...
+[PM2] Successfully saved in /root/.pm2/dump.pm2
+root@srv912867:~/tashan-win-vip-new# # Check PM2 status
+pm2 list
+
+# Test the application on port 5009
+curl http://localhost:5009/health
+
+# Test from outside (your browser)
+curl http://89.116.121.62:5009/health
+┌────┬────────────────────┬─────────────┬─────────┬─────────┬──────────┬────────┬──────┬───────────┬──────────┬──────────┬──────────┬──────────┐
+│ id │ name               │ namespace   │ version │ mode    │ pid      │ uptime │ ↺    │ status    │ cpu      │ mem      │ user     │ watching │
+├────┼────────────────────┼─────────────┼─────────┼─────────┼──────────┼────────┼──────┼───────────┼──────────┼──────────┼──────────┼──────────┤
+│ 3  │ mantrigame         │ default     │ 1.0.0   │ cluster │ 993      │ 7m     │ 0    │ online    │ 0%       │ 95.7mb   │ root     │ disabled │
+│ 4  │ tashan-win-vip     │ default     │ 1.0.0   │ fork    │ 0        │ 0      │ 15   │ errored   │ 0%       │ 0b       │ root     │ disabled │
+│ 0  │ tc-lottery-app1    │ default     │ 1.0.0   │ fork    │ 981      │ 7m     │ 0    │ online    │ 0%       │ 87.4mb   │ root     │ disabled │
+│ 1  │ tc-lottery-app2    │ default     │ 1.0.0   │ fork    │ 982      │ 7m     │ 0    │ online    │ 0%       │ 85.9mb   │ root     │ disabled │
+│ 2  │ tc-lottery-app3    │ default     │ 1.0.0   │ fork    │ 994      │ 7m     │ 0    │ online    │ 0%       │ 87.2mb   │ root     │ disabled │
+└────┴────────────────────┴─────────────┴─────────┴─────────┴──────────┴────────┴──────┴───────────┴──────────┴──────────┴──────────┴──────────┘
+curl: (7) Failed to connect to localhost port 5009 after 0 ms: Couldn't connect to server
+curl: (7) Failed to connect to 89.116.121.62 port 5009 after 0 ms: Couldn't connect to server
+root@srv912867:~/tashan-win-vip-new#
