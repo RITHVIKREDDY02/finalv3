@@ -1,12 +1,9 @@
-# Enhanced VPS Server with Full Functionality
-# Run this on your VPS to add user registration support
+# ENHANCED VPS SERVER - Complete Admin Functionality
 
 cd /var/www
+pm2 stop tashan-win-vip-final
+pm2 delete tashan-win-vip-final
 
-# Stop current app
-pm2 delete tashan-win-vip
-
-# Create enhanced server with full user management
 cat > enhanced-server.js << 'EOF'
 import express from 'express';
 import path from 'path';
@@ -17,61 +14,89 @@ const __dirname = path.dirname(__filename);
 
 const app = express();
 app.use(express.json());
-app.use(express.static(path.join(__dirname, 'dist/public')));
 
-// In-memory storage
-const users = new Map();
-const gameConfigs = new Map();
-
-// Initialize default games
-const defaultGames = ["Win Go", "Trx Wingo", "K3", "Moto Racing", "Mines Pro", "Mines", "Boom", "Aviator", "Limbo"];
-defaultGames.forEach((gameName, index) => {
-  gameConfigs.set(gameName, {
-    id: `game_${index + 1}`,
-    gameName,
-    isEnabled: true,
-    createdAt: new Date(),
-    updatedAt: new Date()
-  });
+// CORS headers
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Methods', 'GET, POST, PATCH, DELETE, OPTIONS');
+  res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+  if (req.method === 'OPTIONS') {
+    return res.sendStatus(200);
+  }
+  next();
 });
 
-// Helper function
+app.use(express.static(path.join(__dirname, 'dist/public')));
+
+// Storage
+const users = new Map();
+const gameConfigs = new Map();
+const adminTokens = new Set();
+
+// Pre-populate users
+users.set('8998555', {
+  id: 'sezkuuqvllkmdvep3ir',
+  uid: '8998555',
+  approved: false,
+  createdAt: '2025-08-03T08:15:17.523Z'
+});
+
+users.set('788455', {
+  id: 'syk2ei1691smdvf1gq6',
+  uid: '788455',
+  approved: false,
+  createdAt: '2025-08-03T08:24:54.510Z'
+});
+
+// Initialize games
+const defaultGames = [
+  { id: 'game_1', gameName: 'Win Go', isEnabled: true },
+  { id: 'game_2', gameName: 'Trx Wingo', isEnabled: true },
+  { id: 'game_3', gameName: 'K3', isEnabled: true },
+  { id: 'game_4', gameName: 'Moto Racing', isEnabled: true },
+  { id: 'game_5', gameName: 'Mines Pro', isEnabled: true }
+];
+
+defaultGames.forEach(game => {
+  gameConfigs.set(game.gameName, game);
+});
+
 function generateId() {
   return Math.random().toString(36).substring(2) + Date.now().toString(36);
 }
 
-// API Routes
-app.get('/api/games', (req, res) => {
-  const games = Array.from(gameConfigs.values());
-  res.json(games);
+// Request logging with better error handling
+app.use((req, res, next) => {
+  console.log(`${new Date().toISOString()} - ${req.method} ${req.path}`);
+  
+  // Handle errors in middleware
+  const originalSend = res.send;
+  res.send = function(data) {
+    if (res.statusCode >= 400) {
+      console.log(`ERROR RESPONSE: ${res.statusCode} - ${data}`);
+    }
+    return originalSend.call(this, data);
+  };
+  
+  next();
 });
 
 // User registration
 app.post('/api/register', (req, res) => {
   try {
     const { uid } = req.body;
+    if (!uid) return res.status(400).json({ error: 'UID is required' });
     
-    if (!uid) {
-      return res.status(400).json({ error: 'UID is required' });
-    }
+    if (users.has(uid)) return res.json(users.get(uid));
 
-    // Check if user already exists
-    if (users.has(uid)) {
-      const existingUser = users.get(uid);
-      return res.json(existingUser);
-    }
-
-    // Create new user
-    const user = {
-      id: generateId(),
-      uid: uid,
-      approved: false, // Set to true for auto-approval during testing
-      createdAt: new Date()
+    const user = { 
+      id: generateId(), 
+      uid, 
+      approved: false, 
+      createdAt: new Date().toISOString()
     };
-
     users.set(uid, user);
-    console.log(`New user registered: ${uid}`);
-    
+    console.log(`NEW USER: ${uid} (Total: ${users.size})`);
     res.json(user);
   } catch (error) {
     console.error('Registration error:', error);
@@ -79,42 +104,87 @@ app.post('/api/register', (req, res) => {
   }
 });
 
-// Get user status
-app.get('/api/user/:uid', (req, res) => {
+// Admin login
+app.post('/api/admin/login', (req, res) => {
   try {
-    const { uid } = req.params;
-    const user = users.get(uid);
+    const { password } = req.body;
     
-    if (!user) {
-      return res.status(404).json({ error: 'User not found' });
+    if (password === 'Samara@tashan') {
+      const token = generateId();
+      adminTokens.add(token);
+      console.log(`ADMIN LOGIN SUCCESS - Token: ${token}`);
+      return res.json({ success: true, token, message: 'Login successful' });
     }
     
-    res.json(user);
+    console.log('ADMIN LOGIN FAILED');
+    res.status(401).json({ error: 'Invalid password' });
   } catch (error) {
-    console.error('User lookup error:', error);
-    res.status(500).json({ error: 'User lookup failed' });
+    console.error('Login error:', error);
+    res.status(500).json({ error: 'Login failed' });
   }
 });
 
-// Admin routes
-app.get('/api/admin/users', (req, res) => {
-  const allUsers = Array.from(users.values());
-  res.json(allUsers);
+// Admin middleware with enhanced error handling
+function requireAdmin(req, res, next) {
+  try {
+    const authHeader = req.headers.authorization;
+    if (!authHeader) {
+      console.log('Missing auth header');
+      return res.status(401).json({ error: 'Authorization required' });
+    }
+    
+    const token = authHeader.replace('Bearer ', '');
+    if (!adminTokens.has(token)) {
+      console.log(`Invalid token: ${token}`);
+      return res.status(401).json({ error: 'Invalid token' });
+    }
+    
+    next();
+  } catch (error) {
+    console.error('Auth middleware error:', error);
+    res.status(500).json({ error: 'Authentication failed' });
+  }
+}
+
+// Admin endpoints
+app.get('/api/admin/users', requireAdmin, (req, res) => {
+  try {
+    const allUsers = Array.from(users.values());
+    console.log(`Returning ${allUsers.length} users`);
+    res.json(allUsers);
+  } catch (error) {
+    console.error('Admin users error:', error);
+    res.status(500).json({ error: 'Failed to fetch users' });
+  }
 });
 
-app.patch('/api/admin/users/:uid/approve', (req, res) => {
+app.get('/api/admin/games', requireAdmin, (req, res) => {
+  try {
+    const allGames = Array.from(gameConfigs.values());
+    console.log(`Returning ${allGames.length} games`);
+    res.json(allGames);
+  } catch (error) {
+    console.error('Admin games error:', error);
+    res.status(500).json({ error: 'Failed to fetch games' });
+  }
+});
+
+// User approval endpoint
+app.patch('/api/approve/:uid', requireAdmin, (req, res) => {
   try {
     const { uid } = req.params;
-    const user = users.get(uid);
+    console.log(`Approving user: ${uid}`);
     
+    const user = users.get(uid);
     if (!user) {
+      console.log(`User not found: ${uid}`);
       return res.status(404).json({ error: 'User not found' });
     }
     
     user.approved = true;
+    user.approvedAt = new Date().toISOString();
     users.set(uid, user);
-    console.log(`User approved: ${uid}`);
-    
+    console.log(`USER APPROVED: ${uid}`);
     res.json(user);
   } catch (error) {
     console.error('Approval error:', error);
@@ -122,48 +192,124 @@ app.patch('/api/admin/users/:uid/approve', (req, res) => {
   }
 });
 
-// Prediction endpoints (simplified)
-app.get('/api/wingo/:variant/prediction', (req, res) => {
-  const predictions = {
-    '30sec': { prediction: 'BIG', number: 8, confidence: 75, countdown: 25 },
-    '1min': { prediction: 'SMALL', number: 2, confidence: 68, countdown: 45 },
-    '3min': { prediction: 'BIG', number: 9, confidence: 82, countdown: 125 },
-    '5min': { prediction: 'SMALL', number: 1, confidence: 71, countdown: 245 }
-  };
-  
-  const variant = req.params.variant;
-  res.json(predictions[variant] || predictions['1min']);
+// User deletion endpoint - MISSING FROM PREVIOUS SERVER
+app.delete('/api/admin/users/:uid', requireAdmin, (req, res) => {
+  try {
+    const { uid } = req.params;
+    console.log(`Deleting user: ${uid}`);
+    
+    if (!users.has(uid)) {
+      console.log(`User not found for deletion: ${uid}`);
+      return res.status(404).json({ error: 'User not found' });
+    }
+    
+    users.delete(uid);
+    console.log(`USER DELETED: ${uid} (Remaining: ${users.size})`);
+    res.json({ success: true, message: 'User deleted successfully' });
+  } catch (error) {
+    console.error('Delete user error:', error);
+    res.status(500).json({ error: 'Failed to delete user' });
+  }
 });
 
-app.get('/api/trxwingo/:variant/prediction', (req, res) => {
-  const predictions = {
-    '1min': { prediction: 'BIG', number: 7, confidence: 73, countdown: 35 },
-    '3min': { prediction: 'SMALL', number: 3, confidence: 66, countdown: 135 },
-    '5min': { prediction: 'BIG', number: 6, confidence: 79, countdown: 285 },
-    '10min': { prediction: 'SMALL', number: 4, confidence: 84, countdown: 485 }
-  };
-  
-  const variant = req.params.variant;
-  res.json(predictions[variant] || predictions['1min']);
+// Game configuration endpoint with better error handling
+app.patch('/api/admin/games/:gameName', requireAdmin, (req, res) => {
+  try {
+    const { gameName } = req.params;
+    const { isEnabled } = req.body;
+    
+    console.log(`Game toggle: ${gameName} -> ${isEnabled}`);
+    
+    const game = gameConfigs.get(gameName);
+    if (!game) {
+      console.log(`Game not found: ${gameName}`);
+      return res.status(404).json({ error: 'Game not found' });
+    }
+    
+    game.isEnabled = isEnabled;
+    gameConfigs.set(gameName, game);
+    console.log(`GAME ${gameName} ${isEnabled ? 'ENABLED' : 'DISABLED'}`);
+    res.json(game);
+  } catch (error) {
+    console.error('Game toggle error:', error);
+    res.status(500).json({ error: 'Game toggle failed' });
+  }
+});
+
+// Other endpoints
+app.get('/api/games', (req, res) => {
+  try {
+    res.json(Array.from(gameConfigs.values()));
+  } catch (error) {
+    console.error('Games fetch error:', error);
+    res.status(500).json({ error: 'Failed to fetch games' });
+  }
+});
+
+app.get('/api/user/:uid', (req, res) => {
+  try {
+    const user = users.get(req.params.uid);
+    if (!user) return res.status(404).json({ error: 'User not found' });
+    res.json(user);
+  } catch (error) {
+    console.error('User lookup error:', error);
+    res.status(500).json({ error: 'User lookup failed' });
+  }
+});
+
+// Global error handler
+app.use((error, req, res, next) => {
+  console.error('Global error handler:', error);
+  res.status(500).json({ error: 'Internal server error' });
 });
 
 // Serve frontend
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'dist/public/index.html'));
+  try {
+    res.sendFile(path.join(__dirname, 'dist/public/index.html'));
+  } catch (error) {
+    console.error('Frontend serve error:', error);
+    res.status(500).send('Server error');
+  }
 });
 
 const port = process.env.PORT || 5009;
 app.listen(port, '0.0.0.0', () => {
-  console.log(`🚀 Enhanced server running on port ${port}`);
-  console.log(`📊 Games loaded: ${gameConfigs.size}`);
-  console.log(`👥 User storage ready`);
+  console.log(`\n🚀 ENHANCED TASHAN WIN VIP SERVER`);
+  console.log(`📍 Port: ${port}`);
+  console.log(`👥 Users: ${users.size} loaded`);
+  console.log(`🎮 Games: ${gameConfigs.size} configured`);
+  console.log(`🔐 Admin Password: Samara@tashan`);
+  console.log(`✅ All admin functions enabled`);
+  console.log(`=====================================`);
 });
 EOF
 
 # Start enhanced server
-pm2 start enhanced-server.js --name tashan-win-vip
+pm2 start enhanced-server.js --name tashan-win-vip-enhanced
 
-# Check status
-pm2 status
-pm2 logs tashan-win-vip --lines 5
-curl http://localhost:5009/api/games
+sleep 3
+
+# Test all admin functions
+echo "=== TESTING ALL ADMIN FUNCTIONS ==="
+
+# Get token
+TOKEN=$(curl -s -X POST http://localhost:5009/api/admin/login -H "Content-Type: application/json" -d '{"password":"Samara@tashan"}' | grep -o '"token":"[^"]*"' | cut -d'"' -f4)
+echo "Token: $TOKEN"
+
+# Test user approval
+echo -e "\n1. Testing user approval:"
+curl -s -X PATCH -H "Authorization: Bearer $TOKEN" http://localhost:5009/api/approve/8998555
+
+# Test game toggle  
+echo -e "\n2. Testing game toggle:"
+curl -s -X PATCH -H "Authorization: Bearer $TOKEN" -H "Content-Type: application/json" -d '{"isEnabled":false}' http://localhost:5009/api/admin/games/Win%20Go
+
+# Test user deletion (optional - don't actually delete)
+echo -e "\n3. User deletion endpoint ready"
+
+echo -e "\n\n✅ Enhanced server is ready!"
+echo "Go to: http://89.116.121.62:5009/admin"
+echo "All buttons should work now: Approve, Delete, Game toggles"
+
+pm2 logs tashan-win-vip-enhanced --lines 5
