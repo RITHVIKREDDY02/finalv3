@@ -140,7 +140,8 @@ export default function TrxWingo() {
 
 
   const handleVariantNavigation = (variant: WingoVariant) => {
-    const routes = {
+    const routes: Record<WingoVariant, string> = {
+      "30sec": "/trx-wingo", // 30sec stays on current page
       "1min": "/trx-wingo-1min", 
       "3min": "/trx-wingo-3min",
       "5min": "/trx-wingo-5min",
