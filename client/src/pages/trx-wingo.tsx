@@ -25,7 +25,7 @@ interface WingoPrediction {
 
 export default function TrxWingo() {
   const [, navigate] = useLocation();
-  const [selectedVariant, setSelectedVariant] = useState<WingoVariant>("30sec");
+  const [selectedVariant, setSelectedVariant] = useState<WingoVariant>("1min");
   const [countdown, setCountdown] = useState(30);
 
   // Fetch prediction data for selected variant
@@ -65,10 +65,10 @@ export default function TrxWingo() {
   }, []);
 
   const variants = [
-    { key: "30sec" as WingoVariant, label: "TrxWingo 30Sec" },
     { key: "1min" as WingoVariant, label: "TrxWingo 1Min" },
     { key: "3min" as WingoVariant, label: "TrxWingo 3Min" },
     { key: "5min" as WingoVariant, label: "TrxWingo 5Min" },
+    { key: "5min" as WingoVariant, label: "TrxWingo 10Min" },
   ];
 
   const handleVariantSwitch = (variant: WingoVariant) => {
@@ -135,7 +135,6 @@ export default function TrxWingo() {
 
   const handleVariantNavigation = (variant: WingoVariant) => {
     const routes = {
-      "30sec": "/trx-wingo-30sec",
       "1min": "/trx-wingo-1min", 
       "3min": "/trx-wingo-3min",
       "5min": "/trx-wingo-5min"

@@ -11,10 +11,10 @@ import Wingo1Min from "@/pages/wingo-1min";
 import Wingo3Min from "@/pages/wingo-3min";
 import Wingo5Min from "@/pages/wingo-5min";
 import TrxWingo from "@/pages/trx-wingo";
-import TrxWingo30Sec from "@/pages/trx-wingo-30sec";
 import TrxWingo1Min from "@/pages/trx-wingo-1min";
 import TrxWingo3Min from "@/pages/trx-wingo-3min";
 import TrxWingo5Min from "@/pages/trx-wingo-5min";
+import TrxWingo10Min from "@/pages/trx-wingo-10min";
 import NotFound from "@/pages/not-found";
 
 function Router() {
@@ -28,10 +28,10 @@ function Router() {
       <Route path="/wingo-3min" component={Wingo3Min} />
       <Route path="/wingo-5min" component={Wingo5Min} />
       <Route path="/trx-wingo" component={TrxWingo} />
-      <Route path="/trx-wingo-30sec" component={TrxWingo30Sec} />
       <Route path="/trx-wingo-1min" component={TrxWingo1Min} />
       <Route path="/trx-wingo-3min" component={TrxWingo3Min} />
       <Route path="/trx-wingo-5min" component={TrxWingo5Min} />
+      <Route path="/trx-wingo-10min" component={TrxWingo10Min} />
       <Route component={NotFound} />
     </Switch>
   );

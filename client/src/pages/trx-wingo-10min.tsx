@@ -20,20 +20,20 @@ interface TrxWingoPrediction {
   countdown: number;
 }
 
-export default function TrxWingo30Sec() {
+export default function TrxWingo10Min() {
   const [, navigate] = useLocation();
-  const [countdown, setCountdown] = useState(30);
+  const [countdown, setCountdown] = useState(600);
   
   // Fetch prediction data - using Wingo API for TRX Wingo
   const { data: prediction } = useQuery<TrxWingoPrediction>({
-    queryKey: [`/api/wingo/prediction/30sec`],
+    queryKey: [`/api/wingo/prediction/5min`],
     refetchInterval: 10000, // Refetch every 10 seconds for faster updates
     staleTime: 5000, // Consider data stale after 5 seconds
   });
 
   // Fetch results data  
   const { data: results = [] } = useQuery<TrxWingoResult[]>({
-    queryKey: [`/api/wingo/results/30sec`],
+    queryKey: [`/api/wingo/results/5min`],
     refetchInterval: 15000, // Refetch every 15 seconds for faster updates
     staleTime: 10000, // Consider data stale after 10 seconds
   });
@@ -96,8 +96,8 @@ export default function TrxWingo30Sec() {
   };
 
   const handleRefresh = () => {
-    queryClient.invalidateQueries({ queryKey: [`/api/wingo/prediction/30sec`] });
-    queryClient.invalidateQueries({ queryKey: [`/api/wingo/results/30sec`] });
+    queryClient.invalidateQueries({ queryKey: [`/api/wingo/prediction/5min`] });
+    queryClient.invalidateQueries({ queryKey: [`/api/wingo/results/5min`] });
   };
 
   // Mock users for live players section
@@ -119,7 +119,7 @@ export default function TrxWingo30Sec() {
             <ArrowLeft className="w-4 h-4" />
             <span className="text-sm font-semibold">Back</span>
           </Button>
-          <h1 className="text-lg font-bold light-gold">TrxWingo 30Sec</h1>
+          <h1 className="text-lg font-bold light-gold">TrxWingo 10Min</h1>
           <Button
             variant="ghost"
             size="sm"
