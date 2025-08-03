@@ -24,16 +24,16 @@ export default function TrxWingo5Min() {
   const [, navigate] = useLocation();
   const [countdown, setCountdown] = useState(300);
   
-  // Fetch prediction data
+  // Fetch prediction data - using Wingo API for TRX Wingo
   const { data: prediction } = useQuery<TrxWingoPrediction>({
-    queryKey: [`/api/trx-wingo/prediction/5min`],
+    queryKey: [`/api/wingo/prediction/5min`],
     refetchInterval: 10000, // Refetch every 10 seconds for faster updates
     staleTime: 5000, // Consider data stale after 5 seconds
   });
 
   // Fetch results data  
   const { data: results = [] } = useQuery<TrxWingoResult[]>({
-    queryKey: [`/api/trx-wingo/results/5min`],
+    queryKey: [`/api/wingo/results/5min`],
     refetchInterval: 15000, // Refetch every 15 seconds for faster updates
     staleTime: 10000, // Consider data stale after 10 seconds
   });
@@ -96,8 +96,8 @@ export default function TrxWingo5Min() {
   };
 
   const handleRefresh = () => {
-    queryClient.invalidateQueries({ queryKey: [`/api/trx-wingo/prediction/5min`] });
-    queryClient.invalidateQueries({ queryKey: [`/api/trx-wingo/results/5min`] });
+    queryClient.invalidateQueries({ queryKey: [`/api/wingo/prediction/5min`] });
+    queryClient.invalidateQueries({ queryKey: [`/api/wingo/results/5min`] });
   };
 
   // Mock users for live players section

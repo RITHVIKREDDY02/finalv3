@@ -9,10 +9,10 @@ export default function TrxWingo() {
   const [activeGame, setActiveGame] = useState<string>("");
 
   const gameVariants = [
+    { id: "30sec", name: "TrxWingo 30Sec", time: "0:30", route: "/trx-wingo-30sec" },
     { id: "1min", name: "TrxWingo 1Min", time: "1:00", route: "/trx-wingo-1min" },
     { id: "3min", name: "TrxWingo 3Min", time: "3:00", route: "/trx-wingo-3min" },
     { id: "5min", name: "TrxWingo 5Min", time: "5:00", route: "/trx-wingo-5min" },
-    { id: "10min", name: "TrxWingo 10Min", time: "10:00", route: "/trx-wingo-10min" },
   ];
 
   const handleGameSelect = (route: string, gameId: string) => {
