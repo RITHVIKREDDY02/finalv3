@@ -9,7 +9,7 @@ import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } f
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { useToast } from "@/hooks/use-toast";
 import { apiRequest } from "@/lib/queryClient";
-import { Loader2 } from "lucide-react";
+import { Loader2, Star, Shield, Zap, Users } from "lucide-react";
 import logoPath from "@assets/TASHAN WIN LOGO_1754052537792.png";
 
 const registerSchema = z.object({
@@ -86,33 +86,59 @@ export default function RegistrationDialog({ isOpen, onClose, onRegistrationSucc
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="sm:max-w-md mx-auto my-4 w-[calc(100%-2rem)] rounded-xl" style={{ backgroundColor: '#FED358', color: 'black' }}>
-        <DialogHeader className="text-center space-y-4">
-          <div className="text-center">
-            <DialogTitle className="text-xl font-bold text-black text-center">
-              TASHAN WIN VIP PREDICTION
+      <DialogContent className="sm:max-w-lg mx-auto my-4 w-[calc(100%-2rem)] max-h-[90vh] overflow-y-auto border-0 p-0 bg-gradient-to-br from-amber-400 via-yellow-300 to-orange-400 rounded-2xl shadow-2xl">
+        {/* Header with Logo and Close */}
+        <div className="relative bg-gradient-to-r from-amber-500 to-yellow-400 p-6 rounded-t-2xl">
+          <div className="text-center space-y-3">
+            <div className="mx-auto w-16 h-16 bg-white/20 rounded-full flex items-center justify-center backdrop-blur-sm">
+              <Star className="w-8 h-8 text-white" />
+            </div>
+            <DialogTitle className="text-2xl font-bold text-white drop-shadow-md">
+              VIP PREDICTION ACCESS
             </DialogTitle>
-            <DialogDescription className="mt-2 text-black text-center font-semibold">
-              🚀 Important Instructions
+            <DialogDescription className="text-white/90 font-medium">
+              Join our exclusive prediction community
             </DialogDescription>
           </div>
-        </DialogHeader>
-        
-        <div className="space-y-6">
-          <div className="bg-yellow-200 p-4 rounded-lg border border-yellow-300">
-            <p className="text-sm text-black leading-relaxed font-semibold">
-              Create a new account via the "Start" button for server connection. Our app checks the server to ensure accurate predictions.
-            </p>
-            <div className="mt-3 p-2 bg-red-200 rounded border border-red-300">
-              <p className="text-xs text-red-800 font-semibold">
-                Warning: Accounts not created through our link will be banned their IP
-              </p>
+        </div>
+
+        {/* Content */}
+        <div className="p-6 space-y-6">
+          {/* Features Grid */}
+          <div className="grid grid-cols-2 gap-3">
+            <div className="bg-white/80 backdrop-blur-sm p-3 rounded-xl text-center">
+              <Shield className="w-6 h-6 text-green-600 mx-auto mb-1" />
+              <p className="text-xs font-semibold text-gray-800">Secure</p>
             </div>
-            <p className="text-xs text-black mt-2 font-semibold">
-              For 100% accurate predictions, use the account created via our URL.
-            </p>
+            <div className="bg-white/80 backdrop-blur-sm p-3 rounded-xl text-center">
+              <Zap className="w-6 h-6 text-blue-600 mx-auto mb-1" />
+              <p className="text-xs font-semibold text-gray-800">Fast</p>
+            </div>
           </div>
 
+          {/* Instructions Card */}
+          <div className="bg-white/90 backdrop-blur-sm p-5 rounded-xl border border-white/50 shadow-lg">
+            <div className="flex items-start gap-3 mb-3">
+              <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center flex-shrink-0">
+                <Users className="w-4 h-4 text-white" />
+              </div>
+              <div>
+                <h3 className="font-bold text-gray-800 mb-2">Getting Started</h3>
+                <p className="text-sm text-gray-700 leading-relaxed">
+                  Create a new account using our secure link to connect with our prediction servers.
+                </p>
+              </div>
+            </div>
+            
+            <div className="bg-gradient-to-r from-red-100 to-pink-100 p-3 rounded-lg border border-red-200 mt-3">
+              <p className="text-xs text-red-800 font-semibold flex items-center gap-2">
+                <Shield className="w-4 h-4" />
+                Important: Only accounts created through our link are verified for accurate predictions
+              </p>
+            </div>
+          </div>
+
+          {/* Form */}
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
               <FormField
@@ -120,26 +146,34 @@ export default function RegistrationDialog({ isOpen, onClose, onRegistrationSucc
                 name="uid"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="text-black">
-                      Enter Your UID
+                    <FormLabel className="text-gray-800 font-semibold text-sm">
+                      Your Unique ID
                     </FormLabel>
-                    <div className="flex gap-2">
-                      <FormControl className="flex-1">
-                        <Input
-                          placeholder="Enter your unique UID"
-                          {...field}
-                          className="border-none focus:border-none focus:ring-0 bg-white text-black outline-none"
-                        />
+                    <div className="space-y-3">
+                      <FormControl>
+                        <div className="relative">
+                          <Input
+                            placeholder="Enter your UID here..."
+                            {...field}
+                            className="h-12 px-4 bg-white/90 backdrop-blur-sm border-2 border-white/50 focus:border-amber-400 focus:ring-2 focus:ring-amber-200 text-gray-800 placeholder:text-gray-500 rounded-xl shadow-inner"
+                          />
+                        </div>
                       </FormControl>
                       <Button
                         type="submit"
-                        className="px-6 py-2 rounded-full font-bold btn-body-bg"
+                        className="w-full h-12 bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white font-bold rounded-xl shadow-lg transition-all duration-200 transform hover:scale-[1.02] disabled:opacity-50 disabled:transform-none"
                         disabled={registerMutation.isPending}
                       >
                         {registerMutation.isPending ? (
-                          <Loader2 className="h-4 w-4 animate-spin" />
+                          <div className="flex items-center gap-2">
+                            <Loader2 className="h-5 w-5 animate-spin" />
+                            <span>Processing...</span>
+                          </div>
                         ) : (
-                          "SUBMIT"
+                          <div className="flex items-center gap-2">
+                            <Star className="h-5 w-5" />
+                            <span>JOIN VIP</span>
+                          </div>
                         )}
                       </Button>
                     </div>
@@ -150,28 +184,34 @@ export default function RegistrationDialog({ isOpen, onClose, onRegistrationSucc
             </form>
           </Form>
 
-          <div className="text-center space-y-3">
-            <div className="flex gap-2 justify-center">
+          {/* Action Buttons */}
+          <div className="space-y-3">
+            <div className="flex gap-3">
               <Button
-                className="btn-body-bg px-4 py-2 rounded-full font-semibold"
+                className="flex-1 h-11 bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 text-white font-semibold rounded-xl shadow-md transition-all duration-200"
                 onClick={handleStartButtonClick}
               >
-                🚀 Start
+                <div className="flex items-center gap-2">
+                  <Zap className="h-4 w-4" />
+                  <span>Start Now</span>
+                </div>
               </Button>
               <Button
-                className="btn-body-bg px-4 py-2 rounded-full font-semibold"
-                disabled
-              >
-                🔒 Continue
-              </Button>
-              <Button
-                className="btn-body-bg px-4 py-2 rounded-full font-semibold"
+                className="flex-1 h-11 bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white font-semibold rounded-xl shadow-md transition-all duration-200"
                 onClick={handleHelp}
               >
-                ❓ Help
+                <div className="flex items-center gap-2">
+                  <Users className="h-4 w-4" />
+                  <span>Get Help</span>
+                </div>
               </Button>
             </div>
-
+            
+            <div className="text-center">
+              <p className="text-xs text-gray-600">
+                Need assistance? Our support team is ready to help you get started.
+              </p>
+            </div>
           </div>
         </div>
       </DialogContent>
