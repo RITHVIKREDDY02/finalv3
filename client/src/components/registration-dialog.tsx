@@ -86,18 +86,22 @@ export default function RegistrationDialog({ isOpen, onClose, onRegistrationSucc
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="sm:max-w-lg mx-auto my-4 w-[calc(100%-2rem)] max-h-[90vh] overflow-y-auto border-2 p-0 rounded-2xl shadow-2xl animate-glow" 
+      <DialogContent className="sm:max-w-lg mx-auto my-4 w-[calc(100%-2rem)] max-h-[90vh] overflow-y-auto border-2 p-0 rounded-2xl shadow-2xl" 
         style={{ 
           backgroundColor: '#231C21',
-          borderColor: '#FED358'
+          borderColor: '#FED358',
+          boxShadow: '0 0 30px rgba(254, 211, 88, 0.3)'
         }}>
         
         {/* Header */}
         <div className="relative p-6 rounded-t-2xl bg-banner-gradient border-b border-accent-gold/30">
           <div className="text-center space-y-4">
-            <div className="mx-auto w-20 h-20 rounded-full flex items-center justify-center shimmer-effect"
-              style={{ backgroundColor: '#FED358' }}>
-              <Star className="w-10 h-10 text-black animate-float" />
+            <div className="mx-auto w-20 h-20 rounded-full flex items-center justify-center"
+              style={{ 
+                backgroundColor: '#FED358',
+                boxShadow: '0 0 20px rgba(254, 211, 88, 0.4)'
+              }}>
+              <Star className="w-10 h-10 text-black" />
             </div>
             <DialogTitle className="text-2xl font-bold light-gold drop-shadow-lg">
               TASHAN WIN VIP ACCESS
