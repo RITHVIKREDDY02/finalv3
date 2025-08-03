@@ -1,12 +1,13 @@
-# IMMEDIATE VPS FIX - Run this on your VPS now:
+# Quick VPS Fix - Add Admin Endpoints
 
+# On your VPS, update the enhanced-server.js to include admin login
 cd /var/www
 
-# Stop broken app
-pm2 delete tashan-win-vip
+# Stop current server
+pm2 stop tashan-win-vip
 
-# Create a simple standalone server file that works
-cat > simple-server.js << 'EOF'
+# Update the server file with admin endpoints
+cat > enhanced-server.js << 'EOF'
 import express from 'express';
 import path from 'path';
 import { fileURLToPath } from 'url';
@@ -18,20 +19,147 @@ const app = express();
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'dist/public')));
 
-// Simple games API endpoint
+// In-memory storage
+const users = new Map();
+const gameConfigs = new Map();
+const adminTokens = new Set(); // Store admin tokens
+
+// Initialize games
+const defaultGames = ["Win Go", "Trx Wingo", "K3", "Moto Racing", "Mines Pro", "Mines", "Boom", "Aviator", "Limbo"];
+defaultGames.forEach((gameName, index) => {
+  gameConfigs.set(gameName, {
+    id: `game_${index + 1}`,
+    gameName,
+    isEnabled: true
+  });
+});
+
+function generateId() {
+  return Math.random().toString(36).substring(2) + Date.now().toString(36);
+}
+
+// API Routes
 app.get('/api/games', (req, res) => {
-  const games = [
-    { id: '1', gameName: 'Win Go', isEnabled: true },
-    { id: '2', gameName: 'Trx Wingo', isEnabled: true },
-    { id: '3', gameName: 'K3', isEnabled: true },
-    { id: '4', gameName: 'Moto Racing', isEnabled: true },
-    { id: '5', gameName: 'Mines Pro', isEnabled: true },
-    { id: '6', gameName: 'Mines', isEnabled: true },
-    { id: '7', gameName: 'Boom', isEnabled: true },
-    { id: '8', gameName: 'Aviator', isEnabled: true },
-    { id: '9', gameName: 'Limbo', isEnabled: true }
-  ];
-  res.json(games);
+  res.json(Array.from(gameConfigs.values()));
+});
+
+// User registration
+app.post('/api/register', (req, res) => {
+  try {
+    const { uid } = req.body;
+    
+    if (!uid) {
+      return res.status(400).json({ error: 'UID is required' });
+    }
+
+    if (users.has(uid)) {
+      return res.json(users.get(uid));
+    }
+
+    const user = {
+      id: generateId(),
+      uid: uid,
+      approved: false,
+      createdAt: new Date()
+    };
+
+    users.set(uid, user);
+    console.log(`New user registered: ${uid}`);
+    res.json(user);
+  } catch (error) {
+    console.error('Registration error:', error);
+    res.status(500).json({ error: 'Registration failed' });
+  }
+});
+
+// User lookup
+app.get('/api/user/:uid', (req, res) => {
+  const user = users.get(req.params.uid);
+  if (!user) return res.status(404).json({ error: 'User not found' });
+  res.json(user);
+});
+
+// ADMIN LOGIN - FIXES THE 404 ERROR
+app.post('/api/admin/login', (req, res) => {
+  try {
+    const { password } = req.body;
+    
+    // Simple password check (use 'admin123' for testing)
+    if (password === 'admin123') {
+      const token = generateId();
+      adminTokens.add(token);
+      console.log('Admin logged in successfully');
+      return res.json({ 
+        success: true, 
+        token: token,
+        message: 'Login successful' 
+      });
+    }
+    
+    res.status(401).json({ error: 'Invalid password' });
+  } catch (error) {
+    console.error('Admin login error:', error);
+    res.status(500).json({ error: 'Login failed' });
+  }
+});
+
+// Admin middleware
+function requireAdmin(req, res, next) {
+  const token = req.headers.authorization?.replace('Bearer ', '');
+  if (!token || !adminTokens.has(token)) {
+    return res.status(401).json({ error: 'Unauthorized' });
+  }
+  next();
+}
+
+// Admin endpoints
+app.get('/api/admin/users', requireAdmin, (req, res) => {
+  res.json(Array.from(users.values()));
+});
+
+app.patch('/api/admin/users/:uid/approve', requireAdmin, (req, res) => {
+  const { uid } = req.params;
+  const user = users.get(uid);
+  if (!user) return res.status(404).json({ error: 'User not found' });
+  
+  user.approved = true;
+  users.set(uid, user);
+  console.log(`User approved: ${uid}`);
+  res.json(user);
+});
+
+app.patch('/api/admin/games/:id/toggle', requireAdmin, (req, res) => {
+  const { id } = req.params;
+  const game = Array.from(gameConfigs.values()).find(g => g.id === id);
+  if (!game) return res.status(404).json({ error: 'Game not found' });
+  
+  game.isEnabled = !game.isEnabled;
+  gameConfigs.set(game.gameName, game);
+  console.log(`Game ${game.gameName} ${game.isEnabled ? 'enabled' : 'disabled'}`);
+  res.json(game);
+});
+
+// Prediction endpoints
+app.get('/api/wingo/:variant/prediction', (req, res) => {
+  const predictions = {
+    '30sec': { prediction: 'BIG', number: 8, confidence: 75, countdown: 25 },
+    '1min': { prediction: 'SMALL', number: 2, confidence: 68, countdown: 45 },
+    '3min': { prediction: 'BIG', number: 9, confidence: 82, countdown: 125 },
+    '5min': { prediction: 'SMALL', number: 1, confidence: 71, countdown: 245 }
+  };
+  
+  res.json(predictions[req.params.variant] || predictions['1min']);
+});
+
+app.get('/api/trxwingo/:variant/prediction', (req, res) => {
+  const predictions = {
+    '1min': { prediction: 'BIG', number: 7, confidence: 73, countdown: 35 },
+    '3min': { prediction: 'SMALL', number: 3, confidence: 66, countdown: 135 },
+    '5min': { prediction: 'BIG', number: 6, confidence: 79, countdown: 285 },
+    '10min': { prediction: 'SMALL', number: 4, confidence: 84, countdown: 485 }
+  };
+  
+  res.json(predictions[req.params.variant] || predictions['1min']);
 });
 
 // Serve frontend
@@ -41,35 +169,17 @@ app.get('*', (req, res) => {
 
 const port = process.env.PORT || 5009;
 app.listen(port, '0.0.0.0', () => {
-  console.log(`🚀 Server running on port ${port}`);
+  console.log(`🚀 Enhanced server with admin running on port ${port}`);
+  console.log(`🔐 Admin password: admin123`);
 });
 EOF
 
-# Install just express
-npm install express
+# Restart the server
+pm2 restart tashan-win-vip
 
-# Update PM2 config to use simple server
-cat > simple-ecosystem.config.cjs << 'EOF'
-module.exports = {
-  apps: [{
-    name: 'tashan-win-vip',
-    script: 'simple-server.js',
-    instances: 1,
-    exec_mode: 'fork',
-    env: {
-      NODE_ENV: 'production',
-      PORT: 5009
-    },
-    max_memory_restart: '512M',
-    autorestart: true
-  }]
-};
-EOF
+# Test the admin login
+sleep 3
+curl -X POST http://localhost:5009/api/admin/login -H "Content-Type: application/json" -d '{"password":"admin123"}'
 
-# Start with simple server
-pm2 start simple-ecosystem.config.cjs --env production
-
-# Check status
-pm2 status
-pm2 logs tashan-win-vip --lines 5
-curl http://localhost:5009/api/games
+echo ""
+echo "Admin login endpoint added! Use password: admin123"
