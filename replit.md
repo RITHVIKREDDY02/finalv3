@@ -59,10 +59,17 @@ A dynamic prediction/lottery gaming platform with user registration and approval
 - **2025-02-02**: **ADMIN SECURITY**: Added password protection to admin panel with "Samara@tashan" password
 - **2025-02-02**: **TOKEN AUTHENTICATION**: Implemented secure admin login with Bearer token authentication
 - **2025-02-02**: **UI SECURITY**: Added beautiful login form with logout functionality for admin panel
-- **2025-02-03**: **TRX WINGO IMPLEMENTATION**: Created complete TRX Wingo game system with 4 variants (30Sec, 1Min, 3Min, 5Min)
+- **2025-02-03**: **TRX WINGO IMPLEMENTATION**: Created complete TRX Wingo game system with 4 variants (1Min, 3Min, 5Min, 10Min)
 - **2025-02-03**: **TRX WINGO PAGES**: Added dedicated pages for each TRX Wingo variant matching existing Wingo interface design exactly
-- **2025-02-03**: **TRX WINGO API**: TRX Wingo uses same Wingo API endpoints with same prediction service and data sources
+- **2025-02-03**: **TRX WINGO API**: TRX Wingo uses ar-lottery01.com APIs with timestamp parameters for live data
 - **2025-02-03**: **TRX WINGO NAVIGATION**: Added TRX Wingo card navigation for approved users from home page to TRX Wingo interface
+- **2025-02-03**: **VPS PERFORMANCE OPTIMIZATION**: Implemented comprehensive performance improvements for VPS deployment
+- **2025-02-03**: **API RESPONSE CACHING**: Added memoized fetch with 5-second cache for ar-lottery01.com API calls
+- **2025-02-03**: **USER VERIFICATION OPTIMIZATION**: Implemented fast user status polling (2s intervals) with 10-second caching
+- **2025-02-03**: **MEMORY MANAGEMENT**: Added automatic cache cleanup every 5 minutes and memory usage monitoring
+- **2025-02-03**: **RATE LIMITING**: Implemented IP-based rate limiting (30 req/min API, 60 req/min predictions)
+- **2025-02-03**: **PRODUCTION DEPLOYMENT**: Created PM2 ecosystem config with 256MB memory limit and auto-restart
+- **2025-02-03**: **VPS OPTIMIZATION COMPLETE**: App optimized for Ubuntu 24.04 LTS with performance monitoring
 
 ## User Preferences
 - Store UID in browser localStorage to avoid repeated registration
@@ -74,10 +81,12 @@ A dynamic prediction/lottery gaming platform with user registration and approval
 
 ### Storage Architecture
 - **In-Memory Storage**: Lightweight Map-based storage for users and game configurations
-- **users storage**: id (random), uid (unique), approved (boolean), createdAt (timestamp)
+- **users storage**: id (random), uid (unique), approved (boolean), createdAt (timestamp) 
 - **gameConfig storage**: id (random), gameName (unique), isEnabled (boolean), createdAt, updatedAt
 - **No Database Required**: Zero setup, instant startup, perfect for lightweight prediction apps
 - **Data Persistence**: Session-based (data resets on server restart)
+- **Performance Caching**: Memoized API calls (5s), user lookups (10s), predictions (30s)
+- **Memory Management**: Auto-cleanup every 5 minutes, 256MB memory limit with PM2
 
 ### Frontend Structure
 - **Home page**: Main landing page with game cards and navigation
@@ -121,9 +130,11 @@ A dynamic prediction/lottery gaming platform with user registration and approval
 
 ### Technical Stack
 - Frontend: React, TypeScript, Wouter routing, TanStack Query, shadcn/ui
-- Backend: Express.js, TypeScript
+- Backend: Express.js, TypeScript, Memoizee caching
 - Storage: In-memory Maps (no database required)
 - Authentication: UID-based with admin approval workflow
+- Performance: Rate limiting, response compression, memory management
+- Deployment: PM2 process manager, Ubuntu 24.04 LTS optimized
 
 ## Current Status
 - Registration system fully implemented

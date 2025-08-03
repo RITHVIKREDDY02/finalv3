@@ -1,4 +1,5 @@
 import { storage } from "./storage";
+import { memoizedFetch, memoizedPredictionAnalysis } from "./performance-optimizations";
 
 interface WingoResult {
   issueNumber: string;
@@ -49,11 +50,8 @@ export class WingoService {
 
   private async fetchData(url: string): Promise<any> {
     try {
-      const response = await fetch(url);
-      if (!response.ok) {
-        throw new Error(`HTTP ${response.status}: ${response.statusText}`);
-      }
-      return await response.json();
+      // Use memoized fetch for better performance
+      return await memoizedFetch(url);
     } catch (error) {
       console.error(`Failed to fetch data from ${url}:`, error);
       throw error;

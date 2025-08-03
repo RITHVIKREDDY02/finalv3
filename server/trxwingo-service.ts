@@ -1,4 +1,5 @@
 import { storage } from "./storage";
+import { memoizedFetch, memoizedPredictionAnalysis } from "./performance-optimizations";
 
 interface TrxWingoResult {
   issueNumber: string;
@@ -49,15 +50,10 @@ export class TrxWingoService {
 
   private async fetchData(url: string): Promise<any> {
     try {
-      // Add timestamp parameter to prevent caching
+      // Use memoized fetch for better performance with timestamp for cache busting
       const timestamp = Date.now();
       const urlWithTimestamp = `${url}?ts=${timestamp}`;
-      
-      const response = await fetch(urlWithTimestamp);
-      if (!response.ok) {
-        throw new Error(`HTTP ${response.status}: ${response.statusText}`);
-      }
-      return await response.json();
+      return await memoizedFetch(urlWithTimestamp);
     } catch (error) {
       console.error(`Failed to fetch TrxWingo data from ${url}:`, error);
       throw error;

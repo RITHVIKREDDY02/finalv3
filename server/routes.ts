@@ -6,9 +6,26 @@ import { insertUserSchema } from "@shared/schema";
 import { z } from "zod";
 import { wingoService, WINGO_VARIANTS } from "./wingo-service";
 import { trxWingoService, TRXWINGO_VARIANTS } from "./trxwingo-service";
+import { 
+  createRateLimitMiddleware, 
+  compressionMiddleware, 
+  responseTimeMiddleware, 
+  errorHandlerMiddleware,
+  cacheMiddleware 
+} from "./middleware";
+import { memoizedUserLookup } from "./performance-optimizations";
 
 export async function registerRoutes(app: Express): Promise<Server> {
-  app.use(express.json());
+  // Performance middleware
+  app.use(compressionMiddleware);
+  app.use(responseTimeMiddleware);
+  app.use(express.json({ limit: '10mb' }));
+  app.use(express.urlencoded({ extended: true, limit: '10mb' }));
+  
+  // Rate limiting for API endpoints
+  app.use('/api', createRateLimitMiddleware(30, 60000)); // 30 requests per minute for API
+  app.use('/api/wingo', createRateLimitMiddleware(60, 60000)); // Higher limit for prediction endpoints
+  app.use('/api/trxwingo', createRateLimitMiddleware(60, 60000));
 
   // Start background prediction schedulers
   console.log('🚀 Starting Wingo prediction scheduler at server startup...');
@@ -45,7 +62,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
-  // Check user registration status - optimized for speed
+  // Check user registration status - optimized with caching
   app.get("/api/user/:uid", async (req, res) => {
     try {
       const { uid } = req.params;
@@ -55,13 +72,15 @@ export async function registerRoutes(app: Express): Promise<Server> {
         return res.status(400).json({ message: "Invalid UID", registered: false });
       }
       
-      const user = await storage.getUserByUid(uid);
+      // Use memoized lookup for better performance
+      const user = await memoizedUserLookup(uid, (uid: string) => storage.getUserByUid(uid));
       
       if (!user) {
         return res.status(404).json({ message: "User not found", registered: false });
       }
 
-      // Return minimal data for faster response
+      // Cache successful responses for 10 seconds
+      res.setHeader('Cache-Control', 'public, max-age=10');
       res.json({ 
         registered: true, 
         approved: user.approved,
@@ -323,6 +342,9 @@ export async function registerRoutes(app: Express): Promise<Server> {
       res.status(500).json({ error: "Failed to fetch TrxWingo results" });
     }
   });
+
+  // Add error handling middleware as the last middleware
+  app.use(errorHandlerMiddleware);
 
   const httpServer = createServer(app);
   return httpServer;
