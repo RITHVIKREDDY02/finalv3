@@ -9,7 +9,7 @@ import VipPredictionDialog from "@/components/vip-prediction-dialog";
 import { ComingSoonDialog } from "@/components/coming-soon-dialog";
 import { useUserVerification } from "@/hooks/use-fast-user-status";
 import type { GameConfig } from "@shared/schema";
-import logoPath from "@assets/TASHAN WIN LOGO_1754052537792.png";
+import logoPath from "@assets/logo_nav_1756545819204.png";
 import winGoImage from "@assets/lotterycategory_20250412120719dqfv_1754052547793.png";
 import trxWingoImage from "@assets/lotterycategory_20250412120818j8wq_1754052552269.png";
 import k3Image from "@assets/lotterycategory_2025041212074073ug_1754069351570.png";
