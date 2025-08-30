@@ -232,7 +232,7 @@ export default function Home() {
             <div className="flex-1 overflow-hidden">
               <div className="marquee-container">
                 <p className="light-gold text-sm font-medium whitespace-nowrap animate-marquee">
-                  Welcome to TASHANWIN VIP PREDICTION APP, we will serve you Special Predictions!
+                  Welcome to V3 GAME VIP PREDICTION APP, we will serve you Special Predictions!
                 </p>
               </div>
             </div>
