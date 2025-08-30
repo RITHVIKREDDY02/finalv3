@@ -171,9 +171,9 @@ export default function Home() {
           <div className="flex items-center logo-spacing-mobile md:logo-spacing-tablet lg:logo-spacing-desktop">
             <img 
               src={logoPath} 
-              alt="TASHANWIN Logo" 
+              alt="V3.GAME Logo" 
               className="w-auto object-contain"
-              style={{ height: '60px' }}
+              style={{ height: '40px' }}
             />
           </div>
           
