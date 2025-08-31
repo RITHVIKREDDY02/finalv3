@@ -53,7 +53,7 @@ export default function WelcomeNotification({ onRegisterClick }: WelcomeNotifica
             <div className="flex items-center justify-center mb-6">
               <img src={decorativeLine} alt="" className="w-16 h-1" />
               <h2 className="text-xl font-bold text-yellow-400 mx-4">Notification</h2>
-              <img src={decorativeLine} alt="" className="w-16 h-1" />
+              <img src={decorativeLine} alt="" className="w-16 h-1 scale-x-[-1]" />
             </div>
             
             {/* Deposit bonus image without borders */}
@@ -69,7 +69,7 @@ export default function WelcomeNotification({ onRegisterClick }: WelcomeNotifica
             <div className="text-center">
               <button
                 onClick={handleRegister}
-                className="w-full px-8 py-4 text-lg font-bold rounded-full shadow-xl transition-all duration-300 transform hover:scale-105"
+                className="px-6 py-3 text-base font-bold rounded-full shadow-xl transition-all duration-300 transform hover:scale-105"
                 style={{
                   background: 'linear-gradient(180deg,#fffad5,#ed910a 47%,#ff6400)',
                   color: 'white'
