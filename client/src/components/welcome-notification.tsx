@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Dialog, DialogContent } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogTitle, DialogDescription } from "@/components/ui/dialog";
+import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 import depositBonusImage from "@assets/202505241645242463002_1756622465525.png";
-import closeIcon from "@assets/image_1756622673827.png";
+import closeIcon from "@assets/image_1756622761872.png";
 
 interface WelcomeNotificationProps {
   onRegisterClick: () => void;
@@ -41,38 +42,50 @@ export default function WelcomeNotification({ onRegisterClick }: WelcomeNotifica
       <DialogContent 
         className="sm:max-w-4xl mx-auto my-4 w-[calc(100%-2rem)] max-h-[90vh] overflow-hidden border-0 p-0 rounded-2xl shadow-2xl bg-transparent [&>button]:hidden"
       >
-        <div className="relative">
+        <VisuallyHidden>
+          <DialogTitle>Welcome Bonus Notification</DialogTitle>
+          <DialogDescription>V3 GAME Deposit Bonus Welcome Offer</DialogDescription>
+        </VisuallyHidden>
+        
+        <div className="space-y-4">
           {/* Main promotional image */}
-          <img 
-            src={depositBonusImage} 
-            alt="V3 GAME Deposit Bonus - Welcome Offer" 
-            className="w-full h-auto object-cover rounded-2xl"
-          />
+          <div className="relative">
+            <img 
+              src={depositBonusImage} 
+              alt="V3 GAME Deposit Bonus - Welcome Offer" 
+              className="w-full h-auto object-cover rounded-2xl"
+            />
+          </div>
           
-          {/* Close button positioned at top-right */}
-          <button
-            onClick={handleClose}
-            className="absolute top-4 right-4 w-8 h-8 rounded-full transition-all duration-200 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50"
+          {/* Close button positioned below image */}
+          <div className="flex justify-center">
+            <button
+              onClick={handleClose}
+              className="w-10 h-10 transition-all duration-200 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-[#FED358] focus:ring-opacity-50"
+            >
+              <img 
+                src={closeIcon} 
+                alt="Close" 
+                className="w-full h-full object-contain"
+              />
+            </button>
+          </div>
+          
+          {/* Register button in styled box */}
+          <div 
+            className="mx-4 p-6 rounded-2xl shadow-xl"
             style={{
-              background: 'rgba(0, 0, 0, 0.5)',
-              backdropFilter: 'blur(4px)'
+              background: 'linear-gradient(0deg,#0b3681,#06152d)'
             }}
           >
-            <img 
-              src={closeIcon} 
-              alt="Close" 
-              className="w-full h-full object-contain"
-            />
-          </button>
-          
-          {/* Register button positioned at bottom */}
-          <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2">
-            <Button
-              onClick={handleRegister}
-              className="px-8 py-3 text-lg font-bold rounded-full custom-button shadow-xl transition-all duration-300 transform hover:scale-105"
-            >
-              REGISTER NOW
-            </Button>
+            <div className="text-center">
+              <Button
+                onClick={handleRegister}
+                className="px-8 py-3 text-lg font-bold rounded-full custom-button shadow-xl transition-all duration-300 transform hover:scale-105"
+              >
+                REGISTER NOW
+              </Button>
+            </div>
           </div>
         </div>
       </DialogContent>
