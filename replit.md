@@ -31,13 +31,33 @@ The frontend is built with React, TypeScript, Wouter for routing, and TanStack Q
 The system leverages an in-memory storage approach for lightweight operation and simplified deployment, suitable for session-based data. It prioritizes direct integration with live external lottery APIs to ensure data authenticity. The architecture is modular, separating frontend, backend, and API integrations for maintainability.
 
 ## External Dependencies
-- **ar-lottery01.com APIs**: The primary external dependency for fetching live game data, including predictions, results, and period information for Wingo and TRX Wingo variants.
-  - `draw.ar-lottery01.com/WinGo/WinGo_30S.json` and `WinGo_30S/GetHistoryIssuePage.json`
-  - `draw.ar-lottery01.com/WinGo/WinGo_1M.json` and `WinGo_1M/GetHistoryIssuePage.json`
-  - `draw.ar-lottery01.com/WinGo/WinGo_3M.json` and `WinGo_3M/GetHistoryIssuePage.json`
-  - `draw.ar-lottery01.com/WinGo/WinGo_5M.json` and `WinGo_5M/GetHistoryIssuePage.json`
+- **TC API (tc9987.club)**: The primary external dependency for fetching live game data, including predictions, results, and period information for all Wingo and TRX Wingo variants.
+  - `tc9987.club/result/getResult` - Fetches live game results
+  - `tc9987.club/game/periods` - Fetches period information (requires authentication)
+  - Game codes: vngo30s (30sec), vngo1 (1min), vngo3 (3min), vngo5 (5min)
 
 ## Recent Changes
+### August 31, 2025 - Complete API Migration to TC API Only
+**Issue**: System was using both old ar-lottery01.com API and new TC API, causing wrong period numbers and timing conflicts.
+
+**Solution Applied**:
+- Permanently removed all ar-lottery01.com API references from codebase
+- Deleted old wingo service files (wingo-service.ts, wingo-service-old.ts)
+- Updated all Wingo variants to use only TC API (tc9987.club)
+- Implemented accurate period number generation with "20" prefix format
+- Fixed timing synchronization for each variant using real intervals:
+  - 30sec: Updates every 30 seconds
+  - 1min: Updates every 60 seconds
+  - 3min: Updates every 3 minutes
+  - 5min: Updates every 5 minutes
+
+**Verification Results**:
+- Server logs show only tc9987.club API calls
+- Period numbers display correct format (20250831115601)
+- Countdown timers are accurately synchronized
+- All variants use TC API exclusively
+
+**Current Status**: Platform now uses single, consistent TC API source for all game data and predictions.
 ### August 3, 2025 - VPS Deployment Error Fix
 **Issue**: VPS deployment failing with `ERR_MODULE_NOT_FOUND` errors due to ES module import issues.
 

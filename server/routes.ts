@@ -4,7 +4,6 @@ import express from "express";
 import { storage } from "./storage";
 import { insertUserSchema } from "@shared/schema";
 import { z } from "zod";
-import { wingoService, WINGO_VARIANTS } from "./wingo-service";
 import { trxWingoService, TRXWINGO_VARIANTS } from "./trxwingo-service";
 import { tcWingoService, TC_WINGO_VARIANTS } from "./tc-wingo-service";
 import { 
@@ -280,7 +279,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
   // Wingo prediction routes
   app.get('/api/wingo/variants', (req, res) => {
-    res.json(WINGO_VARIANTS);
+    res.json(TC_WINGO_VARIANTS);
   });
 
   app.get('/api/wingo/prediction/:variant', async (req, res) => {
