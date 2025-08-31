@@ -374,13 +374,29 @@ export default function Home() {
           {/* Second Row: Register and Deposit Button */}
           <div className="flex justify-center">
             <button 
-              className="px-6 sm:px-8 md:px-10 py-3 custom-button font-bold rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 text-center leading-tight"
+              className="px-8 sm:px-10 md:px-12 py-4 custom-button font-bold rounded-full shadow-xl transition-all duration-300 transform hover:scale-105 text-center leading-tight relative overflow-hidden"
               onClick={handleJoinVipClick}
             >
-              <div className="flex flex-col items-center">
-                <span className="text-sm sm:text-base">Register and Deposit and Get</span>
-                <span className="text-lg sm:text-xl font-extrabold text-yellow-300">500+ Bonus</span>
+              <div className="flex flex-col items-center space-y-1 relative z-10">
+                <span className="text-xs sm:text-sm md:text-base font-semibold text-white opacity-90 tracking-wide">
+                  Register & Deposit and Get
+                </span>
+                <div className="flex items-center space-x-1">
+                  <span className="text-2xl sm:text-3xl md:text-4xl font-black text-yellow-300 drop-shadow-lg">
+                    500+
+                  </span>
+                  <span className="text-lg sm:text-xl md:text-2xl font-bold text-yellow-100 drop-shadow-md">
+                    BONUS
+                  </span>
+                </div>
+                <div className="flex items-center space-x-1">
+                  <span className="text-xs font-medium text-yellow-200">💰</span>
+                  <span className="text-xs font-medium text-yellow-200 animate-pulse">✨ Limited Time ✨</span>
+                  <span className="text-xs font-medium text-yellow-200">💰</span>
+                </div>
               </div>
+              {/* Animated background effect */}
+              <div className="absolute inset-0 bg-gradient-to-r from-orange-400 via-orange-500 to-orange-600 opacity-20 animate-pulse"></div>
             </button>
           </div>
         </div>
