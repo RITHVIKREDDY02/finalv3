@@ -36,7 +36,7 @@ export default function WelcomeNotification({ onRegisterClick }: WelcomeNotifica
   return (
     <Dialog open={isOpen} onOpenChange={handleClose}>
       <DialogContent 
-        className="sm:max-w-4xl mx-auto my-4 w-[calc(100%-2rem)] max-h-[90vh] overflow-hidden border-0 p-0 rounded-2xl shadow-2xl bg-transparent [&>button]:hidden"
+        className="sm:max-w-2xl lg:max-w-xl mx-auto my-4 w-[calc(100%-2rem)] max-h-[90vh] overflow-hidden border-0 p-0 rounded-2xl shadow-2xl bg-transparent [&>button]:hidden"
       >
         <VisuallyHidden>
           <DialogTitle>Welcome Bonus Notification</DialogTitle>
