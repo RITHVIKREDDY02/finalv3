@@ -163,7 +163,7 @@ export default function Home() {
         }`} 
         style={{ 
           height: '60px',
-          borderBottomColor: isScrolled ? '#a28422' : 'transparent'
+          borderBottomColor: isScrolled ? '#0b3681' : 'transparent'
         }}
       >
         <div className="max-w-7xl mx-auto flex items-center justify-between h-full relative">
