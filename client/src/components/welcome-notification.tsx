@@ -48,30 +48,46 @@ export default function WelcomeNotification({ onRegisterClick }: WelcomeNotifica
         </VisuallyHidden>
         
         <div className="space-y-4">
-          {/* Main container box with gradient background */}
+          {/* Main container box with blue gradient background */}
           <div 
-            className="p-6 rounded-2xl shadow-xl"
+            className="p-0 rounded-2xl shadow-xl border-2"
             style={{
-              backgroundColor: '#000c1c'
+              background: 'linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #1e40af 100%)',
+              borderColor: '#fbbf24'
             }}
           >
-            {/* Promotional image inside the box */}
-            <div className="mb-6">
-              <img 
-                src={depositBonusImage} 
-                alt="V3 GAME Deposit Bonus - Welcome Offer" 
-                className="w-full h-auto object-cover rounded-xl"
-              />
+            {/* Orange Notification header */}
+            <div className="text-center py-3 border-b-2" style={{ borderColor: '#fbbf24' }}>
+              <h2 className="text-xl font-bold" style={{ color: '#fbbf24' }}>Notification</h2>
             </div>
             
-            {/* Register button inside the box */}
-            <div className="text-center">
-              <Button
+            {/* Dark blue content area */}
+            <div 
+              className="p-6 mx-4 my-4 rounded-xl"
+              style={{ backgroundColor: 'rgba(30, 58, 138, 0.8)' }}
+            >
+              {/* Promotional image inside the content area */}
+              <div className="mb-6">
+                <img 
+                  src={depositBonusImage} 
+                  alt="V3 GAME Deposit Bonus - Welcome Offer" 
+                  className="w-full h-auto object-cover rounded-xl"
+                />
+              </div>
+            </div>
+            
+            {/* Orange gradient button */}
+            <div className="text-center pb-6 px-6">
+              <button
                 onClick={handleRegister}
-                className="px-8 py-3 text-lg font-bold rounded-full custom-button shadow-xl transition-all duration-300 transform hover:scale-105"
+                className="w-full px-8 py-4 text-lg font-bold rounded-full shadow-xl transition-all duration-300 transform hover:scale-105"
+                style={{
+                  background: 'linear-gradient(135deg, #f59e0b 0%, #f97316 50%, #ea580c 100%)',
+                  color: 'white'
+                }}
               >
                 REGISTER NOW
-              </Button>
+              </button>
             </div>
           </div>
           
