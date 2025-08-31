@@ -179,17 +179,19 @@ export default function Wingo() {
                 <button
                   key={variant.key}
                   onClick={() => handleVariantSwitch(variant.key)}
-                  className={`flex-1 font-medium transition-all duration-200 ${
+                  className={`flex-1 font-medium text-center transition-all duration-200 ${
                     selectedVariant === variant.key
                       ? 'text-black shadow-md'
                       : 'text-gray-300 hover:text-white'
                   }`}
                   style={{ 
-                    padding: '12px 16px',
+                    padding: '12px 8px',
                     borderRadius: '16px',
                     background: selectedVariant === variant.key 
                       ? 'rgba(255,208,90,254)'
-                      : 'transparent'
+                      : 'transparent',
+                    minWidth: '0',
+                    flex: '1 1 0%'
                   }}
                 >
                   {variant.label}
