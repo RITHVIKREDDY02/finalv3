@@ -718,7 +718,7 @@ export default function Home() {
       {/* Demo Dialog */}
       {showDemoDialog && (
         <div className="fixed inset-0 bg-black bg-opacity-60 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <div className="rounded-3xl max-w-lg w-full max-h-[70vh] overflow-y-auto shadow-2xl border-2" style={{ backgroundColor: 'rgb(56, 46, 53)', border: '2px solid #FED358' }}>
+          <div className="rounded-3xl max-w-lg w-full max-h-[70vh] overflow-y-auto shadow-2xl border-2" style={{ backgroundColor: '#231C21', border: '2px solid #FED358' }}>
             <div className="p-8">
               <div className="flex justify-between items-center mb-8">
                 <h2 className="text-3xl font-bold" style={{ color: '#FED358' }}>Demo - How It Works</h2>
@@ -736,7 +736,7 @@ export default function Home() {
               <div className="space-y-8">
                 <div>
                   <h3 className="text-xl font-bold mb-4 flex items-center" style={{ color: '#FED358' }}>
-                    <span className="w-8 h-8 rounded-full flex items-center justify-center text-white font-bold text-sm mr-3" style={{ backgroundColor: '#9B59B6' }}>1</span>
+                    <span className="w-8 h-8 rounded-full flex items-center justify-center text-black font-bold text-sm mr-3" style={{ backgroundColor: '#FED358' }}>1</span>
                     Choose Game Variant
                   </h3>
                   <div className="rounded-2xl p-6" style={{ backgroundColor: 'rgba(254, 211, 88, 0.1)', border: '1px solid rgba(254, 211, 88, 0.3)' }}>
@@ -751,7 +751,7 @@ export default function Home() {
                 
                 <div>
                   <h3 className="text-xl font-bold mb-4 flex items-center" style={{ color: '#FED358' }}>
-                    <span className="w-8 h-8 rounded-full flex items-center justify-center text-white font-bold text-sm mr-3" style={{ backgroundColor: '#E67E22' }}>2</span>
+                    <span className="w-8 h-8 rounded-full flex items-center justify-center text-black font-bold text-sm mr-3" style={{ backgroundColor: '#FED358' }}>2</span>
                     View Period & Timer
                   </h3>
                   <div className="rounded-2xl p-6" style={{ backgroundColor: 'rgba(254, 211, 88, 0.1)', border: '1px solid rgba(254, 211, 88, 0.3)' }}>
@@ -766,7 +766,7 @@ export default function Home() {
 
                 <div>
                   <h3 className="text-xl font-bold mb-4 flex items-center" style={{ color: '#FED358' }}>
-                    <span className="w-8 h-8 rounded-full flex items-center justify-center text-white font-bold text-sm mr-3" style={{ backgroundColor: '#E74C3C' }}>3</span>
+                    <span className="w-8 h-8 rounded-full flex items-center justify-center text-black font-bold text-sm mr-3" style={{ backgroundColor: '#FED358' }}>3</span>
                     Get VIP Prediction
                   </h3>
                   <div className="rounded-2xl p-6" style={{ backgroundColor: 'rgba(254, 211, 88, 0.1)', border: '1px solid rgba(254, 211, 88, 0.3)' }}>
@@ -781,15 +781,15 @@ export default function Home() {
 
                 <div>
                   <h3 className="text-xl font-bold mb-4 flex items-center" style={{ color: '#FED358' }}>
-                    <span className="w-8 h-8 rounded-full flex items-center justify-center text-white font-bold text-sm mr-3" style={{ backgroundColor: '#2ECC71' }}>4</span>
+                    <span className="w-8 h-8 rounded-full flex items-center justify-center text-black font-bold text-sm mr-3" style={{ backgroundColor: '#FED358' }}>4</span>
                     How to Get Started
                   </h3>
-                  <div className="rounded-2xl p-6" style={{ backgroundColor: 'rgba(155, 89, 182, 0.2)', border: '1px solid rgba(155, 89, 182, 0.4)' }}>
+                  <div className="rounded-2xl p-6" style={{ backgroundColor: 'rgba(254, 211, 88, 0.1)', border: '1px solid rgba(254, 211, 88, 0.3)' }}>
                     <div className="text-sm space-y-3" style={{ color: '#FDE4BC' }}>
-                      <div className="flex items-center"><span className="w-6 h-6 rounded-full flex items-center justify-center text-white text-xs mr-3" style={{ backgroundColor: '#9B59B6' }}>1</span>Click on any game card</div>
-                      <div className="flex items-center"><span className="w-6 h-6 rounded-full flex items-center justify-center text-white text-xs mr-3" style={{ backgroundColor: '#9B59B6' }}>2</span>Register with your UID</div>
-                      <div className="flex items-center"><span className="w-6 h-6 rounded-full flex items-center justify-center text-white text-xs mr-3" style={{ backgroundColor: '#9B59B6' }}>3</span>Wait for admin approval</div>
-                      <div className="flex items-center"><span className="w-6 h-6 rounded-full flex items-center justify-center text-white text-xs mr-3" style={{ backgroundColor: '#9B59B6' }}>4</span>Access VIP predictions</div>
+                      <div className="flex items-center"><span className="w-6 h-6 rounded-full flex items-center justify-center text-black text-xs mr-3" style={{ backgroundColor: '#FED358' }}>1</span>Click on any game card</div>
+                      <div className="flex items-center"><span className="w-6 h-6 rounded-full flex items-center justify-center text-black text-xs mr-3" style={{ backgroundColor: '#FED358' }}>2</span>Register with your UID</div>
+                      <div className="flex items-center"><span className="w-6 h-6 rounded-full flex items-center justify-center text-black text-xs mr-3" style={{ backgroundColor: '#FED358' }}>3</span>Wait for admin approval</div>
+                      <div className="flex items-center"><span className="w-6 h-6 rounded-full flex items-center justify-center text-black text-xs mr-3" style={{ backgroundColor: '#FED358' }}>4</span>Access VIP predictions</div>
                     </div>
                   </div>
                 </div>
