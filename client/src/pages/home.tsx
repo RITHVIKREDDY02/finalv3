@@ -1,5 +1,5 @@
 import { Card } from "@/components/ui/card";
-import { Volume2 } from "lucide-react";
+import { Volume2, ChevronLeft, ChevronRight } from "lucide-react";
 import { useState, useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { FaTelegram } from "react-icons/fa";
@@ -24,6 +24,7 @@ import limboImage from "@assets/235_1754071157602.png";
 import mobileBannerImage from "@assets/202508291426595421003_1756613438340.png";
 import desktopBannerImage from "@assets/202508291426595421003_1756613438340.png";
 import heroBanner2 from "@assets/202411122322287871008_1756613499429.png";
+import newSlideImage from "@assets/image_1756621208804.png";
 import proofImage1 from "@assets/image_1754150847570.png";
 import proofImage2 from "@assets/image_1754150852695.png";
 import demoImage1 from "@assets/Screenshot 2025-08-02 220225_1754152384208.png";
@@ -45,6 +46,26 @@ export default function Home() {
   const [showWarningDialog, setShowWarningDialog] = useState(false);
   const [selectedGameName, setSelectedGameName] = useState<string>("");
   const [userUid, setUserUid] = useState<string>("");
+  
+  // Carousel state
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+  
+  // Carousel slides data
+  const slides = [
+    { 
+      image: mobileBannerImage, 
+      alt: "V3 GAME - Lucky 10 Days Recharge Bonus" 
+    },
+    { 
+      image: heroBanner2, 
+      alt: "V3 GAME - 1 Minute Wingo Game" 
+    },
+    { 
+      image: newSlideImage, 
+      alt: "V3 GAME - Hero Promotion" 
+    }
+  ];
 
   // Fetch game configurations (public endpoint)
   const { data: gameConfigs = [] } = useQuery<GameConfig[]>({
@@ -70,6 +91,17 @@ export default function Home() {
       setUserUid(storedUid);
     }
   }, []);
+
+  // Auto-play carousel effect
+  useEffect(() => {
+    if (!isAutoPlaying) return;
+    
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % slides.length);
+    }, 4000); // Change slide every 4 seconds
+
+    return () => clearInterval(interval);
+  }, [isAutoPlaying, slides.length]);
 
   const isGameEnabled = (gameName: string) => {
     const config = gameConfigs.find(config => config.gameName === gameName);
@@ -153,6 +185,19 @@ export default function Home() {
     setShowVipPredictionDialog(false);
     setShowComingSoonDialog(false);
     setShowDemoDialog(false);
+  };
+
+  // Carousel navigation functions
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % slides.length);
+  };
+
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
+  };
+
+  const goToSlide = (index: number) => {
+    setCurrentSlide(index);
   };
 
   return (
@@ -244,23 +289,55 @@ export default function Home() {
       {/* Hero Banners Carousel */}
       <div className="px-4 md:px-6 lg:px-8 xl:px-12 pb-4">
         <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
-            {/* Banner 1 - Lucky 10 Days */}
-            <div className="relative overflow-hidden rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300">
-              <img 
-                src={mobileBannerImage} 
-                alt="V3 GAME - Lucky 10 Days Recharge Bonus" 
-                className="w-full h-auto object-cover"
-              />
+          <div 
+            className="relative overflow-hidden rounded-2xl shadow-lg"
+            onMouseEnter={() => setIsAutoPlaying(false)}
+            onMouseLeave={() => setIsAutoPlaying(true)}
+          >
+            {/* Slides Container */}
+            <div 
+              className="flex transition-transform duration-500 ease-in-out"
+              style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+            >
+              {slides.map((slide, index) => (
+                <div key={index} className="w-full flex-shrink-0">
+                  <img 
+                    src={slide.image} 
+                    alt={slide.alt} 
+                    className="w-full h-auto object-cover"
+                  />
+                </div>
+              ))}
             </div>
             
-            {/* Banner 2 - Wingo Game */}
-            <div className="relative overflow-hidden rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300">
-              <img 
-                src={heroBanner2} 
-                alt="V3 GAME - 1 Minute Wingo Game" 
-                className="w-full h-auto object-cover"
-              />
+            {/* Navigation Arrows */}
+            <button
+              onClick={prevSlide}
+              className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 hover:bg-opacity-70 text-white p-2 rounded-full transition-all duration-200"
+            >
+              <ChevronLeft className="w-6 h-6" />
+            </button>
+            
+            <button
+              onClick={nextSlide}
+              className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 hover:bg-opacity-70 text-white p-2 rounded-full transition-all duration-200"
+            >
+              <ChevronRight className="w-6 h-6" />
+            </button>
+            
+            {/* Pagination Dots */}
+            <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
+              {slides.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => goToSlide(index)}
+                  className={`w-3 h-3 rounded-full transition-all duration-200 ${
+                    currentSlide === index 
+                      ? 'bg-white scale-110' 
+                      : 'bg-white bg-opacity-50 hover:bg-opacity-75'
+                  }`}
+                />
+              ))}
             </div>
           </div>
         </div>
