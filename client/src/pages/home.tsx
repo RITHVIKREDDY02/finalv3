@@ -189,7 +189,7 @@ export default function Home() {
             ) : (
               <button 
                 className="px-3 py-1.5 rounded-full text-black font-bold text-xs transition-opacity duration-200 hover:opacity-90"
-                style={{ backgroundColor: '#FFB472' }}
+                style={{ background: 'linear-gradient(180deg,#f8bf6e,#fb5e04)' }}
                 onClick={handleJoinVipClick}
               >
                 JOIN VIP
@@ -202,14 +202,14 @@ export default function Home() {
             {isApproved ? (
               <div 
                 className="px-4 py-2 rounded-full text-black font-bold text-sm"
-                style={{ backgroundColor: '#FED358' }}
+                style={{ background: 'linear-gradient(180deg,#f8bf6e,#fb5e04)' }}
               >
                 UID: {userUid}
               </div>
             ) : (
               <button 
                 className="px-4 py-2 rounded-full text-black font-bold text-sm transition-opacity duration-200 hover:opacity-90"
-                style={{ backgroundColor: '#FFB472' }}
+                style={{ background: 'linear-gradient(180deg,#f8bf6e,#fb5e04)' }}
                 onClick={handleJoinVipClick}
               >
                 JOIN VIP
