@@ -145,7 +145,7 @@ export default function VipPredictionDialog({ isOpen, onClose, uid, onBackToRegi
                 className="btn-body-bg px-4 py-2 rounded-full font-semibold"
                 onClick={() => window.open("https://tashanwin6.com/#/register?invitationCode=487522520975", "_blank")}
               >
-                🚀 Start
+                Start
               </Button>
               <Button
                 className={`px-4 py-2 rounded-full font-semibold ${
@@ -156,13 +156,13 @@ export default function VipPredictionDialog({ isOpen, onClose, uid, onBackToRegi
                 onClick={handleContinue}
                 disabled={!isApproved}
               >
-                🔒 Continue
+                Continue
               </Button>
               <Button
                 className="btn-body-bg px-4 py-2 rounded-full font-semibold"
                 onClick={handleHelp}
               >
-                ❓ Help
+                Help
               </Button>
             </div>
 

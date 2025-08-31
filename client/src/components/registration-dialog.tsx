@@ -107,7 +107,7 @@ export default function RegistrationDialog({ isOpen, onClose, onRegistrationSucc
               VIP ACCESS
             </DialogTitle>
             <DialogDescription className="warm-gold font-medium text-center text-sm">
-              🚀 Exclusive Predictions
+              Exclusive Predictions
             </DialogDescription>
           </div>
         </div>
@@ -179,10 +179,7 @@ export default function RegistrationDialog({ isOpen, onClose, onRegistrationSucc
                             <span>PROCESSING...</span>
                           </div>
                         ) : (
-                          <div className="flex items-center gap-2">
-                            <Star className="h-4 w-4" />
-                            <span>JOIN VIP</span>
-                          </div>
+                          <span>JOIN VIP</span>
                         )}
                       </Button>
                     </div>
@@ -206,13 +203,13 @@ export default function RegistrationDialog({ isOpen, onClose, onRegistrationSucc
                 className="flex-1 h-9 font-semibold text-sm rounded-lg btn-body-bg"
                 onClick={handleHelp}
               >
-                ❓ HELP
+                HELP
               </Button>
             </div>
             
             <div className="text-center">
               <p className="text-xs accent-gold">
-                🎯 Join VIP members
+                Join VIP members
               </p>
             </div>
           </div>

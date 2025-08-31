@@ -24,6 +24,7 @@ import limboImage from "@assets/235_1754071157602.png";
 import mobileBannerImage from "@assets/202508291426595421003_1756613438340.png";
 import desktopBannerImage from "@assets/202508291426595421003_1756613438340.png";
 import heroBanner2 from "@assets/202411122322287871008_1756613499429.png";
+import depositBonusImage from "@assets/202505241645242463002_1756622355319.png";
 import proofImage1 from "@assets/image_1754150847570.png";
 import proofImage2 from "@assets/image_1754150852695.png";
 import demoImage1 from "@assets/Screenshot 2025-08-02 220225_1754152384208.png";
@@ -59,6 +60,10 @@ export default function Home() {
     { 
       image: heroBanner2, 
       alt: "V3 GAME - 1 Minute Wingo Game" 
+    },
+    { 
+      image: depositBonusImage, 
+      alt: "V3 GAME - Deposit Bonus Program" 
     }
   ];
 
@@ -371,32 +376,13 @@ export default function Home() {
             </button>
           </div>
           
-          {/* Second Row: Register and Deposit Button */}
+          {/* Second Row: Register Button */}
           <div className="flex justify-center">
             <button 
-              className="px-8 sm:px-10 md:px-12 py-4 custom-button font-bold rounded-full shadow-xl transition-all duration-300 transform hover:scale-105 text-center leading-tight relative overflow-hidden"
+              className="flex-1 md:flex-none md:w-48 lg:w-52 px-4 sm:px-6 md:px-8 py-2 custom-button font-bold rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 text-sm sm:text-base"
               onClick={handleJoinVipClick}
             >
-              <div className="flex flex-col items-center space-y-1 relative z-10">
-                <span className="text-xs sm:text-sm md:text-base font-semibold text-white opacity-90 tracking-wide">
-                  Register & Deposit and Get
-                </span>
-                <div className="flex items-center space-x-1">
-                  <span className="text-2xl sm:text-3xl md:text-4xl font-black text-yellow-300 drop-shadow-lg">
-                    500+
-                  </span>
-                  <span className="text-lg sm:text-xl md:text-2xl font-bold text-yellow-100 drop-shadow-md">
-                    BONUS
-                  </span>
-                </div>
-                <div className="flex items-center space-x-1">
-                  <span className="text-xs font-medium text-yellow-200">💰</span>
-                  <span className="text-xs font-medium text-yellow-200 animate-pulse">✨ Limited Time ✨</span>
-                  <span className="text-xs font-medium text-yellow-200">💰</span>
-                </div>
-              </div>
-              {/* Animated background effect */}
-              <div className="absolute inset-0 bg-gradient-to-r from-orange-400 via-orange-500 to-orange-600 opacity-20 animate-pulse"></div>
+              REGISTER
             </button>
           </div>
         </div>
