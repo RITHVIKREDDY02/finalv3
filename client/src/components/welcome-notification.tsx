@@ -52,7 +52,7 @@ export default function WelcomeNotification({ onRegisterClick }: WelcomeNotifica
           <div 
             className="p-6 rounded-2xl shadow-xl"
             style={{
-              background: 'linear-gradient(0deg,#0b3681,#06152d)'
+              backgroundColor: '#000c1c'
             }}
           >
             {/* Promotional image inside the box */}
