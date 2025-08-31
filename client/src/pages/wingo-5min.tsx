@@ -196,13 +196,13 @@ export default function Wingo5Min() {
               <Button 
                 className="w-full text-black font-bold text-lg py-4 hover:opacity-90 transition-all duration-200 shadow-lg"
                 style={{ backgroundColor: '#FED358' }}
-                onClick={() => window.open('https://www.tashanwin.in/#/', '_blank')}
+                onClick={() => window.open('https://www.v3game6.com/#/', '_blank')}
               >
-                🎮 Play Now - TASHAN WIN 🎮
+                🎮 Play Now - V3 GAME 🎮
               </Button>
               
               <div className="text-xs text-gray-400 italic">
-                Game Link: <span className="text-blue-400">https://www.tashanwin.in/#/</span>
+                Game Link: <span className="text-blue-400">https://www.v3game6.com/#/</span>
               </div>
             </div>
           </div>
