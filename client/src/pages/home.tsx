@@ -30,6 +30,7 @@ import proofImage2 from "@assets/image_1754150852695.png";
 import demoImage1 from "@assets/Screenshot 2025-08-31 172003_1756641606545.png";
 import demoImage2 from "@assets/Screenshot 2025-08-31 172048_1756641612873.png";
 import demoImage3 from "@assets/Screenshot 2025-08-31 172018_1756641617812.png";
+import liveInterfaceImage from "@assets/Screenshot 2025-08-31 171820_1756656529215.png";
 import faviconIcon from "@assets/h5setting_20250501162804ytau_1754156061703.png";
 
 export default function Home() {
@@ -658,76 +659,15 @@ export default function Home() {
                 <div>
                   <h3 className="text-xl font-bold mb-4 flex items-center" style={{ color: '#FED358' }}>
                     <span className="w-2 h-6 rounded-full mr-3" style={{ backgroundColor: '#2ECC71' }}></span>
-                    Live Interface
+                    Live Prediction Interface
                   </h3>
-                  <div className="rounded-2xl p-6 space-y-6" style={{ backgroundColor: 'rgba(254, 211, 88, 0.1)', border: '1px solid rgba(254, 211, 88, 0.3)' }}>
-                    {/* Game Tabs */}
-                    <div className="flex justify-center">
-                      <div className="bg-blue-800 rounded-2xl p-2 flex gap-2">
-                        <div className="px-4 py-2 rounded-xl text-white text-sm font-semibold">Wingo 30Sec</div>
-                        <div className="px-4 py-2 bg-orange-500 rounded-xl text-white text-sm font-semibold">Wingo 1Min</div>
-                        <div className="px-4 py-2 rounded-xl text-white text-sm font-semibold">Wingo 3Min</div>
-                        <div className="px-4 py-2 rounded-xl text-white text-sm font-semibold">Wingo 5Min</div>
-                      </div>
-                    </div>
-
-                    {/* Period Info Card */}
-                    <div className="bg-red-400 rounded-2xl p-4 flex justify-between items-center text-white">
-                      <div>
-                        <div className="text-lg font-bold">Wingo 1Min</div>
-                        <div className="text-base font-semibold">20508311039</div>
-                      </div>
-                      <div className="text-right">
-                        <div className="text-lg font-bold">Time Remaining</div>
-                        <div className="text-2xl font-bold">00:44</div>
-                      </div>
-                    </div>
-
-                    {/* VIP Prediction */}
-                    <div>
-                      <div className="flex items-center mb-3">
-                        <div className="w-1 h-6 bg-yellow-400 rounded-full mr-3"></div>
-                        <h4 className="text-lg font-bold text-yellow-400">VIP Prediction</h4>
-                      </div>
-                      <div className="bg-gray-700 rounded-2xl p-4">
-                        <div className="flex justify-between items-center text-yellow-400">
-                          <div>
-                            <div className="text-sm font-semibold">Color</div>
-                            <div className="w-8 h-8 bg-red-500 rounded mt-1"></div>
-                          </div>
-                          <div className="text-center">
-                            <div className="text-sm font-semibold">Size</div>
-                            <div className="text-2xl font-bold text-white">SMALL</div>
-                          </div>
-                          <div className="text-right">
-                            <div className="text-sm font-semibold">Number</div>
-                            <div className="text-2xl font-bold text-white">1</div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Live Players */}
-                    <div>
-                      <div className="flex items-center mb-3">
-                        <div className="w-1 h-6 bg-yellow-400 rounded-full mr-3"></div>
-                        <h4 className="text-lg font-bold text-yellow-400">Live Players</h4>
-                      </div>
-                      <div className="bg-gray-700 rounded-2xl p-4 space-y-2">
-                        <div className="text-center text-sm text-white">
-                          <span className="text-yellow-400 font-semibold">27xxx03</span> has joined <span className="text-red-400 font-semibold">SMALL</span>
-                        </div>
-                        <div className="text-center text-sm text-white">
-                          <span className="text-yellow-400 font-semibold">29xxx99</span> has joined <span className="text-red-400 font-semibold">SMALL</span>
-                        </div>
-                        <div className="text-center text-sm text-white">
-                          <span className="text-yellow-400 font-semibold">32xxx00</span> has joined <span className="text-red-400 font-semibold">SMALL</span>
-                        </div>
-                        <div className="text-center text-sm text-white">
-                          <span className="text-yellow-400 font-semibold">27xxx89</span> has joined <span className="text-red-400 font-semibold">SMALL</span>
-                        </div>
-                      </div>
-                    </div>
+                  <div className="rounded-2xl p-6" style={{ backgroundColor: 'rgba(254, 211, 88, 0.1)', border: '1px solid rgba(254, 211, 88, 0.3)' }}>
+                    <img 
+                      src={liveInterfaceImage} 
+                      alt="Live Wingo prediction interface with game tabs, period timer, VIP prediction and live players" 
+                      className="w-full mx-auto rounded-xl shadow-2xl border-2"
+                      style={{ borderColor: '#FED358' }}
+                    />
                   </div>
                 </div>
 
