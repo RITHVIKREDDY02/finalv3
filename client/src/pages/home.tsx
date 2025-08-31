@@ -643,21 +643,6 @@ export default function Home() {
               <div className="space-y-8">
                 <div>
                   <h3 className="text-xl font-bold mb-4 flex items-center" style={{ color: '#FED358' }}>
-                    <span className="w-2 h-6 rounded-full mr-3" style={{ backgroundColor: '#E67E22' }}></span>
-                    Live Prediction Interface
-                  </h3>
-                  <div className="rounded-2xl p-6" style={{ backgroundColor: 'rgba(254, 211, 88, 0.1)', border: '1px solid rgba(254, 211, 88, 0.3)' }}>
-                    <img 
-                      src={proofImage1} 
-                      alt="Live Wingo Prediction System showing BIG 8 prediction with timer" 
-                      className="w-3/4 mx-auto rounded-xl shadow-2xl border-2"
-                      style={{ borderColor: '#FED358' }}
-                    />
-                  </div>
-                </div>
-                
-                <div>
-                  <h3 className="text-xl font-bold mb-4 flex items-center" style={{ color: '#FED358' }}>
                     <span className="w-2 h-6 rounded-full mr-3" style={{ backgroundColor: '#2ECC71' }}></span>
                     Live Prediction Interface
                   </h3>
