@@ -25,7 +25,7 @@
   --radius: 0.5rem;
   
   /* Custom gaming theme colors */
-  --navbar-dark: hsl(293, 14%, 8%);
+  --navbar-dark: #112140;
   --accent-gold: hsl(45, 65%, 34%);
   --warm-gold: hsl(45, 97%, 67%);
   --light-gold: hsl(45, 89%, 87%);
