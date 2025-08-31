@@ -32,40 +32,52 @@ function LoginForm({ onLogin, isLoading }: { onLogin: (password: string) => Prom
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-purple-900 to-gray-900 flex items-center justify-center p-4">
-      <Card className="w-full max-w-md bg-gray-800/90 border-gray-700">
+    <div className="min-h-screen bg-[#231C21] flex items-center justify-center p-4">
+      <Card className="w-full max-w-md bg-gradient-to-br from-gray-800/90 to-gray-900/90 border-[#FED358]/30 shadow-2xl" 
+        style={{ boxShadow: '0 0 30px rgba(254, 211, 88, 0.3)' }}>
         <CardHeader className="text-center">
-          <div className="mx-auto w-12 h-12 bg-purple-600 rounded-full flex items-center justify-center mb-4">
-            <Lock className="w-6 h-6 text-white" />
+          <div className="mx-auto w-12 h-12 rounded-full flex items-center justify-center mb-4"
+            style={{ 
+              backgroundColor: '#FED358',
+              boxShadow: '0 0 15px rgba(254, 211, 88, 0.4)'
+            }}>
+            <Lock className="w-6 h-6 text-black" />
           </div>
-          <CardTitle className="text-2xl text-white">Admin Login</CardTitle>
+          <CardTitle className="text-2xl font-bold text-[#FED358]">TASHAN WIN Admin</CardTitle>
+          <p className="text-gray-400 text-sm mt-2">Secure Admin Portal</p>
         </CardHeader>
         <CardContent>
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
-              <Label htmlFor="password" className="text-gray-300">Password</Label>
+              <Label htmlFor="password" className="text-[#FED358] font-semibold">Admin Password</Label>
               <Input
                 id="password"
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="Enter admin password"
-                className="bg-gray-700 border-gray-600 text-white"
+                className="bg-gray-700/50 border-[#FED358]/50 text-white placeholder:text-gray-400 focus:border-[#FED358] focus:ring-1 focus:ring-[#FED358]/20 rounded-lg mt-2"
                 required
               />
             </div>
             <Button 
               type="submit" 
-              className="w-full bg-purple-600 hover:bg-purple-700"
+              className="w-full font-bold rounded-lg transition-all duration-200"
+              style={{ 
+                background: 'linear-gradient(180deg, #FED358, #FFB472)',
+                color: '#231C21'
+              }}
+              onMouseEnter={(e) => (e.target as HTMLButtonElement).style.background = 'linear-gradient(180deg, #FFE082, #FFC894)'}
+              onMouseLeave={(e) => (e.target as HTMLButtonElement).style.background = 'linear-gradient(180deg, #FED358, #FFB472)'}
               disabled={isLoading}
             >
               {isLoading ? (
                 <>
                   <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                  Logging in...
+                  Accessing Admin Panel...
                 </>
               ) : (
-                "Login"
+                "Access Admin Panel"
               )}
             </Button>
           </form>
@@ -272,9 +284,9 @@ export default function AdminPanel() {
 
         {/* Stats Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <Card className="bg-gray-800 border-gray-700">
+          <Card className="bg-gradient-to-br from-gray-800/90 to-gray-900/90 border-[#FED358]/30 shadow-lg">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium text-gray-300">Total Users</CardTitle>
+              <CardTitle className="text-sm font-medium text-[#FED358]">Total Users</CardTitle>
               <Users className="h-4 w-4 text-[#FED358]" />
             </CardHeader>
             <CardContent>
@@ -282,9 +294,9 @@ export default function AdminPanel() {
             </CardContent>
           </Card>
 
-          <Card className="bg-gray-800 border-gray-700">
+          <Card className="bg-gradient-to-br from-gray-800/90 to-gray-900/90 border-green-500/30 shadow-lg">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium text-gray-300">Approved Users</CardTitle>
+              <CardTitle className="text-sm font-medium text-green-400">Approved Users</CardTitle>
               <CheckCircle className="h-4 w-4 text-green-500" />
             </CardHeader>
             <CardContent>
@@ -294,9 +306,9 @@ export default function AdminPanel() {
             </CardContent>
           </Card>
 
-          <Card className="bg-gray-800 border-gray-700">
+          <Card className="bg-gradient-to-br from-gray-800/90 to-gray-900/90 border-yellow-500/30 shadow-lg">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium text-gray-300">Pending Approval</CardTitle>
+              <CardTitle className="text-sm font-medium text-yellow-400">Pending Approval</CardTitle>
               <Clock className="h-4 w-4 text-yellow-500" />
             </CardHeader>
             <CardContent>
@@ -308,9 +320,9 @@ export default function AdminPanel() {
         </div>
 
         {/* User Management */}
-        <Card className="bg-gray-800 border-gray-700">
+        <Card className="bg-gradient-to-br from-gray-800/90 to-gray-900/90 border-[#FED358]/30 shadow-lg">
           <CardHeader>
-            <CardTitle className="text-[#FED358] flex items-center gap-2">
+            <CardTitle className="text-[#FED358] flex items-center gap-2 font-bold">
               <Users className="h-5 w-5" />
               User Management
             </CardTitle>
@@ -321,7 +333,7 @@ export default function AdminPanel() {
             ) : (
               <div className="space-y-3">
                 {users.map((user) => (
-                  <div key={user.id} className="flex items-center justify-between p-4 bg-gray-700 rounded-lg">
+                  <div key={user.id} className="flex items-center justify-between p-4 bg-gradient-to-r from-gray-700/80 to-gray-800/80 rounded-lg border border-[#FED358]/20 shadow-md">
                     <div className="space-y-1">
                       <p className="text-white font-medium">UID: {user.uid}</p>
                       <p className="text-gray-400 text-sm">
@@ -370,9 +382,9 @@ export default function AdminPanel() {
         </Card>
 
         {/* Game Configuration */}
-        <Card className="bg-gray-800 border-gray-700">
+        <Card className="bg-gradient-to-br from-gray-800/90 to-gray-900/90 border-[#FED358]/30 shadow-lg">
           <CardHeader>
-            <CardTitle className="text-[#FED358] flex items-center gap-2">
+            <CardTitle className="text-[#FED358] flex items-center gap-2 font-bold">
               <Settings className="h-5 w-5" />
               Game Configuration
             </CardTitle>
@@ -380,7 +392,7 @@ export default function AdminPanel() {
           <CardContent className="space-y-4">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
               {GAME_NAMES.map((gameName) => (
-                <div key={gameName} className="flex items-center justify-between p-4 bg-gray-700 rounded-lg">
+                <div key={gameName} className="flex items-center justify-between p-4 bg-gradient-to-r from-gray-700/80 to-gray-800/80 rounded-lg border border-[#FED358]/20 shadow-md">
                   <span className="text-white font-medium">{gameName}</span>
                   <Switch
                     checked={isGameEnabled(gameName)}
