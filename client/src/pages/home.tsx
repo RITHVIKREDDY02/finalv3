@@ -24,7 +24,6 @@ import limboImage from "@assets/235_1754071157602.png";
 import mobileBannerImage from "@assets/202508291426595421003_1756613438340.png";
 import desktopBannerImage from "@assets/202508291426595421003_1756613438340.png";
 import heroBanner2 from "@assets/202411122322287871008_1756613499429.png";
-import newSlideImage from "@assets/image_1756621208804.png";
 import proofImage1 from "@assets/image_1754150847570.png";
 import proofImage2 from "@assets/image_1754150852695.png";
 import demoImage1 from "@assets/Screenshot 2025-08-02 220225_1754152384208.png";
@@ -60,10 +59,6 @@ export default function Home() {
     { 
       image: heroBanner2, 
       alt: "V3 GAME - 1 Minute Wingo Game" 
-    },
-    { 
-      image: newSlideImage, 
-      alt: "V3 GAME - Hero Promotion" 
     }
   ];
 
