@@ -145,9 +145,9 @@ export default function Wingo() {
   };
 
   return (
-    <div className="min-h-screen" style={{ backgroundColor: '#231C21' }}>
+    <div className="min-h-screen" style={{ backgroundColor: '#000c1c' }}>
       {/* Header */}
-      <div className="bg-gray-800 p-4 flex items-center justify-between shadow-lg">
+      <div className="navbar-dark p-4 flex items-center justify-between shadow-lg">
         <button 
           onClick={() => navigate('/')}
           className="flex items-center gap-2 text-white hover:text-yellow-400 transition-colors"
