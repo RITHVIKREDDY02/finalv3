@@ -269,7 +269,7 @@ export default function AdminPanel() {
           {/* Desktop: Side by side layout */}
           <div className="hidden md:flex justify-between items-center">
             <div className="text-center space-y-2 flex-1">
-              <h1 className="text-3xl font-bold text-[#FED358]">Admin Panel</h1>
+              <h1 className="text-3xl font-bold text-[#FED358]">V3 GAME Admin Panel</h1>
               <p className="text-gray-400">Manage users and game configurations</p>
             </div>
             <Button 

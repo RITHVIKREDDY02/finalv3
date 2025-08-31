@@ -87,7 +87,7 @@ export default function Home() {
 
   useEffect(() => {
     // Check if user has stored UID
-    const storedUid = localStorage.getItem("tashan_user_uid");
+    const storedUid = localStorage.getItem("v3game_user_uid");
     if (storedUid) {
       setUserUid(storedUid);
     }
@@ -121,7 +121,7 @@ export default function Home() {
     
     // Special handling for Win Go - redirect to Wingo page if approved
     if (gameType === "Win Go") {
-      const storedUid = localStorage.getItem("tashan_user_uid");
+      const storedUid = localStorage.getItem("v3game_user_uid");
       if (storedUid && isApproved) {
         navigate('/wingo');
         return;
@@ -130,7 +130,7 @@ export default function Home() {
     
     // Special handling for Trx Wingo - redirect to TRX Wingo page if approved
     if (gameType === "Trx Wingo") {
-      const storedUid = localStorage.getItem("tashan_user_uid");
+      const storedUid = localStorage.getItem("v3game_user_uid");
       if (storedUid && isApproved) {
         navigate('/trx-wingo');
         return;
@@ -138,7 +138,7 @@ export default function Home() {
     }
     
     // Check if user has registered UID
-    const storedUid = localStorage.getItem("tashan_user_uid");
+    const storedUid = localStorage.getItem("v3game_user_uid");
     if (storedUid) {
       setUserUid(storedUid);
       setShowVipPredictionDialog(true);
@@ -156,7 +156,7 @@ export default function Home() {
   };
 
   const handleBackToRegister = () => {
-    localStorage.removeItem("tashan_user_uid");
+    localStorage.removeItem("v3game_user_uid");
     setUserUid("");
     setShowVipPredictionDialog(false);
     setShowRegisterDialog(true);
@@ -165,7 +165,7 @@ export default function Home() {
   const handleVipClick = () => {
     console.log('VIP clicked');
     // Check if user has registered UID and is approved
-    const storedUid = localStorage.getItem("tashan_user_uid");
+    const storedUid = localStorage.getItem("v3game_user_uid");
     if (storedUid && isApproved) {
       // User is approved, show VIP prediction dialog
       setShowVipPredictionDialog(true);
@@ -221,7 +221,7 @@ export default function Home() {
           <div className="flex items-center logo-spacing-mobile md:logo-spacing-tablet lg:logo-spacing-desktop">
             <img 
               src={logoPath} 
-              alt="V3.GAME Logo" 
+              alt="V3 GAME Logo" 
               className="w-auto object-contain h-5 md:h-7"
             />
           </div>
@@ -614,7 +614,7 @@ export default function Home() {
 
       {/* Floating Telegram Button */}
       <a 
-        href="https://t.me/TashanGamesss" 
+        href="https://t.me/V3Games" 
         target="_blank" 
         rel="noopener noreferrer"
         className="fixed bottom-20 right-6 w-14 h-14 bg-blue-500 hover:bg-blue-600 rounded-full flex items-center justify-center shadow-lg transition-all duration-300 z-50 hover:scale-110"
@@ -805,7 +805,7 @@ export default function Home() {
           <div className="rounded-3xl max-w-lg w-full max-h-[80vh] overflow-y-auto shadow-2xl border-2" style={{ backgroundColor: 'rgb(56, 46, 53)', border: '2px solid #FED358' }}>
             <div className="p-8">
               <div className="flex justify-between items-center mb-8">
-                <h2 className="text-3xl font-bold" style={{ color: '#FED358' }}>About Tashan Win VIP</h2>
+                <h2 className="text-3xl font-bold" style={{ color: '#FED358' }}>About V3 GAME VIP</h2>
                 <button
                   onClick={() => setShowAboutUsDialog(false)}
                   className="text-2xl font-bold rounded-full w-8 h-8 flex items-center justify-center transition-all duration-200"
@@ -820,17 +820,17 @@ export default function Home() {
               <div className="space-y-6">
                 <div className="rounded-2xl p-6" style={{ backgroundColor: 'rgba(254, 211, 88, 0.1)', border: '1px solid rgba(254, 211, 88, 0.3)' }}>
                   <p className="text-lg font-semibold text-center mb-4" style={{ color: '#FDE4BC' }}>
-                    "Life is a gamble and We live only once, so let's have fun at Tashan Win Vip!"
+                    "Life is a gamble and We live only once, so let's have fun at V3 GAME VIP!"
                   </p>
                 </div>
 
                 <div className="space-y-4" style={{ color: '#FDE4BC' }}>
                   <p className="text-base leading-relaxed">
-                    Welcome to <span className="font-bold" style={{ color: '#FED358' }}>Tashan Win Vip</span>, the leading online platform for predicting winning numbers in popular Wingo lottery games. Our expert data and AI analysts have developed an advanced algorithm that analyzes past lottery draws and player behavior to provide 100% accurate predictions.
+                    Welcome to <span className="font-bold" style={{ color: '#FED358' }}>V3 GAME VIP</span>, the leading online platform for predicting winning numbers in popular Wingo lottery games. Our expert data and AI analysts have developed an advanced algorithm that analyzes past lottery draws and player behavior to provide 100% accurate predictions.
                   </p>
 
                   <p className="text-base leading-relaxed">
-                    At Tashan Win Vip, we believe everyone deserves a chance to win big. Just visit the prediction section, select your game platform, click 'predict', and get your predictions for the winning color, size, and number.
+                    At V3 GAME VIP, we believe everyone deserves a chance to win big. Just visit the prediction section, select your game platform, click 'predict', and get your predictions for the winning color, size, and number.
                   </p>
 
                   <div className="rounded-2xl p-6" style={{ backgroundColor: 'rgba(46, 204, 113, 0.2)', border: '1px solid rgba(46, 204, 113, 0.4)' }}>
@@ -965,7 +965,7 @@ export default function Home() {
               <div className="space-y-6">
                 <div className="rounded-2xl p-6" style={{ backgroundColor: 'rgba(230, 126, 34, 0.2)', border: '1px solid rgba(230, 126, 34, 0.4)' }}>
                   <p className="text-base leading-relaxed" style={{ color: '#FDE4BC' }}>
-                    At Tashan Win Vip, we believe in empowering our users with knowledge. It's crucial to understand that to use advanced systems like SHA-256 for generating random results, there's always a potential for manipulation. This is where our expertise comes in handy.
+                    At V3 GAME VIP, we believe in empowering our users with knowledge. It's crucial to understand that to use advanced systems like SHA-256 for generating random results, there's always a potential for manipulation. This is where our expertise comes in handy.
                   </p>
                 </div>
 
@@ -1026,7 +1026,7 @@ export default function Home() {
                     Stay Informed, Play Smart:
                   </h3>
                   <p className="text-base leading-relaxed" style={{ color: '#FDE4BC' }}>
-                    We urge all our users to approach these platforms with a critical eye. Always verify a platform's credibility before engaging. With Tashan Win by your side, you're equipped with the insights needed to make informed decisions and maximize your chances of success.
+                    We urge all our users to approach these platforms with a critical eye. Always verify a platform's credibility before engaging. With V3 GAME by your side, you're equipped with the insights needed to make informed decisions and maximize your chances of success.
                   </p>
                   
                   <div className="mt-4 p-4 rounded-xl" style={{ backgroundColor: 'rgba(254, 211, 88, 0.3)', border: '1px solid rgba(254, 211, 88, 0.5)' }}>

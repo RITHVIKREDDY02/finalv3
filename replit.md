@@ -1,7 +1,7 @@
-# TASHAN WIN VIP PREDICTION
+# V3 GAME VIP PREDICTION
 
 ## Overview
-TASHAN WIN VIP PREDICTION is a dynamic prediction/lottery gaming platform designed to offer VIP prediction features to approved users. The platform incorporates a user registration and approval system, ensuring that only registered users with admin approval can access premium content. The project aims to provide real-time, authentic predictions for various lottery games, particularly Wingo and TRX Wingo, leveraging live data sources.
+V3 GAME VIP PREDICTION is a dynamic prediction/lottery gaming platform designed to offer VIP prediction features to approved users. The platform incorporates a user registration and approval system, ensuring that only registered users with admin approval can access premium content. The project aims to provide real-time, authentic predictions for various lottery games, particularly Wingo and TRX Wingo, leveraging live data sources.
 
 ## User Preferences
 - Store UID in browser localStorage to avoid repeated registration

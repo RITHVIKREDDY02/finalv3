@@ -101,7 +101,7 @@ export default function VipPredictionDialog({ isOpen, onClose, uid, onBackToRegi
         <DialogHeader className="text-center space-y-4">
           <div>
             <DialogTitle className="text-xl font-bold text-[#FED358]">
-              TASHAN WIN VIP PREDICTION
+              V3 GAME VIP PREDICTION
             </DialogTitle>
             <DialogDescription className="mt-2 text-gray-300">
               Registration Status for UID: {uid}

@@ -149,7 +149,7 @@ export default function Wingo1Min() {
           <div className="p-4 text-center space-y-4">
             <div className="space-y-1">
               <h2 className="text-lg sm:text-xl font-bold text-white">
-                🏆 TASHAN-WIN WINGO 1MIN 🏆
+                🏆 V3 GAME WINGO 1MIN 🏆
               </h2>
               <div className="h-0.5 bg-gradient-to-r from-transparent via-yellow-400 to-transparent"></div>
             </div>

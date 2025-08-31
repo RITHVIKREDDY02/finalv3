@@ -147,7 +147,7 @@ export default function Wingo5Min() {
           <div className="p-4 text-center space-y-4">
             <div className="space-y-2">
               <h2 className="text-2xl font-bold text-white">
-                🏆 TASHAN-WIN WINGO 5MIN 🏆
+                🏆 V3 GAME WINGO 5MIN 🏆
               </h2>
               <div className="h-1 bg-gradient-to-r from-transparent via-yellow-400 to-transparent"></div>
             </div>

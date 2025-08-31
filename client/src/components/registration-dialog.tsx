@@ -42,7 +42,7 @@ export default function RegistrationDialog({ isOpen, onClose, onRegistrationSucc
       const uid = form.getValues("uid");
       
       // Store UID in localStorage
-      localStorage.setItem("tashan_user_uid", uid);
+      localStorage.setItem("v3game_user_uid", uid);
       
       toast({
         title: "Registration Successful!",
@@ -55,7 +55,7 @@ export default function RegistrationDialog({ isOpen, onClose, onRegistrationSucc
     onError: (error: any) => {
       if (error.message.includes("409")) {
         const uid = form.getValues("uid");
-        localStorage.setItem("tashan_user_uid", uid);
+        localStorage.setItem("v3game_user_uid", uid);
         toast({
           title: "Already Registered",
           description: "This UID is already registered. Checking approval status...",

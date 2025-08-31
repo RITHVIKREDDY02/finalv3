@@ -204,7 +204,7 @@ export default function AdminPanel() {
         {/* Header */}
         <div className="flex justify-between items-center">
           <div className="text-center space-y-2 flex-1">
-            <h1 className="text-3xl font-bold text-[#FED358]">TASHAN WIN Admin Panel</h1>
+            <h1 className="text-3xl font-bold text-[#FED358]">V3 GAME Admin Panel</h1>
             <p className="text-gray-400">Manage users and game configurations</p>
           </div>
           <Button 
