@@ -324,10 +324,13 @@ export class WingoService {
         return null;
       }
 
-      console.log(`✅ Generated live prediction for ${variant}: ${analysisResult.prediction} ${analysisResult.predictedNumber}`);
+      // Calculate NEXT period for prediction (we predict for the upcoming round, not current)
+      const nextPeriodNumber = (parseInt(currentPeriod.issueNumber) + 1).toString();
+
+      console.log(`✅ Generated live prediction for ${variant}: ${analysisResult.prediction} ${analysisResult.predictedNumber} for NEXT period ${nextPeriodNumber}`);
 
       return {
-        period: currentPeriod.issueNumber,
+        period: nextPeriodNumber,
         prediction: analysisResult.prediction,
         predictedNumber: analysisResult.predictedNumber,
         confidence: 85 + Math.floor(Math.random() * 10), // 85-95%
