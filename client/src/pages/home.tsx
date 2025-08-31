@@ -7,6 +7,7 @@ import { useLocation } from "wouter";
 import RegistrationDialog from "@/components/registration-dialog";
 import VipPredictionDialog from "@/components/vip-prediction-dialog";
 import { ComingSoonDialog } from "@/components/coming-soon-dialog";
+import WelcomeNotification from "@/components/welcome-notification";
 import { useUserVerification } from "@/hooks/use-fast-user-status";
 import type { GameConfig } from "@shared/schema";
 import logoPath from "@assets/logo_nav_1756545819204.png";
@@ -202,6 +203,9 @@ export default function Home() {
 
   return (
     <div className="min-h-screen">
+      {/* Welcome Notification - Shows on first visit */}
+      <WelcomeNotification onRegisterClick={handleJoinVipClick} />
+      
       {/* Navigation Bar */}
       <nav 
         className={`fixed top-0 left-0 right-0 navbar-dark px-4 shadow-lg z-50 transition-all duration-300 ${
