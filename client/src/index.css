@@ -195,11 +195,11 @@
   }
   
   .bg-banner-gradient {
-    background: linear-gradient(180deg, var(--banner-start) 0%, var(--banner-end) 100%);
+    background: linear-gradient(0deg,#0b3681,#06152d);
   }
   
   .border-accent-gold {
-    border-color: var(--accent-gold);
+    border-color: #0b3681;
   }
   
   .hover-accent-gold:hover {
