@@ -35,7 +35,7 @@ export default function WelcomeNotification({ onRegisterClick }: WelcomeNotifica
 
   const handleRegister = () => {
     handleClose();
-    onRegisterClick();
+    window.open("https://www.v3game6.com/#/pages/login/register?invitationCode=1919483925", "_blank");
   };
 
   return (
