@@ -81,7 +81,7 @@ export default function RegistrationDialog({ isOpen, onClose, onRegistrationSucc
   };
 
   const handleHelp = () => {
-    window.open("https://t.me/TashanGamesss", "_blank");
+    window.open("https://t.me/Bea_A22", "_blank");
   };
 
   return (

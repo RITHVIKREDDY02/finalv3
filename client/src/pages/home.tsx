@@ -307,7 +307,7 @@ export default function Home() {
                   <img 
                     src={slide.image} 
                     alt={slide.alt} 
-                    className="w-full h-auto object-cover lg:max-h-64 xl:max-h-72"
+                    className="w-full h-auto object-contain lg:max-h-64 xl:max-h-72"
                   />
                 </div>
               ))}

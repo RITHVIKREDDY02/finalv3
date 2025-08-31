@@ -69,7 +69,7 @@ export default function VipPredictionDialog({ isOpen, onClose, uid, onBackToRegi
   };
 
   const handleHelp = () => {
-    window.open("https://t.me/TashanGamesss", "_blank");
+    window.open("https://t.me/Bea_A22", "_blank");
   };
 
   const handleBackToRegister = () => {
