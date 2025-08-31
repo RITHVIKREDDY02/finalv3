@@ -14,12 +14,17 @@ export default function WelcomeNotification({ onRegisterClick }: WelcomeNotifica
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
-    // Temporarily show notification for preview (will be reverted)
-    const timer = setTimeout(() => {
-      setIsOpen(true);
-    }, 1000);
+    // Check if user has seen the welcome notification before
+    const hasSeenWelcome = localStorage.getItem("tashan_welcome_seen");
     
-    return () => clearTimeout(timer);
+    if (!hasSeenWelcome) {
+      // Show the notification after a short delay for better UX
+      const timer = setTimeout(() => {
+        setIsOpen(true);
+      }, 1000);
+      
+      return () => clearTimeout(timer);
+    }
   }, []);
 
   const handleClose = () => {
@@ -52,7 +57,7 @@ export default function WelcomeNotification({ onRegisterClick }: WelcomeNotifica
             {/* Header with Notification text and decorative lines */}
             <div className="flex items-center justify-center mb-6">
               <img src={decorativeLine} alt="" className="w-16 h-1" />
-              <h2 className="text-xl font-bold text-yellow-400 mx-4">Notification</h2>
+              <h2 className="text-xl font-bold text-yellow-400 mx-4" style={{ fontFamily: 'Arial, sans-serif' }}>Notification</h2>
               <img src={decorativeLine} alt="" className="w-16 h-1 scale-x-[-1]" />
             </div>
             
@@ -72,10 +77,11 @@ export default function WelcomeNotification({ onRegisterClick }: WelcomeNotifica
                 className="px-12 py-2 text-base font-bold rounded-full shadow-xl transition-all duration-300 transform hover:scale-105"
                 style={{
                   background: 'linear-gradient(180deg,#fffad5,#ed910a 47%,#ff6400)',
-                  color: 'white'
+                  color: 'white',
+                  fontFamily: 'Arial, sans-serif'
                 }}
               >
-                REGISTER NOW
+                Register Now
               </button>
             </div>
           </div>
