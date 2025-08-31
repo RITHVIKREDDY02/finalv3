@@ -129,7 +129,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
   });
 
   // Admin authentication
-  const ADMIN_PASSWORD = "Samara@tashan";
+  const ADMIN_PASSWORD = "Bea@v3game";
   
   // Admin login endpoint - optimized for speed
   app.post('/api/admin/login', async (req, res) => {
