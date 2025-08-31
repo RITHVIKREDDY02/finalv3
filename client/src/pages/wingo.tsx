@@ -199,11 +199,14 @@ export default function Wingo() {
 
           {/* Content Card */}
           <div className="mt-4 relative">
-            <div 
-              className="w-full h-auto bg-gradient-to-r from-yellow-400 to-orange-500"
+            <img 
+              src="/attached_assets/image_1756614166272.png"
+              alt="Wingo Game Card"
+              className="w-full h-auto"
               style={{ 
                 height: '106.66px',
-                borderRadius: '8px'
+                borderRadius: '8px',
+                objectFit: 'cover'
               }}
             />
             
