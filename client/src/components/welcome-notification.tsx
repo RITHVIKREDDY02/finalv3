@@ -2,8 +2,9 @@ import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
-import depositBonusImage from "@assets/202505241645242463002_1756622465525.png";
+import depositBonusImage from "@assets/202505241645242463002_1756624428382.png";
 import closeIcon from "@assets/download_1756623183150.png";
+import decorativeLine from "@assets/download_1756624372092.png";
 
 interface WelcomeNotificationProps {
   onRegisterClick: () => void;
@@ -43,41 +44,34 @@ export default function WelcomeNotification({ onRegisterClick }: WelcomeNotifica
         </VisuallyHidden>
         
         <div className="space-y-4">
-          {/* Main container box with blue gradient background */}
+          {/* Main notification container */}
           <div 
-            className="p-0 rounded-2xl shadow-xl border-2"
-            style={{
-              background: 'linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #1e40af 100%)',
-              borderColor: '#fbbf24'
-            }}
+            className="p-6 rounded-2xl shadow-xl"
+            style={{ backgroundColor: '#000c1c' }}
           >
-            {/* Orange Notification header */}
-            <div className="text-center py-3 border-b-2" style={{ borderColor: '#fbbf24' }}>
-              <h2 className="text-xl font-bold" style={{ color: '#fbbf24' }}>Notification</h2>
+            {/* Header with Notification text and decorative lines */}
+            <div className="flex items-center justify-center mb-6">
+              <img src={decorativeLine} alt="" className="w-16 h-1" />
+              <h2 className="text-xl font-bold text-yellow-400 mx-4">Notification</h2>
+              <img src={decorativeLine} alt="" className="w-16 h-1" />
             </div>
             
-            {/* Dark blue content area */}
-            <div 
-              className="p-6 mx-4 my-4 rounded-xl"
-              style={{ backgroundColor: 'rgba(30, 58, 138, 0.8)' }}
-            >
-              {/* Promotional image inside the content area */}
-              <div className="mb-6">
-                <img 
-                  src={depositBonusImage} 
-                  alt="V3 GAME Deposit Bonus - Welcome Offer" 
-                  className="w-full h-auto object-cover rounded-xl"
-                />
-              </div>
+            {/* Deposit bonus image without borders */}
+            <div className="mb-6">
+              <img 
+                src={depositBonusImage} 
+                alt="V3 GAME Deposit Bonus - Welcome Offer" 
+                className="w-full h-auto object-cover"
+              />
             </div>
             
-            {/* Orange gradient button */}
-            <div className="text-center pb-6 px-6">
+            {/* Register Now button with specified gradient */}
+            <div className="text-center">
               <button
                 onClick={handleRegister}
                 className="w-full px-8 py-4 text-lg font-bold rounded-full shadow-xl transition-all duration-300 transform hover:scale-105"
                 style={{
-                  background: 'linear-gradient(135deg, #f59e0b 0%, #f97316 50%, #ea580c 100%)',
+                  background: 'linear-gradient(180deg,#fffad5,#ed910a 47%,#ff6400)',
                   color: 'white'
                 }}
               >
