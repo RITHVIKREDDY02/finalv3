@@ -75,19 +75,19 @@
 @layer utilities {
   /* Custom button colors */
   .btn-custom-gold {
-    background-color: #FED358 !important;
+    background: linear-gradient(180deg,#f8bf6e,#fb5e04) !important;
     color: black !important;
     border: none !important;
   }
   
   .btn-custom-gold:hover {
-    background-color: #FED358 !important;
+    background: linear-gradient(180deg,#f8bf6e,#fb5e04) !important;
     color: black !important;
     opacity: 0.9;
   }
   
   .btn-custom-gold:disabled {
-    background-color: #FED358 !important;
+    background: linear-gradient(180deg,#f8bf6e,#fb5e04) !important;
     color: black !important;
     opacity: 0.6;
   }
@@ -115,7 +115,7 @@
   }
   
   .custom-button {
-    background: #FED358 !important;
+    background: linear-gradient(180deg,#f8bf6e,#fb5e04) !important;
     border: 0.01333rem solid var(--bg_HomeModule_Stroke) !important;
     color: #312712 !important;
     font-weight: 700 !important;
