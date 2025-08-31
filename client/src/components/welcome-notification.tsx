@@ -3,7 +3,6 @@ import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 import depositBonusImage from "@assets/202505241645242463002_1756622465525.png";
-import closeIcon from "@assets/image_1756622761872.png";
 
 interface WelcomeNotificationProps {
   onRegisterClick: () => void;
@@ -61,13 +60,9 @@ export default function WelcomeNotification({ onRegisterClick }: WelcomeNotifica
           <div className="flex justify-center">
             <button
               onClick={handleClose}
-              className="w-10 h-10 transition-all duration-200 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-[#FED358] focus:ring-opacity-50"
+              className="w-10 h-10 rounded-full bg-gray-700 hover:bg-gray-600 text-white font-bold text-xl transition-all duration-200 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-[#FED358] focus:ring-opacity-50 flex items-center justify-center"
             >
-              <img 
-                src={closeIcon} 
-                alt="Close" 
-                className="w-full h-full object-contain"
-              />
+              ×
             </button>
           </div>
           
