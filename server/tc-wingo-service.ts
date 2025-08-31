@@ -79,21 +79,62 @@ class TCWingoService {
   }
 
   /**
-   * Fetch current/next period from TC API using direct approach
+   * Generate current period based on current time and variant interval
    */
-  private async fetchCurrentPeriod(gameCode: string): Promise<any> {
-    try {
-      console.log(`🎯 Fetching TC period for ${gameCode}...`);
-      
-      const response = await this.fetchWithDirectAPI(
-        `${this.baseUrl}/game/periods`, 
-        { game: gameCode }
-      );
+  private generateCurrentPeriod(variant: string): string {
+    const now = new Date();
+    const year = now.getFullYear().toString();
+    const month = (now.getMonth() + 1).toString().padStart(2, '0');
+    const day = now.getDate().toString().padStart(2, '0');
+    const hour = now.getHours().toString().padStart(2, '0');
+    const minute = now.getMinutes().toString().padStart(2, '0');
+    
+    let periodSuffix = '';
+    switch (variant) {
+      case '30sec':
+        const thirtySecBlock = Math.floor(now.getSeconds() / 30);
+        periodSuffix = `${thirtySecBlock.toString().padStart(2, '0')}`;
+        break;
+      case '1min':
+        periodSuffix = minute;
+        break;
+      case '3min':
+        const threeMinBlock = Math.floor(now.getMinutes() / 3);
+        periodSuffix = `${threeMinBlock.toString().padStart(2, '0')}`;
+        break;
+      case '5min':
+        const fiveMinBlock = Math.floor(now.getMinutes() / 5);
+        periodSuffix = `${fiveMinBlock.toString().padStart(2, '0')}`;
+        break;
+    }
+    
+    // Format: 20YYMMDDHHMMSS
+    return `20${year.slice(2)}${month}${day}${hour}${minute}${periodSuffix}`;
+  }
 
-      return response;
-    } catch (error) {
-      console.error(`❌ Error fetching TC period data for ${gameCode}:`, error);
-      return null;
+  /**
+   * Calculate accurate countdown for each variant
+   */
+  private calculateCountdown(variant: string): number {
+    const now = new Date();
+    const currentSeconds = now.getSeconds();
+    const currentMinutes = now.getMinutes();
+    
+    switch (variant) {
+      case '30sec':
+        return 30 - (currentSeconds % 30);
+      case '1min':
+        return 60 - currentSeconds;
+      case '3min':
+        const nextThreeMin = Math.ceil(currentMinutes / 3) * 3;
+        const threeMinCountdown = (nextThreeMin - currentMinutes) * 60 - currentSeconds;
+        return threeMinCountdown > 0 ? threeMinCountdown : 180;
+      case '5min':
+        const nextFiveMin = Math.ceil(currentMinutes / 5) * 5;
+        const fiveMinCountdown = (nextFiveMin - currentMinutes) * 60 - currentSeconds;
+        return fiveMinCountdown > 0 ? fiveMinCountdown : 300;
+      default:
+        return 30;
     }
   }
 
@@ -267,23 +308,15 @@ class TCWingoService {
         throw new Error(`No TC data available for ${variant}`);
       }
 
-      // Fetch current period info
-      const periodInfo = await this.fetchCurrentPeriod(variantConfig.gameCode);
-      const nextPeriod = periodInfo?.data?.next?.period || (parseInt(results[0]?.period || Date.now().toString()) + 1).toString();
+      // Generate current period and calculate accurate countdown
+      const currentPeriod = this.generateCurrentPeriod(variant);
+      const accurateCountdown = this.calculateCountdown(variant);
 
       // Analyze trend and generate prediction
       const { prediction, predictedNumber } = this.analyzeTrend(results, variant);
       
-      // Generate realistic countdown based on variant
-      let countdown = 30; // default
-      switch (variant) {
-        case "30sec": countdown = Math.floor(Math.random() * 30) + 5; break;
-        case "1min": countdown = Math.floor(Math.random() * 60) + 10; break;
-        case "3min": countdown = Math.floor(Math.random() * 180) + 30; break;
-        case "5min": countdown = Math.floor(Math.random() * 300) + 60; break;
-      }
-
-      console.log(`⏰ Using TC countdown: ${countdown}s for ${variant}`);
+      console.log(`⏰ Accurate countdown: ${accurateCountdown}s for ${variant}`);
+      console.log(`📅 Current period: ${currentPeriod}`);
       console.log(`✅ Generated live TC prediction for ${variant}: ${prediction} ${predictedNumber}`);
 
       return {
@@ -291,8 +324,8 @@ class TCWingoService {
         prediction,
         predictedNumber,
         confidence: Math.floor(Math.random() * 40 + 40), // 40-80%
-        period: nextPeriod,
-        countdown,
+        period: currentPeriod,
+        countdown: accurateCountdown,
         timestamp: new Date().toISOString()
       };
     } catch (error) {

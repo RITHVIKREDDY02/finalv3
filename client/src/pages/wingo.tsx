@@ -226,7 +226,7 @@ export default function Wingo() {
                   {variants.find(v => v.key === selectedVariant)?.label || "Wingo 30Sec"}
                 </div>
                 <div className="text-black font-bold text-lg">
-                  {formatPeriodNumber(prediction?.period || "202508021000105384")}
+                  {formatPeriodNumber(prediction?.period || "Loading...")}
                 </div>
               </div>
               
