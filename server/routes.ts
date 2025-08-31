@@ -4,7 +4,6 @@ import express from "express";
 import { storage } from "./storage";
 import { insertUserSchema } from "@shared/schema";
 import { z } from "zod";
-import { trxWingoService, TRXWINGO_VARIANTS } from "./trxwingo-service";
 import { tcWingoService, TC_WINGO_VARIANTS } from "./tc-wingo-service";
 import { 
   createRateLimitMiddleware, 
@@ -38,18 +37,14 @@ export async function registerRoutes(app: Express): Promise<Server> {
   
   // Rate limiting for API endpoints - More specific routes FIRST
   app.use('/api/wingo', createRateLimitMiddleware(120, 60000)); // 120 requests per minute for wingo predictions
-  app.use('/api/trxwingo', createRateLimitMiddleware(120, 60000)); // 120 requests per minute for trxwingo
   app.use('/api/tcwingo', createRateLimitMiddleware(120, 60000)); // 120 requests per minute for TC wingo
   app.use('/api', createRateLimitMiddleware(200, 60000)); // 200 requests per minute for general API
 
   // Start background prediction schedulers
-  console.log('🚀 Starting TrxWingo prediction scheduler at server startup...');
-  trxWingoService.startBackgroundScheduler();
-  
   console.log('🚀 Starting TC Wingo prediction scheduler (for ALL Wingo variants) at server startup...');
   await tcWingoService.startBackgroundScheduler();
   
-  console.log('✅ OLD Wingo service removed - ALL variants now use TC API only!');
+  console.log('✅ TRX Wingo APIs removed - ALL variants now use TC API only!');
 
   // Register user with UID
   app.post("/api/register", async (req, res) => {
@@ -321,54 +316,6 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
-  // TrxWingo prediction routes
-  app.get('/api/trxwingo/variants', (req, res) => {
-    res.json(TRXWINGO_VARIANTS);
-  });
-
-  app.get('/api/trxwingo/prediction/:variant', async (req, res) => {
-    try {
-      const { variant } = req.params;
-      
-      if (!TRXWINGO_VARIANTS[variant]) {
-        return res.status(400).json({ error: "Invalid TrxWingo variant" });
-      }
-
-      // Use cached prediction from background scheduler
-      const prediction = await trxWingoService.getCachedPrediction(variant);
-      
-      if (prediction) {
-        res.json(prediction);
-      } else {
-        res.status(503).json({ error: "TrxWingo prediction service temporarily unavailable" });
-      }
-    } catch (error) {
-      console.error("Error generating TrxWingo prediction:", error);
-      res.status(500).json({ error: "Failed to generate TrxWingo prediction" });
-    }
-  });
-
-  app.get('/api/trxwingo/results/:variant', async (req, res) => {
-    try {
-      const { variant } = req.params;
-      
-      if (!TRXWINGO_VARIANTS[variant]) {
-        return res.status(400).json({ error: "Invalid TrxWingo variant" });
-      }
-
-      // Use real API for results
-      const results = await trxWingoService.getLatestResults(variant);
-      
-      if (results && results.length > 0) {
-        res.json(results);
-      } else {
-        res.status(503).json({ error: "TrxWingo results service temporarily unavailable" });
-      }
-    } catch (error) {
-      console.error("Error fetching TrxWingo results:", error);
-      res.status(500).json({ error: "Failed to fetch TrxWingo results" });
-    }
-  });
 
   // TC Wingo prediction routes (New TC API integration)
   app.get('/api/tcwingo/variants', (req, res) => {

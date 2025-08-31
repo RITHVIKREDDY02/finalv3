@@ -13,7 +13,6 @@ import type { User, GameConfig } from "@shared/schema";
 
 const GAME_NAMES = [
   "Win Go",
-  "Trx Wingo", 
   "K3",
   "Moto Racing",
   "Mines Pro",
