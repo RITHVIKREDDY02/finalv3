@@ -47,32 +47,23 @@ export default function WelcomeNotification({ onRegisterClick }: WelcomeNotifica
         </VisuallyHidden>
         
         <div className="space-y-4">
-          {/* Main promotional image */}
-          <div className="relative">
-            <img 
-              src={depositBonusImage} 
-              alt="V3 GAME Deposit Bonus - Welcome Offer" 
-              className="w-full h-auto object-cover rounded-2xl"
-            />
-          </div>
-          
-          {/* Close button positioned below image */}
-          <div className="flex justify-center">
-            <button
-              onClick={handleClose}
-              className="w-10 h-10 rounded-full bg-gray-700 hover:bg-gray-600 text-white font-bold text-xl transition-all duration-200 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-[#FED358] focus:ring-opacity-50 flex items-center justify-center"
-            >
-              ×
-            </button>
-          </div>
-          
-          {/* Register button in styled box */}
+          {/* Main container box with gradient background */}
           <div 
-            className="mx-4 p-6 rounded-2xl shadow-xl"
+            className="p-6 rounded-2xl shadow-xl"
             style={{
               background: 'linear-gradient(0deg,#0b3681,#06152d)'
             }}
           >
+            {/* Promotional image inside the box */}
+            <div className="mb-6">
+              <img 
+                src={depositBonusImage} 
+                alt="V3 GAME Deposit Bonus - Welcome Offer" 
+                className="w-full h-auto object-cover rounded-xl"
+              />
+            </div>
+            
+            {/* Register button inside the box */}
             <div className="text-center">
               <Button
                 onClick={handleRegister}
@@ -81,6 +72,16 @@ export default function WelcomeNotification({ onRegisterClick }: WelcomeNotifica
                 REGISTER NOW
               </Button>
             </div>
+          </div>
+          
+          {/* Close button positioned below the main box */}
+          <div className="flex justify-center">
+            <button
+              onClick={handleClose}
+              className="w-10 h-10 rounded-full bg-gray-700 hover:bg-gray-600 text-white font-bold text-xl transition-all duration-200 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-[#FED358] focus:ring-opacity-50 flex items-center justify-center"
+            >
+              ×
+            </button>
           </div>
         </div>
       </DialogContent>
