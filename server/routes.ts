@@ -16,19 +16,20 @@ import {
 } from "./middleware";
 import { memoizedUserLookup } from "./performance-optimizations";
 
-// Transform period format from "20250831100010668" to "2508310994" format  
+// Transform period format from "20250831100010670" to "2508311001" format  
 function transformPeriodFormat(originalPeriod: string): string {
-  // Extract parts from "20250831100010668"
+  // Extract parts from "20250831100010670"
   // Format: YYYYMMDDHHMMSSNNN
   if (originalPeriod.length >= 14) {
     const year = originalPeriod.substring(2, 4); // "25" from "2025"
     const month = originalPeriod.substring(4, 6); // "08"  
     const day = originalPeriod.substring(6, 8); // "31"
     const hour = originalPeriod.substring(8, 10); // "10"
-    const counter = originalPeriod.substring(originalPeriod.length - 2); // Last 2 digits
+    // Use "01" as the sequence number for 1min wingo format
+    const sequence = "01";
     
-    // Create format like "2508310994"
-    return `${year}${month}${day}${hour}${counter}`;
+    // Create format like "2508311001"
+    return `${year}${month}${day}${hour}${sequence}`;
   }
   
   // Fallback: return original if transformation fails
