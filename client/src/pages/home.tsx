@@ -12,6 +12,7 @@ import { useUserVerification } from "@/hooks/use-fast-user-status";
 import type { GameConfig } from "@shared/schema";
 import logoPath from "@assets/logo_nav_1756545819204.png";
 import winGoImage from "@assets/lotterycategory_20250412120719dqfv_1754052547793.png";
+import trxWingoImage from "@assets/lotterycategory_20250412120818j8wq_1754052552269.png";
 import k3Image from "@assets/lotterycategory_2025041212074073ug_1754069351570.png";
 import motoRacingImage from "@assets/c57f5149-2139-410f-8d48-94a06fcb36f2_1754069356497.png";
 import lotteryIcon from "@assets/Lottery-9123e8d2_1754069546644.webp";
@@ -126,6 +127,13 @@ export default function Home() {
         navigate('/wingo');
         return;
       }
+    }
+    
+    // Special handling for Trx Wingo - show coming soon dialog since backend is removed
+    if (gameType === "Trx Wingo") {
+      setSelectedGameName(gameType);
+      setShowComingSoonDialog(true);
+      return;
     }
     
     
@@ -422,6 +430,20 @@ export default function Home() {
             </div>
           </div>
 
+          {/* Trx Wingo Game Card */}
+          <div 
+            className="cursor-pointer shadow-lg relative"
+            onClick={() => handleGameClick('Trx Wingo')}
+          >
+            <div className="relative overflow-hidden rounded-2xl">
+              <img 
+                src={trxWingoImage} 
+                alt="Trx Wingo - TRX-themed lottery prediction game" 
+                className="w-full h-auto object-cover object-top block"
+              />
+              <div className="absolute inset-0 rounded-2xl border-2 border-accent-gold/30"></div>
+            </div>
+          </div>
 
           {/* K3 Game Card */}
           <div 

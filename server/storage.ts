@@ -19,7 +19,7 @@ export class MemoryStorage implements IStorage {
   
   constructor() {
     // Initialize default game configurations
-    const defaultGames = ["Win Go", "K3", "Moto Racing", "Mines Pro", "Mines", "Boom", "Aviator", "Limbo"];
+    const defaultGames = ["Win Go", "Trx Wingo", "K3", "Moto Racing", "Mines Pro", "Mines", "Boom", "Aviator", "Limbo"];
     defaultGames.forEach(gameName => {
       const config: GameConfig = {
         id: this.generateId(),
