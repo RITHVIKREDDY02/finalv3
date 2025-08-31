@@ -35,11 +35,11 @@ export async function registerRoutes(app: Express): Promise<Server> {
   app.use(express.json({ limit: '10mb' }));
   app.use(express.urlencoded({ extended: true, limit: '10mb' }));
   
-  // Rate limiting for API endpoints
-  app.use('/api', createRateLimitMiddleware(30, 60000)); // 30 requests per minute for API
-  app.use('/api/wingo', createRateLimitMiddleware(60, 60000)); // Higher limit for prediction endpoints
-  app.use('/api/trxwingo', createRateLimitMiddleware(60, 60000));
-  app.use('/api/tcwingo', createRateLimitMiddleware(60, 60000)); // TC Wingo endpoints
+  // Rate limiting for API endpoints - More specific routes FIRST
+  app.use('/api/wingo', createRateLimitMiddleware(120, 60000)); // 120 requests per minute for wingo predictions
+  app.use('/api/trxwingo', createRateLimitMiddleware(120, 60000)); // 120 requests per minute for trxwingo
+  app.use('/api/tcwingo', createRateLimitMiddleware(120, 60000)); // 120 requests per minute for TC wingo
+  app.use('/api', createRateLimitMiddleware(200, 60000)); // 200 requests per minute for general API
 
   // Start background prediction schedulers
   console.log('🚀 Starting Wingo prediction scheduler at server startup...');
