@@ -28,9 +28,9 @@ import heroBanner2 from "@assets/202411122322287871008_1756613499429.png";
 import depositBonusImage from "@assets/202505241645242463002_1756622355319.png";
 import proofImage1 from "@assets/image_1754150847570.png";
 import proofImage2 from "@assets/image_1754150852695.png";
-import demoImage1 from "@assets/Screenshot 2025-08-02 220225_1754152384208.png";
-import demoImage2 from "@assets/Screenshot 2025-08-02 220234_1754152390853.png";
-import demoImage3 from "@assets/Screenshot 2025-08-02 220243_1754152399399.png";
+import demoImage1 from "@assets/Screenshot 2025-08-31 172003_1756641606545.png";
+import demoImage2 from "@assets/Screenshot 2025-08-31 172048_1756641612873.png";
+import demoImage3 from "@assets/Screenshot 2025-08-31 172018_1756641617812.png";
 import faviconIcon from "@assets/h5setting_20250501162804ytau_1754156061703.png";
 
 export default function Home() {
@@ -742,7 +742,7 @@ export default function Home() {
                   <div className="rounded-2xl p-6" style={{ backgroundColor: 'rgba(254, 211, 88, 0.1)', border: '1px solid rgba(254, 211, 88, 0.3)' }}>
                     <img 
                       src={demoImage1} 
-                      alt="Wingo game variants selection" 
+                      alt="Wingo game variants - 30Sec, 1Min, 3Min, 5Min selection tabs" 
                       className="w-full mx-auto rounded-xl shadow-2xl border-2" 
                       style={{ borderColor: '#FED358' }}
                     />
@@ -757,7 +757,7 @@ export default function Home() {
                   <div className="rounded-2xl p-6" style={{ backgroundColor: 'rgba(254, 211, 88, 0.1)', border: '1px solid rgba(254, 211, 88, 0.3)' }}>
                     <img 
                       src={demoImage2} 
-                      alt="Period number and countdown timer" 
+                      alt="Wingo 30Sec period 2050831208Z with Time Remaining 00:26" 
                       className="w-full mx-auto rounded-xl shadow-2xl border-2"
                       style={{ borderColor: '#FED358' }}
                     />
@@ -772,7 +772,7 @@ export default function Home() {
                   <div className="rounded-2xl p-6" style={{ backgroundColor: 'rgba(254, 211, 88, 0.1)', border: '1px solid rgba(254, 211, 88, 0.3)' }}>
                     <img 
                       src={demoImage3} 
-                      alt="VIP prediction showing color, size and number" 
+                      alt="VIP Prediction - Color Green, Size BIG, Number 8" 
                       className="w-full mx-auto rounded-xl shadow-2xl border-2"
                       style={{ borderColor: '#FED358' }}
                     />
