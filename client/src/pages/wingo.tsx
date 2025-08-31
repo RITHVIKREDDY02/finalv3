@@ -173,7 +173,7 @@ export default function Wingo() {
       <div className="flex justify-center items-start pt-6">
         <div className="w-[448px] h-[402px] mx-0">
           {/* Tab Navigation */}
-          <div style={{ background: 'linear-gradient(rgb(248, 191, 110), rgb(251, 94, 4))', borderRadius: '16px', padding: '8px' }}>
+          <div style={{ background: 'linear-gradient(0deg,#0b3681,#06152d)', borderRadius: '16px', padding: '8px' }}>
             <div className="flex gap-1">
               {variants.map((variant) => (
                 <button
