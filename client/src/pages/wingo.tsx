@@ -205,9 +205,9 @@ export default function Wingo() {
               alt="Wingo Game Card"
               className="w-full h-auto"
               style={{ 
-                height: '104.66px',
+                height: '120px',
                 borderRadius: '8px',
-                objectFit: 'contain'
+                objectFit: 'cover'
               }}
             />
             
