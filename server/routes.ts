@@ -16,25 +16,7 @@ import {
 } from "./middleware";
 import { memoizedUserLookup } from "./performance-optimizations";
 
-// Transform period format from "20250831100010670" to "2508311001" format  
-function transformPeriodFormat(originalPeriod: string): string {
-  // Extract parts from "20250831100010670"
-  // Format: YYYYMMDDHHMMSSNNN
-  if (originalPeriod.length >= 14) {
-    const year = originalPeriod.substring(2, 4); // "25" from "2025"
-    const month = originalPeriod.substring(4, 6); // "08"  
-    const day = originalPeriod.substring(6, 8); // "31"
-    const hour = originalPeriod.substring(8, 10); // "10"
-    // Use "01" as the sequence number for 1min wingo format
-    const sequence = "01";
-    
-    // Create format like "2508311001"
-    return `${year}${month}${day}${hour}${sequence}`;
-  }
-  
-  // Fallback: return original if transformation fails
-  return originalPeriod;
-}
+// Transformation function removed - using TC service directly for 1min wingo
 
 export async function registerRoutes(app: Express): Promise<Server> {
   // CORS configuration for admin panel access
@@ -306,20 +288,18 @@ export async function registerRoutes(app: Express): Promise<Server> {
     try {
       const { variant } = req.params;
       
-      // Transform 1min wingo period to correct format (2508310994)
+      // Use TC service for 1min wingo with correct period format (2508311001)
       if (variant === '1min') {
-        // Use regular wingo service but transform the period format
-        const prediction = await wingoService.getCachedPrediction(variant);
+        if (!TC_WINGO_VARIANTS[variant as keyof typeof TC_WINGO_VARIANTS]) {
+          return res.status(400).json({ error: "Invalid TC Wingo variant" });
+        }
+        
+        const prediction = await tcWingoService.getCachedPrediction(variant);
         
         if (prediction) {
-          // Transform period from "20250831100010668" to "2508310994" format
-          const transformedPeriod = transformPeriodFormat(prediction.period);
-          res.json({
-            ...prediction,
-            period: transformedPeriod
-          });
+          res.json(prediction);
         } else {
-          res.status(503).json({ error: "Prediction service temporarily unavailable" });
+          res.status(503).json({ error: "TC Wingo prediction service temporarily unavailable" });
         }
         return;
       }
@@ -347,14 +327,13 @@ export async function registerRoutes(app: Express): Promise<Server> {
     try {
       const { variant } = req.params;
       
-      // Redirect 1min wingo to TC service for correct period format
+      // Use TC service for 1min wingo results
       if (variant === '1min') {
         if (!TC_WINGO_VARIANTS[variant as keyof typeof TC_WINGO_VARIANTS]) {
           return res.status(400).json({ error: "Invalid TC Wingo variant" });
         }
         
-        // TC service doesn't have getLatestResults, so return empty array for now
-        // This needs to be implemented if results are needed
+        // For now, return empty array as results are used for predictions internally
         res.json([]);
         return;
       }

@@ -73,9 +73,9 @@ class TCWingoService {
   }
 
   /**
-   * Fetch game periods/results from TC API
+   * Fetch current/next period from TC API
    */
-  private async fetchGameData(gameCode: string): Promise<TCWingoResult[]> {
+  private async fetchCurrentPeriod(gameCode: string): Promise<any> {
     try {
       if (!tcLotteryAuth.isAuthenticated()) {
         console.log('🔄 Re-authenticating with TC LOTTERY...');
@@ -90,24 +90,58 @@ class TCWingoService {
             'Content-Type': 'application/json',
             'Accept': 'application/json, text/javascript, */*; q=0.01',
             'X-Requested-With': 'XMLHttpRequest',
-            'Referer': `${this.baseUrl}/game?game=${gameCode}`,
           },
           body: JSON.stringify({ game: gameCode })
         }
       );
 
-      if (response && response.data) {
-        return response.data.map((item: any) => ({
-          period: item.period || item.id,
-          number: parseInt(item.result || item.number),
-          status: item.status || 'completed',
+      return response;
+    } catch (error) {
+      console.error(`❌ Error fetching TC period data for ${gameCode}:`, error);
+      return null;
+    }
+  }
+
+  /**
+   * Fetch game results from TC API
+   */
+  private async fetchGameResults(gameCode: string): Promise<TCWingoResult[]> {
+    try {
+      if (!tcLotteryAuth.isAuthenticated()) {
+        console.log('🔄 Re-authenticating with TC LOTTERY...');
+        await this.initializeAuthentication();
+      }
+
+      const response = await tcLotteryAuth.makeAuthenticatedRequest(
+        `${this.baseUrl}/result/getResult`,
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json, text/javascript, */*; q=0.01',
+            'X-Requested-With': 'XMLHttpRequest',
+          },
+          body: JSON.stringify({ 
+            game: gameCode, 
+            category: "vngo", 
+            page: 1, 
+            limit: 10 
+          })
+        }
+      );
+
+      if (response && response.data && response.data.list) {
+        return response.data.list.map((item: any) => ({
+          period: item.period,
+          number: parseInt(item.open_num ? item.open_num[0] : item.result),
+          status: 'completed',
           drawTime: item.draw_time || item.time
         }));
       }
 
       return [];
     } catch (error) {
-      console.error(`❌ Error fetching TC game data for ${gameCode}:`, error);
+      console.error(`❌ Error fetching TC game results for ${gameCode}:`, error);
       return [];
     }
   }
@@ -238,19 +272,19 @@ class TCWingoService {
       console.log(`🎯 Generating TC live prediction for ${variant}...`);
       
       // Fetch live results from TC API
-      const results = await this.fetchGameData(variantConfig.gameCode);
+      const results = await this.fetchGameResults(variantConfig.gameCode);
       console.log(`✅ Retrieved ${results.length} live TC results for ${variant}`);
       
       if (results.length === 0) {
         throw new Error(`No TC data available for ${variant}`);
       }
 
+      // Fetch current period info
+      const periodInfo = await this.fetchCurrentPeriod(variantConfig.gameCode);
+      const nextPeriod = periodInfo?.data?.next?.period || (parseInt(results[0]?.period || Date.now().toString()) + 1).toString();
+
       // Analyze trend and generate prediction
       const { prediction, predictedNumber } = this.analyzeTrend(results, variant);
-      
-      // Calculate next period and countdown
-      const currentPeriod = results[0]?.period || Date.now().toString();
-      const nextPeriod = (parseInt(currentPeriod) + 1).toString();
       
       // Generate realistic countdown based on variant
       let countdown = 30; // default
