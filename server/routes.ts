@@ -44,14 +44,13 @@ export async function registerRoutes(app: Express): Promise<Server> {
   app.use('/api', createRateLimitMiddleware(200, 60000)); // 200 requests per minute for general API
 
   // Start background prediction schedulers
-  console.log('🚀 Starting Wingo prediction scheduler at server startup...');
-  wingoService.startBackgroundScheduler();
-  
   console.log('🚀 Starting TrxWingo prediction scheduler at server startup...');
   trxWingoService.startBackgroundScheduler();
   
-  console.log('🚀 Starting TC Wingo prediction scheduler at server startup...');
+  console.log('🚀 Starting TC Wingo prediction scheduler (for ALL Wingo variants) at server startup...');
   await tcWingoService.startBackgroundScheduler();
+  
+  console.log('✅ OLD Wingo service removed - ALL variants now use TC API only!');
 
   // Register user with UID
   app.post("/api/register", async (req, res) => {
@@ -288,34 +287,17 @@ export async function registerRoutes(app: Express): Promise<Server> {
     try {
       const { variant } = req.params;
       
-      // Use TC service for 1min wingo with correct period format (2508311001)
-      if (variant === '1min') {
-        if (!TC_WINGO_VARIANTS[variant as keyof typeof TC_WINGO_VARIANTS]) {
-          return res.status(400).json({ error: "Invalid TC Wingo variant" });
-        }
-        
-        const prediction = await tcWingoService.getCachedPrediction(variant);
-        
-        if (prediction) {
-          res.json(prediction);
-        } else {
-          res.status(503).json({ error: "TC Wingo prediction service temporarily unavailable" });
-        }
-        return;
+      // ALL variants now use TC service with tc9987.club API
+      if (!TC_WINGO_VARIANTS[variant as keyof typeof TC_WINGO_VARIANTS]) {
+        return res.status(400).json({ error: "Invalid TC Wingo variant" });
       }
       
-      // Use regular wingo service for other variants
-      if (!WINGO_VARIANTS[variant]) {
-        return res.status(400).json({ error: "Invalid variant" });
-      }
-
-      // Use cached prediction from background scheduler
-      const prediction = await wingoService.getCachedPrediction(variant);
+      const prediction = await tcWingoService.getCachedPrediction(variant);
       
       if (prediction) {
         res.json(prediction);
       } else {
-        res.status(503).json({ error: "Prediction service temporarily unavailable" });
+        res.status(503).json({ error: "TC Wingo prediction service temporarily unavailable" });
       }
     } catch (error) {
       console.error("Error generating prediction:", error);
@@ -327,30 +309,13 @@ export async function registerRoutes(app: Express): Promise<Server> {
     try {
       const { variant } = req.params;
       
-      // Use TC service for 1min wingo results
-      if (variant === '1min') {
-        if (!TC_WINGO_VARIANTS[variant as keyof typeof TC_WINGO_VARIANTS]) {
-          return res.status(400).json({ error: "Invalid TC Wingo variant" });
-        }
-        
-        // For now, return empty array as results are used for predictions internally
-        res.json([]);
-        return;
+      // ALL variants now use TC service with tc9987.club API
+      if (!TC_WINGO_VARIANTS[variant as keyof typeof TC_WINGO_VARIANTS]) {
+        return res.status(400).json({ error: "Invalid TC Wingo variant" });
       }
       
-      // Use regular wingo service for other variants
-      if (!WINGO_VARIANTS[variant]) {
-        return res.status(400).json({ error: "Invalid variant" });
-      }
-
-      // Use real API for results
-      const results = await wingoService.getLatestResults(variant);
-      
-      if (results && results.length > 0) {
-        res.json(results);
-      } else {
-        res.status(503).json({ error: "Results service temporarily unavailable" });
-      }
+      // Results are used for predictions internally, return empty array for frontend
+      res.json([]);
     } catch (error) {
       console.error("Error fetching results:", error);
       res.status(500).json({ error: "Failed to fetch results" });

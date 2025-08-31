@@ -1,4 +1,4 @@
-import { tcLotteryAuth } from './tc-auth-service.js';
+// Direct TC API access - no complex auth service needed
 
 // TC Wingo Game Variants
 export const TC_WINGO_VARIANTS = {
@@ -46,53 +46,48 @@ class TCWingoService {
   private readonly baseUrl = 'https://tc9987.club';
 
   constructor() {
-    // Authentication will be initialized when startBackgroundScheduler is called
+    // Direct API access - no authentication initialization needed
   }
 
-  private async initializeAuthentication(): Promise<void> {
+  private async fetchWithDirectAPI(url: string, payload: any): Promise<any> {
     try {
-      const username = process.env.TC_USERNAME;
-      const password = process.env.TC_PASSWORD;
-
-      if (!username || !password) {
-        console.error('❌ TC credentials not found in environment variables');
-        return;
-      }
-
-      console.log('🔐 Initializing TC LOTTERY authentication...');
-      const success = await tcLotteryAuth.login({ username, password });
+      console.log(`📡 Direct TC API call to: ${url}`);
+      console.log(`📤 Payload:`, payload);
       
-      if (success) {
-        console.log('✅ TC LOTTERY authentication successful');
-      } else {
-        console.error('❌ TC LOTTERY authentication failed');
+      // Direct API call like Python example - no complex auth needed
+      const response = await fetch(url, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+          'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
+        },
+        body: JSON.stringify(payload)
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP ${response.status}: ${response.statusText}`);
       }
+
+      const data = await response.json();
+      console.log(`📥 Response:`, data);
+      return data;
     } catch (error) {
-      console.error('🚨 Error initializing TC authentication:', error);
+      console.error(`❌ Error fetching from ${url}:`, error);
+      throw error;
     }
   }
 
   /**
-   * Fetch current/next period from TC API
+   * Fetch current/next period from TC API using direct approach
    */
   private async fetchCurrentPeriod(gameCode: string): Promise<any> {
     try {
-      if (!tcLotteryAuth.isAuthenticated()) {
-        console.log('🔄 Re-authenticating with TC LOTTERY...');
-        await this.initializeAuthentication();
-      }
-
-      const response = await tcLotteryAuth.makeAuthenticatedRequest(
-        `${this.baseUrl}/game/periods`,
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json, text/javascript, */*; q=0.01',
-            'X-Requested-With': 'XMLHttpRequest',
-          },
-          body: JSON.stringify({ game: gameCode })
-        }
+      console.log(`🎯 Fetching TC period for ${gameCode}...`);
+      
+      const response = await this.fetchWithDirectAPI(
+        `${this.baseUrl}/game/periods`, 
+        { game: gameCode }
       );
 
       return response;
@@ -103,42 +98,35 @@ class TCWingoService {
   }
 
   /**
-   * Fetch game results from TC API
+   * Fetch game results from TC API using direct approach
    */
   private async fetchGameResults(gameCode: string): Promise<TCWingoResult[]> {
     try {
-      if (!tcLotteryAuth.isAuthenticated()) {
-        console.log('🔄 Re-authenticating with TC LOTTERY...');
-        await this.initializeAuthentication();
-      }
-
-      const response = await tcLotteryAuth.makeAuthenticatedRequest(
+      console.log(`🎯 Fetching TC results for ${gameCode}...`);
+      
+      const response = await this.fetchWithDirectAPI(
         `${this.baseUrl}/result/getResult`,
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json, text/javascript, */*; q=0.01',
-            'X-Requested-With': 'XMLHttpRequest',
-          },
-          body: JSON.stringify({ 
-            game: gameCode, 
-            category: "vngo", 
-            page: 1, 
-            limit: 10 
-          })
+        { 
+          game: gameCode, 
+          category: "vngo", 
+          page: 1, 
+          limit: 10 
         }
       );
 
       if (response && response.data && response.data.list) {
-        return response.data.list.map((item: any) => ({
+        const results = response.data.list.map((item: any) => ({
           period: item.period,
           number: parseInt(item.open_num ? item.open_num[0] : item.result),
           status: 'completed',
           drawTime: item.draw_time || item.time
         }));
+
+        console.log(`✅ Retrieved ${results.length} live TC results for ${gameCode}`);
+        return results;
       }
 
+      console.log(`✅ Retrieved 0 live TC results for ${gameCode}`);
       return [];
     } catch (error) {
       console.error(`❌ Error fetching TC game results for ${gameCode}:`, error);
@@ -363,10 +351,7 @@ class TCWingoService {
    * Initialize predictions on server start
    */
   async startBackgroundScheduler(): Promise<void> {
-    console.log('🚀 Initializing TC Wingo prediction service...');
-    
-    // Initialize authentication first
-    await this.initializeAuthentication();
+    console.log('🚀 Initializing TC Wingo prediction service with direct API access...');
     
     // Run initial predictions for all variants once
     await this.runInitialPredictions();
