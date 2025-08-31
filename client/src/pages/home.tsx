@@ -222,8 +222,7 @@ export default function Home() {
             <img 
               src={logoPath} 
               alt="V3.GAME Logo" 
-              className="w-auto object-contain"
-              style={{ height: '30px' }}
+              className="w-auto object-contain h-5 md:h-7"
             />
           </div>
           
