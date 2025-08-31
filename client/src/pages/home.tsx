@@ -23,6 +23,7 @@ import aviatorImage from "@assets/800_1754070860600.png";
 import limboImage from "@assets/235_1754071157602.png";
 import mobileBannerImage from "@assets/202508291426595421003_1756613438340.png";
 import desktopBannerImage from "@assets/202508291426595421003_1756613438340.png";
+import heroBanner2 from "@assets/202411122322287871008_1756613499429.png";
 import proofImage1 from "@assets/image_1754150847570.png";
 import proofImage2 from "@assets/image_1754150852695.png";
 import demoImage1 from "@assets/Screenshot 2025-08-02 220225_1754152384208.png";
@@ -240,28 +241,27 @@ export default function Home() {
         </Card>
       </div>
 
-      {/* VIP Prediction Banner - Mobile and iPad only */}
-      <div className="px-6 md:px-8 lg:hidden pb-6 -mt-2">
-        <div className="max-w-2xl mx-auto">
-          <div className="relative overflow-hidden rounded-2xl shadow-lg">
-            <img 
-              src={mobileBannerImage} 
-              alt="V3 GAME - Lucky 10 Days Recharge Bonus" 
-              className="w-full h-auto object-cover"
-            />
-          </div>
-        </div>
-      </div>
-
-      {/* VIP Prediction Banner - Desktop only */}
-      <div className="hidden lg:block px-6 md:px-8 lg:px-12 xl:px-16 pb-6">
-        <div className="max-w-7xl mx-auto">
-          <div className="relative overflow-hidden rounded-2xl shadow-lg">
-            <img 
-              src={desktopBannerImage} 
-              alt="V3 GAME - Lucky 10 Days Recharge Bonus" 
-              className="w-full h-auto object-cover"
-            />
+      {/* Hero Banners Carousel */}
+      <div className="px-4 md:px-6 lg:px-8 xl:px-12 pb-4">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+            {/* Banner 1 - Lucky 10 Days */}
+            <div className="relative overflow-hidden rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300">
+              <img 
+                src={mobileBannerImage} 
+                alt="V3 GAME - Lucky 10 Days Recharge Bonus" 
+                className="w-full h-auto object-cover"
+              />
+            </div>
+            
+            {/* Banner 2 - Wingo Game */}
+            <div className="relative overflow-hidden rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300">
+              <img 
+                src={heroBanner2} 
+                alt="V3 GAME - 1 Minute Wingo Game" 
+                className="w-full h-auto object-cover"
+              />
+            </div>
           </div>
         </div>
       </div>
