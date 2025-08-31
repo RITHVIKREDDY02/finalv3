@@ -5,7 +5,7 @@ import { useQuery } from "@tanstack/react-query";
 import { ArrowLeft, Play, Trophy, Clock, TrendingUp, Eye, RefreshCw } from "lucide-react";
 import { useLocation } from "wouter";
 import { queryClient } from "@/lib/queryClient";
-import wingoCardImage from "@assets/image_1756614166272.png";
+import wingoCardImage from "@assets/wingoissue-0c200440_1756619815624.webp";
 
 
 type WingoVariant = "30sec" | "1min" | "3min" | "5min";
