@@ -94,6 +94,13 @@ export default function Wingo() {
     return number >= 5 ? "BIG" : "SMALL";
   };
 
+  const formatPeriodNumber = (period: string): string => {
+    if (period && period.startsWith('2') && period.length >= 3) {
+      return '20' + period.substring(1);
+    }
+    return period;
+  };
+
   const formatDateTime = (): string => {
     return new Date().toLocaleString('en-IN', {
       timeZone: 'Asia/Kolkata',
@@ -219,7 +226,7 @@ export default function Wingo() {
                   {variants.find(v => v.key === selectedVariant)?.label || "Wingo 30Sec"}
                 </div>
                 <div className="text-black font-bold text-lg">
-                  {prediction?.period || "20250802100010584"}
+                  {formatPeriodNumber(prediction?.period || "202508021000105384")}
                 </div>
               </div>
               

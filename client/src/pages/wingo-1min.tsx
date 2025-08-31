@@ -61,6 +61,13 @@ export default function Wingo1Min() {
     return number >= 5 ? "BIG" : "SMALL";
   };
 
+  const formatPeriodNumber = (period: string): string => {
+    if (period && period.startsWith('2') && period.length >= 3) {
+      return '20' + period.substring(1);
+    }
+    return period;
+  };
+
   const formatTime = (seconds: number): string => {
     const mins = Math.floor(seconds / 60);
     const secs = seconds % 60;
@@ -136,7 +143,7 @@ export default function Wingo1Min() {
           {/* Issue Number and Countdown */}
           <div className="text-center space-y-2">
             <div className="text-sm warm-gold">Issue Number</div>
-            <div className="text-lg font-bold light-gold">{prediction?.period || "Loading..."}</div>
+            <div className="text-lg font-bold light-gold">{formatPeriodNumber(prediction?.period || "Loading...")}</div>
             <div className="text-sm warm-gold">Next Round In</div>
             <div className="text-2xl font-bold text-red-400">{formatTime(countdown)}</div>
           </div>
@@ -156,7 +163,7 @@ export default function Wingo1Min() {
             
             <div className="space-y-4">
               <div className="text-gray-300 text-lg">
-                🔓 <span className="font-bold">PERIOD ID</span> - {prediction?.period || "Loading..."}
+                🔓 <span className="font-bold">PERIOD ID</span> - {formatPeriodNumber(prediction?.period || "Loading...")}
               </div>
               
               <div className="flex gap-4 justify-center items-center">

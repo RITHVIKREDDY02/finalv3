@@ -65,6 +65,13 @@ export default function Wingo30Sec() {
     return number >= 5 ? "BIG" : "SMALL";
   };
 
+  const formatPeriodNumber = (period: string): string => {
+    if (period && period.startsWith('2') && period.length >= 3) {
+      return '20' + period.substring(1);
+    }
+    return period;
+  };
+
   const getCurrentISTTime = (): string => {
     const now = new Date();
     return now.toLocaleTimeString('en-IN', { 
@@ -137,7 +144,7 @@ export default function Wingo30Sec() {
           {/* Issue Number and Countdown */}
           <div className="text-center space-y-2">
             <div className="text-sm warm-gold">Issue Number</div>
-            <div className="text-lg font-bold light-gold">{prediction?.period || "Loading..."}</div>
+            <div className="text-lg font-bold light-gold">{formatPeriodNumber(prediction?.period || "Loading...")}</div>
             <div className="text-sm warm-gold">Next Round In</div>
             <div className="text-2xl font-bold text-red-400">{countdown}s</div>
           </div>
@@ -157,7 +164,7 @@ export default function Wingo30Sec() {
             
             <div className="space-y-3">
               <div className="text-gray-300 text-sm sm:text-base">
-                🔓 <span className="font-bold">PERIOD ID</span> - {prediction?.period || "Loading..."}
+                🔓 <span className="font-bold">PERIOD ID</span> - {formatPeriodNumber(prediction?.period || "Loading...")}
               </div>
               
               <div className="flex gap-2 sm:gap-4 justify-center items-center">
