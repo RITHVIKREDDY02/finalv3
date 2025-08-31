@@ -143,7 +143,7 @@ export default function VipPredictionDialog({ isOpen, onClose, uid, onBackToRegi
             <div className="flex gap-2 justify-center">
               <Button
                 className="btn-body-bg px-4 py-2 rounded-full font-semibold"
-                onClick={() => window.open("https://tashanwin6.com/#/register?invitationCode=487522520975", "_blank")}
+                onClick={() => window.open("https://www.v3game6.com/#/pages/login/register?invitationCode=1919483925", "_blank")}
               >
                 Start
               </Button>

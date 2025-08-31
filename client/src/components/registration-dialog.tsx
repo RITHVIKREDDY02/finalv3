@@ -77,7 +77,7 @@ export default function RegistrationDialog({ isOpen, onClose, onRegistrationSucc
   };
 
   const handleStartButtonClick = () => {
-    window.open("https://tashanwin6.com/#/register?invitationCode=487522520975", "_blank");
+    window.open("https://www.v3game6.com/#/pages/login/register?invitationCode=1919483925", "_blank");
   };
 
   const handleHelp = () => {
