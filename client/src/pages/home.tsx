@@ -21,8 +21,8 @@ import minesImage from "@assets/229 (1)_1754070860598.png";
 import boomImage from "@assets/100_1754070860600.png";
 import aviatorImage from "@assets/800_1754070860600.png";
 import limboImage from "@assets/235_1754071157602.png";
-import mobileBannerImage from "@assets/mobile hero banner_1754079113835.jpg";
-import desktopBannerImage from "@assets/Hero Banner (1440 x 300 px)_1754078513162.jpg";
+import mobileBannerImage from "@assets/202508291426595421003_1756613438340.png";
+import desktopBannerImage from "@assets/202508291426595421003_1756613438340.png";
 import proofImage1 from "@assets/image_1754150847570.png";
 import proofImage2 from "@assets/image_1754150852695.png";
 import demoImage1 from "@assets/Screenshot 2025-08-02 220225_1754152384208.png";
@@ -246,7 +246,7 @@ export default function Home() {
           <div className="relative overflow-hidden rounded-2xl shadow-lg">
             <img 
               src={mobileBannerImage} 
-              alt="VIP Prediction - Unlock Pro Money, Never get loss" 
+              alt="V3 GAME - Lucky 10 Days Recharge Bonus" 
               className="w-full h-auto object-cover"
             />
           </div>
@@ -259,7 +259,7 @@ export default function Home() {
           <div className="relative overflow-hidden rounded-2xl shadow-lg">
             <img 
               src={desktopBannerImage} 
-              alt="VIP Prediction - Unlock Pro Money, Never get loss" 
+              alt="V3 GAME - Lucky 10 Days Recharge Bonus" 
               className="w-full h-auto object-cover"
             />
           </div>
