@@ -207,7 +207,7 @@ export default function Wingo() {
               style={{ 
                 height: '104.66px',
                 borderRadius: '8px',
-                objectFit: 'cover'
+                objectFit: 'contain'
               }}
             />
             
