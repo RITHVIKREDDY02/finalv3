@@ -374,10 +374,13 @@ export default function Home() {
           {/* Second Row: Register and Deposit Button */}
           <div className="flex justify-center">
             <button 
-              className="px-6 sm:px-8 md:px-10 py-2 custom-button font-bold rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 text-sm sm:text-base"
+              className="px-6 sm:px-8 md:px-10 py-3 custom-button font-bold rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 text-center leading-tight"
               onClick={handleJoinVipClick}
             >
-              Register and Deposit and Get 500+ Bonus
+              <div className="flex flex-col items-center">
+                <span className="text-sm sm:text-base">Register and Deposit and Get</span>
+                <span className="text-lg sm:text-xl font-extrabold text-yellow-300">500+ Bonus</span>
+              </div>
             </button>
           </div>
         </div>
