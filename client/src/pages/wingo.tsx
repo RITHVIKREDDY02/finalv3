@@ -5,6 +5,7 @@ import { useQuery } from "@tanstack/react-query";
 import { ArrowLeft, Play, Trophy, Clock, TrendingUp, Eye, RefreshCw } from "lucide-react";
 import { useLocation } from "wouter";
 import { queryClient } from "@/lib/queryClient";
+import wingoCardImage from "@assets/image_1756614166272.png";
 
 
 type WingoVariant = "30sec" | "1min" | "3min" | "5min";
@@ -200,7 +201,7 @@ export default function Wingo() {
           {/* Content Card */}
           <div className="mt-4 relative">
             <img 
-              src="/attached_assets/image_1756614166272.png"
+              src={wingoCardImage}
               alt="Wingo Game Card"
               className="w-full h-auto"
               style={{ 
