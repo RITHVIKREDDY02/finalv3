@@ -292,9 +292,9 @@ export default function Home() {
 
       {/* Hero Banners Carousel */}
       <div className="px-4 md:px-6 lg:px-8 xl:px-12 pb-4">
-        <div className="max-w-6xl mx-auto">
+        <div className="max-w-6xl mx-auto lg:max-w-4xl">
           <div 
-            className="relative overflow-hidden rounded-2xl shadow-lg"
+            className="relative overflow-hidden rounded-2xl shadow-lg lg:max-h-64 xl:max-h-72"
             onMouseEnter={() => setIsAutoPlaying(false)}
             onMouseLeave={() => setIsAutoPlaying(true)}
           >
@@ -308,7 +308,7 @@ export default function Home() {
                   <img 
                     src={slide.image} 
                     alt={slide.alt} 
-                    className="w-full h-auto object-cover"
+                    className="w-full h-auto object-cover lg:max-h-64 xl:max-h-72"
                   />
                 </div>
               ))}
