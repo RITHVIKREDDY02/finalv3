@@ -79,7 +79,7 @@ export default function WelcomeNotification({ onRegisterClick }: WelcomeNotifica
           <div className="flex justify-center">
             <button
               onClick={handleClose}
-              className="w-10 h-10 transition-all duration-200 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-[#FED358] focus:ring-opacity-50"
+              className="w-10 h-10 transition-all duration-200 hover:scale-110 focus:outline-none border-none"
             >
               <img 
                 src={closeIcon} 
