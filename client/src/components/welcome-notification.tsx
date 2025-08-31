@@ -13,17 +13,12 @@ export default function WelcomeNotification({ onRegisterClick }: WelcomeNotifica
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
-    // Check if user has seen the welcome notification before
-    const hasSeenWelcome = localStorage.getItem("tashan_welcome_seen");
+    // Temporarily show notification for preview (will be reverted)
+    const timer = setTimeout(() => {
+      setIsOpen(true);
+    }, 1000);
     
-    if (!hasSeenWelcome) {
-      // Show the notification after a short delay for better UX
-      const timer = setTimeout(() => {
-        setIsOpen(true);
-      }, 1000);
-      
-      return () => clearTimeout(timer);
-    }
+    return () => clearTimeout(timer);
   }, []);
 
   const handleClose = () => {
