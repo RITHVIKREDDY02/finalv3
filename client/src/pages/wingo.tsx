@@ -188,7 +188,7 @@ export default function Wingo() {
                     padding: '12px 16px',
                     borderRadius: '16px',
                     background: selectedVariant === variant.key 
-                      ? 'rgba(255,208,90,254)'
+                      ? 'linear-gradient(rgb(248, 191, 110), rgb(251, 94, 4))'
                       : 'transparent'
                   }}
                 >
