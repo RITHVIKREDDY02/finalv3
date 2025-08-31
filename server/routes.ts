@@ -6,6 +6,7 @@ import { insertUserSchema } from "@shared/schema";
 import { z } from "zod";
 import { wingoService, WINGO_VARIANTS } from "./wingo-service";
 import { trxWingoService, TRXWINGO_VARIANTS } from "./trxwingo-service";
+import { tcWingoService, TC_WINGO_VARIANTS } from "./tc-wingo-service";
 import { 
   createRateLimitMiddleware, 
   compressionMiddleware, 
@@ -38,6 +39,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
   app.use('/api', createRateLimitMiddleware(30, 60000)); // 30 requests per minute for API
   app.use('/api/wingo', createRateLimitMiddleware(60, 60000)); // Higher limit for prediction endpoints
   app.use('/api/trxwingo', createRateLimitMiddleware(60, 60000));
+  app.use('/api/tcwingo', createRateLimitMiddleware(60, 60000)); // TC Wingo endpoints
 
   // Start background prediction schedulers
   console.log('🚀 Starting Wingo prediction scheduler at server startup...');
@@ -45,6 +47,9 @@ export async function registerRoutes(app: Express): Promise<Server> {
   
   console.log('🚀 Starting TrxWingo prediction scheduler at server startup...');
   trxWingoService.startBackgroundScheduler();
+  
+  console.log('🚀 Starting TC Wingo prediction scheduler at server startup...');
+  await tcWingoService.startBackgroundScheduler();
 
   // Register user with UID
   app.post("/api/register", async (req, res) => {
@@ -367,6 +372,33 @@ export async function registerRoutes(app: Express): Promise<Server> {
     } catch (error) {
       console.error("Error fetching TrxWingo results:", error);
       res.status(500).json({ error: "Failed to fetch TrxWingo results" });
+    }
+  });
+
+  // TC Wingo prediction routes (New TC API integration)
+  app.get('/api/tcwingo/variants', (req, res) => {
+    res.json(TC_WINGO_VARIANTS);
+  });
+
+  app.get('/api/tcwingo/prediction/:variant', async (req, res) => {
+    try {
+      const { variant } = req.params;
+      
+      if (!TC_WINGO_VARIANTS[variant as keyof typeof TC_WINGO_VARIANTS]) {
+        return res.status(400).json({ error: "Invalid TC Wingo variant" });
+      }
+
+      // Use cached prediction from TC background scheduler
+      const prediction = await tcWingoService.getCachedPrediction(variant);
+      
+      if (prediction) {
+        res.json(prediction);
+      } else {
+        res.status(503).json({ error: "TC Wingo prediction service temporarily unavailable" });
+      }
+    } catch (error) {
+      console.error("Error generating TC Wingo prediction:", error);
+      res.status(500).json({ error: "Failed to generate TC Wingo prediction" });
     }
   });
 
