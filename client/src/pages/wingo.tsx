@@ -173,7 +173,7 @@ export default function Wingo() {
       <div className="flex justify-center items-start pt-6">
         <div className="w-[448px] h-[402px] mx-0">
           {/* Tab Navigation */}
-          <div style={{ backgroundColor: '#382e35', borderRadius: '16px', padding: '8px' }}>
+          <div style={{ background: 'linear-gradient(rgb(248, 191, 110), rgb(251, 94, 4))', borderRadius: '16px', padding: '8px' }}>
             <div className="flex gap-1">
               {variants.map((variant) => (
                 <button
@@ -182,7 +182,7 @@ export default function Wingo() {
                   className={`flex-1 font-medium transition-all duration-200 ${
                     selectedVariant === variant.key
                       ? 'text-black shadow-md'
-                      : 'text-gray-300 hover:text-white'
+                      : 'text-white hover:text-gray-100'
                   }`}
                   style={{ 
                     padding: '12px 16px',
