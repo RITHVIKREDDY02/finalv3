@@ -129,12 +129,6 @@ export default function Home() {
       }
     }
     
-    // Special handling for Trx Wingo - show coming soon dialog since backend is removed
-    if (gameType === "Trx Wingo") {
-      setSelectedGameName(gameType);
-      setShowComingSoonDialog(true);
-      return;
-    }
     
     
     // Check if user has registered UID
