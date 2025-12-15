@@ -246,28 +246,15 @@ export default function Home() {
       {/* Action Buttons - Below Hero Banner */}
       <div className="px-6 md:px-8 lg:px-12 xl:px-16 pb-6">
         <div className="max-w-2xl mx-auto lg:max-w-7xl">
-          {/* Reward Text - Modern Animated Banner */}
+          {/* Reward Text - Clean Banner */}
           <div className="text-center mb-5">
-            <div className="relative inline-block">
-              <div className="absolute inset-0 rounded-2xl opacity-50 blur-xl animate-pulse" style={{ background: 'linear-gradient(135deg, #FED358, #FF6B35)' }}></div>
-              <div className="relative px-6 py-3 rounded-2xl" style={{ 
-                background: 'linear-gradient(135deg, rgba(15, 23, 42, 0.9) 0%, rgba(30, 41, 59, 0.9) 100%)',
-                border: '2px solid transparent',
-                backgroundClip: 'padding-box',
-                boxShadow: '0 0 0 2px rgba(254, 211, 88, 0.5), 0 10px 40px rgba(254, 211, 88, 0.3)'
-              }}>
-                <div className="flex items-center justify-center gap-3">
-                  <span className="text-2xl animate-bounce">🎁</span>
-                  <div>
-                    <p className="text-base sm:text-lg font-black tracking-wide" style={{ background: 'linear-gradient(135deg, #FED358, #FF6B35)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
-                      Register Now & Get Upto ₹500
-                    </p>
-                    <p className="text-xs sm:text-sm font-semibold" style={{ color: 'rgba(253, 228, 188, 0.8)' }}>
-                      Sign Up Reward 🚀
-                    </p>
-                  </div>
-                </div>
-              </div>
+            <div className="inline-block px-6 py-3 rounded-xl" style={{ 
+              background: 'linear-gradient(135deg, rgba(254, 211, 88, 0.15) 0%, rgba(255, 107, 53, 0.1) 100%)',
+              border: '1px solid rgba(254, 211, 88, 0.4)'
+            }}>
+              <p className="text-base sm:text-lg font-bold tracking-wide" style={{ color: '#FED358' }}>
+                Register Now & Get Upto ₹500 Sign Up Reward
+              </p>
             </div>
           </div>
           {/* Register and Login Buttons */}
