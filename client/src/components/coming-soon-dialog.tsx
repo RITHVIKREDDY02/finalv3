@@ -5,7 +5,8 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
-import { Clock, Wrench, Sparkles } from "lucide-react";
+import { Clock, Wrench, Sparkles, Zap } from "lucide-react";
+import { FaTelegram } from "react-icons/fa";
 
 interface ComingSoonDialogProps {
   isOpen: boolean;
@@ -14,6 +15,8 @@ interface ComingSoonDialogProps {
 }
 
 export function ComingSoonDialog({ isOpen, onClose, gameName }: ComingSoonDialogProps) {
+  const isWingoGame = gameName === 'Win Go' || gameName === 'Trx Wingo';
+  
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent className="w-[90%] max-w-md mx-auto bg-gradient-to-br from-[#FED358] via-[#FED358] to-[#F5C842] border-none rounded-2xl shadow-2xl overflow-hidden">
@@ -29,7 +32,11 @@ export function ComingSoonDialog({ isOpen, onClose, gameName }: ComingSoonDialog
           <div className="flex justify-center">
             <div className="relative animate-float">
               <div className="w-20 h-20 bg-gradient-to-br from-black to-gray-800 rounded-full flex items-center justify-center shadow-lg animate-glow shimmer-effect transform transition-transform duration-300 hover:scale-105">
-                <Clock className="w-10 h-10 text-[#FED358] animate-spin" style={{ animationDuration: '3s' }} />
+                {isWingoGame ? (
+                  <Zap className="w-10 h-10 text-[#FED358]" />
+                ) : (
+                  <Clock className="w-10 h-10 text-[#FED358] animate-spin" style={{ animationDuration: '3s' }} />
+                )}
               </div>
               {/* Decorative sparkles */}
               <Sparkles className="absolute -top-2 -right-1 w-5 h-5 text-black/30 animate-pulse" />
@@ -40,27 +47,54 @@ export function ComingSoonDialog({ isOpen, onClose, gameName }: ComingSoonDialog
           
           <div className="space-y-2 text-center">
             <DialogTitle className="text-3xl font-bold text-black bg-gradient-to-r from-black to-gray-800 bg-clip-text text-center">
-              Coming Soon
+              {isWingoGame ? `${gameName} Prediction` : 'Coming Soon'}
             </DialogTitle>
             <div className="w-16 h-1 bg-black/20 rounded-full mx-auto"></div>
           </div>
           
           <div className="space-y-4 px-2">
-            <div className="flex items-center justify-center gap-2 text-black text-xl font-semibold">
-              <Wrench className="w-5 h-5 text-black/70" />
-              <span>{gameName}</span>
-            </div>
-            <p className="text-black text-base font-medium leading-relaxed">
-              is currently under maintenance
-            </p>
-            <div className="bg-black/10 backdrop-blur-sm rounded-xl p-4 border border-black/10">
-              <p className="text-black text-sm leading-relaxed font-medium">
-                🔧 We're working hard to bring this exciting game back online with amazing new features!
-              </p>
-              <p className="text-black text-sm mt-2 font-medium">
-                ⚡ Please check back soon for updates
-              </p>
-            </div>
+            {isWingoGame ? (
+              <>
+                <p className="text-black text-lg font-semibold">
+                  Join our prediction channel
+                </p>
+                <div className="bg-black/10 backdrop-blur-sm rounded-xl p-4 border border-black/10">
+                  <p className="text-black text-sm leading-relaxed font-medium">
+                    🔧 We're preparing exclusive predictions for this game with our advanced AI system!
+                  </p>
+                  <p className="text-black text-sm mt-2 font-medium">
+                    ⚡ Deposit now and start using our hack.
+                  </p>
+                </div>
+                <a 
+                  href="https://t.me/V3Games" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center gap-2 bg-gradient-to-r from-black to-gray-800 text-[#FED358] font-bold px-6 py-3 rounded-xl shadow-lg transform transition-all duration-200 hover:scale-105 hover:shadow-xl mt-4"
+                >
+                  <FaTelegram className="text-xl" />
+                  <span>Join Telegram Channel</span>
+                </a>
+              </>
+            ) : (
+              <>
+                <div className="flex items-center justify-center gap-2 text-black text-xl font-semibold">
+                  <Wrench className="w-5 h-5 text-black/70" />
+                  <span>{gameName}</span>
+                </div>
+                <p className="text-black text-base font-medium leading-relaxed">
+                  is currently under maintenance
+                </p>
+                <div className="bg-black/10 backdrop-blur-sm rounded-xl p-4 border border-black/10">
+                  <p className="text-black text-sm leading-relaxed font-medium">
+                    🔧 We're working hard to bring this exciting game back online with amazing new features!
+                  </p>
+                  <p className="text-black text-sm mt-2 font-medium">
+                    ⚡ Please check back soon for updates
+                  </p>
+                </div>
+              </>
+            )}
           </div>
         </DialogHeader>
         
