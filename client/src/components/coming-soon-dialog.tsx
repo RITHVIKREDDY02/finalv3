@@ -50,7 +50,7 @@ export function ComingSoonDialog({ isOpen, onClose, gameName }: ComingSoonDialog
             <div className="space-y-4 px-2">
               {isWingoGame ? (
                 <>
-                  <p className="text-lg font-semibold" style={{ color: '#FDE4BC' }}>
+                  <p className="text-lg font-semibold text-center" style={{ color: '#FDE4BC' }}>
                     Join our prediction channel
                   </p>
                   <div className="rounded-xl p-4" style={{
