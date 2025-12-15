@@ -74,7 +74,7 @@ export default function AboutPage() {
             <div className="text-sm" style={{ color: '#FDE4BC' }}>Live Support</div>
           </div>
           <div className="p-6 rounded-2xl text-center" style={{ background: 'rgba(255,107,53,0.1)', border: '1px solid rgba(255,107,53,0.3)' }}>
-            <div className="text-4xl font-black mb-2" style={{ color: '#FF6B35' }}>5+</div>
+            <div className="text-4xl font-black mb-2" style={{ color: '#FF6B35' }}>50+</div>
             <div className="text-sm" style={{ color: '#FDE4BC' }}>Game Types</div>
           </div>
         </div>
