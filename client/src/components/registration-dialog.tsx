@@ -1,7 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
-import { Crown, Sparkles, Trophy, Rocket, ArrowRight } from "lucide-react";
-import { FaTelegram } from "react-icons/fa";
+import { Crown, Sparkles, ArrowRight, X } from "lucide-react";
 
 interface RegistrationDialogProps {
   isOpen: boolean;
@@ -11,10 +10,6 @@ interface RegistrationDialogProps {
 export default function RegistrationDialog({ isOpen, onClose }: RegistrationDialogProps) {
   const handleStartButtonClick = () => {
     window.open("https://www.v3gameb.com/#/pages/login/register?invitationCode=7532630349", "_blank");
-  };
-
-  const handleTelegramClick = () => {
-    window.open("https://t.me/Earn_With_Milind_77", "_blank");
   };
 
   return (
@@ -28,6 +23,19 @@ export default function RegistrationDialog({ isOpen, onClose }: RegistrationDial
           border: '1px solid rgba(254, 211, 88, 0.3)'
         }}>
           
+          {/* Close Button */}
+          <button
+            onClick={onClose}
+            className="absolute top-4 right-4 z-10 w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110"
+            style={{
+              background: 'rgba(255, 255, 255, 0.1)',
+              border: '1px solid rgba(255, 255, 255, 0.2)',
+              backdropFilter: 'blur(8px)'
+            }}
+          >
+            <X className="w-4 h-4" style={{ color: '#FDE4BC' }} />
+          </button>
+
           {/* Animated background elements */}
           <div className="absolute inset-0 overflow-hidden pointer-events-none">
             <div className="absolute -top-20 -right-20 w-40 h-40 rounded-full opacity-20 animate-pulse" style={{ background: 'radial-gradient(circle, #FED358 0%, transparent 70%)' }}></div>
@@ -57,48 +65,6 @@ export default function RegistrationDialog({ isOpen, onClose }: RegistrationDial
             </p>
           </div>
 
-          {/* Hero Stats */}
-          <div className="px-6 pb-4">
-            <div className="grid grid-cols-2 gap-3">
-              {/* 100% Accurate Card */}
-              <div className="p-5 rounded-2xl text-center transition-all duration-300 hover:scale-105 relative overflow-hidden" 
-                style={{ 
-                  background: 'linear-gradient(135deg, rgba(46, 204, 113, 0.2) 0%, rgba(46, 204, 113, 0.05) 100%)',
-                  border: '2px solid rgba(46, 204, 113, 0.4)',
-                  boxShadow: '0 4px 20px rgba(46, 204, 113, 0.2)'
-                }}>
-                <div className="absolute top-0 right-0 w-16 h-16 opacity-20" style={{ background: 'radial-gradient(circle, #2ECC71 0%, transparent 70%)' }}></div>
-                <div className="text-3xl font-black mb-1" style={{ color: '#2ECC71' }}>100%</div>
-                <p className="text-sm font-bold" style={{ color: '#FDE4BC' }}>ACCURATE</p>
-                <p className="text-xs mt-1" style={{ color: 'rgba(253, 228, 188, 0.7)' }}>Predictions</p>
-                <Trophy className="w-5 h-5 mx-auto mt-2" style={{ color: '#2ECC71' }} />
-              </div>
-              
-              {/* Instant Results Card */}
-              <div className="p-5 rounded-2xl text-center transition-all duration-300 hover:scale-105 relative overflow-hidden" 
-                style={{ 
-                  background: 'linear-gradient(135deg, rgba(254, 211, 88, 0.2) 0%, rgba(255, 107, 53, 0.1) 100%)',
-                  border: '2px solid rgba(254, 211, 88, 0.4)',
-                  boxShadow: '0 4px 20px rgba(254, 211, 88, 0.2)'
-                }}>
-                <div className="absolute top-0 right-0 w-16 h-16 opacity-20" style={{ background: 'radial-gradient(circle, #FED358 0%, transparent 70%)' }}></div>
-                <div className="text-3xl font-black mb-1" style={{ color: '#FED358' }}>⚡</div>
-                <p className="text-sm font-bold" style={{ color: '#FDE4BC' }}>INSTANT</p>
-                <p className="text-xs mt-1" style={{ color: 'rgba(253, 228, 188, 0.7)' }}>Results</p>
-                <Rocket className="w-5 h-5 mx-auto mt-2" style={{ color: '#FF6B35' }} />
-              </div>
-            </div>
-          </div>
-
-          {/* Additional Benefits */}
-          <div className="px-6 pb-4">
-            <div className="flex flex-wrap justify-center gap-2">
-              <span className="px-3 py-1.5 rounded-full text-xs font-semibold" style={{ background: 'rgba(46, 204, 113, 0.2)', color: '#2ECC71', border: '1px solid rgba(46, 204, 113, 0.3)' }}>✓ AI Powered</span>
-              <span className="px-3 py-1.5 rounded-full text-xs font-semibold" style={{ background: 'rgba(254, 211, 88, 0.2)', color: '#FED358', border: '1px solid rgba(254, 211, 88, 0.3)' }}>✓ 24/7 Support</span>
-              <span className="px-3 py-1.5 rounded-full text-xs font-semibold" style={{ background: 'rgba(255, 107, 53, 0.2)', color: '#FF6B35', border: '1px solid rgba(255, 107, 53, 0.3)' }}>✓ 50K+ Winners</span>
-            </div>
-          </div>
-
           {/* Steps */}
           <div className="px-6 pb-4">
             <div className="p-4 rounded-2xl" style={{ 
@@ -115,7 +81,7 @@ export default function RegistrationDialog({ isOpen, onClose }: RegistrationDial
                 <div className="flex items-center gap-3">
                   <div className="w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold" 
                     style={{ background: 'linear-gradient(135deg, #FED358, #FF6B35)', color: '#000' }}>2</div>
-                  <p className="text-sm" style={{ color: 'rgba(253, 228, 188, 0.9)' }}>Join our Telegram channel</p>
+                  <p className="text-sm" style={{ color: 'rgba(253, 228, 188, 0.9)' }}>Complete your profile</p>
                 </div>
                 <div className="flex items-center gap-3">
                   <div className="w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold" 
@@ -139,19 +105,6 @@ export default function RegistrationDialog({ isOpen, onClose }: RegistrationDial
             >
               REGISTER NOW
               <ArrowRight className="w-5 h-5" />
-            </Button>
-            
-            <Button
-              className="w-full h-12 font-semibold text-base rounded-xl transition-all duration-300 transform hover:scale-[1.02] flex items-center justify-center gap-2"
-              onClick={handleTelegramClick}
-              style={{ 
-                background: 'linear-gradient(135deg, #0088cc 0%, #0066aa 100%)',
-                color: '#fff',
-                border: 'none'
-              }}
-            >
-              <FaTelegram className="w-5 h-5" />
-              JOIN TELEGRAM
             </Button>
             
             <p className="text-center text-xs pt-2" style={{ color: 'rgba(253, 228, 188, 0.5)' }}>
