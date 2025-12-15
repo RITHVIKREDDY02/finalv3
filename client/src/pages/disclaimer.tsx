@@ -59,77 +59,67 @@ export default function DisclaimerPage() {
       <div className="max-w-4xl mx-auto px-4 md:px-6 pb-12 md:pb-16 space-y-4 md:space-y-6">
         {/* Section 1 */}
         <div className="p-4 md:p-6 rounded-xl md:rounded-2xl" style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)' }}>
-          <div className="flex flex-row items-start gap-3 md:gap-4">
+          <div className="flex flex-row items-center gap-3 md:gap-4 mb-2 md:mb-3">
             <div className="w-8 h-8 md:w-10 md:h-10 rounded-lg flex items-center justify-center flex-shrink-0" style={{ background: 'rgba(254,211,88,0.2)' }}>
               <FileText className="w-4 h-4 md:w-5 md:h-5" style={{ color: '#FED358' }} />
             </div>
-            <div>
-              <h2 className="text-lg md:text-xl font-semibold mb-2 md:mb-3" style={{ color: '#FED358' }}>Disclaimers for V3 Game</h2>
-              <p className="text-sm md:text-base leading-relaxed opacity-90" style={{ color: '#FDE4BC' }}>
-                All the information on this website - https://v3game.digital/ - is published in good faith and for general information purposes only. V3 Game does not make any warranties about the completeness, reliability, and accuracy of this information. Any action you take upon the information you find on this website (V3 Game), is strictly at your own risk. V3 Game will not be liable for any losses and/or damages in connection with the use of our website.
-              </p>
-            </div>
+            <h2 className="text-lg md:text-xl font-semibold" style={{ color: '#FED358' }}>Disclaimers for V3 Game</h2>
           </div>
+          <p className="text-sm md:text-base leading-relaxed opacity-90" style={{ color: '#FDE4BC' }}>
+            All the information on this website - https://v3game.digital/ - is published in good faith and for general information purposes only. V3 Game does not make any warranties about the completeness, reliability, and accuracy of this information. Any action you take upon the information you find on this website (V3 Game), is strictly at your own risk. V3 Game will not be liable for any losses and/or damages in connection with the use of our website.
+          </p>
         </div>
 
         {/* Section 2 */}
         <div className="p-4 md:p-6 rounded-xl md:rounded-2xl" style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)' }}>
-          <div className="flex flex-row items-start gap-3 md:gap-4">
+          <div className="flex flex-row items-center gap-3 md:gap-4 mb-2 md:mb-3">
             <div className="w-8 h-8 md:w-10 md:h-10 rounded-lg flex items-center justify-center flex-shrink-0" style={{ background: 'rgba(254,211,88,0.2)' }}>
               <Link2 className="w-4 h-4 md:w-5 md:h-5" style={{ color: '#FED358' }} />
             </div>
-            <div>
-              <h2 className="text-lg md:text-xl font-semibold mb-2 md:mb-3" style={{ color: '#FED358' }}>External Links</h2>
-              <p className="text-sm md:text-base leading-relaxed opacity-90" style={{ color: '#FDE4BC' }}>
-                From our website, you can visit other websites by following hyperlinks to such external sites. While we strive to provide only quality links to useful and ethical websites, we have no control over the content and nature of these sites. These links to other websites do not imply a recommendation for all the content found on these sites. Site owners and content may change without notice and may occur before we have the opportunity to remove a link that may have gone 'bad'.
-              </p>
-            </div>
+            <h2 className="text-lg md:text-xl font-semibold" style={{ color: '#FED358' }}>External Links</h2>
           </div>
+          <p className="text-sm md:text-base leading-relaxed opacity-90" style={{ color: '#FDE4BC' }}>
+            From our website, you can visit other websites by following hyperlinks to such external sites. While we strive to provide only quality links to useful and ethical websites, we have no control over the content and nature of these sites. These links to other websites do not imply a recommendation for all the content found on these sites. Site owners and content may change without notice and may occur before we have the opportunity to remove a link that may have gone 'bad'.
+          </p>
         </div>
 
         {/* Section 3 */}
         <div className="p-4 md:p-6 rounded-xl md:rounded-2xl" style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)' }}>
-          <div className="flex flex-row items-start gap-3 md:gap-4">
+          <div className="flex flex-row items-center gap-3 md:gap-4 mb-2 md:mb-3">
             <div className="w-8 h-8 md:w-10 md:h-10 rounded-lg flex items-center justify-center flex-shrink-0" style={{ background: 'rgba(254,211,88,0.2)' }}>
               <Shield className="w-4 h-4 md:w-5 md:h-5" style={{ color: '#FED358' }} />
             </div>
-            <div>
-              <h2 className="text-lg md:text-xl font-semibold mb-2 md:mb-3" style={{ color: '#FED358' }}>Privacy Notice</h2>
-              <p className="text-sm md:text-base leading-relaxed opacity-90" style={{ color: '#FDE4BC' }}>
-                Please be also aware that when you leave our website, other sites may have different privacy policies and terms which are beyond our control. Please be sure to check the Privacy Policies of these sites as well as their "Terms of Service" before engaging in any business or uploading any information.
-              </p>
-            </div>
+            <h2 className="text-lg md:text-xl font-semibold" style={{ color: '#FED358' }}>Privacy Notice</h2>
           </div>
+          <p className="text-sm md:text-base leading-relaxed opacity-90" style={{ color: '#FDE4BC' }}>
+            Please be also aware that when you leave our website, other sites may have different privacy policies and terms which are beyond our control. Please be sure to check the Privacy Policies of these sites as well as their "Terms of Service" before engaging in any business or uploading any information.
+          </p>
         </div>
 
         {/* Section 4 */}
         <div className="p-4 md:p-6 rounded-xl md:rounded-2xl" style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)' }}>
-          <div className="flex flex-row items-start gap-3 md:gap-4">
+          <div className="flex flex-row items-center gap-3 md:gap-4 mb-2 md:mb-3">
             <div className="w-8 h-8 md:w-10 md:h-10 rounded-lg flex items-center justify-center flex-shrink-0" style={{ background: 'rgba(254,211,88,0.2)' }}>
               <CheckCircle className="w-4 h-4 md:w-5 md:h-5" style={{ color: '#FED358' }} />
             </div>
-            <div>
-              <h2 className="text-lg md:text-xl font-semibold mb-2 md:mb-3" style={{ color: '#FED358' }}>Consent</h2>
-              <p className="text-sm md:text-base leading-relaxed opacity-90" style={{ color: '#FDE4BC' }}>
-                By using our website, you hereby consent to our disclaimer and agree to its terms.
-              </p>
-            </div>
+            <h2 className="text-lg md:text-xl font-semibold" style={{ color: '#FED358' }}>Consent</h2>
           </div>
+          <p className="text-sm md:text-base leading-relaxed opacity-90" style={{ color: '#FDE4BC' }}>
+            By using our website, you hereby consent to our disclaimer and agree to its terms.
+          </p>
         </div>
 
         {/* Section 5 */}
         <div className="p-4 md:p-6 rounded-xl md:rounded-2xl" style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)' }}>
-          <div className="flex flex-row items-start gap-3 md:gap-4">
+          <div className="flex flex-row items-center gap-3 md:gap-4 mb-2 md:mb-3">
             <div className="w-8 h-8 md:w-10 md:h-10 rounded-lg flex items-center justify-center flex-shrink-0" style={{ background: 'rgba(254,211,88,0.2)' }}>
               <RefreshCw className="w-4 h-4 md:w-5 md:h-5" style={{ color: '#FED358' }} />
             </div>
-            <div>
-              <h2 className="text-lg md:text-xl font-semibold mb-2 md:mb-3" style={{ color: '#FED358' }}>Update</h2>
-              <p className="text-sm md:text-base leading-relaxed opacity-90" style={{ color: '#FDE4BC' }}>
-                Should we update, amend or make any changes to this document, those changes will be prominently posted here.
-              </p>
-            </div>
+            <h2 className="text-lg md:text-xl font-semibold" style={{ color: '#FED358' }}>Update</h2>
           </div>
+          <p className="text-sm md:text-base leading-relaxed opacity-90" style={{ color: '#FDE4BC' }}>
+            Should we update, amend or make any changes to this document, those changes will be prominently posted here.
+          </p>
         </div>
 
       </div>
