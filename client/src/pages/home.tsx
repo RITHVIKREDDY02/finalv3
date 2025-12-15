@@ -671,69 +671,108 @@ export default function Home() {
         </div>
       )}
 
-      {/* About Us Dialog */}
+      {/* About Us Dialog - Modern Design */}
       {showAboutUsDialog && (
-        <div className="fixed inset-0 bg-black bg-opacity-60 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <div className="rounded-3xl max-w-lg w-full max-h-[80vh] overflow-y-auto shadow-2xl border-2" style={{ backgroundColor: 'rgb(56, 46, 53)', border: '2px solid #FED358' }}>
-            <div className="p-8">
-              <div className="flex justify-between items-center mb-8">
-                <h2 className="text-3xl font-bold" style={{ color: '#FED358' }}>About V3 GAME VIP</h2>
-                <button
-                  onClick={() => setShowAboutUsDialog(false)}
-                  className="text-2xl font-bold rounded-full w-8 h-8 flex items-center justify-center transition-all duration-200"
-                  style={{ color: '#FDE4BC', backgroundColor: 'rgba(254, 211, 88, 0.2)' }}
-                  onMouseEnter={(e) => (e.target as HTMLButtonElement).style.backgroundColor = 'rgba(254, 211, 88, 0.4)'}
-                  onMouseLeave={(e) => (e.target as HTMLButtonElement).style.backgroundColor = 'rgba(254, 211, 88, 0.2)'}
-                >
-                  ×
-                </button>
+        <div className="fixed inset-0 bg-black/70 backdrop-blur-md z-50 flex items-center justify-center p-4">
+          <div className="rounded-3xl max-w-2xl w-full max-h-[85vh] overflow-hidden shadow-2xl" style={{ background: 'linear-gradient(145deg, #1a1520 0%, #0d0a12 100%)' }}>
+            {/* Hero Section */}
+            <div className="relative h-40 overflow-hidden" style={{ background: 'linear-gradient(135deg, #FED358 0%, #FF6B35 50%, #E74C3C 100%)' }}>
+              <div className="absolute inset-0" style={{ background: 'radial-gradient(circle at 30% 50%, rgba(255,255,255,0.2) 0%, transparent 50%)' }}></div>
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="text-center">
+                  <div className="text-6xl mb-2">🏆</div>
+                  <h2 className="text-3xl font-black text-black tracking-tight">About V3 GAME VIP</h2>
+                </div>
               </div>
-              
-              <div className="space-y-6">
-                <div className="rounded-2xl p-6" style={{ backgroundColor: 'rgba(254, 211, 88, 0.1)', border: '1px solid rgba(254, 211, 88, 0.3)' }}>
-                  <p className="text-lg font-semibold text-center mb-4" style={{ color: '#FDE4BC' }}>
-                    "Life is a gamble and We live only once, so let's have fun at V3 GAME VIP!"
-                  </p>
-                </div>
+              <button
+                onClick={() => setShowAboutUsDialog(false)}
+                className="absolute top-4 right-4 w-10 h-10 rounded-full bg-black/30 hover:bg-black/50 flex items-center justify-center transition-all duration-200 text-white text-xl font-bold"
+                data-testid="button-close-about"
+              >
+                ×
+              </button>
+            </div>
+            
+            {/* Content */}
+            <div className="p-8 overflow-y-auto max-h-[calc(85vh-10rem)]">
+              {/* Quote Card */}
+              <div className="relative mb-8 p-6 rounded-2xl overflow-hidden" style={{ background: 'linear-gradient(135deg, rgba(254,211,88,0.15) 0%, rgba(255,107,53,0.1) 100%)', border: '1px solid rgba(254,211,88,0.3)' }}>
+                <div className="absolute top-2 left-4 text-5xl opacity-30" style={{ color: '#FED358' }}>"</div>
+                <p className="text-xl font-semibold text-center italic relative z-10" style={{ color: '#FDE4BC' }}>
+                  Life is a gamble and We live only once, so let's have fun at V3 GAME VIP!
+                </p>
+                <div className="absolute bottom-2 right-4 text-5xl opacity-30" style={{ color: '#FED358' }}>"</div>
+              </div>
 
-                <div className="space-y-4" style={{ color: '#FDE4BC' }}>
-                  <p className="text-base leading-relaxed">
-                    Welcome to <span className="font-bold" style={{ color: '#FED358' }}>V3 GAME VIP</span>, the leading online platform for predicting winning numbers in popular Wingo lottery games. Our expert data and AI analysts have developed an advanced algorithm that analyzes past lottery draws and player behavior to provide 100% accurate predictions.
-                  </p>
-
-                  <p className="text-base leading-relaxed">
-                    At V3 GAME VIP, we believe everyone deserves a chance to win big. Just visit the prediction section, select your game platform, click 'predict', and get your predictions for the winning color, size, and number.
-                  </p>
-
-                  <div className="rounded-2xl p-6" style={{ backgroundColor: 'rgba(46, 204, 113, 0.2)', border: '1px solid rgba(46, 204, 113, 0.4)' }}>
-                    <p className="font-bold text-center text-lg" style={{ color: '#2ECC71' }}>
-                      🎯 We're proud of our 100% success rate! 🎯
-                    </p>
+              {/* Feature Cards Grid */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+                <div className="p-5 rounded-2xl" style={{ background: 'rgba(46,204,113,0.1)', border: '1px solid rgba(46,204,113,0.3)' }}>
+                  <div className="flex items-center mb-3">
+                    <div className="w-10 h-10 rounded-full flex items-center justify-center mr-3" style={{ background: 'linear-gradient(135deg, #2ECC71, #27AE60)' }}>
+                      <span className="text-white text-lg">🎯</span>
+                    </div>
+                    <h4 className="font-bold text-lg" style={{ color: '#2ECC71' }}>100% Success Rate</h4>
                   </div>
-
-                  <p className="text-base leading-relaxed">
-                    If you have any questions, feel free to contact us through email or live chat support. Don't wait! Go to the predict section and start predicting like a pro with Our Vip App!
-                  </p>
+                  <p className="text-sm" style={{ color: '#FDE4BC' }}>Our advanced AI algorithm delivers accurate predictions every time.</p>
                 </div>
-
-                <div className="rounded-2xl p-6" style={{ backgroundColor: 'rgba(254, 211, 88, 0.2)', border: '1px solid rgba(254, 211, 88, 0.4)' }}>
-                  <h4 className="font-bold text-lg mb-3 text-center" style={{ color: '#FED358' }}>
-                    🚀 Ready to Start Winning?
-                  </h4>
-                  <div className="text-center">
-                    <button 
-                      onClick={() => {
-                        setShowAboutUsDialog(false);
-                        document.querySelector('.max-w-2xl')?.scrollIntoView({ behavior: 'smooth' });
-                      }}
-                      className="px-6 py-3 font-bold rounded-full shadow-lg transition-all duration-300 transform hover:scale-105"
-                      style={{ backgroundColor: '#FED358', color: '#231C21' }}
-                      onMouseEnter={(e) => (e.target as HTMLButtonElement).style.backgroundColor = '#FFE082'}
-                      onMouseLeave={(e) => (e.target as HTMLButtonElement).style.backgroundColor = '#FED358'}
-                    >
-                      Start Predicting Now!
-                    </button>
+                
+                <div className="p-5 rounded-2xl" style={{ background: 'rgba(52,152,219,0.1)', border: '1px solid rgba(52,152,219,0.3)' }}>
+                  <div className="flex items-center mb-3">
+                    <div className="w-10 h-10 rounded-full flex items-center justify-center mr-3" style={{ background: 'linear-gradient(135deg, #3498DB, #2980B9)' }}>
+                      <span className="text-white text-lg">🤖</span>
+                    </div>
+                    <h4 className="font-bold text-lg" style={{ color: '#3498DB' }}>AI-Powered</h4>
                   </div>
+                  <p className="text-sm" style={{ color: '#FDE4BC' }}>Expert data analysts and cutting-edge algorithms work for you.</p>
+                </div>
+                
+                <div className="p-5 rounded-2xl" style={{ background: 'rgba(155,89,182,0.1)', border: '1px solid rgba(155,89,182,0.3)' }}>
+                  <div className="flex items-center mb-3">
+                    <div className="w-10 h-10 rounded-full flex items-center justify-center mr-3" style={{ background: 'linear-gradient(135deg, #9B59B6, #8E44AD)' }}>
+                      <span className="text-white text-lg">⚡</span>
+                    </div>
+                    <h4 className="font-bold text-lg" style={{ color: '#9B59B6' }}>Instant Results</h4>
+                  </div>
+                  <p className="text-sm" style={{ color: '#FDE4BC' }}>Get predictions for color, size, and number in seconds.</p>
+                </div>
+                
+                <div className="p-5 rounded-2xl" style={{ background: 'rgba(254,211,88,0.1)', border: '1px solid rgba(254,211,88,0.3)' }}>
+                  <div className="flex items-center mb-3">
+                    <div className="w-10 h-10 rounded-full flex items-center justify-center mr-3" style={{ background: 'linear-gradient(135deg, #FED358, #FF6B35)' }}>
+                      <span className="text-black text-lg">💬</span>
+                    </div>
+                    <h4 className="font-bold text-lg" style={{ color: '#FED358' }}>24/7 Support</h4>
+                  </div>
+                  <p className="text-sm" style={{ color: '#FDE4BC' }}>Email and live chat support always available.</p>
+                </div>
+              </div>
+
+              {/* Description */}
+              <div className="mb-8 space-y-4" style={{ color: '#FDE4BC' }}>
+                <p className="text-base leading-relaxed">
+                  Welcome to <span className="font-bold" style={{ color: '#FED358' }}>V3 GAME VIP</span>, the leading platform for Wingo lottery predictions. Our experts analyze past draws and player behavior to deliver unmatched accuracy.
+                </p>
+                <p className="text-base leading-relaxed">
+                  Everyone deserves a chance to win big. Select your game, click 'predict', and receive your winning predictions instantly!
+                </p>
+              </div>
+
+              {/* CTA Section */}
+              <div className="relative p-6 rounded-2xl overflow-hidden" style={{ background: 'linear-gradient(135deg, rgba(254,211,88,0.2) 0%, rgba(255,107,53,0.2) 100%)' }}>
+                <div className="absolute inset-0 opacity-30" style={{ background: 'radial-gradient(circle at 70% 30%, rgba(254,211,88,0.5) 0%, transparent 50%)' }}></div>
+                <div className="relative z-10 text-center">
+                  <h4 className="font-bold text-2xl mb-4" style={{ color: '#FED358' }}>🚀 Ready to Start Winning?</h4>
+                  <button 
+                    onClick={() => {
+                      setShowAboutUsDialog(false);
+                      setShowRegisterDialog(true);
+                    }}
+                    className="px-8 py-4 font-bold rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 text-lg"
+                    style={{ background: 'linear-gradient(135deg, #FED358 0%, #FF6B35 100%)', color: '#1a1520' }}
+                    data-testid="button-start-predicting"
+                  >
+                    Start Predicting Now!
+                  </button>
                 </div>
               </div>
             </div>
@@ -741,186 +780,253 @@ export default function Home() {
         </div>
       )}
 
-      {/* Disclaimer Dialog */}
+      {/* Disclaimer Dialog - Modern Design */}
       {showDisclaimerDialog && (
-        <div className="fixed inset-0 bg-black bg-opacity-60 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <div className="rounded-3xl max-w-lg w-full max-h-[80vh] overflow-y-auto shadow-2xl border-2" style={{ backgroundColor: 'rgb(56, 46, 53)', border: '2px solid #FED358' }}>
-            <div className="p-8">
-              <div className="flex justify-between items-center mb-8">
-                <h2 className="text-3xl font-bold" style={{ color: '#FED358' }}>Disclaimer</h2>
-                <button
-                  onClick={() => setShowDisclaimerDialog(false)}
-                  className="text-2xl font-bold rounded-full w-8 h-8 flex items-center justify-center transition-all duration-200"
-                  style={{ color: '#FDE4BC', backgroundColor: 'rgba(254, 211, 88, 0.2)' }}
-                  onMouseEnter={(e) => (e.target as HTMLButtonElement).style.backgroundColor = 'rgba(254, 211, 88, 0.4)'}
-                  onMouseLeave={(e) => (e.target as HTMLButtonElement).style.backgroundColor = 'rgba(254, 211, 88, 0.2)'}
-                >
-                  ×
-                </button>
+        <div className="fixed inset-0 bg-black/70 backdrop-blur-md z-50 flex items-center justify-center p-4">
+          <div className="rounded-3xl max-w-2xl w-full max-h-[85vh] overflow-hidden shadow-2xl" style={{ background: 'linear-gradient(145deg, #1a1520 0%, #0d0a12 100%)' }}>
+            {/* Hero Section */}
+            <div className="relative h-40 overflow-hidden" style={{ background: 'linear-gradient(135deg, #FFA500 0%, #FF6B35 50%, #E74C3C 100%)' }}>
+              <div className="absolute inset-0" style={{ background: 'radial-gradient(circle at 70% 50%, rgba(255,255,255,0.2) 0%, transparent 50%)' }}></div>
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="text-center">
+                  <div className="text-6xl mb-2">⚖️</div>
+                  <h2 className="text-3xl font-black text-black tracking-tight">Legal Disclaimer</h2>
+                </div>
               </div>
-              
-              <div className="space-y-6">
-                <div className="rounded-2xl p-6" style={{ backgroundColor: 'rgba(255, 165, 0, 0.2)', border: '1px solid rgba(255, 165, 0, 0.4)' }}>
-                  <p className="font-bold text-center text-lg mb-4" style={{ color: '#FFA500' }}>
-                    ⚠️ Important Notice ⚠️
-                  </p>
-                  <p className="text-base leading-relaxed" style={{ color: '#FDE4BC' }}>
-                    Please note that Our Vip App provides predictions based on statistical analysis and past lottery results. Our predictions are meant to serve as a guide, and not to encourage addiction.
-                  </p>
-                </div>
-
-                <div className="space-y-4" style={{ color: '#FDE4BC' }}>
-                  <p className="text-base leading-relaxed">
-                    We make predictions for platforms, and if they shut down or if something happens to them, we are not responsible.
-                  </p>
-
-                  <div className="rounded-2xl p-6" style={{ backgroundColor: 'rgba(231, 76, 60, 0.2)', border: '1px solid rgba(231, 76, 60, 0.4)' }}>
-                    <p className="font-bold text-center text-lg mb-3" style={{ color: '#E74C3C' }}>
-                      🎲 Risk Notice 🎲
-                    </p>
-                    <p className="text-base leading-relaxed text-center" style={{ color: '#FDE4BC' }}>
-                      Participation in lottery games involves risk. It is important to play responsibly and within your financial limits.
-                    </p>
+              <button
+                onClick={() => setShowDisclaimerDialog(false)}
+                className="absolute top-4 right-4 w-10 h-10 rounded-full bg-black/30 hover:bg-black/50 flex items-center justify-center transition-all duration-200 text-white text-xl font-bold"
+                data-testid="button-close-disclaimer"
+              >
+                ×
+              </button>
+            </div>
+            
+            {/* Content */}
+            <div className="p-8 overflow-y-auto max-h-[calc(85vh-10rem)]">
+              {/* Important Notice Banner */}
+              <div className="relative mb-6 p-5 rounded-2xl overflow-hidden" style={{ background: 'linear-gradient(135deg, rgba(255,165,0,0.2) 0%, rgba(255,107,53,0.15) 100%)', borderLeft: '4px solid #FFA500' }}>
+                <div className="flex items-start">
+                  <div className="w-12 h-12 rounded-full flex items-center justify-center mr-4 flex-shrink-0" style={{ background: 'linear-gradient(135deg, #FFA500, #FF6B35)' }}>
+                    <span className="text-2xl">⚠️</span>
                   </div>
-
-                  <p className="text-base leading-relaxed">
-                    By using our services, you acknowledge that you understand the risks involved and agree to take responsibility for your decisions and actions.
-                  </p>
-
-                  <div className="rounded-2xl p-6" style={{ backgroundColor: 'rgba(52, 152, 219, 0.2)', border: '1px solid rgba(52, 152, 219, 0.4)' }}>
-                    <p className="font-bold text-center text-lg mb-3" style={{ color: '#3498DB' }}>
-                      🎯 Remember 🎯
-                    </p>
-                    <p className="text-base leading-relaxed text-center" style={{ color: '#FDE4BC' }}>
-                      Lottery games are a form of gambling, and it is essential to make informed choices.
+                  <div>
+                    <h4 className="font-bold text-lg mb-2" style={{ color: '#FFA500' }}>Important Notice</h4>
+                    <p className="text-sm leading-relaxed" style={{ color: '#FDE4BC' }}>
+                      Our VIP App provides predictions based on statistical analysis and past lottery results. These predictions serve as a guide only.
                     </p>
                   </div>
                 </div>
+              </div>
 
-                <div className="rounded-2xl p-6" style={{ backgroundColor: 'rgba(254, 211, 88, 0.2)', border: '1px solid rgba(254, 211, 88, 0.4)' }}>
-                  <div className="text-center">
-                    <button 
-                      onClick={() => setShowDisclaimerDialog(false)}
-                      className="px-6 py-3 font-bold rounded-full shadow-lg transition-all duration-300 transform hover:scale-105"
-                      style={{ backgroundColor: '#FED358', color: '#231C21' }}
-                      onMouseEnter={(e) => (e.target as HTMLButtonElement).style.backgroundColor = '#FFE082'}
-                      onMouseLeave={(e) => (e.target as HTMLButtonElement).style.backgroundColor = '#FED358'}
-                    >
-                      I Understand
-                    </button>
+              {/* Disclaimer Points */}
+              <div className="space-y-4 mb-6">
+                <div className="p-5 rounded-2xl" style={{ background: 'rgba(231,76,60,0.1)', borderLeft: '4px solid #E74C3C' }}>
+                  <div className="flex items-start">
+                    <div className="w-10 h-10 rounded-full flex items-center justify-center mr-4 flex-shrink-0" style={{ background: 'linear-gradient(135deg, #E74C3C, #C0392B)' }}>
+                      <span className="text-white text-lg">🎲</span>
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-base mb-2" style={{ color: '#E74C3C' }}>Risk Notice</h4>
+                      <p className="text-sm leading-relaxed" style={{ color: '#FDE4BC' }}>
+                        Participation in lottery games involves risk. Play responsibly and within your financial limits.
+                      </p>
+                    </div>
                   </div>
                 </div>
+
+                <div className="p-5 rounded-2xl" style={{ background: 'rgba(52,152,219,0.1)', borderLeft: '4px solid #3498DB' }}>
+                  <div className="flex items-start">
+                    <div className="w-10 h-10 rounded-full flex items-center justify-center mr-4 flex-shrink-0" style={{ background: 'linear-gradient(135deg, #3498DB, #2980B9)' }}>
+                      <span className="text-white text-lg">🛡️</span>
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-base mb-2" style={{ color: '#3498DB' }}>Platform Disclaimer</h4>
+                      <p className="text-sm leading-relaxed" style={{ color: '#FDE4BC' }}>
+                        We are not responsible if third-party platforms shut down or experience issues.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="p-5 rounded-2xl" style={{ background: 'rgba(155,89,182,0.1)', borderLeft: '4px solid #9B59B6' }}>
+                  <div className="flex items-start">
+                    <div className="w-10 h-10 rounded-full flex items-center justify-center mr-4 flex-shrink-0" style={{ background: 'linear-gradient(135deg, #9B59B6, #8E44AD)' }}>
+                      <span className="text-white text-lg">📋</span>
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-base mb-2" style={{ color: '#9B59B6' }}>User Responsibility</h4>
+                      <p className="text-sm leading-relaxed" style={{ color: '#FDE4BC' }}>
+                        By using our services, you acknowledge the risks and accept responsibility for your decisions.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Remember Box */}
+              <div className="relative mb-6 p-5 rounded-2xl overflow-hidden" style={{ background: 'linear-gradient(135deg, rgba(46,204,113,0.15) 0%, rgba(39,174,96,0.1) 100%)', border: '1px solid rgba(46,204,113,0.3)' }}>
+                <div className="text-center">
+                  <div className="inline-flex items-center justify-center w-14 h-14 rounded-full mb-3" style={{ background: 'linear-gradient(135deg, #2ECC71, #27AE60)' }}>
+                    <span className="text-2xl">💡</span>
+                  </div>
+                  <h4 className="font-bold text-lg mb-2" style={{ color: '#2ECC71' }}>Remember</h4>
+                  <p className="text-sm" style={{ color: '#FDE4BC' }}>
+                    Lottery games are a form of gambling. Always make informed choices and never bet more than you can afford to lose.
+                  </p>
+                </div>
+              </div>
+
+              {/* Accept Button */}
+              <div className="text-center">
+                <button 
+                  onClick={() => setShowDisclaimerDialog(false)}
+                  className="px-8 py-4 font-bold rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 text-lg"
+                  style={{ background: 'linear-gradient(135deg, #FED358 0%, #FF6B35 100%)', color: '#1a1520' }}
+                  data-testid="button-accept-disclaimer"
+                >
+                  I Understand & Accept
+                </button>
               </div>
             </div>
           </div>
         </div>
       )}
 
-      {/* Warning Dialog */}
+      {/* Warning Dialog - Modern Design */}
       {showWarningDialog && (
-        <div className="fixed inset-0 bg-black bg-opacity-60 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <div className="rounded-3xl max-w-2xl w-full max-h-[80vh] overflow-y-auto shadow-2xl border-2" style={{ backgroundColor: 'rgb(56, 46, 53)', border: '2px solid #FED358' }}>
-            <div className="p-8">
-              <div className="flex justify-between items-center mb-8">
-                <h2 className="text-3xl font-bold" style={{ color: '#FED358' }}>Important Warning</h2>
-                <button
-                  onClick={() => setShowWarningDialog(false)}
-                  className="text-2xl font-bold rounded-full w-8 h-8 flex items-center justify-center transition-all duration-200"
-                  style={{ color: '#FDE4BC', backgroundColor: 'rgba(254, 211, 88, 0.2)' }}
-                  onMouseEnter={(e) => (e.target as HTMLButtonElement).style.backgroundColor = 'rgba(254, 211, 88, 0.4)'}
-                  onMouseLeave={(e) => (e.target as HTMLButtonElement).style.backgroundColor = 'rgba(254, 211, 88, 0.2)'}
-                >
-                  ×
-                </button>
+        <div className="fixed inset-0 bg-black/70 backdrop-blur-md z-50 flex items-center justify-center p-4">
+          <div className="rounded-3xl max-w-2xl w-full max-h-[85vh] overflow-hidden shadow-2xl" style={{ background: 'linear-gradient(145deg, #1a1520 0%, #0d0a12 100%)' }}>
+            {/* Hero Section */}
+            <div className="relative h-40 overflow-hidden" style={{ background: 'linear-gradient(135deg, #E74C3C 0%, #C0392B 50%, #922B21 100%)' }}>
+              <div className="absolute inset-0" style={{ background: 'radial-gradient(circle at 50% 50%, rgba(255,255,255,0.15) 0%, transparent 60%)' }}></div>
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="text-center">
+                  <div className="text-6xl mb-2">🛡️</div>
+                  <h2 className="text-3xl font-black text-white tracking-tight">Security Warning</h2>
+                </div>
               </div>
-              
-              <div className="space-y-6">
-                <div className="rounded-2xl p-6" style={{ backgroundColor: 'rgba(230, 126, 34, 0.2)', border: '1px solid rgba(230, 126, 34, 0.4)' }}>
-                  <p className="text-base leading-relaxed" style={{ color: '#FDE4BC' }}>
-                    At V3 GAME VIP, we believe in empowering our users with knowledge. It's crucial to understand that to use advanced systems like SHA-256 for generating random results, there's always a potential for manipulation. This is where our expertise comes in handy.
+              <button
+                onClick={() => setShowWarningDialog(false)}
+                className="absolute top-4 right-4 w-10 h-10 rounded-full bg-black/30 hover:bg-black/50 flex items-center justify-center transition-all duration-200 text-white text-xl font-bold"
+                data-testid="button-close-warning"
+              >
+                ×
+              </button>
+            </div>
+            
+            {/* Content */}
+            <div className="p-8 overflow-y-auto max-h-[calc(85vh-10rem)]">
+              {/* Intro */}
+              <div className="relative mb-6 p-5 rounded-2xl overflow-hidden" style={{ background: 'linear-gradient(135deg, rgba(230,126,34,0.15) 0%, rgba(231,76,60,0.1) 100%)', borderLeft: '4px solid #E67E22' }}>
+                <p className="text-base leading-relaxed" style={{ color: '#FDE4BC' }}>
+                  At V3 GAME VIP, we empower users with knowledge. Platforms using systems like SHA-256 for random results can be manipulated. Our expertise helps you stay ahead.
+                </p>
+              </div>
+
+              {/* How We Protect You */}
+              <div className="mb-6 p-5 rounded-2xl" style={{ background: 'rgba(46,204,113,0.1)', border: '1px solid rgba(46,204,113,0.3)' }}>
+                <div className="flex items-center mb-4">
+                  <div className="w-12 h-12 rounded-full flex items-center justify-center mr-4" style={{ background: 'linear-gradient(135deg, #2ECC71, #27AE60)' }}>
+                    <span className="text-2xl">🛡️</span>
+                  </div>
+                  <h3 className="font-bold text-xl" style={{ color: '#2ECC71' }}>How We Protect You</h3>
+                </div>
+                <div className="grid grid-cols-1 gap-3">
+                  <div className="flex items-center p-3 rounded-xl" style={{ background: 'rgba(46,204,113,0.1)' }}>
+                    <div className="w-8 h-8 rounded-full flex items-center justify-center mr-3 flex-shrink-0" style={{ background: '#2ECC71' }}>
+                      <span className="text-white text-sm">✓</span>
+                    </div>
+                    <span className="text-sm" style={{ color: '#FDE4BC' }}>Sophisticated API monitoring for data manipulation</span>
+                  </div>
+                  <div className="flex items-center p-3 rounded-xl" style={{ background: 'rgba(46,204,113,0.1)' }}>
+                    <div className="w-8 h-8 rounded-full flex items-center justify-center mr-3 flex-shrink-0" style={{ background: '#2ECC71' }}>
+                      <span className="text-white text-sm">✓</span>
+                    </div>
+                    <span className="text-sm" style={{ color: '#FDE4BC' }}>Advanced pattern detection algorithms</span>
+                  </div>
+                  <div className="flex items-center p-3 rounded-xl" style={{ background: 'rgba(46,204,113,0.1)' }}>
+                    <div className="w-8 h-8 rounded-full flex items-center justify-center mr-3 flex-shrink-0" style={{ background: '#2ECC71' }}>
+                      <span className="text-white text-sm">✓</span>
+                    </div>
+                    <span className="text-sm" style={{ color: '#FDE4BC' }}>Multi-factor analysis beyond platform data</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Manipulation Tactics */}
+              <div className="mb-6 p-5 rounded-2xl" style={{ background: 'rgba(231,76,60,0.1)', border: '1px solid rgba(231,76,60,0.3)' }}>
+                <div className="flex items-center mb-4">
+                  <div className="w-12 h-12 rounded-full flex items-center justify-center mr-4" style={{ background: 'linear-gradient(135deg, #E74C3C, #C0392B)' }}>
+                    <span className="text-2xl">⚠️</span>
+                  </div>
+                  <h3 className="font-bold text-xl" style={{ color: '#E74C3C' }}>Watch Out For</h3>
+                </div>
+                <div className="space-y-3">
+                  <div className="p-3 rounded-xl" style={{ background: 'rgba(231,76,60,0.1)' }}>
+                    <div className="flex items-start">
+                      <div className="w-6 h-6 rounded-full flex items-center justify-center mr-3 mt-0.5 flex-shrink-0" style={{ background: '#E74C3C' }}>
+                        <span className="text-white text-xs">!</span>
+                      </div>
+                      <div>
+                        <span className="font-semibold text-sm" style={{ color: '#E74C3C' }}>Controlled "Randomness"</span>
+                        <p className="text-xs mt-1" style={{ color: '#FDE4BC' }}>Platforms may influence how "random" generation works.</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="p-3 rounded-xl" style={{ background: 'rgba(231,76,60,0.1)' }}>
+                    <div className="flex items-start">
+                      <div className="w-6 h-6 rounded-full flex items-center justify-center mr-3 mt-0.5 flex-shrink-0" style={{ background: '#E74C3C' }}>
+                        <span className="text-white text-xs">!</span>
+                      </div>
+                      <div>
+                        <span className="font-semibold text-sm" style={{ color: '#E74C3C' }}>Hidden Algorithm Changes</span>
+                        <p className="text-xs mt-1" style={{ color: '#FDE4BC' }}>Undisclosed changes that unfairly shift odds.</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="p-3 rounded-xl" style={{ background: 'rgba(231,76,60,0.1)' }}>
+                    <div className="flex items-start">
+                      <div className="w-6 h-6 rounded-full flex items-center justify-center mr-3 mt-0.5 flex-shrink-0" style={{ background: '#E74C3C' }}>
+                        <span className="text-white text-xs">!</span>
+                      </div>
+                      <div>
+                        <span className="font-semibold text-sm" style={{ color: '#E74C3C' }}>Selective Payout Practices</span>
+                        <p className="text-xs mt-1" style={{ color: '#FDE4BC' }}>Delayed or withheld payouts without explanation.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Stay Smart */}
+              <div className="mb-6 p-5 rounded-2xl" style={{ background: 'rgba(155,89,182,0.1)', border: '1px solid rgba(155,89,182,0.3)' }}>
+                <div className="flex items-center mb-4">
+                  <div className="w-12 h-12 rounded-full flex items-center justify-center mr-4" style={{ background: 'linear-gradient(135deg, #9B59B6, #8E44AD)' }}>
+                    <span className="text-2xl">🧠</span>
+                  </div>
+                  <h3 className="font-bold text-xl" style={{ color: '#9B59B6' }}>Stay Informed, Play Smart</h3>
+                </div>
+                <p className="text-sm leading-relaxed mb-4" style={{ color: '#FDE4BC' }}>
+                  Always verify platform credibility before engaging. With V3 GAME VIP, you have the insights to make informed decisions.
+                </p>
+                <div className="p-4 rounded-xl text-center" style={{ background: 'linear-gradient(135deg, rgba(254,211,88,0.2) 0%, rgba(255,107,53,0.15) 100%)', border: '1px solid rgba(254,211,88,0.4)' }}>
+                  <p className="font-bold text-lg" style={{ color: '#FED358' }}>
+                    💡 Knowledge is power in online lotteries! 💡
                   </p>
                 </div>
+              </div>
 
-                <div className="rounded-2xl p-6" style={{ backgroundColor: 'rgba(46, 204, 113, 0.2)', border: '1px solid rgba(46, 204, 113, 0.4)' }}>
-                  <h3 className="font-bold text-xl mb-4 flex items-center" style={{ color: '#2ECC71' }}>
-                    <span className="w-6 h-6 rounded-full flex items-center justify-center text-white text-sm mr-3" style={{ backgroundColor: '#2ECC71' }}>🛡️</span>
-                    How We Protect You:
-                  </h3>
-                  <div className="space-y-3" style={{ color: '#FDE4BC' }}>
-                    <div className="flex items-start">
-                      <span className="w-2 h-2 rounded-full mr-3 mt-2 flex-shrink-0" style={{ backgroundColor: '#2ECC71' }}></span>
-                      <span>Our sophisticated API system constantly monitors these platforms, tracking any data that might be manipulated.</span>
-                    </div>
-                    <div className="flex items-start">
-                      <span className="w-2 h-2 rounded-full mr-3 mt-2 flex-shrink-0" style={{ backgroundColor: '#2ECC71' }}></span>
-                      <span>We use advanced algorithms to detect patterns and anomalies that could indicate unfair practices.</span>
-                    </div>
-                    <div className="flex items-start">
-                      <span className="w-2 h-2 rounded-full mr-3 mt-2 flex-shrink-0" style={{ backgroundColor: '#2ECC71' }}></span>
-                      <span>Our predictions are based on a comprehensive analysis of multiple factors, not just the platform's provided data.</span>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="rounded-2xl p-6" style={{ backgroundColor: 'rgba(231, 76, 60, 0.2)', border: '1px solid rgba(231, 76, 60, 0.4)' }}>
-                  <h3 className="font-bold text-xl mb-4 flex items-center" style={{ color: '#E74C3C' }}>
-                    <span className="w-6 h-6 rounded-full flex items-center justify-center text-white text-sm mr-3" style={{ backgroundColor: '#E74C3C' }}>⚠️</span>
-                    Potential Manipulation Tactics:
-                  </h3>
-                  <div className="space-y-3" style={{ color: '#FDE4BC' }}>
-                    <div className="flex items-start">
-                      <span className="w-2 h-2 rounded-full mr-3 mt-2 flex-shrink-0" style={{ backgroundColor: '#E74C3C' }}></span>
-                      <div>
-                        <span className="font-semibold">Controlled "Randomness": </span>
-                        <span>Platforms might influence when and how their "random" number generation is applied.</span>
-                      </div>
-                    </div>
-                    <div className="flex items-start">
-                      <span className="w-2 h-2 rounded-full mr-3 mt-2 flex-shrink-0" style={{ backgroundColor: '#E74C3C' }}></span>
-                      <div>
-                        <span className="font-semibold">Hidden Algorithm Changes: </span>
-                        <span>Sudden, undisclosed changes to algorithms could unfairly shift odds.</span>
-                      </div>
-                    </div>
-                    <div className="flex items-start">
-                      <span className="w-2 h-2 rounded-full mr-3 mt-2 flex-shrink-0" style={{ backgroundColor: '#E74C3C' }}></span>
-                      <div>
-                        <span className="font-semibold">Selective Payout Practices: </span>
-                        <span>Some platforms might delay or withhold certain payouts without clear explanation.</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="rounded-2xl p-6" style={{ backgroundColor: 'rgba(155, 89, 182, 0.2)', border: '1px solid rgba(155, 89, 182, 0.4)' }}>
-                  <h3 className="font-bold text-xl mb-4 flex items-center" style={{ color: '#9B59B6' }}>
-                    <span className="w-6 h-6 rounded-full flex items-center justify-center text-white text-sm mr-3" style={{ backgroundColor: '#9B59B6' }}>🧠</span>
-                    Stay Informed, Play Smart:
-                  </h3>
-                  <p className="text-base leading-relaxed" style={{ color: '#FDE4BC' }}>
-                    We urge all our users to approach these platforms with a critical eye. Always verify a platform's credibility before engaging. With V3 GAME by your side, you're equipped with the insights needed to make informed decisions and maximize your chances of success.
-                  </p>
-                  
-                  <div className="mt-4 p-4 rounded-xl" style={{ backgroundColor: 'rgba(254, 211, 88, 0.3)', border: '1px solid rgba(254, 211, 88, 0.5)' }}>
-                    <p className="font-bold text-center text-lg" style={{ color: '#FED358' }}>
-                      💡 Remember: Knowledge is power – especially in the world of online lotteries! 💡
-                    </p>
-                  </div>
-                </div>
-
-                <div className="rounded-2xl p-6" style={{ backgroundColor: 'rgba(254, 211, 88, 0.2)', border: '1px solid rgba(254, 211, 88, 0.4)' }}>
-                  <div className="text-center">
-                    <button 
-                      onClick={() => setShowWarningDialog(false)}
-                      className="px-6 py-3 font-bold rounded-full shadow-lg transition-all duration-300 transform hover:scale-105"
-                      style={{ backgroundColor: '#FED358', color: '#231C21' }}
-                      onMouseEnter={(e) => (e.target as HTMLButtonElement).style.backgroundColor = '#FFE082'}
-                      onMouseLeave={(e) => (e.target as HTMLButtonElement).style.backgroundColor = '#FED358'}
-                    >
-                      Got It, Thanks!
-                    </button>
-                  </div>
-                </div>
+              {/* CTA Button */}
+              <div className="text-center">
+                <button 
+                  onClick={() => setShowWarningDialog(false)}
+                  className="px-8 py-4 font-bold rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 text-lg"
+                  style={{ background: 'linear-gradient(135deg, #FED358 0%, #FF6B35 100%)', color: '#1a1520' }}
+                  data-testid="button-acknowledge-warning"
+                >
+                  Got It, Thanks!
+                </button>
               </div>
             </div>
           </div>
