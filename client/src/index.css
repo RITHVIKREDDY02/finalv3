@@ -66,9 +66,9 @@
 
   body {
     @apply font-sans antialiased;
-    background-color: #000c1c;
+    background-color: #ffffff;
     min-height: 100vh;
-    color: var(--light-gold);
+    color: #1a1a1a;
   }
 }
 
