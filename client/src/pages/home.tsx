@@ -246,33 +246,24 @@ export default function Home() {
       {/* Action Buttons - Below Hero Banner */}
       <div className="px-6 md:px-8 lg:px-12 xl:px-16 pb-6">
         <div className="max-w-2xl mx-auto lg:max-w-7xl">
-          {/* First Row: DEMO, PROOF, VIP */}
+          {/* Register and Login Buttons */}
           <div className="flex flex-row gap-2 sm:gap-4 md:gap-6 justify-center items-center mb-4">
-            {/* DEMO Button */}
+            {/* REGISTER Button */}
             <button 
-              className="flex-1 md:flex-none md:w-32 lg:w-36 px-4 sm:px-6 md:px-8 py-2 custom-button font-bold rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 text-sm sm:text-base"
-              onClick={() => setShowDemoDialog(true)}
+              className="flex-1 md:flex-none md:w-40 lg:w-44 px-4 sm:px-6 md:px-8 py-2 custom-button font-bold rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 text-sm sm:text-base"
+              onClick={() => window.open("https://www.v3gameb.com/#/pages/login/register?invitationCode=7532630349", "_blank")}
+              data-testid="button-register"
             >
-              DEMO
+              REGISTER
             </button>
             
-            {/* PROOF Button */}
+            {/* LOGIN Button */}
             <button 
-              className="flex-1 md:flex-none md:w-32 lg:w-36 px-4 sm:px-6 md:px-8 py-2 custom-button font-bold rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 text-sm sm:text-base"
-              onClick={() => {
-                console.log('Proof clicked');
-                setShowProofDialog(true);
-              }}
+              className="flex-1 md:flex-none md:w-40 lg:w-44 px-4 sm:px-6 md:px-8 py-2 custom-button font-bold rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 text-sm sm:text-base"
+              onClick={() => window.open("https://www.v3gameb.com/#/pages/login/login", "_blank")}
+              data-testid="button-login"
             >
-              PROOF
-            </button>
-            
-            {/* VIP Button */}
-            <button 
-              className="flex-1 md:flex-none md:w-32 lg:w-36 px-4 sm:px-6 md:px-8 py-2 custom-button font-bold rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 text-sm sm:text-base"
-              onClick={handleVipClick}
-            >
-              VIP
+              LOGIN
             </button>
           </div>
           
