@@ -16,7 +16,7 @@ export default function AboutPage() {
             </a>
           </Link>
           <a 
-            href="https://t.me/V3Games" 
+            href="https://t.me/Earn_With_Milind_77" 
             target="_blank" 
             rel="noopener noreferrer"
             className="flex items-center gap-2 px-4 py-2 rounded-full transition-all duration-300 hover:scale-105"

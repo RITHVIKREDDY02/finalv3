@@ -14,11 +14,11 @@ export default function RegistrationDialog({ isOpen, onClose }: RegistrationDial
   };
 
   const handleTelegramClick = () => {
-    window.open("https://t.me/V3Games", "_blank");
+    window.open("https://t.me/Earn_With_Milind_77", "_blank");
   };
 
   const handleHelpClick = () => {
-    window.open("https://t.me/Bea_A22", "_blank");
+    window.open("https://t.me/Earn_With_Milind_77", "_blank");
   };
 
   return (

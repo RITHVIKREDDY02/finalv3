@@ -67,7 +67,7 @@ export function ComingSoonDialog({ isOpen, onClose, gameName }: ComingSoonDialog
                   </p>
                 </div>
                 <a 
-                  href="https://t.me/V3Games" 
+                  href="https://t.me/Earn_With_Milind_77" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="flex items-center justify-center gap-2 bg-gradient-to-r from-black to-gray-800 text-[#FED358] font-bold px-6 py-3 rounded-xl shadow-lg transform transition-all duration-200 hover:scale-105 hover:shadow-xl mt-4"
