@@ -7,6 +7,8 @@ import Home from "@/pages/home";
 import RegisterPage from "@/pages/register";
 import AboutPage from "@/pages/about";
 import DisclaimerPage from "@/pages/disclaimer";
+import TermsPage from "@/pages/terms";
+import PrivacyPage from "@/pages/privacy";
 import WarningPage from "@/pages/warning";
 import NotFound from "@/pages/not-found";
 
@@ -17,6 +19,8 @@ function Router() {
       <Route path="/register" component={RegisterPage} />
       <Route path="/about" component={AboutPage} />
       <Route path="/disclaimer" component={DisclaimerPage} />
+      <Route path="/terms" component={TermsPage} />
+      <Route path="/privacy" component={PrivacyPage} />
       <Route path="/warning" component={WarningPage} />
       <Route component={NotFound} />
     </Switch>
