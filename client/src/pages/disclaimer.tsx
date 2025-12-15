@@ -1,5 +1,5 @@
 import { Link } from "wouter";
-import { ArrowLeft, Scale, AlertTriangle, Shield, FileText, Clock, Users } from "lucide-react";
+import { ArrowLeft, Scale, Mail, FileText, CheckCircle, RefreshCw } from "lucide-react";
 import { FaTelegram } from "react-icons/fa";
 import logoPath from "@assets/logo_nav_1756545819204.png";
 
@@ -37,33 +37,27 @@ export default function DisclaimerPage() {
             <Scale className="w-12 h-12 text-black" />
           </div>
           <h1 className="text-5xl md:text-6xl font-black mb-4 tracking-tight" style={{ color: '#FED358' }}>
-            Legal Disclaimer
+            Disclaimer
           </h1>
           <p className="text-xl md:text-2xl max-w-2xl mx-auto leading-relaxed" style={{ color: '#FDE4BC' }}>
-            Important information about our services and your responsibilities
+            Important information about our website and services
           </p>
         </div>
       </div>
 
-      {/* Last Updated */}
+      {/* Contact Info */}
       <div className="max-w-4xl mx-auto px-6 mb-8">
-        <div className="flex items-center justify-center gap-2 text-sm" style={{ color: '#FDE4BC' }}>
-          <Clock className="w-4 h-4" />
-          <span>Last Updated: December 2024</span>
-        </div>
-      </div>
-
-      {/* Important Notice Banner */}
-      <div className="max-w-4xl mx-auto px-6 mb-12">
-        <div className="relative p-6 rounded-3xl overflow-hidden" style={{ background: 'linear-gradient(135deg, rgba(254,211,88,0.15) 0%, rgba(255,107,53,0.1) 100%)', borderLeft: '4px solid #FED358' }}>
-          <div className="flex items-start gap-5">
-            <div className="w-14 h-14 rounded-2xl flex items-center justify-center flex-shrink-0" style={{ background: 'linear-gradient(135deg, #FED358, #FF6B35)' }}>
-              <AlertTriangle className="w-7 h-7 text-black" />
+        <div className="p-6 rounded-3xl" style={{ background: 'rgba(254,211,88,0.08)', border: '1px solid rgba(254,211,88,0.2)' }}>
+          <div className="flex items-center gap-4">
+            <div className="w-12 h-12 rounded-2xl flex items-center justify-center flex-shrink-0" style={{ background: 'linear-gradient(135deg, #FED358, #FF6B35)' }}>
+              <Mail className="w-6 h-6 text-black" />
             </div>
             <div>
-              <h3 className="text-xl font-bold mb-2" style={{ color: '#FED358' }}>Important Notice</h3>
-              <p className="text-base leading-relaxed" style={{ color: '#FDE4BC' }}>
-                Our VIP App provides predictions based on statistical analysis and past lottery results. These predictions serve as a guide only and are not guaranteed outcomes.
+              <p className="text-base" style={{ color: '#FDE4BC' }}>
+                If you require any more information or have any questions about our site's disclaimer, please feel free to contact us by email at{" "}
+                <a href="mailto:starletpo123@gmail.com" className="font-semibold hover:underline" style={{ color: '#FED358' }}>
+                  starletpo123@gmail.com
+                </a>
               </p>
             </div>
           </div>
@@ -72,97 +66,79 @@ export default function DisclaimerPage() {
 
       {/* Disclaimer Sections */}
       <div className="max-w-4xl mx-auto px-6 mb-16 space-y-6">
-        {/* Risk Notice */}
-        <div className="p-8 rounded-3xl" style={{ background: 'rgba(255,107,53,0.08)', border: '1px solid rgba(255,107,53,0.2)' }}>
-          <div className="flex items-start gap-5">
-            <div className="w-12 h-12 rounded-2xl flex items-center justify-center flex-shrink-0" style={{ background: 'linear-gradient(135deg, #FF6B35, #FED358)' }}>
-              <AlertTriangle className="w-6 h-6 text-black" />
-            </div>
-            <div className="flex-1">
-              <h3 className="text-xl font-bold mb-3" style={{ color: '#FF6B35' }}>Risk Notice</h3>
-              <p className="text-base leading-relaxed mb-4" style={{ color: '#FDE4BC' }}>
-                Participation in lottery games involves significant financial risk. It is crucial that you:
-              </p>
-              <ul className="space-y-3">
-                <li className="flex items-start gap-3">
-                  <div className="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5" style={{ background: '#FF6B35' }}>
-                    <span className="text-black text-xs font-bold">1</span>
-                  </div>
-                  <span style={{ color: '#FDE4BC' }}>Play responsibly and within your financial limits</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <div className="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5" style={{ background: '#FF6B35' }}>
-                    <span className="text-black text-xs font-bold">2</span>
-                  </div>
-                  <span style={{ color: '#FDE4BC' }}>Never bet more than you can afford to lose</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <div className="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5" style={{ background: '#FF6B35' }}>
-                    <span className="text-black text-xs font-bold">3</span>
-                  </div>
-                  <span style={{ color: '#FDE4BC' }}>Understand that predictions are guides, not guarantees</span>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-        {/* Platform Disclaimer */}
-        <div className="p-8 rounded-3xl" style={{ background: 'rgba(254,211,88,0.08)', border: '1px solid rgba(254,211,88,0.2)' }}>
-          <div className="flex items-start gap-5">
-            <div className="w-12 h-12 rounded-2xl flex items-center justify-center flex-shrink-0" style={{ background: 'linear-gradient(135deg, #FED358, #FF6B35)' }}>
-              <Shield className="w-6 h-6 text-black" />
-            </div>
-            <div className="flex-1">
-              <h3 className="text-xl font-bold mb-3" style={{ color: '#FED358' }}>Platform Disclaimer</h3>
-              <p className="text-base leading-relaxed" style={{ color: '#FDE4BC' }}>
-                V3 GAME VIP provides prediction services for third-party gaming platforms. We are not affiliated with, endorsed by, or responsible for any external gaming platforms. If a third-party platform shuts down, experiences technical issues, or fails to honor payouts, V3 GAME VIP bears no responsibility for any resulting losses.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        {/* User Responsibility */}
-        <div className="p-8 rounded-3xl" style={{ background: 'rgba(255,107,53,0.08)', border: '1px solid rgba(255,107,53,0.2)' }}>
-          <div className="flex items-start gap-5">
-            <div className="w-12 h-12 rounded-2xl flex items-center justify-center flex-shrink-0" style={{ background: 'linear-gradient(135deg, #FF6B35, #FED358)' }}>
-              <Users className="w-6 h-6 text-black" />
-            </div>
-            <div className="flex-1">
-              <h3 className="text-xl font-bold mb-3" style={{ color: '#FF6B35' }}>User Responsibility</h3>
-              <p className="text-base leading-relaxed" style={{ color: '#FDE4BC' }}>
-                By using our services, you acknowledge that you fully understand the risks involved in lottery gaming. You agree to take complete responsibility for your decisions and actions. V3 GAME VIP serves as a prediction tool and the final decision to participate in any gaming activity rests solely with you.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        {/* Legal Terms */}
+        {/* Disclaimers for V3 Game */}
         <div className="p-8 rounded-3xl" style={{ background: 'rgba(254,211,88,0.08)', border: '1px solid rgba(254,211,88,0.2)' }}>
           <div className="flex items-start gap-5">
             <div className="w-12 h-12 rounded-2xl flex items-center justify-center flex-shrink-0" style={{ background: 'linear-gradient(135deg, #FED358, #FF6B35)' }}>
               <FileText className="w-6 h-6 text-black" />
             </div>
             <div className="flex-1">
-              <h3 className="text-xl font-bold mb-3" style={{ color: '#FED358' }}>Terms of Use</h3>
+              <h3 className="text-xl font-bold mb-3" style={{ color: '#FED358' }}>Disclaimers for V3 Game</h3>
               <p className="text-base leading-relaxed" style={{ color: '#FDE4BC' }}>
-                Our predictions are meant to serve as a guide and not to encourage addiction. We encourage responsible gaming practices. By using V3 GAME VIP, you confirm that you are of legal age to participate in gaming activities in your jurisdiction and that you agree to our terms of service.
+                All the information on this website - https://v3game.digital/ - is published in good faith and for general information purposes only. V3 Game does not make any warranties about the completeness, reliability, and accuracy of this information. Any action you take upon the information you find on this website (V3 Game), is strictly at your own risk. V3 Game will not be liable for any losses and/or damages in connection with the use of our website.
               </p>
             </div>
           </div>
         </div>
-      </div>
 
-      {/* Remember Section */}
-      <div className="max-w-4xl mx-auto px-6 mb-16">
-        <div className="relative p-8 rounded-3xl overflow-hidden text-center" style={{ background: 'linear-gradient(135deg, rgba(254,211,88,0.1) 0%, rgba(255,107,53,0.05) 100%)', border: '1px solid rgba(254,211,88,0.2)' }}>
-          <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl mb-4" style={{ background: 'linear-gradient(135deg, #FED358, #FF6B35)' }}>
-            <span className="text-3xl">💡</span>
+        {/* External Links */}
+        <div className="p-8 rounded-3xl" style={{ background: 'rgba(255,107,53,0.08)', border: '1px solid rgba(255,107,53,0.2)' }}>
+          <div className="flex items-start gap-5">
+            <div className="w-12 h-12 rounded-2xl flex items-center justify-center flex-shrink-0" style={{ background: 'linear-gradient(135deg, #FF6B35, #FED358)' }}>
+              <Scale className="w-6 h-6 text-black" />
+            </div>
+            <div className="flex-1">
+              <h3 className="text-xl font-bold mb-3" style={{ color: '#FF6B35' }}>External Links</h3>
+              <p className="text-base leading-relaxed" style={{ color: '#FDE4BC' }}>
+                From our website, you can visit other websites by following hyperlinks to such external sites. While we strive to provide only quality links to useful and ethical websites, we have no control over the content and nature of these sites. These links to other websites do not imply a recommendation for all the content found on these sites. Site owners and content may change without notice and may occur before we have the opportunity to remove a link that may have gone 'bad'.
+              </p>
+            </div>
           </div>
-          <h3 className="text-2xl font-bold mb-3" style={{ color: '#FED358' }}>Remember</h3>
-          <p className="text-lg max-w-2xl mx-auto" style={{ color: '#FDE4BC' }}>
-            Lottery games are a form of gambling and involve inherent risk. Always make informed choices, set limits for yourself, and never chase losses. Gaming should be entertaining, not stressful.
-          </p>
+        </div>
+
+        {/* Privacy Notice */}
+        <div className="p-8 rounded-3xl" style={{ background: 'rgba(254,211,88,0.08)', border: '1px solid rgba(254,211,88,0.2)' }}>
+          <div className="flex items-start gap-5">
+            <div className="w-12 h-12 rounded-2xl flex items-center justify-center flex-shrink-0" style={{ background: 'linear-gradient(135deg, #FED358, #FF6B35)' }}>
+              <Scale className="w-6 h-6 text-black" />
+            </div>
+            <div className="flex-1">
+              <h3 className="text-xl font-bold mb-3" style={{ color: '#FED358' }}>Privacy Notice</h3>
+              <p className="text-base leading-relaxed" style={{ color: '#FDE4BC' }}>
+                Please be also aware that when you leave our website, other sites may have different privacy policies and terms which are beyond our control. Please be sure to check the Privacy Policies of these sites as well as their "Terms of Service" before engaging in any business or uploading any information.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* Consent */}
+        <div className="p-8 rounded-3xl" style={{ background: 'rgba(255,107,53,0.08)', border: '1px solid rgba(255,107,53,0.2)' }}>
+          <div className="flex items-start gap-5">
+            <div className="w-12 h-12 rounded-2xl flex items-center justify-center flex-shrink-0" style={{ background: 'linear-gradient(135deg, #FF6B35, #FED358)' }}>
+              <CheckCircle className="w-6 h-6 text-black" />
+            </div>
+            <div className="flex-1">
+              <h3 className="text-xl font-bold mb-3" style={{ color: '#FF6B35' }}>Consent</h3>
+              <p className="text-base leading-relaxed" style={{ color: '#FDE4BC' }}>
+                By using our website, you hereby consent to our disclaimer and agree to its terms.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* Update */}
+        <div className="p-8 rounded-3xl" style={{ background: 'rgba(254,211,88,0.08)', border: '1px solid rgba(254,211,88,0.2)' }}>
+          <div className="flex items-start gap-5">
+            <div className="w-12 h-12 rounded-2xl flex items-center justify-center flex-shrink-0" style={{ background: 'linear-gradient(135deg, #FED358, #FF6B35)' }}>
+              <RefreshCw className="w-6 h-6 text-black" />
+            </div>
+            <div className="flex-1">
+              <h3 className="text-xl font-bold mb-3" style={{ color: '#FED358' }}>Update</h3>
+              <p className="text-base leading-relaxed" style={{ color: '#FDE4BC' }}>
+                Should we update, amend or make any changes to this document, those changes will be prominently posted here.
+              </p>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -173,7 +149,7 @@ export default function DisclaimerPage() {
           <div className="relative z-10">
             <h2 className="text-3xl md:text-4xl font-bold mb-4" style={{ color: '#FED358' }}>Questions?</h2>
             <p className="text-lg mb-8 max-w-xl mx-auto" style={{ color: '#FDE4BC' }}>
-              Contact our support team for any clarifications about our services.
+              Contact us at starletpo123@gmail.com for any clarifications.
             </p>
             <Link 
               href="/"
