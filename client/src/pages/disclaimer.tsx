@@ -1,5 +1,5 @@
 import { Link } from "wouter";
-import { ArrowLeft, Scale, Mail, FileText, CheckCircle, RefreshCw } from "lucide-react";
+import { ArrowLeft, Scale, Mail, FileText, CheckCircle, RefreshCw, ExternalLink, Shield } from "lucide-react";
 import { FaTelegram } from "react-icons/fa";
 import logoPath from "@assets/logo_nav_1756545819204.png";
 
@@ -30,10 +30,10 @@ export default function DisclaimerPage() {
       <div className="relative pt-20 pb-16 overflow-hidden">
         <div className="absolute inset-0" style={{ background: 'radial-gradient(ellipse at 50% 0%, rgba(254,211,88,0.15) 0%, transparent 50%)' }}></div>
         <div className="absolute top-20 left-10 w-64 h-64 rounded-full opacity-20" style={{ background: 'radial-gradient(circle, #FED358 0%, transparent 70%)', filter: 'blur(60px)' }}></div>
-        <div className="absolute top-40 right-10 w-48 h-48 rounded-full opacity-15" style={{ background: 'radial-gradient(circle, #FF6B35 0%, transparent 70%)', filter: 'blur(50px)' }}></div>
+        <div className="absolute top-40 right-10 w-48 h-48 rounded-full opacity-15" style={{ background: 'radial-gradient(circle, #FED358 0%, transparent 70%)', filter: 'blur(50px)' }}></div>
         
         <div className="relative max-w-4xl mx-auto px-6 text-center pt-12">
-          <div className="inline-flex items-center justify-center w-24 h-24 rounded-3xl mb-6 shadow-2xl" style={{ background: 'linear-gradient(135deg, #FED358 0%, #FF6B35 100%)' }}>
+          <div className="inline-flex items-center justify-center w-24 h-24 rounded-3xl mb-6 shadow-2xl" style={{ background: 'linear-gradient(135deg, #FED358 0%, #FED358 100%)' }}>
             <Scale className="w-12 h-12 text-black" />
           </div>
           <h1 className="text-5xl md:text-6xl font-black mb-4 tracking-tight" style={{ color: '#FED358' }}>
@@ -49,7 +49,7 @@ export default function DisclaimerPage() {
       <div className="max-w-4xl mx-auto px-6 mb-8">
         <div className="p-6 rounded-3xl" style={{ background: 'rgba(254,211,88,0.08)', border: '1px solid rgba(254,211,88,0.2)' }}>
           <div className="flex items-center gap-4">
-            <div className="w-12 h-12 rounded-2xl flex items-center justify-center flex-shrink-0" style={{ background: 'linear-gradient(135deg, #FED358, #FF6B35)' }}>
+            <div className="w-12 h-12 rounded-2xl flex items-center justify-center flex-shrink-0" style={{ background: '#FED358' }}>
               <Mail className="w-6 h-6 text-black" />
             </div>
             <div>
@@ -69,7 +69,7 @@ export default function DisclaimerPage() {
         {/* Disclaimers for V3 Game */}
         <div className="p-8 rounded-3xl" style={{ background: 'rgba(254,211,88,0.08)', border: '1px solid rgba(254,211,88,0.2)' }}>
           <div className="flex items-start gap-5">
-            <div className="w-12 h-12 rounded-2xl flex items-center justify-center flex-shrink-0" style={{ background: 'linear-gradient(135deg, #FED358, #FF6B35)' }}>
+            <div className="w-12 h-12 rounded-2xl flex items-center justify-center flex-shrink-0" style={{ background: '#FED358' }}>
               <FileText className="w-6 h-6 text-black" />
             </div>
             <div className="flex-1">
@@ -82,13 +82,13 @@ export default function DisclaimerPage() {
         </div>
 
         {/* External Links */}
-        <div className="p-8 rounded-3xl" style={{ background: 'rgba(255,107,53,0.08)', border: '1px solid rgba(255,107,53,0.2)' }}>
+        <div className="p-8 rounded-3xl" style={{ background: 'rgba(254,211,88,0.08)', border: '1px solid rgba(254,211,88,0.2)' }}>
           <div className="flex items-start gap-5">
-            <div className="w-12 h-12 rounded-2xl flex items-center justify-center flex-shrink-0" style={{ background: 'linear-gradient(135deg, #FF6B35, #FED358)' }}>
-              <Scale className="w-6 h-6 text-black" />
+            <div className="w-12 h-12 rounded-2xl flex items-center justify-center flex-shrink-0" style={{ background: '#FED358' }}>
+              <ExternalLink className="w-6 h-6 text-black" />
             </div>
             <div className="flex-1">
-              <h3 className="text-xl font-bold mb-3" style={{ color: '#FF6B35' }}>External Links</h3>
+              <h3 className="text-xl font-bold mb-3" style={{ color: '#FED358' }}>External Links</h3>
               <p className="text-base leading-relaxed" style={{ color: '#FDE4BC' }}>
                 From our website, you can visit other websites by following hyperlinks to such external sites. While we strive to provide only quality links to useful and ethical websites, we have no control over the content and nature of these sites. These links to other websites do not imply a recommendation for all the content found on these sites. Site owners and content may change without notice and may occur before we have the opportunity to remove a link that may have gone 'bad'.
               </p>
@@ -99,8 +99,8 @@ export default function DisclaimerPage() {
         {/* Privacy Notice */}
         <div className="p-8 rounded-3xl" style={{ background: 'rgba(254,211,88,0.08)', border: '1px solid rgba(254,211,88,0.2)' }}>
           <div className="flex items-start gap-5">
-            <div className="w-12 h-12 rounded-2xl flex items-center justify-center flex-shrink-0" style={{ background: 'linear-gradient(135deg, #FED358, #FF6B35)' }}>
-              <Scale className="w-6 h-6 text-black" />
+            <div className="w-12 h-12 rounded-2xl flex items-center justify-center flex-shrink-0" style={{ background: '#FED358' }}>
+              <Shield className="w-6 h-6 text-black" />
             </div>
             <div className="flex-1">
               <h3 className="text-xl font-bold mb-3" style={{ color: '#FED358' }}>Privacy Notice</h3>
@@ -112,13 +112,13 @@ export default function DisclaimerPage() {
         </div>
 
         {/* Consent */}
-        <div className="p-8 rounded-3xl" style={{ background: 'rgba(255,107,53,0.08)', border: '1px solid rgba(255,107,53,0.2)' }}>
+        <div className="p-8 rounded-3xl" style={{ background: 'rgba(254,211,88,0.08)', border: '1px solid rgba(254,211,88,0.2)' }}>
           <div className="flex items-start gap-5">
-            <div className="w-12 h-12 rounded-2xl flex items-center justify-center flex-shrink-0" style={{ background: 'linear-gradient(135deg, #FF6B35, #FED358)' }}>
+            <div className="w-12 h-12 rounded-2xl flex items-center justify-center flex-shrink-0" style={{ background: '#FED358' }}>
               <CheckCircle className="w-6 h-6 text-black" />
             </div>
             <div className="flex-1">
-              <h3 className="text-xl font-bold mb-3" style={{ color: '#FF6B35' }}>Consent</h3>
+              <h3 className="text-xl font-bold mb-3" style={{ color: '#FED358' }}>Consent</h3>
               <p className="text-base leading-relaxed" style={{ color: '#FDE4BC' }}>
                 By using our website, you hereby consent to our disclaimer and agree to its terms.
               </p>
@@ -129,7 +129,7 @@ export default function DisclaimerPage() {
         {/* Update */}
         <div className="p-8 rounded-3xl" style={{ background: 'rgba(254,211,88,0.08)', border: '1px solid rgba(254,211,88,0.2)' }}>
           <div className="flex items-start gap-5">
-            <div className="w-12 h-12 rounded-2xl flex items-center justify-center flex-shrink-0" style={{ background: 'linear-gradient(135deg, #FED358, #FF6B35)' }}>
+            <div className="w-12 h-12 rounded-2xl flex items-center justify-center flex-shrink-0" style={{ background: '#FED358' }}>
               <RefreshCw className="w-6 h-6 text-black" />
             </div>
             <div className="flex-1">
@@ -144,7 +144,7 @@ export default function DisclaimerPage() {
 
       {/* CTA Section */}
       <div className="max-w-4xl mx-auto px-6 pb-20">
-        <div className="relative p-10 rounded-3xl overflow-hidden text-center" style={{ background: 'linear-gradient(135deg, rgba(254,211,88,0.15) 0%, rgba(255,107,53,0.1) 100%)' }}>
+        <div className="relative p-10 rounded-3xl overflow-hidden text-center" style={{ background: 'rgba(254,211,88,0.1)', border: '1px solid rgba(254,211,88,0.2)' }}>
           <div className="absolute inset-0 opacity-30" style={{ background: 'radial-gradient(circle at 30% 50%, rgba(254,211,88,0.4) 0%, transparent 50%)' }}></div>
           <div className="relative z-10">
             <h2 className="text-3xl md:text-4xl font-bold mb-4" style={{ color: '#FED358' }}>Questions?</h2>
@@ -154,7 +154,7 @@ export default function DisclaimerPage() {
             <Link 
               href="/"
               className="inline-block px-10 py-4 font-bold rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 text-lg"
-              style={{ background: 'linear-gradient(135deg, #FED358 0%, #FF6B35 100%)', color: '#1a1520' }}
+              style={{ background: '#FED358', color: '#1a1520' }}
               data-testid="button-back-home"
             >
               Back to Home
