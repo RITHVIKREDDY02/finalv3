@@ -473,33 +473,30 @@ export default function Home() {
         <div className="mt-6 flex justify-center">
           <div className="flex flex-row gap-1 sm:gap-2 md:gap-4 lg:gap-6 justify-center items-center w-full max-w-sm sm:max-w-md md:max-w-lg">
             {/* About Us Button */}
-            <Link href="/about">
-              <a 
-                className="flex-1 md:flex-none md:w-40 lg:w-44 px-2 sm:px-3 md:px-6 lg:px-8 py-1.5 sm:py-2 custom-button font-bold rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 text-xs sm:text-sm md:text-base whitespace-nowrap text-center"
-                data-testid="link-about"
-              >
-                ABOUT US
-              </a>
+            <Link 
+              href="/about"
+              className="flex-1 md:flex-none md:w-40 lg:w-44 px-2 sm:px-3 md:px-6 lg:px-8 py-1.5 sm:py-2 custom-button font-bold rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 text-xs sm:text-sm md:text-base whitespace-nowrap text-center"
+              data-testid="link-about"
+            >
+              ABOUT US
             </Link>
             
             {/* Disclaimer Button */}
-            <Link href="/disclaimer">
-              <a 
-                className="flex-1 md:flex-none md:w-40 lg:w-44 px-2 sm:px-3 md:px-6 lg:px-8 py-1.5 sm:py-2 custom-button font-bold rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 text-xs sm:text-sm md:text-base whitespace-nowrap text-center"
-                data-testid="link-disclaimer"
-              >
-                DISCLAIMER
-              </a>
+            <Link 
+              href="/disclaimer"
+              className="flex-1 md:flex-none md:w-40 lg:w-44 px-2 sm:px-3 md:px-6 lg:px-8 py-1.5 sm:py-2 custom-button font-bold rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 text-xs sm:text-sm md:text-base whitespace-nowrap text-center"
+              data-testid="link-disclaimer"
+            >
+              DISCLAIMER
             </Link>
             
             {/* Warning Button */}
-            <Link href="/warning">
-              <a 
-                className="flex-1 md:flex-none md:w-40 lg:w-44 px-2 sm:px-3 md:px-6 lg:px-8 py-1.5 sm:py-2 custom-button font-bold rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 text-xs sm:text-sm md:text-base whitespace-nowrap text-center"
-                data-testid="link-warning"
-              >
-                WARNING
-              </a>
+            <Link 
+              href="/warning"
+              className="flex-1 md:flex-none md:w-40 lg:w-44 px-2 sm:px-3 md:px-6 lg:px-8 py-1.5 sm:py-2 custom-button font-bold rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 text-xs sm:text-sm md:text-base whitespace-nowrap text-center"
+              data-testid="link-warning"
+            >
+              WARNING
             </Link>
           </div>
         </div>

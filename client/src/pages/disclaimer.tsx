@@ -9,11 +9,9 @@ export default function DisclaimerPage() {
       {/* Navigation Bar */}
       <nav className="fixed top-0 left-0 right-0 z-50 px-4 py-3" style={{ background: 'linear-gradient(180deg, rgba(0,12,28,0.98) 0%, rgba(0,12,28,0.9) 100%)', backdropFilter: 'blur(10px)' }}>
         <div className="max-w-6xl mx-auto flex items-center justify-between">
-          <Link href="/">
-            <a className="flex items-center gap-3 text-white hover:opacity-80 transition-opacity" data-testid="link-back-home">
+          <Link href="/" className="flex items-center gap-3 text-white hover:opacity-80 transition-opacity" data-testid="link-back-home">
               <ArrowLeft className="w-5 h-5" />
               <img src={logoPath} alt="V3 GAME Logo" className="h-6" />
-            </a>
           </Link>
           <a 
             href="https://t.me/Earn_With_Milind_77" 
@@ -177,14 +175,13 @@ export default function DisclaimerPage() {
             <p className="text-lg mb-8 max-w-xl mx-auto" style={{ color: '#FDE4BC' }}>
               Contact our support team for any clarifications about our services.
             </p>
-            <Link href="/">
-              <a 
-                className="inline-block px-10 py-4 font-bold rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 text-lg"
-                style={{ background: 'linear-gradient(135deg, #FED358 0%, #FF6B35 100%)', color: '#1a1520' }}
-                data-testid="button-back-home"
-              >
-                Back to Home
-              </a>
+            <Link 
+              href="/"
+              className="inline-block px-10 py-4 font-bold rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 text-lg"
+              style={{ background: 'linear-gradient(135deg, #FED358 0%, #FF6B35 100%)', color: '#1a1520' }}
+              data-testid="button-back-home"
+            >
+              Back to Home
             </Link>
           </div>
         </div>
