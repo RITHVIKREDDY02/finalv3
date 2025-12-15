@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
-import { Crown, Sparkles, ArrowRight, X } from "lucide-react";
+import { Crown, ArrowRight, X } from "lucide-react";
+import { FaTelegram } from "react-icons/fa";
 
 interface RegistrationDialogProps {
   isOpen: boolean;
@@ -10,6 +11,10 @@ interface RegistrationDialogProps {
 export default function RegistrationDialog({ isOpen, onClose }: RegistrationDialogProps) {
   const handleStartButtonClick = () => {
     window.open("https://www.v3gameb.com/#/pages/login/register?invitationCode=7532630349", "_blank");
+  };
+
+  const handleTelegramClick = () => {
+    window.open("https://t.me/Earn_With_Milind_77", "_blank");
   };
 
   return (
@@ -36,25 +41,16 @@ export default function RegistrationDialog({ isOpen, onClose }: RegistrationDial
             <X className="w-4 h-4" style={{ color: '#FDE4BC' }} />
           </button>
 
-          {/* Animated background elements */}
-          <div className="absolute inset-0 overflow-hidden pointer-events-none">
-            <div className="absolute -top-20 -right-20 w-40 h-40 rounded-full opacity-20 animate-pulse" style={{ background: 'radial-gradient(circle, #FED358 0%, transparent 70%)' }}></div>
-            <div className="absolute -bottom-16 -left-16 w-32 h-32 rounded-full opacity-15 animate-pulse" style={{ background: 'radial-gradient(circle, #FF6B35 0%, transparent 70%)', animationDelay: '1s' }}></div>
-            <div className="absolute top-1/2 -right-8 w-24 h-24 rounded-full opacity-10 animate-pulse" style={{ background: 'radial-gradient(circle, #FED358 0%, transparent 70%)', animationDelay: '0.5s' }}></div>
-          </div>
-
-          {/* Header with floating icon */}
+          {/* Header with icon */}
           <div className="relative pt-8 pb-4 px-6 text-center">
-            {/* Floating crown icon */}
             <div className="relative inline-block mb-4">
-              <div className="w-20 h-20 rounded-2xl flex items-center justify-center transform rotate-3 transition-transform hover:rotate-0 hover:scale-110 duration-300" 
+              <div className="w-20 h-20 rounded-2xl flex items-center justify-center" 
                 style={{ 
                   background: 'linear-gradient(135deg, #FED358 0%, #FF6B35 100%)',
                   boxShadow: '0 10px 40px rgba(254, 211, 88, 0.4)'
                 }}>
                 <Crown className="w-10 h-10 text-black" />
               </div>
-              <Sparkles className="absolute -top-2 -right-2 w-6 h-6 text-yellow-400 animate-pulse" />
             </div>
             
             <DialogTitle className="text-2xl font-black tracking-tight mb-2" style={{ color: '#FED358' }}>
@@ -95,7 +91,7 @@ export default function RegistrationDialog({ isOpen, onClose }: RegistrationDial
           {/* Action Buttons */}
           <div className="px-6 pb-6 space-y-3">
             <Button
-              className="w-full h-12 font-bold text-base rounded-xl transition-all duration-300 transform hover:scale-[1.02] hover:shadow-lg flex items-center justify-center gap-2 border-0"
+              className="w-full h-12 font-bold text-base rounded-xl flex items-center justify-center gap-2 border-0"
               onClick={handleStartButtonClick}
               style={{ 
                 background: 'linear-gradient(135deg, #FED358 0%, #FF6B35 100%)',
@@ -105,6 +101,19 @@ export default function RegistrationDialog({ isOpen, onClose }: RegistrationDial
             >
               REGISTER NOW
               <ArrowRight className="w-5 h-5" />
+            </Button>
+            
+            <Button
+              className="w-full h-12 font-semibold text-base rounded-xl flex items-center justify-center gap-2"
+              onClick={handleTelegramClick}
+              style={{ 
+                background: 'linear-gradient(135deg, #0088cc 0%, #0066aa 100%)',
+                color: '#fff',
+                border: 'none'
+              }}
+            >
+              <FaTelegram className="w-5 h-5" />
+              JOIN TELEGRAM
             </Button>
             
             <p className="text-center text-xs pt-2" style={{ color: 'rgba(253, 228, 188, 0.5)' }}>
