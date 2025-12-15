@@ -1,86 +1,23 @@
-import { useState } from "react";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useMutation } from "@tanstack/react-query";
-import { z } from "zod";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
-import { useToast } from "@/hooks/use-toast";
-import { apiRequest } from "@/lib/queryClient";
-import { Loader2, Star, Shield, Zap, Users } from "lucide-react";
-import logoPath from "@assets/TASHAN WIN LOGO_1754052537792.png";
-
-const registerSchema = z.object({
-  uid: z.string().min(1, "UID is required").trim(),
-});
-
-type RegisterForm = z.infer<typeof registerSchema>;
+import { Dialog, DialogContent, DialogDescription, DialogTitle } from "@/components/ui/dialog";
+import { Star, Shield, Zap, Users, ExternalLink } from "lucide-react";
+import { FaTelegram } from "react-icons/fa";
 
 interface RegistrationDialogProps {
   isOpen: boolean;
   onClose: () => void;
-  onRegistrationSuccess: (uid: string) => void;
 }
 
-export default function RegistrationDialog({ isOpen, onClose, onRegistrationSuccess }: RegistrationDialogProps) {
-  const { toast } = useToast();
-  
-  const form = useForm<RegisterForm>({
-    resolver: zodResolver(registerSchema),
-    defaultValues: {
-      uid: "",
-    },
-  });
-
-  const registerMutation = useMutation({
-    mutationFn: async (data: RegisterForm) => {
-      return await apiRequest(`/api/register`, "POST", data);
-    },
-    onSuccess: (response) => {
-      const uid = form.getValues("uid");
-      
-      // Store UID in localStorage
-      localStorage.setItem("v3game_user_uid", uid);
-      
-      toast({
-        title: "Registration Successful!",
-        description: "Your UID has been submitted for approval. Please wait for admin approval.",
-      });
-      
-      onRegistrationSuccess(uid);
-      onClose();
-    },
-    onError: (error: any) => {
-      if (error.message.includes("409")) {
-        const uid = form.getValues("uid");
-        localStorage.setItem("v3game_user_uid", uid);
-        toast({
-          title: "Already Registered",
-          description: "This UID is already registered. Checking approval status...",
-        });
-        onRegistrationSuccess(uid);
-        onClose();
-      } else {
-        toast({
-          title: "Registration Failed",
-          description: error.message || "Something went wrong. Please try again.",
-          variant: "destructive",
-        });
-      }
-    },
-  });
-
-  const onSubmit = (data: RegisterForm) => {
-    registerMutation.mutate(data);
-  };
-
+export default function RegistrationDialog({ isOpen, onClose }: RegistrationDialogProps) {
   const handleStartButtonClick = () => {
     window.open("https://www.v3gameb.com/#/pages/login/register?invitationCode=7532630349", "_blank");
   };
 
-  const handleHelp = () => {
+  const handleTelegramClick = () => {
+    window.open("https://t.me/V3Games", "_blank");
+  };
+
+  const handleHelpClick = () => {
     window.open("https://t.me/Bea_A22", "_blank");
   };
 
@@ -104,10 +41,10 @@ export default function RegistrationDialog({ isOpen, onClose, onRegistrationSucc
               <Star className="w-6 h-6 text-black" />
             </div>
             <DialogTitle className="text-lg font-bold light-gold drop-shadow-lg">
-              VIP ACCESS
+              JOIN VIP
             </DialogTitle>
             <DialogDescription className="warm-gold font-medium text-center text-sm">
-              Exclusive Predictions
+              Get Exclusive Predictions
             </DialogDescription>
           </div>
         </div>
@@ -134,82 +71,47 @@ export default function RegistrationDialog({ isOpen, onClose, onRegistrationSucc
                 <Users className="w-3 h-3 text-black" />
               </div>
               <div>
-                <h3 className="font-bold light-gold mb-1 text-sm">Getting Started</h3>
+                <h3 className="font-bold light-gold mb-1 text-sm">How to Join</h3>
                 <p className="text-xs warm-gold leading-relaxed">
-                  Create account via our secure link for accurate predictions.
+                  1. Register on the platform using our link
+                </p>
+                <p className="text-xs warm-gold leading-relaxed">
+                  2. Contact us on Telegram for VIP access
                 </p>
               </div>
             </div>
-            
-            <div className="bg-red-900/30 p-2 rounded border border-red-500/30">
-              <p className="text-xs text-red-300 font-medium flex items-center gap-2">
-                <Shield className="w-3 h-3 flex-shrink-0" />
-                <span>Important: Only verified accounts receive accurate predictions</span>
-              </p>
-            </div>
           </div>
-
-          {/* Form */}
-          <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-3">
-              <FormField
-                control={form.control}
-                name="uid"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel className="light-gold font-semibold text-sm">
-                      Enter Your UID
-                    </FormLabel>
-                    <div className="space-y-2">
-                      <FormControl>
-                        <Input
-                          placeholder="Your unique UID..."
-                          {...field}
-                          className="h-10 px-3 text-sm bg-banner-gradient border-2 border-accent-gold/50 focus:border-accent-gold focus:ring-1 focus:ring-accent-gold/20 light-gold placeholder:accent-gold rounded-lg"
-                        />
-                      </FormControl>
-                      <Button
-                        type="submit"
-                        className="w-full h-10 font-bold text-sm rounded-lg transition-all duration-200 custom-button"
-                        disabled={registerMutation.isPending}
-                      >
-                        {registerMutation.isPending ? (
-                          <div className="flex items-center gap-2">
-                            <Loader2 className="h-4 w-4 animate-spin" />
-                            <span>PROCESSING...</span>
-                          </div>
-                        ) : (
-                          <span>JOIN VIP</span>
-                        )}
-                      </Button>
-                    </div>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-            </form>
-          </Form>
 
           {/* Action Buttons */}
           <div className="space-y-2">
-            <div className="flex gap-2">
-              <Button
-                className="flex-1 h-9 font-semibold text-sm rounded-lg btn-body-bg"
-                onClick={handleStartButtonClick}
-              >
-                Register link
-              </Button>
-              <Button
-                className="flex-1 h-9 font-semibold text-sm rounded-lg btn-body-bg"
-                onClick={handleHelp}
-              >
-                HELP
-              </Button>
-            </div>
+            <Button
+              className="w-full h-10 font-bold text-sm rounded-lg transition-all duration-200 custom-button flex items-center justify-center gap-2"
+              onClick={handleStartButtonClick}
+            >
+              <ExternalLink className="w-4 h-4" />
+              REGISTER NOW
+            </Button>
+            
+            <Button
+              className="w-full h-10 font-semibold text-sm rounded-lg btn-body-bg flex items-center justify-center gap-2"
+              onClick={handleTelegramClick}
+            >
+              <FaTelegram className="w-4 h-4" />
+              JOIN TELEGRAM
+            </Button>
+            
+            <Button
+              className="w-full h-9 font-semibold text-xs rounded-lg"
+              variant="outline"
+              onClick={handleHelpClick}
+              style={{ borderColor: '#FED358', color: '#FED358' }}
+            >
+              NEED HELP?
+            </Button>
             
             <div className="text-center">
               <p className="text-xs accent-gold">
-                Join VIP members
+                Join our VIP community for exclusive predictions
               </p>
             </div>
           </div>

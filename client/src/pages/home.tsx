@@ -1,15 +1,10 @@
 import { Card } from "@/components/ui/card";
 import { Volume2, ChevronLeft, ChevronRight } from "lucide-react";
 import { useState, useEffect } from "react";
-import { useQuery } from "@tanstack/react-query";
 import { FaTelegram } from "react-icons/fa";
-import { useLocation } from "wouter";
 import RegistrationDialog from "@/components/registration-dialog";
-import VipPredictionDialog from "@/components/vip-prediction-dialog";
 import { ComingSoonDialog } from "@/components/coming-soon-dialog";
 import WelcomeNotification from "@/components/welcome-notification";
-import { useUserVerification } from "@/hooks/use-fast-user-status";
-import type { GameConfig } from "@shared/schema";
 import logoPath from "@assets/logo_nav_1756545819204.png";
 import winGoImage from "@assets/lotterycategory_20250412120719dqfv_1754052547793.png";
 import trxWingoImage from "@assets/lotterycategory_20250412120818j8wq_1754052552269.png";
@@ -35,11 +30,8 @@ import liveInterfaceImage from "@assets/Screenshot 2025-08-31 171820_17566565292
 import faviconIcon from "@assets/h5setting_20250501162804ytau_1754156061703.png";
 
 export default function Home() {
-  const [, navigate] = useLocation();
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [showRegisterDialog, setShowRegisterDialog] = useState(false);
-  const [showVipPredictionDialog, setShowVipPredictionDialog] = useState(false);
   const [showComingSoonDialog, setShowComingSoonDialog] = useState(false);
   const [showProofDialog, setShowProofDialog] = useState(false);
   const [showDemoDialog, setShowDemoDialog] = useState(false);
@@ -47,7 +39,6 @@ export default function Home() {
   const [showDisclaimerDialog, setShowDisclaimerDialog] = useState(false);
   const [showWarningDialog, setShowWarningDialog] = useState(false);
   const [selectedGameName, setSelectedGameName] = useState<string>("");
-  const [userUid, setUserUid] = useState<string>("");
   
   // Carousel state
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -69,14 +60,6 @@ export default function Home() {
     }
   ];
 
-  // Fetch game configurations (public endpoint)
-  const { data: gameConfigs = [] } = useQuery<GameConfig[]>({
-    queryKey: ["/api/games"],
-  });
-
-  // Use fast user verification hook for optimal performance
-  const { isApproved, isRegistered, refreshStatus } = useUserVerification(userUid);
-
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 0);
@@ -84,14 +67,6 @@ export default function Home() {
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  useEffect(() => {
-    // Check if user has stored UID
-    const storedUid = localStorage.getItem("v3game_user_uid");
-    if (storedUid) {
-      setUserUid(storedUid);
-    }
   }, []);
 
   // Auto-play carousel effect
@@ -105,79 +80,24 @@ export default function Home() {
     return () => clearInterval(interval);
   }, [isAutoPlaying, slides.length]);
 
-  const isGameEnabled = (gameName: string) => {
-    const config = gameConfigs.find(config => config.gameName === gameName);
-    return config?.isEnabled ?? true; // Default to enabled if no config found
-  };
-
   const handleGameClick = (gameType: string) => {
     console.log(`${gameType} game selected`);
-    
-    // Check if game is enabled
-    if (!isGameEnabled(gameType)) {
-      setSelectedGameName(gameType);
-      setShowComingSoonDialog(true);
-      return;
-    }
-    
-    // Special handling for Win Go - redirect to Wingo page if approved
-    if (gameType === "Win Go") {
-      const storedUid = localStorage.getItem("v3game_user_uid");
-      if (storedUid && isApproved) {
-        navigate('/wingo');
-        return;
-      }
-    }
-    
-    
-    
-    // Check if user has registered UID
-    const storedUid = localStorage.getItem("v3game_user_uid");
-    if (storedUid) {
-      setUserUid(storedUid);
-      setShowVipPredictionDialog(true);
-    } else {
-      setShowRegisterDialog(true);
-    }
-  };
-
-  const handleRegistrationSuccess = (uid: string) => {
-    setUserUid(uid);
-    setShowRegisterDialog(false);
-    setShowVipPredictionDialog(true);
-    // Immediately refresh user status after registration
-    setTimeout(() => refreshStatus(), 100);
-  };
-
-  const handleBackToRegister = () => {
-    localStorage.removeItem("v3game_user_uid");
-    setUserUid("");
-    setShowVipPredictionDialog(false);
-    setShowRegisterDialog(true);
+    setSelectedGameName(gameType);
+    setShowComingSoonDialog(true);
   };
 
   const handleVipClick = () => {
     console.log('VIP clicked');
-    // Check if user has registered UID and is approved
-    const storedUid = localStorage.getItem("v3game_user_uid");
-    if (storedUid && isApproved) {
-      // User is approved, show VIP prediction dialog
-      setShowVipPredictionDialog(true);
-    } else {
-      // User is not approved or not registered, show registration dialog
-      setShowRegisterDialog(true);
-    }
+    setShowRegisterDialog(true);
   };
 
   const handleJoinVipClick = () => {
     console.log('Join VIP clicked');
-    // Show registration dialog for JOIN VIP buttons
     setShowRegisterDialog(true);
   };
 
   const handleCloseDialogs = () => {
     setShowRegisterDialog(false);
-    setShowVipPredictionDialog(false);
     setShowComingSoonDialog(false);
     setShowDemoDialog(false);
   };
@@ -222,42 +142,24 @@ export default function Home() {
           
           {/* Mobile Navigation */}
           <div className="md:hidden flex items-center">
-            {isApproved ? (
-              <div 
-                className="px-3 py-1.5 rounded-full text-black font-bold text-xs"
-                style={{ backgroundColor: '#FED358' }}
-              >
-                UID: {userUid}
-              </div>
-            ) : (
-              <button 
-                className="px-3 py-1.5 rounded-full text-black font-bold text-xs transition-opacity duration-200 hover:opacity-90"
-                style={{ background: 'linear-gradient(180deg,#f8bf6e,#fb5e04)' }}
-                onClick={handleJoinVipClick}
-              >
-                JOIN VIP
-              </button>
-            )}
+            <button 
+              className="px-3 py-1.5 rounded-full text-black font-bold text-xs transition-opacity duration-200 hover:opacity-90"
+              style={{ background: 'linear-gradient(180deg,#f8bf6e,#fb5e04)' }}
+              onClick={handleJoinVipClick}
+            >
+              JOIN VIP
+            </button>
           </div>
           
           {/* Desktop Navigation Items */}
           <div className="hidden md:flex items-center space-x-8">
-            {isApproved ? (
-              <div 
-                className="px-4 py-2 rounded-full text-black font-bold text-sm"
-                style={{ background: 'linear-gradient(180deg,#f8bf6e,#fb5e04)' }}
-              >
-                UID: {userUid}
-              </div>
-            ) : (
-              <button 
-                className="px-4 py-2 rounded-full text-black font-bold text-sm transition-opacity duration-200 hover:opacity-90"
-                style={{ background: 'linear-gradient(180deg,#f8bf6e,#fb5e04)' }}
-                onClick={handleJoinVipClick}
-              >
-                JOIN VIP
-              </button>
-            )}
+            <button 
+              className="px-4 py-2 rounded-full text-black font-bold text-sm transition-opacity duration-200 hover:opacity-90"
+              style={{ background: 'linear-gradient(180deg,#f8bf6e,#fb5e04)' }}
+              onClick={handleJoinVipClick}
+            >
+              JOIN VIP
+            </button>
           </div>
         </div>
       </nav>
@@ -620,15 +522,6 @@ export default function Home() {
       <RegistrationDialog
         isOpen={showRegisterDialog}
         onClose={handleCloseDialogs}
-        onRegistrationSuccess={handleRegistrationSuccess}
-      />
-
-      {/* VIP Prediction Dialog */}
-      <VipPredictionDialog
-        isOpen={showVipPredictionDialog}
-        onClose={handleCloseDialogs}
-        uid={userUid}
-        onBackToRegister={handleBackToRegister}
       />
 
       {/* Coming Soon Dialog */}
