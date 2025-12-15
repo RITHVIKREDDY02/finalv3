@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
-import { Crown, ArrowRight, X } from "lucide-react";
+import { Crown, ArrowRight } from "lucide-react";
 import { FaTelegram } from "react-icons/fa";
 
 interface RegistrationDialogProps {
@@ -28,19 +28,6 @@ export default function RegistrationDialog({ isOpen, onClose }: RegistrationDial
           border: '1px solid rgba(254, 211, 88, 0.3)'
         }}>
           
-          {/* Close Button */}
-          <button
-            onClick={onClose}
-            className="absolute top-4 right-4 z-10 w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110"
-            style={{
-              background: 'rgba(255, 255, 255, 0.1)',
-              border: '1px solid rgba(255, 255, 255, 0.2)',
-              backdropFilter: 'blur(8px)'
-            }}
-          >
-            <X className="w-4 h-4" style={{ color: '#FDE4BC' }} />
-          </button>
-
           {/* Header with icon */}
           <div className="relative pt-8 pb-4 px-6 text-center">
             <div className="relative inline-block mb-4">
