@@ -248,7 +248,7 @@ export default function Home() {
         <div className="max-w-2xl mx-auto lg:max-w-7xl">
           {/* Reward Text */}
           <div className="text-center mb-5">
-            <p className="text-base sm:text-lg font-bold tracking-wide" style={{ color: '#FED358' }}>
+            <p className="text-base sm:text-lg md:text-xl lg:text-2xl font-bold tracking-wide" style={{ color: '#FED358' }}>
               Register Now & Get Upto ₹500 Sign Up Reward
             </p>
           </div>
