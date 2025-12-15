@@ -180,7 +180,6 @@
     transform: translateX(-100%);
     animation: shimmer 2s infinite;
   }
-  }
   
   .accent-gold {
     color: var(--accent-gold);
@@ -258,3 +257,4 @@
   .accent-shadow {
     box-shadow: 0 .05333rem .26667rem #fed358a6;
   }
+}
