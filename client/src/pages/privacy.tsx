@@ -51,7 +51,7 @@ export default function PrivacyPage() {
 
         {/* Definitions */}
         <div className="p-4 md:p-6 rounded-xl md:rounded-2xl" style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)' }}>
-          <div className="flex flex-col md:flex-row md:items-start gap-3 md:gap-4">
+          <div className="flex flex-row items-start gap-3 md:gap-4">
             <div className="w-8 h-8 md:w-10 md:h-10 rounded-lg flex items-center justify-center flex-shrink-0" style={{ background: 'rgba(254,211,88,0.2)' }}>
               <Database className="w-4 h-4 md:w-5 md:h-5" style={{ color: '#FED358' }} />
             </div>
@@ -72,7 +72,7 @@ export default function PrivacyPage() {
 
         {/* Data Collection */}
         <div className="p-4 md:p-6 rounded-xl md:rounded-2xl" style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)' }}>
-          <div className="flex flex-col md:flex-row md:items-start gap-3 md:gap-4">
+          <div className="flex flex-row items-start gap-3 md:gap-4">
             <div className="w-8 h-8 md:w-10 md:h-10 rounded-lg flex items-center justify-center flex-shrink-0" style={{ background: 'rgba(254,211,88,0.2)' }}>
               <Eye className="w-4 h-4 md:w-5 md:h-5" style={{ color: '#FED358' }} />
             </div>
@@ -90,7 +90,7 @@ export default function PrivacyPage() {
 
         {/* Cookies */}
         <div className="p-4 md:p-6 rounded-xl md:rounded-2xl" style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)' }}>
-          <div className="flex flex-col md:flex-row md:items-start gap-3 md:gap-4">
+          <div className="flex flex-row items-start gap-3 md:gap-4">
             <div className="w-8 h-8 md:w-10 md:h-10 rounded-lg flex items-center justify-center flex-shrink-0" style={{ background: 'rgba(254,211,88,0.2)' }}>
               <Cookie className="w-4 h-4 md:w-5 md:h-5" style={{ color: '#FED358' }} />
             </div>
@@ -110,7 +110,7 @@ export default function PrivacyPage() {
 
         {/* Use of Data */}
         <div className="p-4 md:p-6 rounded-xl md:rounded-2xl" style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)' }}>
-          <div className="flex flex-col md:flex-row md:items-start gap-3 md:gap-4">
+          <div className="flex flex-row items-start gap-3 md:gap-4">
             <div className="w-8 h-8 md:w-10 md:h-10 rounded-lg flex items-center justify-center flex-shrink-0" style={{ background: 'rgba(254,211,88,0.2)' }}>
               <Share2 className="w-4 h-4 md:w-5 md:h-5" style={{ color: '#FED358' }} />
             </div>
@@ -131,7 +131,7 @@ export default function PrivacyPage() {
 
         {/* Data Retention */}
         <div className="p-4 md:p-6 rounded-xl md:rounded-2xl" style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)' }}>
-          <div className="flex flex-col md:flex-row md:items-start gap-3 md:gap-4">
+          <div className="flex flex-row items-start gap-3 md:gap-4">
             <div className="w-8 h-8 md:w-10 md:h-10 rounded-lg flex items-center justify-center flex-shrink-0" style={{ background: 'rgba(254,211,88,0.2)' }}>
               <Database className="w-4 h-4 md:w-5 md:h-5" style={{ color: '#FED358' }} />
             </div>
@@ -146,7 +146,7 @@ export default function PrivacyPage() {
 
         {/* Delete Data */}
         <div className="p-4 md:p-6 rounded-xl md:rounded-2xl" style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)' }}>
-          <div className="flex flex-col md:flex-row md:items-start gap-3 md:gap-4">
+          <div className="flex flex-row items-start gap-3 md:gap-4">
             <div className="w-8 h-8 md:w-10 md:h-10 rounded-lg flex items-center justify-center flex-shrink-0" style={{ background: 'rgba(254,211,88,0.2)' }}>
               <Trash2 className="w-4 h-4 md:w-5 md:h-5" style={{ color: '#FED358' }} />
             </div>
@@ -161,7 +161,7 @@ export default function PrivacyPage() {
 
         {/* Security */}
         <div className="p-4 md:p-6 rounded-xl md:rounded-2xl" style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)' }}>
-          <div className="flex flex-col md:flex-row md:items-start gap-3 md:gap-4">
+          <div className="flex flex-row items-start gap-3 md:gap-4">
             <div className="w-8 h-8 md:w-10 md:h-10 rounded-lg flex items-center justify-center flex-shrink-0" style={{ background: 'rgba(254,211,88,0.2)' }}>
               <Lock className="w-4 h-4 md:w-5 md:h-5" style={{ color: '#FED358' }} />
             </div>
@@ -176,7 +176,7 @@ export default function PrivacyPage() {
 
         {/* Children's Privacy */}
         <div className="p-4 md:p-6 rounded-xl md:rounded-2xl" style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)' }}>
-          <div className="flex flex-col md:flex-row md:items-start gap-3 md:gap-4">
+          <div className="flex flex-row items-start gap-3 md:gap-4">
             <div className="w-8 h-8 md:w-10 md:h-10 rounded-lg flex items-center justify-center flex-shrink-0" style={{ background: 'rgba(254,211,88,0.2)' }}>
               <Baby className="w-4 h-4 md:w-5 md:h-5" style={{ color: '#FED358' }} />
             </div>
@@ -191,7 +191,7 @@ export default function PrivacyPage() {
 
         {/* Links */}
         <div className="p-4 md:p-6 rounded-xl md:rounded-2xl" style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)' }}>
-          <div className="flex flex-col md:flex-row md:items-start gap-3 md:gap-4">
+          <div className="flex flex-row items-start gap-3 md:gap-4">
             <div className="w-8 h-8 md:w-10 md:h-10 rounded-lg flex items-center justify-center flex-shrink-0" style={{ background: 'rgba(254,211,88,0.2)' }}>
               <Link2 className="w-4 h-4 md:w-5 md:h-5" style={{ color: '#FED358' }} />
             </div>
@@ -206,7 +206,7 @@ export default function PrivacyPage() {
 
         {/* Changes */}
         <div className="p-4 md:p-6 rounded-xl md:rounded-2xl" style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)' }}>
-          <div className="flex flex-col md:flex-row md:items-start gap-3 md:gap-4">
+          <div className="flex flex-row items-start gap-3 md:gap-4">
             <div className="w-8 h-8 md:w-10 md:h-10 rounded-lg flex items-center justify-center flex-shrink-0" style={{ background: 'rgba(254,211,88,0.2)' }}>
               <RefreshCw className="w-4 h-4 md:w-5 md:h-5" style={{ color: '#FED358' }} />
             </div>
@@ -221,7 +221,7 @@ export default function PrivacyPage() {
 
         {/* Contact */}
         <div className="p-4 md:p-6 rounded-xl md:rounded-2xl" style={{ background: 'rgba(254,211,88,0.1)', border: '1px solid rgba(254,211,88,0.2)' }}>
-          <div className="flex flex-col md:flex-row md:items-start gap-3 md:gap-4">
+          <div className="flex flex-row items-start gap-3 md:gap-4">
             <div className="w-8 h-8 md:w-10 md:h-10 rounded-lg flex items-center justify-center flex-shrink-0" style={{ background: '#FED358' }}>
               <Mail className="w-4 h-4 md:w-5 md:h-5 text-black" />
             </div>
