@@ -246,16 +246,11 @@ export default function Home() {
       {/* Action Buttons - Below Hero Banner */}
       <div className="px-6 md:px-8 lg:px-12 xl:px-16 pb-6">
         <div className="max-w-2xl mx-auto lg:max-w-7xl">
-          {/* Reward Text - Clean Banner */}
+          {/* Reward Text */}
           <div className="text-center mb-5">
-            <div className="inline-block px-6 py-3 rounded-xl" style={{ 
-              background: 'linear-gradient(135deg, rgba(254, 211, 88, 0.15) 0%, rgba(255, 107, 53, 0.1) 100%)',
-              border: '1px solid rgba(254, 211, 88, 0.4)'
-            }}>
-              <p className="text-base sm:text-lg font-bold tracking-wide" style={{ color: '#FED358' }}>
-                Register Now & Get Upto ₹500 Sign Up Reward
-              </p>
-            </div>
+            <p className="text-base sm:text-lg font-bold tracking-wide" style={{ color: '#FED358' }}>
+              Register Now & Get Upto ₹500 Sign Up Reward
+            </p>
           </div>
           {/* Register and Login Buttons */}
           <div className="flex flex-row gap-2 sm:gap-4 md:gap-6 justify-center items-center mb-4">
