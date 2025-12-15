@@ -484,48 +484,50 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Secondary Action Buttons */}
-        <div className="mt-6 flex justify-center">
-          <div className="flex flex-row gap-1 sm:gap-2 md:gap-4 lg:gap-6 justify-center items-center w-full max-w-sm sm:max-w-md md:max-w-lg lg:max-w-xl">
-            {/* Terms Button */}
-            <Link 
-              href="/terms"
-              className="flex-1 md:flex-none md:w-32 lg:w-36 px-2 sm:px-3 md:px-4 lg:px-6 py-1.5 sm:py-2 custom-button font-bold rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 text-xs sm:text-sm md:text-base whitespace-nowrap text-center"
-              data-testid="link-terms"
-            >
-              TERMS
-            </Link>
-            
-            {/* Privacy Button */}
+      </div>
+
+      {/* Footer */}
+      <footer className="mt-16 py-8 border-t" style={{ borderColor: 'rgba(254,211,88,0.2)' }}>
+        <div className="max-w-4xl mx-auto px-4">
+          <div className="flex flex-wrap justify-center gap-6 md:gap-10 mb-4">
             <Link 
               href="/privacy"
-              className="flex-1 md:flex-none md:w-32 lg:w-36 px-2 sm:px-3 md:px-4 lg:px-6 py-1.5 sm:py-2 custom-button font-bold rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 text-xs sm:text-sm md:text-base whitespace-nowrap text-center"
+              className="text-sm md:text-base transition-colors hover:opacity-80"
+              style={{ color: '#9ca3af' }}
               data-testid="link-privacy"
             >
-              PRIVACY
+              Privacy Policy
             </Link>
-            
-            {/* Disclaimer Button */}
+            <Link 
+              href="/terms"
+              className="text-sm md:text-base transition-colors hover:opacity-80"
+              style={{ color: '#9ca3af' }}
+              data-testid="link-terms"
+            >
+              Terms of Service
+            </Link>
             <Link 
               href="/disclaimer"
-              className="flex-1 md:flex-none md:w-32 lg:w-36 px-2 sm:px-3 md:px-4 lg:px-6 py-1.5 sm:py-2 custom-button font-bold rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 text-xs sm:text-sm md:text-base whitespace-nowrap text-center"
+              className="text-sm md:text-base transition-colors hover:opacity-80"
+              style={{ color: '#9ca3af' }}
               data-testid="link-disclaimer"
             >
-              DISCLAIMER
+              Disclaimer
             </Link>
-            
-            {/* Contact Button */}
             <Link 
               href="/contact"
-              className="flex-1 md:flex-none md:w-32 lg:w-36 px-2 sm:px-3 md:px-4 lg:px-6 py-1.5 sm:py-2 custom-button font-bold rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 text-xs sm:text-sm md:text-base whitespace-nowrap text-center"
+              className="text-sm md:text-base transition-colors hover:opacity-80"
+              style={{ color: '#9ca3af' }}
               data-testid="link-contact"
             >
-              CONTACT
+              Contact Us
             </Link>
           </div>
+          <p className="text-center text-sm" style={{ color: '#6b7280' }}>
+            © 2025 V3 GAME. All rights reserved.
+          </p>
         </div>
-
-      </div>
+      </footer>
 
       {/* Floating Telegram Button */}
       <a 
