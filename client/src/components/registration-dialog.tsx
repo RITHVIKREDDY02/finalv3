@@ -57,27 +57,45 @@ export default function RegistrationDialog({ isOpen, onClose }: RegistrationDial
             </p>
           </div>
 
-          {/* Benefits grid */}
+          {/* Hero Stats */}
           <div className="px-6 pb-4">
             <div className="grid grid-cols-2 gap-3">
-              <div className="p-4 rounded-2xl text-center transition-all duration-300 hover:scale-105" 
+              {/* 100% Accurate Card */}
+              <div className="p-5 rounded-2xl text-center transition-all duration-300 hover:scale-105 relative overflow-hidden" 
                 style={{ 
-                  background: 'linear-gradient(135deg, rgba(254, 211, 88, 0.15) 0%, rgba(254, 211, 88, 0.05) 100%)',
-                  border: '1px solid rgba(254, 211, 88, 0.2)'
+                  background: 'linear-gradient(135deg, rgba(46, 204, 113, 0.2) 0%, rgba(46, 204, 113, 0.05) 100%)',
+                  border: '2px solid rgba(46, 204, 113, 0.4)',
+                  boxShadow: '0 4px 20px rgba(46, 204, 113, 0.2)'
                 }}>
-                <Trophy className="w-8 h-8 mx-auto mb-2" style={{ color: '#FED358' }} />
-                <p className="text-xs font-bold" style={{ color: '#FDE4BC' }}>100% Accurate</p>
-                <p className="text-xs mt-1" style={{ color: 'rgba(253, 228, 188, 0.6)' }}>Predictions</p>
+                <div className="absolute top-0 right-0 w-16 h-16 opacity-20" style={{ background: 'radial-gradient(circle, #2ECC71 0%, transparent 70%)' }}></div>
+                <div className="text-3xl font-black mb-1" style={{ color: '#2ECC71' }}>100%</div>
+                <p className="text-sm font-bold" style={{ color: '#FDE4BC' }}>ACCURATE</p>
+                <p className="text-xs mt-1" style={{ color: 'rgba(253, 228, 188, 0.7)' }}>Predictions</p>
+                <Trophy className="w-5 h-5 mx-auto mt-2" style={{ color: '#2ECC71' }} />
               </div>
-              <div className="p-4 rounded-2xl text-center transition-all duration-300 hover:scale-105" 
+              
+              {/* Instant Results Card */}
+              <div className="p-5 rounded-2xl text-center transition-all duration-300 hover:scale-105 relative overflow-hidden" 
                 style={{ 
-                  background: 'linear-gradient(135deg, rgba(255, 107, 53, 0.15) 0%, rgba(255, 107, 53, 0.05) 100%)',
-                  border: '1px solid rgba(255, 107, 53, 0.2)'
+                  background: 'linear-gradient(135deg, rgba(254, 211, 88, 0.2) 0%, rgba(255, 107, 53, 0.1) 100%)',
+                  border: '2px solid rgba(254, 211, 88, 0.4)',
+                  boxShadow: '0 4px 20px rgba(254, 211, 88, 0.2)'
                 }}>
-                <Rocket className="w-8 h-8 mx-auto mb-2" style={{ color: '#FF6B35' }} />
-                <p className="text-xs font-bold" style={{ color: '#FDE4BC' }}>Instant</p>
-                <p className="text-xs mt-1" style={{ color: 'rgba(253, 228, 188, 0.6)' }}>Results</p>
+                <div className="absolute top-0 right-0 w-16 h-16 opacity-20" style={{ background: 'radial-gradient(circle, #FED358 0%, transparent 70%)' }}></div>
+                <div className="text-3xl font-black mb-1" style={{ color: '#FED358' }}>⚡</div>
+                <p className="text-sm font-bold" style={{ color: '#FDE4BC' }}>INSTANT</p>
+                <p className="text-xs mt-1" style={{ color: 'rgba(253, 228, 188, 0.7)' }}>Results</p>
+                <Rocket className="w-5 h-5 mx-auto mt-2" style={{ color: '#FF6B35' }} />
               </div>
+            </div>
+          </div>
+
+          {/* Additional Benefits */}
+          <div className="px-6 pb-4">
+            <div className="flex flex-wrap justify-center gap-2">
+              <span className="px-3 py-1.5 rounded-full text-xs font-semibold" style={{ background: 'rgba(46, 204, 113, 0.2)', color: '#2ECC71', border: '1px solid rgba(46, 204, 113, 0.3)' }}>✓ AI Powered</span>
+              <span className="px-3 py-1.5 rounded-full text-xs font-semibold" style={{ background: 'rgba(254, 211, 88, 0.2)', color: '#FED358', border: '1px solid rgba(254, 211, 88, 0.3)' }}>✓ 24/7 Support</span>
+              <span className="px-3 py-1.5 rounded-full text-xs font-semibold" style={{ background: 'rgba(255, 107, 53, 0.2)', color: '#FF6B35', border: '1px solid rgba(255, 107, 53, 0.3)' }}>✓ 50K+ Winners</span>
             </div>
           </div>
 
