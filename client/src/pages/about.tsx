@@ -20,10 +20,10 @@ export default function AboutPage() {
             target="_blank" 
             rel="noopener noreferrer"
             className="flex items-center gap-2 px-4 py-2 rounded-full transition-all duration-300 hover:scale-105"
-            style={{ background: 'linear-gradient(135deg, #0088cc, #0077b5)' }}
+            style={{ background: 'linear-gradient(135deg, #FED358, #FF6B35)' }}
           >
-            <FaTelegram className="text-white" />
-            <span className="text-white text-sm font-medium">Join Us</span>
+            <FaTelegram className="text-black" />
+            <span className="text-black text-sm font-medium">Join Us</span>
           </a>
         </div>
       </nav>
@@ -61,20 +61,20 @@ export default function AboutPage() {
       {/* Stats Section */}
       <div className="max-w-5xl mx-auto px-6 mb-16">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          <div className="p-6 rounded-2xl text-center" style={{ background: 'rgba(46,204,113,0.1)', border: '1px solid rgba(46,204,113,0.3)' }}>
-            <div className="text-4xl font-black mb-2" style={{ color: '#2ECC71' }}>100%</div>
+          <div className="p-6 rounded-2xl text-center" style={{ background: 'rgba(254,211,88,0.1)', border: '1px solid rgba(254,211,88,0.3)' }}>
+            <div className="text-4xl font-black mb-2" style={{ color: '#FED358' }}>100%</div>
             <div className="text-sm" style={{ color: '#FDE4BC' }}>Success Rate</div>
           </div>
-          <div className="p-6 rounded-2xl text-center" style={{ background: 'rgba(52,152,219,0.1)', border: '1px solid rgba(52,152,219,0.3)' }}>
-            <div className="text-4xl font-black mb-2" style={{ color: '#3498DB' }}>50K+</div>
+          <div className="p-6 rounded-2xl text-center" style={{ background: 'rgba(255,107,53,0.1)', border: '1px solid rgba(255,107,53,0.3)' }}>
+            <div className="text-4xl font-black mb-2" style={{ color: '#FF6B35' }}>50K+</div>
             <div className="text-sm" style={{ color: '#FDE4BC' }}>VIP Members</div>
           </div>
-          <div className="p-6 rounded-2xl text-center" style={{ background: 'rgba(155,89,182,0.1)', border: '1px solid rgba(155,89,182,0.3)' }}>
-            <div className="text-4xl font-black mb-2" style={{ color: '#9B59B6' }}>24/7</div>
+          <div className="p-6 rounded-2xl text-center" style={{ background: 'rgba(254,211,88,0.1)', border: '1px solid rgba(254,211,88,0.3)' }}>
+            <div className="text-4xl font-black mb-2" style={{ color: '#FED358' }}>24/7</div>
             <div className="text-sm" style={{ color: '#FDE4BC' }}>Live Support</div>
           </div>
-          <div className="p-6 rounded-2xl text-center" style={{ background: 'rgba(254,211,88,0.1)', border: '1px solid rgba(254,211,88,0.3)' }}>
-            <div className="text-4xl font-black mb-2" style={{ color: '#FED358' }}>5+</div>
+          <div className="p-6 rounded-2xl text-center" style={{ background: 'rgba(255,107,53,0.1)', border: '1px solid rgba(255,107,53,0.3)' }}>
+            <div className="text-4xl font-black mb-2" style={{ color: '#FF6B35' }}>5+</div>
             <div className="text-sm" style={{ color: '#FDE4BC' }}>Game Types</div>
           </div>
         </div>
@@ -84,13 +84,13 @@ export default function AboutPage() {
       <div className="max-w-5xl mx-auto px-6 mb-16">
         <h2 className="text-3xl font-bold text-center mb-12" style={{ color: '#FED358' }}>Why Choose Us</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div className="p-8 rounded-3xl transition-all duration-300 hover:scale-[1.02]" style={{ background: 'linear-gradient(135deg, rgba(46,204,113,0.1) 0%, rgba(39,174,96,0.05) 100%)', border: '1px solid rgba(46,204,113,0.2)' }}>
+          <div className="p-8 rounded-3xl transition-all duration-300 hover:scale-[1.02]" style={{ background: 'linear-gradient(135deg, rgba(254,211,88,0.1) 0%, rgba(255,107,53,0.05) 100%)', border: '1px solid rgba(254,211,88,0.2)' }}>
             <div className="flex items-start gap-5">
-              <div className="w-14 h-14 rounded-2xl flex items-center justify-center flex-shrink-0" style={{ background: 'linear-gradient(135deg, #2ECC71, #27AE60)' }}>
-                <Target className="w-7 h-7 text-white" />
+              <div className="w-14 h-14 rounded-2xl flex items-center justify-center flex-shrink-0" style={{ background: 'linear-gradient(135deg, #FED358, #FF6B35)' }}>
+                <Target className="w-7 h-7 text-black" />
               </div>
               <div>
-                <h3 className="text-xl font-bold mb-2" style={{ color: '#2ECC71' }}>100% Accuracy</h3>
+                <h3 className="text-xl font-bold mb-2" style={{ color: '#FED358' }}>100% Accuracy</h3>
                 <p className="text-base leading-relaxed" style={{ color: '#FDE4BC' }}>
                   Our advanced AI algorithm analyzes patterns to deliver precise predictions every single time.
                 </p>
@@ -98,13 +98,13 @@ export default function AboutPage() {
             </div>
           </div>
 
-          <div className="p-8 rounded-3xl transition-all duration-300 hover:scale-[1.02]" style={{ background: 'linear-gradient(135deg, rgba(52,152,219,0.1) 0%, rgba(41,128,185,0.05) 100%)', border: '1px solid rgba(52,152,219,0.2)' }}>
+          <div className="p-8 rounded-3xl transition-all duration-300 hover:scale-[1.02]" style={{ background: 'linear-gradient(135deg, rgba(255,107,53,0.1) 0%, rgba(254,211,88,0.05) 100%)', border: '1px solid rgba(255,107,53,0.2)' }}>
             <div className="flex items-start gap-5">
-              <div className="w-14 h-14 rounded-2xl flex items-center justify-center flex-shrink-0" style={{ background: 'linear-gradient(135deg, #3498DB, #2980B9)' }}>
-                <Bot className="w-7 h-7 text-white" />
+              <div className="w-14 h-14 rounded-2xl flex items-center justify-center flex-shrink-0" style={{ background: 'linear-gradient(135deg, #FF6B35, #FED358)' }}>
+                <Bot className="w-7 h-7 text-black" />
               </div>
               <div>
-                <h3 className="text-xl font-bold mb-2" style={{ color: '#3498DB' }}>AI-Powered</h3>
+                <h3 className="text-xl font-bold mb-2" style={{ color: '#FF6B35' }}>AI-Powered</h3>
                 <p className="text-base leading-relaxed" style={{ color: '#FDE4BC' }}>
                   Expert data analysts combined with cutting-edge machine learning algorithms work for you.
                 </p>
@@ -112,13 +112,13 @@ export default function AboutPage() {
             </div>
           </div>
 
-          <div className="p-8 rounded-3xl transition-all duration-300 hover:scale-[1.02]" style={{ background: 'linear-gradient(135deg, rgba(155,89,182,0.1) 0%, rgba(142,68,173,0.05) 100%)', border: '1px solid rgba(155,89,182,0.2)' }}>
+          <div className="p-8 rounded-3xl transition-all duration-300 hover:scale-[1.02]" style={{ background: 'linear-gradient(135deg, rgba(255,107,53,0.1) 0%, rgba(254,211,88,0.05) 100%)', border: '1px solid rgba(255,107,53,0.2)' }}>
             <div className="flex items-start gap-5">
-              <div className="w-14 h-14 rounded-2xl flex items-center justify-center flex-shrink-0" style={{ background: 'linear-gradient(135deg, #9B59B6, #8E44AD)' }}>
-                <Zap className="w-7 h-7 text-white" />
+              <div className="w-14 h-14 rounded-2xl flex items-center justify-center flex-shrink-0" style={{ background: 'linear-gradient(135deg, #FF6B35, #FED358)' }}>
+                <Zap className="w-7 h-7 text-black" />
               </div>
               <div>
-                <h3 className="text-xl font-bold mb-2" style={{ color: '#9B59B6' }}>Instant Results</h3>
+                <h3 className="text-xl font-bold mb-2" style={{ color: '#FF6B35' }}>Instant Results</h3>
                 <p className="text-base leading-relaxed" style={{ color: '#FDE4BC' }}>
                   Get predictions for color, size, and number in just seconds with real-time updates.
                 </p>
@@ -164,21 +164,21 @@ export default function AboutPage() {
       <div className="max-w-5xl mx-auto px-6 mb-16">
         <h2 className="text-3xl font-bold text-center mb-12" style={{ color: '#FED358' }}>Our Values</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div className="p-6 rounded-2xl text-center" style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)' }}>
-            <div className="w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-4" style={{ background: 'linear-gradient(135deg, #E74C3C, #C0392B)' }}>
-              <Shield className="w-8 h-8 text-white" />
+          <div className="p-6 rounded-2xl text-center" style={{ background: 'rgba(254,211,88,0.08)', border: '1px solid rgba(254,211,88,0.2)' }}>
+            <div className="w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-4" style={{ background: 'linear-gradient(135deg, #FED358, #FF6B35)' }}>
+              <Shield className="w-8 h-8 text-black" />
             </div>
-            <h3 className="text-lg font-bold mb-2" style={{ color: '#E74C3C' }}>Trust & Security</h3>
+            <h3 className="text-lg font-bold mb-2" style={{ color: '#FED358' }}>Trust & Security</h3>
             <p className="text-sm" style={{ color: '#FDE4BC' }}>Your data and predictions are always protected with us.</p>
           </div>
-          <div className="p-6 rounded-2xl text-center" style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)' }}>
-            <div className="w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-4" style={{ background: 'linear-gradient(135deg, #2ECC71, #27AE60)' }}>
-              <Users className="w-8 h-8 text-white" />
+          <div className="p-6 rounded-2xl text-center" style={{ background: 'rgba(255,107,53,0.08)', border: '1px solid rgba(255,107,53,0.2)' }}>
+            <div className="w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-4" style={{ background: 'linear-gradient(135deg, #FF6B35, #FED358)' }}>
+              <Users className="w-8 h-8 text-black" />
             </div>
-            <h3 className="text-lg font-bold mb-2" style={{ color: '#2ECC71' }}>Community First</h3>
+            <h3 className="text-lg font-bold mb-2" style={{ color: '#FF6B35' }}>Community First</h3>
             <p className="text-sm" style={{ color: '#FDE4BC' }}>Building a winning community together, one prediction at a time.</p>
           </div>
-          <div className="p-6 rounded-2xl text-center" style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)' }}>
+          <div className="p-6 rounded-2xl text-center" style={{ background: 'rgba(254,211,88,0.08)', border: '1px solid rgba(254,211,88,0.2)' }}>
             <div className="w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-4" style={{ background: 'linear-gradient(135deg, #FED358, #FF6B35)' }}>
               <Star className="w-8 h-8 text-black" />
             </div>
