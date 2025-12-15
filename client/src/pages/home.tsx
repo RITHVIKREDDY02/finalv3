@@ -1,6 +1,7 @@
 import { Card } from "@/components/ui/card";
 import { Volume2, ChevronLeft, ChevronRight } from "lucide-react";
 import { useState, useEffect } from "react";
+import { Link } from "wouter";
 import { FaTelegram } from "react-icons/fa";
 import RegistrationDialog from "@/components/registration-dialog";
 import { ComingSoonDialog } from "@/components/coming-soon-dialog";
@@ -481,28 +482,34 @@ export default function Home() {
         <div className="mt-6 flex justify-center">
           <div className="flex flex-row gap-1 sm:gap-2 md:gap-4 lg:gap-6 justify-center items-center w-full max-w-sm sm:max-w-md md:max-w-lg">
             {/* About Us Button */}
-            <button 
-              className="flex-1 md:flex-none md:w-40 lg:w-44 px-2 sm:px-3 md:px-6 lg:px-8 py-1.5 sm:py-2 custom-button font-bold rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 text-xs sm:text-sm md:text-base whitespace-nowrap"
-              onClick={() => setShowAboutUsDialog(true)}
-            >
-              ABOUT US
-            </button>
+            <Link href="/about">
+              <a 
+                className="flex-1 md:flex-none md:w-40 lg:w-44 px-2 sm:px-3 md:px-6 lg:px-8 py-1.5 sm:py-2 custom-button font-bold rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 text-xs sm:text-sm md:text-base whitespace-nowrap text-center"
+                data-testid="link-about"
+              >
+                ABOUT US
+              </a>
+            </Link>
             
             {/* Disclaimer Button */}
-            <button 
-              className="flex-1 md:flex-none md:w-40 lg:w-44 px-2 sm:px-3 md:px-6 lg:px-8 py-1.5 sm:py-2 custom-button font-bold rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 text-xs sm:text-sm md:text-base whitespace-nowrap"
-              onClick={() => setShowDisclaimerDialog(true)}
-            >
-              DISCLAIMER
-            </button>
+            <Link href="/disclaimer">
+              <a 
+                className="flex-1 md:flex-none md:w-40 lg:w-44 px-2 sm:px-3 md:px-6 lg:px-8 py-1.5 sm:py-2 custom-button font-bold rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 text-xs sm:text-sm md:text-base whitespace-nowrap text-center"
+                data-testid="link-disclaimer"
+              >
+                DISCLAIMER
+              </a>
+            </Link>
             
             {/* Warning Button */}
-            <button 
-              className="flex-1 md:flex-none md:w-40 lg:w-44 px-2 sm:px-3 md:px-6 lg:px-8 py-1.5 sm:py-2 custom-button font-bold rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 text-xs sm:text-sm md:text-base whitespace-nowrap"
-              onClick={() => setShowWarningDialog(true)}
-            >
-              WARNING
-            </button>
+            <Link href="/warning">
+              <a 
+                className="flex-1 md:flex-none md:w-40 lg:w-44 px-2 sm:px-3 md:px-6 lg:px-8 py-1.5 sm:py-2 custom-button font-bold rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 text-xs sm:text-sm md:text-base whitespace-nowrap text-center"
+                data-testid="link-warning"
+              >
+                WARNING
+              </a>
+            </Link>
           </div>
         </div>
 
