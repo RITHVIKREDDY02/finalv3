@@ -59,7 +59,7 @@ export default function ContactPage() {
             href="https://t.me/officialteacherofv3games_bot" 
             target="_blank" 
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 md:gap-3 px-4 py-3 md:px-8 md:py-4 font-semibold rounded-xl transition-all duration-300 hover:scale-105 text-xs md:text-lg max-w-full"
+            className="inline-flex items-center gap-2 md:gap-3 px-4 py-3 md:px-8 md:py-4 font-semibold rounded-xl transition-all duration-300 hover:scale-105 text-sm md:text-lg max-w-full"
             style={{ background: '#0088cc', color: 'white' }}
             data-testid="link-telegram-contact"
           >
