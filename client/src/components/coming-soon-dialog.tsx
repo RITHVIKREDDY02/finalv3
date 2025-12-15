@@ -84,7 +84,7 @@ export function ComingSoonDialog({ isOpen, onClose, gameName }: ComingSoonDialog
                     <Wrench className="w-5 h-5" style={{ color: '#FED358' }} />
                     <span>{gameName}</span>
                   </div>
-                  <p className="text-base font-medium leading-relaxed" style={{ color: 'rgba(253, 228, 188, 0.8)' }}>
+                  <p className="text-base font-medium leading-relaxed text-center" style={{ color: 'rgba(253, 228, 188, 0.8)' }}>
                     is currently under maintenance
                   </p>
                   <div className="rounded-xl p-4" style={{
