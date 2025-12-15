@@ -486,32 +486,41 @@ export default function Home() {
 
         {/* Secondary Action Buttons */}
         <div className="mt-6 flex justify-center">
-          <div className="flex flex-row gap-1 sm:gap-2 md:gap-4 lg:gap-6 justify-center items-center w-full max-w-sm sm:max-w-md md:max-w-lg">
-            {/* About Us Button */}
+          <div className="flex flex-row gap-1 sm:gap-2 md:gap-4 lg:gap-6 justify-center items-center w-full max-w-sm sm:max-w-md md:max-w-lg lg:max-w-xl">
+            {/* Terms Button */}
             <Link 
-              href="/about"
-              className="flex-1 md:flex-none md:w-40 lg:w-44 px-2 sm:px-3 md:px-6 lg:px-8 py-1.5 sm:py-2 custom-button font-bold rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 text-xs sm:text-sm md:text-base whitespace-nowrap text-center"
-              data-testid="link-about"
+              href="/terms"
+              className="flex-1 md:flex-none md:w-32 lg:w-36 px-2 sm:px-3 md:px-4 lg:px-6 py-1.5 sm:py-2 custom-button font-bold rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 text-xs sm:text-sm md:text-base whitespace-nowrap text-center"
+              data-testid="link-terms"
             >
-              ABOUT US
+              TERMS
+            </Link>
+            
+            {/* Privacy Button */}
+            <Link 
+              href="/privacy"
+              className="flex-1 md:flex-none md:w-32 lg:w-36 px-2 sm:px-3 md:px-4 lg:px-6 py-1.5 sm:py-2 custom-button font-bold rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 text-xs sm:text-sm md:text-base whitespace-nowrap text-center"
+              data-testid="link-privacy"
+            >
+              PRIVACY
             </Link>
             
             {/* Disclaimer Button */}
             <Link 
               href="/disclaimer"
-              className="flex-1 md:flex-none md:w-40 lg:w-44 px-2 sm:px-3 md:px-6 lg:px-8 py-1.5 sm:py-2 custom-button font-bold rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 text-xs sm:text-sm md:text-base whitespace-nowrap text-center"
+              className="flex-1 md:flex-none md:w-32 lg:w-36 px-2 sm:px-3 md:px-4 lg:px-6 py-1.5 sm:py-2 custom-button font-bold rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 text-xs sm:text-sm md:text-base whitespace-nowrap text-center"
               data-testid="link-disclaimer"
             >
               DISCLAIMER
             </Link>
             
-            {/* Warning Button */}
+            {/* Contact Button */}
             <Link 
-              href="/warning"
-              className="flex-1 md:flex-none md:w-40 lg:w-44 px-2 sm:px-3 md:px-6 lg:px-8 py-1.5 sm:py-2 custom-button font-bold rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 text-xs sm:text-sm md:text-base whitespace-nowrap text-center"
-              data-testid="link-warning"
+              href="/contact"
+              className="flex-1 md:flex-none md:w-32 lg:w-36 px-2 sm:px-3 md:px-4 lg:px-6 py-1.5 sm:py-2 custom-button font-bold rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 text-xs sm:text-sm md:text-base whitespace-nowrap text-center"
+              data-testid="link-contact"
             >
-              WARNING
+              CONTACT
             </Link>
           </div>
         </div>
