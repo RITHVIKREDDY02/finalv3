@@ -26,32 +26,32 @@ export default function ContactPage() {
       </nav>
 
       {/* Hero Header */}
-      <div className="pt-24 pb-8 px-6">
+      <div className="pt-20 md:pt-24 pb-6 md:pb-8 px-4 md:px-6">
         <div className="max-w-4xl mx-auto text-center">
-          <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl mb-4" style={{ background: '#FED358' }}>
-            <MessageCircle className="w-8 h-8 text-black" />
+          <div className="inline-flex items-center justify-center w-12 h-12 md:w-16 md:h-16 rounded-xl md:rounded-2xl mb-3 md:mb-4" style={{ background: '#FED358' }}>
+            <MessageCircle className="w-6 h-6 md:w-8 md:h-8 text-black" />
           </div>
-          <h1 className="text-4xl md:text-5xl font-bold mb-3" style={{ color: '#FED358' }}>
+          <h1 className="text-2xl md:text-4xl lg:text-5xl font-bold mb-2 md:mb-3" style={{ color: '#FED358' }}>
             Contact Us
           </h1>
-          <p className="text-lg opacity-80" style={{ color: '#FDE4BC' }}>
+          <p className="text-sm md:text-lg opacity-80" style={{ color: '#FDE4BC' }}>
             Get in touch with our team
           </p>
         </div>
       </div>
 
       {/* Contact Content */}
-      <div className="max-w-4xl mx-auto px-6 pb-16">
-        <div className="p-8 rounded-2xl text-center" style={{ background: 'rgba(254,211,88,0.1)', border: '1px solid rgba(254,211,88,0.2)' }}>
-          <div className="inline-flex items-center justify-center w-20 h-20 rounded-full mb-6" style={{ background: 'rgba(0,136,204,0.2)' }}>
-            <FaTelegram className="w-10 h-10" style={{ color: '#0088cc' }} />
+      <div className="max-w-4xl mx-auto px-4 md:px-6 pb-12 md:pb-16">
+        <div className="p-5 md:p-8 rounded-xl md:rounded-2xl text-center" style={{ background: 'rgba(254,211,88,0.1)', border: '1px solid rgba(254,211,88,0.2)' }}>
+          <div className="inline-flex items-center justify-center w-16 h-16 md:w-20 md:h-20 rounded-full mb-6" style={{ background: 'rgba(0,136,204,0.2)' }}>
+            <FaTelegram className="w-8 h-8 md:w-10 md:h-10" style={{ color: '#0088cc' }} />
           </div>
           
-          <h2 className="text-2xl font-semibold mb-4" style={{ color: '#FED358' }}>
+          <h2 className="text-xl md:text-2xl font-semibold mb-4" style={{ color: '#FED358' }}>
             Reach Us on Telegram
           </h2>
           
-          <p className="text-base leading-relaxed opacity-90 mb-6" style={{ color: '#FDE4BC' }}>
+          <p className="text-sm md:text-base leading-relaxed opacity-90 mb-6" style={{ color: '#FDE4BC' }}>
             For any queries, support, or assistance, feel free to contact us through our official Telegram channel. Our team is ready to help you!
           </p>
           
@@ -59,11 +59,11 @@ export default function ContactPage() {
             href="https://t.me/officialteacherofv3games_bot" 
             target="_blank" 
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-3 px-8 py-4 font-semibold rounded-xl transition-all duration-300 hover:scale-105 text-lg"
+            className="inline-flex items-center gap-3 px-6 py-3 md:px-8 md:py-4 font-semibold rounded-xl transition-all duration-300 hover:scale-105 text-base md:text-lg"
             style={{ background: '#0088cc', color: 'white' }}
             data-testid="link-telegram-contact"
           >
-            <FaTelegram className="w-6 h-6" />
+            <FaTelegram className="w-5 h-5 md:w-6 md:h-6" />
             @officialteacherofv3games_bot
           </a>
           

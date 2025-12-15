@@ -26,29 +26,29 @@ export default function DisclaimerPage() {
       </nav>
 
       {/* Hero Header */}
-      <div className="pt-24 pb-8 px-6">
+      <div className="pt-20 md:pt-24 pb-6 md:pb-8 px-4 md:px-6">
         <div className="max-w-4xl mx-auto text-center">
-          <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl mb-4" style={{ background: '#FED358' }}>
-            <FileText className="w-8 h-8 text-black" />
+          <div className="inline-flex items-center justify-center w-12 h-12 md:w-16 md:h-16 rounded-xl md:rounded-2xl mb-3 md:mb-4" style={{ background: '#FED358' }}>
+            <FileText className="w-6 h-6 md:w-8 md:h-8 text-black" />
           </div>
-          <h1 className="text-4xl md:text-5xl font-bold mb-3" style={{ color: '#FED358' }}>
+          <h1 className="text-2xl md:text-4xl lg:text-5xl font-bold mb-2 md:mb-3" style={{ color: '#FED358' }}>
             Disclaimer
           </h1>
-          <p className="text-lg opacity-80" style={{ color: '#FDE4BC' }}>
+          <p className="text-sm md:text-lg opacity-80" style={{ color: '#FDE4BC' }}>
             Please read this disclaimer carefully before using our services
           </p>
         </div>
       </div>
 
       {/* Contact Card */}
-      <div className="max-w-4xl mx-auto px-6 mb-8">
-        <div className="p-5 rounded-2xl flex items-center gap-4" style={{ background: 'rgba(254,211,88,0.1)', border: '1px solid rgba(254,211,88,0.2)' }}>
-          <div className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0" style={{ background: '#FED358' }}>
-            <Mail className="w-6 h-6 text-black" />
+      <div className="max-w-4xl mx-auto px-4 md:px-6 mb-6 md:mb-8">
+        <div className="p-4 md:p-5 rounded-xl md:rounded-2xl flex items-center gap-4" style={{ background: 'rgba(254,211,88,0.1)', border: '1px solid rgba(254,211,88,0.2)' }}>
+          <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl flex items-center justify-center flex-shrink-0" style={{ background: '#FED358' }}>
+            <Mail className="w-5 h-5 md:w-6 md:h-6 text-black" />
           </div>
           <div>
             <p className="text-sm opacity-70 mb-1" style={{ color: '#FDE4BC' }}>Have questions? Contact us at</p>
-            <a href="mailto:starletpo123@gmail.com" className="text-lg font-semibold hover:underline" style={{ color: '#FED358' }}>
+            <a href="mailto:starletpo123@gmail.com" className="text-base md:text-lg font-semibold hover:underline" style={{ color: '#FED358' }}>
               starletpo123@gmail.com
             </a>
           </div>
@@ -56,16 +56,16 @@ export default function DisclaimerPage() {
       </div>
 
       {/* Content Sections */}
-      <div className="max-w-4xl mx-auto px-6 pb-16 space-y-6">
+      <div className="max-w-4xl mx-auto px-4 md:px-6 pb-12 md:pb-16 space-y-4 md:space-y-6">
         {/* Section 1 */}
-        <div className="p-6 rounded-2xl" style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)' }}>
-          <div className="flex items-start gap-4">
-            <div className="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0 mt-1" style={{ background: 'rgba(254,211,88,0.2)' }}>
-              <FileText className="w-5 h-5" style={{ color: '#FED358' }} />
+        <div className="p-4 md:p-6 rounded-xl md:rounded-2xl" style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)' }}>
+          <div className="flex flex-col md:flex-row md:items-start gap-3 md:gap-4">
+            <div className="w-8 h-8 md:w-10 md:h-10 rounded-lg flex items-center justify-center flex-shrink-0" style={{ background: 'rgba(254,211,88,0.2)' }}>
+              <FileText className="w-4 h-4 md:w-5 md:h-5" style={{ color: '#FED358' }} />
             </div>
             <div>
-              <h2 className="text-xl font-semibold mb-3" style={{ color: '#FED358' }}>Disclaimers for V3 Game</h2>
-              <p className="text-base leading-relaxed opacity-90" style={{ color: '#FDE4BC' }}>
+              <h2 className="text-lg md:text-xl font-semibold mb-2 md:mb-3" style={{ color: '#FED358' }}>Disclaimers for V3 Game</h2>
+              <p className="text-sm md:text-base leading-relaxed opacity-90" style={{ color: '#FDE4BC' }}>
                 All the information on this website - https://v3game.digital/ - is published in good faith and for general information purposes only. V3 Game does not make any warranties about the completeness, reliability, and accuracy of this information. Any action you take upon the information you find on this website (V3 Game), is strictly at your own risk. V3 Game will not be liable for any losses and/or damages in connection with the use of our website.
               </p>
             </div>
@@ -73,14 +73,14 @@ export default function DisclaimerPage() {
         </div>
 
         {/* Section 2 */}
-        <div className="p-6 rounded-2xl" style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)' }}>
-          <div className="flex items-start gap-4">
-            <div className="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0 mt-1" style={{ background: 'rgba(254,211,88,0.2)' }}>
-              <Link2 className="w-5 h-5" style={{ color: '#FED358' }} />
+        <div className="p-4 md:p-6 rounded-xl md:rounded-2xl" style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)' }}>
+          <div className="flex flex-col md:flex-row md:items-start gap-3 md:gap-4">
+            <div className="w-8 h-8 md:w-10 md:h-10 rounded-lg flex items-center justify-center flex-shrink-0" style={{ background: 'rgba(254,211,88,0.2)' }}>
+              <Link2 className="w-4 h-4 md:w-5 md:h-5" style={{ color: '#FED358' }} />
             </div>
             <div>
-              <h2 className="text-xl font-semibold mb-3" style={{ color: '#FED358' }}>External Links</h2>
-              <p className="text-base leading-relaxed opacity-90" style={{ color: '#FDE4BC' }}>
+              <h2 className="text-lg md:text-xl font-semibold mb-2 md:mb-3" style={{ color: '#FED358' }}>External Links</h2>
+              <p className="text-sm md:text-base leading-relaxed opacity-90" style={{ color: '#FDE4BC' }}>
                 From our website, you can visit other websites by following hyperlinks to such external sites. While we strive to provide only quality links to useful and ethical websites, we have no control over the content and nature of these sites. These links to other websites do not imply a recommendation for all the content found on these sites. Site owners and content may change without notice and may occur before we have the opportunity to remove a link that may have gone 'bad'.
               </p>
             </div>
@@ -88,14 +88,14 @@ export default function DisclaimerPage() {
         </div>
 
         {/* Section 3 */}
-        <div className="p-6 rounded-2xl" style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)' }}>
-          <div className="flex items-start gap-4">
-            <div className="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0 mt-1" style={{ background: 'rgba(254,211,88,0.2)' }}>
-              <Shield className="w-5 h-5" style={{ color: '#FED358' }} />
+        <div className="p-4 md:p-6 rounded-xl md:rounded-2xl" style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)' }}>
+          <div className="flex flex-col md:flex-row md:items-start gap-3 md:gap-4">
+            <div className="w-8 h-8 md:w-10 md:h-10 rounded-lg flex items-center justify-center flex-shrink-0" style={{ background: 'rgba(254,211,88,0.2)' }}>
+              <Shield className="w-4 h-4 md:w-5 md:h-5" style={{ color: '#FED358' }} />
             </div>
             <div>
-              <h2 className="text-xl font-semibold mb-3" style={{ color: '#FED358' }}>Privacy Notice</h2>
-              <p className="text-base leading-relaxed opacity-90" style={{ color: '#FDE4BC' }}>
+              <h2 className="text-lg md:text-xl font-semibold mb-2 md:mb-3" style={{ color: '#FED358' }}>Privacy Notice</h2>
+              <p className="text-sm md:text-base leading-relaxed opacity-90" style={{ color: '#FDE4BC' }}>
                 Please be also aware that when you leave our website, other sites may have different privacy policies and terms which are beyond our control. Please be sure to check the Privacy Policies of these sites as well as their "Terms of Service" before engaging in any business or uploading any information.
               </p>
             </div>
@@ -103,14 +103,14 @@ export default function DisclaimerPage() {
         </div>
 
         {/* Section 4 */}
-        <div className="p-6 rounded-2xl" style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)' }}>
-          <div className="flex items-start gap-4">
-            <div className="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0 mt-1" style={{ background: 'rgba(254,211,88,0.2)' }}>
-              <CheckCircle className="w-5 h-5" style={{ color: '#FED358' }} />
+        <div className="p-4 md:p-6 rounded-xl md:rounded-2xl" style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)' }}>
+          <div className="flex flex-col md:flex-row md:items-start gap-3 md:gap-4">
+            <div className="w-8 h-8 md:w-10 md:h-10 rounded-lg flex items-center justify-center flex-shrink-0" style={{ background: 'rgba(254,211,88,0.2)' }}>
+              <CheckCircle className="w-4 h-4 md:w-5 md:h-5" style={{ color: '#FED358' }} />
             </div>
             <div>
-              <h2 className="text-xl font-semibold mb-3" style={{ color: '#FED358' }}>Consent</h2>
-              <p className="text-base leading-relaxed opacity-90" style={{ color: '#FDE4BC' }}>
+              <h2 className="text-lg md:text-xl font-semibold mb-2 md:mb-3" style={{ color: '#FED358' }}>Consent</h2>
+              <p className="text-sm md:text-base leading-relaxed opacity-90" style={{ color: '#FDE4BC' }}>
                 By using our website, you hereby consent to our disclaimer and agree to its terms.
               </p>
             </div>
@@ -118,14 +118,14 @@ export default function DisclaimerPage() {
         </div>
 
         {/* Section 5 */}
-        <div className="p-6 rounded-2xl" style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)' }}>
-          <div className="flex items-start gap-4">
-            <div className="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0 mt-1" style={{ background: 'rgba(254,211,88,0.2)' }}>
-              <RefreshCw className="w-5 h-5" style={{ color: '#FED358' }} />
+        <div className="p-4 md:p-6 rounded-xl md:rounded-2xl" style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)' }}>
+          <div className="flex flex-col md:flex-row md:items-start gap-3 md:gap-4">
+            <div className="w-8 h-8 md:w-10 md:h-10 rounded-lg flex items-center justify-center flex-shrink-0" style={{ background: 'rgba(254,211,88,0.2)' }}>
+              <RefreshCw className="w-4 h-4 md:w-5 md:h-5" style={{ color: '#FED358' }} />
             </div>
             <div>
-              <h2 className="text-xl font-semibold mb-3" style={{ color: '#FED358' }}>Update</h2>
-              <p className="text-base leading-relaxed opacity-90" style={{ color: '#FDE4BC' }}>
+              <h2 className="text-lg md:text-xl font-semibold mb-2 md:mb-3" style={{ color: '#FED358' }}>Update</h2>
+              <p className="text-sm md:text-base leading-relaxed opacity-90" style={{ color: '#FDE4BC' }}>
                 Should we update, amend or make any changes to this document, those changes will be prominently posted here.
               </p>
             </div>
