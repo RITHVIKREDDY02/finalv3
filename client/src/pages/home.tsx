@@ -261,11 +261,164 @@ export default function Home() {
               LOGIN
             </button>
           </div>
+
+          {/* Community Text */}
+          <div className="text-center mt-6 mb-8">
+            <p className="text-sm sm:text-base md:text-lg font-medium" style={{ color: '#FDE4BC' }}>
+              Join our exclusive trading community and start receiving premium signals instantly!
+            </p>
+          </div>
           
         </div>
       </div>
 
+      {/* App Information Section */}
+      <div className="px-6 md:px-8 lg:px-12 xl:px-16 pb-8">
+        <div className="max-w-2xl mx-auto lg:max-w-4xl">
+          <div className="rounded-2xl p-6 md:p-8" style={{ background: 'linear-gradient(135deg, rgba(254,211,88,0.1) 0%, rgba(255,107,53,0.08) 100%)', border: '1px solid rgba(254,211,88,0.3)' }}>
+            <h3 className="text-xl md:text-2xl font-bold text-center mb-6" style={{ color: '#FED358' }}>App Information</h3>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+              <div className="p-4 rounded-xl" style={{ background: 'rgba(0,12,28,0.5)' }}>
+                <p className="text-xs mb-1" style={{ color: '#FDE4BC', opacity: 0.7 }}>App Name</p>
+                <p className="font-bold" style={{ color: '#FED358' }}>V3 Game</p>
+              </div>
+              <div className="p-4 rounded-xl" style={{ background: 'rgba(0,12,28,0.5)' }}>
+                <p className="text-xs mb-1" style={{ color: '#FDE4BC', opacity: 0.7 }}>Size</p>
+                <p className="font-bold" style={{ color: '#FED358' }}>2.08 MB</p>
+              </div>
+              <div className="p-4 rounded-xl" style={{ background: 'rgba(0,12,28,0.5)' }}>
+                <p className="text-xs mb-1" style={{ color: '#FDE4BC', opacity: 0.7 }}>Invite Code</p>
+                <p className="font-bold" style={{ color: '#FED358' }}>7532630349</p>
+              </div>
+              <div className="p-4 rounded-xl" style={{ background: 'rgba(0,12,28,0.5)' }}>
+                <p className="text-xs mb-1" style={{ color: '#FDE4BC', opacity: 0.7 }}>Games</p>
+                <p className="font-bold" style={{ color: '#FED358' }}>500+</p>
+              </div>
+            </div>
+            <div className="text-center mt-4">
+              <p className="text-sm" style={{ color: '#FDE4BC', opacity: 0.8 }}>Website: <a href="https://www.v3gameb.com" target="_blank" rel="noopener noreferrer" className="font-semibold hover:underline" style={{ color: '#FED358' }}>www.v3gameb.com</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
 
+      {/* Invite Friends & Earn Rewards Section */}
+      <div className="px-6 md:px-8 lg:px-12 xl:px-16 pb-8">
+        <div className="max-w-2xl mx-auto lg:max-w-5xl">
+          <div className="rounded-2xl p-6 md:p-8" style={{ background: 'linear-gradient(135deg, rgba(46,204,113,0.1) 0%, rgba(39,174,96,0.08) 100%)', border: '1px solid rgba(46,204,113,0.3)' }}>
+            <div className="text-center mb-6">
+              <h3 className="text-xl md:text-2xl font-bold mb-2" style={{ color: '#2ECC71' }}>Invite Friends & Earn Unlimited Rewards</h3>
+              <p className="text-sm md:text-base" style={{ color: '#FDE4BC' }}>Get instant cashback & task bonuses every day!</p>
+            </div>
+            
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+              {/* Tier 1 */}
+              <div className="rounded-xl p-4 text-center" style={{ background: 'rgba(0,12,28,0.6)', border: '1px solid rgba(254,211,88,0.2)' }}>
+                <div className="w-8 h-8 rounded-full flex items-center justify-center mx-auto mb-2" style={{ background: 'linear-gradient(135deg, #FED358, #FB5E04)' }}>
+                  <span className="text-black font-bold text-sm">1</span>
+                </div>
+                <p className="font-semibold text-sm mb-1" style={{ color: '#FED358' }}>3 Friends</p>
+                <p className="text-xs mb-3" style={{ color: '#FDE4BC', opacity: 0.8 }}>₹400 recharge each</p>
+                <div className="rounded-lg p-2" style={{ background: 'rgba(46,204,113,0.2)' }}>
+                  <p className="text-xs" style={{ color: '#FDE4BC' }}>You'll Earn</p>
+                  <p className="text-lg font-bold" style={{ color: '#2ECC71' }}>₹155</p>
+                </div>
+              </div>
+
+              {/* Tier 2 */}
+              <div className="rounded-xl p-4 text-center" style={{ background: 'rgba(0,12,28,0.6)', border: '1px solid rgba(254,211,88,0.2)' }}>
+                <div className="w-8 h-8 rounded-full flex items-center justify-center mx-auto mb-2" style={{ background: 'linear-gradient(135deg, #FED358, #FB5E04)' }}>
+                  <span className="text-black font-bold text-sm">2</span>
+                </div>
+                <p className="font-semibold text-sm mb-1" style={{ color: '#FED358' }}>10 Friends</p>
+                <p className="text-xs mb-3" style={{ color: '#FDE4BC', opacity: 0.8 }}>₹500 recharge each</p>
+                <div className="rounded-lg p-2" style={{ background: 'rgba(46,204,113,0.2)' }}>
+                  <p className="text-xs" style={{ color: '#FDE4BC' }}>You'll Earn</p>
+                  <p className="text-lg font-bold" style={{ color: '#2ECC71' }}>₹555</p>
+                </div>
+              </div>
+
+              {/* Tier 3 */}
+              <div className="rounded-xl p-4 text-center" style={{ background: 'rgba(0,12,28,0.6)', border: '1px solid rgba(254,211,88,0.2)' }}>
+                <div className="w-8 h-8 rounded-full flex items-center justify-center mx-auto mb-2" style={{ background: 'linear-gradient(135deg, #FED358, #FB5E04)' }}>
+                  <span className="text-black font-bold text-sm">3</span>
+                </div>
+                <p className="font-semibold text-sm mb-1" style={{ color: '#FED358' }}>30 Friends</p>
+                <p className="text-xs mb-3" style={{ color: '#FDE4BC', opacity: 0.8 }}>₹800 recharge each</p>
+                <div className="rounded-lg p-2" style={{ background: 'rgba(46,204,113,0.2)' }}>
+                  <p className="text-xs" style={{ color: '#FDE4BC' }}>You'll Earn</p>
+                  <p className="text-lg font-bold" style={{ color: '#2ECC71' }}>₹1,555</p>
+                </div>
+              </div>
+
+              {/* Tier 4 */}
+              <div className="rounded-xl p-4 text-center" style={{ background: 'rgba(0,12,28,0.6)', border: '1px solid rgba(254,211,88,0.2)' }}>
+                <div className="w-8 h-8 rounded-full flex items-center justify-center mx-auto mb-2" style={{ background: 'linear-gradient(135deg, #FED358, #FB5E04)' }}>
+                  <span className="text-black font-bold text-sm">4</span>
+                </div>
+                <p className="font-semibold text-sm mb-1" style={{ color: '#FED358' }}>50 Friends</p>
+                <p className="text-xs mb-3" style={{ color: '#FDE4BC', opacity: 0.8 }}>₹1,200 recharge each</p>
+                <div className="rounded-lg p-2" style={{ background: 'rgba(46,204,113,0.2)' }}>
+                  <p className="text-xs" style={{ color: '#FDE4BC' }}>You'll Earn</p>
+                  <p className="text-lg font-bold" style={{ color: '#2ECC71' }}>₹2,775</p>
+                </div>
+              </div>
+
+              {/* Tier 5 */}
+              <div className="rounded-xl p-4 text-center" style={{ background: 'rgba(0,12,28,0.6)', border: '1px solid rgba(254,211,88,0.2)' }}>
+                <div className="w-8 h-8 rounded-full flex items-center justify-center mx-auto mb-2" style={{ background: 'linear-gradient(135deg, #FED358, #FB5E04)' }}>
+                  <span className="text-black font-bold text-sm">5</span>
+                </div>
+                <p className="font-semibold text-sm mb-1" style={{ color: '#FED358' }}>100 Friends</p>
+                <p className="text-xs mb-3" style={{ color: '#FDE4BC', opacity: 0.8 }}>₹1,200 recharge each</p>
+                <div className="rounded-lg p-2" style={{ background: 'rgba(46,204,113,0.2)' }}>
+                  <p className="text-xs" style={{ color: '#FDE4BC' }}>You'll Earn</p>
+                  <p className="text-lg font-bold" style={{ color: '#2ECC71' }}>₹5,555</p>
+                </div>
+              </div>
+
+              {/* Tier 6 */}
+              <div className="rounded-xl p-4 text-center" style={{ background: 'rgba(0,12,28,0.6)', border: '1px solid rgba(254,211,88,0.2)' }}>
+                <div className="w-8 h-8 rounded-full flex items-center justify-center mx-auto mb-2" style={{ background: 'linear-gradient(135deg, #FED358, #FB5E04)' }}>
+                  <span className="text-black font-bold text-sm">6</span>
+                </div>
+                <p className="font-semibold text-sm mb-1" style={{ color: '#FED358' }}>200 Friends</p>
+                <p className="text-xs mb-3" style={{ color: '#FDE4BC', opacity: 0.8 }}>₹1,200 recharge each</p>
+                <div className="rounded-lg p-2" style={{ background: 'rgba(46,204,113,0.2)' }}>
+                  <p className="text-xs" style={{ color: '#FDE4BC' }}>You'll Earn</p>
+                  <p className="text-lg font-bold" style={{ color: '#2ECC71' }}>₹11,111</p>
+                </div>
+              </div>
+
+              {/* Tier 7 */}
+              <div className="rounded-xl p-4 text-center" style={{ background: 'rgba(0,12,28,0.6)', border: '1px solid rgba(254,211,88,0.2)' }}>
+                <div className="w-8 h-8 rounded-full flex items-center justify-center mx-auto mb-2" style={{ background: 'linear-gradient(135deg, #FED358, #FB5E04)' }}>
+                  <span className="text-black font-bold text-sm">7</span>
+                </div>
+                <p className="font-semibold text-sm mb-1" style={{ color: '#FED358' }}>500 Friends</p>
+                <p className="text-xs mb-3" style={{ color: '#FDE4BC', opacity: 0.8 }}>₹1,200 recharge each</p>
+                <div className="rounded-lg p-2" style={{ background: 'rgba(46,204,113,0.2)' }}>
+                  <p className="text-xs" style={{ color: '#FDE4BC' }}>You'll Earn</p>
+                  <p className="text-lg font-bold" style={{ color: '#2ECC71' }}>₹27,777</p>
+                </div>
+              </div>
+
+              {/* Tier 8 */}
+              <div className="rounded-xl p-4 text-center" style={{ background: 'rgba(0,12,28,0.6)', border: '1px solid rgba(254,211,88,0.2)' }}>
+                <div className="w-8 h-8 rounded-full flex items-center justify-center mx-auto mb-2" style={{ background: 'linear-gradient(135deg, #FED358, #FB5E04)' }}>
+                  <span className="text-black font-bold text-sm">8</span>
+                </div>
+                <p className="font-semibold text-sm mb-1" style={{ color: '#FED358' }}>1000 Friends</p>
+                <p className="text-xs mb-3" style={{ color: '#FDE4BC', opacity: 0.8 }}>₹1,200 recharge each</p>
+                <div className="rounded-lg p-2" style={{ background: 'rgba(46,204,113,0.2)' }}>
+                  <p className="text-xs" style={{ color: '#FDE4BC' }}>You'll Earn</p>
+                  <p className="text-lg font-bold" style={{ color: '#2ECC71' }}>₹55,555</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
       {/* Footer */}
       <Footer />
