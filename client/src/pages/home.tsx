@@ -1,5 +1,4 @@
-import { Card } from "@/components/ui/card";
-import { Volume2, ChevronLeft, ChevronRight, Menu, X } from "lucide-react";
+import { ChevronLeft, ChevronRight, Menu, X } from "lucide-react";
 import { useState, useEffect } from "react";
 import { Link } from "wouter";
 import { FaTelegram } from "react-icons/fa";
@@ -255,29 +254,8 @@ export default function Home() {
         </div>
       </nav>
 
-      {/* Welcome Banner - Full Width */}
-      <div style={{ padding: '24px 34px', marginTop: '60px' }}>
-        <Card className="bg-banner-gradient rounded-lg py-1 px-3 mb-4 border-2 border-accent-gold shadow-lg w-full mx-auto">
-          <div className="flex items-center space-x-3 overflow-hidden">
-            {/* Speaker Icon */}
-            <div className="flex-shrink-0">
-              <Volume2 className="w-4 h-4 warm-gold" />
-            </div>
-            
-            {/* Marquee Text Container */}
-            <div className="flex-1 overflow-hidden">
-              <div className="marquee-container">
-                <p className="light-gold text-sm font-medium whitespace-nowrap animate-marquee">
-                  Welcome to V3 GAME VIP PREDICTION APP, we will serve you Special Predictions!
-                </p>
-              </div>
-            </div>
-          </div>
-        </Card>
-      </div>
-
       {/* Hero Banners Carousel */}
-      <div className="px-4 md:px-6 lg:px-8 xl:px-12 pb-4">
+      <div className="px-4 md:px-6 lg:px-8 xl:px-12 pb-4 mt-16">
         <div className="max-w-6xl mx-auto lg:max-w-4xl">
           <div 
             className="relative overflow-hidden rounded-2xl shadow-lg lg:max-h-64 xl:max-h-72"
