@@ -8,9 +8,6 @@ import { ComingSoonDialog } from "@/components/coming-soon-dialog";
 import WelcomeNotification from "@/components/welcome-notification";
 import Footer from "@/components/footer";
 import logoPath from "@assets/logo_nav_1756545819204.png";
-import winGoImage from "@assets/lotterycategory_20250412120719dqfv_1754052547793.png";
-import trxWingoImage from "@assets/lotterycategory_20250412120818j8wq_1754052552269.png";
-import lotteryIcon from "@assets/Lottery-9123e8d2_1754069546644.webp";
 import mobileBannerImage from "@assets/202508291426595421003_1756613438340.png";
 import desktopBannerImage from "@assets/202508291426595421003_1756613438340.png";
 import heroBanner2 from "@assets/202411122322287871008_1756613499429.png";
@@ -370,69 +367,6 @@ export default function Home() {
       </div>
 
 
-
-      {/* Main Content Container */}
-      <div className="max-w-2xl mx-auto px-6 md:px-8 lg:max-w-7xl lg:mx-0 lg:ml-8 xl:ml-12 lg:px-4 py-6">
-        {/* Section Header */}
-        <div className="flex items-center mb-6">
-          <div className="flex items-center">
-            {/* Vertical accent line */}
-            <div 
-              className="w-1 h-8 mr-3 rounded-full accent-shadow"
-              style={{ backgroundColor: '#FED358' }}
-            ></div>
-            <img 
-              src={lotteryIcon} 
-              alt="Lottery icon" 
-              className="w-6 h-6 mr-2"
-            />
-            <span className="font-bold" style={{ color: '#FDE4BC', fontSize: '24px' }}>Lottery</span>
-          </div>
-        </div>
-
-        {/* Game Categories */}
-        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-x-4 gap-y-6 md:gap-x-12 md:gap-y-8 lg:gap-x-8 lg:gap-y-8 xl:gap-x-12 xl:gap-y-8">
-          
-          {/* Win Go Game Card */}
-          <div 
-            className="cursor-pointer shadow-lg relative"
-            onClick={() => handleGameClick('Win Go')}
-          >
-            <div className="relative overflow-hidden rounded-2xl">
-              <img 
-                src={winGoImage} 
-                alt="Win Go - Lottery prediction game with colorful balls" 
-                className="w-full h-auto object-cover object-top block"
-              />
-              <div className="absolute inset-0 rounded-2xl border-2 border-accent-gold/30"></div>
-            </div>
-          </div>
-
-          {/* Trx Wingo Game Card */}
-          <div 
-            className="cursor-pointer shadow-lg relative"
-            onClick={() => handleGameClick('Trx Wingo')}
-          >
-            <div className="relative overflow-hidden rounded-2xl">
-              <img 
-                src={trxWingoImage} 
-                alt="Trx Wingo - TRX-themed lottery prediction game" 
-                className="w-full h-auto object-cover object-top block"
-              />
-              <div className="absolute inset-0 rounded-2xl border-2 border-accent-gold/30"></div>
-            </div>
-          </div>
-
-        </div>
-
-        {/* Feature Section */}
-        <div className="mt-12 text-center">
-          <div className="text-opacity-70 light-gold text-sm">
-            <p>More exciting features coming soon...</p>
-          </div>
-        </div>
-
-      </div>
 
       {/* Footer */}
       <Footer />
