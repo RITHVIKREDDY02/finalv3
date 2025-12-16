@@ -146,7 +146,31 @@ export default function Home() {
           </div>
           
           {/* Desktop Navigation Items */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden md:flex items-center space-x-6">
+            <Link 
+              href="/register-guide"
+              className="text-sm font-medium transition-opacity duration-200 hover:opacity-80"
+              style={{ color: '#FDE4BC' }}
+              data-testid="link-register-guide"
+            >
+              Register Guide
+            </Link>
+            <Link 
+              href="/login-bonus"
+              className="text-sm font-medium transition-opacity duration-200 hover:opacity-80"
+              style={{ color: '#FDE4BC' }}
+              data-testid="link-login-bonus"
+            >
+              Login Bonus
+            </Link>
+            <Link 
+              href="/blog"
+              className="text-sm font-medium transition-opacity duration-200 hover:opacity-80"
+              style={{ color: '#FDE4BC' }}
+              data-testid="link-blog"
+            >
+              Blog
+            </Link>
             <button 
               className="px-4 py-2 rounded-full text-black font-bold text-sm transition-opacity duration-200 hover:opacity-90"
               style={{ background: 'linear-gradient(180deg,#f8bf6e,#fb5e04)' }}
