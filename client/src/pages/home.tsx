@@ -215,16 +215,16 @@ export default function Home() {
       </nav>
 
       {/* Hero Banner */}
-      <div className="px-4 md:px-6 lg:px-8 xl:px-12 pb-4 mt-16">
-        <div className="max-w-6xl mx-auto lg:max-w-4xl">
-          <div className="overflow-hidden rounded-2xl shadow-lg">
+      <div className="px-4 md:px-6 lg:px-0 pb-4 mt-16">
+        <div className="max-w-6xl mx-auto lg:max-w-none">
+          <div className="overflow-hidden rounded-2xl lg:rounded-none shadow-lg lg:shadow-none">
             <picture>
               <source media="(min-width: 1024px)" srcSet={heroBannerDesktop} />
               <source media="(min-width: 768px)" srcSet={heroBannerTablet} />
               <img 
                 src={heroBannerMobile} 
                 alt="V3 Game - Download App" 
-                className="w-full h-auto object-cover rounded-2xl"
+                className="w-full h-auto object-cover rounded-2xl lg:rounded-none"
                 data-testid="img-hero-banner"
               />
             </picture>
