@@ -12,6 +12,7 @@ import TermsPage from "@/pages/terms";
 import PrivacyPage from "@/pages/privacy";
 import ContactPage from "@/pages/contact";
 import BlogPage from "@/pages/blog";
+import GuideArticlePage from "@/pages/guide-article";
 import NotFound from "@/pages/not-found";
 
 function Router() {
@@ -26,6 +27,7 @@ function Router() {
       <Route path="/privacy" component={PrivacyPage} />
       <Route path="/contact" component={ContactPage} />
       <Route path="/blog" component={BlogPage} />
+      <Route path="/guide/:id" component={GuideArticlePage} />
       <Route component={NotFound} />
     </Switch>
   );
