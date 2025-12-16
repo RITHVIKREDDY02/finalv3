@@ -10,8 +10,6 @@ import Footer from "@/components/footer";
 import logoPath from "@assets/logo_nav_1756545819204.png";
 import winGoImage from "@assets/lotterycategory_20250412120719dqfv_1754052547793.png";
 import trxWingoImage from "@assets/lotterycategory_20250412120818j8wq_1754052552269.png";
-import k3Image from "@assets/lotterycategory_2025041212074073ug_1754069351570.png";
-import motoRacingImage from "@assets/c57f5149-2139-410f-8d48-94a06fcb36f2_1754069356497.png";
 import lotteryIcon from "@assets/Lottery-9123e8d2_1754069546644.webp";
 import mobileBannerImage from "@assets/202508291426595421003_1756613438340.png";
 import desktopBannerImage from "@assets/202508291426595421003_1756613438340.png";
@@ -319,36 +317,6 @@ export default function Home() {
               <img 
                 src={trxWingoImage} 
                 alt="Trx Wingo - TRX-themed lottery prediction game" 
-                className="w-full h-auto object-cover object-top block"
-              />
-              <div className="absolute inset-0 rounded-2xl border-2 border-accent-gold/30"></div>
-            </div>
-          </div>
-
-          {/* K3 Game Card */}
-          <div 
-            className="cursor-pointer shadow-lg relative"
-            onClick={() => handleGameClick('K3')}
-          >
-            <div className="relative overflow-hidden rounded-2xl">
-              <img 
-                src={k3Image} 
-                alt="K3 - Dice prediction game with golden dice" 
-                className="w-full h-auto object-cover object-top block"
-              />
-              <div className="absolute inset-0 rounded-2xl border-2 border-accent-gold/30"></div>
-            </div>
-          </div>
-
-          {/* Moto Racing Game Card */}
-          <div 
-            className="cursor-pointer shadow-lg relative"
-            onClick={() => handleGameClick('Moto Racing')}
-          >
-            <div className="relative overflow-hidden rounded-2xl">
-              <img 
-                src={motoRacingImage} 
-                alt="Moto Racing - Motorcycle racing prediction game" 
                 className="w-full h-auto object-cover object-top block"
               />
               <div className="absolute inset-0 rounded-2xl border-2 border-accent-gold/30"></div>
