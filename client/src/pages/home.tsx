@@ -14,7 +14,6 @@ import lotteryIcon from "@assets/Lottery-9123e8d2_1754069546644.webp";
 import mobileBannerImage from "@assets/202508291426595421003_1756613438340.png";
 import desktopBannerImage from "@assets/202508291426595421003_1756613438340.png";
 import heroBanner2 from "@assets/202411122322287871008_1756613499429.png";
-import depositBonusImage from "@assets/202505241645242463002_1756622355319.png";
 import proofImage1 from "@assets/image_1754150847570.png";
 import proofImage2 from "@assets/image_1754150852695.png";
 import demoImage1 from "@assets/Screenshot 2025-08-31 172003_1756641606545.png";
@@ -48,10 +47,6 @@ export default function Home() {
     { 
       image: heroBanner2, 
       alt: "V3 GAME - 1 Minute Wingo Game" 
-    },
-    { 
-      image: depositBonusImage, 
-      alt: "V3 GAME - Deposit Bonus Program" 
     }
   ];
 
