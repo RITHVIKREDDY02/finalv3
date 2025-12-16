@@ -13,12 +13,6 @@ import trxWingoImage from "@assets/lotterycategory_20250412120818j8wq_1754052552
 import k3Image from "@assets/lotterycategory_2025041212074073ug_1754069351570.png";
 import motoRacingImage from "@assets/c57f5149-2139-410f-8d48-94a06fcb36f2_1754069356497.png";
 import lotteryIcon from "@assets/Lottery-9123e8d2_1754069546644.webp";
-import miniGameIcon from "@assets/MiniGame-a7def346_1754070684724.webp";
-import minesProImage from "@assets/811_1754070860593.png";
-import minesImage from "@assets/229 (1)_1754070860598.png";
-import boomImage from "@assets/100_1754070860600.png";
-import aviatorImage from "@assets/800_1754070860600.png";
-import limboImage from "@assets/235_1754071157602.png";
 import mobileBannerImage from "@assets/202508291426595421003_1756613438340.png";
 import desktopBannerImage from "@assets/202508291426595421003_1756613438340.png";
 import heroBanner2 from "@assets/202411122322287871008_1756613499429.png";
@@ -355,103 +349,6 @@ export default function Home() {
               <img 
                 src={motoRacingImage} 
                 alt="Moto Racing - Motorcycle racing prediction game" 
-                className="w-full h-auto object-cover object-top block"
-              />
-              <div className="absolute inset-0 rounded-2xl border-2 border-accent-gold/30"></div>
-            </div>
-          </div>
-
-        </div>
-
-        {/* Mini Game Section Header */}
-        <div className="flex items-center mb-6 mt-12">
-          <div className="flex items-center">
-            {/* Vertical accent line */}
-            <div 
-              className="w-1 h-8 mr-3 rounded-full accent-shadow"
-              style={{ backgroundColor: '#FED358' }}
-            ></div>
-            <img 
-              src={miniGameIcon} 
-              alt="Mini Game icon" 
-              className="w-6 h-6 mr-2"
-            />
-            <span className="font-bold" style={{ color: '#FDE4BC', fontSize: '24px' }}>Mini Game</span>
-          </div>
-        </div>
-
-        {/* Mini Game Categories */}
-        <div className="grid grid-cols-3 md:grid-cols-3 lg:grid-cols-5 xl:grid-cols-5 gap-x-2 gap-y-4 md:gap-x-4 md:gap-y-6 lg:gap-x-6 lg:gap-y-6 xl:gap-x-8 xl:gap-y-6">
-          
-          {/* Mines Pro Game Card */}
-          <div 
-            className="cursor-pointer shadow-lg relative"
-            onClick={() => handleGameClick('Mines Pro')}
-          >
-            <div className="relative overflow-hidden rounded-2xl">
-              <img 
-                src={minesProImage} 
-                alt="Mines Pro - Explosive mine field game" 
-                className="w-full h-auto object-cover object-top block"
-              />
-              <div className="absolute inset-0 rounded-2xl border-2 border-accent-gold/30"></div>
-            </div>
-          </div>
-
-          {/* Mines Game Card */}
-          <div 
-            className="cursor-pointer shadow-lg relative"
-            onClick={() => handleGameClick('Mines')}
-          >
-            <div className="relative overflow-hidden rounded-2xl">
-              <img 
-                src={minesImage} 
-                alt="Mines - Classic mine sweeping game" 
-                className="w-full h-auto object-cover object-top block"
-              />
-              <div className="absolute inset-0 rounded-2xl border-2 border-accent-gold/30"></div>
-            </div>
-          </div>
-
-          {/* Boom Game Card */}
-          <div 
-            className="cursor-pointer shadow-lg relative"
-            onClick={() => handleGameClick('Boom')}
-          >
-            <div className="relative overflow-hidden rounded-2xl">
-              <img 
-                src={boomImage} 
-                alt="Boom - Explosive chain reaction game" 
-                className="w-full h-auto object-cover object-top block"
-              />
-              <div className="absolute inset-0 rounded-2xl border-2 border-accent-gold/30"></div>
-            </div>
-          </div>
-
-          {/* Aviator Game Card */}
-          <div 
-            className="cursor-pointer shadow-lg relative"
-            onClick={() => handleGameClick('Aviator')}
-          >
-            <div className="relative overflow-hidden rounded-2xl">
-              <img 
-                src={aviatorImage} 
-                alt="Aviator - High-flying multiplier game" 
-                className="w-full h-auto object-cover object-top block"
-              />
-              <div className="absolute inset-0 rounded-2xl border-2 border-accent-gold/30"></div>
-            </div>
-          </div>
-
-          {/* Limbo Game Card */}
-          <div 
-            className="cursor-pointer shadow-lg relative"
-            onClick={() => handleGameClick('Limbo')}
-          >
-            <div className="relative overflow-hidden rounded-2xl">
-              <img 
-                src={limboImage} 
-                alt="Limbo - Rocket launch multiplier game" 
                 className="w-full h-auto object-cover object-top block"
               />
               <div className="absolute inset-0 rounded-2xl border-2 border-accent-gold/30"></div>
