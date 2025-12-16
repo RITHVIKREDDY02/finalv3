@@ -7,7 +7,9 @@ import { ComingSoonDialog } from "@/components/coming-soon-dialog";
 import WelcomeNotification from "@/components/welcome-notification";
 import Footer from "@/components/footer";
 import logoPath from "@assets/logo_nav_1756545819204.png";
-import heroBannerImage from "@assets/Site_Banner_1765898389340.png";
+import heroBannerDesktop from "@assets/Site_Banner_(1920_x_400_px)_1765901343932.png";
+import heroBannerTablet from "@assets/Site_Banner_(1024_x_300_px)_1765901343931.jpg";
+import heroBannerMobile from "@assets/Site_Banner_(768_x_250_px)_1765901343932.png";
 import proofImage1 from "@assets/image_1754150847570.png";
 import proofImage2 from "@assets/image_1754150852695.png";
 import demoImage1 from "@assets/Screenshot 2025-08-31 172003_1756641606545.png";
@@ -216,12 +218,16 @@ export default function Home() {
       <div className="px-4 md:px-6 lg:px-8 xl:px-12 pb-4 mt-16">
         <div className="max-w-6xl mx-auto lg:max-w-4xl">
           <div className="overflow-hidden rounded-2xl shadow-lg">
-            <img 
-              src={heroBannerImage} 
-              alt="V3 Game - Download App" 
-              className="w-full h-auto object-contain rounded-2xl"
-              data-testid="img-hero-banner"
-            />
+            <picture>
+              <source media="(min-width: 1024px)" srcSet={heroBannerDesktop} />
+              <source media="(min-width: 768px)" srcSet={heroBannerTablet} />
+              <img 
+                src={heroBannerMobile} 
+                alt="V3 Game - Download App" 
+                className="w-full h-auto object-cover rounded-2xl"
+                data-testid="img-hero-banner"
+              />
+            </picture>
           </div>
         </div>
       </div>
