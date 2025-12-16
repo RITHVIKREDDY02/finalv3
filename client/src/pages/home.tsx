@@ -146,10 +146,10 @@ export default function Home() {
           </div>
           
           {/* Desktop Navigation Items */}
-          <div className="hidden md:flex items-center space-x-6">
+          <div className="hidden md:flex items-center space-x-5 lg:space-x-6">
             <Link 
               href="/register-guide"
-              className="text-sm font-medium transition-opacity duration-200 hover:opacity-80"
+              className="text-sm font-medium transition-all duration-200 hover:opacity-80 hover:scale-105"
               style={{ color: '#FDE4BC' }}
               data-testid="link-register-guide"
             >
@@ -157,7 +157,7 @@ export default function Home() {
             </Link>
             <Link 
               href="/login-bonus"
-              className="text-sm font-medium transition-opacity duration-200 hover:opacity-80"
+              className="text-sm font-medium transition-all duration-200 hover:opacity-80 hover:scale-105"
               style={{ color: '#FDE4BC' }}
               data-testid="link-login-bonus"
             >
@@ -165,14 +165,30 @@ export default function Home() {
             </Link>
             <Link 
               href="/blog"
-              className="text-sm font-medium transition-opacity duration-200 hover:opacity-80"
+              className="text-sm font-medium transition-all duration-200 hover:opacity-80 hover:scale-105"
               style={{ color: '#FDE4BC' }}
               data-testid="link-blog"
             >
               Blog
             </Link>
+            <Link 
+              href="/disclaimer"
+              className="text-sm font-medium transition-all duration-200 hover:opacity-80 hover:scale-105"
+              style={{ color: '#FDE4BC' }}
+              data-testid="link-disclaimer"
+            >
+              Disclaimer
+            </Link>
+            <Link 
+              href="/contact"
+              className="text-sm font-medium transition-all duration-200 hover:opacity-80 hover:scale-105"
+              style={{ color: '#FDE4BC' }}
+              data-testid="link-contact"
+            >
+              Contact
+            </Link>
             <button 
-              className="px-4 py-2 rounded-full text-black font-bold text-sm transition-opacity duration-200 hover:opacity-90"
+              className="px-4 py-2 rounded-full text-black font-bold text-sm transition-all duration-200 hover:opacity-90 hover:scale-105"
               style={{ background: 'linear-gradient(180deg,#f8bf6e,#fb5e04)' }}
               onClick={handleJoinVipClick}
             >
