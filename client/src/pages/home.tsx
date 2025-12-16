@@ -1,4 +1,4 @@
-import { ChevronLeft, ChevronRight, Menu, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { useState, useEffect } from "react";
 import { Link } from "wouter";
 import { FaTelegram } from "react-icons/fa";
@@ -7,9 +7,7 @@ import { ComingSoonDialog } from "@/components/coming-soon-dialog";
 import WelcomeNotification from "@/components/welcome-notification";
 import Footer from "@/components/footer";
 import logoPath from "@assets/logo_nav_1756545819204.png";
-import mobileBannerImage from "@assets/202508291426595421003_1756613438340.png";
-import desktopBannerImage from "@assets/202508291426595421003_1756613438340.png";
-import heroBanner2 from "@assets/202411122322287871008_1756613499429.png";
+import heroBannerImage from "@assets/Site_Banner_1765898389340.png";
 import proofImage1 from "@assets/image_1754150847570.png";
 import proofImage2 from "@assets/image_1754150852695.png";
 import demoImage1 from "@assets/Screenshot 2025-08-31 172003_1756641606545.png";
@@ -29,22 +27,6 @@ export default function Home() {
   const [showWarningDialog, setShowWarningDialog] = useState(false);
   const [selectedGameName, setSelectedGameName] = useState<string>("");
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  
-  // Carousel state
-  const [currentSlide, setCurrentSlide] = useState(0);
-  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
-  
-  // Carousel slides data
-  const slides = [
-    { 
-      image: mobileBannerImage, 
-      alt: "V3 GAME - Lucky 10 Days Recharge Bonus" 
-    },
-    { 
-      image: heroBanner2, 
-      alt: "V3 GAME - 1 Minute Wingo Game" 
-    }
-  ];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -54,17 +36,6 @@ export default function Home() {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-
-  // Auto-play carousel effect
-  useEffect(() => {
-    if (!isAutoPlaying) return;
-    
-    const interval = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % slides.length);
-    }, 4000); // Change slide every 4 seconds
-
-    return () => clearInterval(interval);
-  }, [isAutoPlaying, slides.length]);
 
   const handleGameClick = (gameType: string) => {
     console.log(`${gameType} game selected`);
@@ -86,19 +57,6 @@ export default function Home() {
     setShowRegisterDialog(false);
     setShowComingSoonDialog(false);
     setShowDemoDialog(false);
-  };
-
-  // Carousel navigation functions
-  const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % slides.length);
-  };
-
-  const prevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
-  };
-
-  const goToSlide = (index: number) => {
-    setCurrentSlide(index);
   };
 
   return (
@@ -254,59 +212,16 @@ export default function Home() {
         </div>
       </nav>
 
-      {/* Hero Banners Carousel */}
+      {/* Hero Banner */}
       <div className="px-4 md:px-6 lg:px-8 xl:px-12 pb-4 mt-16">
         <div className="max-w-6xl mx-auto lg:max-w-4xl">
-          <div 
-            className="relative overflow-hidden rounded-2xl shadow-lg lg:max-h-64 xl:max-h-72"
-            onMouseEnter={() => setIsAutoPlaying(false)}
-            onMouseLeave={() => setIsAutoPlaying(true)}
-          >
-            {/* Slides Container */}
-            <div 
-              className="flex transition-transform duration-500 ease-in-out"
-              style={{ transform: `translateX(-${currentSlide * 100}%)` }}
-            >
-              {slides.map((slide, index) => (
-                <div key={index} className="w-full flex-shrink-0">
-                  <img 
-                    src={slide.image} 
-                    alt={slide.alt} 
-                    className="w-full h-auto object-contain lg:max-h-64 xl:max-h-72 rounded-2xl"
-                  />
-                </div>
-              ))}
-            </div>
-            
-            {/* Navigation Arrows */}
-            <button
-              onClick={prevSlide}
-              className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 hover:bg-opacity-70 text-white p-2 rounded-full transition-all duration-200"
-            >
-              <ChevronLeft className="w-6 h-6" />
-            </button>
-            
-            <button
-              onClick={nextSlide}
-              className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 hover:bg-opacity-70 text-white p-2 rounded-full transition-all duration-200"
-            >
-              <ChevronRight className="w-6 h-6" />
-            </button>
-            
-            {/* Pagination Dots */}
-            <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
-              {slides.map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => goToSlide(index)}
-                  className={`w-3 h-3 rounded-full transition-all duration-200 ${
-                    currentSlide === index 
-                      ? 'bg-white scale-110' 
-                      : 'bg-white bg-opacity-50 hover:bg-opacity-75'
-                  }`}
-                />
-              ))}
-            </div>
+          <div className="overflow-hidden rounded-2xl shadow-lg">
+            <img 
+              src={heroBannerImage} 
+              alt="V3 Game - Download App" 
+              className="w-full h-auto object-contain rounded-2xl"
+              data-testid="img-hero-banner"
+            />
           </div>
         </div>
       </div>
