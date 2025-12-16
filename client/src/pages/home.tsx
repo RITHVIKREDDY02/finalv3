@@ -274,29 +274,88 @@ export default function Home() {
 
       {/* App Information Section */}
       <div className="px-6 md:px-8 lg:px-12 xl:px-16 pb-8">
-        <div className="max-w-2xl mx-auto lg:max-w-4xl">
-          <div className="rounded-2xl p-6 md:p-8" style={{ background: 'linear-gradient(135deg, rgba(254,211,88,0.1) 0%, rgba(255,107,53,0.08) 100%)', border: '1px solid rgba(254,211,88,0.3)' }}>
-            <h3 className="text-xl md:text-2xl font-bold text-center mb-6" style={{ color: '#FED358' }}>App Information</h3>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
-              <div className="p-4 rounded-xl" style={{ background: 'rgba(0,12,28,0.5)' }}>
-                <p className="text-xs mb-1" style={{ color: '#FDE4BC', opacity: 0.7 }}>App Name</p>
-                <p className="font-bold" style={{ color: '#FED358' }}>V3 Game</p>
-              </div>
-              <div className="p-4 rounded-xl" style={{ background: 'rgba(0,12,28,0.5)' }}>
-                <p className="text-xs mb-1" style={{ color: '#FDE4BC', opacity: 0.7 }}>Size</p>
-                <p className="font-bold" style={{ color: '#FED358' }}>2.08 MB</p>
-              </div>
-              <div className="p-4 rounded-xl" style={{ background: 'rgba(0,12,28,0.5)' }}>
-                <p className="text-xs mb-1" style={{ color: '#FDE4BC', opacity: 0.7 }}>Invite Code</p>
-                <p className="font-bold" style={{ color: '#FED358' }}>7532630349</p>
-              </div>
-              <div className="p-4 rounded-xl" style={{ background: 'rgba(0,12,28,0.5)' }}>
-                <p className="text-xs mb-1" style={{ color: '#FDE4BC', opacity: 0.7 }}>Games</p>
-                <p className="font-bold" style={{ color: '#FED358' }}>500+</p>
+        <div className="max-w-md mx-auto">
+          <div className="rounded-2xl overflow-hidden shadow-xl" style={{ background: '#fff' }}>
+            {/* Purple Gradient Header */}
+            <div className="py-4 px-6" style={{ background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)' }}>
+              <div className="flex items-center justify-center gap-2">
+                <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                </svg>
+                <h3 className="text-lg font-bold text-white">App Information</h3>
               </div>
             </div>
-            <div className="text-center mt-4">
-              <p className="text-sm" style={{ color: '#FDE4BC', opacity: 0.8 }}>Website: <a href="https://www.v3gameb.com" target="_blank" rel="noopener noreferrer" className="font-semibold hover:underline" style={{ color: '#FED358' }}>www.v3gameb.com</a></p>
+            {/* Info Rows */}
+            <div className="divide-y divide-gray-100">
+              <div className="flex items-center justify-between px-6 py-4">
+                <div className="flex items-center gap-3">
+                  <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ background: 'rgba(102,126,234,0.1)' }}>
+                    <svg className="w-4 h-4" style={{ color: '#667eea' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                    </svg>
+                  </div>
+                  <span className="text-gray-600 text-sm">App Name</span>
+                </div>
+                <span className="font-semibold text-gray-800">V3 Game</span>
+              </div>
+              <div className="flex items-center justify-between px-6 py-4">
+                <div className="flex items-center gap-3">
+                  <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ background: 'rgba(46,204,113,0.1)' }}>
+                    <svg className="w-4 h-4" style={{ color: '#2ECC71' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4" />
+                    </svg>
+                  </div>
+                  <span className="text-gray-600 text-sm">Size</span>
+                </div>
+                <span className="font-semibold text-gray-800">2.08 MB</span>
+              </div>
+              <div className="flex items-center justify-between px-6 py-4">
+                <div className="flex items-center gap-3">
+                  <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ background: 'rgba(155,89,182,0.1)' }}>
+                    <svg className="w-4 h-4" style={{ color: '#9B59B6' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" />
+                    </svg>
+                  </div>
+                  <span className="text-gray-600 text-sm">Invite Code</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="font-semibold" style={{ color: '#667eea' }}>7532630349</span>
+                  <button 
+                    onClick={() => {
+                      navigator.clipboard.writeText('7532630349');
+                    }}
+                    className="p-1 rounded hover:bg-gray-100 transition-colors"
+                    data-testid="button-copy-invite-code"
+                  >
+                    <svg className="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+              <div className="flex items-center justify-between px-6 py-4">
+                <div className="flex items-center gap-3">
+                  <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ background: 'rgba(231,76,60,0.1)' }}>
+                    <svg className="w-4 h-4" style={{ color: '#E74C3C' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                  </div>
+                  <span className="text-gray-600 text-sm">Games</span>
+                </div>
+                <span className="font-semibold text-gray-800">500+</span>
+              </div>
+              <div className="flex items-center justify-between px-6 py-4">
+                <div className="flex items-center gap-3">
+                  <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ background: 'rgba(52,152,219,0.1)' }}>
+                    <svg className="w-4 h-4" style={{ color: '#3498DB' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+                    </svg>
+                  </div>
+                  <span className="text-gray-600 text-sm">Website</span>
+                </div>
+                <a href="https://www.v3gameb.com" target="_blank" rel="noopener noreferrer" className="font-semibold hover:underline" style={{ color: '#3498DB' }}>www.v3gameb.com</a>
+              </div>
             </div>
           </div>
         </div>
@@ -304,116 +363,170 @@ export default function Home() {
 
       {/* Invite Friends & Earn Rewards Section */}
       <div className="px-6 md:px-8 lg:px-12 xl:px-16 pb-8">
-        <div className="max-w-2xl mx-auto lg:max-w-5xl">
-          <div className="rounded-2xl p-6 md:p-8" style={{ background: 'linear-gradient(135deg, rgba(46,204,113,0.1) 0%, rgba(39,174,96,0.08) 100%)', border: '1px solid rgba(46,204,113,0.3)' }}>
-            <div className="text-center mb-6">
-              <h3 className="text-xl md:text-2xl font-bold mb-2" style={{ color: '#2ECC71' }}>Invite Friends & Earn Unlimited Rewards</h3>
-              <p className="text-sm md:text-base" style={{ color: '#FDE4BC' }}>Get instant cashback & task bonuses every day!</p>
+        <div className="max-w-5xl mx-auto">
+          <div className="text-center mb-8">
+            <h3 className="text-2xl md:text-3xl font-bold mb-2" style={{ color: '#1a1a2e' }}>Invite Friends & Earn Unlimited Rewards</h3>
+            <p className="text-sm md:text-base text-gray-500">Get instant cashback & task bonuses every day!</p>
+          </div>
+          
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {/* Tier 1 */}
+            <div className="relative bg-white rounded-2xl shadow-lg p-5 border border-gray-100">
+              <div className="absolute -top-3 -right-3 w-10 h-10 rounded-xl flex items-center justify-center text-white font-bold shadow-lg" style={{ background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)' }}>1</div>
+              <div className="flex items-center gap-2 mb-3">
+                <svg className="w-5 h-5" style={{ color: '#E74C3C' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
+                <span className="font-semibold" style={{ color: '#E74C3C' }}>3 Friends</span>
+              </div>
+              <p className="text-gray-500 text-sm mb-4">Invite 3 friends with ₹400 recharge each</p>
+              <div className="flex items-center gap-1 text-orange-500 text-sm mb-3">
+                <span>→</span>
+                <span>Reward</span>
+              </div>
+              <div className="rounded-xl p-4 text-center" style={{ background: 'rgba(46,204,113,0.1)' }}>
+                <p className="text-sm text-gray-500">You'll Earn</p>
+                <p className="text-2xl font-bold" style={{ color: '#2ECC71' }}>₹155</p>
+              </div>
             </div>
-            
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-              {/* Tier 1 */}
-              <div className="rounded-xl p-4 text-center" style={{ background: 'rgba(0,12,28,0.6)', border: '1px solid rgba(254,211,88,0.2)' }}>
-                <div className="w-8 h-8 rounded-full flex items-center justify-center mx-auto mb-2" style={{ background: 'linear-gradient(135deg, #FED358, #FB5E04)' }}>
-                  <span className="text-black font-bold text-sm">1</span>
-                </div>
-                <p className="font-semibold text-sm mb-1" style={{ color: '#FED358' }}>3 Friends</p>
-                <p className="text-xs mb-3" style={{ color: '#FDE4BC', opacity: 0.8 }}>₹400 recharge each</p>
-                <div className="rounded-lg p-2" style={{ background: 'rgba(46,204,113,0.2)' }}>
-                  <p className="text-xs" style={{ color: '#FDE4BC' }}>You'll Earn</p>
-                  <p className="text-lg font-bold" style={{ color: '#2ECC71' }}>₹155</p>
-                </div>
-              </div>
 
-              {/* Tier 2 */}
-              <div className="rounded-xl p-4 text-center" style={{ background: 'rgba(0,12,28,0.6)', border: '1px solid rgba(254,211,88,0.2)' }}>
-                <div className="w-8 h-8 rounded-full flex items-center justify-center mx-auto mb-2" style={{ background: 'linear-gradient(135deg, #FED358, #FB5E04)' }}>
-                  <span className="text-black font-bold text-sm">2</span>
-                </div>
-                <p className="font-semibold text-sm mb-1" style={{ color: '#FED358' }}>10 Friends</p>
-                <p className="text-xs mb-3" style={{ color: '#FDE4BC', opacity: 0.8 }}>₹500 recharge each</p>
-                <div className="rounded-lg p-2" style={{ background: 'rgba(46,204,113,0.2)' }}>
-                  <p className="text-xs" style={{ color: '#FDE4BC' }}>You'll Earn</p>
-                  <p className="text-lg font-bold" style={{ color: '#2ECC71' }}>₹555</p>
-                </div>
+            {/* Tier 2 */}
+            <div className="relative bg-white rounded-2xl shadow-lg p-5 border border-gray-100">
+              <div className="absolute -top-3 -right-3 w-10 h-10 rounded-xl flex items-center justify-center text-white font-bold shadow-lg" style={{ background: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)' }}>2</div>
+              <div className="flex items-center gap-2 mb-3">
+                <svg className="w-5 h-5" style={{ color: '#E74C3C' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
+                <span className="font-semibold" style={{ color: '#E74C3C' }}>10 Friends</span>
               </div>
-
-              {/* Tier 3 */}
-              <div className="rounded-xl p-4 text-center" style={{ background: 'rgba(0,12,28,0.6)', border: '1px solid rgba(254,211,88,0.2)' }}>
-                <div className="w-8 h-8 rounded-full flex items-center justify-center mx-auto mb-2" style={{ background: 'linear-gradient(135deg, #FED358, #FB5E04)' }}>
-                  <span className="text-black font-bold text-sm">3</span>
-                </div>
-                <p className="font-semibold text-sm mb-1" style={{ color: '#FED358' }}>30 Friends</p>
-                <p className="text-xs mb-3" style={{ color: '#FDE4BC', opacity: 0.8 }}>₹800 recharge each</p>
-                <div className="rounded-lg p-2" style={{ background: 'rgba(46,204,113,0.2)' }}>
-                  <p className="text-xs" style={{ color: '#FDE4BC' }}>You'll Earn</p>
-                  <p className="text-lg font-bold" style={{ color: '#2ECC71' }}>₹1,555</p>
-                </div>
+              <p className="text-gray-500 text-sm mb-4">Invite 10 friends with ₹500 recharge each</p>
+              <div className="flex items-center gap-1 text-orange-500 text-sm mb-3">
+                <span>→</span>
+                <span>Reward</span>
               </div>
-
-              {/* Tier 4 */}
-              <div className="rounded-xl p-4 text-center" style={{ background: 'rgba(0,12,28,0.6)', border: '1px solid rgba(254,211,88,0.2)' }}>
-                <div className="w-8 h-8 rounded-full flex items-center justify-center mx-auto mb-2" style={{ background: 'linear-gradient(135deg, #FED358, #FB5E04)' }}>
-                  <span className="text-black font-bold text-sm">4</span>
-                </div>
-                <p className="font-semibold text-sm mb-1" style={{ color: '#FED358' }}>50 Friends</p>
-                <p className="text-xs mb-3" style={{ color: '#FDE4BC', opacity: 0.8 }}>₹1,200 recharge each</p>
-                <div className="rounded-lg p-2" style={{ background: 'rgba(46,204,113,0.2)' }}>
-                  <p className="text-xs" style={{ color: '#FDE4BC' }}>You'll Earn</p>
-                  <p className="text-lg font-bold" style={{ color: '#2ECC71' }}>₹2,775</p>
-                </div>
+              <div className="rounded-xl p-4 text-center" style={{ background: 'rgba(46,204,113,0.1)' }}>
+                <p className="text-sm text-gray-500">You'll Earn</p>
+                <p className="text-2xl font-bold" style={{ color: '#2ECC71' }}>₹555</p>
               </div>
+            </div>
 
-              {/* Tier 5 */}
-              <div className="rounded-xl p-4 text-center" style={{ background: 'rgba(0,12,28,0.6)', border: '1px solid rgba(254,211,88,0.2)' }}>
-                <div className="w-8 h-8 rounded-full flex items-center justify-center mx-auto mb-2" style={{ background: 'linear-gradient(135deg, #FED358, #FB5E04)' }}>
-                  <span className="text-black font-bold text-sm">5</span>
-                </div>
-                <p className="font-semibold text-sm mb-1" style={{ color: '#FED358' }}>100 Friends</p>
-                <p className="text-xs mb-3" style={{ color: '#FDE4BC', opacity: 0.8 }}>₹1,200 recharge each</p>
-                <div className="rounded-lg p-2" style={{ background: 'rgba(46,204,113,0.2)' }}>
-                  <p className="text-xs" style={{ color: '#FDE4BC' }}>You'll Earn</p>
-                  <p className="text-lg font-bold" style={{ color: '#2ECC71' }}>₹5,555</p>
-                </div>
+            {/* Tier 3 */}
+            <div className="relative bg-white rounded-2xl shadow-lg p-5 border border-gray-100">
+              <div className="absolute -top-3 -right-3 w-10 h-10 rounded-xl flex items-center justify-center text-white font-bold shadow-lg" style={{ background: 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)' }}>3</div>
+              <div className="flex items-center gap-2 mb-3">
+                <svg className="w-5 h-5" style={{ color: '#E74C3C' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
+                <span className="font-semibold" style={{ color: '#E74C3C' }}>30 Friends</span>
               </div>
-
-              {/* Tier 6 */}
-              <div className="rounded-xl p-4 text-center" style={{ background: 'rgba(0,12,28,0.6)', border: '1px solid rgba(254,211,88,0.2)' }}>
-                <div className="w-8 h-8 rounded-full flex items-center justify-center mx-auto mb-2" style={{ background: 'linear-gradient(135deg, #FED358, #FB5E04)' }}>
-                  <span className="text-black font-bold text-sm">6</span>
-                </div>
-                <p className="font-semibold text-sm mb-1" style={{ color: '#FED358' }}>200 Friends</p>
-                <p className="text-xs mb-3" style={{ color: '#FDE4BC', opacity: 0.8 }}>₹1,200 recharge each</p>
-                <div className="rounded-lg p-2" style={{ background: 'rgba(46,204,113,0.2)' }}>
-                  <p className="text-xs" style={{ color: '#FDE4BC' }}>You'll Earn</p>
-                  <p className="text-lg font-bold" style={{ color: '#2ECC71' }}>₹11,111</p>
-                </div>
+              <p className="text-gray-500 text-sm mb-4">Invite 30 friends with ₹800 recharge each</p>
+              <div className="flex items-center gap-1 text-orange-500 text-sm mb-3">
+                <span>→</span>
+                <span>Reward</span>
               </div>
-
-              {/* Tier 7 */}
-              <div className="rounded-xl p-4 text-center" style={{ background: 'rgba(0,12,28,0.6)', border: '1px solid rgba(254,211,88,0.2)' }}>
-                <div className="w-8 h-8 rounded-full flex items-center justify-center mx-auto mb-2" style={{ background: 'linear-gradient(135deg, #FED358, #FB5E04)' }}>
-                  <span className="text-black font-bold text-sm">7</span>
-                </div>
-                <p className="font-semibold text-sm mb-1" style={{ color: '#FED358' }}>500 Friends</p>
-                <p className="text-xs mb-3" style={{ color: '#FDE4BC', opacity: 0.8 }}>₹1,200 recharge each</p>
-                <div className="rounded-lg p-2" style={{ background: 'rgba(46,204,113,0.2)' }}>
-                  <p className="text-xs" style={{ color: '#FDE4BC' }}>You'll Earn</p>
-                  <p className="text-lg font-bold" style={{ color: '#2ECC71' }}>₹27,777</p>
-                </div>
+              <div className="rounded-xl p-4 text-center" style={{ background: 'rgba(46,204,113,0.1)' }}>
+                <p className="text-sm text-gray-500">You'll Earn</p>
+                <p className="text-2xl font-bold" style={{ color: '#2ECC71' }}>₹1,555</p>
               </div>
+            </div>
 
-              {/* Tier 8 */}
-              <div className="rounded-xl p-4 text-center" style={{ background: 'rgba(0,12,28,0.6)', border: '1px solid rgba(254,211,88,0.2)' }}>
-                <div className="w-8 h-8 rounded-full flex items-center justify-center mx-auto mb-2" style={{ background: 'linear-gradient(135deg, #FED358, #FB5E04)' }}>
-                  <span className="text-black font-bold text-sm">8</span>
-                </div>
-                <p className="font-semibold text-sm mb-1" style={{ color: '#FED358' }}>1000 Friends</p>
-                <p className="text-xs mb-3" style={{ color: '#FDE4BC', opacity: 0.8 }}>₹1,200 recharge each</p>
-                <div className="rounded-lg p-2" style={{ background: 'rgba(46,204,113,0.2)' }}>
-                  <p className="text-xs" style={{ color: '#FDE4BC' }}>You'll Earn</p>
-                  <p className="text-lg font-bold" style={{ color: '#2ECC71' }}>₹55,555</p>
-                </div>
+            {/* Tier 4 */}
+            <div className="relative bg-white rounded-2xl shadow-lg p-5 border border-gray-100">
+              <div className="absolute -top-3 -right-3 w-10 h-10 rounded-xl flex items-center justify-center text-white font-bold shadow-lg" style={{ background: 'linear-gradient(135deg, #fa709a 0%, #fee140 100%)' }}>4</div>
+              <div className="flex items-center gap-2 mb-3">
+                <svg className="w-5 h-5" style={{ color: '#E74C3C' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
+                <span className="font-semibold" style={{ color: '#E74C3C' }}>50 Friends</span>
+              </div>
+              <p className="text-gray-500 text-sm mb-4">Invite 50 friends with ₹1,200 recharge each</p>
+              <div className="flex items-center gap-1 text-orange-500 text-sm mb-3">
+                <span>→</span>
+                <span>Reward</span>
+              </div>
+              <div className="rounded-xl p-4 text-center" style={{ background: 'rgba(46,204,113,0.1)' }}>
+                <p className="text-sm text-gray-500">You'll Earn</p>
+                <p className="text-2xl font-bold" style={{ color: '#2ECC71' }}>₹2,775</p>
+              </div>
+            </div>
+
+            {/* Tier 5 */}
+            <div className="relative bg-white rounded-2xl shadow-lg p-5 border border-gray-100">
+              <div className="absolute -top-3 -right-3 w-10 h-10 rounded-xl flex items-center justify-center text-white font-bold shadow-lg" style={{ background: 'linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%)' }}>5</div>
+              <div className="flex items-center gap-2 mb-3">
+                <svg className="w-5 h-5" style={{ color: '#E74C3C' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
+                <span className="font-semibold" style={{ color: '#E74C3C' }}>100 Friends</span>
+              </div>
+              <p className="text-gray-500 text-sm mb-4">Invite 100 friends with ₹1,200 recharge each</p>
+              <div className="flex items-center gap-1 text-orange-500 text-sm mb-3">
+                <span>→</span>
+                <span>Reward</span>
+              </div>
+              <div className="rounded-xl p-4 text-center" style={{ background: 'rgba(46,204,113,0.1)' }}>
+                <p className="text-sm text-gray-500">You'll Earn</p>
+                <p className="text-2xl font-bold" style={{ color: '#2ECC71' }}>₹5,555</p>
+              </div>
+            </div>
+
+            {/* Tier 6 */}
+            <div className="relative bg-white rounded-2xl shadow-lg p-5 border border-gray-100">
+              <div className="absolute -top-3 -right-3 w-10 h-10 rounded-xl flex items-center justify-center text-white font-bold shadow-lg" style={{ background: 'linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%)' }}>6</div>
+              <div className="flex items-center gap-2 mb-3">
+                <svg className="w-5 h-5" style={{ color: '#E74C3C' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
+                <span className="font-semibold" style={{ color: '#E74C3C' }}>200 Friends</span>
+              </div>
+              <p className="text-gray-500 text-sm mb-4">Invite 200 friends with ₹1,200 recharge each</p>
+              <div className="flex items-center gap-1 text-orange-500 text-sm mb-3">
+                <span>→</span>
+                <span>Reward</span>
+              </div>
+              <div className="rounded-xl p-4 text-center" style={{ background: 'rgba(46,204,113,0.1)' }}>
+                <p className="text-sm text-gray-500">You'll Earn</p>
+                <p className="text-2xl font-bold" style={{ color: '#2ECC71' }}>₹11,111</p>
+              </div>
+            </div>
+
+            {/* Tier 7 */}
+            <div className="relative bg-white rounded-2xl shadow-lg p-5 border border-gray-100">
+              <div className="absolute -top-3 -right-3 w-10 h-10 rounded-xl flex items-center justify-center text-white font-bold shadow-lg" style={{ background: 'linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)' }}>7</div>
+              <div className="flex items-center gap-2 mb-3">
+                <svg className="w-5 h-5" style={{ color: '#E74C3C' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
+                <span className="font-semibold" style={{ color: '#E74C3C' }}>500 Friends</span>
+              </div>
+              <p className="text-gray-500 text-sm mb-4">Invite 500 friends with ₹1,200 recharge each</p>
+              <div className="flex items-center gap-1 text-orange-500 text-sm mb-3">
+                <span>→</span>
+                <span>Reward</span>
+              </div>
+              <div className="rounded-xl p-4 text-center" style={{ background: 'rgba(46,204,113,0.1)' }}>
+                <p className="text-sm text-gray-500">You'll Earn</p>
+                <p className="text-2xl font-bold" style={{ color: '#2ECC71' }}>₹27,777</p>
+              </div>
+            </div>
+
+            {/* Tier 8 */}
+            <div className="relative bg-white rounded-2xl shadow-lg p-5 border border-gray-100">
+              <div className="absolute -top-3 -right-3 w-10 h-10 rounded-xl flex items-center justify-center text-white font-bold shadow-lg" style={{ background: 'linear-gradient(135deg, #f5af19 0%, #f12711 100%)' }}>8</div>
+              <div className="flex items-center gap-2 mb-3">
+                <svg className="w-5 h-5" style={{ color: '#E74C3C' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
+                <span className="font-semibold" style={{ color: '#E74C3C' }}>1000 Friends</span>
+              </div>
+              <p className="text-gray-500 text-sm mb-4">Invite 1000 friends with ₹1,200 recharge each</p>
+              <div className="flex items-center gap-1 text-orange-500 text-sm mb-3">
+                <span>→</span>
+                <span>Reward</span>
+              </div>
+              <div className="rounded-xl p-4 text-center" style={{ background: 'rgba(46,204,113,0.1)' }}>
+                <p className="text-sm text-gray-500">You'll Earn</p>
+                <p className="text-2xl font-bold" style={{ color: '#2ECC71' }}>₹55,555</p>
               </div>
             </div>
           </div>
