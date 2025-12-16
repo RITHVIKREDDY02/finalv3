@@ -6,6 +6,7 @@ import { FaTelegram } from "react-icons/fa";
 import RegistrationDialog from "@/components/registration-dialog";
 import { ComingSoonDialog } from "@/components/coming-soon-dialog";
 import WelcomeNotification from "@/components/welcome-notification";
+import Footer from "@/components/footer";
 import logoPath from "@assets/logo_nav_1756545819204.png";
 import winGoImage from "@assets/lotterycategory_20250412120719dqfv_1754052547793.png";
 import trxWingoImage from "@assets/lotterycategory_20250412120818j8wq_1754052552269.png";
@@ -469,47 +470,7 @@ export default function Home() {
       </div>
 
       {/* Footer */}
-      <footer className="mt-16 py-8 border-t" style={{ borderColor: 'rgba(254,211,88,0.2)' }}>
-        <div className="max-w-4xl mx-auto px-4">
-          <div className="flex flex-wrap justify-center gap-6 md:gap-10 mb-4">
-            <Link 
-              href="/privacy"
-              className="text-sm md:text-base transition-colors hover:opacity-80"
-              style={{ color: '#9ca3af' }}
-              data-testid="link-privacy"
-            >
-              Privacy Policy
-            </Link>
-            <Link 
-              href="/terms"
-              className="text-sm md:text-base transition-colors hover:opacity-80"
-              style={{ color: '#9ca3af' }}
-              data-testid="link-terms"
-            >
-              Terms of Service
-            </Link>
-            <Link 
-              href="/disclaimer"
-              className="text-sm md:text-base transition-colors hover:opacity-80"
-              style={{ color: '#9ca3af' }}
-              data-testid="link-disclaimer"
-            >
-              Disclaimer
-            </Link>
-            <Link 
-              href="/contact"
-              className="text-sm md:text-base transition-colors hover:opacity-80"
-              style={{ color: '#9ca3af' }}
-              data-testid="link-contact"
-            >
-              Contact Us
-            </Link>
-          </div>
-          <p className="text-center text-sm" style={{ color: '#6b7280' }}>
-            © 2025 V3 GAME. All rights reserved.
-          </p>
-        </div>
-      </footer>
+      <Footer />
 
       {/* Floating Telegram Button */}
       <a 

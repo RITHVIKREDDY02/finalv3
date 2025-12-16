@@ -9,6 +9,7 @@ import DisclaimerPage from "@/pages/disclaimer";
 import TermsPage from "@/pages/terms";
 import PrivacyPage from "@/pages/privacy";
 import ContactPage from "@/pages/contact";
+import BlogPage from "@/pages/blog";
 import NotFound from "@/pages/not-found";
 
 function Router() {
@@ -20,6 +21,7 @@ function Router() {
       <Route path="/terms" component={TermsPage} />
       <Route path="/privacy" component={PrivacyPage} />
       <Route path="/contact" component={ContactPage} />
+      <Route path="/blog" component={BlogPage} />
       <Route component={NotFound} />
     </Switch>
   );
