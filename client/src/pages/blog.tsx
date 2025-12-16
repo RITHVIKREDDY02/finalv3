@@ -261,50 +261,8 @@ export default function BlogPage() {
             </p>
           </div>
 
-          {/* Guides & Tips Section */}
-          <div className="mb-12">
-            <h2 className="text-2xl font-bold mb-6" style={{ color: '#FED358' }}>Guides & Tips</h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-              {guideArticles.map((article) => (
-                <div 
-                  key={article.id}
-                  onClick={() => setSelectedArticleId(article.id)}
-                  className="rounded-2xl overflow-hidden shadow-lg cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-xl"
-                  style={{
-                    background: 'rgba(255, 255, 255, 0.05)',
-                    border: '1px solid rgba(254, 211, 88, 0.2)'
-                  }}
-                  data-testid={`card-guide-${article.id}`}
-                >
-                  <div className="aspect-video overflow-hidden">
-                    <img 
-                      src={article.image} 
-                      alt={article.title}
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                  <div className="p-4">
-                    <h3 className="font-bold mb-2 text-sm md:text-base line-clamp-2" style={{ color: '#FDE4BC' }}>
-                      {article.title}
-                    </h3>
-                    <p className="text-xs md:text-sm line-clamp-2" style={{ color: 'rgba(253, 228, 188, 0.7)' }}>
-                      {article.excerpt}
-                    </p>
-                    <button 
-                      className="mt-3 text-xs font-semibold px-4 py-1.5 rounded-full transition-all duration-200 flex items-center gap-2"
-                      style={{ background: '#FED358', color: '#000' }}
-                      data-testid={`button-read-guide-${article.id}`}
-                    >
-                      Read More <ArrowRight className="w-3 h-3" />
-                    </button>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
           {/* Blog Posts Section */}
-          <div>
+          <div className="mb-12">
             <h2 className="text-2xl font-bold mb-6" style={{ color: '#FED358' }}>Latest Posts</h2>
             <div className="grid gap-6">
               {blogPosts.map((post) => (
@@ -341,6 +299,48 @@ export default function BlogPage() {
                     Read More <ArrowRight className="w-4 h-4" />
                   </button>
                 </article>
+              ))}
+            </div>
+          </div>
+
+          {/* Guides & Tips Section */}
+          <div>
+            <h2 className="text-2xl font-bold mb-6" style={{ color: '#FED358' }}>Guides & Tips</h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              {guideArticles.map((article) => (
+                <div 
+                  key={article.id}
+                  onClick={() => setSelectedArticleId(article.id)}
+                  className="rounded-2xl overflow-hidden shadow-lg cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-xl"
+                  style={{
+                    background: 'rgba(255, 255, 255, 0.05)',
+                    border: '1px solid rgba(254, 211, 88, 0.2)'
+                  }}
+                  data-testid={`card-guide-${article.id}`}
+                >
+                  <div className="aspect-video overflow-hidden">
+                    <img 
+                      src={article.image} 
+                      alt={article.title}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <div className="p-4">
+                    <h3 className="font-bold mb-2 text-sm md:text-base line-clamp-2" style={{ color: '#FDE4BC' }}>
+                      {article.title}
+                    </h3>
+                    <p className="text-xs md:text-sm line-clamp-2" style={{ color: 'rgba(253, 228, 188, 0.7)' }}>
+                      {article.excerpt}
+                    </p>
+                    <button 
+                      className="mt-3 text-xs font-semibold px-4 py-1.5 rounded-full transition-all duration-200 flex items-center gap-2"
+                      style={{ background: '#FED358', color: '#000' }}
+                      data-testid={`button-read-guide-${article.id}`}
+                    >
+                      Read More <ArrowRight className="w-3 h-3" />
+                    </button>
+                  </div>
+                </div>
               ))}
             </div>
           </div>
