@@ -1,5 +1,5 @@
 import { Card } from "@/components/ui/card";
-import { Volume2, ChevronLeft, ChevronRight } from "lucide-react";
+import { Volume2, ChevronLeft, ChevronRight, Menu, X } from "lucide-react";
 import { useState, useEffect } from "react";
 import { Link } from "wouter";
 import { FaTelegram } from "react-icons/fa";
@@ -33,6 +33,7 @@ export default function Home() {
   const [showDisclaimerDialog, setShowDisclaimerDialog] = useState(false);
   const [showWarningDialog, setShowWarningDialog] = useState(false);
   const [selectedGameName, setSelectedGameName] = useState<string>("");
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   
   // Carousel state
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -135,7 +136,7 @@ export default function Home() {
           </div>
           
           {/* Mobile Navigation */}
-          <div className="md:hidden flex items-center">
+          <div className="md:hidden flex items-center gap-3">
             <button 
               className="px-3 py-1.5 rounded-full text-black font-bold text-xs transition-opacity duration-200 hover:opacity-90"
               style={{ background: 'linear-gradient(180deg,#f8bf6e,#fb5e04)' }}
@@ -143,7 +144,71 @@ export default function Home() {
             >
               JOIN VIP
             </button>
+            <button 
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className="p-2 rounded-lg transition-all duration-200"
+              style={{ color: '#FED358' }}
+              data-testid="button-mobile-menu"
+            >
+              {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            </button>
           </div>
+          
+          {/* Mobile Menu Dropdown */}
+          {isMobileMenuOpen && (
+            <div 
+              className="md:hidden absolute top-full left-0 right-0 py-4 px-6 shadow-xl"
+              style={{ background: 'rgba(0,12,28,0.98)', borderBottom: '2px solid #FED358' }}
+            >
+              <div className="flex flex-col gap-4">
+                <Link 
+                  href="/register-guide"
+                  className="text-base font-medium py-2 transition-all duration-200 hover:translate-x-2"
+                  style={{ color: '#FDE4BC' }}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  data-testid="link-mobile-register-guide"
+                >
+                  Register Guide
+                </Link>
+                <Link 
+                  href="/login-bonus"
+                  className="text-base font-medium py-2 transition-all duration-200 hover:translate-x-2"
+                  style={{ color: '#FDE4BC' }}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  data-testid="link-mobile-login-bonus"
+                >
+                  Login Bonus
+                </Link>
+                <Link 
+                  href="/blog"
+                  className="text-base font-medium py-2 transition-all duration-200 hover:translate-x-2"
+                  style={{ color: '#FDE4BC' }}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  data-testid="link-mobile-blog"
+                >
+                  Blog
+                </Link>
+                <Link 
+                  href="/disclaimer"
+                  className="text-base font-medium py-2 transition-all duration-200 hover:translate-x-2"
+                  style={{ color: '#FDE4BC' }}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  data-testid="link-mobile-disclaimer"
+                >
+                  Disclaimer
+                </Link>
+                <Link 
+                  href="/contact"
+                  className="text-base font-medium py-2 transition-all duration-200 hover:translate-x-2"
+                  style={{ color: '#FDE4BC' }}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  data-testid="link-mobile-contact"
+                >
+                  Contact
+                </Link>
+              </div>
+            </div>
+          )}
           
           {/* Desktop Navigation Items */}
           <div className="hidden md:flex items-center space-x-5 lg:space-x-6">
