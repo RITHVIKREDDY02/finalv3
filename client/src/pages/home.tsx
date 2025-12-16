@@ -262,6 +262,21 @@ export default function Home() {
             </button>
           </div>
 
+          {/* Join Telegram Button */}
+          <div className="flex justify-center mt-4">
+            <a 
+              href="https://t.me/Earn_With_Milind_77" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 px-6 py-2.5 rounded-full font-bold text-white shadow-lg transition-all duration-300 transform hover:scale-105 text-sm sm:text-base"
+              style={{ background: 'linear-gradient(135deg, #0088cc 0%, #00aced 100%)' }}
+              data-testid="button-join-telegram"
+            >
+              <FaTelegram className="text-lg" />
+              JOIN TELEGRAM
+            </a>
+          </div>
+
           {/* Community Text */}
           <div className="text-center mt-6 mb-8">
             <p className="text-sm sm:text-base md:text-lg font-medium" style={{ color: '#FDE4BC' }}>
