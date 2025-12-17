@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://v3game.replit.app/sitemap.xml
+Sitemap: https://www.jalwapro.vip/sitemap.xml
