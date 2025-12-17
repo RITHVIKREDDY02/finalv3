@@ -317,24 +317,22 @@ export default function Home() {
               style={{ background: 'rgba(0,12,28,0.98)', borderBottom: '2px solid #FED358' }}
             >
               <div className="flex flex-col gap-4">
-                <Link 
-                  href="/register-guide"
-                  className="text-base font-medium py-2 transition-all duration-200 hover:translate-x-2"
+                <button 
+                  className="text-base font-medium py-2 transition-all duration-200 hover:translate-x-2 text-left"
                   style={{ color: '#FDE4BC' }}
-                  onClick={() => setIsMobileMenuOpen(false)}
+                  onClick={() => { setSelectedBlogId(1); setIsMobileMenuOpen(false); }}
                   data-testid="link-mobile-register-guide"
                 >
                   Register Guide
-                </Link>
-                <Link 
-                  href="/login-bonus"
-                  className="text-base font-medium py-2 transition-all duration-200 hover:translate-x-2"
+                </button>
+                <button 
+                  className="text-base font-medium py-2 transition-all duration-200 hover:translate-x-2 text-left"
                   style={{ color: '#FDE4BC' }}
-                  onClick={() => setIsMobileMenuOpen(false)}
+                  onClick={() => { setSelectedBlogId(2); setIsMobileMenuOpen(false); }}
                   data-testid="link-mobile-login-bonus"
                 >
                   Login Bonus
-                </Link>
+                </button>
                 <Link 
                   href="/blog"
                   className="text-base font-medium py-2 transition-all duration-200 hover:translate-x-2"
@@ -368,22 +366,22 @@ export default function Home() {
           
           {/* Desktop Navigation Items */}
           <div className="hidden md:flex items-center space-x-5 lg:space-x-6">
-            <Link 
-              href="/register-guide"
+            <button 
               className="text-sm font-medium transition-all duration-200 hover:opacity-80 hover:scale-105"
               style={{ color: '#FDE4BC' }}
+              onClick={() => setSelectedBlogId(1)}
               data-testid="link-register-guide"
             >
               Register Guide
-            </Link>
-            <Link 
-              href="/login-bonus"
+            </button>
+            <button 
               className="text-sm font-medium transition-all duration-200 hover:opacity-80 hover:scale-105"
               style={{ color: '#FDE4BC' }}
+              onClick={() => setSelectedBlogId(2)}
               data-testid="link-login-bonus"
             >
               Login Bonus
-            </Link>
+            </button>
             <Link 
               href="/blog"
               className="text-sm font-medium transition-all duration-200 hover:opacity-80 hover:scale-105"
