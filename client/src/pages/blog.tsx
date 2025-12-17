@@ -28,24 +28,28 @@ const blogPosts: BlogPost[] = [
 const guideArticles = [
   {
     id: 1,
+    slug: "register-guide",
     image: blogImage1,
     title: "How to Register in V3 Game?",
     excerpt: "Complete step-by-step guide to register on V3 Game and claim your sign up bonus.",
   },
   {
     id: 2,
+    slug: "login-bonus",
     image: blogImage2,
     title: "V3 Game Login & Win Bonus",
     excerpt: "Learn how to login and claim your daily bonuses on V3 Game platform.",
   },
   {
     id: 3,
+    slug: "wallet-withdraw",
     image: blogImage3,
     title: "How to Withdraw in V3 Game?",
     excerpt: "Complete guide to withdraw money from V3 Game wallet to your bank account.",
   },
   {
     id: 4,
+    slug: "app-download",
     image: blogImage4,
     title: "V3 Game App Download",
     excerpt: "Learn how to download the V3 Game app and start playing on your mobile device.",
@@ -132,7 +136,7 @@ export default function BlogPage() {
               {guideArticles.map((article) => (
                 <Link 
                   key={article.id}
-                  href={`/guide/${article.id}`}
+                  href={`/guide/${article.slug}`}
                   className="rounded-2xl overflow-hidden shadow-lg cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-xl block"
                   style={{
                     background: 'rgba(255, 255, 255, 0.05)',
