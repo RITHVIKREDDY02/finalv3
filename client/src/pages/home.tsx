@@ -446,6 +446,9 @@ export default function Home() {
             <p className="text-base sm:text-lg md:text-xl lg:text-2xl font-bold tracking-wide" style={{ color: '#FED358' }}>
               V3 Game Download App - Get Upto ₹500 Sign Up Reward
             </p>
+            <p className="text-sm sm:text-base md:text-lg text-gray-300 mt-3 max-w-3xl mx-auto leading-relaxed">
+              In today's fast-paced digital world, online games need to be engaging, rewarding, and simple to use—and that's exactly what V3 Game delivers. Whether you're new to online gaming or a seasoned player, V3 Game offers a mix of thrilling gameplay, bonus features, and real earning potential.
+            </p>
           </div>
           {/* Register and Login Buttons */}
           <div className="flex flex-row gap-2 sm:gap-4 md:gap-6 justify-center items-center mb-4">
