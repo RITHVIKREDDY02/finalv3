@@ -32,7 +32,6 @@ export default function Home() {
   const [showWarningDialog, setShowWarningDialog] = useState(false);
   const [selectedGameName, setSelectedGameName] = useState<string>("");
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [selectedBlogId, setSelectedBlogId] = useState<number | null>(null);
 
   const blogArticles = [
     {
@@ -598,10 +597,10 @@ export default function Home() {
           
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {blogArticles.map((article) => (
-              <div 
+              <Link 
                 key={article.id}
-                onClick={() => setSelectedBlogId(article.id)}
-                className="bg-white rounded-2xl overflow-hidden shadow-lg cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-xl"
+                href={`/guide/${article.id}`}
+                className="bg-white rounded-2xl overflow-hidden shadow-lg cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-xl block"
                 data-testid={`card-blog-${article.id}`}
               >
                 <div className="aspect-video overflow-hidden">
@@ -620,66 +619,18 @@ export default function Home() {
                   <p className="text-gray-500 text-xs md:text-sm line-clamp-2">
                     {article.excerpt}
                   </p>
-                  <button 
-                    className="mt-3 text-xs font-semibold px-4 py-1.5 rounded-full transition-all duration-200"
+                  <span 
+                    className="mt-3 text-xs font-semibold px-4 py-1.5 rounded-full transition-all duration-200 inline-block"
                     style={{ background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)', color: '#fff' }}
                   >
                     Read More
-                  </button>
+                  </span>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         </div>
       </div>
-
-      {/* Blog Modal */}
-      {selectedBlogId && (
-        <div className="fixed inset-0 bg-black bg-opacity-70 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <div className="bg-white rounded-2xl max-w-3xl w-full max-h-[90vh] overflow-hidden shadow-2xl">
-            <div className="relative">
-              <img 
-                src={blogArticles.find(a => a.id === selectedBlogId)?.image} 
-                alt={blogArticles.find(a => a.id === selectedBlogId)?.title}
-                loading="lazy"
-                decoding="async"
-                className="w-full h-48 md:h-64 object-cover"
-              />
-              <button
-                onClick={() => setSelectedBlogId(null)}
-                className="absolute top-4 right-4 w-10 h-10 bg-black bg-opacity-50 hover:bg-opacity-70 rounded-full flex items-center justify-center text-white text-2xl font-bold transition-all duration-200"
-                data-testid="button-close-blog"
-              >
-                ×
-              </button>
-            </div>
-            <div className="p-6 md:p-8 overflow-y-auto max-h-[calc(90vh-16rem)]">
-              <h1 className="text-xl md:text-2xl font-bold text-gray-800 mb-4">
-                {blogArticles.find(a => a.id === selectedBlogId)?.title}
-              </h1>
-              <div 
-                className="prose prose-sm md:prose-base max-w-none text-gray-700"
-                dangerouslySetInnerHTML={{ 
-                  __html: blogArticles.find(a => a.id === selectedBlogId)?.content || '' 
-                }}
-                style={{
-                  lineHeight: '1.8'
-                }}
-              />
-              <div className="mt-8 pt-6 border-t border-gray-200">
-                <button
-                  onClick={() => window.open("https://www.v3gameb.com/#/pages/login/register?invitationCode=7532630349", "_blank")}
-                  className="w-full py-3 rounded-full font-bold text-white shadow-lg transition-all duration-300 hover:scale-105"
-                  style={{ background: 'linear-gradient(180deg,#f8bf6e,#fb5e04)' }}
-                  data-testid="button-blog-register"
-                >
-                  Register Now & Get ₹500 Bonus
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
 
       {/* Footer */}
       <Footer />
