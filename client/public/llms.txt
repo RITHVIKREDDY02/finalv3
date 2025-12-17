@@ -1,0 +1,28 @@
+# V3 Game - LLMs.txt
+
+> V3 Game is an online gaming platform offering skill-based games with bonuses and rewards for Indian players.
+
+## About
+V3 Game is a trusted online gaming and entertainment platform. We offer users a variety of skill-based and fun games with easy registration, attractive sign-up bonuses, and secure transactions.
+
+## Keywords
+- V3 Game
+- Tashan Win
+- Tiranga Game
+- Jalwa Game
+- Mantri Game
+- Online Gaming India
+- Sign Up Bonus
+- Gaming Rewards
+
+## Pages
+- Home: /
+- About: /about
+- Blog: /blog
+- Contact: /contact
+- Terms: /terms
+- Privacy Policy: /privacy
+- Disclaimer: /disclaimer
+
+## Contact
+- Telegram: https://t.me/Earn_With_Milind_77
