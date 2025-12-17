@@ -12,7 +12,7 @@ export default function NotFound() {
             <h1 className="text-3xl font-bold text-white mb-2">404 - Page Not Found</h1>
             <p className="text-gray-300 mb-6 max-w-md">
               Sorry, the page you are looking for does not exist or has been moved. 
-              Don't worry, you can explore V3 Game, Tashan Win, Tiranga Game, Jalwa Game, and Mantri Game from our homepage.
+              Don't worry, you can explore V3 Game from our homepage.
             </p>
             <p className="text-gray-400 text-sm mb-8">
               Looking for gaming guides, registration help, or bonus information? 
