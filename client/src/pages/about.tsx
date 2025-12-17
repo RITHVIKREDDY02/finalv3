@@ -1,167 +1,102 @@
 import { Link } from "wouter";
+import { Home, ArrowLeft } from "lucide-react";
+import { FaTelegram } from "react-icons/fa";
 import Footer from "@/components/footer";
 
-const logoPath = "/images/logo.webp";
+const blogImage4 = "/images/4_1765905221064.webp";
 
 export default function AboutPage() {
   return (
     <div className="min-h-screen" style={{ background: 'linear-gradient(135deg, #000c1c 0%, #001a3d 100%)' }}>
-      <nav 
-        className="fixed top-0 left-0 right-0 px-4 shadow-lg z-50"
-        style={{ 
-          height: '60px',
-          background: 'linear-gradient(135deg, #000c1c 0%, #001a3d 100%)',
-          borderBottom: '2px solid #0b3681'
-        }}
-      >
-        <div className="max-w-7xl mx-auto flex items-center justify-between h-full">
-          <Link href="/">
-            <img src={logoPath} alt="V3 GAME Logo" className="w-auto object-contain h-5 md:h-7 cursor-pointer" />
+      <nav className="fixed top-0 left-0 right-0 z-50 px-4 py-3" style={{ background: 'rgba(0,12,28,0.95)', backdropFilter: 'blur(10px)', borderBottom: '1px solid rgba(254,211,88,0.15)' }}>
+        <div className="max-w-4xl mx-auto flex items-center justify-between">
+          <Link href="/" className="flex items-center gap-2 text-white hover:opacity-80 transition-opacity" data-testid="link-back-home">
+            <Home className="w-5 h-5" style={{ color: '#FED358' }} />
+            <span className="text-sm font-medium" style={{ color: '#FED358' }}>Home</span>
           </Link>
-          <Link 
-            href="/"
-            className="px-4 py-2 rounded-full text-black font-bold text-sm transition-all duration-200 hover:opacity-90"
-            style={{ background: 'linear-gradient(180deg, #FED358, #f5a623)' }}
+          <a 
+            href="https://t.me/Earn_With_Milind_77" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 px-4 py-2 rounded-full transition-all duration-300 hover:scale-105"
+            style={{ background: '#FED358' }}
           >
-            Back to Home
-          </Link>
+            <FaTelegram className="text-black" />
+            <span className="text-black text-sm font-medium">Join Us</span>
+          </a>
         </div>
       </nav>
 
-      <div className="pt-20 pb-12 px-4 md:px-8">
+      <main className="pt-20 pb-12 px-4">
         <div className="max-w-4xl mx-auto">
-          <div className="relative h-48 md:h-56 rounded-3xl overflow-hidden mb-8" style={{ background: 'linear-gradient(135deg, #FED358 0%, #f5a623 100%)' }}>
-            <div className="absolute inset-0" style={{ background: 'radial-gradient(circle at 30% 50%, rgba(255,255,255,0.3) 0%, transparent 50%)' }}></div>
-            <div className="absolute inset-0 flex items-center justify-center px-4">
-              <div className="text-center">
-                <div className="text-5xl mb-3">📱</div>
-                <h1 className="text-2xl md:text-3xl lg:text-4xl font-black text-black tracking-tight">V3 Game Login App & Lottery Download</h1>
-              </div>
-            </div>
+          <div className="mb-8">
+            <img 
+              src={blogImage4} 
+              alt="About V3 Game"
+              loading="lazy"
+              decoding="async"
+              className="w-full h-64 object-cover rounded-2xl"
+            />
           </div>
-
-          <div className="mb-10 p-6 md:p-8 rounded-2xl" style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)' }}>
-            <h2 className="text-xl md:text-2xl font-bold mb-4" style={{ color: '#FED358' }}>Complete Guide for Indian Users</h2>
-            <p className="text-base md:text-lg leading-relaxed" style={{ color: '#FDE4BC' }}>
-              Online gaming and lottery platforms have gained massive popularity across India in recent years. Among these, the V3 Game Login App has quickly become a popular choice for players who enjoy games of skill, entertainment, and luck-based lotteries.
-            </p>
+          
+          <h1 className="text-3xl font-bold mb-6" style={{ color: '#FED358' }}>
+            About Us
+          </h1>
+          
+          <div className="prose prose-invert max-w-none" style={{ color: 'rgba(253, 228, 188, 0.9)' }}>
+            <h2>Welcome to V3 Game Prediction Platform</h2>
+            <p>We are a dedicated team of gaming enthusiasts and prediction experts committed to helping players make informed decisions on the V3 Game platform. Our mission is to provide accurate, reliable, and timely predictions to enhance your gaming experience.</p>
+            
+            <h3>Our Mission</h3>
+            <p>At V3 Game Predictions, we believe in transparency, accuracy, and user satisfaction. Our goal is to create a trusted community where players can access quality predictions and guidance to improve their gaming journey.</p>
+            
+            <h3>What We Offer</h3>
+            <ul>
+              <li><strong>Expert Predictions</strong> – Our team analyzes patterns and trends to provide you with the best possible predictions.</li>
+              <li><strong>Step-by-Step Guides</strong> – From registration to withdrawals, we guide you through every process.</li>
+              <li><strong>24/7 Telegram Support</strong> – Join our community for real-time updates and assistance.</li>
+              <li><strong>Free Resources</strong> – Access our blog articles, tips, and strategies at no cost.</li>
+            </ul>
+            
+            <h3>Why Choose Us?</h3>
+            <ul>
+              <li><strong>Trusted by Thousands</strong> – Our community continues to grow with satisfied users across India.</li>
+              <li><strong>Transparent Results</strong> – We share our prediction results openly with our community.</li>
+              <li><strong>No Hidden Fees</strong> – All our basic resources and guides are completely free.</li>
+              <li><strong>Active Community</strong> – Join our Telegram group for live updates and discussions.</li>
+            </ul>
+            
+            <h3>Our Values</h3>
+            <p>We are committed to responsible gaming. We encourage all our users to play within their limits and treat gaming as entertainment, not as a source of income. Always gamble responsibly and never bet more than you can afford to lose.</p>
+            
+            <h3>Contact Us</h3>
+            <p>Have questions or suggestions? We'd love to hear from you! Join our Telegram community or reach out through our contact page. Our team is always ready to assist you.</p>
           </div>
-
-          <div className="mb-10 p-6 md:p-8 rounded-2xl" style={{ background: 'rgba(52,152,219,0.1)', border: '1px solid rgba(52,152,219,0.3)' }}>
-            <h2 className="text-xl md:text-2xl font-bold mb-6" style={{ color: '#3498DB' }}>How to Download the V3 Game App in India?</h2>
-            <p className="text-base leading-relaxed mb-6" style={{ color: '#FDE4BC' }}>
-              Downloading the V3 Game login app apk is easy and quick. Since it may not be available directly on the Google Play Store, users can follow these steps:
-            </p>
-            <div className="space-y-4">
-              <div className="flex items-start">
-                <div className="w-8 h-8 rounded-full flex items-center justify-center mr-4 flex-shrink-0" style={{ background: 'linear-gradient(135deg, #3498DB, #2980B9)' }}>
-                  <span className="text-white font-bold text-sm">1</span>
-                </div>
-                <p className="text-base" style={{ color: '#FDE4BC' }}>Visit the official V3 Game website on your mobile browser.</p>
-              </div>
-              <div className="flex items-start">
-                <div className="w-8 h-8 rounded-full flex items-center justify-center mr-4 flex-shrink-0" style={{ background: 'linear-gradient(135deg, #3498DB, #2980B9)' }}>
-                  <span className="text-white font-bold text-sm">2</span>
-                </div>
-                <p className="text-base" style={{ color: '#FDE4BC' }}>Find the download link for the V3 Game login apk.</p>
-              </div>
-              <div className="flex items-start">
-                <div className="w-8 h-8 rounded-full flex items-center justify-center mr-4 flex-shrink-0" style={{ background: 'linear-gradient(135deg, #3498DB, #2980B9)' }}>
-                  <span className="text-white font-bold text-sm">3</span>
-                </div>
-                <p className="text-base" style={{ color: '#FDE4BC' }}>Tap the link to download the file.</p>
-              </div>
-              <div className="flex items-start">
-                <div className="w-8 h-8 rounded-full flex items-center justify-center mr-4 flex-shrink-0" style={{ background: 'linear-gradient(135deg, #3498DB, #2980B9)' }}>
-                  <span className="text-white font-bold text-sm">4</span>
-                </div>
-                <p className="text-base" style={{ color: '#FDE4BC' }}>Once downloaded, go to your phone settings and enable "Install from Unknown Sources."</p>
-              </div>
-              <div className="flex items-start">
-                <div className="w-8 h-8 rounded-full flex items-center justify-center mr-4 flex-shrink-0" style={{ background: 'linear-gradient(135deg, #3498DB, #2980B9)' }}>
-                  <span className="text-white font-bold text-sm">5</span>
-                </div>
-                <p className="text-base" style={{ color: '#FDE4BC' }}>Open the apk file and install it on your device.</p>
-              </div>
-              <div className="flex items-start">
-                <div className="w-8 h-8 rounded-full flex items-center justify-center mr-4 flex-shrink-0" style={{ background: 'linear-gradient(135deg, #3498DB, #2980B9)' }}>
-                  <span className="text-white font-bold text-sm">6</span>
-                </div>
-                <p className="text-base" style={{ color: '#FDE4BC' }}>After installation, launch the app and complete the V3 Game login process using your registered mobile number or email.</p>
-              </div>
-            </div>
-          </div>
-
-          <div className="mb-10 p-6 md:p-8 rounded-2xl" style={{ background: 'rgba(254,211,88,0.1)', border: '1px solid rgba(254,211,88,0.3)' }}>
-            <h2 className="text-xl md:text-2xl font-bold mb-6" style={{ color: '#FED358' }}>V3 Game Login Lottery – How It Works?</h2>
-            <p className="text-base md:text-lg leading-relaxed mb-4" style={{ color: '#FDE4BC' }}>
-              The V3 Game login lottery section allows players to buy digital tickets for upcoming draws. Each lottery has a fixed schedule, and players can view results through their login dashboard. The more tickets you purchase, the higher your chances of winning.
-            </p>
-            <p className="text-base md:text-lg leading-relaxed" style={{ color: '#FDE4BC' }}>
-              The lottery operates transparently, displaying winners and results publicly within the app.
-            </p>
-          </div>
-
-          <div className="mb-10 p-6 md:p-8 rounded-2xl" style={{ background: 'rgba(52,152,219,0.1)', border: '1px solid rgba(52,152,219,0.3)' }}>
-            <h2 className="text-xl md:text-2xl font-bold mb-6" style={{ color: '#3498DB' }}>Why Choose the V3 Game Login App in India?</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div className="p-4 rounded-xl" style={{ background: 'rgba(255,255,255,0.05)' }}>
-                <div className="flex items-center mb-2">
-                  <span className="text-2xl mr-3">📱</span>
-                  <h3 className="font-bold" style={{ color: '#FED358' }}>Convenience</h3>
-                </div>
-                <p className="text-sm" style={{ color: '#FDE4BC' }}>Easy to access from anywhere through mobile login or apk download.</p>
-              </div>
-              <div className="p-4 rounded-xl" style={{ background: 'rgba(255,255,255,0.05)' }}>
-                <div className="flex items-center mb-2">
-                  <span className="text-2xl mr-3">🎮</span>
-                  <h3 className="font-bold" style={{ color: '#FED358' }}>Entertainment</h3>
-                </div>
-                <p className="text-sm" style={{ color: '#FDE4BC' }}>Offers both gaming and lottery experiences in one place.</p>
-              </div>
-              <div className="p-4 rounded-xl" style={{ background: 'rgba(255,255,255,0.05)' }}>
-                <div className="flex items-center mb-2">
-                  <span className="text-2xl mr-3">🔒</span>
-                  <h3 className="font-bold" style={{ color: '#FED358' }}>Security</h3>
-                </div>
-                <p className="text-sm" style={{ color: '#FDE4BC' }}>Uses advanced data protection systems.</p>
-              </div>
-              <div className="p-4 rounded-xl" style={{ background: 'rgba(255,255,255,0.05)' }}>
-                <div className="flex items-center mb-2">
-                  <span className="text-2xl mr-3">✅</span>
-                  <h3 className="font-bold" style={{ color: '#FED358' }}>Transparency</h3>
-                </div>
-                <p className="text-sm" style={{ color: '#FDE4BC' }}>Clear rules and visible results for all lottery draws.</p>
-              </div>
-              <div className="p-4 rounded-xl md:col-span-2" style={{ background: 'rgba(255,255,255,0.05)' }}>
-                <div className="flex items-center mb-2">
-                  <span className="text-2xl mr-3">📲</span>
-                  <h3 className="font-bold" style={{ color: '#FED358' }}>Accessibility</h3>
-                </div>
-                <p className="text-sm" style={{ color: '#FDE4BC' }}>Works well on Android devices with low system requirements.</p>
-              </div>
-            </div>
-          </div>
-
-          <div className="relative p-8 rounded-2xl overflow-hidden" style={{ background: 'linear-gradient(135deg, rgba(254,211,88,0.2) 0%, rgba(254,211,88,0.1) 100%)' }}>
-            <div className="absolute inset-0 opacity-30" style={{ background: 'radial-gradient(circle at 70% 30%, rgba(254,211,88,0.5) 0%, transparent 50%)' }}></div>
-            <div className="relative z-10 text-center">
-              <h3 className="font-bold text-2xl md:text-3xl mb-4" style={{ color: '#FED358' }}>Download V3 Game App Now!</h3>
-              <p className="text-base mb-6" style={{ color: '#FDE4BC' }}>Join thousands of Indian users and start playing today!</p>
-              <a 
-                href="https://www.v3gameb.com/#/pages/login/register?invitationCode=7532630349"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-block px-8 py-4 font-bold rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 text-lg"
-                style={{ background: 'linear-gradient(135deg, #FED358 0%, #f5a623 100%)', color: '#000c1c' }}
-                data-testid="button-download-app"
-              >
-                Download & Register Now
-              </a>
-            </div>
+          
+          <style>{`
+            .prose h2 { color: #FED358; font-size: 1.5rem; margin-top: 2rem; margin-bottom: 1rem; }
+            .prose h3 { color: #FDE4BC; font-size: 1.25rem; margin-top: 1.5rem; margin-bottom: 0.75rem; }
+            .prose p { margin-bottom: 1rem; line-height: 1.8; }
+            .prose ul { margin-left: 1.5rem; margin-bottom: 1rem; }
+            .prose li { margin-bottom: 0.5rem; line-height: 1.7; }
+            .prose strong { color: #FED358; }
+          `}</style>
+          
+          <div className="mt-8 pt-6 border-t border-gray-700">
+            <a
+              href="https://t.me/Earn_With_Milind_77"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full py-3 rounded-full font-bold text-white shadow-lg transition-all duration-300 hover:scale-105 flex items-center justify-center gap-2"
+              style={{ background: 'linear-gradient(180deg,#f8bf6e,#fb5e04)' }}
+              data-testid="button-join-telegram"
+            >
+              <FaTelegram className="text-xl" />
+              Join Our Telegram Community
+            </a>
           </div>
         </div>
-      </div>
+      </main>
 
       <Footer />
     </div>
