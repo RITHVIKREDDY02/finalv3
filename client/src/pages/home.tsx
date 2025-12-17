@@ -444,7 +444,7 @@ export default function Home() {
           {/* Reward Text */}
           <div className="text-center mb-5">
             <p className="text-base sm:text-lg md:text-xl lg:text-2xl font-bold tracking-wide" style={{ color: '#FED358' }}>
-              Register Now & Get Upto ₹500 Sign Up Reward
+              V3 Game Download App - Get Upto ₹500 Sign Up Reward
             </p>
           </div>
           {/* Register and Login Buttons */}
