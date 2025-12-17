@@ -354,15 +354,14 @@ export default function Home() {
                 >
                   Disclaimer
                 </Link>
-                <Link 
-                  href="/contact"
-                  className="text-base font-medium py-2 transition-all duration-200 hover:translate-x-2"
+                <button 
+                  className="text-base font-medium py-2 transition-all duration-200 hover:translate-x-2 text-left"
                   style={{ color: '#FDE4BC' }}
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  data-testid="link-mobile-contact"
+                  onClick={() => { setShowAboutUsDialog(true); setIsMobileMenuOpen(false); }}
+                  data-testid="link-mobile-about"
                 >
-                  Contact
-                </Link>
+                  About Us
+                </button>
               </div>
             </div>
           )}
@@ -401,14 +400,14 @@ export default function Home() {
             >
               Disclaimer
             </Link>
-            <Link 
-              href="/contact"
+            <button 
               className="text-sm font-medium transition-all duration-200 hover:opacity-80 hover:scale-105"
               style={{ color: '#FDE4BC' }}
-              data-testid="link-contact"
+              onClick={() => setShowAboutUsDialog(true)}
+              data-testid="link-about"
             >
-              Contact
-            </Link>
+              About Us
+            </button>
             <button 
               className="px-4 py-2 rounded-full text-black font-bold text-sm transition-all duration-200 hover:opacity-90 hover:scale-105"
               style={{ background: 'linear-gradient(180deg,#f8bf6e,#fb5e04)' }}
