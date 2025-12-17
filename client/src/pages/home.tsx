@@ -321,7 +321,7 @@ export default function Home() {
             >
               <div className="flex flex-col gap-4">
                 <Link 
-                  href="/guide/register-guide"
+                  href="/register-guide"
                   className="text-base font-medium py-2 transition-all duration-200 hover:translate-x-2 text-left"
                   style={{ color: '#FDE4BC' }}
                   onClick={() => setIsMobileMenuOpen(false)}
@@ -330,7 +330,7 @@ export default function Home() {
                   Register Guide
                 </Link>
                 <Link 
-                  href="/guide/login-bonus"
+                  href="/login-bonus"
                   className="text-base font-medium py-2 transition-all duration-200 hover:translate-x-2 text-left"
                   style={{ color: '#FDE4BC' }}
                   onClick={() => setIsMobileMenuOpen(false)}
@@ -372,7 +372,7 @@ export default function Home() {
           {/* Desktop Navigation Items */}
           <div className="hidden md:flex items-center space-x-5 lg:space-x-6">
             <Link 
-              href="/guide/register-guide"
+              href="/register-guide"
               className="text-sm font-medium transition-all duration-200 hover:opacity-80 hover:scale-105"
               style={{ color: '#FDE4BC' }}
               data-testid="link-register-guide"
@@ -380,7 +380,7 @@ export default function Home() {
               Register Guide
             </Link>
             <Link 
-              href="/guide/login-bonus"
+              href="/login-bonus"
               className="text-sm font-medium transition-all duration-200 hover:opacity-80 hover:scale-105"
               style={{ color: '#FDE4BC' }}
               data-testid="link-login-bonus"
@@ -603,7 +603,7 @@ export default function Home() {
             {blogArticles.map((article) => (
               <Link 
                 key={article.id}
-                href={`/guide/${article.slug}`}
+                href={`/${article.slug}`}
                 className="bg-white rounded-2xl overflow-hidden shadow-lg cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-xl block"
                 data-testid={`card-blog-${article.id}`}
               >

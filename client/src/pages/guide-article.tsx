@@ -1,4 +1,4 @@
-import { Link, useParams } from "wouter";
+import { Link, useLocation } from "wouter";
 import { Home, ArrowLeft } from "lucide-react";
 import { FaTelegram } from "react-icons/fa";
 import Footer from "@/components/footer";
@@ -214,8 +214,8 @@ const guideArticles = [
 ];
 
 export default function GuideArticlePage() {
-  const params = useParams();
-  const slug = params.slug || "register-guide";
+  const [location] = useLocation();
+  const slug = location.replace("/", "");
   const article = guideArticles.find(a => a.slug === slug);
 
   if (!article) {

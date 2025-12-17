@@ -36,7 +36,10 @@ function Router() {
         <Route path="/contact" component={ContactPage} />
         <Route path="/about" component={AboutPage} />
         <Route path="/blog" component={BlogPage} />
-        <Route path="/guide/:slug" component={GuideArticlePage} />
+        <Route path="/register-guide" component={GuideArticlePage} />
+        <Route path="/login-bonus" component={GuideArticlePage} />
+        <Route path="/wallet-withdraw" component={GuideArticlePage} />
+        <Route path="/app-download" component={GuideArticlePage} />
         <Route component={NotFound} />
       </Switch>
     </Suspense>

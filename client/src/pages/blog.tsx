@@ -136,7 +136,7 @@ export default function BlogPage() {
               {guideArticles.map((article) => (
                 <Link 
                   key={article.id}
-                  href={`/guide/${article.slug}`}
+                  href={`/${article.slug}`}
                   className="rounded-2xl overflow-hidden shadow-lg cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-xl block"
                   style={{
                     background: 'rgba(255, 255, 255, 0.05)',
