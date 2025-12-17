@@ -317,22 +317,24 @@ export default function Home() {
               style={{ background: 'rgba(0,12,28,0.98)', borderBottom: '2px solid #FED358' }}
             >
               <div className="flex flex-col gap-4">
-                <button 
+                <Link 
+                  href="/register-guide"
                   className="text-base font-medium py-2 transition-all duration-200 hover:translate-x-2 text-left"
                   style={{ color: '#FDE4BC' }}
-                  onClick={() => { setSelectedBlogId(1); setIsMobileMenuOpen(false); }}
+                  onClick={() => setIsMobileMenuOpen(false)}
                   data-testid="link-mobile-register-guide"
                 >
                   Register Guide
-                </button>
-                <button 
+                </Link>
+                <Link 
+                  href="/login-bonus"
                   className="text-base font-medium py-2 transition-all duration-200 hover:translate-x-2 text-left"
                   style={{ color: '#FDE4BC' }}
-                  onClick={() => { setSelectedBlogId(2); setIsMobileMenuOpen(false); }}
+                  onClick={() => setIsMobileMenuOpen(false)}
                   data-testid="link-mobile-login-bonus"
                 >
                   Login Bonus
-                </button>
+                </Link>
                 <Link 
                   href="/blog"
                   className="text-base font-medium py-2 transition-all duration-200 hover:translate-x-2"
@@ -366,22 +368,22 @@ export default function Home() {
           
           {/* Desktop Navigation Items */}
           <div className="hidden md:flex items-center space-x-5 lg:space-x-6">
-            <button 
+            <Link 
+              href="/register-guide"
               className="text-sm font-medium transition-all duration-200 hover:opacity-80 hover:scale-105"
               style={{ color: '#FDE4BC' }}
-              onClick={() => setSelectedBlogId(1)}
               data-testid="link-register-guide"
             >
               Register Guide
-            </button>
-            <button 
+            </Link>
+            <Link 
+              href="/login-bonus"
               className="text-sm font-medium transition-all duration-200 hover:opacity-80 hover:scale-105"
               style={{ color: '#FDE4BC' }}
-              onClick={() => setSelectedBlogId(2)}
               data-testid="link-login-bonus"
             >
               Login Bonus
-            </button>
+            </Link>
             <Link 
               href="/blog"
               className="text-sm font-medium transition-all duration-200 hover:opacity-80 hover:scale-105"
