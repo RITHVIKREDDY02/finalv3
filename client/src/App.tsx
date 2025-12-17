@@ -6,7 +6,6 @@ import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import Home from "@/pages/home";
 
-const RegisterPage = lazy(() => import("@/pages/register"));
 const DisclaimerPage = lazy(() => import("@/pages/disclaimer"));
 const TermsPage = lazy(() => import("@/pages/terms"));
 const PrivacyPage = lazy(() => import("@/pages/privacy"));
@@ -29,7 +28,6 @@ function Router() {
     <Suspense fallback={<PageLoader />}>
       <Switch>
         <Route path="/" component={Home} />
-        <Route path="/register" component={RegisterPage} />
         <Route path="/disclaimer" component={DisclaimerPage} />
         <Route path="/terms" component={TermsPage} />
         <Route path="/privacy" component={PrivacyPage} />
