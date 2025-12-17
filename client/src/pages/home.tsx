@@ -17,10 +17,10 @@ const demoImage2 = "/images/demo2.webp";
 const demoImage3 = "/images/demo3.webp";
 const liveInterfaceImage = "/images/live-interface.webp";
 const faviconIcon = "/images/favicon.webp";
-const blogImage1 = "/images/1_1765905221064.webp";
-const blogImage2 = "/images/2_1765905221063.webp";
-const blogImage3 = "/images/3_1765905221064.webp";
-const blogImage4 = "/images/4_1765905221064.webp";
+const blogImage1 = "/images/1_1765955669623.webp";
+const blogImage2 = "/images/2_1765955669624.webp";
+const blogImage3 = "/images/3_1765955669624.webp";
+const blogImage4 = "/images/4_1765955669625.webp";
 
 export default function Home() {
   const [isScrolled, setIsScrolled] = useState(false);
