@@ -317,7 +317,7 @@ export default function Home() {
             >
               <div className="flex flex-col gap-4">
                 <Link 
-                  href="/register-guide"
+                  href="/guide/1"
                   className="text-base font-medium py-2 transition-all duration-200 hover:translate-x-2 text-left"
                   style={{ color: '#FDE4BC' }}
                   onClick={() => setIsMobileMenuOpen(false)}
@@ -326,7 +326,7 @@ export default function Home() {
                   Register Guide
                 </Link>
                 <Link 
-                  href="/login-bonus"
+                  href="/guide/2"
                   className="text-base font-medium py-2 transition-all duration-200 hover:translate-x-2 text-left"
                   style={{ color: '#FDE4BC' }}
                   onClick={() => setIsMobileMenuOpen(false)}
@@ -368,7 +368,7 @@ export default function Home() {
           {/* Desktop Navigation Items */}
           <div className="hidden md:flex items-center space-x-5 lg:space-x-6">
             <Link 
-              href="/register-guide"
+              href="/guide/1"
               className="text-sm font-medium transition-all duration-200 hover:opacity-80 hover:scale-105"
               style={{ color: '#FDE4BC' }}
               data-testid="link-register-guide"
@@ -376,7 +376,7 @@ export default function Home() {
               Register Guide
             </Link>
             <Link 
-              href="/login-bonus"
+              href="/guide/2"
               className="text-sm font-medium transition-all duration-200 hover:opacity-80 hover:scale-105"
               style={{ color: '#FDE4BC' }}
               data-testid="link-login-bonus"

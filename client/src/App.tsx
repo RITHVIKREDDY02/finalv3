@@ -7,8 +7,6 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import Home from "@/pages/home";
 
 const RegisterPage = lazy(() => import("@/pages/register"));
-const RegisterGuidePage = lazy(() => import("@/pages/register-guide"));
-const LoginBonusPage = lazy(() => import("@/pages/login-bonus"));
 const DisclaimerPage = lazy(() => import("@/pages/disclaimer"));
 const TermsPage = lazy(() => import("@/pages/terms"));
 const PrivacyPage = lazy(() => import("@/pages/privacy"));
@@ -32,8 +30,6 @@ function Router() {
       <Switch>
         <Route path="/" component={Home} />
         <Route path="/register" component={RegisterPage} />
-        <Route path="/register-guide" component={RegisterGuidePage} />
-        <Route path="/login-bonus" component={LoginBonusPage} />
         <Route path="/disclaimer" component={DisclaimerPage} />
         <Route path="/terms" component={TermsPage} />
         <Route path="/privacy" component={PrivacyPage} />
