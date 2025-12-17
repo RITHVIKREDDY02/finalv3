@@ -13,6 +13,7 @@ const DisclaimerPage = lazy(() => import("@/pages/disclaimer"));
 const TermsPage = lazy(() => import("@/pages/terms"));
 const PrivacyPage = lazy(() => import("@/pages/privacy"));
 const ContactPage = lazy(() => import("@/pages/contact"));
+const AboutPage = lazy(() => import("@/pages/about"));
 const BlogPage = lazy(() => import("@/pages/blog"));
 const GuideArticlePage = lazy(() => import("@/pages/guide-article"));
 const NotFound = lazy(() => import("@/pages/not-found"));
@@ -37,6 +38,7 @@ function Router() {
         <Route path="/terms" component={TermsPage} />
         <Route path="/privacy" component={PrivacyPage} />
         <Route path="/contact" component={ContactPage} />
+        <Route path="/about" component={AboutPage} />
         <Route path="/blog" component={BlogPage} />
         <Route path="/guide/:id" component={GuideArticlePage} />
         <Route component={NotFound} />

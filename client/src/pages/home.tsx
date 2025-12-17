@@ -28,8 +28,7 @@ export default function Home() {
   const [showComingSoonDialog, setShowComingSoonDialog] = useState(false);
   const [showProofDialog, setShowProofDialog] = useState(false);
   const [showDemoDialog, setShowDemoDialog] = useState(false);
-  const [showAboutUsDialog, setShowAboutUsDialog] = useState(false);
-  const [showDisclaimerDialog, setShowDisclaimerDialog] = useState(false);
+    const [showDisclaimerDialog, setShowDisclaimerDialog] = useState(false);
   const [showWarningDialog, setShowWarningDialog] = useState(false);
   const [selectedGameName, setSelectedGameName] = useState<string>("");
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -354,14 +353,15 @@ export default function Home() {
                 >
                   Disclaimer
                 </Link>
-                <button 
-                  className="text-base font-medium py-2 transition-all duration-200 hover:translate-x-2 text-left"
+                <Link 
+                  href="/about"
+                  className="text-base font-medium py-2 transition-all duration-200 hover:translate-x-2"
                   style={{ color: '#FDE4BC' }}
-                  onClick={() => { setShowAboutUsDialog(true); setIsMobileMenuOpen(false); }}
+                  onClick={() => setIsMobileMenuOpen(false)}
                   data-testid="link-mobile-about"
                 >
                   About Us
-                </button>
+                </Link>
               </div>
             </div>
           )}
@@ -400,14 +400,14 @@ export default function Home() {
             >
               Disclaimer
             </Link>
-            <button 
+            <Link 
+              href="/about"
               className="text-sm font-medium transition-all duration-200 hover:opacity-80 hover:scale-105"
               style={{ color: '#FDE4BC' }}
-              onClick={() => setShowAboutUsDialog(true)}
               data-testid="link-about"
             >
               About Us
-            </button>
+            </Link>
             <button 
               className="px-4 py-2 rounded-full text-black font-bold text-sm transition-all duration-200 hover:opacity-90 hover:scale-105"
               style={{ background: 'linear-gradient(180deg,#f8bf6e,#fb5e04)' }}
@@ -855,114 +855,6 @@ export default function Home() {
         </div>
       )}
 
-      {/* About Us Dialog - Modern Design */}
-      {showAboutUsDialog && (
-        <div className="fixed inset-0 bg-black/70 backdrop-blur-md z-50 flex items-center justify-center p-4">
-          <div className="rounded-3xl max-w-2xl w-full max-h-[85vh] overflow-hidden shadow-2xl" style={{ background: 'linear-gradient(145deg, #1a1520 0%, #0d0a12 100%)' }}>
-            {/* Hero Section */}
-            <div className="relative h-40 overflow-hidden" style={{ background: 'linear-gradient(135deg, #FED358 0%, #FF6B35 50%, #E74C3C 100%)' }}>
-              <div className="absolute inset-0" style={{ background: 'radial-gradient(circle at 30% 50%, rgba(255,255,255,0.2) 0%, transparent 50%)' }}></div>
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="text-center">
-                  <div className="text-6xl mb-2">🏆</div>
-                  <h2 className="text-3xl font-black text-black tracking-tight">About V3 GAME VIP</h2>
-                </div>
-              </div>
-              <button
-                onClick={() => setShowAboutUsDialog(false)}
-                className="absolute top-4 right-4 w-10 h-10 rounded-full bg-black/30 hover:bg-black/50 flex items-center justify-center transition-all duration-200 text-white text-xl font-bold"
-                data-testid="button-close-about"
-              >
-                ×
-              </button>
-            </div>
-            
-            {/* Content */}
-            <div className="p-8 overflow-y-auto max-h-[calc(85vh-10rem)]">
-              {/* Quote Card */}
-              <div className="relative mb-8 p-6 rounded-2xl overflow-hidden" style={{ background: 'linear-gradient(135deg, rgba(254,211,88,0.15) 0%, rgba(255,107,53,0.1) 100%)', border: '1px solid rgba(254,211,88,0.3)' }}>
-                <div className="absolute top-2 left-4 text-5xl opacity-30" style={{ color: '#FED358' }}>"</div>
-                <p className="text-xl font-semibold text-center italic relative z-10" style={{ color: '#FDE4BC' }}>
-                  Life is a gamble and We live only once, so let's have fun at V3 GAME VIP!
-                </p>
-                <div className="absolute bottom-2 right-4 text-5xl opacity-30" style={{ color: '#FED358' }}>"</div>
-              </div>
-
-              {/* Feature Cards Grid */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
-                <div className="p-5 rounded-2xl" style={{ background: 'rgba(46,204,113,0.1)', border: '1px solid rgba(46,204,113,0.3)' }}>
-                  <div className="flex items-center mb-3">
-                    <div className="w-10 h-10 rounded-full flex items-center justify-center mr-3" style={{ background: 'linear-gradient(135deg, #2ECC71, #27AE60)' }}>
-                      <span className="text-white text-lg">🎯</span>
-                    </div>
-                    <h4 className="font-bold text-lg" style={{ color: '#2ECC71' }}>100% Success Rate</h4>
-                  </div>
-                  <p className="text-sm" style={{ color: '#FDE4BC' }}>Our advanced AI algorithm delivers accurate predictions every time.</p>
-                </div>
-                
-                <div className="p-5 rounded-2xl" style={{ background: 'rgba(52,152,219,0.1)', border: '1px solid rgba(52,152,219,0.3)' }}>
-                  <div className="flex items-center mb-3">
-                    <div className="w-10 h-10 rounded-full flex items-center justify-center mr-3" style={{ background: 'linear-gradient(135deg, #3498DB, #2980B9)' }}>
-                      <span className="text-white text-lg">🤖</span>
-                    </div>
-                    <h4 className="font-bold text-lg" style={{ color: '#3498DB' }}>AI-Powered</h4>
-                  </div>
-                  <p className="text-sm" style={{ color: '#FDE4BC' }}>Expert data analysts and cutting-edge algorithms work for you.</p>
-                </div>
-                
-                <div className="p-5 rounded-2xl" style={{ background: 'rgba(155,89,182,0.1)', border: '1px solid rgba(155,89,182,0.3)' }}>
-                  <div className="flex items-center mb-3">
-                    <div className="w-10 h-10 rounded-full flex items-center justify-center mr-3" style={{ background: 'linear-gradient(135deg, #9B59B6, #8E44AD)' }}>
-                      <span className="text-white text-lg">⚡</span>
-                    </div>
-                    <h4 className="font-bold text-lg" style={{ color: '#9B59B6' }}>Instant Results</h4>
-                  </div>
-                  <p className="text-sm" style={{ color: '#FDE4BC' }}>Get predictions for color, size, and number in seconds.</p>
-                </div>
-                
-                <div className="p-5 rounded-2xl" style={{ background: 'rgba(254,211,88,0.1)', border: '1px solid rgba(254,211,88,0.3)' }}>
-                  <div className="flex items-center mb-3">
-                    <div className="w-10 h-10 rounded-full flex items-center justify-center mr-3" style={{ background: 'linear-gradient(135deg, #FED358, #FF6B35)' }}>
-                      <span className="text-black text-lg">💬</span>
-                    </div>
-                    <h4 className="font-bold text-lg" style={{ color: '#FED358' }}>24/7 Support</h4>
-                  </div>
-                  <p className="text-sm" style={{ color: '#FDE4BC' }}>Email and live chat support always available.</p>
-                </div>
-              </div>
-
-              {/* Description */}
-              <div className="mb-8 space-y-4" style={{ color: '#FDE4BC' }}>
-                <p className="text-base leading-relaxed">
-                  Welcome to <span className="font-bold" style={{ color: '#FED358' }}>V3 GAME VIP</span>, the leading platform for Wingo lottery predictions. Our experts analyze past draws and player behavior to deliver unmatched accuracy.
-                </p>
-                <p className="text-base leading-relaxed">
-                  Everyone deserves a chance to win big. Select your game, click 'predict', and receive your winning predictions instantly!
-                </p>
-              </div>
-
-              {/* CTA Section */}
-              <div className="relative p-6 rounded-2xl overflow-hidden" style={{ background: 'linear-gradient(135deg, rgba(254,211,88,0.2) 0%, rgba(255,107,53,0.2) 100%)' }}>
-                <div className="absolute inset-0 opacity-30" style={{ background: 'radial-gradient(circle at 70% 30%, rgba(254,211,88,0.5) 0%, transparent 50%)' }}></div>
-                <div className="relative z-10 text-center">
-                  <h4 className="font-bold text-2xl mb-4" style={{ color: '#FED358' }}>🚀 Ready to Start Winning?</h4>
-                  <button 
-                    onClick={() => {
-                      setShowAboutUsDialog(false);
-                      setShowRegisterDialog(true);
-                    }}
-                    className="px-8 py-4 font-bold rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 text-lg"
-                    style={{ background: 'linear-gradient(135deg, #FED358 0%, #FF6B35 100%)', color: '#1a1520' }}
-                    data-testid="button-start-predicting"
-                  >
-                    Start Predicting Now!
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
 
       {/* Disclaimer Dialog - Modern Design */}
       {showDisclaimerDialog && (
