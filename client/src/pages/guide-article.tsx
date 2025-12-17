@@ -254,6 +254,8 @@ export default function GuideArticlePage() {
             <img 
               src={article.image} 
               alt={article.title}
+              loading="lazy"
+              decoding="async"
               className="w-full h-64 object-cover rounded-2xl"
             />
           </div>

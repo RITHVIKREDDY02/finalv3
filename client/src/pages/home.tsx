@@ -10,13 +10,13 @@ const logoPath = "/images/logo.webp";
 const heroBannerDesktop = "/images/banner-desktop.webp";
 const heroBannerTablet = "/images/banner-tablet.webp";
 const heroBannerMobile = "/images/banner-mobile.webp";
-import proofImage1 from "@assets/image_1754150847570.png";
-import proofImage2 from "@assets/image_1754150852695.png";
-import demoImage1 from "@assets/Screenshot 2025-08-31 172003_1756641606545.png";
-import demoImage2 from "@assets/Screenshot 2025-08-31 172048_1756641612873.png";
-import demoImage3 from "@assets/Screenshot 2025-08-31 172018_1756641617812.png";
-import liveInterfaceImage from "@assets/Screenshot 2025-08-31 171820_1756656529215.png";
-import faviconIcon from "@assets/h5setting_20250501162804ytau_1754156061703.png";
+const proofImage1 = "/images/proof1.webp";
+const proofImage2 = "/images/proof2.webp";
+const demoImage1 = "/images/demo1.webp";
+const demoImage2 = "/images/demo2.webp";
+const demoImage3 = "/images/demo3.webp";
+const liveInterfaceImage = "/images/live-interface.webp";
+const faviconIcon = "/images/favicon.webp";
 const blogImage1 = "/images/1_1765905221064.webp";
 const blogImage2 = "/images/2_1765905221063.webp";
 const blogImage3 = "/images/3_1765905221064.webp";
@@ -639,6 +639,8 @@ export default function Home() {
               <img 
                 src={blogArticles.find(a => a.id === selectedBlogId)?.image} 
                 alt={blogArticles.find(a => a.id === selectedBlogId)?.title}
+                loading="lazy"
+                decoding="async"
                 className="w-full h-48 md:h-64 object-cover"
               />
               <button
