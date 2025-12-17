@@ -3,10 +3,10 @@ import { Home, ArrowLeft } from "lucide-react";
 import { FaTelegram } from "react-icons/fa";
 import Footer from "@/components/footer";
 
-const blogImage1 = "/images/1_1765905221064.png";
-const blogImage2 = "/images/2_1765905221063.png";
-const blogImage3 = "/images/3_1765905221064.png";
-const blogImage4 = "/images/4_1765905221064.png";
+const blogImage1 = "/images/1_1765905221064.webp";
+const blogImage2 = "/images/2_1765905221063.webp";
+const blogImage3 = "/images/3_1765905221064.webp";
+const blogImage4 = "/images/4_1765905221064.webp";
 
 const guideArticles = [
   {

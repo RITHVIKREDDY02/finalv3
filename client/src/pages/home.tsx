@@ -6,10 +6,10 @@ import RegistrationDialog from "@/components/registration-dialog";
 import { ComingSoonDialog } from "@/components/coming-soon-dialog";
 import WelcomeNotification from "@/components/welcome-notification";
 import Footer from "@/components/footer";
-import logoPath from "@assets/logo_nav_1756545819204.png";
-import heroBannerDesktop from "@assets/Site_Banner_(1920_x_400_px)_1765901343932.png";
-import heroBannerTablet from "@assets/Site_Banner_(768_x_250_px)_(1536_x_320_px)_1765902253968.png";
-import heroBannerMobile from "@assets/Site_Banner_(768_x_250_px)_(1152_x_240_px)_(1152_x_400_px)_1765903005269.png";
+const logoPath = "/images/logo.webp";
+const heroBannerDesktop = "/images/banner-desktop.webp";
+const heroBannerTablet = "/images/banner-tablet.webp";
+const heroBannerMobile = "/images/banner-mobile.webp";
 import proofImage1 from "@assets/image_1754150847570.png";
 import proofImage2 from "@assets/image_1754150852695.png";
 import demoImage1 from "@assets/Screenshot 2025-08-31 172003_1756641606545.png";
@@ -17,10 +17,10 @@ import demoImage2 from "@assets/Screenshot 2025-08-31 172048_1756641612873.png";
 import demoImage3 from "@assets/Screenshot 2025-08-31 172018_1756641617812.png";
 import liveInterfaceImage from "@assets/Screenshot 2025-08-31 171820_1756656529215.png";
 import faviconIcon from "@assets/h5setting_20250501162804ytau_1754156061703.png";
-import blogImage1 from "@assets/1_1765905221064.png";
-import blogImage2 from "@assets/2_1765905221063.png";
-import blogImage3 from "@assets/3_1765905221064.png";
-import blogImage4 from "@assets/4_1765905221064.png";
+const blogImage1 = "/images/1_1765905221064.webp";
+const blogImage2 = "/images/2_1765905221063.webp";
+const blogImage3 = "/images/3_1765905221064.webp";
+const blogImage4 = "/images/4_1765905221064.webp";
 
 export default function Home() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -606,6 +606,8 @@ export default function Home() {
                   <img 
                     src={article.image} 
                     alt={article.title}
+                    loading="lazy"
+                    decoding="async"
                     className="w-full h-full object-cover"
                   />
                 </div>
@@ -729,6 +731,8 @@ export default function Home() {
                     <img 
                       src={liveInterfaceImage} 
                       alt="Live Wingo prediction interface with game tabs, period timer, VIP prediction and live players" 
+                      loading="lazy"
+                      decoding="async"
                       className="w-full mx-auto rounded-xl shadow-2xl border-2"
                       style={{ borderColor: '#FED358' }}
                     />
@@ -785,6 +789,8 @@ export default function Home() {
                     <img 
                       src={demoImage1} 
                       alt="Wingo game variants - 30Sec, 1Min, 3Min, 5Min selection tabs" 
+                      loading="lazy"
+                      decoding="async"
                       className="w-full mx-auto rounded-xl shadow-2xl border-2" 
                       style={{ borderColor: '#FED358' }}
                     />
@@ -800,6 +806,8 @@ export default function Home() {
                     <img 
                       src={demoImage2} 
                       alt="Wingo 30Sec period 2050831208Z with Time Remaining 00:26" 
+                      loading="lazy"
+                      decoding="async"
                       className="w-full mx-auto rounded-xl shadow-2xl border-2"
                       style={{ borderColor: '#FED358' }}
                     />
@@ -815,6 +823,8 @@ export default function Home() {
                     <img 
                       src={demoImage3} 
                       alt="VIP Prediction - Color Green, Size BIG, Number 8" 
+                      loading="lazy"
+                      decoding="async"
                       className="w-full mx-auto rounded-xl shadow-2xl border-2"
                       style={{ borderColor: '#FED358' }}
                     />
