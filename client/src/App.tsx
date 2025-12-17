@@ -36,7 +36,7 @@ function Router() {
         <Route path="/contact" component={ContactPage} />
         <Route path="/about" component={AboutPage} />
         <Route path="/blog" component={BlogPage} />
-        <Route path="/guide/:id" component={GuideArticlePage} />
+        <Route path="/guide/:slug" component={GuideArticlePage} />
         <Route component={NotFound} />
       </Switch>
     </Suspense>

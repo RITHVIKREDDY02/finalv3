@@ -11,6 +11,7 @@ const blogImage4 = "/images/4_1765905221064.webp";
 const guideArticles = [
   {
     id: 1,
+    slug: "register-guide",
     image: blogImage1,
     title: "How to Register in V3 Game?",
     excerpt: "Complete step-by-step guide to register on V3 Game and claim your sign up bonus.",
@@ -74,6 +75,7 @@ const guideArticles = [
   },
   {
     id: 2,
+    slug: "login-bonus",
     image: blogImage2,
     title: "V3 Game Login & Win Bonus",
     excerpt: "Learn how to login and claim your daily bonuses on V3 Game platform.",
@@ -120,6 +122,7 @@ const guideArticles = [
   },
   {
     id: 3,
+    slug: "wallet-withdraw",
     image: blogImage3,
     title: "How to Withdraw in V3 Game?",
     excerpt: "Complete guide to withdraw money from V3 Game wallet to your bank account.",
@@ -169,6 +172,7 @@ const guideArticles = [
   },
   {
     id: 4,
+    slug: "app-download",
     image: blogImage4,
     title: "V3 Game App Download",
     excerpt: "Learn how to download the V3 Game app and start playing on your mobile device.",
@@ -211,8 +215,8 @@ const guideArticles = [
 
 export default function GuideArticlePage() {
   const params = useParams();
-  const articleId = parseInt(params.id || "1");
-  const article = guideArticles.find(a => a.id === articleId);
+  const slug = params.slug || "register-guide";
+  const article = guideArticles.find(a => a.slug === slug);
 
   if (!article) {
     return (

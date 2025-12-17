@@ -36,6 +36,7 @@ export default function Home() {
   const blogArticles = [
     {
       id: 1,
+      slug: "register-guide",
       image: blogImage1,
       title: "How to Register in V3 Game?",
       excerpt: "Complete step-by-step guide to register on V3 Game and claim your sign up bonus.",
@@ -99,6 +100,7 @@ export default function Home() {
     },
     {
       id: 2,
+      slug: "login-bonus",
       image: blogImage2,
       title: "V3 Game Login & Win Bonus",
       excerpt: "Learn how to login and claim your daily bonuses on V3 Game platform.",
@@ -145,6 +147,7 @@ export default function Home() {
     },
     {
       id: 3,
+      slug: "wallet-withdraw",
       image: blogImage3,
       title: "How to Withdraw in V3 Game?",
       excerpt: "Complete guide to withdraw money from V3 Game wallet to your bank account.",
@@ -194,6 +197,7 @@ export default function Home() {
     },
     {
       id: 4,
+      slug: "app-download",
       image: blogImage4,
       title: "V3 Game App Download",
       excerpt: "Learn how to download the V3 Game app and start playing on your mobile device.",
@@ -317,7 +321,7 @@ export default function Home() {
             >
               <div className="flex flex-col gap-4">
                 <Link 
-                  href="/guide/1"
+                  href="/guide/register-guide"
                   className="text-base font-medium py-2 transition-all duration-200 hover:translate-x-2 text-left"
                   style={{ color: '#FDE4BC' }}
                   onClick={() => setIsMobileMenuOpen(false)}
@@ -326,7 +330,7 @@ export default function Home() {
                   Register Guide
                 </Link>
                 <Link 
-                  href="/guide/2"
+                  href="/guide/login-bonus"
                   className="text-base font-medium py-2 transition-all duration-200 hover:translate-x-2 text-left"
                   style={{ color: '#FDE4BC' }}
                   onClick={() => setIsMobileMenuOpen(false)}
@@ -368,7 +372,7 @@ export default function Home() {
           {/* Desktop Navigation Items */}
           <div className="hidden md:flex items-center space-x-5 lg:space-x-6">
             <Link 
-              href="/guide/1"
+              href="/guide/register-guide"
               className="text-sm font-medium transition-all duration-200 hover:opacity-80 hover:scale-105"
               style={{ color: '#FDE4BC' }}
               data-testid="link-register-guide"
@@ -376,7 +380,7 @@ export default function Home() {
               Register Guide
             </Link>
             <Link 
-              href="/guide/2"
+              href="/guide/login-bonus"
               className="text-sm font-medium transition-all duration-200 hover:opacity-80 hover:scale-105"
               style={{ color: '#FDE4BC' }}
               data-testid="link-login-bonus"
@@ -599,7 +603,7 @@ export default function Home() {
             {blogArticles.map((article) => (
               <Link 
                 key={article.id}
-                href={`/guide/${article.id}`}
+                href={`/guide/${article.slug}`}
                 className="bg-white rounded-2xl overflow-hidden shadow-lg cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-xl block"
                 data-testid={`card-blog-${article.id}`}
               >
