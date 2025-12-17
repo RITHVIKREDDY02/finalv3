@@ -2,10 +2,11 @@ import { Link } from "wouter";
 import { Home, Calendar, ArrowRight } from "lucide-react";
 import { FaTelegram } from "react-icons/fa";
 import Footer from "@/components/footer";
-import blogImage1 from "@assets/1_1765905221064.png";
-import blogImage2 from "@assets/2_1765905221063.png";
-import blogImage3 from "@assets/3_1765905221064.png";
-import blogImage4 from "@assets/4_1765905221064.png";
+
+const blogImage1 = "/images/1_1765905221064.png";
+const blogImage2 = "/images/2_1765905221063.png";
+const blogImage3 = "/images/3_1765905221064.png";
+const blogImage4 = "/images/4_1765905221064.png";
 
 interface BlogPost {
   id: number;
