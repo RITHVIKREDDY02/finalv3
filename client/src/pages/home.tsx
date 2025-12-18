@@ -472,11 +472,11 @@ export default function Home() {
 
       {/* What is V2 Game Section */}
       <div className="px-6 md:px-8 lg:px-12 xl:px-16 py-12" data-testid="section-what-is-v2">
-        <div className="max-w-6xl mx-auto text-center">
+        <div className="max-w-6xl mx-auto">
           <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4" style={{ color: '#FED358' }} data-testid="heading-what-is-v2">
             What is V2 Game?
           </h1>
-          <div className="text-[17px] max-w-4xl leading-relaxed space-y-4 mx-auto" style={{ color: '#FDE4BC' }} data-testid="text-what-is-v2-description">
+          <div className="text-[17px] max-w-4xl leading-relaxed space-y-4" style={{ color: '#FDE4BC' }} data-testid="text-what-is-v2-description">
             <p>
               V2 Game is an online gaming and earning platform that allows users to play multiple games in different categories, make smart bets, and potentially win real cash rewards. It combines entertainment and opportunity into one seamless experience, making it perfect for anyone looking to turn their free time into a fun, rewarding activity.
             </p>
@@ -495,11 +495,11 @@ export default function Home() {
 
       {/* Why Choose V3 Game - 4 Benefits Section */}
       <div className="px-6 md:px-8 lg:px-12 xl:px-16 py-12" data-testid="section-why-choose-v3">
-        <div className="max-w-6xl mx-auto text-center">
+        <div className="max-w-6xl mx-auto">
           <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-6" style={{ color: '#FED358' }} data-testid="heading-why-choose-v3">
             Why Choose V3 Game?
           </h1>
-          <p className="text-[17px] max-w-4xl mb-8 mx-auto" style={{ color: '#FDE4BC' }} data-testid="text-why-choose-description">
+          <p className="text-[17px] max-w-4xl mb-8" style={{ color: '#FDE4BC' }} data-testid="text-why-choose-description">
             V3 Game is the most trusted online gaming platform in India with thousands of active players enjoying daily bonuses and exciting rewards.
           </p>
 
@@ -541,11 +541,11 @@ export default function Home() {
 
       {/* V3 Game Features Section */}
       <div className="px-6 md:px-8 lg:px-12 xl:px-16 py-12" data-testid="section-v3-features">
-        <div className="max-w-6xl mx-auto text-center">
+        <div className="max-w-6xl mx-auto">
           <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-6" style={{ color: '#FED358' }} data-testid="heading-v3-features">
             V3 Game Features
           </h1>
-          <p className="text-[17px] max-w-4xl mb-8 mx-auto" style={{ color: '#FDE4BC' }} data-testid="text-v3-features-intro">
+          <p className="text-[17px] max-w-4xl mb-8" style={{ color: '#FDE4BC' }} data-testid="text-v3-features-intro">
             V3 Game offers exciting features for users who love both entertainment and the opportunity to earn real cash. Here's what makes V3 Game stand out.
           </p>
 
@@ -611,11 +611,11 @@ export default function Home() {
 
       {/* Responsible Gaming Section */}
       <div className="px-6 md:px-8 lg:px-12 xl:px-16 py-12" data-testid="section-responsible-gaming">
-        <div className="max-w-6xl mx-auto text-center">
+        <div className="max-w-6xl mx-auto">
           <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-6" style={{ color: '#FED358' }} data-testid="heading-responsible-gaming">
             Responsible Gaming at V3 Game
           </h1>
-          <div className="space-y-4 max-w-4xl mx-auto" style={{ color: '#FDE4BC' }} data-testid="text-responsible-gaming">
+          <div className="space-y-4 max-w-4xl" style={{ color: '#FDE4BC' }} data-testid="text-responsible-gaming">
             <p className="text-[17px] leading-relaxed">
               We are committed to promoting a safe and enjoyable gaming environment. Our platform is designed for entertainment purposes, and we strongly encourage all users to play responsibly.
             </p>
