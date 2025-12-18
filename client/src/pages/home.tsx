@@ -534,32 +534,32 @@ export default function Home() {
           <div className="space-y-6 max-w-4xl">
             {/* Benefit 1 - Quick Registration */}
             <div data-testid="card-benefit-registration">
-              <h1 className="text-lg font-bold mb-2" style={{ color: '#FED358' }} data-testid="heading-benefit-registration">Quick Registration</h1>
-              <p className="text-sm leading-relaxed" style={{ color: '#FDE4BC' }} data-testid="text-benefit-registration">
+              <h1 className="text-base md:text-lg font-bold mb-2" style={{ color: '#FED358' }} data-testid="heading-benefit-registration">Quick Registration</h1>
+              <p className="text-sm md:text-base leading-relaxed" style={{ color: '#FDE4BC' }} data-testid="text-benefit-registration">
                 You can complete the registration process in just a few minutes. Simply enter your mobile number, verify OTP, and start playing with instant access to all games.
               </p>
             </div>
 
             {/* Benefit 2 - Login Bonus & Rewards */}
             <div data-testid="card-benefit-login-bonus">
-              <h1 className="text-lg font-bold mb-2" style={{ color: '#FED358' }} data-testid="heading-benefit-login-bonus">Login Bonus & Rewards</h1>
-              <p className="text-sm leading-relaxed" style={{ color: '#FDE4BC' }} data-testid="text-benefit-login-bonus">
+              <h1 className="text-base md:text-lg font-bold mb-2" style={{ color: '#FED358' }} data-testid="heading-benefit-login-bonus">Login Bonus & Rewards</h1>
+              <p className="text-sm md:text-base leading-relaxed" style={{ color: '#FDE4BC' }} data-testid="text-benefit-login-bonus">
                 Get attractive bonuses every time you log in. Enjoy daily check-in bonuses, referral rewards, spin-the-wheel offers, and special festival bonuses throughout the year.
               </p>
             </div>
 
             {/* Benefit 3 - Fast & Easy Withdrawals */}
             <div data-testid="card-benefit-withdrawals">
-              <h1 className="text-lg font-bold mb-2" style={{ color: '#FED358' }} data-testid="heading-benefit-withdrawals">Fast & Easy Withdrawals</h1>
-              <p className="text-sm leading-relaxed" style={{ color: '#FDE4BC' }} data-testid="text-benefit-withdrawals">
+              <h1 className="text-base md:text-lg font-bold mb-2" style={{ color: '#FED358' }} data-testid="heading-benefit-withdrawals">Fast & Easy Withdrawals</h1>
+              <p className="text-sm md:text-base leading-relaxed" style={{ color: '#FDE4BC' }} data-testid="text-benefit-withdrawals">
                 The platform allows fast and hassle-free withdrawals to your verified account. Get your earnings within minutes to UPI, bank account, or Paytm using trusted Indian gateways.
               </p>
             </div>
 
             {/* Benefit 4 - Secure & Encrypted */}
             <div data-testid="card-benefit-security">
-              <h1 className="text-lg font-bold mb-2" style={{ color: '#FED358' }} data-testid="heading-benefit-security">Secure Platform</h1>
-              <p className="text-sm leading-relaxed" style={{ color: '#FDE4BC' }} data-testid="text-benefit-security">
+              <h1 className="text-base md:text-lg font-bold mb-2" style={{ color: '#FED358' }} data-testid="heading-benefit-security">Secure Platform</h1>
+              <p className="text-sm md:text-base leading-relaxed" style={{ color: '#FDE4BC' }} data-testid="text-benefit-security">
                 It uses strong data encryption to keep your account and payments safe. Your data is encrypted and all transactions are secure, verified, and protected.
               </p>
             </div>
@@ -580,56 +580,56 @@ export default function Home() {
           <div className="space-y-6 max-w-4xl">
             {/* Feature 1 - Multiple Category Games */}
             <div data-testid="card-feature-games">
-              <h1 className="text-lg font-bold mb-2" style={{ color: '#FED358' }} data-testid="heading-feature-games">Multiple Category Games</h1>
-              <p className="text-sm leading-relaxed" style={{ color: '#FDE4BC' }} data-testid="text-feature-games">
+              <h1 className="text-base md:text-lg font-bold mb-2" style={{ color: '#FED358' }} data-testid="heading-feature-games">Multiple Category Games</h1>
+              <p className="text-sm md:text-base leading-relaxed" style={{ color: '#FDE4BC' }} data-testid="text-feature-games">
                 Get access to a wide variety of games across different categories like casino, sports, slots, and casual games. Whether skill-based or luck-based, there's something for everyone.
               </p>
             </div>
 
             {/* Feature 2 - Real Money Winnings */}
             <div data-testid="card-feature-winnings">
-              <h1 className="text-lg font-bold mb-2" style={{ color: '#FED358' }} data-testid="heading-feature-winnings">Real Money Winnings</h1>
-              <p className="text-sm leading-relaxed" style={{ color: '#FDE4BC' }} data-testid="text-feature-winnings">
+              <h1 className="text-base md:text-lg font-bold mb-2" style={{ color: '#FED358' }} data-testid="heading-feature-winnings">Real Money Winnings</h1>
+              <p className="text-sm md:text-base leading-relaxed" style={{ color: '#FDE4BC' }} data-testid="text-feature-winnings">
                 Earn real cash by participating in multiple games. Every game you play offers genuine earning potential with transparent and fair gameplay.
               </p>
             </div>
 
             {/* Feature 3 - Daily Bonuses & Offers */}
             <div data-testid="card-feature-bonuses">
-              <h1 className="text-lg font-bold mb-2" style={{ color: '#FED358' }} data-testid="heading-feature-bonuses">Daily Bonuses & Offers</h1>
-              <p className="text-sm leading-relaxed" style={{ color: '#FDE4BC' }} data-testid="text-feature-bonuses">
+              <h1 className="text-base md:text-lg font-bold mb-2" style={{ color: '#FED358' }} data-testid="heading-feature-bonuses">Daily Bonuses & Offers</h1>
+              <p className="text-sm md:text-base leading-relaxed" style={{ color: '#FDE4BC' }} data-testid="text-feature-bonuses">
                 Get daily login bonuses, referral rewards, and seasonal offers that increase your chances of winning. These bonuses help boost your earnings over time.
               </p>
             </div>
 
             {/* Feature 4 - Instant Withdrawal System */}
             <div data-testid="card-feature-withdrawal">
-              <h1 className="text-lg font-bold mb-2" style={{ color: '#FED358' }} data-testid="heading-feature-withdrawal">Instant Withdrawal System</h1>
-              <p className="text-sm leading-relaxed" style={{ color: '#FDE4BC' }} data-testid="text-feature-withdrawal">
+              <h1 className="text-base md:text-lg font-bold mb-2" style={{ color: '#FED358' }} data-testid="heading-feature-withdrawal">Instant Withdrawal System</h1>
+              <p className="text-sm md:text-base leading-relaxed" style={{ color: '#FDE4BC' }} data-testid="text-feature-withdrawal">
                 Easily withdraw your winnings via bank transfer, UPI, or other supported methods. Fast, secure, and available 24/7 with minimum withdrawal limits.
               </p>
             </div>
 
             {/* Feature 5 - Referral Program */}
             <div data-testid="card-feature-referral">
-              <h1 className="text-lg font-bold mb-2" style={{ color: '#FED358' }} data-testid="heading-feature-referral">Referral Program</h1>
-              <p className="text-sm leading-relaxed" style={{ color: '#FDE4BC' }} data-testid="text-feature-referral">
+              <h1 className="text-base md:text-lg font-bold mb-2" style={{ color: '#FED358' }} data-testid="heading-feature-referral">Referral Program</h1>
+              <p className="text-sm md:text-base leading-relaxed" style={{ color: '#FDE4BC' }} data-testid="text-feature-referral">
                 Earn extra money by inviting friends to the platform. Share your unique referral code and earn a commission whenever your referrals play.
               </p>
             </div>
 
             {/* Feature 6 - Secure and User-Friendly App */}
             <div data-testid="card-feature-secure">
-              <h1 className="text-lg font-bold mb-2" style={{ color: '#FED358' }} data-testid="heading-feature-secure">Secure & User-Friendly App</h1>
-              <p className="text-sm leading-relaxed" style={{ color: '#FDE4BC' }} data-testid="text-feature-secure">
+              <h1 className="text-base md:text-lg font-bold mb-2" style={{ color: '#FED358' }} data-testid="heading-feature-secure">Secure & User-Friendly App</h1>
+              <p className="text-sm md:text-base leading-relaxed" style={{ color: '#FDE4BC' }} data-testid="text-feature-secure">
                 The V3 app is easy to use with smooth gameplay. It has SSL encryption for safety, ensuring your personal and financial data remains protected.
               </p>
             </div>
 
             {/* Feature 7 - 24x7 Customer Support */}
             <div data-testid="card-feature-support">
-              <h1 className="text-lg font-bold mb-2" style={{ color: '#FED358' }} data-testid="heading-feature-support">24×7 Customer Support</h1>
-              <p className="text-sm leading-relaxed" style={{ color: '#FDE4BC' }} data-testid="text-feature-support">
+              <h1 className="text-base md:text-lg font-bold mb-2" style={{ color: '#FED358' }} data-testid="heading-feature-support">24×7 Customer Support</h1>
+              <p className="text-sm md:text-base leading-relaxed" style={{ color: '#FDE4BC' }} data-testid="text-feature-support">
                 Round-the-clock customer support through chat and email ensures a hassle-free experience. We're here whenever you need us.
               </p>
             </div>
