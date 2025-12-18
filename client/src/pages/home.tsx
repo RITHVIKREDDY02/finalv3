@@ -3,7 +3,6 @@ import { useState, useEffect } from "react";
 import { Link } from "wouter";
 import { FaTelegram } from "react-icons/fa";
 import RegistrationDialog from "@/components/registration-dialog";
-import { ComingSoonDialog } from "@/components/coming-soon-dialog";
 import WelcomeNotification from "@/components/welcome-notification";
 import Footer from "@/components/footer";
 const logoPath = "/images/logo.webp";
@@ -25,7 +24,6 @@ const blogImage4 = "/images/4_1765955669625.webp";
 export default function Home() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [showRegisterDialog, setShowRegisterDialog] = useState(false);
-  const [showComingSoonDialog, setShowComingSoonDialog] = useState(false);
   const [showProofDialog, setShowProofDialog] = useState(false);
   const [showDemoDialog, setShowDemoDialog] = useState(false);
     const [showDisclaimerDialog, setShowDisclaimerDialog] = useState(false);
@@ -247,25 +245,13 @@ export default function Home() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const handleGameClick = (gameType: string) => {
-    console.log(`${gameType} game selected`);
-    setSelectedGameName(gameType);
-    setShowComingSoonDialog(true);
-  };
-
-  const handleVipClick = () => {
-    console.log('VIP clicked');
-    setShowRegisterDialog(true);
-  };
-
   const handleJoinVipClick = () => {
-    console.log('Join VIP clicked');
+    console.log('Join clicked');
     setShowRegisterDialog(true);
   };
 
   const handleCloseDialogs = () => {
     setShowRegisterDialog(false);
-    setShowComingSoonDialog(false);
     setShowDemoDialog(false);
   };
 
@@ -296,13 +282,6 @@ export default function Home() {
           
           {/* Mobile Navigation */}
           <div className="md:hidden flex items-center gap-3">
-            <button 
-              className="px-3 py-1.5 rounded-full text-black font-bold text-xs transition-opacity duration-200 hover:opacity-90"
-              style={{ background: 'linear-gradient(180deg,#f8bf6e,#fb5e04)' }}
-              onClick={handleJoinVipClick}
-            >
-              JOIN VIP
-            </button>
             <button 
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className="p-2 rounded-lg transition-all duration-200"
@@ -411,13 +390,6 @@ export default function Home() {
             >
               About Us
             </Link>
-            <button 
-              className="px-4 py-2 rounded-full text-black font-bold text-sm transition-all duration-200 hover:opacity-90 hover:scale-105"
-              style={{ background: 'linear-gradient(180deg,#f8bf6e,#fb5e04)' }}
-              onClick={handleJoinVipClick}
-            >
-              JOIN VIP
-            </button>
           </div>
         </div>
       </nav>
@@ -815,13 +787,6 @@ export default function Home() {
       <RegistrationDialog
         isOpen={showRegisterDialog}
         onClose={handleCloseDialogs}
-      />
-
-      {/* Coming Soon Dialog */}
-      <ComingSoonDialog
-        isOpen={showComingSoonDialog}
-        onClose={() => setShowComingSoonDialog(false)}
-        gameName={selectedGameName}
       />
 
       {/* Proof Dialog */}
