@@ -550,58 +550,6 @@ export default function Home() {
         </div>
       </div>
 
-      {/* Features Section */}
-      <div className="px-6 md:px-8 lg:px-12 xl:px-16 py-12" style={{ background: 'linear-gradient(180deg, #0a1628 0%, #001a3d 100%)' }}>
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-3" style={{ color: '#FED358' }}>
-              Powerful Features for Better Winning Chances
-            </h2>
-            <p className="text-sm md:text-base max-w-3xl mx-auto" style={{ color: '#FDE4BC' }}>
-              V3 Game app comes packed with features to help you play smarter and earn more through prediction games and lottery systems.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {/* Feature 1 */}
-            <div className="p-6 rounded-xl" style={{ background: 'rgba(255, 107, 53, 0.1)', border: '1px solid rgba(255, 107, 53, 0.3)' }}>
-              <h3 className="text-base font-bold mb-3" style={{ color: '#FF6B35' }}>📱 Mobile App & Web Access</h3>
-              <p className="text-sm" style={{ color: '#FDE4BC' }}>Play on any device - Android app, iOS app, or web browser. Seamless login and easy navigation.</p>
-            </div>
-
-            {/* Feature 2 */}
-            <div className="p-6 rounded-xl" style={{ background: 'rgba(52, 152, 219, 0.1)', border: '1px solid rgba(52, 152, 219, 0.3)' }}>
-              <h3 className="text-base font-bold mb-3" style={{ color: '#3498DB' }}>🎮 500+ Games Available</h3>
-              <p className="text-sm" style={{ color: '#FDE4BC' }}>Win Go, Trx Wingo, Color Prediction, and many more exciting lottery games to choose from.</p>
-            </div>
-
-            {/* Feature 3 */}
-            <div className="p-6 rounded-xl" style={{ background: 'rgba(46, 204, 113, 0.1)', border: '1px solid rgba(46, 204, 113, 0.3)' }}>
-              <h3 className="text-base font-bold mb-3" style={{ color: '#2ECC71' }}>💬 24/7 Customer Support</h3>
-              <p className="text-sm" style={{ color: '#FDE4BC' }}>Telegram support available anytime. Fast response for queries, registrations, and withdrawals.</p>
-            </div>
-
-            {/* Feature 4 */}
-            <div className="p-6 rounded-xl" style={{ background: 'rgba(155, 89, 182, 0.1)', border: '1px solid rgba(155, 89, 182, 0.3)' }}>
-              <h3 className="text-base font-bold mb-3" style={{ color: '#9B59B6' }}>📊 Live Results & History</h3>
-              <p className="text-sm" style={{ color: '#FDE4BC' }}>View real-time lottery results and complete game history. Track your wins and patterns.</p>
-            </div>
-
-            {/* Feature 5 */}
-            <div className="p-6 rounded-xl" style={{ background: 'rgba(231, 76, 60, 0.1)', border: '1px solid rgba(231, 76, 60, 0.3)' }}>
-              <h3 className="text-base font-bold mb-3" style={{ color: '#E74C3C' }}>🎁 Daily Bonuses & Rewards</h3>
-              <p className="text-sm" style={{ color: '#FDE4BC' }}>Earn daily check-in bonuses, referral rewards, and special promotional offers regularly.</p>
-            </div>
-
-            {/* Feature 6 */}
-            <div className="p-6 rounded-xl" style={{ background: 'rgba(241, 196, 15, 0.1)', border: '1px solid rgba(241, 196, 15, 0.3)' }}>
-              <h3 className="text-base font-bold mb-3" style={{ color: '#F1C40F' }}>🏆 VIP Membership Benefits</h3>
-              <p className="text-sm" style={{ color: '#FDE4BC' }}>Unlock exclusive predictions, higher winning rates, and priority support with VIP membership.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
       {/* App Information Section */}
       <div className="px-6 md:px-8 lg:px-12 xl:px-16 pb-8">
         <div className="max-w-md mx-auto">
