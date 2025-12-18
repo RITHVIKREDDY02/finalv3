@@ -1,4 +1,4 @@
-import { Menu, X, Gift, Zap, Target, Shield } from "lucide-react";
+import { Menu, X, Gift, Zap, Target, Shield, Gamepad2, Banknote, Trophy, Send, Users, Smartphone, HeadphonesIcon } from "lucide-react";
 import { useState, useEffect } from "react";
 import { Link } from "wouter";
 import { FaTelegram } from "react-icons/fa";
@@ -577,6 +577,120 @@ export default function Home() {
               <h3 className="text-lg font-bold mb-3" style={{ color: '#FED358' }} data-testid="heading-benefit-security">Secure Platform</h3>
               <p className="text-sm leading-relaxed" style={{ color: '#FDE4BC' }} data-testid="text-benefit-security">
                 It uses strong data encryption to keep your account and payments safe. Your data is encrypted and all transactions are secure, verified, and protected.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* V3 Game Features Section */}
+      <div className="px-6 md:px-8 lg:px-12 xl:px-16 py-12" style={{ background: 'linear-gradient(180deg, #001a3d 0%, #0a1628 100%)' }} data-testid="section-v3-features">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-3" style={{ color: '#FED358' }} data-testid="heading-v3-features">
+              V3 Game Features
+            </h2>
+            <p className="text-sm md:text-base max-w-3xl mx-auto" style={{ color: '#FDE4BC' }} data-testid="text-v3-features-intro">
+              V3 Game offers exciting features for users who love both entertainment and the opportunity to earn real cash. Here's what makes V3 Game stand out.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+            {/* Feature 1 - Multiple Category Games */}
+            <div className="p-6 rounded-2xl backdrop-blur-sm" style={{ background: 'rgba(254, 211, 88, 0.08)', border: '1px solid rgba(254, 211, 88, 0.2)' }} data-testid="card-feature-games">
+              <div className="w-12 h-12 rounded-lg flex items-center justify-center mb-4" style={{ background: 'rgba(254, 211, 88, 0.15)' }}>
+                <Gamepad2 style={{ color: '#FED358', width: '24px', height: '24px' }} />
+              </div>
+              <h3 className="text-lg font-bold mb-3" style={{ color: '#FED358' }} data-testid="heading-feature-games">Multiple Category Games</h3>
+              <p className="text-sm leading-relaxed" style={{ color: '#FDE4BC' }} data-testid="text-feature-games">
+                Get access to a wide variety of games across different categories like casino, sports, slots, and casual games. Whether skill-based or luck-based, there's something for everyone.
+              </p>
+            </div>
+
+            {/* Feature 2 - Real Money Winnings */}
+            <div className="p-6 rounded-2xl backdrop-blur-sm" style={{ background: 'rgba(254, 211, 88, 0.08)', border: '1px solid rgba(254, 211, 88, 0.2)' }} data-testid="card-feature-winnings">
+              <div className="w-12 h-12 rounded-lg flex items-center justify-center mb-4" style={{ background: 'rgba(254, 211, 88, 0.15)' }}>
+                <Banknote style={{ color: '#FED358', width: '24px', height: '24px' }} />
+              </div>
+              <h3 className="text-lg font-bold mb-3" style={{ color: '#FED358' }} data-testid="heading-feature-winnings">Real Money Winnings</h3>
+              <p className="text-sm leading-relaxed" style={{ color: '#FDE4BC' }} data-testid="text-feature-winnings">
+                Earn real cash by participating in multiple games. Every game you play offers genuine earning potential with transparent and fair gameplay.
+              </p>
+            </div>
+
+            {/* Feature 3 - Daily Bonuses & Offers */}
+            <div className="p-6 rounded-2xl backdrop-blur-sm" style={{ background: 'rgba(254, 211, 88, 0.08)', border: '1px solid rgba(254, 211, 88, 0.2)' }} data-testid="card-feature-bonuses">
+              <div className="w-12 h-12 rounded-lg flex items-center justify-center mb-4" style={{ background: 'rgba(254, 211, 88, 0.15)' }}>
+                <Trophy style={{ color: '#FED358', width: '24px', height: '24px' }} />
+              </div>
+              <h3 className="text-lg font-bold mb-3" style={{ color: '#FED358' }} data-testid="heading-feature-bonuses">Daily Bonuses & Offers</h3>
+              <p className="text-sm leading-relaxed" style={{ color: '#FDE4BC' }} data-testid="text-feature-bonuses">
+                Get daily login bonuses, referral rewards, and seasonal offers that increase your chances of winning. These bonuses help boost your earnings over time.
+              </p>
+            </div>
+
+            {/* Feature 4 - Instant Withdrawal System */}
+            <div className="p-6 rounded-2xl backdrop-blur-sm" style={{ background: 'rgba(254, 211, 88, 0.08)', border: '1px solid rgba(254, 211, 88, 0.2)' }} data-testid="card-feature-withdrawal">
+              <div className="w-12 h-12 rounded-lg flex items-center justify-center mb-4" style={{ background: 'rgba(254, 211, 88, 0.15)' }}>
+                <Send style={{ color: '#FED358', width: '24px', height: '24px' }} />
+              </div>
+              <h3 className="text-lg font-bold mb-3" style={{ color: '#FED358' }} data-testid="heading-feature-withdrawal">Instant Withdrawal System</h3>
+              <p className="text-sm leading-relaxed" style={{ color: '#FDE4BC' }} data-testid="text-feature-withdrawal">
+                Easily withdraw your winnings via bank transfer, UPI, or other supported methods. Fast, secure, and available 24/7 with minimum withdrawal limits.
+              </p>
+            </div>
+
+            {/* Feature 5 - Referral Program */}
+            <div className="p-6 rounded-2xl backdrop-blur-sm" style={{ background: 'rgba(254, 211, 88, 0.08)', border: '1px solid rgba(254, 211, 88, 0.2)' }} data-testid="card-feature-referral">
+              <div className="w-12 h-12 rounded-lg flex items-center justify-center mb-4" style={{ background: 'rgba(254, 211, 88, 0.15)' }}>
+                <Users style={{ color: '#FED358', width: '24px', height: '24px' }} />
+              </div>
+              <h3 className="text-lg font-bold mb-3" style={{ color: '#FED358' }} data-testid="heading-feature-referral">Referral Program</h3>
+              <p className="text-sm leading-relaxed" style={{ color: '#FDE4BC' }} data-testid="text-feature-referral">
+                Earn extra money by inviting friends to the platform. Share your unique referral code and earn a commission whenever your referrals play.
+              </p>
+            </div>
+
+            {/* Feature 6 - Secure and User-Friendly App */}
+            <div className="p-6 rounded-2xl backdrop-blur-sm" style={{ background: 'rgba(254, 211, 88, 0.08)', border: '1px solid rgba(254, 211, 88, 0.2)' }} data-testid="card-feature-secure">
+              <div className="w-12 h-12 rounded-lg flex items-center justify-center mb-4" style={{ background: 'rgba(254, 211, 88, 0.15)' }}>
+                <Smartphone style={{ color: '#FED358', width: '24px', height: '24px' }} />
+              </div>
+              <h3 className="text-lg font-bold mb-3" style={{ color: '#FED358' }} data-testid="heading-feature-secure">Secure & User-Friendly App</h3>
+              <p className="text-sm leading-relaxed" style={{ color: '#FDE4BC' }} data-testid="text-feature-secure">
+                The V3 app is easy to use with smooth gameplay. It has SSL encryption for safety, ensuring your personal and financial data remains protected.
+              </p>
+            </div>
+
+            {/* Feature 7 - 24x7 Customer Support */}
+            <div className="p-6 rounded-2xl backdrop-blur-sm" style={{ background: 'rgba(254, 211, 88, 0.08)', border: '1px solid rgba(254, 211, 88, 0.2)' }} data-testid="card-feature-support">
+              <div className="w-12 h-12 rounded-lg flex items-center justify-center mb-4" style={{ background: 'rgba(254, 211, 88, 0.15)' }}>
+                <HeadphonesIcon style={{ color: '#FED358', width: '24px', height: '24px' }} />
+              </div>
+              <h3 className="text-lg font-bold mb-3" style={{ color: '#FED358' }} data-testid="heading-feature-support">24×7 Customer Support</h3>
+              <p className="text-sm leading-relaxed" style={{ color: '#FDE4BC' }} data-testid="text-feature-support">
+                Round-the-clock customer support through chat and email ensures a hassle-free experience. We're here whenever you need us.
+              </p>
+            </div>
+          </div>
+
+          {/* Responsible Gaming Section */}
+          <div className="mt-12 p-8 rounded-2xl" style={{ background: 'rgba(254, 211, 88, 0.05)', border: '2px solid rgba(254, 211, 88, 0.2)' }} data-testid="section-responsible-gaming">
+            <h3 className="text-xl md:text-2xl font-bold mb-4" style={{ color: '#FED358' }} data-testid="heading-responsible-gaming">
+              Responsible Gaming at V3 Game
+            </h3>
+            <div className="space-y-3" style={{ color: '#FDE4BC' }} data-testid="text-responsible-gaming">
+              <p className="text-sm md:text-base leading-relaxed">
+                We are committed to promoting a safe and enjoyable gaming environment. Our platform is designed for entertainment purposes, and we strongly encourage all users to play responsibly.
+              </p>
+              <p className="text-sm md:text-base leading-relaxed">
+                Always set limits, stay in control, and never chase losses. If you feel that your gaming habits are affecting your personal life, finances, or relationships, it may be time to take a break or seek help.
+              </p>
+              <p className="text-sm md:text-base leading-relaxed">
+                We also discourage underage users from accessing our platform and strictly prohibit anyone below the legal age from registering or playing.
+              </p>
+              <p className="text-sm md:text-base leading-relaxed font-semibold" style={{ color: '#FED358' }}>
+                Read our full Responsible Gaming policy for tips, self-assessment tools, and support resources.
               </p>
             </div>
           </div>
