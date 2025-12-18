@@ -498,6 +498,110 @@ export default function Home() {
         </div>
       </div>
 
+      {/* Why Choose V3 Game Section */}
+      <div className="px-6 md:px-8 lg:px-12 xl:px-16 py-12" style={{ background: 'linear-gradient(180deg, #001a3d 0%, #0a1628 100%)' }}>
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-3" style={{ color: '#FED358' }}>
+              Why Choose V3 Game - India's #1 VIP Prediction App?
+            </h2>
+            <p className="text-sm md:text-base max-w-3xl mx-auto" style={{ color: '#FDE4BC' }}>
+              V3 Game is the most trusted online lottery prediction platform in India with thousands of active players earning daily through Win Go and Trx Wingo games.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {/* Benefit 1 */}
+            <div className="p-6 rounded-2xl backdrop-blur-sm" style={{ background: 'rgba(254, 211, 88, 0.1)', border: '1px solid rgba(254, 211, 88, 0.3)' }}>
+              <div className="w-12 h-12 rounded-lg flex items-center justify-center mb-4" style={{ background: 'linear-gradient(135deg, #FED358, #FF6B35)' }}>
+                <span className="text-2xl">💰</span>
+              </div>
+              <h3 className="text-lg font-bold mb-2" style={{ color: '#FED358' }}>₹500 Sign Up Bonus</h3>
+              <p className="text-sm" style={{ color: '#FDE4BC' }}>Get up to ₹500 welcome bonus instantly after registration. No hidden charges.</p>
+            </div>
+
+            {/* Benefit 2 */}
+            <div className="p-6 rounded-2xl backdrop-blur-sm" style={{ background: 'rgba(52, 152, 219, 0.1)', border: '1px solid rgba(52, 152, 219, 0.3)' }}>
+              <div className="w-12 h-12 rounded-lg flex items-center justify-center mb-4" style={{ background: 'linear-gradient(135deg, #3498DB, #2980B9)' }}>
+                <span className="text-2xl">⚡</span>
+              </div>
+              <h3 className="text-lg font-bold mb-2" style={{ color: '#3498DB' }}>Fast Withdrawals</h3>
+              <p className="text-sm" style={{ color: '#FDE4BC' }}>Withdraw your winnings instantly to your UPI, bank account, or Paytm within minutes.</p>
+            </div>
+
+            {/* Benefit 3 */}
+            <div className="p-6 rounded-2xl backdrop-blur-sm" style={{ background: 'rgba(46, 204, 113, 0.1)', border: '1px solid rgba(46, 204, 113, 0.3)' }}>
+              <div className="w-12 h-12 rounded-lg flex items-center justify-center mb-4" style={{ background: 'linear-gradient(135deg, #2ECC71, #27AE60)' }}>
+                <span className="text-2xl">🎯</span>
+              </div>
+              <h3 className="text-lg font-bold mb-2" style={{ color: '#2ECC71' }}>VIP Predictions</h3>
+              <p className="text-sm" style={{ color: '#FDE4BC' }}>Get expert VIP predictions for Win Go, Trx Wingo, and other lottery games daily.</p>
+            </div>
+
+            {/* Benefit 4 */}
+            <div className="p-6 rounded-2xl backdrop-blur-sm" style={{ background: 'rgba(155, 89, 182, 0.1)', border: '1px solid rgba(155, 89, 182, 0.3)' }}>
+              <div className="w-12 h-12 rounded-lg flex items-center justify-center mb-4" style={{ background: 'linear-gradient(135deg, #9B59B6, #8E44AD)' }}>
+                <span className="text-2xl">🔒</span>
+              </div>
+              <h3 className="text-lg font-bold mb-2" style={{ color: '#9B59B6' }}>100% Secure</h3>
+              <p className="text-sm" style={{ color: '#FDE4BC' }}>Your data is encrypted and safe. All transactions are secure and verified.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Features Section */}
+      <div className="px-6 md:px-8 lg:px-12 xl:px-16 py-12" style={{ background: 'linear-gradient(180deg, #0a1628 0%, #001a3d 100%)' }}>
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-3" style={{ color: '#FED358' }}>
+              Powerful Features for Better Winning Chances
+            </h2>
+            <p className="text-sm md:text-base max-w-3xl mx-auto" style={{ color: '#FDE4BC' }}>
+              V3 Game app comes packed with features to help you play smarter and earn more through prediction games and lottery systems.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {/* Feature 1 */}
+            <div className="p-6 rounded-xl" style={{ background: 'rgba(255, 107, 53, 0.1)', border: '1px solid rgba(255, 107, 53, 0.3)' }}>
+              <h3 className="text-base font-bold mb-3" style={{ color: '#FF6B35' }}>📱 Mobile App & Web Access</h3>
+              <p className="text-sm" style={{ color: '#FDE4BC' }}>Play on any device - Android app, iOS app, or web browser. Seamless login and easy navigation.</p>
+            </div>
+
+            {/* Feature 2 */}
+            <div className="p-6 rounded-xl" style={{ background: 'rgba(52, 152, 219, 0.1)', border: '1px solid rgba(52, 152, 219, 0.3)' }}>
+              <h3 className="text-base font-bold mb-3" style={{ color: '#3498DB' }}>🎮 500+ Games Available</h3>
+              <p className="text-sm" style={{ color: '#FDE4BC' }}>Win Go, Trx Wingo, Color Prediction, and many more exciting lottery games to choose from.</p>
+            </div>
+
+            {/* Feature 3 */}
+            <div className="p-6 rounded-xl" style={{ background: 'rgba(46, 204, 113, 0.1)', border: '1px solid rgba(46, 204, 113, 0.3)' }}>
+              <h3 className="text-base font-bold mb-3" style={{ color: '#2ECC71' }}>💬 24/7 Customer Support</h3>
+              <p className="text-sm" style={{ color: '#FDE4BC' }}>Telegram support available anytime. Fast response for queries, registrations, and withdrawals.</p>
+            </div>
+
+            {/* Feature 4 */}
+            <div className="p-6 rounded-xl" style={{ background: 'rgba(155, 89, 182, 0.1)', border: '1px solid rgba(155, 89, 182, 0.3)' }}>
+              <h3 className="text-base font-bold mb-3" style={{ color: '#9B59B6' }}>📊 Live Results & History</h3>
+              <p className="text-sm" style={{ color: '#FDE4BC' }}>View real-time lottery results and complete game history. Track your wins and patterns.</p>
+            </div>
+
+            {/* Feature 5 */}
+            <div className="p-6 rounded-xl" style={{ background: 'rgba(231, 76, 60, 0.1)', border: '1px solid rgba(231, 76, 60, 0.3)' }}>
+              <h3 className="text-base font-bold mb-3" style={{ color: '#E74C3C' }}>🎁 Daily Bonuses & Rewards</h3>
+              <p className="text-sm" style={{ color: '#FDE4BC' }}>Earn daily check-in bonuses, referral rewards, and special promotional offers regularly.</p>
+            </div>
+
+            {/* Feature 6 */}
+            <div className="p-6 rounded-xl" style={{ background: 'rgba(241, 196, 15, 0.1)', border: '1px solid rgba(241, 196, 15, 0.3)' }}>
+              <h3 className="text-base font-bold mb-3" style={{ color: '#F1C40F' }}>🏆 VIP Membership Benefits</h3>
+              <p className="text-sm" style={{ color: '#FDE4BC' }}>Unlock exclusive predictions, higher winning rates, and priority support with VIP membership.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
       {/* App Information Section */}
       <div className="px-6 md:px-8 lg:px-12 xl:px-16 pb-8">
         <div className="max-w-md mx-auto">
