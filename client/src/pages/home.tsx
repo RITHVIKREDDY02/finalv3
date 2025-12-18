@@ -1,4 +1,4 @@
-import { Menu, X } from "lucide-react";
+import { Menu, X, Gift, Zap, Target, Shield } from "lucide-react";
 import { useState, useEffect } from "react";
 import { Link } from "wouter";
 import { FaTelegram } from "react-icons/fa";
@@ -498,53 +498,75 @@ export default function Home() {
         </div>
       </div>
 
-      {/* Why Choose V3 Game Section */}
-      <div className="px-6 md:px-8 lg:px-12 xl:px-16 py-12" style={{ background: 'linear-gradient(180deg, #001a3d 0%, #0a1628 100%)' }}>
+      {/* What is V3 Game Section */}
+      <div className="px-6 md:px-8 lg:px-12 xl:px-16 py-12" style={{ background: 'linear-gradient(180deg, #001a3d 0%, #0a1628 100%)' }} data-testid="section-what-is-v3">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
-            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-3" style={{ color: '#FED358' }}>
-              Why Choose V3 Game - India's #1 VIP Prediction App?
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4" style={{ color: '#FED358' }} data-testid="heading-what-is-v3">
+              What is V3 Game?
             </h2>
-            <p className="text-sm md:text-base max-w-3xl mx-auto" style={{ color: '#FDE4BC' }}>
-              V3 Game is the most trusted online lottery prediction platform in India with thousands of active players earning daily through Win Go and Trx Wingo games.
+            <p className="text-sm md:text-base max-w-3xl mx-auto leading-relaxed" style={{ color: '#FDE4BC' }} data-testid="text-what-is-v3-description">
+              V3 Game is an online gaming and entertainment platform that offers users a variety of skill-based and fun games. It provides a mix of thrilling gameplay, bonus features, and real earning potential. Indian players choose V3 Game because of its easy registration process, simple user interface, and exciting welcome rewards.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* Why Choose V3 Game - 4 Benefits Section */}
+      <div className="px-6 md:px-8 lg:px-12 xl:px-16 py-12" style={{ background: 'linear-gradient(180deg, #0a1628 0%, #1a1a2e 100%)' }} data-testid="section-why-choose-v3">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-3" style={{ color: '#FED358' }} data-testid="heading-why-choose-v3">
+              Why Choose V3 Game?
+            </h2>
+            <p className="text-sm md:text-base max-w-3xl mx-auto" style={{ color: '#FDE4BC' }} data-testid="text-why-choose-description">
+              V3 Game is the most trusted online gaming platform in India with thousands of active players enjoying daily bonuses and exciting rewards.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {/* Benefit 1 */}
-            <div className="p-6 rounded-2xl backdrop-blur-sm" style={{ background: 'rgba(254, 211, 88, 0.1)', border: '1px solid rgba(254, 211, 88, 0.3)' }}>
-              <div className="w-12 h-12 rounded-lg flex items-center justify-center mb-4" style={{ background: 'linear-gradient(135deg, #FED358, #FF6B35)' }}>
-                <span className="text-2xl">💰</span>
+            {/* Benefit 1 - Quick Registration */}
+            <div className="p-6 rounded-2xl backdrop-blur-sm" style={{ background: 'rgba(254, 211, 88, 0.08)', border: '1px solid rgba(254, 211, 88, 0.2)' }} data-testid="card-benefit-registration">
+              <div className="w-12 h-12 rounded-lg flex items-center justify-center mb-4" style={{ background: 'rgba(254, 211, 88, 0.15)' }}>
+                <Gift style={{ color: '#FED358', width: '24px', height: '24px' }} />
               </div>
-              <h3 className="text-lg font-bold mb-2" style={{ color: '#FED358' }}>₹500 Sign Up Bonus</h3>
-              <p className="text-sm" style={{ color: '#FDE4BC' }}>Get up to ₹500 welcome bonus instantly after registration. No hidden charges.</p>
+              <h3 className="text-lg font-bold mb-3" style={{ color: '#FED358' }} data-testid="heading-benefit-registration">Quick Registration</h3>
+              <p className="text-sm leading-relaxed" style={{ color: '#FDE4BC' }} data-testid="text-benefit-registration">
+                You can complete the registration process in just a few minutes. Simply enter your mobile number, verify OTP, and start playing with instant access to all games.
+              </p>
             </div>
 
-            {/* Benefit 2 */}
-            <div className="p-6 rounded-2xl backdrop-blur-sm" style={{ background: 'rgba(52, 152, 219, 0.1)', border: '1px solid rgba(52, 152, 219, 0.3)' }}>
-              <div className="w-12 h-12 rounded-lg flex items-center justify-center mb-4" style={{ background: 'linear-gradient(135deg, #3498DB, #2980B9)' }}>
-                <span className="text-2xl">⚡</span>
+            {/* Benefit 2 - Login Bonus & Rewards */}
+            <div className="p-6 rounded-2xl backdrop-blur-sm" style={{ background: 'rgba(254, 211, 88, 0.08)', border: '1px solid rgba(254, 211, 88, 0.2)' }} data-testid="card-benefit-login-bonus">
+              <div className="w-12 h-12 rounded-lg flex items-center justify-center mb-4" style={{ background: 'rgba(254, 211, 88, 0.15)' }}>
+                <Zap style={{ color: '#FED358', width: '24px', height: '24px' }} />
               </div>
-              <h3 className="text-lg font-bold mb-2" style={{ color: '#3498DB' }}>Fast Withdrawals</h3>
-              <p className="text-sm" style={{ color: '#FDE4BC' }}>Withdraw your winnings instantly to your UPI, bank account, or Paytm within minutes.</p>
+              <h3 className="text-lg font-bold mb-3" style={{ color: '#FED358' }} data-testid="heading-benefit-login-bonus">Login Bonus & Rewards</h3>
+              <p className="text-sm leading-relaxed" style={{ color: '#FDE4BC' }} data-testid="text-benefit-login-bonus">
+                Get attractive bonuses every time you log in. Enjoy daily check-in bonuses, referral rewards, spin-the-wheel offers, and special festival bonuses throughout the year.
+              </p>
             </div>
 
-            {/* Benefit 3 */}
-            <div className="p-6 rounded-2xl backdrop-blur-sm" style={{ background: 'rgba(46, 204, 113, 0.1)', border: '1px solid rgba(46, 204, 113, 0.3)' }}>
-              <div className="w-12 h-12 rounded-lg flex items-center justify-center mb-4" style={{ background: 'linear-gradient(135deg, #2ECC71, #27AE60)' }}>
-                <span className="text-2xl">🎯</span>
+            {/* Benefit 3 - Fast & Easy Withdrawals */}
+            <div className="p-6 rounded-2xl backdrop-blur-sm" style={{ background: 'rgba(254, 211, 88, 0.08)', border: '1px solid rgba(254, 211, 88, 0.2)' }} data-testid="card-benefit-withdrawals">
+              <div className="w-12 h-12 rounded-lg flex items-center justify-center mb-4" style={{ background: 'rgba(254, 211, 88, 0.15)' }}>
+                <Target style={{ color: '#FED358', width: '24px', height: '24px' }} />
               </div>
-              <h3 className="text-lg font-bold mb-2" style={{ color: '#2ECC71' }}>VIP Predictions</h3>
-              <p className="text-sm" style={{ color: '#FDE4BC' }}>Get expert VIP predictions for Win Go, Trx Wingo, and other lottery games daily.</p>
+              <h3 className="text-lg font-bold mb-3" style={{ color: '#FED358' }} data-testid="heading-benefit-withdrawals">Fast & Easy Withdrawals</h3>
+              <p className="text-sm leading-relaxed" style={{ color: '#FDE4BC' }} data-testid="text-benefit-withdrawals">
+                The platform allows fast and hassle-free withdrawals to your verified account. Get your earnings within minutes to UPI, bank account, or Paytm using trusted Indian gateways.
+              </p>
             </div>
 
-            {/* Benefit 4 */}
-            <div className="p-6 rounded-2xl backdrop-blur-sm" style={{ background: 'rgba(155, 89, 182, 0.1)', border: '1px solid rgba(155, 89, 182, 0.3)' }}>
-              <div className="w-12 h-12 rounded-lg flex items-center justify-center mb-4" style={{ background: 'linear-gradient(135deg, #9B59B6, #8E44AD)' }}>
-                <span className="text-2xl">🔒</span>
+            {/* Benefit 4 - Secure & Encrypted */}
+            <div className="p-6 rounded-2xl backdrop-blur-sm" style={{ background: 'rgba(254, 211, 88, 0.08)', border: '1px solid rgba(254, 211, 88, 0.2)' }} data-testid="card-benefit-security">
+              <div className="w-12 h-12 rounded-lg flex items-center justify-center mb-4" style={{ background: 'rgba(254, 211, 88, 0.15)' }}>
+                <Shield style={{ color: '#FED358', width: '24px', height: '24px' }} />
               </div>
-              <h3 className="text-lg font-bold mb-2" style={{ color: '#9B59B6' }}>100% Secure</h3>
-              <p className="text-sm" style={{ color: '#FDE4BC' }}>Your data is encrypted and safe. All transactions are secure and verified.</p>
+              <h3 className="text-lg font-bold mb-3" style={{ color: '#FED358' }} data-testid="heading-benefit-security">Secure Platform</h3>
+              <p className="text-sm leading-relaxed" style={{ color: '#FDE4BC' }} data-testid="text-benefit-security">
+                It uses strong data encryption to keep your account and payments safe. Your data is encrypted and all transactions are secure, verified, and protected.
+              </p>
             </div>
           </div>
         </div>
