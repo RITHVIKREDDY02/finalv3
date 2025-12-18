@@ -476,7 +476,7 @@ export default function Home() {
           <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4" style={{ color: '#FED358' }} data-testid="heading-what-is-v2">
             What is V2 Game?
           </h1>
-          <div className="text-sm md:text-base max-w-4xl leading-relaxed space-y-4" style={{ color: '#FDE4BC' }} data-testid="text-what-is-v2-description">
+          <div className="text-[17px] max-w-4xl leading-relaxed space-y-4" style={{ color: '#FDE4BC' }} data-testid="text-what-is-v2-description">
             <p>
               V2 Game is an online gaming and earning platform that allows users to play multiple games in different categories, make smart bets, and potentially win real cash rewards. It combines entertainment and opportunity into one seamless experience, making it perfect for anyone looking to turn their free time into a fun, rewarding activity.
             </p>
@@ -499,7 +499,7 @@ export default function Home() {
           <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-6" style={{ color: '#FED358' }} data-testid="heading-why-choose-v3">
             Why Choose V3 Game?
           </h1>
-          <p className="text-sm md:text-base max-w-4xl mb-8" style={{ color: '#FDE4BC' }} data-testid="text-why-choose-description">
+          <p className="text-[17px] max-w-4xl mb-8" style={{ color: '#FDE4BC' }} data-testid="text-why-choose-description">
             V3 Game is the most trusted online gaming platform in India with thousands of active players enjoying daily bonuses and exciting rewards.
           </p>
 
@@ -507,7 +507,7 @@ export default function Home() {
             {/* Benefit 1 - Quick Registration */}
             <div data-testid="card-benefit-registration">
               <h1 className="text-base md:text-lg font-bold mb-2" style={{ color: '#FED358' }} data-testid="heading-benefit-registration">Quick Registration</h1>
-              <p className="text-sm md:text-base leading-relaxed" style={{ color: '#FDE4BC' }} data-testid="text-benefit-registration">
+              <p className="text-[17px] leading-relaxed" style={{ color: '#FDE4BC' }} data-testid="text-benefit-registration">
                 You can complete the registration process in just a few minutes. Simply enter your mobile number, verify OTP, and start playing with instant access to all games.
               </p>
             </div>
@@ -515,7 +515,7 @@ export default function Home() {
             {/* Benefit 2 - Login Bonus & Rewards */}
             <div data-testid="card-benefit-login-bonus">
               <h1 className="text-base md:text-lg font-bold mb-2" style={{ color: '#FED358' }} data-testid="heading-benefit-login-bonus">Login Bonus & Rewards</h1>
-              <p className="text-sm md:text-base leading-relaxed" style={{ color: '#FDE4BC' }} data-testid="text-benefit-login-bonus">
+              <p className="text-[17px] leading-relaxed" style={{ color: '#FDE4BC' }} data-testid="text-benefit-login-bonus">
                 Get attractive bonuses every time you log in. Enjoy daily check-in bonuses, referral rewards, spin-the-wheel offers, and special festival bonuses throughout the year.
               </p>
             </div>
@@ -523,7 +523,7 @@ export default function Home() {
             {/* Benefit 3 - Fast & Easy Withdrawals */}
             <div data-testid="card-benefit-withdrawals">
               <h1 className="text-base md:text-lg font-bold mb-2" style={{ color: '#FED358' }} data-testid="heading-benefit-withdrawals">Fast & Easy Withdrawals</h1>
-              <p className="text-sm md:text-base leading-relaxed" style={{ color: '#FDE4BC' }} data-testid="text-benefit-withdrawals">
+              <p className="text-[17px] leading-relaxed" style={{ color: '#FDE4BC' }} data-testid="text-benefit-withdrawals">
                 The platform allows fast and hassle-free withdrawals to your verified account. Get your earnings within minutes to UPI, bank account, or Paytm using trusted Indian gateways.
               </p>
             </div>
@@ -531,7 +531,7 @@ export default function Home() {
             {/* Benefit 4 - Secure & Encrypted */}
             <div data-testid="card-benefit-security">
               <h1 className="text-base md:text-lg font-bold mb-2" style={{ color: '#FED358' }} data-testid="heading-benefit-security">Secure Platform</h1>
-              <p className="text-sm md:text-base leading-relaxed" style={{ color: '#FDE4BC' }} data-testid="text-benefit-security">
+              <p className="text-[17px] leading-relaxed" style={{ color: '#FDE4BC' }} data-testid="text-benefit-security">
                 It uses strong data encryption to keep your account and payments safe. Your data is encrypted and all transactions are secure, verified, and protected.
               </p>
             </div>
@@ -545,7 +545,7 @@ export default function Home() {
           <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-6" style={{ color: '#FED358' }} data-testid="heading-v3-features">
             V3 Game Features
           </h1>
-          <p className="text-sm md:text-base max-w-4xl mb-8" style={{ color: '#FDE4BC' }} data-testid="text-v3-features-intro">
+          <p className="text-[17px] max-w-4xl mb-8" style={{ color: '#FDE4BC' }} data-testid="text-v3-features-intro">
             V3 Game offers exciting features for users who love both entertainment and the opportunity to earn real cash. Here's what makes V3 Game stand out.
           </p>
 
@@ -553,7 +553,7 @@ export default function Home() {
             {/* Feature 1 - Multiple Category Games */}
             <div data-testid="card-feature-games">
               <h1 className="text-base md:text-lg font-bold mb-2" style={{ color: '#FED358' }} data-testid="heading-feature-games">Multiple Category Games</h1>
-              <p className="text-sm md:text-base leading-relaxed" style={{ color: '#FDE4BC' }} data-testid="text-feature-games">
+              <p className="text-[17px] leading-relaxed" style={{ color: '#FDE4BC' }} data-testid="text-feature-games">
                 Get access to a wide variety of games across different categories like casino, sports, slots, and casual games. Whether skill-based or luck-based, there's something for everyone.
               </p>
             </div>
@@ -561,7 +561,7 @@ export default function Home() {
             {/* Feature 2 - Real Money Winnings */}
             <div data-testid="card-feature-winnings">
               <h1 className="text-base md:text-lg font-bold mb-2" style={{ color: '#FED358' }} data-testid="heading-feature-winnings">Real Money Winnings</h1>
-              <p className="text-sm md:text-base leading-relaxed" style={{ color: '#FDE4BC' }} data-testid="text-feature-winnings">
+              <p className="text-[17px] leading-relaxed" style={{ color: '#FDE4BC' }} data-testid="text-feature-winnings">
                 Earn real cash by participating in multiple games. Every game you play offers genuine earning potential with transparent and fair gameplay.
               </p>
             </div>
@@ -569,7 +569,7 @@ export default function Home() {
             {/* Feature 3 - Daily Bonuses & Offers */}
             <div data-testid="card-feature-bonuses">
               <h1 className="text-base md:text-lg font-bold mb-2" style={{ color: '#FED358' }} data-testid="heading-feature-bonuses">Daily Bonuses & Offers</h1>
-              <p className="text-sm md:text-base leading-relaxed" style={{ color: '#FDE4BC' }} data-testid="text-feature-bonuses">
+              <p className="text-[17px] leading-relaxed" style={{ color: '#FDE4BC' }} data-testid="text-feature-bonuses">
                 Get daily login bonuses, referral rewards, and seasonal offers that increase your chances of winning. These bonuses help boost your earnings over time.
               </p>
             </div>
@@ -577,7 +577,7 @@ export default function Home() {
             {/* Feature 4 - Instant Withdrawal System */}
             <div data-testid="card-feature-withdrawal">
               <h1 className="text-base md:text-lg font-bold mb-2" style={{ color: '#FED358' }} data-testid="heading-feature-withdrawal">Instant Withdrawal System</h1>
-              <p className="text-sm md:text-base leading-relaxed" style={{ color: '#FDE4BC' }} data-testid="text-feature-withdrawal">
+              <p className="text-[17px] leading-relaxed" style={{ color: '#FDE4BC' }} data-testid="text-feature-withdrawal">
                 Easily withdraw your winnings via bank transfer, UPI, or other supported methods. Fast, secure, and available 24/7 with minimum withdrawal limits.
               </p>
             </div>
@@ -585,7 +585,7 @@ export default function Home() {
             {/* Feature 5 - Referral Program */}
             <div data-testid="card-feature-referral">
               <h1 className="text-base md:text-lg font-bold mb-2" style={{ color: '#FED358' }} data-testid="heading-feature-referral">Referral Program</h1>
-              <p className="text-sm md:text-base leading-relaxed" style={{ color: '#FDE4BC' }} data-testid="text-feature-referral">
+              <p className="text-[17px] leading-relaxed" style={{ color: '#FDE4BC' }} data-testid="text-feature-referral">
                 Earn extra money by inviting friends to the platform. Share your unique referral code and earn a commission whenever your referrals play.
               </p>
             </div>
@@ -593,7 +593,7 @@ export default function Home() {
             {/* Feature 6 - Secure and User-Friendly App */}
             <div data-testid="card-feature-secure">
               <h1 className="text-base md:text-lg font-bold mb-2" style={{ color: '#FED358' }} data-testid="heading-feature-secure">Secure & User-Friendly App</h1>
-              <p className="text-sm md:text-base leading-relaxed" style={{ color: '#FDE4BC' }} data-testid="text-feature-secure">
+              <p className="text-[17px] leading-relaxed" style={{ color: '#FDE4BC' }} data-testid="text-feature-secure">
                 The V3 app is easy to use with smooth gameplay. It has SSL encryption for safety, ensuring your personal and financial data remains protected.
               </p>
             </div>
@@ -601,7 +601,7 @@ export default function Home() {
             {/* Feature 7 - 24x7 Customer Support */}
             <div data-testid="card-feature-support">
               <h1 className="text-base md:text-lg font-bold mb-2" style={{ color: '#FED358' }} data-testid="heading-feature-support">24×7 Customer Support</h1>
-              <p className="text-sm md:text-base leading-relaxed" style={{ color: '#FDE4BC' }} data-testid="text-feature-support">
+              <p className="text-[17px] leading-relaxed" style={{ color: '#FDE4BC' }} data-testid="text-feature-support">
                 Round-the-clock customer support through chat and email ensures a hassle-free experience. We're here whenever you need us.
               </p>
             </div>
@@ -616,16 +616,16 @@ export default function Home() {
             Responsible Gaming at V3 Game
           </h1>
           <div className="space-y-4 max-w-4xl" style={{ color: '#FDE4BC' }} data-testid="text-responsible-gaming">
-            <p className="text-sm md:text-base leading-relaxed">
+            <p className="text-[17px] leading-relaxed">
               We are committed to promoting a safe and enjoyable gaming environment. Our platform is designed for entertainment purposes, and we strongly encourage all users to play responsibly.
             </p>
-            <p className="text-sm md:text-base leading-relaxed">
+            <p className="text-[17px] leading-relaxed">
               Always set limits, stay in control, and never chase losses. If you feel that your gaming habits are affecting your personal life, finances, or relationships, it may be time to take a break or seek help.
             </p>
-            <p className="text-sm md:text-base leading-relaxed">
+            <p className="text-[17px] leading-relaxed">
               We also discourage underage users from accessing our platform and strictly prohibit anyone below the legal age from registering or playing.
             </p>
-            <p className="text-sm md:text-base leading-relaxed font-semibold" style={{ color: '#FED358' }}>
+            <p className="text-[17px] leading-relaxed font-semibold" style={{ color: '#FED358' }}>
               Read our full Responsible Gaming policy for tips, self-assessment tools, and support resources.
             </p>
           </div>
@@ -728,7 +728,7 @@ export default function Home() {
             <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-3" style={{ color: '#FED358' }}>
               V3 Game Guides & Tips
             </h2>
-            <p className="text-sm md:text-base" style={{ color: '#FDE4BC' }}>
+            <p className="text-[17px]" style={{ color: '#FDE4BC' }}>
               Learn everything about V3 Game - Registration, Login, Withdrawals & More
             </p>
           </div>
@@ -751,7 +751,7 @@ export default function Home() {
                   />
                 </div>
                 <div className="p-4">
-                  <h3 className="font-bold text-gray-800 mb-2 text-sm md:text-base line-clamp-2">
+                  <h3 className="font-bold text-gray-800 mb-2 text-[17px] line-clamp-2">
                     {article.title}
                   </h3>
                   <p className="text-gray-500 text-xs md:text-sm line-clamp-2">
