@@ -1,0 +1,39 @@
+PS C:\Users\user\Downloads\Final-1> git --version
+git version 2.52.0.windows.1
+PS C:\Users\user\Downloads\Final-1> git pull origin main
+>> git push origin main
+remote: Enumerating objects: 625, done.
+remote: Counting objects: 100% (34/34), done.
+remote: Compressing objects: 100% (34/34), done.
+error: RPC failed; curl 56 schannel: failed to read data from server: SEC_E_DECRYPT_FAILURE (0x80090330) - The specified data could not be decrypted.
+error: 4557 bytes of body are still expected
+fetch-pack: unexpected disconnect while reading sideband packet
+fatal: early EOF
+fatal: fetch-pack: invalid index-pack output
+To https://github.com/RITHVIKREDDY02/finalv3.git
+ ! [rejected]        main -> main (fetch first)
+error: failed to push some refs to 'https://github.com/RITHVIKREDDY02/finalv3.git'
+hint: Updates were rejected because the remote contains work that you do not
+hint: have locally. This is usually caused by another repository pushing to
+hint: the same ref. If you want to integrate the remote changes, use
+hint: 'git pull' before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+PS C:\Users\user\Downloads\Final-1> git pull origin main
+>> git push origin main
+remote: Enumerating objects: 625, done.
+remote: Counting objects: 100% (34/34), done.
+remote: Compressing objects: 100% (34/34), done.
+error: RPC failed; curl 56 schannel: failed to read data from server: SEC_E_DECRYPT_FAILURE (0x80090330) - The specified data could not be decrypted.
+error: 8231 bytes of body are still expected
+fetch-pack: unexpected disconnect while reading sideband packet
+fatal: early EOF
+fatal: fetch-pack: invalid index-pack output
+To https://github.com/RITHVIKREDDY02/finalv3.git
+ ! [rejected]        main -> main (fetch first)
+error: failed to push some refs to 'https://github.com/RITHVIKREDDY02/finalv3.git'
+hint: Updates were rejected because the remote contains work that you do not
+hint: have locally. This is usually caused by another repository pushing to
+hint: the same ref. If you want to integrate the remote changes, use
+hint: 'git pull' before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+PS C:\Users\user\Downloads\Final-1> 
