@@ -60,9 +60,9 @@ export default function BlogPage() {
   return (
     <div className="min-h-screen" style={{ background: 'linear-gradient(135deg, #000c1c 0%, #001a3d 100%)' }}>
       <head>
-        <title>V3 Game & Jalwa Game - Login, Hack Tips & Predictions Guide</title>
-        <meta name="description" content="Complete guides for V3 Game and Jalwa Game. Learn login process, app download, hack strategies, predictions, and daily bonuses. V3 Game hack, Jalwa Game login and tips." />
-        <meta name="keywords" content="V3 Game, V3 Game login, V3 Game hack, V3 Game prediction, Jalwa Game, Jalwa Game login, Jalwa Game hack, Jalwa Game app, online gaming guide, prediction tips" />
+        <title>V3 Game - Login, Hack Tips & Predictions Guide</title>
+        <meta name="description" content="Complete guides for V3 Game. Learn login process, app download, hack strategies, predictions, and daily bonuses. V3 Game login tips and earning strategies." />
+        <meta name="keywords" content="V3 Game, V3 Game login, V3 Game hack, V3 Game prediction, online gaming guide, prediction tips" />
       </head>
       <nav className="fixed top-0 left-0 right-0 z-50 px-4 py-3" style={{ background: 'rgba(0,12,28,0.95)', backdropFilter: 'blur(10px)', borderBottom: '1px solid rgba(254,211,88,0.15)' }}>
         <div className="max-w-4xl mx-auto flex items-center justify-between">
@@ -86,9 +86,9 @@ export default function BlogPage() {
       <main className="pt-20 pb-12 px-4">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
-            <h1 className="text-4xl font-bold mb-4" style={{ color: '#FED358' }}>V3 Game & Jalwa Game Guides</h1>
+            <h1 className="text-4xl font-bold mb-4" style={{ color: '#FED358' }}>V3 Game Guides</h1>
             <p className="text-lg" style={{ color: 'rgba(253, 228, 188, 0.8)' }}>
-              Complete guides for V3 Game login, Jalwa Game app, predictions, hacks & earning strategies
+              Complete guides for V3 Game login, predictions, hacks & earning strategies
             </p>
           </div>
 
