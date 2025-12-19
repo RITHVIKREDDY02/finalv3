@@ -30,35 +30,40 @@ const guideArticles = [
     id: 1,
     slug: "register-guide",
     image: blogImage1,
-    title: "How to Register in V3 Game?",
-    excerpt: "Complete step-by-step guide to register on V3 Game and claim your sign up bonus.",
+    title: "How to Register in V3 Game - Complete Guide",
+    excerpt: "Step-by-step V3 Game registration guide. Create your account in minutes, verify OTP, and claim your ₹500 sign-up bonus instantly.",
   },
   {
     id: 2,
     slug: "login-bonus",
     image: blogImage2,
-    title: "V3 Game Login & Win Bonus",
-    excerpt: "Learn how to login and claim your daily bonuses on V3 Game platform.",
+    title: "V3 Game Login Bonus - Daily Rewards Guide",
+    excerpt: "Learn V3 Game login process and earn daily bonuses, referral rewards, and exclusive offers every time you play.",
   },
   {
     id: 3,
     slug: "wallet-withdraw",
     image: blogImage3,
-    title: "How to Withdraw in V3 Game?",
-    excerpt: "Complete guide to withdraw money from V3 Game wallet to your bank account.",
+    title: "V3 Game Withdrawal Guide - Fast & Easy Money Transfer",
+    excerpt: "How to withdraw from V3 Game to bank account or UPI. Fast payouts within minutes using secure Indian payment methods.",
   },
   {
     id: 4,
     slug: "app-download",
     image: blogImage4,
-    title: "V3 Game App Download",
-    excerpt: "Learn how to download the V3 Game app and start playing on your mobile device.",
+    title: "V3 Game App Download - Play on Android & iOS",
+    excerpt: "Download V3 Game APK and mobile app. Easy installation guide for Android, iOS, and instant web access.",
   }
 ];
 
 export default function BlogPage() {
   return (
     <div className="min-h-screen" style={{ background: 'linear-gradient(135deg, #000c1c 0%, #001a3d 100%)' }}>
+      <head>
+        <title>V3 Game Blog - Guides, Tips & Winning Strategies | Tutorials</title>
+        <meta name="description" content="V3 Game Blog - Learn registration, login, withdrawal guides, app download, daily bonuses, and earning strategies. Expert tips for online gaming success." />
+        <meta name="keywords" content="V3 Game guide, V3 Game login, V3 Game registration, V3 Game withdrawal, V3 Game app download, online gaming tips" />
+      </head>
       <nav className="fixed top-0 left-0 right-0 z-50 px-4 py-3" style={{ background: 'rgba(0,12,28,0.95)', backdropFilter: 'blur(10px)', borderBottom: '1px solid rgba(254,211,88,0.15)' }}>
         <div className="max-w-4xl mx-auto flex items-center justify-between">
           <Link href="/" className="flex items-center gap-2 text-white hover:opacity-80 transition-opacity" data-testid="link-back-home">
@@ -81,9 +86,9 @@ export default function BlogPage() {
       <main className="pt-20 pb-12 px-4">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
-            <h1 className="text-4xl font-bold mb-4" style={{ color: '#FED358' }}>Blog</h1>
+            <h1 className="text-4xl font-bold mb-4" style={{ color: '#FED358' }}>V3 Game Guides & Blog</h1>
             <p className="text-lg" style={{ color: 'rgba(253, 228, 188, 0.8)' }}>
-              Latest news, tips, and strategies
+              Learn registration, login, withdrawals, gaming tips & strategies for earning real money
             </p>
           </div>
 

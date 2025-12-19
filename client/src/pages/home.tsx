@@ -729,7 +729,12 @@ export default function Home() {
               V3 Game Guides & Tips
             </h2>
             <p className="text-[17px]" style={{ color: '#FDE4BC' }}>
-              Learn everything about V3 Game - Registration, Login, Withdrawals & More
+              Complete guides on registration, login, withdrawals, bonuses, app download & winning strategies
+            </p>
+            <p className="text-[17px] mt-3" style={{ color: 'rgba(253, 228, 188, 0.7)' }}>
+              <Link href="/blog" className="font-bold hover:underline" style={{ color: '#FED358' }} data-testid="link-view-all-guides">
+                View All Guides & Tips →
+              </Link>
             </p>
           </div>
           
