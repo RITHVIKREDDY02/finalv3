@@ -261,6 +261,11 @@ export default function Home() {
 
   return (
     <div className="min-h-screen">
+      <head>
+        <title>{pageTitle}</title>
+        <meta name="description" content={pageDescription} />
+        <meta name="keywords" content="V3 Game, V3 Game login, V3 Game hack, V3 Game prediction, Jalwa Game, Jalwa Game login, Jalwa Game hack, Jalwa Game app, Tashan Win, Tashan Win login" />
+      </head>
       {/* Welcome Notification - Shows on first visit */}
       <WelcomeNotification onRegisterClick={handleJoinVipClick} />
       
