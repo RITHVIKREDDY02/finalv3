@@ -489,7 +489,7 @@ export default function Home() {
           <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4" style={{ color: '#FED358' }} data-testid="heading-what-is-v3">
             What is V3 Game?
           </h1>
-          <div className="text-[17px] max-w-4xl leading-relaxed space-y-4" style={{ color: '#FDE4BC' }} data-testid="text-what-is-v3-description">
+          <div className="text-[17px] max-w-6xl leading-relaxed space-y-4" style={{ color: '#FDE4BC' }} data-testid="text-what-is-v3-description">
             <p>
               V3 Game is an online gaming and earning platform that allows users to play multiple games in different categories, make smart bets, and potentially win real cash rewards. It combines entertainment and opportunity into one seamless experience, making it perfect for anyone looking to turn their free time into a fun, rewarding activity.
             </p>
