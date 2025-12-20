@@ -635,49 +635,49 @@ export default function Home() {
             Below is a step-by-step guide to help you register and login seamlessly on V3 Game.
           </p>
 
-          <div className="space-y-8 max-w-4xl mx-auto">
+          <div className="space-y-8 max-w-4xl">
             {/* Registration Steps */}
             <div data-testid="card-registration-steps">
-              <h2 className="text-xl md:text-2xl font-bold mb-4 text-center" style={{ color: '#FED358' }} data-testid="heading-registration-steps">Registration Steps:</h2>
+              <h2 className="text-xl md:text-2xl font-bold mb-4" style={{ color: '#FED358' }} data-testid="heading-registration-steps">V3 Game Registration Steps:</h2>
               <div className="space-y-4">
                 <div data-testid="step-1-visit-website">
-                  <h3 className="text-base md:text-lg font-bold mb-2 text-center" style={{ color: '#FED358' }}>Visit Our Official Website</h3>
-                  <p className="text-[17px] leading-relaxed text-center" style={{ color: '#FDE4BC' }}>
+                  <h3 className="text-base md:text-lg font-bold mb-2" style={{ color: '#FED358' }}>Visit Our Official Website</h3>
+                  <p className="text-[17px] leading-relaxed" style={{ color: '#FDE4BC' }}>
                     Open your browser and go to the official V3 Game website.
                   </p>
                 </div>
 
                 <div data-testid="step-2-click-register">
-                  <h3 className="text-base md:text-lg font-bold mb-2 text-center" style={{ color: '#FED358' }}>Click the Register Button</h3>
-                  <p className="text-[17px] leading-relaxed text-center" style={{ color: '#FDE4BC' }}>
+                  <h3 className="text-base md:text-lg font-bold mb-2" style={{ color: '#FED358' }}>Click the Register Button</h3>
+                  <p className="text-[17px] leading-relaxed" style={{ color: '#FDE4BC' }}>
                     At the top of the homepage, you'll see a "V3 Game Register" button. Tap it to open the registration form. Or click on register button below.
                   </p>
                 </div>
 
                 <div data-testid="step-3-enter-mobile">
-                  <h3 className="text-base md:text-lg font-bold mb-2 text-center" style={{ color: '#FED358' }}>Enter Your Mobile Number</h3>
-                  <p className="text-[17px] leading-relaxed text-center" style={{ color: '#FDE4BC' }}>
+                  <h3 className="text-base md:text-lg font-bold mb-2" style={{ color: '#FED358' }}>Enter Your Mobile Number</h3>
+                  <p className="text-[17px] leading-relaxed" style={{ color: '#FDE4BC' }}>
                     Use a valid mobile number you currently use, as this will be required for login and verification.
                   </p>
                 </div>
 
                 <div data-testid="step-4-set-password">
-                  <h3 className="text-base md:text-lg font-bold mb-2 text-center" style={{ color: '#FED358' }}>Set a Secure Password</h3>
-                  <p className="text-[17px] leading-relaxed text-center" style={{ color: '#FDE4BC' }}>
+                  <h3 className="text-base md:text-lg font-bold mb-2" style={{ color: '#FED358' }}>Set a Secure Password</h3>
+                  <p className="text-[17px] leading-relaxed" style={{ color: '#FDE4BC' }}>
                     Create a strong password that includes a mix of numbers and alphabets to keep your account protected (It doesn't allows Special Characters so only use Alphabets & Numbers).
                   </p>
                 </div>
 
                 <div data-testid="step-5-referral-code">
-                  <h3 className="text-base md:text-lg font-bold mb-2 text-center" style={{ color: '#FED358' }}>Enter Referral Code</h3>
-                  <p className="text-[17px] leading-relaxed text-center" style={{ color: '#FDE4BC' }}>
+                  <h3 className="text-base md:text-lg font-bold mb-2" style={{ color: '#FED358' }}>Enter Referral Code</h3>
+                  <p className="text-[17px] leading-relaxed" style={{ color: '#FDE4BC' }}>
                     Entering Invite Code is must to register on V3 Game. With this you also get 7532630349.
                   </p>
                 </div>
 
                 <div data-testid="step-6-submit-verify">
-                  <h3 className="text-base md:text-lg font-bold mb-2 text-center" style={{ color: '#FED358' }}>Submit & Verify</h3>
-                  <p className="text-[17px] leading-relaxed text-center" style={{ color: '#FDE4BC' }}>
+                  <h3 className="text-base md:text-lg font-bold mb-2" style={{ color: '#FED358' }}>Submit & Verify</h3>
+                  <p className="text-[17px] leading-relaxed" style={{ color: '#FDE4BC' }}>
                     Tap on the "Register" button, and complete the process.
                   </p>
                 </div>
