@@ -11,8 +11,8 @@ const heroBannerMobile = "/images/banner-mobile.webp";
 const proofImage1 = "/images/proof1.webp";
 
 // SEO Meta tags for home page
-const pageTitle = "V3 Game, Jalwa Game, Tashan Win - Login, Hack Tips & Predictions | V3 Gaming";
-const pageDescription = "V3 Game, Jalwa Game, and Tashan Win gaming platforms. Learn V3 Game hack, Jalwa Game login, Tashan Win login, predictions, and winning strategies. Safe, secure, and verified online gaming.";
+const pageTitle = "V3 Game - Login, Hack Tips & Predictions | V3 Gaming";
+const pageDescription = "V3 Game - The ultimate gaming platform. Learn V3 Game hack, login process, predictions, and winning strategies. Safe, secure, and verified online gaming.";
 const proofImage2 = "/images/proof2.webp";
 const demoImage1 = "/images/demo1.webp";
 const demoImage2 = "/images/demo2.webp";
@@ -263,7 +263,7 @@ export default function Home() {
       <head>
         <title>{pageTitle}</title>
         <meta name="description" content={pageDescription} />
-        <meta name="keywords" content="V3 Game, V3 Game login, V3 Game hack, V3 Game prediction, Jalwa Game, Jalwa Game login, Jalwa Game hack, Jalwa Game app, Tashan Win, Tashan Win login" />
+        <meta name="keywords" content="V3 Game, V3 Game login, V3 Game hack, V3 Game prediction, online gaming guide, prediction tips" />
       </head>
       {/* Navigation Bar */}
       <nav 
@@ -731,10 +731,10 @@ export default function Home() {
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-10">
             <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-3" style={{ color: '#FED358' }}>
-              V3 Game, Jalwa Game & Tashan Win Guides
+              V3 Game Guides & Resources
             </h2>
             <p className="text-[17px]" style={{ color: '#FDE4BC' }}>
-              Learn V3 Game login, hack tips, predictions | Jalwa Game app download, login guide | Tashan Win login & winning strategies
+              Learn V3 Game login, hack tips, predictions, and winning strategies
             </p>
             <p className="text-[17px] mt-3" style={{ color: 'rgba(253, 228, 188, 0.7)' }}>
               <Link href="/blog" className="font-bold hover:underline" style={{ color: '#FED358' }} data-testid="link-view-all-guides">
