@@ -11,7 +11,7 @@ const heroBannerMobile = "/images/banner-mobile.webp";
 const proofImage1 = "/images/proof1.webp";
 
 // SEO Meta tags for home page
-const pageTitle = "V3 Game - Login, Hack Tips & Predictions | V3 Gaming";
+const pageTitle = "V3 Game Register - Get Upto ₹500 Sign Up Reward | V3 Gaming";
 const pageDescription = "V3 Game - The ultimate gaming platform. Learn V3 Game hack, login process, predictions, and winning strategies. Safe, secure, and verified online gaming.";
 const proofImage2 = "/images/proof2.webp";
 const demoImage1 = "/images/demo1.webp";
@@ -423,7 +423,7 @@ export default function Home() {
           {/* Reward Text */}
           <div className="text-center mb-5">
             <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold tracking-wide" style={{ color: '#FED358' }}>
-              V3 Game - Login, Hack Tips & Predictions
+              V3 Game Register - Get Upto ₹500 Sign Up Reward
             </h1>
             <p className="text-sm sm:text-base md:text-lg text-gray-300 mt-3 max-w-3xl mx-auto leading-relaxed">
               In today's fast-paced digital world, online games need to be engaging, rewarding, and simple to use—and that's exactly what V3 Game delivers. Whether you're new to online gaming or a seasoned player, V3 Game offers a mix of thrilling gameplay, bonus features, and real earning potential.
