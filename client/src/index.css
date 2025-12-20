@@ -69,6 +69,7 @@
     background-color: #000c1c;
     min-height: 100vh;
     color: var(--light-gold);
+    font-family: apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   }
 }
 
