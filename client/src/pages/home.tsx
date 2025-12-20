@@ -437,7 +437,7 @@ export default function Home() {
               onClick={() => window.open("https://www.v3gameb.com/#/pages/login/register?invitationCode=7532630349", "_blank")}
               data-testid="button-register"
             >
-              REGISTER
+              V3 Game Register
             </button>
             
             {/* LOGIN Button */}
@@ -446,7 +446,7 @@ export default function Home() {
               onClick={() => window.open("https://www.v3gameb.com/#/pages/login/login", "_blank")}
               data-testid="button-login"
             >
-              LOGIN
+              V3 Game Login
             </button>
           </div>
 
