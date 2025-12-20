@@ -512,11 +512,11 @@ export default function Home() {
           <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-6" style={{ color: '#FED358' }} data-testid="heading-why-choose-v3">
             Why Choose V3 Game?
           </h1>
-          <p className="text-[17px] max-w-4xl mb-8" style={{ color: '#FDE4BC' }} data-testid="text-why-choose-description">
+          <p className="text-[17px] max-w-6xl mb-8" style={{ color: '#FDE4BC' }} data-testid="text-why-choose-description">
             V3 Game is the most trusted online gaming platform in India with thousands of active players enjoying daily bonuses and exciting rewards.
           </p>
 
-          <div className="space-y-6 max-w-4xl">
+          <div className="space-y-6 max-w-6xl">
             {/* Benefit 1 - Quick Registration */}
             <div data-testid="card-benefit-registration">
               <h1 className="text-base md:text-lg font-bold mb-2" style={{ color: '#FED358' }} data-testid="heading-benefit-registration">Quick Registration</h1>
@@ -558,11 +558,11 @@ export default function Home() {
           <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-6" style={{ color: '#FED358' }} data-testid="heading-v3-features">
             V3 Game Features
           </h1>
-          <p className="text-[17px] max-w-4xl mb-8" style={{ color: '#FDE4BC' }} data-testid="text-v3-features-intro">
+          <p className="text-[17px] max-w-6xl mb-8" style={{ color: '#FDE4BC' }} data-testid="text-v3-features-intro">
             V3 Game offers exciting features for users who love both entertainment and the opportunity to earn real cash. Here's what makes V3 Game stand out.
           </p>
 
-          <div className="space-y-6 max-w-4xl">
+          <div className="space-y-6 max-w-6xl">
             {/* Feature 1 - Multiple Category Games */}
             <div data-testid="card-feature-games">
               <h1 className="text-base md:text-lg font-bold mb-2" style={{ color: '#FED358' }} data-testid="heading-feature-games">Multiple Category Games</h1>
@@ -628,14 +628,14 @@ export default function Home() {
           <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-6" style={{ color: '#FED358' }} data-testid="heading-register-login-guide">
             How To Register & Login On V3 Game?
           </h1>
-          <p className="text-[17px] max-w-4xl mb-8" style={{ color: '#FDE4BC' }} data-testid="text-register-login-intro">
+          <p className="text-[17px] max-w-6xl mb-8" style={{ color: '#FDE4BC' }} data-testid="text-register-login-intro">
             Getting started with V3 color game is super easy. Whether you're a beginner or a regular gamer looking for a fresh platform to explore, registering and logging into your account takes just a few minutes.
           </p>
-          <p className="text-[17px] max-w-4xl mb-8" style={{ color: '#FDE4BC' }}>
+          <p className="text-[17px] max-w-6xl mb-8" style={{ color: '#FDE4BC' }}>
             Below is a step-by-step guide to help you register and login seamlessly on V3 Game.
           </p>
 
-          <div className="space-y-8 max-w-4xl">
+          <div className="space-y-8 max-w-6xl">
             {/* Registration Steps */}
             <div data-testid="card-registration-steps">
               <h2 className="text-xl md:text-2xl font-bold mb-4" style={{ color: '#FED358' }} data-testid="heading-registration-steps">V3 Game Registration Steps:</h2>
@@ -726,7 +726,7 @@ export default function Home() {
           <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-6" style={{ color: '#FED358' }} data-testid="heading-responsible-gaming">
             Responsible Gaming at V3 Game
           </h1>
-          <div className="space-y-4 max-w-4xl" style={{ color: '#FDE4BC' }} data-testid="text-responsible-gaming">
+          <div className="space-y-4 max-w-6xl" style={{ color: '#FDE4BC' }} data-testid="text-responsible-gaming">
             <p className="text-[17px] leading-relaxed">
               We are committed to promoting a safe and enjoyable gaming environment. Our platform is designed for entertainment purposes, and we strongly encourage all users to play responsibly.
             </p>
