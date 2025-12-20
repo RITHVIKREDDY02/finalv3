@@ -457,8 +457,8 @@ export default function Home() {
           {/* Reward Text */}
           <div className="text-center mb-5">
             <h1
-              className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold tracking-wide"
-              style={{ color: "#FED358", fontSize: "42px" }}
+              className="font-bold tracking-wide"
+              style={{ color: "#FED358", fontSize: "clamp(20px, 5vw, 42px)" }}
             >
               V3 Game Register - Get Upto ₹500 Sign Up Reward
             </h1>
