@@ -1,4 +1,18 @@
-import { Menu, X, Gift, Zap, Target, Shield, Gamepad2, Banknote, Trophy, Send, Users, Smartphone, HeadphonesIcon } from "lucide-react";
+import {
+  Menu,
+  X,
+  Gift,
+  Zap,
+  Target,
+  Shield,
+  Gamepad2,
+  Banknote,
+  Trophy,
+  Send,
+  Users,
+  Smartphone,
+  HeadphonesIcon,
+} from "lucide-react";
 import { useState, useEffect } from "react";
 import { Link } from "wouter";
 import { FaTelegram } from "react-icons/fa";
@@ -12,7 +26,8 @@ const proofImage1 = "/images/proof1.webp";
 
 // SEO Meta tags for home page
 const pageTitle = "V3 Game Register - Get Upto ₹500 Sign Up Reward | V3 Gaming";
-const pageDescription = "V3 Game - The ultimate gaming platform. Learn V3 Game hack, login process, predictions, and winning strategies. Safe, secure, and verified online gaming.";
+const pageDescription =
+  "V3 Game - The ultimate gaming platform. Learn V3 Game hack, login process, predictions, and winning strategies. Safe, secure, and verified online gaming.";
 const proofImage2 = "/images/proof2.webp";
 const demoImage1 = "/images/demo1.webp";
 const demoImage2 = "/images/demo2.webp";
@@ -29,7 +44,7 @@ export default function Home() {
   const [showRegisterDialog, setShowRegisterDialog] = useState(false);
   const [showProofDialog, setShowProofDialog] = useState(false);
   const [showDemoDialog, setShowDemoDialog] = useState(false);
-    const [showDisclaimerDialog, setShowDisclaimerDialog] = useState(false);
+  const [showDisclaimerDialog, setShowDisclaimerDialog] = useState(false);
   const [showWarningDialog, setShowWarningDialog] = useState(false);
   const [selectedGameName, setSelectedGameName] = useState<string>("");
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -40,7 +55,8 @@ export default function Home() {
       slug: "register-guide",
       image: blogImage1,
       title: "How to Register in V3 Game?",
-      excerpt: "Complete step-by-step guide to register on V3 Game and claim your sign up bonus.",
+      excerpt:
+        "Complete step-by-step guide to register on V3 Game and claim your sign up bonus.",
       content: `
         <h2>V3 Game Register Online Guide – Get Sign Up Bonus</h2>
         <p>If you are new to the online gaming world and want to start with a trusted platform, V3 Game is one of the popular names in India. This guide will walk you through everything you need to know about how to register online, claim your sign up bonus, and start playing safely and responsibly.</p>
@@ -97,14 +113,15 @@ export default function Home() {
           <li>Priority customer support for registered users.</li>
           <li>Opportunity to earn more through referral bonuses.</li>
         </ul>
-      `
+      `,
     },
     {
       id: 2,
       slug: "login-bonus",
       image: blogImage2,
       title: "V3 Game Login & Win Bonus",
-      excerpt: "Learn how to login and claim your daily bonuses on V3 Game platform.",
+      excerpt:
+        "Learn how to login and claim your daily bonuses on V3 Game platform.",
       content: `
         <h2>V3 Game Login & Win Bonus – Your Complete Guide to Fun and Rewards</h2>
         <p>If you love online games that offer real excitement and daily rewards, V3 Game Login is a great choice for you. This platform allows Indian users to play, win, and earn bonuses through a smooth and secure system.</p>
@@ -144,14 +161,15 @@ export default function Home() {
         
         <h3>Responsible Gaming Advice</h3>
         <p>While the V3 platform is designed for entertainment, it's important to play responsibly. Always set a limit on how much time and money you spend on games. Treat it as a fun activity, not as a source of guaranteed income.</p>
-      `
+      `,
     },
     {
       id: 3,
       slug: "wallet-withdraw",
       image: blogImage3,
       title: "How to Withdraw in V3 Game?",
-      excerpt: "Complete guide to withdraw money from V3 Game wallet to your bank account.",
+      excerpt:
+        "Complete guide to withdraw money from V3 Game wallet to your bank account.",
       content: `
         <h2>How to Withdraw Money from V3 Game? Guide V3 Game Wallet Withdraw</h2>
         <p>Online earning platforms like V3 Game have become very popular in India. Players enjoy games while also having the opportunity to win real cash. But the most common question players ask is — how to withdraw money from V3 Game safely and easily?</p>
@@ -194,14 +212,15 @@ export default function Home() {
           <li>Keep screenshots – In case of any dispute, screenshots help when contacting customer support.</li>
           <li>Contact support if delayed – Use the in-app support or email option for help if your funds don't arrive within 24 hours.</li>
         </ul>
-      `
+      `,
     },
     {
       id: 4,
       slug: "app-download",
       image: blogImage4,
       title: "V3 Game App Download",
-      excerpt: "Learn how to download the V3 Game app and start playing on your mobile device.",
+      excerpt:
+        "Learn how to download the V3 Game app and start playing on your mobile device.",
       content: `
         <h2>V3 Game Login App & Lottery Download – Complete Guide for Indian Users</h2>
         <p>Online gaming and lottery platforms have gained massive popularity across India in recent years. Among these, the V3 Game Login App has quickly become a popular choice for players who enjoy games of skill, entertainment, and luck-based lotteries.</p>
@@ -235,8 +254,8 @@ export default function Home() {
         <p><strong>Is the V3 Game login app safe to use in India?</strong><br/>Yes, the app follows standard security measures, making it safe for Indian users who download it from the official source.</p>
         <p><strong>How can I participate in the V3 Game lottery?</strong><br/>After logging in, visit the lottery section, choose your draw, buy tickets, and wait for the result announcements.</p>
         <p><strong>Can I withdraw my earnings easily?</strong><br/>Yes, the app supports quick withdrawals to bank accounts or digital wallets like UPI and Paytm.</p>
-      `
-    }
+      `,
+    },
   ];
 
   useEffect(() => {
@@ -244,25 +263,25 @@ export default function Home() {
       setIsScrolled(window.scrollY > 0);
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   useEffect(() => {
     document.title = pageTitle;
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', pageDescription);
+      metaDescription.setAttribute("content", pageDescription);
     } else {
-      const meta = document.createElement('meta');
-      meta.name = 'description';
+      const meta = document.createElement("meta");
+      meta.name = "description";
       meta.content = pageDescription;
       document.head.appendChild(meta);
     }
   }, []);
 
   const handleJoinVipClick = () => {
-    console.log('Join clicked');
+    console.log("Join clicked");
     setShowRegisterDialog(true);
   };
 
@@ -274,84 +293,91 @@ export default function Home() {
   return (
     <div className="min-h-screen">
       {/* Navigation Bar */}
-      <nav 
+      <nav
         className={`fixed top-0 left-0 right-0 navbar-dark px-4 shadow-lg z-50 transition-all duration-300 ${
-          isScrolled ? 'border-b-2' : ''
-        }`} 
-        style={{ 
-          height: '60px',
-          borderBottomColor: isScrolled ? '#0b3681' : 'transparent'
+          isScrolled ? "border-b-2" : ""
+        }`}
+        style={{
+          height: "60px",
+          borderBottomColor: isScrolled ? "#0b3681" : "transparent",
         }}
       >
         <div className="max-w-7xl mx-auto flex items-center justify-between h-full relative">
           {/* Logo Section */}
           <div className="flex items-center logo-spacing-mobile md:logo-spacing-tablet lg:logo-spacing-desktop">
-            <img 
-              src={logoPath} 
-              alt="V3 GAME Logo" 
+            <img
+              src={logoPath}
+              alt="V3 GAME Logo"
               className="w-auto object-contain h-5 md:h-7"
             />
           </div>
-          
+
           {/* Mobile Navigation */}
           <div className="md:hidden flex items-center gap-3">
-            <button 
+            <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className="p-2 rounded-lg transition-all duration-200"
-              style={{ color: '#FED358' }}
+              style={{ color: "#FED358" }}
               data-testid="button-mobile-menu"
             >
-              {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              {isMobileMenuOpen ? (
+                <X className="w-6 h-6" />
+              ) : (
+                <Menu className="w-6 h-6" />
+              )}
             </button>
           </div>
-          
+
           {/* Mobile Menu Dropdown */}
           {isMobileMenuOpen && (
-            <div 
+            <div
               className="md:hidden absolute top-full left-0 right-0 py-4 px-6 shadow-xl"
-              style={{ background: 'rgba(0,12,28,0.98)', borderBottom: '2px solid #FED358' }}
+              style={{
+                background: "rgba(0,12,28,0.98)",
+                borderBottom: "2px solid #FED358",
+              }}
             >
               <div className="flex flex-col gap-4">
-                <Link 
+                <Link
                   href="/register-guide"
                   className="text-base font-medium py-2 transition-all duration-200 hover:translate-x-2 text-left"
-                  style={{ color: '#FDE4BC' }}
+                  style={{ color: "#FDE4BC" }}
                   onClick={() => setIsMobileMenuOpen(false)}
                   data-testid="link-mobile-register-guide"
                 >
                   Register Guide
                 </Link>
-                <Link 
+                <Link
                   href="/login-bonus"
                   className="text-base font-medium py-2 transition-all duration-200 hover:translate-x-2 text-left"
-                  style={{ color: '#FDE4BC' }}
+                  style={{ color: "#FDE4BC" }}
                   onClick={() => setIsMobileMenuOpen(false)}
                   data-testid="link-mobile-login-bonus"
                 >
                   Login Bonus
                 </Link>
-                <Link 
+                <Link
                   href="/blog"
                   className="text-base font-medium py-2 transition-all duration-200 hover:translate-x-2"
-                  style={{ color: '#FDE4BC' }}
+                  style={{ color: "#FDE4BC" }}
                   onClick={() => setIsMobileMenuOpen(false)}
                   data-testid="link-mobile-blog"
                 >
                   Blog
                 </Link>
-                <Link 
+                <Link
                   href="/disclaimer"
                   className="text-base font-medium py-2 transition-all duration-200 hover:translate-x-2"
-                  style={{ color: '#FDE4BC' }}
+                  style={{ color: "#FDE4BC" }}
                   onClick={() => setIsMobileMenuOpen(false)}
                   data-testid="link-mobile-disclaimer"
                 >
                   Disclaimer
                 </Link>
-                <Link 
+                <Link
                   href="/about"
                   className="text-base font-medium py-2 transition-all duration-200 hover:translate-x-2"
-                  style={{ color: '#FDE4BC' }}
+                  style={{ color: "#FDE4BC" }}
                   onClick={() => setIsMobileMenuOpen(false)}
                   data-testid="link-mobile-about"
                 >
@@ -360,45 +386,45 @@ export default function Home() {
               </div>
             </div>
           )}
-          
+
           {/* Desktop Navigation Items */}
           <div className="hidden md:flex items-center space-x-5 lg:space-x-6">
-            <Link 
+            <Link
               href="/register-guide"
               className="text-sm font-medium transition-all duration-200 hover:opacity-80 hover:scale-105"
-              style={{ color: '#FDE4BC' }}
+              style={{ color: "#FDE4BC" }}
               data-testid="link-register-guide"
             >
               Register Guide
             </Link>
-            <Link 
+            <Link
               href="/login-bonus"
               className="text-sm font-medium transition-all duration-200 hover:opacity-80 hover:scale-105"
-              style={{ color: '#FDE4BC' }}
+              style={{ color: "#FDE4BC" }}
               data-testid="link-login-bonus"
             >
               Login Bonus
             </Link>
-            <Link 
+            <Link
               href="/blog"
               className="text-sm font-medium transition-all duration-200 hover:opacity-80 hover:scale-105"
-              style={{ color: '#FDE4BC' }}
+              style={{ color: "#FDE4BC" }}
               data-testid="link-blog"
             >
               Blog
             </Link>
-            <Link 
+            <Link
               href="/disclaimer"
               className="text-sm font-medium transition-all duration-200 hover:opacity-80 hover:scale-105"
-              style={{ color: '#FDE4BC' }}
+              style={{ color: "#FDE4BC" }}
               data-testid="link-disclaimer"
             >
               Disclaimer
             </Link>
-            <Link 
+            <Link
               href="/about"
               className="text-sm font-medium transition-all duration-200 hover:opacity-80 hover:scale-105"
-              style={{ color: '#FDE4BC' }}
+              style={{ color: "#FDE4BC" }}
               data-testid="link-about"
             >
               About Us
@@ -409,14 +435,14 @@ export default function Home() {
 
       {/* Hero Banner */}
       <div className="px-0 md:px-6 lg:px-0 pb-4 mt-16">
-        <div className="max-w-none md:max-w-6xl mx-auto lg:max-w-none">
+        <div className="max-w-none md:max-w-5xl mx-auto lg:max-w-none">
           <div className="overflow-hidden rounded-none md:rounded-2xl lg:rounded-none shadow-lg lg:shadow-none">
             <picture>
               <source media="(min-width: 1024px)" srcSet={heroBannerDesktop} />
               <source media="(min-width: 768px)" srcSet={heroBannerTablet} />
-              <img 
-                src={heroBannerMobile} 
-                alt="V3 Game - Download App" 
+              <img
+                src={heroBannerMobile}
+                alt="V3 Game - Download App"
                 className="w-full h-auto object-cover rounded-none md:rounded-2xl lg:rounded-none"
                 data-testid="img-hero-banner"
               />
@@ -430,28 +456,45 @@ export default function Home() {
         <div className="max-w-2xl mx-auto lg:max-w-7xl">
           {/* Reward Text */}
           <div className="text-center mb-5">
-            <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold tracking-wide" style={{ color: '#FED358' }}>
+            <h1
+              className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold tracking-wide"
+              style={{ color: "#FED358" }}
+            >
               V3 Game Register - Get Upto ₹500 Sign Up Reward
             </h1>
             <p className="text-sm sm:text-base md:text-lg text-gray-300 mt-3 max-w-4xl mx-auto leading-relaxed">
-              In today's fast-paced digital world, online games need to be engaging, rewarding, and simple to use—and that's exactly what V3 Game delivers. Whether you're new to online gaming or a seasoned player, V3 Game offers a mix of thrilling gameplay, bonus features, and real earning potential.
+              In today's fast-paced digital world, online games need to be
+              engaging, rewarding, and simple to use—and that's exactly what V3
+              Game delivers. Whether you're new to online gaming or a seasoned
+              player, V3 Game offers a mix of thrilling gameplay, bonus
+              features, and real earning potential.
             </p>
           </div>
           {/* Register and Login Buttons */}
           <div className="flex flex-row flex-wrap gap-2 sm:gap-4 md:gap-6 justify-center items-center mb-4">
             {/* REGISTER Button */}
-            <button 
+            <button
               className="flex-shrink-0 w-auto px-4 sm:px-6 md:px-8 py-2 custom-button font-bold rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 text-sm sm:text-base whitespace-nowrap"
-              onClick={() => window.open("https://www.v3gameb.com/#/pages/login/register?invitationCode=7532630349", "_blank")}
+              onClick={() =>
+                window.open(
+                  "https://www.v3gameb.com/#/pages/login/register?invitationCode=7532630349",
+                  "_blank",
+                )
+              }
               data-testid="button-register"
             >
               V3 Game Register
             </button>
-            
+
             {/* LOGIN Button */}
-            <button 
+            <button
               className="flex-shrink-0 w-auto px-4 sm:px-6 md:px-8 py-2 custom-button font-bold rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 text-sm sm:text-base whitespace-nowrap"
-              onClick={() => window.open("https://www.v3gameb.com/#/pages/login/login", "_blank")}
+              onClick={() =>
+                window.open(
+                  "https://www.v3gameb.com/#/pages/login/login",
+                  "_blank",
+                )
+              }
               data-testid="button-login"
             >
               V3 Game Login
@@ -460,12 +503,14 @@ export default function Home() {
 
           {/* Join Telegram Button */}
           <div className="flex justify-center mt-4">
-            <a 
-              href="https://t.me/Earn_With_Milind_77" 
-              target="_blank" 
+            <a
+              href="https://t.me/Earn_With_Milind_77"
+              target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 px-6 py-2.5 rounded-full font-bold text-white shadow-lg transition-all duration-300 transform hover:scale-105 text-sm sm:text-base"
-              style={{ background: 'linear-gradient(135deg, #0088cc 0%, #00aced 100%)' }}
+              style={{
+                background: "linear-gradient(135deg, #0088cc 0%, #00aced 100%)",
+              }}
               data-testid="button-join-telegram"
             >
               <FaTelegram className="text-lg" />
@@ -475,77 +520,167 @@ export default function Home() {
 
           {/* Community Text */}
           <div className="text-center mt-6 mb-8">
-            <p className="text-sm sm:text-base md:text-lg font-medium" style={{ color: '#FDE4BC' }}>
-              Join our exclusive trading community and start receiving premium signals instantly!
+            <p
+              className="text-sm sm:text-base md:text-lg font-medium"
+              style={{ color: "#FDE4BC" }}
+            >
+              Join our exclusive trading community and start receiving premium
+              signals instantly!
             </p>
           </div>
-          
         </div>
       </div>
 
       {/* What is V3 Game Section */}
-      <div className="px-6 md:px-8 lg:px-12 xl:px-16 py-12" data-testid="section-what-is-v3">
+      <div
+        className="px-6 md:px-8 lg:px-12 xl:px-16 py-12"
+        data-testid="section-what-is-v3"
+      >
         <div className="max-w-6xl mx-auto">
-          <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4" style={{ color: '#FED358' }} data-testid="heading-what-is-v3">
+          <h1
+            className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4"
+            style={{ color: "#FED358" }}
+            data-testid="heading-what-is-v3"
+          >
             What is V3 Game?
           </h1>
-          <div className="text-[17px] max-w-6xl leading-relaxed space-y-4" style={{ color: '#FDE4BC' }} data-testid="text-what-is-v3-description">
+          <div
+            className="text-[17px] max-w-5xl leading-relaxed space-y-4"
+            style={{ color: "#FDE4BC" }}
+            data-testid="text-what-is-v3-description"
+          >
             <p>
-              V3 Game is an online gaming and earning platform that allows users to play multiple games in different categories, make smart bets, and potentially win real cash rewards. It combines entertainment and opportunity into one seamless experience, making it perfect for anyone looking to turn their free time into a fun, rewarding activity.
+              V3 Game is an online gaming and earning platform that allows users
+              to play multiple games in different categories, make smart bets,
+              and potentially win real cash rewards. It combines entertainment
+              and opportunity into one seamless experience, making it perfect
+              for anyone looking to turn their free time into a fun, rewarding
+              activity.
             </p>
             <p>
-              What makes V3 Game lottery stand out is its wide range of games from casual classics like Mines and Go Rush to advanced games like Aviator, 5D, and Dragon Tiger. Whether you're a seasoned player or a beginner trying out your luck, V3 Game gives everyone an equal chance to win.
+              What makes V3 Game lottery stand out is its wide range of games
+              from casual classics like Mines and Go Rush to advanced games like
+              Aviator, 5D, and Dragon Tiger. Whether you're a seasoned player or
+              a beginner trying out your luck, V3 Game gives everyone an equal
+              chance to win.
             </p>
             <p>
-              And thanks to secure transactions, real-time results, and transparent systems, you can trust the platform every step of the way. You can also take part in its referral programs, special promotions, and jackpot events that increase your chances of earning even more.
+              And thanks to secure transactions, real-time results, and
+              transparent systems, you can trust the platform every step of the
+              way. You can also take part in its referral programs, special
+              promotions, and jackpot events that increase your chances of
+              earning even more.
             </p>
             <p>
-              In short, whether you're here for quick entertainment or aiming to become a regular player, V3 Game offers a trusted, all-in-one gaming experience tailored to your goals.
+              In short, whether you're here for quick entertainment or aiming to
+              become a regular player, V3 Game offers a trusted, all-in-one
+              gaming experience tailored to your goals.
             </p>
           </div>
         </div>
       </div>
 
       {/* Why Choose V3 Game - 4 Benefits Section */}
-      <div className="px-6 md:px-8 lg:px-12 xl:px-16 py-12" data-testid="section-why-choose-v3">
-        <div className="max-w-6xl mx-auto">
-          <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-6" style={{ color: '#FED358' }} data-testid="heading-why-choose-v3">
+      <div
+        className="px-6 md:px-8 lg:px-12 xl:px-16 py-12"
+        data-testid="section-why-choose-v3"
+      >
+        <div className="max-w-5xl mx-auto">
+          <h1
+            className="text-2xl md:text-3xl lg:text-4xl font-bold mb-6"
+            style={{ color: "#FED358" }}
+            data-testid="heading-why-choose-v3"
+          >
             Why Choose V3 Game?
           </h1>
-          <p className="text-[17px] max-w-6xl mb-8" style={{ color: '#FDE4BC' }} data-testid="text-why-choose-description">
-            V3 Game is the most trusted online gaming platform in India with thousands of active players enjoying daily bonuses and exciting rewards.
+          <p
+            className="text-[17px] max-w-5xl mb-8"
+            style={{ color: "#FDE4BC" }}
+            data-testid="text-why-choose-description"
+          >
+            V3 Game is the most trusted online gaming platform in India with
+            thousands of active players enjoying daily bonuses and exciting
+            rewards.
           </p>
 
-          <div className="space-y-6 max-w-6xl">
+          <div className="space-y-6 max-w-5xl">
             {/* Benefit 1 - Quick Registration */}
             <div data-testid="card-benefit-registration">
-              <h1 className="text-base md:text-lg font-bold mb-2" style={{ color: '#FED358' }} data-testid="heading-benefit-registration">Quick Registration</h1>
-              <p className="text-[17px] leading-relaxed" style={{ color: '#FDE4BC' }} data-testid="text-benefit-registration">
-                You can complete the registration process in just a few minutes. Simply enter your mobile number, verify OTP, and start playing with instant access to all games.
+              <h1
+                className="text-base md:text-lg font-bold mb-2"
+                style={{ color: "#FED358" }}
+                data-testid="heading-benefit-registration"
+              >
+                Quick Registration
+              </h1>
+              <p
+                className="text-[17px] leading-relaxed"
+                style={{ color: "#FDE4BC" }}
+                data-testid="text-benefit-registration"
+              >
+                You can complete the registration process in just a few minutes.
+                Simply enter your mobile number, verify OTP, and start playing
+                with instant access to all games.
               </p>
             </div>
 
             {/* Benefit 2 - Login Bonus & Rewards */}
             <div data-testid="card-benefit-login-bonus">
-              <h1 className="text-base md:text-lg font-bold mb-2" style={{ color: '#FED358' }} data-testid="heading-benefit-login-bonus">Login Bonus & Rewards</h1>
-              <p className="text-[17px] leading-relaxed" style={{ color: '#FDE4BC' }} data-testid="text-benefit-login-bonus">
-                Get attractive bonuses every time you log in. Enjoy daily check-in bonuses, referral rewards, spin-the-wheel offers, and special festival bonuses throughout the year.
+              <h1
+                className="text-base md:text-lg font-bold mb-2"
+                style={{ color: "#FED358" }}
+                data-testid="heading-benefit-login-bonus"
+              >
+                Login Bonus & Rewards
+              </h1>
+              <p
+                className="text-[17px] leading-relaxed"
+                style={{ color: "#FDE4BC" }}
+                data-testid="text-benefit-login-bonus"
+              >
+                Get attractive bonuses every time you log in. Enjoy daily
+                check-in bonuses, referral rewards, spin-the-wheel offers, and
+                special festival bonuses throughout the year.
               </p>
             </div>
 
             {/* Benefit 3 - Fast & Easy Withdrawals */}
             <div data-testid="card-benefit-withdrawals">
-              <h1 className="text-base md:text-lg font-bold mb-2" style={{ color: '#FED358' }} data-testid="heading-benefit-withdrawals">Fast & Easy Withdrawals</h1>
-              <p className="text-[17px] leading-relaxed" style={{ color: '#FDE4BC' }} data-testid="text-benefit-withdrawals">
-                The platform allows fast and hassle-free withdrawals to your verified account. Get your earnings within minutes to UPI, bank account, or Paytm using trusted Indian gateways.
+              <h1
+                className="text-base md:text-lg font-bold mb-2"
+                style={{ color: "#FED358" }}
+                data-testid="heading-benefit-withdrawals"
+              >
+                Fast & Easy Withdrawals
+              </h1>
+              <p
+                className="text-[17px] leading-relaxed"
+                style={{ color: "#FDE4BC" }}
+                data-testid="text-benefit-withdrawals"
+              >
+                The platform allows fast and hassle-free withdrawals to your
+                verified account. Get your earnings within minutes to UPI, bank
+                account, or Paytm using trusted Indian gateways.
               </p>
             </div>
 
             {/* Benefit 4 - Secure & Encrypted */}
             <div data-testid="card-benefit-security">
-              <h1 className="text-base md:text-lg font-bold mb-2" style={{ color: '#FED358' }} data-testid="heading-benefit-security">Secure Platform</h1>
-              <p className="text-[17px] leading-relaxed" style={{ color: '#FDE4BC' }} data-testid="text-benefit-security">
-                It uses strong data encryption to keep your account and payments safe. Your data is encrypted and all transactions are secure, verified, and protected.
+              <h1
+                className="text-base md:text-lg font-bold mb-2"
+                style={{ color: "#FED358" }}
+                data-testid="heading-benefit-security"
+              >
+                Secure Platform
+              </h1>
+              <p
+                className="text-[17px] leading-relaxed"
+                style={{ color: "#FDE4BC" }}
+                data-testid="text-benefit-security"
+              >
+                It uses strong data encryption to keep your account and payments
+                safe. Your data is encrypted and all transactions are secure,
+                verified, and protected.
               </p>
             </div>
           </div>
@@ -553,69 +688,165 @@ export default function Home() {
       </div>
 
       {/* V3 Game Features Section */}
-      <div className="px-6 md:px-8 lg:px-12 xl:px-16 py-12" data-testid="section-v3-features">
-        <div className="max-w-6xl mx-auto">
-          <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-6" style={{ color: '#FED358' }} data-testid="heading-v3-features">
+      <div
+        className="px-6 md:px-8 lg:px-12 xl:px-16 py-12"
+        data-testid="section-v3-features"
+      >
+        <div className="max-w-5xl mx-auto">
+          <h1
+            className="text-2xl md:text-3xl lg:text-4xl font-bold mb-6"
+            style={{ color: "#FED358" }}
+            data-testid="heading-v3-features"
+          >
             V3 Game Features
           </h1>
-          <p className="text-[17px] max-w-6xl mb-8" style={{ color: '#FDE4BC' }} data-testid="text-v3-features-intro">
-            V3 Game offers exciting features for users who love both entertainment and the opportunity to earn real cash. Here's what makes V3 Game stand out.
+          <p
+            className="text-[17px] max-w-5xl mb-8"
+            style={{ color: "#FDE4BC" }}
+            data-testid="text-v3-features-intro"
+          >
+            V3 Game offers exciting features for users who love both
+            entertainment and the opportunity to earn real cash. Here's what
+            makes V3 Game stand out.
           </p>
 
-          <div className="space-y-6 max-w-6xl">
+          <div className="space-y-6 max-w-5xl">
             {/* Feature 1 - Multiple Category Games */}
             <div data-testid="card-feature-games">
-              <h1 className="text-base md:text-lg font-bold mb-2" style={{ color: '#FED358' }} data-testid="heading-feature-games">Multiple Category Games</h1>
-              <p className="text-[17px] leading-relaxed" style={{ color: '#FDE4BC' }} data-testid="text-feature-games">
-                Get access to a wide variety of games across different categories like casino, sports, slots, and casual games. Whether skill-based or luck-based, there's something for everyone.
+              <h1
+                className="text-base md:text-lg font-bold mb-2"
+                style={{ color: "#FED358" }}
+                data-testid="heading-feature-games"
+              >
+                Multiple Category Games
+              </h1>
+              <p
+                className="text-[17px] leading-relaxed"
+                style={{ color: "#FDE4BC" }}
+                data-testid="text-feature-games"
+              >
+                Get access to a wide variety of games across different
+                categories like casino, sports, slots, and casual games. Whether
+                skill-based or luck-based, there's something for everyone.
               </p>
             </div>
 
             {/* Feature 2 - Real Money Winnings */}
             <div data-testid="card-feature-winnings">
-              <h1 className="text-base md:text-lg font-bold mb-2" style={{ color: '#FED358' }} data-testid="heading-feature-winnings">Real Money Winnings</h1>
-              <p className="text-[17px] leading-relaxed" style={{ color: '#FDE4BC' }} data-testid="text-feature-winnings">
-                Earn real cash by participating in multiple games. Every game you play offers genuine earning potential with transparent and fair gameplay.
+              <h1
+                className="text-base md:text-lg font-bold mb-2"
+                style={{ color: "#FED358" }}
+                data-testid="heading-feature-winnings"
+              >
+                Real Money Winnings
+              </h1>
+              <p
+                className="text-[17px] leading-relaxed"
+                style={{ color: "#FDE4BC" }}
+                data-testid="text-feature-winnings"
+              >
+                Earn real cash by participating in multiple games. Every game
+                you play offers genuine earning potential with transparent and
+                fair gameplay.
               </p>
             </div>
 
             {/* Feature 3 - Daily Bonuses & Offers */}
             <div data-testid="card-feature-bonuses">
-              <h1 className="text-base md:text-lg font-bold mb-2" style={{ color: '#FED358' }} data-testid="heading-feature-bonuses">Daily Bonuses & Offers</h1>
-              <p className="text-[17px] leading-relaxed" style={{ color: '#FDE4BC' }} data-testid="text-feature-bonuses">
-                Get daily login bonuses, referral rewards, and seasonal offers that increase your chances of winning. These bonuses help boost your earnings over time.
+              <h1
+                className="text-base md:text-lg font-bold mb-2"
+                style={{ color: "#FED358" }}
+                data-testid="heading-feature-bonuses"
+              >
+                Daily Bonuses & Offers
+              </h1>
+              <p
+                className="text-[17px] leading-relaxed"
+                style={{ color: "#FDE4BC" }}
+                data-testid="text-feature-bonuses"
+              >
+                Get daily login bonuses, referral rewards, and seasonal offers
+                that increase your chances of winning. These bonuses help boost
+                your earnings over time.
               </p>
             </div>
 
             {/* Feature 4 - Instant Withdrawal System */}
             <div data-testid="card-feature-withdrawal">
-              <h1 className="text-base md:text-lg font-bold mb-2" style={{ color: '#FED358' }} data-testid="heading-feature-withdrawal">Instant Withdrawal System</h1>
-              <p className="text-[17px] leading-relaxed" style={{ color: '#FDE4BC' }} data-testid="text-feature-withdrawal">
-                Easily withdraw your winnings via bank transfer, UPI, or other supported methods. Fast, secure, and available 24/7 with minimum withdrawal limits.
+              <h1
+                className="text-base md:text-lg font-bold mb-2"
+                style={{ color: "#FED358" }}
+                data-testid="heading-feature-withdrawal"
+              >
+                Instant Withdrawal System
+              </h1>
+              <p
+                className="text-[17px] leading-relaxed"
+                style={{ color: "#FDE4BC" }}
+                data-testid="text-feature-withdrawal"
+              >
+                Easily withdraw your winnings via bank transfer, UPI, or other
+                supported methods. Fast, secure, and available 24/7 with minimum
+                withdrawal limits.
               </p>
             </div>
 
             {/* Feature 5 - Referral Program */}
             <div data-testid="card-feature-referral">
-              <h1 className="text-base md:text-lg font-bold mb-2" style={{ color: '#FED358' }} data-testid="heading-feature-referral">Referral Program</h1>
-              <p className="text-[17px] leading-relaxed" style={{ color: '#FDE4BC' }} data-testid="text-feature-referral">
-                Earn extra money by inviting friends to the platform. Share your unique referral code and earn a commission whenever your referrals play.
+              <h1
+                className="text-base md:text-lg font-bold mb-2"
+                style={{ color: "#FED358" }}
+                data-testid="heading-feature-referral"
+              >
+                Referral Program
+              </h1>
+              <p
+                className="text-[17px] leading-relaxed"
+                style={{ color: "#FDE4BC" }}
+                data-testid="text-feature-referral"
+              >
+                Earn extra money by inviting friends to the platform. Share your
+                unique referral code and earn a commission whenever your
+                referrals play.
               </p>
             </div>
 
             {/* Feature 6 - Secure and User-Friendly App */}
             <div data-testid="card-feature-secure">
-              <h1 className="text-base md:text-lg font-bold mb-2" style={{ color: '#FED358' }} data-testid="heading-feature-secure">Secure & User-Friendly App</h1>
-              <p className="text-[17px] leading-relaxed" style={{ color: '#FDE4BC' }} data-testid="text-feature-secure">
-                The V3 app is easy to use with smooth gameplay. It has SSL encryption for safety, ensuring your personal and financial data remains protected.
+              <h1
+                className="text-base md:text-lg font-bold mb-2"
+                style={{ color: "#FED358" }}
+                data-testid="heading-feature-secure"
+              >
+                Secure & User-Friendly App
+              </h1>
+              <p
+                className="text-[17px] leading-relaxed"
+                style={{ color: "#FDE4BC" }}
+                data-testid="text-feature-secure"
+              >
+                The V3 app is easy to use with smooth gameplay. It has SSL
+                encryption for safety, ensuring your personal and financial data
+                remains protected.
               </p>
             </div>
 
             {/* Feature 7 - 24x7 Customer Support */}
             <div data-testid="card-feature-support">
-              <h1 className="text-base md:text-lg font-bold mb-2" style={{ color: '#FED358' }} data-testid="heading-feature-support">24×7 Customer Support</h1>
-              <p className="text-[17px] leading-relaxed" style={{ color: '#FDE4BC' }} data-testid="text-feature-support">
-                Round-the-clock customer support through chat and email ensures a hassle-free experience. We're here whenever you need us.
+              <h1
+                className="text-base md:text-lg font-bold mb-2"
+                style={{ color: "#FED358" }}
+                data-testid="heading-feature-support"
+              >
+                24×7 Customer Support
+              </h1>
+              <p
+                className="text-[17px] leading-relaxed"
+                style={{ color: "#FDE4BC" }}
+                data-testid="text-feature-support"
+              >
+                Round-the-clock customer support through chat and email ensures
+                a hassle-free experience. We're here whenever you need us.
               </p>
             </div>
           </div>
@@ -623,61 +854,138 @@ export default function Home() {
       </div>
 
       {/* How To Register & Login Section */}
-      <div className="px-6 md:px-8 lg:px-12 xl:px-16 py-12" data-testid="section-register-login-guide">
-        <div className="max-w-6xl mx-auto">
-          <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-6" style={{ color: '#FED358' }} data-testid="heading-register-login-guide">
+      <div
+        className="px-6 md:px-8 lg:px-12 xl:px-16 py-12"
+        data-testid="section-register-login-guide"
+      >
+        <div className="max-w-5xl mx-auto">
+          <h1
+            className="text-2xl md:text-3xl lg:text-4xl font-bold mb-6"
+            style={{ color: "#FED358" }}
+            data-testid="heading-register-login-guide"
+          >
             How To Register & Login On V3 Game?
           </h1>
-          <p className="text-[17px] max-w-6xl mb-8" style={{ color: '#FDE4BC' }} data-testid="text-register-login-intro">
-            Getting started with V3 color game is super easy. Whether you're a beginner or a regular gamer looking for a fresh platform to explore, registering and logging into your account takes just a few minutes.
+          <p
+            className="text-[17px] max-w-5xl mb-8"
+            style={{ color: "#FDE4BC" }}
+            data-testid="text-register-login-intro"
+          >
+            Getting started with V3 color game is super easy. Whether you're a
+            beginner or a regular gamer looking for a fresh platform to explore,
+            registering and logging into your account takes just a few minutes.
           </p>
-          <p className="text-[17px] max-w-6xl mb-8" style={{ color: '#FDE4BC' }}>
-            Below is a step-by-step guide to help you register and login seamlessly on V3 Game.
+          <p
+            className="text-[17px] max-w-5xl mb-8"
+            style={{ color: "#FDE4BC" }}
+          >
+            Below is a step-by-step guide to help you register and login
+            seamlessly on V3 Game.
           </p>
 
-          <div className="space-y-8 max-w-6xl">
+          <div className="space-y-8 max-w-5xl">
             {/* Registration Steps */}
             <div data-testid="card-registration-steps">
-              <h2 className="text-xl md:text-2xl font-bold mb-4" style={{ color: '#FED358' }} data-testid="heading-registration-steps">V3 Game Registration Steps:</h2>
+              <h2
+                className="text-xl md:text-2xl font-bold mb-4"
+                style={{ color: "#FED358" }}
+                data-testid="heading-registration-steps"
+              >
+                V3 Game Registration Steps:
+              </h2>
               <div className="space-y-4">
                 <div data-testid="step-1-visit-website">
-                  <h3 className="text-base md:text-lg font-bold mb-2" style={{ color: '#FED358' }}>Visit Our Official Website</h3>
-                  <p className="text-[17px] leading-relaxed" style={{ color: '#FDE4BC' }}>
+                  <h3
+                    className="text-base md:text-lg font-bold mb-2"
+                    style={{ color: "#FED358" }}
+                  >
+                    Visit Our Official Website
+                  </h3>
+                  <p
+                    className="text-[17px] leading-relaxed"
+                    style={{ color: "#FDE4BC" }}
+                  >
                     Open your browser and go to the official V3 Game website.
                   </p>
                 </div>
 
                 <div data-testid="step-2-click-register">
-                  <h3 className="text-base md:text-lg font-bold mb-2" style={{ color: '#FED358' }}>Click the Register Button</h3>
-                  <p className="text-[17px] leading-relaxed" style={{ color: '#FDE4BC' }}>
-                    At the top of the homepage, you'll see a "V3 Game Register" button. Tap it to open the registration form. Or click on register button below.
+                  <h3
+                    className="text-base md:text-lg font-bold mb-2"
+                    style={{ color: "#FED358" }}
+                  >
+                    Click the Register Button
+                  </h3>
+                  <p
+                    className="text-[17px] leading-relaxed"
+                    style={{ color: "#FDE4BC" }}
+                  >
+                    At the top of the homepage, you'll see a "V3 Game Register"
+                    button. Tap it to open the registration form. Or click on
+                    register button below.
                   </p>
                 </div>
 
                 <div data-testid="step-3-enter-mobile">
-                  <h3 className="text-base md:text-lg font-bold mb-2" style={{ color: '#FED358' }}>Enter Your Mobile Number</h3>
-                  <p className="text-[17px] leading-relaxed" style={{ color: '#FDE4BC' }}>
-                    Use a valid mobile number you currently use, as this will be required for login and verification.
+                  <h3
+                    className="text-base md:text-lg font-bold mb-2"
+                    style={{ color: "#FED358" }}
+                  >
+                    Enter Your Mobile Number
+                  </h3>
+                  <p
+                    className="text-[17px] leading-relaxed"
+                    style={{ color: "#FDE4BC" }}
+                  >
+                    Use a valid mobile number you currently use, as this will be
+                    required for login and verification.
                   </p>
                 </div>
 
                 <div data-testid="step-4-set-password">
-                  <h3 className="text-base md:text-lg font-bold mb-2" style={{ color: '#FED358' }}>Set a Secure Password</h3>
-                  <p className="text-[17px] leading-relaxed" style={{ color: '#FDE4BC' }}>
-                    Create a strong password that includes a mix of numbers and alphabets to keep your account protected (It doesn't allows Special Characters so only use Alphabets & Numbers).
+                  <h3
+                    className="text-base md:text-lg font-bold mb-2"
+                    style={{ color: "#FED358" }}
+                  >
+                    Set a Secure Password
+                  </h3>
+                  <p
+                    className="text-[17px] leading-relaxed"
+                    style={{ color: "#FDE4BC" }}
+                  >
+                    Create a strong password that includes a mix of numbers and
+                    alphabets to keep your account protected (It doesn't allows
+                    Special Characters so only use Alphabets & Numbers).
                   </p>
                 </div>
 
                 <div data-testid="step-5-referral-code">
-                  <h3 className="text-base md:text-lg font-bold mb-2" style={{ color: '#FED358' }}>Enter Referral Code</h3>
-                  <p className="text-[17px] leading-relaxed" style={{ color: '#FDE4BC' }}>
-                    Entering Invite Code is must to register on V3 Game. With this you also get 7532630349.
+                  <h3
+                    className="text-base md:text-lg font-bold mb-2"
+                    style={{ color: "#FED358" }}
+                  >
+                    Enter Referral Code
+                  </h3>
+                  <p
+                    className="text-[17px] leading-relaxed"
+                    style={{ color: "#FDE4BC" }}
+                  >
+                    Entering Invite Code is must to register on V3 Game. With
+                    this you also get 7532630349.
                   </p>
                 </div>
 
                 <div data-testid="step-6-submit-verify">
-                  <h3 className="text-base md:text-lg font-bold mb-2" style={{ color: '#FED358' }}>Submit & Verify</h3>
-                  <p className="text-[17px] leading-relaxed" style={{ color: '#FDE4BC' }}>
+                  <h3
+                    className="text-base md:text-lg font-bold mb-2"
+                    style={{ color: "#FED358" }}
+                  >
+                    Submit & Verify
+                  </h3>
+                  <p
+                    className="text-[17px] leading-relaxed"
+                    style={{ color: "#FDE4BC" }}
+                  >
                     Tap on the "Register" button, and complete the process.
                   </p>
                 </div>
@@ -686,32 +994,68 @@ export default function Home() {
 
             {/* Login Steps */}
             <div data-testid="card-login-steps">
-              <h2 className="text-xl md:text-2xl font-bold mb-4" style={{ color: '#FED358' }} data-testid="heading-login-steps">V3 Game Login Steps:</h2>
-              <p className="text-[17px] leading-relaxed mb-4" style={{ color: '#FDE4BC' }}>
+              <h2
+                className="text-xl md:text-2xl font-bold mb-4"
+                style={{ color: "#FED358" }}
+                data-testid="heading-login-steps"
+              >
+                V3 Game Login Steps:
+              </h2>
+              <p
+                className="text-[17px] leading-relaxed mb-4"
+                style={{ color: "#FDE4BC" }}
+              >
                 If you already created an account, you can easily login.
               </p>
               <div className="space-y-4">
                 <div data-testid="login-step-1">
-                  <p className="text-[17px] leading-relaxed" style={{ color: '#FDE4BC' }}>
-                    Go to the v3 Game homepage and click on login button located at the top of website or click on login button below.
+                  <p
+                    className="text-[17px] leading-relaxed"
+                    style={{ color: "#FDE4BC" }}
+                  >
+                    Go to the v3 Game homepage and click on login button located
+                    at the top of website or click on login button below.
                   </p>
                 </div>
 
                 <div data-testid="login-step-2">
-                  <p className="text-[17px] leading-relaxed" style={{ color: '#FDE4BC' }}>
-                    Enter your registered mobile number and the password you created during registration.
+                  <p
+                    className="text-[17px] leading-relaxed"
+                    style={{ color: "#FDE4BC" }}
+                  >
+                    Enter your registered mobile number and the password you
+                    created during registration.
                   </p>
                 </div>
 
                 <div data-testid="login-step-3">
-                  <p className="text-[17px] leading-relaxed" style={{ color: '#FDE4BC' }}>
-                    Tap on Login and wait for the page to load. You'll be redirected to your user dashboard.
+                  <p
+                    className="text-[17px] leading-relaxed"
+                    style={{ color: "#FDE4BC" }}
+                  >
+                    Tap on Login and wait for the page to load. You'll be
+                    redirected to your user dashboard.
                   </p>
                 </div>
 
-                <div data-testid="login-forgot-password" className="p-4 rounded-lg" style={{ background: 'rgba(254, 211, 88, 0.1)', border: '1px solid rgba(254, 211, 88, 0.2)' }}>
-                  <p className="text-[17px] leading-relaxed" style={{ color: '#FDE4BC' }}>
-                    <span style={{ color: '#FED358', fontWeight: 'bold' }}>Note:</span> If you Forgot the password just click on the "Forgot Password" option below the login button and follow the instructions to reset it via OTP verification.
+                <div
+                  data-testid="login-forgot-password"
+                  className="p-4 rounded-lg"
+                  style={{
+                    background: "rgba(254, 211, 88, 0.1)",
+                    border: "1px solid rgba(254, 211, 88, 0.2)",
+                  }}
+                >
+                  <p
+                    className="text-[17px] leading-relaxed"
+                    style={{ color: "#FDE4BC" }}
+                  >
+                    <span style={{ color: "#FED358", fontWeight: "bold" }}>
+                      Note:
+                    </span>{" "}
+                    If you Forgot the password just click on the "Forgot
+                    Password" option below the login button and follow the
+                    instructions to reset it via OTP verification.
                   </p>
                 </div>
               </div>
@@ -721,56 +1065,95 @@ export default function Home() {
       </div>
 
       {/* Responsible Gaming Section */}
-      <div className="px-6 md:px-8 lg:px-12 xl:px-16 py-12" data-testid="section-responsible-gaming">
-        <div className="max-w-6xl mx-auto">
-          <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-6" style={{ color: '#FED358' }} data-testid="heading-responsible-gaming">
+      <div
+        className="px-6 md:px-8 lg:px-12 xl:px-16 py-12"
+        data-testid="section-responsible-gaming"
+      >
+        <div className="max-w-5xl mx-auto">
+          <h1
+            className="text-2xl md:text-3xl lg:text-4xl font-bold mb-6"
+            style={{ color: "#FED358" }}
+            data-testid="heading-responsible-gaming"
+          >
             Responsible Gaming at V3 Game
           </h1>
-          <div className="space-y-4 max-w-6xl" style={{ color: '#FDE4BC' }} data-testid="text-responsible-gaming">
+          <div
+            className="space-y-4 max-w-5xl"
+            style={{ color: "#FDE4BC" }}
+            data-testid="text-responsible-gaming"
+          >
             <p className="text-[17px] leading-relaxed">
-              We are committed to promoting a safe and enjoyable gaming environment. Our platform is designed for entertainment purposes, and we strongly encourage all users to play responsibly.
+              We are committed to promoting a safe and enjoyable gaming
+              environment. Our platform is designed for entertainment purposes,
+              and we strongly encourage all users to play responsibly.
             </p>
             <p className="text-[17px] leading-relaxed">
-              Always set limits, stay in control, and never chase losses. If you feel that your gaming habits are affecting your personal life, finances, or relationships, it may be time to take a break or seek help.
+              Always set limits, stay in control, and never chase losses. If you
+              feel that your gaming habits are affecting your personal life,
+              finances, or relationships, it may be time to take a break or seek
+              help.
             </p>
             <p className="text-[17px] leading-relaxed">
-              We also discourage underage users from accessing our platform and strictly prohibit anyone below the legal age from registering or playing.
+              We also discourage underage users from accessing our platform and
+              strictly prohibit anyone below the legal age from registering or
+              playing.
             </p>
-            <p className="text-[17px] leading-relaxed font-semibold" style={{ color: '#FED358' }}>
-              Read our full Responsible Gaming policy for tips, self-assessment tools, and support resources.
+            <p
+              className="text-[17px] leading-relaxed font-semibold"
+              style={{ color: "#FED358" }}
+            >
+              Read our full Responsible Gaming policy for tips, self-assessment
+              tools, and support resources.
             </p>
           </div>
         </div>
       </div>
 
       {/* Blog Section */}
-      <div className="px-6 md:px-8 lg:px-12 xl:px-16 py-12" style={{ background: 'linear-gradient(180deg, #0a1628 0%, #1a1a2e 100%)' }}>
-        <div className="max-w-6xl mx-auto">
+      <div
+        className="px-6 md:px-8 lg:px-12 xl:px-16 py-12"
+        style={{
+          background: "linear-gradient(180deg, #0a1628 0%, #1a1a2e 100%)",
+        }}
+      >
+        <div className="max-w-5xl mx-auto">
           <div className="text-center mb-10">
-            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-3" style={{ color: '#FED358' }}>
+            <h2
+              className="text-2xl md:text-3xl lg:text-4xl font-bold mb-3"
+              style={{ color: "#FED358" }}
+            >
               V3 Game Guides & Resources
             </h2>
-            <p className="text-[17px]" style={{ color: '#FDE4BC' }}>
-              Learn V3 Game login, hack tips, predictions, and winning strategies
+            <p className="text-[17px]" style={{ color: "#FDE4BC" }}>
+              Learn V3 Game login, hack tips, predictions, and winning
+              strategies
             </p>
-            <p className="text-[17px] mt-3" style={{ color: 'rgba(253, 228, 188, 0.7)' }}>
-              <Link href="/blog" className="font-bold hover:underline" style={{ color: '#FED358' }} data-testid="link-view-all-guides">
+            <p
+              className="text-[17px] mt-3"
+              style={{ color: "rgba(253, 228, 188, 0.7)" }}
+            >
+              <Link
+                href="/blog"
+                className="font-bold hover:underline"
+                style={{ color: "#FED358" }}
+                data-testid="link-view-all-guides"
+              >
                 View All Guides & Tips →
               </Link>
             </p>
           </div>
-          
+
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {blogArticles.map((article) => (
-              <Link 
+              <Link
                 key={article.id}
                 href={`/${article.slug}`}
                 className="bg-white rounded-2xl overflow-hidden shadow-lg cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-xl block"
                 data-testid={`card-blog-${article.id}`}
               >
                 <div className="aspect-video overflow-hidden">
-                  <img 
-                    src={article.image} 
+                  <img
+                    src={article.image}
                     alt={article.title}
                     loading="lazy"
                     decoding="async"
@@ -784,9 +1167,13 @@ export default function Home() {
                   <p className="text-gray-500 text-xs md:text-sm line-clamp-2">
                     {article.excerpt}
                   </p>
-                  <span 
+                  <span
                     className="mt-3 text-xs font-semibold px-4 py-1.5 rounded-full transition-all duration-200 inline-block"
-                    style={{ background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)', color: '#fff' }}
+                    style={{
+                      background:
+                        "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+                      color: "#fff",
+                    }}
                   >
                     Read More
                   </span>
@@ -801,9 +1188,9 @@ export default function Home() {
       <Footer />
 
       {/* Floating Telegram Button */}
-      <a 
-        href="https://t.me/Earn_With_Milind_77" 
-        target="_blank" 
+      <a
+        href="https://t.me/Earn_With_Milind_77"
+        target="_blank"
         rel="noopener noreferrer"
         className="fixed bottom-20 right-6 w-14 h-14 bg-blue-500 hover:bg-blue-600 rounded-full hidden md:flex items-center justify-center shadow-lg transition-all duration-300 z-50 hover:scale-110"
       >
@@ -819,53 +1206,147 @@ export default function Home() {
       {/* Proof Dialog */}
       {showProofDialog && (
         <div className="fixed inset-0 bg-black bg-opacity-60 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <div className="rounded-3xl max-w-lg w-full max-h-[70vh] overflow-y-auto shadow-2xl border-2" style={{ backgroundColor: 'rgb(56, 46, 53)', border: '2px solid #FED358' }}>
+          <div
+            className="rounded-3xl max-w-lg w-full max-h-[70vh] overflow-y-auto shadow-2xl border-2"
+            style={{
+              backgroundColor: "rgb(56, 46, 53)",
+              border: "2px solid #FED358",
+            }}
+          >
             <div className="p-8">
               <div className="flex justify-between items-center mb-8">
-                <h2 className="text-3xl font-bold" style={{ color: '#FED358' }}>System Proof - Live Results</h2>
+                <h2 className="text-3xl font-bold" style={{ color: "#FED358" }}>
+                  System Proof - Live Results
+                </h2>
                 <button
                   onClick={() => setShowProofDialog(false)}
                   className="text-2xl font-bold rounded-full w-8 h-8 flex items-center justify-center transition-all duration-200"
-                  style={{ color: '#FDE4BC', backgroundColor: 'rgba(254, 211, 88, 0.2)' }}
-                  onMouseEnter={(e) => (e.target as HTMLButtonElement).style.backgroundColor = 'rgba(254, 211, 88, 0.4)'}
-                  onMouseLeave={(e) => (e.target as HTMLButtonElement).style.backgroundColor = 'rgba(254, 211, 88, 0.2)'}
+                  style={{
+                    color: "#FDE4BC",
+                    backgroundColor: "rgba(254, 211, 88, 0.2)",
+                  }}
+                  onMouseEnter={(e) =>
+                    ((e.target as HTMLButtonElement).style.backgroundColor =
+                      "rgba(254, 211, 88, 0.4)")
+                  }
+                  onMouseLeave={(e) =>
+                    ((e.target as HTMLButtonElement).style.backgroundColor =
+                      "rgba(254, 211, 88, 0.2)")
+                  }
                 >
                   ×
                 </button>
               </div>
-              
+
               <div className="space-y-8">
                 <div>
-                  <h3 className="text-xl font-bold mb-4 flex items-center" style={{ color: '#FED358' }}>
-                    <span className="w-2 h-6 rounded-full mr-3" style={{ backgroundColor: '#2ECC71' }}></span>
+                  <h3
+                    className="text-xl font-bold mb-4 flex items-center"
+                    style={{ color: "#FED358" }}
+                  >
+                    <span
+                      className="w-2 h-6 rounded-full mr-3"
+                      style={{ backgroundColor: "#2ECC71" }}
+                    ></span>
                     Live Prediction Interface
                   </h3>
-                  <div className="rounded-2xl p-6" style={{ backgroundColor: 'rgba(254, 211, 88, 0.1)', border: '1px solid rgba(254, 211, 88, 0.3)' }}>
-                    <img 
-                      src={liveInterfaceImage} 
-                      alt="Live Wingo prediction interface with game tabs, period timer, VIP prediction and live players" 
+                  <div
+                    className="rounded-2xl p-6"
+                    style={{
+                      backgroundColor: "rgba(254, 211, 88, 0.1)",
+                      border: "1px solid rgba(254, 211, 88, 0.3)",
+                    }}
+                  >
+                    <img
+                      src={liveInterfaceImage}
+                      alt="Live Wingo prediction interface with game tabs, period timer, VIP prediction and live players"
                       loading="lazy"
                       decoding="async"
                       className="w-full mx-auto rounded-xl shadow-2xl border-2"
-                      style={{ borderColor: '#FED358' }}
+                      style={{ borderColor: "#FED358" }}
                     />
                   </div>
                 </div>
 
-                <div className="rounded-2xl p-6" style={{ backgroundColor: 'rgba(46, 204, 113, 0.2)', border: '1px solid rgba(46, 204, 113, 0.4)' }}>
-                  <h4 className="font-bold text-lg mb-4 flex items-center" style={{ color: '#2ECC71' }}>
-                    <span className="w-6 h-6 rounded-full flex items-center justify-center text-white text-sm mr-3" style={{ backgroundColor: '#2ECC71' }}>✓</span>
+                <div
+                  className="rounded-2xl p-6"
+                  style={{
+                    backgroundColor: "rgba(46, 204, 113, 0.2)",
+                    border: "1px solid rgba(46, 204, 113, 0.4)",
+                  }}
+                >
+                  <h4
+                    className="font-bold text-lg mb-4 flex items-center"
+                    style={{ color: "#2ECC71" }}
+                  >
+                    <span
+                      className="w-6 h-6 rounded-full flex items-center justify-center text-white text-sm mr-3"
+                      style={{ backgroundColor: "#2ECC71" }}
+                    >
+                      ✓
+                    </span>
                     Verified Features
                   </h4>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm" style={{ color: '#FDE4BC' }}>
-                    <div className="flex items-center"><span className="w-2 h-2 rounded-full mr-2" style={{ backgroundColor: '#2ECC71' }}></span>Truly balanced predictions</div>
-                    <div className="flex items-center"><span className="w-2 h-2 rounded-full mr-2" style={{ backgroundColor: '#2ECC71' }}></span>Live API integration</div>
-                    <div className="flex items-center"><span className="w-2 h-2 rounded-full mr-2" style={{ backgroundColor: '#2ECC71' }}></span>Real-time countdown timers</div>
-                    <div className="flex items-center"><span className="w-2 h-2 rounded-full mr-2" style={{ backgroundColor: '#2ECC71' }}></span>Authentic period numbers</div>
-                    <div className="flex items-center"><span className="w-2 h-2 rounded-full mr-2" style={{ backgroundColor: '#2ECC71' }}></span>User registration system</div>
-                    <div className="flex items-center"><span className="w-2 h-2 rounded-full mr-2" style={{ backgroundColor: '#2ECC71' }}></span>Admin panel controls</div>
-                    <div className="flex items-center"><span className="w-2 h-2 rounded-full mr-2" style={{ backgroundColor: '#2ECC71' }}></span>Results & rewards tracking</div>
-                    <div className="flex items-center"><span className="w-2 h-2 rounded-full mr-2" style={{ backgroundColor: '#2ECC71' }}></span>Multi-variant support</div>
+                  <div
+                    className="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm"
+                    style={{ color: "#FDE4BC" }}
+                  >
+                    <div className="flex items-center">
+                      <span
+                        className="w-2 h-2 rounded-full mr-2"
+                        style={{ backgroundColor: "#2ECC71" }}
+                      ></span>
+                      Truly balanced predictions
+                    </div>
+                    <div className="flex items-center">
+                      <span
+                        className="w-2 h-2 rounded-full mr-2"
+                        style={{ backgroundColor: "#2ECC71" }}
+                      ></span>
+                      Live API integration
+                    </div>
+                    <div className="flex items-center">
+                      <span
+                        className="w-2 h-2 rounded-full mr-2"
+                        style={{ backgroundColor: "#2ECC71" }}
+                      ></span>
+                      Real-time countdown timers
+                    </div>
+                    <div className="flex items-center">
+                      <span
+                        className="w-2 h-2 rounded-full mr-2"
+                        style={{ backgroundColor: "#2ECC71" }}
+                      ></span>
+                      Authentic period numbers
+                    </div>
+                    <div className="flex items-center">
+                      <span
+                        className="w-2 h-2 rounded-full mr-2"
+                        style={{ backgroundColor: "#2ECC71" }}
+                      ></span>
+                      User registration system
+                    </div>
+                    <div className="flex items-center">
+                      <span
+                        className="w-2 h-2 rounded-full mr-2"
+                        style={{ backgroundColor: "#2ECC71" }}
+                      ></span>
+                      Admin panel controls
+                    </div>
+                    <div className="flex items-center">
+                      <span
+                        className="w-2 h-2 rounded-full mr-2"
+                        style={{ backgroundColor: "#2ECC71" }}
+                      ></span>
+                      Results & rewards tracking
+                    </div>
+                    <div className="flex items-center">
+                      <span
+                        className="w-2 h-2 rounded-full mr-2"
+                        style={{ backgroundColor: "#2ECC71" }}
+                      ></span>
+                      Multi-variant support
+                    </div>
                   </div>
                 </div>
               </div>
@@ -877,84 +1358,189 @@ export default function Home() {
       {/* Demo Dialog */}
       {showDemoDialog && (
         <div className="fixed inset-0 bg-black bg-opacity-60 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <div className="rounded-3xl max-w-lg w-full max-h-[70vh] overflow-y-auto shadow-2xl border-2" style={{ backgroundColor: '#231C21', border: '2px solid #FED358' }}>
+          <div
+            className="rounded-3xl max-w-lg w-full max-h-[70vh] overflow-y-auto shadow-2xl border-2"
+            style={{ backgroundColor: "#231C21", border: "2px solid #FED358" }}
+          >
             <div className="p-8">
               <div className="flex justify-between items-center mb-8">
-                <h2 className="text-3xl font-bold" style={{ color: '#FED358' }}>Demo - How It Works</h2>
+                <h2 className="text-3xl font-bold" style={{ color: "#FED358" }}>
+                  Demo - How It Works
+                </h2>
                 <button
                   onClick={() => setShowDemoDialog(false)}
                   className="text-2xl font-bold rounded-full w-8 h-8 flex items-center justify-center transition-all duration-200"
-                  style={{ color: '#FDE4BC', backgroundColor: 'rgba(254, 211, 88, 0.2)' }}
-                  onMouseEnter={(e) => (e.target as HTMLButtonElement).style.backgroundColor = 'rgba(254, 211, 88, 0.4)'}
-                  onMouseLeave={(e) => (e.target as HTMLButtonElement).style.backgroundColor = 'rgba(254, 211, 88, 0.2)'}
+                  style={{
+                    color: "#FDE4BC",
+                    backgroundColor: "rgba(254, 211, 88, 0.2)",
+                  }}
+                  onMouseEnter={(e) =>
+                    ((e.target as HTMLButtonElement).style.backgroundColor =
+                      "rgba(254, 211, 88, 0.4)")
+                  }
+                  onMouseLeave={(e) =>
+                    ((e.target as HTMLButtonElement).style.backgroundColor =
+                      "rgba(254, 211, 88, 0.2)")
+                  }
                 >
                   ×
                 </button>
               </div>
-              
+
               <div className="space-y-8">
                 <div>
-                  <h3 className="text-xl font-bold mb-4 flex items-center" style={{ color: '#FED358' }}>
-                    <span className="w-8 h-8 rounded-full flex items-center justify-center text-black font-bold text-sm mr-3" style={{ backgroundColor: '#FED358' }}>1</span>
+                  <h3
+                    className="text-xl font-bold mb-4 flex items-center"
+                    style={{ color: "#FED358" }}
+                  >
+                    <span
+                      className="w-8 h-8 rounded-full flex items-center justify-center text-black font-bold text-sm mr-3"
+                      style={{ backgroundColor: "#FED358" }}
+                    >
+                      1
+                    </span>
                     Choose Game Variant
                   </h3>
-                  <div className="rounded-2xl p-6" style={{ backgroundColor: 'rgba(254, 211, 88, 0.1)', border: '1px solid rgba(254, 211, 88, 0.3)' }}>
-                    <img 
-                      src={demoImage1} 
-                      alt="Wingo game variants - 30Sec, 1Min, 3Min, 5Min selection tabs" 
+                  <div
+                    className="rounded-2xl p-6"
+                    style={{
+                      backgroundColor: "rgba(254, 211, 88, 0.1)",
+                      border: "1px solid rgba(254, 211, 88, 0.3)",
+                    }}
+                  >
+                    <img
+                      src={demoImage1}
+                      alt="Wingo game variants - 30Sec, 1Min, 3Min, 5Min selection tabs"
                       loading="lazy"
                       decoding="async"
-                      className="w-full mx-auto rounded-xl shadow-2xl border-2" 
-                      style={{ borderColor: '#FED358' }}
+                      className="w-full mx-auto rounded-xl shadow-2xl border-2"
+                      style={{ borderColor: "#FED358" }}
                     />
                   </div>
                 </div>
-                
+
                 <div>
-                  <h3 className="text-xl font-bold mb-4 flex items-center" style={{ color: '#FED358' }}>
-                    <span className="w-8 h-8 rounded-full flex items-center justify-center text-black font-bold text-sm mr-3" style={{ backgroundColor: '#FED358' }}>2</span>
+                  <h3
+                    className="text-xl font-bold mb-4 flex items-center"
+                    style={{ color: "#FED358" }}
+                  >
+                    <span
+                      className="w-8 h-8 rounded-full flex items-center justify-center text-black font-bold text-sm mr-3"
+                      style={{ backgroundColor: "#FED358" }}
+                    >
+                      2
+                    </span>
                     View Period & Timer
                   </h3>
-                  <div className="rounded-2xl p-6" style={{ backgroundColor: 'rgba(254, 211, 88, 0.1)', border: '1px solid rgba(254, 211, 88, 0.3)' }}>
-                    <img 
-                      src={demoImage2} 
-                      alt="Wingo 30Sec period 2050831208Z with Time Remaining 00:26" 
+                  <div
+                    className="rounded-2xl p-6"
+                    style={{
+                      backgroundColor: "rgba(254, 211, 88, 0.1)",
+                      border: "1px solid rgba(254, 211, 88, 0.3)",
+                    }}
+                  >
+                    <img
+                      src={demoImage2}
+                      alt="Wingo 30Sec period 2050831208Z with Time Remaining 00:26"
                       loading="lazy"
                       decoding="async"
                       className="w-full mx-auto rounded-xl shadow-2xl border-2"
-                      style={{ borderColor: '#FED358' }}
+                      style={{ borderColor: "#FED358" }}
                     />
                   </div>
                 </div>
 
                 <div>
-                  <h3 className="text-xl font-bold mb-4 flex items-center" style={{ color: '#FED358' }}>
-                    <span className="w-8 h-8 rounded-full flex items-center justify-center text-black font-bold text-sm mr-3" style={{ backgroundColor: '#FED358' }}>3</span>
+                  <h3
+                    className="text-xl font-bold mb-4 flex items-center"
+                    style={{ color: "#FED358" }}
+                  >
+                    <span
+                      className="w-8 h-8 rounded-full flex items-center justify-center text-black font-bold text-sm mr-3"
+                      style={{ backgroundColor: "#FED358" }}
+                    >
+                      3
+                    </span>
                     Get VIP Prediction
                   </h3>
-                  <div className="rounded-2xl p-6" style={{ backgroundColor: 'rgba(254, 211, 88, 0.1)', border: '1px solid rgba(254, 211, 88, 0.3)' }}>
-                    <img 
-                      src={demoImage3} 
-                      alt="VIP Prediction - Color Green, Size BIG, Number 8" 
+                  <div
+                    className="rounded-2xl p-6"
+                    style={{
+                      backgroundColor: "rgba(254, 211, 88, 0.1)",
+                      border: "1px solid rgba(254, 211, 88, 0.3)",
+                    }}
+                  >
+                    <img
+                      src={demoImage3}
+                      alt="VIP Prediction - Color Green, Size BIG, Number 8"
                       loading="lazy"
                       decoding="async"
                       className="w-full mx-auto rounded-xl shadow-2xl border-2"
-                      style={{ borderColor: '#FED358' }}
+                      style={{ borderColor: "#FED358" }}
                     />
                   </div>
                 </div>
 
                 <div>
-                  <h3 className="text-xl font-bold mb-4 flex items-center" style={{ color: '#FED358' }}>
-                    <span className="w-8 h-8 rounded-full flex items-center justify-center text-black font-bold text-sm mr-3" style={{ backgroundColor: '#FED358' }}>4</span>
+                  <h3
+                    className="text-xl font-bold mb-4 flex items-center"
+                    style={{ color: "#FED358" }}
+                  >
+                    <span
+                      className="w-8 h-8 rounded-full flex items-center justify-center text-black font-bold text-sm mr-3"
+                      style={{ backgroundColor: "#FED358" }}
+                    >
+                      4
+                    </span>
                     How to Get Started
                   </h3>
-                  <div className="rounded-2xl p-6" style={{ backgroundColor: 'rgba(254, 211, 88, 0.1)', border: '1px solid rgba(254, 211, 88, 0.3)' }}>
-                    <div className="text-sm space-y-3" style={{ color: '#FDE4BC' }}>
-                      <div className="flex items-center"><span className="w-6 h-6 rounded-full flex items-center justify-center text-black text-xs mr-3" style={{ backgroundColor: '#FED358' }}>1</span>Click on any game card</div>
-                      <div className="flex items-center"><span className="w-6 h-6 rounded-full flex items-center justify-center text-black text-xs mr-3" style={{ backgroundColor: '#FED358' }}>2</span>Register with your UID</div>
-                      <div className="flex items-center"><span className="w-6 h-6 rounded-full flex items-center justify-center text-black text-xs mr-3" style={{ backgroundColor: '#FED358' }}>3</span>Wait for admin approval</div>
-                      <div className="flex items-center"><span className="w-6 h-6 rounded-full flex items-center justify-center text-black text-xs mr-3" style={{ backgroundColor: '#FED358' }}>4</span>Access VIP predictions</div>
+                  <div
+                    className="rounded-2xl p-6"
+                    style={{
+                      backgroundColor: "rgba(254, 211, 88, 0.1)",
+                      border: "1px solid rgba(254, 211, 88, 0.3)",
+                    }}
+                  >
+                    <div
+                      className="text-sm space-y-3"
+                      style={{ color: "#FDE4BC" }}
+                    >
+                      <div className="flex items-center">
+                        <span
+                          className="w-6 h-6 rounded-full flex items-center justify-center text-black text-xs mr-3"
+                          style={{ backgroundColor: "#FED358" }}
+                        >
+                          1
+                        </span>
+                        Click on any game card
+                      </div>
+                      <div className="flex items-center">
+                        <span
+                          className="w-6 h-6 rounded-full flex items-center justify-center text-black text-xs mr-3"
+                          style={{ backgroundColor: "#FED358" }}
+                        >
+                          2
+                        </span>
+                        Register with your UID
+                      </div>
+                      <div className="flex items-center">
+                        <span
+                          className="w-6 h-6 rounded-full flex items-center justify-center text-black text-xs mr-3"
+                          style={{ backgroundColor: "#FED358" }}
+                        >
+                          3
+                        </span>
+                        Wait for admin approval
+                      </div>
+                      <div className="flex items-center">
+                        <span
+                          className="w-6 h-6 rounded-full flex items-center justify-center text-black text-xs mr-3"
+                          style={{ backgroundColor: "#FED358" }}
+                        >
+                          4
+                        </span>
+                        Access VIP predictions
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -964,18 +1550,36 @@ export default function Home() {
         </div>
       )}
 
-
       {/* Disclaimer Dialog - Modern Design */}
       {showDisclaimerDialog && (
         <div className="fixed inset-0 bg-black/70 backdrop-blur-md z-50 flex items-center justify-center p-4">
-          <div className="rounded-3xl max-w-2xl w-full max-h-[85vh] overflow-hidden shadow-2xl" style={{ background: 'linear-gradient(145deg, #1a1520 0%, #0d0a12 100%)' }}>
+          <div
+            className="rounded-3xl max-w-2xl w-full max-h-[85vh] overflow-hidden shadow-2xl"
+            style={{
+              background: "linear-gradient(145deg, #1a1520 0%, #0d0a12 100%)",
+            }}
+          >
             {/* Hero Section */}
-            <div className="relative h-40 overflow-hidden" style={{ background: 'linear-gradient(135deg, #FFA500 0%, #FF6B35 50%, #E74C3C 100%)' }}>
-              <div className="absolute inset-0" style={{ background: 'radial-gradient(circle at 70% 50%, rgba(255,255,255,0.2) 0%, transparent 50%)' }}></div>
+            <div
+              className="relative h-40 overflow-hidden"
+              style={{
+                background:
+                  "linear-gradient(135deg, #FFA500 0%, #FF6B35 50%, #E74C3C 100%)",
+              }}
+            >
+              <div
+                className="absolute inset-0"
+                style={{
+                  background:
+                    "radial-gradient(circle at 70% 50%, rgba(255,255,255,0.2) 0%, transparent 50%)",
+                }}
+              ></div>
               <div className="absolute inset-0 flex items-center justify-center">
                 <div className="text-center">
                   <div className="text-6xl mb-2">⚖️</div>
-                  <h2 className="text-3xl font-black text-black tracking-tight">Legal Disclaimer</h2>
+                  <h2 className="text-3xl font-black text-black tracking-tight">
+                    Legal Disclaimer
+                  </h2>
                 </div>
               </div>
               <button
@@ -986,19 +1590,41 @@ export default function Home() {
                 ×
               </button>
             </div>
-            
+
             {/* Content */}
             <div className="p-8 overflow-y-auto max-h-[calc(85vh-10rem)]">
               {/* Important Notice Banner */}
-              <div className="relative mb-6 p-5 rounded-2xl overflow-hidden" style={{ background: 'linear-gradient(135deg, rgba(255,165,0,0.2) 0%, rgba(255,107,53,0.15) 100%)', borderLeft: '4px solid #FFA500' }}>
+              <div
+                className="relative mb-6 p-5 rounded-2xl overflow-hidden"
+                style={{
+                  background:
+                    "linear-gradient(135deg, rgba(255,165,0,0.2) 0%, rgba(255,107,53,0.15) 100%)",
+                  borderLeft: "4px solid #FFA500",
+                }}
+              >
                 <div className="flex items-start">
-                  <div className="w-12 h-12 rounded-full flex items-center justify-center mr-4 flex-shrink-0" style={{ background: 'linear-gradient(135deg, #FFA500, #FF6B35)' }}>
+                  <div
+                    className="w-12 h-12 rounded-full flex items-center justify-center mr-4 flex-shrink-0"
+                    style={{
+                      background: "linear-gradient(135deg, #FFA500, #FF6B35)",
+                    }}
+                  >
                     <span className="text-2xl">⚠️</span>
                   </div>
                   <div>
-                    <h4 className="font-bold text-lg mb-2" style={{ color: '#FFA500' }}>Important Notice</h4>
-                    <p className="text-sm leading-relaxed" style={{ color: '#FDE4BC' }}>
-                      Our VIP App provides predictions based on statistical analysis and past lottery results. These predictions serve as a guide only.
+                    <h4
+                      className="font-bold text-lg mb-2"
+                      style={{ color: "#FFA500" }}
+                    >
+                      Important Notice
+                    </h4>
+                    <p
+                      className="text-sm leading-relaxed"
+                      style={{ color: "#FDE4BC" }}
+                    >
+                      Our VIP App provides predictions based on statistical
+                      analysis and past lottery results. These predictions serve
+                      as a guide only.
                     </p>
                   </div>
                 </div>
@@ -1006,43 +1632,103 @@ export default function Home() {
 
               {/* Disclaimer Points */}
               <div className="space-y-4 mb-6">
-                <div className="p-5 rounded-2xl" style={{ background: 'rgba(231,76,60,0.1)', borderLeft: '4px solid #E74C3C' }}>
+                <div
+                  className="p-5 rounded-2xl"
+                  style={{
+                    background: "rgba(231,76,60,0.1)",
+                    borderLeft: "4px solid #E74C3C",
+                  }}
+                >
                   <div className="flex items-start">
-                    <div className="w-10 h-10 rounded-full flex items-center justify-center mr-4 flex-shrink-0" style={{ background: 'linear-gradient(135deg, #E74C3C, #C0392B)' }}>
+                    <div
+                      className="w-10 h-10 rounded-full flex items-center justify-center mr-4 flex-shrink-0"
+                      style={{
+                        background: "linear-gradient(135deg, #E74C3C, #C0392B)",
+                      }}
+                    >
                       <span className="text-white text-lg">🎲</span>
                     </div>
                     <div>
-                      <h4 className="font-bold text-base mb-2" style={{ color: '#E74C3C' }}>Risk Notice</h4>
-                      <p className="text-sm leading-relaxed" style={{ color: '#FDE4BC' }}>
-                        Participation in lottery games involves risk. Play responsibly and within your financial limits.
+                      <h4
+                        className="font-bold text-base mb-2"
+                        style={{ color: "#E74C3C" }}
+                      >
+                        Risk Notice
+                      </h4>
+                      <p
+                        className="text-sm leading-relaxed"
+                        style={{ color: "#FDE4BC" }}
+                      >
+                        Participation in lottery games involves risk. Play
+                        responsibly and within your financial limits.
                       </p>
                     </div>
                   </div>
                 </div>
 
-                <div className="p-5 rounded-2xl" style={{ background: 'rgba(52,152,219,0.1)', borderLeft: '4px solid #3498DB' }}>
+                <div
+                  className="p-5 rounded-2xl"
+                  style={{
+                    background: "rgba(52,152,219,0.1)",
+                    borderLeft: "4px solid #3498DB",
+                  }}
+                >
                   <div className="flex items-start">
-                    <div className="w-10 h-10 rounded-full flex items-center justify-center mr-4 flex-shrink-0" style={{ background: 'linear-gradient(135deg, #3498DB, #2980B9)' }}>
+                    <div
+                      className="w-10 h-10 rounded-full flex items-center justify-center mr-4 flex-shrink-0"
+                      style={{
+                        background: "linear-gradient(135deg, #3498DB, #2980B9)",
+                      }}
+                    >
                       <span className="text-white text-lg">🛡️</span>
                     </div>
                     <div>
-                      <h4 className="font-bold text-base mb-2" style={{ color: '#3498DB' }}>Platform Disclaimer</h4>
-                      <p className="text-sm leading-relaxed" style={{ color: '#FDE4BC' }}>
-                        We are not responsible if third-party platforms shut down or experience issues.
+                      <h4
+                        className="font-bold text-base mb-2"
+                        style={{ color: "#3498DB" }}
+                      >
+                        Platform Disclaimer
+                      </h4>
+                      <p
+                        className="text-sm leading-relaxed"
+                        style={{ color: "#FDE4BC" }}
+                      >
+                        We are not responsible if third-party platforms shut
+                        down or experience issues.
                       </p>
                     </div>
                   </div>
                 </div>
 
-                <div className="p-5 rounded-2xl" style={{ background: 'rgba(155,89,182,0.1)', borderLeft: '4px solid #9B59B6' }}>
+                <div
+                  className="p-5 rounded-2xl"
+                  style={{
+                    background: "rgba(155,89,182,0.1)",
+                    borderLeft: "4px solid #9B59B6",
+                  }}
+                >
                   <div className="flex items-start">
-                    <div className="w-10 h-10 rounded-full flex items-center justify-center mr-4 flex-shrink-0" style={{ background: 'linear-gradient(135deg, #9B59B6, #8E44AD)' }}>
+                    <div
+                      className="w-10 h-10 rounded-full flex items-center justify-center mr-4 flex-shrink-0"
+                      style={{
+                        background: "linear-gradient(135deg, #9B59B6, #8E44AD)",
+                      }}
+                    >
                       <span className="text-white text-lg">📋</span>
                     </div>
                     <div>
-                      <h4 className="font-bold text-base mb-2" style={{ color: '#9B59B6' }}>User Responsibility</h4>
-                      <p className="text-sm leading-relaxed" style={{ color: '#FDE4BC' }}>
-                        By using our services, you acknowledge the risks and accept responsibility for your decisions.
+                      <h4
+                        className="font-bold text-base mb-2"
+                        style={{ color: "#9B59B6" }}
+                      >
+                        User Responsibility
+                      </h4>
+                      <p
+                        className="text-sm leading-relaxed"
+                        style={{ color: "#FDE4BC" }}
+                      >
+                        By using our services, you acknowledge the risks and
+                        accept responsibility for your decisions.
                       </p>
                     </div>
                   </div>
@@ -1050,24 +1736,46 @@ export default function Home() {
               </div>
 
               {/* Remember Box */}
-              <div className="relative mb-6 p-5 rounded-2xl overflow-hidden" style={{ background: 'linear-gradient(135deg, rgba(46,204,113,0.15) 0%, rgba(39,174,96,0.1) 100%)', border: '1px solid rgba(46,204,113,0.3)' }}>
+              <div
+                className="relative mb-6 p-5 rounded-2xl overflow-hidden"
+                style={{
+                  background:
+                    "linear-gradient(135deg, rgba(46,204,113,0.15) 0%, rgba(39,174,96,0.1) 100%)",
+                  border: "1px solid rgba(46,204,113,0.3)",
+                }}
+              >
                 <div className="text-center">
-                  <div className="inline-flex items-center justify-center w-14 h-14 rounded-full mb-3" style={{ background: 'linear-gradient(135deg, #2ECC71, #27AE60)' }}>
+                  <div
+                    className="inline-flex items-center justify-center w-14 h-14 rounded-full mb-3"
+                    style={{
+                      background: "linear-gradient(135deg, #2ECC71, #27AE60)",
+                    }}
+                  >
                     <span className="text-2xl">💡</span>
                   </div>
-                  <h4 className="font-bold text-lg mb-2" style={{ color: '#2ECC71' }}>Remember</h4>
-                  <p className="text-sm" style={{ color: '#FDE4BC' }}>
-                    Lottery games are a form of gambling. Always make informed choices and never bet more than you can afford to lose.
+                  <h4
+                    className="font-bold text-lg mb-2"
+                    style={{ color: "#2ECC71" }}
+                  >
+                    Remember
+                  </h4>
+                  <p className="text-sm" style={{ color: "#FDE4BC" }}>
+                    Lottery games are a form of gambling. Always make informed
+                    choices and never bet more than you can afford to lose.
                   </p>
                 </div>
               </div>
 
               {/* Accept Button */}
               <div className="text-center">
-                <button 
+                <button
                   onClick={() => setShowDisclaimerDialog(false)}
                   className="px-8 py-4 font-bold rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 text-lg"
-                  style={{ background: 'linear-gradient(135deg, #FED358 0%, #FF6B35 100%)', color: '#1a1520' }}
+                  style={{
+                    background:
+                      "linear-gradient(135deg, #FED358 0%, #FF6B35 100%)",
+                    color: "#1a1520",
+                  }}
                   data-testid="button-accept-disclaimer"
                 >
                   I Understand & Accept
@@ -1081,14 +1789,33 @@ export default function Home() {
       {/* Warning Dialog - Modern Design */}
       {showWarningDialog && (
         <div className="fixed inset-0 bg-black/70 backdrop-blur-md z-50 flex items-center justify-center p-4">
-          <div className="rounded-3xl max-w-2xl w-full max-h-[85vh] overflow-hidden shadow-2xl" style={{ background: 'linear-gradient(145deg, #1a1520 0%, #0d0a12 100%)' }}>
+          <div
+            className="rounded-3xl max-w-2xl w-full max-h-[85vh] overflow-hidden shadow-2xl"
+            style={{
+              background: "linear-gradient(145deg, #1a1520 0%, #0d0a12 100%)",
+            }}
+          >
             {/* Hero Section */}
-            <div className="relative h-40 overflow-hidden" style={{ background: 'linear-gradient(135deg, #E74C3C 0%, #C0392B 50%, #922B21 100%)' }}>
-              <div className="absolute inset-0" style={{ background: 'radial-gradient(circle at 50% 50%, rgba(255,255,255,0.15) 0%, transparent 60%)' }}></div>
+            <div
+              className="relative h-40 overflow-hidden"
+              style={{
+                background:
+                  "linear-gradient(135deg, #E74C3C 0%, #C0392B 50%, #922B21 100%)",
+              }}
+            >
+              <div
+                className="absolute inset-0"
+                style={{
+                  background:
+                    "radial-gradient(circle at 50% 50%, rgba(255,255,255,0.15) 0%, transparent 60%)",
+                }}
+              ></div>
               <div className="absolute inset-0 flex items-center justify-center">
                 <div className="text-center">
                   <div className="text-6xl mb-2">🛡️</div>
-                  <h2 className="text-3xl font-black text-white tracking-tight">Security Warning</h2>
+                  <h2 className="text-3xl font-black text-white tracking-tight">
+                    Security Warning
+                  </h2>
                 </div>
               </div>
               <button
@@ -1099,85 +1826,201 @@ export default function Home() {
                 ×
               </button>
             </div>
-            
+
             {/* Content */}
             <div className="p-8 overflow-y-auto max-h-[calc(85vh-10rem)]">
               {/* Intro */}
-              <div className="relative mb-6 p-5 rounded-2xl overflow-hidden" style={{ background: 'linear-gradient(135deg, rgba(230,126,34,0.15) 0%, rgba(231,76,60,0.1) 100%)', borderLeft: '4px solid #E67E22' }}>
-                <p className="text-base leading-relaxed" style={{ color: '#FDE4BC' }}>
-                  At V3 GAME VIP, we empower users with knowledge. Platforms using systems like SHA-256 for random results can be manipulated. Our expertise helps you stay ahead.
+              <div
+                className="relative mb-6 p-5 rounded-2xl overflow-hidden"
+                style={{
+                  background:
+                    "linear-gradient(135deg, rgba(230,126,34,0.15) 0%, rgba(231,76,60,0.1) 100%)",
+                  borderLeft: "4px solid #E67E22",
+                }}
+              >
+                <p
+                  className="text-base leading-relaxed"
+                  style={{ color: "#FDE4BC" }}
+                >
+                  At V3 GAME VIP, we empower users with knowledge. Platforms
+                  using systems like SHA-256 for random results can be
+                  manipulated. Our expertise helps you stay ahead.
                 </p>
               </div>
 
               {/* How We Protect You */}
-              <div className="mb-6 p-5 rounded-2xl" style={{ background: 'rgba(46,204,113,0.1)', border: '1px solid rgba(46,204,113,0.3)' }}>
+              <div
+                className="mb-6 p-5 rounded-2xl"
+                style={{
+                  background: "rgba(46,204,113,0.1)",
+                  border: "1px solid rgba(46,204,113,0.3)",
+                }}
+              >
                 <div className="flex items-center mb-4">
-                  <div className="w-12 h-12 rounded-full flex items-center justify-center mr-4" style={{ background: 'linear-gradient(135deg, #2ECC71, #27AE60)' }}>
+                  <div
+                    className="w-12 h-12 rounded-full flex items-center justify-center mr-4"
+                    style={{
+                      background: "linear-gradient(135deg, #2ECC71, #27AE60)",
+                    }}
+                  >
                     <span className="text-2xl">🛡️</span>
                   </div>
-                  <h3 className="font-bold text-xl" style={{ color: '#2ECC71' }}>How We Protect You</h3>
+                  <h3
+                    className="font-bold text-xl"
+                    style={{ color: "#2ECC71" }}
+                  >
+                    How We Protect You
+                  </h3>
                 </div>
                 <div className="grid grid-cols-1 gap-3">
-                  <div className="flex items-center p-3 rounded-xl" style={{ background: 'rgba(46,204,113,0.1)' }}>
-                    <div className="w-8 h-8 rounded-full flex items-center justify-center mr-3 flex-shrink-0" style={{ background: '#2ECC71' }}>
+                  <div
+                    className="flex items-center p-3 rounded-xl"
+                    style={{ background: "rgba(46,204,113,0.1)" }}
+                  >
+                    <div
+                      className="w-8 h-8 rounded-full flex items-center justify-center mr-3 flex-shrink-0"
+                      style={{ background: "#2ECC71" }}
+                    >
                       <span className="text-white text-sm">✓</span>
                     </div>
-                    <span className="text-sm" style={{ color: '#FDE4BC' }}>Sophisticated API monitoring for data manipulation</span>
+                    <span className="text-sm" style={{ color: "#FDE4BC" }}>
+                      Sophisticated API monitoring for data manipulation
+                    </span>
                   </div>
-                  <div className="flex items-center p-3 rounded-xl" style={{ background: 'rgba(46,204,113,0.1)' }}>
-                    <div className="w-8 h-8 rounded-full flex items-center justify-center mr-3 flex-shrink-0" style={{ background: '#2ECC71' }}>
+                  <div
+                    className="flex items-center p-3 rounded-xl"
+                    style={{ background: "rgba(46,204,113,0.1)" }}
+                  >
+                    <div
+                      className="w-8 h-8 rounded-full flex items-center justify-center mr-3 flex-shrink-0"
+                      style={{ background: "#2ECC71" }}
+                    >
                       <span className="text-white text-sm">✓</span>
                     </div>
-                    <span className="text-sm" style={{ color: '#FDE4BC' }}>Advanced pattern detection algorithms</span>
+                    <span className="text-sm" style={{ color: "#FDE4BC" }}>
+                      Advanced pattern detection algorithms
+                    </span>
                   </div>
-                  <div className="flex items-center p-3 rounded-xl" style={{ background: 'rgba(46,204,113,0.1)' }}>
-                    <div className="w-8 h-8 rounded-full flex items-center justify-center mr-3 flex-shrink-0" style={{ background: '#2ECC71' }}>
+                  <div
+                    className="flex items-center p-3 rounded-xl"
+                    style={{ background: "rgba(46,204,113,0.1)" }}
+                  >
+                    <div
+                      className="w-8 h-8 rounded-full flex items-center justify-center mr-3 flex-shrink-0"
+                      style={{ background: "#2ECC71" }}
+                    >
                       <span className="text-white text-sm">✓</span>
                     </div>
-                    <span className="text-sm" style={{ color: '#FDE4BC' }}>Multi-factor analysis beyond platform data</span>
+                    <span className="text-sm" style={{ color: "#FDE4BC" }}>
+                      Multi-factor analysis beyond platform data
+                    </span>
                   </div>
                 </div>
               </div>
 
               {/* Manipulation Tactics */}
-              <div className="mb-6 p-5 rounded-2xl" style={{ background: 'rgba(231,76,60,0.1)', border: '1px solid rgba(231,76,60,0.3)' }}>
+              <div
+                className="mb-6 p-5 rounded-2xl"
+                style={{
+                  background: "rgba(231,76,60,0.1)",
+                  border: "1px solid rgba(231,76,60,0.3)",
+                }}
+              >
                 <div className="flex items-center mb-4">
-                  <div className="w-12 h-12 rounded-full flex items-center justify-center mr-4" style={{ background: 'linear-gradient(135deg, #E74C3C, #C0392B)' }}>
+                  <div
+                    className="w-12 h-12 rounded-full flex items-center justify-center mr-4"
+                    style={{
+                      background: "linear-gradient(135deg, #E74C3C, #C0392B)",
+                    }}
+                  >
                     <span className="text-2xl">⚠️</span>
                   </div>
-                  <h3 className="font-bold text-xl" style={{ color: '#E74C3C' }}>Watch Out For</h3>
+                  <h3
+                    className="font-bold text-xl"
+                    style={{ color: "#E74C3C" }}
+                  >
+                    Watch Out For
+                  </h3>
                 </div>
                 <div className="space-y-3">
-                  <div className="p-3 rounded-xl" style={{ background: 'rgba(231,76,60,0.1)' }}>
+                  <div
+                    className="p-3 rounded-xl"
+                    style={{ background: "rgba(231,76,60,0.1)" }}
+                  >
                     <div className="flex items-start">
-                      <div className="w-6 h-6 rounded-full flex items-center justify-center mr-3 mt-0.5 flex-shrink-0" style={{ background: '#E74C3C' }}>
+                      <div
+                        className="w-6 h-6 rounded-full flex items-center justify-center mr-3 mt-0.5 flex-shrink-0"
+                        style={{ background: "#E74C3C" }}
+                      >
                         <span className="text-white text-xs">!</span>
                       </div>
                       <div>
-                        <span className="font-semibold text-sm" style={{ color: '#E74C3C' }}>Controlled "Randomness"</span>
-                        <p className="text-xs mt-1" style={{ color: '#FDE4BC' }}>Platforms may influence how "random" generation works.</p>
+                        <span
+                          className="font-semibold text-sm"
+                          style={{ color: "#E74C3C" }}
+                        >
+                          Controlled "Randomness"
+                        </span>
+                        <p
+                          className="text-xs mt-1"
+                          style={{ color: "#FDE4BC" }}
+                        >
+                          Platforms may influence how "random" generation works.
+                        </p>
                       </div>
                     </div>
                   </div>
-                  <div className="p-3 rounded-xl" style={{ background: 'rgba(231,76,60,0.1)' }}>
+                  <div
+                    className="p-3 rounded-xl"
+                    style={{ background: "rgba(231,76,60,0.1)" }}
+                  >
                     <div className="flex items-start">
-                      <div className="w-6 h-6 rounded-full flex items-center justify-center mr-3 mt-0.5 flex-shrink-0" style={{ background: '#E74C3C' }}>
+                      <div
+                        className="w-6 h-6 rounded-full flex items-center justify-center mr-3 mt-0.5 flex-shrink-0"
+                        style={{ background: "#E74C3C" }}
+                      >
                         <span className="text-white text-xs">!</span>
                       </div>
                       <div>
-                        <span className="font-semibold text-sm" style={{ color: '#E74C3C' }}>Hidden Algorithm Changes</span>
-                        <p className="text-xs mt-1" style={{ color: '#FDE4BC' }}>Undisclosed changes that unfairly shift odds.</p>
+                        <span
+                          className="font-semibold text-sm"
+                          style={{ color: "#E74C3C" }}
+                        >
+                          Hidden Algorithm Changes
+                        </span>
+                        <p
+                          className="text-xs mt-1"
+                          style={{ color: "#FDE4BC" }}
+                        >
+                          Undisclosed changes that unfairly shift odds.
+                        </p>
                       </div>
                     </div>
                   </div>
-                  <div className="p-3 rounded-xl" style={{ background: 'rgba(231,76,60,0.1)' }}>
+                  <div
+                    className="p-3 rounded-xl"
+                    style={{ background: "rgba(231,76,60,0.1)" }}
+                  >
                     <div className="flex items-start">
-                      <div className="w-6 h-6 rounded-full flex items-center justify-center mr-3 mt-0.5 flex-shrink-0" style={{ background: '#E74C3C' }}>
+                      <div
+                        className="w-6 h-6 rounded-full flex items-center justify-center mr-3 mt-0.5 flex-shrink-0"
+                        style={{ background: "#E74C3C" }}
+                      >
                         <span className="text-white text-xs">!</span>
                       </div>
                       <div>
-                        <span className="font-semibold text-sm" style={{ color: '#E74C3C' }}>Selective Payout Practices</span>
-                        <p className="text-xs mt-1" style={{ color: '#FDE4BC' }}>Delayed or withheld payouts without explanation.</p>
+                        <span
+                          className="font-semibold text-sm"
+                          style={{ color: "#E74C3C" }}
+                        >
+                          Selective Payout Practices
+                        </span>
+                        <p
+                          className="text-xs mt-1"
+                          style={{ color: "#FDE4BC" }}
+                        >
+                          Delayed or withheld payouts without explanation.
+                        </p>
                       </div>
                     </div>
                   </div>
@@ -1185,18 +2028,45 @@ export default function Home() {
               </div>
 
               {/* Stay Smart */}
-              <div className="mb-6 p-5 rounded-2xl" style={{ background: 'rgba(155,89,182,0.1)', border: '1px solid rgba(155,89,182,0.3)' }}>
+              <div
+                className="mb-6 p-5 rounded-2xl"
+                style={{
+                  background: "rgba(155,89,182,0.1)",
+                  border: "1px solid rgba(155,89,182,0.3)",
+                }}
+              >
                 <div className="flex items-center mb-4">
-                  <div className="w-12 h-12 rounded-full flex items-center justify-center mr-4" style={{ background: 'linear-gradient(135deg, #9B59B6, #8E44AD)' }}>
+                  <div
+                    className="w-12 h-12 rounded-full flex items-center justify-center mr-4"
+                    style={{
+                      background: "linear-gradient(135deg, #9B59B6, #8E44AD)",
+                    }}
+                  >
                     <span className="text-2xl">🧠</span>
                   </div>
-                  <h3 className="font-bold text-xl" style={{ color: '#9B59B6' }}>Stay Informed, Play Smart</h3>
+                  <h3
+                    className="font-bold text-xl"
+                    style={{ color: "#9B59B6" }}
+                  >
+                    Stay Informed, Play Smart
+                  </h3>
                 </div>
-                <p className="text-sm leading-relaxed mb-4" style={{ color: '#FDE4BC' }}>
-                  Always verify platform credibility before engaging. With V3 GAME VIP, you have the insights to make informed decisions.
+                <p
+                  className="text-sm leading-relaxed mb-4"
+                  style={{ color: "#FDE4BC" }}
+                >
+                  Always verify platform credibility before engaging. With V3
+                  GAME VIP, you have the insights to make informed decisions.
                 </p>
-                <div className="p-4 rounded-xl text-center" style={{ background: 'linear-gradient(135deg, rgba(254,211,88,0.2) 0%, rgba(255,107,53,0.15) 100%)', border: '1px solid rgba(254,211,88,0.4)' }}>
-                  <p className="font-bold text-lg" style={{ color: '#FED358' }}>
+                <div
+                  className="p-4 rounded-xl text-center"
+                  style={{
+                    background:
+                      "linear-gradient(135deg, rgba(254,211,88,0.2) 0%, rgba(255,107,53,0.15) 100%)",
+                    border: "1px solid rgba(254,211,88,0.4)",
+                  }}
+                >
+                  <p className="font-bold text-lg" style={{ color: "#FED358" }}>
                     💡 Knowledge is power in online lotteries! 💡
                   </p>
                 </div>
@@ -1204,10 +2074,14 @@ export default function Home() {
 
               {/* CTA Button */}
               <div className="text-center">
-                <button 
+                <button
                   onClick={() => setShowWarningDialog(false)}
                   className="px-8 py-4 font-bold rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 text-lg"
-                  style={{ background: 'linear-gradient(135deg, #FED358 0%, #FF6B35 100%)', color: '#1a1520' }}
+                  style={{
+                    background:
+                      "linear-gradient(135deg, #FED358 0%, #FF6B35 100%)",
+                    color: "#1a1520",
+                  }}
                   data-testid="button-acknowledge-warning"
                 >
                   Got It, Thanks!
