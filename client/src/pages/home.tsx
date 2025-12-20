@@ -3,7 +3,6 @@ import { useState, useEffect } from "react";
 import { Link } from "wouter";
 import { FaTelegram } from "react-icons/fa";
 import RegistrationDialog from "@/components/registration-dialog";
-import WelcomeNotification from "@/components/welcome-notification";
 import Footer from "@/components/footer";
 const logoPath = "/images/logo.webp";
 const heroBannerDesktop = "/images/banner-desktop.webp";
@@ -266,9 +265,6 @@ export default function Home() {
         <meta name="description" content={pageDescription} />
         <meta name="keywords" content="V3 Game, V3 Game login, V3 Game hack, V3 Game prediction, Jalwa Game, Jalwa Game login, Jalwa Game hack, Jalwa Game app, Tashan Win, Tashan Win login" />
       </head>
-      {/* Welcome Notification - Shows on first visit */}
-      <WelcomeNotification onRegisterClick={handleJoinVipClick} />
-      
       {/* Navigation Bar */}
       <nav 
         className={`fixed top-0 left-0 right-0 navbar-dark px-4 shadow-lg z-50 transition-all duration-300 ${
