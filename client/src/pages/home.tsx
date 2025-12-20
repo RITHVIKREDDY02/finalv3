@@ -491,7 +491,7 @@ export default function Home() {
           </h1>
           <div className="text-[17px] max-w-4xl leading-relaxed space-y-4" style={{ color: '#FDE4BC' }} data-testid="text-what-is-v3-description">
             <p>
-              V3 Game is an online gaming and earning platform that allows users to play multiple games in different categories, make smart bets, and potentially win real cash rewards. It combines entertainment and opportunity into one seamless experience, making it perfect for anyone looking to turn their free time into a fun, rewarding activity.
+              V3 Game is an online gaming and earning platform that allows users to play multiple games in different categories, make smart bets, and potentially win real cash rewards.
             </p>
             <p>
               What makes V3 Game lottery stand out is its wide range of games from casual classics like Mines and Go Rush to advanced games like Aviator, 5D, and Dragon Tiger. Whether you're a seasoned player or a beginner trying out your luck, V3 Game gives everyone an equal chance to win.
