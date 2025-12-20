@@ -1,0 +1,199 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TASHANWIN - VIP Prediction App</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'navbar-dark': '#110D14',
+                        'accent-gold': '#A28422', 
+                        'warm-gold': '#FED358',
+                        'light-gold': '#FDE4BC',
+                        'banner-start': '#312712',
+                        'banner-end': '#1E180A'
+                    },
+                    backgroundImage: {
+                        'body-gradient': 'linear-gradient(180deg, #231c21 42.3%, rgba(35, 28, 33, 0) 100%)',
+                        'banner-gradient': 'linear-gradient(180deg, #312712 0%, #1E180A 100%)'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background: linear-gradient(180deg, #231c21 42.3%, rgba(35, 28, 33, 0) 100%);
+            min-height: 100vh;
+        }
+        
+        .banner-gradient {
+            background: linear-gradient(180deg, #312712 0%, #1E180A 100%);
+        }
+        
+        .game-card {
+            transition: all 0.3s ease;
+        }
+        
+        .game-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px rgba(162, 132, 34, 0.3);
+        }
+        
+        .speaker-icon {
+            color: #FED358;
+        }
+    </style>
+</head>
+<body class="bg-body-gradient">
+    <!-- @COMPONENT: NavigationBar -->
+    <nav style="background-color: #110D14;" class="px-4 py-3 shadow-lg">
+        <div class="max-w-7xl mx-auto flex items-center justify-between">
+            <!-- Logo Section -->
+            <div class="flex items-center">
+                <img src="attached_assets/TASHAN WIN LOGO_1754052537792.png" 
+                     alt="TASHANWIN Logo" 
+                     class="h-10 w-auto object-contain"
+                     data-mock="true">
+            </div>
+            
+            <!-- Mobile Menu Button (Future Implementation) -->
+            <div class="md:hidden">
+                <!-- @FUNCTIONALITY: Mobile menu toggle button for responsive navigation -->
+                <button class="text-light-gold hover:text-warm-gold transition-colors duration-200" 
+                        data-event="click:toggleMobileMenu">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+            
+            <!-- Desktop Navigation Items (Future Implementation) -->
+            <div class="hidden md:flex items-center space-x-8">
+                <!-- @FUNCTIONALITY: Add navigation items like Home, Games, Predictions, etc. -->
+                <div class="text-light-gold text-sm">
+                    <!-- Navigation items will be added here -->
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- @END_COMPONENT: NavigationBar -->
+
+    <!-- Main Content Container -->
+    <div class="max-w-4xl mx-auto px-4 py-6">
+        
+        <!-- @COMPONENT: WelcomeBanner -->
+        <div class="banner-gradient rounded-lg p-6 mb-8 border-2 border-accent-gold shadow-lg">
+            <div class="flex items-center space-x-4">
+                <!-- Speaker Icon -->
+                <div class="flex-shrink-0">
+                    <svg class="w-8 h-8 speaker-icon" fill="currentColor" viewBox="0 0 24 24">
+                        <!-- Speaker/Megaphone Icon -->
+                        <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
+                    </svg>
+                </div>
+                
+                <!-- Welcome Text -->
+                <div class="flex-1">
+                    <p class="text-light-gold text-lg font-medium leading-relaxed" data-mock="true">
+                        Welcome to TASHANWIN VIP PREDICTION APP, we will serve you Special Predictions!
+                    </p>
+                </div>
+            </div>
+        </div>
+        <!-- @END_COMPONENT: WelcomeBanner -->
+
+        <!-- @COMPONENT: GameCategories -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            
+            <!-- Win Go Game Card -->
+            <!-- @FUNCTIONALITY: Navigate to Win Go game section -->
+            <div class="game-card cursor-pointer rounded-xl overflow-hidden shadow-lg border border-accent-gold/30 hover:border-accent-gold transition-all duration-300"
+                 data-event="click:navigateToWinGo"
+                 data-implementation="Navigate to Win Go prediction game">
+                
+                <!-- Win Go game category image with colorful lottery balls -->
+                <img src="attached_assets/lotterycategory_20250412120719dqfv_1754052547793.png" 
+                     alt="Win Go - Lottery prediction game with colorful balls" 
+                     class="w-full h-48 object-cover"
+                     data-mock-image="true">
+                
+                <!-- Card Overlay for Better Interaction Feedback -->
+                <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-4">
+                    <span class="text-light-gold font-semibold">Play Win Go</span>
+                </div>
+            </div>
+
+            <!-- Trx Wingo Game Card -->
+            <!-- @FUNCTIONALITY: Navigate to Trx Wingo game section -->
+            <div class="game-card cursor-pointer rounded-xl overflow-hidden shadow-lg border border-accent-gold/30 hover:border-accent-gold transition-all duration-300"
+                 data-event="click:navigateToTrxWingo"
+                 data-implementation="Navigate to Trx Wingo prediction game">
+                
+                <!-- Trx Wingo game category image with blue ball and TRX theme -->
+                <img src="attached_assets/lotterycategory_20250412120818j8wq_1754052552269.png" 
+                     alt="Trx Wingo - TRX-themed lottery prediction game" 
+                     class="w-full h-48 object-cover"
+                     data-mock-image="true">
+                
+                <!-- Card Overlay for Better Interaction Feedback -->
+                <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-4">
+                    <span class="text-light-gold font-semibold">Play Trx Wingo</span>
+                </div>
+            </div>
+
+        </div>
+        <!-- @END_COMPONENT: GameCategories -->
+
+        <!-- @COMPONENT: FeatureSection (Future Enhancement) -->
+        <div class="mt-12 text-center">
+            <!-- @FUNCTIONALITY: Add features like VIP predictions, statistics, user dashboard -->
+            <div class="text-light-gold/70 text-sm">
+                <!-- Additional features and sections can be added here -->
+                <p data-mock="true">More exciting features coming soon...</p>
+            </div>
+        </div>
+        <!-- @END_COMPONENT: FeatureSection -->
+
+    </div>
+
+    <!-- JavaScript for Interactions -->
+    <script>
+        (function() {
+            // TODO: Implement navigation logic for game categories
+            
+            // Add click handlers for game cards
+            document.addEventListener('DOMContentLoaded', function() {
+                const gameCards = document.querySelectorAll('.game-card');
+                
+                gameCards.forEach(card => {
+                    card.addEventListener('click', function() {
+                        // TODO: Implement game selection logic
+                        console.log('Game card clicked:', this.dataset.event);
+                        
+                        // Visual feedback
+                        this.style.transform = 'scale(0.98)';
+                        setTimeout(() => {
+                            this.style.transform = '';
+                        }, 150);
+                    });
+                });
+            });
+
+            // TODO: Add mobile menu toggle functionality
+            // TODO: Add user authentication and profile management
+            // TODO: Implement prediction game logic
+            // TODO: Add real-time updates and notifications
+            
+        })();
+    </script>
+
+    <!-- @STATE: selectedGame:string = null -->
+    <!-- @STATE: userAuthenticated:boolean = false -->
+    <!-- @STATE: predictions:array = [] -->
+
+</body>
+</html>
