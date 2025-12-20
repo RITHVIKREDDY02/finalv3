@@ -248,6 +248,19 @@ export default function Home() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  useEffect(() => {
+    document.title = pageTitle;
+    const metaDescription = document.querySelector('meta[name="description"]');
+    if (metaDescription) {
+      metaDescription.setAttribute('content', pageDescription);
+    } else {
+      const meta = document.createElement('meta');
+      meta.name = 'description';
+      meta.content = pageDescription;
+      document.head.appendChild(meta);
+    }
+  }, []);
+
   const handleJoinVipClick = () => {
     console.log('Join clicked');
     setShowRegisterDialog(true);
@@ -260,11 +273,6 @@ export default function Home() {
 
   return (
     <div className="min-h-screen">
-      <head>
-        <title>{pageTitle}</title>
-        <meta name="description" content={pageDescription} />
-        <meta name="keywords" content="V3 Game, V3 Game login, V3 Game hack, V3 Game prediction, online gaming guide, prediction tips" />
-      </head>
       {/* Navigation Bar */}
       <nav 
         className={`fixed top-0 left-0 right-0 navbar-dark px-4 shadow-lg z-50 transition-all duration-300 ${
