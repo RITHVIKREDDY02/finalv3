@@ -475,24 +475,24 @@ export default function Home() {
         </div>
       </div>
 
-      {/* What is V2 Game Section */}
-      <div className="px-6 md:px-8 lg:px-12 xl:px-16 py-12" data-testid="section-what-is-v2">
+      {/* What is V3 Game Section */}
+      <div className="px-6 md:px-8 lg:px-12 xl:px-16 py-12" data-testid="section-what-is-v3">
         <div className="max-w-6xl mx-auto">
-          <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4" style={{ color: '#FED358' }} data-testid="heading-what-is-v2">
-            What is V2 Game?
+          <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4" style={{ color: '#FED358' }} data-testid="heading-what-is-v3">
+            What is V3 Game?
           </h1>
-          <div className="text-[17px] max-w-4xl leading-relaxed space-y-4" style={{ color: '#FDE4BC' }} data-testid="text-what-is-v2-description">
+          <div className="text-[17px] max-w-4xl leading-relaxed space-y-4" style={{ color: '#FDE4BC' }} data-testid="text-what-is-v3-description">
             <p>
-              V2 Game is an online gaming and earning platform that allows users to play multiple games in different categories, make smart bets, and potentially win real cash rewards. It combines entertainment and opportunity into one seamless experience, making it perfect for anyone looking to turn their free time into a fun, rewarding activity.
+              V3 Game is an online gaming and earning platform that allows users to play multiple games in different categories, make smart bets, and potentially win real cash rewards. It combines entertainment and opportunity into one seamless experience, making it perfect for anyone looking to turn their free time into a fun, rewarding activity.
             </p>
             <p>
-              What makes V2 Game lottery stand out is its wide range of games from casual classics like Mines and Go Rush to advanced games like Aviator, 5D, and Dragon Tiger. Whether you're a seasoned player or a beginner trying out your luck, V2 Game gives everyone an equal chance to win.
+              What makes V3 Game lottery stand out is its wide range of games from casual classics like Mines and Go Rush to advanced games like Aviator, 5D, and Dragon Tiger. Whether you're a seasoned player or a beginner trying out your luck, V3 Game gives everyone an equal chance to win.
             </p>
             <p>
               And thanks to secure transactions, real-time results, and transparent systems, you can trust the platform every step of the way. You can also take part in its referral programs, special promotions, and jackpot events that increase your chances of earning even more.
             </p>
             <p>
-              In short, whether you're here for quick entertainment or aiming to become a regular player, V2 Game offers a trusted, all-in-one gaming experience tailored to your goals.
+              In short, whether you're here for quick entertainment or aiming to become a regular player, V3 Game offers a trusted, all-in-one gaming experience tailored to your goals.
             </p>
           </div>
         </div>
