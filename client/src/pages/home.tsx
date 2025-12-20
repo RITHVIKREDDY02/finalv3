@@ -430,10 +430,10 @@ export default function Home() {
             </p>
           </div>
           {/* Register and Login Buttons */}
-          <div className="flex flex-row gap-2 sm:gap-4 md:gap-6 justify-center items-center mb-4">
+          <div className="flex flex-row flex-wrap gap-2 sm:gap-4 md:gap-6 justify-center items-center mb-4">
             {/* REGISTER Button */}
             <button 
-              className="flex-1 md:flex-none md:w-40 lg:w-44 px-4 sm:px-6 md:px-8 py-2 custom-button font-bold rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 text-sm sm:text-base"
+              className="flex-shrink-0 w-auto px-4 sm:px-6 md:px-8 py-2 custom-button font-bold rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 text-sm sm:text-base whitespace-nowrap"
               onClick={() => window.open("https://www.v3gameb.com/#/pages/login/register?invitationCode=7532630349", "_blank")}
               data-testid="button-register"
             >
@@ -442,7 +442,7 @@ export default function Home() {
             
             {/* LOGIN Button */}
             <button 
-              className="flex-1 md:flex-none md:w-40 lg:w-44 px-4 sm:px-6 md:px-8 py-2 custom-button font-bold rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 text-sm sm:text-base"
+              className="flex-shrink-0 w-auto px-4 sm:px-6 md:px-8 py-2 custom-button font-bold rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 text-sm sm:text-base whitespace-nowrap"
               onClick={() => window.open("https://www.v3gameb.com/#/pages/login/login", "_blank")}
               data-testid="button-login"
             >
