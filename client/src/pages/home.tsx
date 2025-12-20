@@ -536,7 +536,7 @@ export default function Home() {
         className="px-6 md:px-8 lg:px-12 xl:px-16 py-12"
         data-testid="section-what-is-v3"
       >
-        <div className="max-w-6xl mx-auto">
+        <div className="max-w-5xl mx-auto">
           <h1
             className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4"
             style={{ color: "#FED358" }}
