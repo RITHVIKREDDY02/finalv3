@@ -638,7 +638,7 @@ export default function Home() {
           <div className="space-y-8 max-w-4xl">
             {/* Registration Steps */}
             <div data-testid="card-registration-steps">
-              <h2 className="text-xl md:text-2xl font-bold mb-4" style={{ color: '#FED358' }} data-testid="heading-registration-steps">Registration Steps:</h2>
+              <h2 className="text-xl md:text-2xl font-bold mb-4" style={{ color: '#FED358' }} data-testid="heading-registration-steps">V3 Game Registration Steps:</h2>
               <div className="space-y-4">
                 <div data-testid="step-1-visit-website">
                   <h3 className="text-base md:text-lg font-bold mb-2" style={{ color: '#FED358' }}>Visit Our Official Website</h3>
