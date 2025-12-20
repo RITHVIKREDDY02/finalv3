@@ -622,6 +622,104 @@ export default function Home() {
         </div>
       </div>
 
+      {/* How To Register & Login Section */}
+      <div className="px-6 md:px-8 lg:px-12 xl:px-16 py-12" data-testid="section-register-login-guide">
+        <div className="max-w-6xl mx-auto">
+          <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-6" style={{ color: '#FED358' }} data-testid="heading-register-login-guide">
+            How To Register & Login On V3 Game?
+          </h1>
+          <p className="text-[17px] max-w-4xl mb-8" style={{ color: '#FDE4BC' }} data-testid="text-register-login-intro">
+            Getting started with V3 color game is super easy. Whether you're a beginner or a regular gamer looking for a fresh platform to explore, registering and logging into your account takes just a few minutes.
+          </p>
+          <p className="text-[17px] max-w-4xl mb-8" style={{ color: '#FDE4BC' }}>
+            Below is a step-by-step guide to help you register and login seamlessly on V3 Game.
+          </p>
+
+          <div className="space-y-8 max-w-4xl">
+            {/* Registration Steps */}
+            <div data-testid="card-registration-steps">
+              <h2 className="text-xl md:text-2xl font-bold mb-4" style={{ color: '#FED358' }} data-testid="heading-registration-steps">Registration Steps:</h2>
+              <div className="space-y-4">
+                <div data-testid="step-1-visit-website">
+                  <h3 className="text-base md:text-lg font-bold mb-2" style={{ color: '#FED358' }}>Visit Our Official Website</h3>
+                  <p className="text-[17px] leading-relaxed" style={{ color: '#FDE4BC' }}>
+                    Open your browser and go to the official V3 Game website.
+                  </p>
+                </div>
+
+                <div data-testid="step-2-click-register">
+                  <h3 className="text-base md:text-lg font-bold mb-2" style={{ color: '#FED358' }}>Click the Register Button</h3>
+                  <p className="text-[17px] leading-relaxed" style={{ color: '#FDE4BC' }}>
+                    At the top of the homepage, you'll see a "V3 Game Register" button. Tap it to open the registration form. Or click on register button below.
+                  </p>
+                </div>
+
+                <div data-testid="step-3-enter-mobile">
+                  <h3 className="text-base md:text-lg font-bold mb-2" style={{ color: '#FED358' }}>Enter Your Mobile Number</h3>
+                  <p className="text-[17px] leading-relaxed" style={{ color: '#FDE4BC' }}>
+                    Use a valid mobile number you currently use, as this will be required for login and verification.
+                  </p>
+                </div>
+
+                <div data-testid="step-4-set-password">
+                  <h3 className="text-base md:text-lg font-bold mb-2" style={{ color: '#FED358' }}>Set a Secure Password</h3>
+                  <p className="text-[17px] leading-relaxed" style={{ color: '#FDE4BC' }}>
+                    Create a strong password that includes a mix of numbers and alphabets to keep your account protected (It doesn't allows Special Characters so only use Alphabets & Numbers).
+                  </p>
+                </div>
+
+                <div data-testid="step-5-referral-code">
+                  <h3 className="text-base md:text-lg font-bold mb-2" style={{ color: '#FED358' }}>Enter Referral Code</h3>
+                  <p className="text-[17px] leading-relaxed" style={{ color: '#FDE4BC' }}>
+                    Entering Invite Code is must to register on V3 Game. With this you also get 7532630349.
+                  </p>
+                </div>
+
+                <div data-testid="step-6-submit-verify">
+                  <h3 className="text-base md:text-lg font-bold mb-2" style={{ color: '#FED358' }}>Submit & Verify</h3>
+                  <p className="text-[17px] leading-relaxed" style={{ color: '#FDE4BC' }}>
+                    Tap on the "Register" button, and complete the process.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Login Steps */}
+            <div data-testid="card-login-steps">
+              <h2 className="text-xl md:text-2xl font-bold mb-4" style={{ color: '#FED358' }} data-testid="heading-login-steps">V3 Game Login Steps:</h2>
+              <p className="text-[17px] leading-relaxed mb-4" style={{ color: '#FDE4BC' }}>
+                If you already created an account, you can easily login.
+              </p>
+              <div className="space-y-4">
+                <div data-testid="login-step-1">
+                  <p className="text-[17px] leading-relaxed" style={{ color: '#FDE4BC' }}>
+                    Go to the v3 Game homepage and click on login button located at the top of website or click on login button below.
+                  </p>
+                </div>
+
+                <div data-testid="login-step-2">
+                  <p className="text-[17px] leading-relaxed" style={{ color: '#FDE4BC' }}>
+                    Enter your registered mobile number and the password you created during registration.
+                  </p>
+                </div>
+
+                <div data-testid="login-step-3">
+                  <p className="text-[17px] leading-relaxed" style={{ color: '#FDE4BC' }}>
+                    Tap on Login and wait for the page to load. You'll be redirected to your user dashboard.
+                  </p>
+                </div>
+
+                <div data-testid="login-forgot-password" className="p-4 rounded-lg" style={{ background: 'rgba(254, 211, 88, 0.1)', border: '1px solid rgba(254, 211, 88, 0.2)' }}>
+                  <p className="text-[17px] leading-relaxed" style={{ color: '#FDE4BC' }}>
+                    <span style={{ color: '#FED358', fontWeight: 'bold' }}>Note:</span> If you Forgot the password just click on the "Forgot Password" option below the login button and follow the instructions to reset it via OTP verification.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
       {/* Responsible Gaming Section */}
       <div className="px-6 md:px-8 lg:px-12 xl:px-16 py-12" data-testid="section-responsible-gaming">
         <div className="max-w-6xl mx-auto">
